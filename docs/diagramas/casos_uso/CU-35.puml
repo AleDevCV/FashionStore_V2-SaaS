@@ -1,0 +1,8 @@
+@startuml
+left to right direction
+actor "Usuario autorizado Profesional" as Actor
+rectangle "FashionStore SaaS" {
+usecase "CU-35\nSolicitar reportes generativos" as UC
+}
+Actor --> UC
+@enduml

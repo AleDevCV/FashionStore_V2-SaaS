@@ -1,0 +1,60 @@
+# Desarrollo y pruebas locales. No se utiliza Compose en el servidor.
+name: fashionstore_p2
+services:
+  db:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB:-fashionstore_p2}
+      POSTGRES_USER: ${POSTGRES_USER:-fashionstore_owner}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?Configure POSTGRES_PASSWORD}
+    volumes:
+      - p2_database:/var/lib/postgresql/data
+    healthcheck:
+      test: [CMD-SHELL, 'pg_isready -U "$${POSTGRES_USER}" -d "$${POSTGRES_DB}"']
+      interval: 5s
+      timeout: 3s
+      retries: 20
+    mem_limit: 384m
+  api:
+    build: ./Parcial2_backend
+    environment:
+      DB_HOST: db
+      DB_NAME: ${POSTGRES_DB:-fashionstore_p2}
+      DB_USER: ${APP_DB_USER:-fashionstore_app}
+      DB_PASSWORD: ${APP_DB_PASSWORD:?Configure APP_DB_PASSWORD}
+      SECRET_KEY: ${SECRET_KEY:?Configure SECRET_KEY}
+      ALLOWED_ORIGINS: http://localhost:8082,https://fashionstore-v2.aledevcv.me
+      DB_MAX_CONNECTIONS: 5
+      GOOGLE_API_KEY: ${GOOGLE_API_KEY:-}
+      GEMINI_API_KEY: ${GEMINI_API_KEY:-}
+      STRIPE_SECRET_KEY: ${STRIPE_SECRET_KEY:-}
+      STRIPE_WEBHOOK_SECRET: ${STRIPE_WEBHOOK_SECRET:-}
+      FRONTEND_URL: ${FRONTEND_URL:-http://localhost:8082}
+      COMPROBANTES_DIR: /app/static/comprobantes
+      CATALOG_IMAGES_DIR: /app/static/catalog-images
+      SMTP_HOST: ${SMTP_HOST:-}
+      SMTP_PORT: ${SMTP_PORT:-587}
+      SMTP_USER: ${SMTP_USER:-}
+      SMTP_PASSWORD: ${SMTP_PASSWORD:-}
+      SMTP_FROM: ${SMTP_FROM:-noreply@example.invalid}
+      SMTP_USE_TLS: ${SMTP_USE_TLS:-true}
+    depends_on:
+      db:
+        condition: service_healthy
+    volumes:
+      - p2_documents:/app/static/comprobantes
+      - p2_catalog_images:/app/static/catalog-images
+    ports:
+      - 127.0.0.1:8002:8000
+    mem_limit: 512m
+  web:
+    build: ./Parcial2_frontend-web
+    depends_on:
+      - api
+    ports:
+      - 127.0.0.1:8082:80
+    mem_limit: 64m
+volumes:
+  p2_database:
+  p2_documents:
+  p2_catalog_images:

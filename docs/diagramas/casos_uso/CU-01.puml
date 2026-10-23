@@ -1,0 +1,8 @@
+@startuml
+left to right direction
+actor "Todos los usuarios" as Actor
+rectangle "FashionStore SaaS" {
+usecase "CU-01\nIniciar y cerrar sesión" as UC
+}
+Actor --> UC
+@enduml

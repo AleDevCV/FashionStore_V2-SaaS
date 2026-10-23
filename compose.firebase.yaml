@@ -1,0 +1,7 @@
+# Opcional, únicamente después de crear y configurar el proyecto Firebase.
+services:
+  api:
+    environment:
+      FIREBASE_CREDENTIALS_FILE: /run/secrets/firebase.json
+    volumes:
+      - ${FIREBASE_CREDENTIALS_FILE:?Indique archivo privado de cuenta de servicio}:/run/secrets/firebase.json:ro

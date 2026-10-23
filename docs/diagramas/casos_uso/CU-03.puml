@@ -1,0 +1,8 @@
+@startuml
+left to right direction
+actor "Superadministrador" as Actor
+rectangle "FashionStore SaaS" {
+usecase "CU-03\nAdministrar empresas" as UC
+}
+Actor --> UC
+@enduml

@@ -1,0 +1,82 @@
+# =============================================================================
+# FASHIONSTORE - DEPENDENCIAS DEL BACKEND (FastAPI)
+# -----------------------------------------------------------------------------
+# AVISO IMPORTANTE SOBRE bcrypt:
+#   bcrypt esta fijado en 4.0.1 A PROPOSITO. passlib 1.7.4 (ultima version
+#   publicada, sin mantenimiento desde 2020) es INCOMPATIBLE con bcrypt >= 5.0:
+#   al detectar el backend lanza "ValueError: password cannot be longer than
+#   72 bytes" y el login deja de funcionar por completo.
+#   NO desfijar esta version sin migrar antes fuera de passlib.
+# =============================================================================
+
+# --- Core Framework ---
+fastapi==0.141.1
+uvicorn==0.52.4
+starlette==1.6.0
+
+# --- Validación y tipado ---
+pydantic==2.13.5
+pydantic_core==2.46.5
+annotated-types==0.8.0
+typing-inspection==0.4.4
+typing_extensions==4.16.0
+annotated-doc==0.0.5
+
+# --- Base de datos ---
+psycopg2-binary==2.9.12
+
+# --- Autenticación y seguridad ---
+bcrypt==4.0.1
+passlib==1.7.4
+python-jose==3.5.0
+cryptography==50.0.1
+cffi==2.1.1
+pycparser==3.0
+ecdsa==0.19.2
+pyasn1==0.6.4
+rsa==4.9.1
+
+# --- HTTP y networking ---
+anyio==4.15.0
+h11==0.16.0
+httpx>=0.27.0
+dnspython==2.8.0
+idna==3.19
+
+# --- Utilidades ---
+python-dotenv==1.2.3
+click==8.5.0
+six==1.17.0
+email-validator==2.3.0
+python-multipart>=0.0.9
+
+# --- IA y ML (Gemini + Hugging Face) ---
+google-genai>=2.23.0
+# Cliente oficial de Gradio para invocar Spaces de Hugging Face (FASHN VTON v1.5)
+gradio_client>=2.7.1
+
+# --- Generación de PDF ---
+fpdf2>=2.8.8
+reportlab>=4.0.0
+
+# --- Imágenes y Visión Computacional ---
+Pillow>=10.0.0
+cloudinary>=1.41.0
+opencv-python-headless>=4.8.0
+# CPU de producción Pentium T4500 sin SSE4.2: ruedas NumPy >=2.4 incompatibles.
+numpy==2.3.5
+
+# --- Códigos QR ---
+qrcode[pil]>=7.4.0
+
+# --- Pasarela de pagos ---
+stripe>=7.0.0
+
+decart
+
+# P2: exportación y analítica; entrenar fuera del servidor de producción.
+openpyxl==3.1.5
+scikit-learn==1.9.1
+joblib==1.6.0
+scipy==1.18.1
+firebase-admin>=7.1,<8

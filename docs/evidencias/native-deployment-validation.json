@@ -1,0 +1,106 @@
+{
+  "checked_at_utc": "2026-10-23T14:00:51.728600+00:00",
+  "release_candidate": "20261023T135345Z-91cdb032",
+  "archive_sha256": "bb4fe9bdff5560f21638a650fb9eb8dd2349321e14ec08c6312820cc43d7659e",
+  "archive_bytes": 55894383,
+  "manifest_files": 240,
+  "manifest_verified": true,
+  "private_documents_and_configuration_excluded": true,
+  "configured_secret_values_found": 0,
+  "backend_postgresql17": {
+    "passed": 85,
+    "failed": 0,
+    "evidence": "backend-tests-postgres17.xml"
+  },
+  "native_infrastructure_tests": {
+    "passed": 11,
+    "failed": 0,
+    "evidence": "native-infrastructure-tests.xml"
+  },
+  "migration_and_restore_test": {
+    "database": "isolated local PostgreSQL 17",
+    "restricted_owner": true,
+    "tenants": 2,
+    "products": 8,
+    "inventory_units": 480,
+    "force_rls_preserved": true
+  },
+  "server_checks": {
+    "docker_installed": false,
+    "pending_docker_installation_session_closed": true,
+    "postgresql": "17.11",
+    "python": "3.13.5",
+    "cpu": "Pentium Dual-Core T4500, no SSE4.2",
+    "numpy": "2.3.5",
+    "database_and_roles_provisioned": true,
+    "migrations_applied": 16,
+    "native_venv_dependencies_checked": true,
+    "bash_syntax": "passed",
+    "python313_syntax": "passed",
+    "nginx_site_syntax": "passed",
+    "systemd_directives_syntax": "passed; ExecStart substituted with /usr/bin/true only for verification",
+    "limited_user_runtime_and_rls": "passed",
+    "demand_and_segments_inference": "passed on artificial inputs",
+    "opencv_color_conversion": "passed",
+    "runtime_probe_max_rss_kib": 263800,
+    "model_probe_max_rss_kib": 179980,
+    "latest_backup": "20261023T135809111057Z",
+    "backup_includes_forced_rls_tables": true,
+    "p2_activated": true,
+    "existing_services_preserved": [
+      "nginx",
+      "postgresql@17-main",
+      "cloudflared",
+      "vecinomarket-backend"
+    ],
+    "production_origin": "http://127.0.0.1:2468",
+    "api_memory_current_bytes": 202162176,
+    "api_memory_peak_bytes": 202706944,
+    "api_restarts": 0,
+    "tunnel": {
+      "name": "FashionStore_Parcial2",
+      "service": "fashionstore-p2-tunnel",
+      "connected": true,
+      "ready_connections": 4,
+      "memory_current_bytes": 25837568,
+      "memory_peak_bytes": 26509312,
+      "restarts": 0,
+      "metrics_origin": "http://127.0.0.1:20245",
+      "token_via_systemd_credential": true
+    },
+    "system_available_memory_mib": 1090,
+    "http_validation": "native-http-validation.json",
+    "demo_companies_seeded": 2,
+    "marked_history_sales": 480,
+    "public_https_verified": false,
+    "native_restore_copy": {
+      "database": "fashionstore_p2_restore_20261023140000",
+      "backup": "20261023T135809111057Z",
+      "migrations": 16,
+      "sales": 480,
+      "demo_products": 8,
+      "inventory_units": 480,
+      "forced_rls_preserved": true,
+      "production_database_replaced": false
+    },
+    "api_and_tunnel_enabled_at_boot": true,
+    "token_mode": "0600 root:root",
+    "browser_login_render": "Verified via temporary SSH forward; no public HTTPS claim."
+  },
+  "pending": [
+    "Public HTTPS route, DNS and external-network validation after user assigns hostname in Cloudflare",
+    "Sustained load and full production acceptance, including offline browser and Android workflows",
+    "P2 Stripe TEST webhook secret, SMTP and Firebase"
+  ],
+  "active_release": "20261023T135345Z-91cdb032",
+  "activation_findings": [
+    {
+      "finding": "Nginx listener not ready immediately after reload",
+      "resolution": "Bounded retry on refused connection; verified on subsequent activation."
+    },
+    {
+      "finding": "Pool exhausted on overlap of HTTP dependency cleanup and next request",
+      "resolution": "Five-second bounded wait without increasing three-connection cap; regression 85 passed and native HTTP 30 requests at concurrency 3 passed."
+    }
+  ]
+}

@@ -1,0 +1,40 @@
+[Unit]
+Description=FashionStore Parcial 2 - API nativa
+After=network.target postgresql.service
+Wants=postgresql.service
+StartLimitIntervalSec=120
+StartLimitBurst=3
+
+[Service]
+Type=simple
+User=fashionstore-p2
+Group=fashionstore-p2
+WorkingDirectory=/home/alecv/Parcial2_FashionStore/current/Parcial2_backend
+EnvironmentFile=/home/alecv/Parcial2_FashionStore/shared/api.env
+Environment=PYTHONDONTWRITEBYTECODE=1 PYTHONUNBUFFERED=1 PYTHON_DOTENV_DISABLED=1 OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1 NUMEXPR_NUM_THREADS=1
+ExecStart=/home/alecv/Parcial2_FashionStore/current/.venv/bin/python -m uvicorn app.main:app --host 127.0.0.1 --port 8002 --workers 1 --proxy-headers --forwarded-allow-ips 127.0.0.1 --limit-concurrency 20 --timeout-keep-alive 5
+Restart=on-failure
+RestartSec=5
+TimeoutStopSec=45
+KillSignal=SIGTERM
+UMask=0007
+LimitCORE=0
+MemoryAccounting=true
+MemoryHigh=384M
+MemoryMax=512M
+CPUQuota=75%
+TasksMax=64
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=read-only
+ReadWritePaths=/home/alecv/Parcial2_FashionStore/shared/files
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectControlGroups=true
+RestrictSUIDSGID=true
+RestrictAddressFamilies=AF_UNIX AF_INET AF_INET6
+CapabilityBoundingSet=
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,21 @@
+<main class="workspace">
+ <header><div><a routerLink="/panel">Fashion<em>Store</em></a><p class="eyebrow">Operación local</p><h1>Tu sucursal, aun sin conexión.</h1></div><span class="connection" [class.disconnected]="!online()">{{online()?'Con conexión':'Sin conexión'}}</span></header>
+ <p class="notice">Las ventas de contado y reservas guardadas aquí son provisionales hasta su aceptación central. La disponibilidad descargada puede haber cambiado.</p>
+ @if(error()){<p role="alert" class="error">{{error()}}</p>}
+ @if(store.message()){<p role="status" class="status">{{store.message()}}</p>}
+ <section class="toolbar" aria-label="Catálogo local">
+  <label for="offline-branch">Sucursal</label><select id="offline-branch" [(ngModel)]="branchId"><option [ngValue]="0">Selecciona una sucursal</option>@for(b of branches();track b.id_sucursal){<option [ngValue]="b.id_sucursal">{{b.nombre}}</option>}@if(!branches().length && store.snapshot();as snap){<option [ngValue]="snap.branch.id_sucursal">{{snap.branch.nombre}}</option>}</select>
+  <button (click)="download()" [disabled]="!online()||!branchId||store.busy()">Actualizar catálogo</button>
+  <button class="secondary" (click)="store.sync()" [disabled]="!online()||store.busy()">Sincronizar ahora</button>
+  <a routerLink="/login">Iniciar sesión</a>
+ </section>
+ @if(store.snapshot();as snap){
+  <p class="meta">{{snap.empresa}} · {{snap.usuario}} · Catálogo de {{snap.branch.nombre}} · Actualizado {{snap.downloaded_at|date:'short'}}<br>Permiso local hasta {{snap.lease_expires*1000|date:'short'}}. {{store.validLease?'Vigente':'Vencido: conecta para renovar.'}}</p>
+  <div class="columns"><section><h2>Catálogo descargado</h2><label>Buscar prenda, talla o color<input [(ngModel)]="filter" placeholder="Ej. camisa azul"></label><div class="products">
+   @for(row of visible;track row.id_variante_prenda){<article><p class="sku">{{row.sku_variante}}</p><h3>{{row.product.nombre}}</h3><p>{{row.talla}} · {{row.color}}</p><p>{{row.product.material}} {{row.product.medidas}}</p><strong>Bs {{price(row)|number:'1.2-2'}}</strong><p>{{row.available}} disponibles localmente</p><label>Cantidad<input type="number" min="0" [max]="row.available" [(ngModel)]="cart[row.id_variante_prenda]" [attr.aria-label]="'Cantidad '+row.sku_variante"></label></article>}
+  </div></section><aside><h2>{{revision?'Revisar operación':'Nueva operación'}}</h2><label>Tipo<select [(ngModel)]="kind"><option value="reserva">Reserva provisional</option>@if(snap.can_sell){<option value="venta">Venta de contado provisional</option>}</select></label><label>Cliente<select [(ngModel)]="customerId"><option [ngValue]="null">Cliente mostrador (solo venta)</option>@for(c of store.customers();track c.id_cliente){<option [ngValue]="c.id_cliente">{{c.nombre_completo}}</option>}</select></label><p class="total">Bs {{total|number:'1.2-2'}}</p>@if(kind==='venta'){<label>Efectivo realmente recibido<input type="number" min="0" step="0.01" [(ngModel)]="cash"></label>}<button (click)="save()" [disabled]="!store.validLease||!entries.length||store.busy()">Guardar en el dispositivo</button>@if(revision){<button class="secondary" (click)="revision=null;cart={}">Cancelar revisión</button>}<p>El recibo local no acredita confirmación central ni pago electrónico.</p></aside></div>
+ }
+ <section class="history"><div class="history-title"><h2>Operaciones de este usuario</h2><button class="secondary" (click)="export()" [disabled]="!store.operations().length">Exportar pendientes</button></div>
+ @for(op of store.operations();track op.operation_id){<article><div><strong>{{op.kind==='venta'?'Venta de contado':'Reserva'}} · {{op.state}}</strong><p>{{op.occurred_at|date:'short'}} · Sucursal {{op.branch_id}} · Intentos {{op.attempts}}</p><p class="uuid">{{op.operation_id}}</p>@if(op.result?.server_id){<p>Registro central N.º {{op.result.server_id}}</p>}@if(op.reason){<p>{{op.reason}}</p>}@if(op.result?.resolved){<p>Resolución registrada. El historial se conserva.</p>}</div>@if((op.state==='EN_CONFLICTO'||op.state==='RECHAZADA')&&!op.result?.resolved){<div><button class="secondary" (click)="revise(op)">Preparar revisión</button><button class="secondary" [disabled]="!online()" (click)="compensate(op)">Registrar compensación</button></div>}</article>}@empty{<p>No hay operaciones guardadas para esta cuenta.</p>}
+ </section>
+</main>

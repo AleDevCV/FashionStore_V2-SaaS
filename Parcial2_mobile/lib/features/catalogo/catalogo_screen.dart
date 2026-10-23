@@ -1,0 +1,781 @@
+import '../reportes/reportes_screen.dart';
+import '../cambios/cambios_screen.dart';
+import '../offline/offline_screen.dart';
+import 'dart:async';
+
+import 'package:flutter/material.dart';
+
+import '../../core/api_client.dart';
+import '../../core/models/catalogo_models.dart';
+import '../../core/theme.dart';
+import '../../core/widgets.dart';
+import '../../services/auth_service.dart';
+import '../../services/catalogo_service.dart';
+import '../compras/compras_screen.dart';
+import '../detalle/prenda_detalle_screen.dart';
+import '../ia/asistente_moda_screen.dart';
+import '../inventario_monitoreo/estado_inventario_screen.dart';
+import '../login/login_screen.dart';
+import '../movimientos/movimientos_screen.dart';
+import '../proveedores/proveedores_screen.dart';
+import '../../core/models/venta_models.dart';
+import '../../services/carrito_service.dart';
+import '../carrito/carrito_screen.dart';
+
+/// Vitrina pública del catálogo (CU14).
+///
+/// Muestra la cuadrícula de prendas activas con búsqueda reactiva (antirrebote)
+/// y un panel de filtros por categoría, género, talla, color y rango de precio.
+/// Al pulsar una tarjeta se abre la ficha con la disponibilidad por sucursal.
+class CatalogoScreen extends StatefulWidget {
+  const CatalogoScreen({super.key});
+
+  @override
+  State<CatalogoScreen> createState() => _CatalogoScreenState();
+}
+
+class _CatalogoScreenState extends State<CatalogoScreen> {
+  final CatalogoService _servicio = CatalogoService();
+  final AuthService _auth = AuthService();
+  final _busquedaCtrl = TextEditingController();
+
+  static const int _limite = 20;
+
+  FiltrosDisponibles? _filtros;
+  List<PrendaCatalogo> _prendas = [];
+  int _total = 0;
+  int _desplazamiento = 0;
+
+  bool _cargando = true;
+  String? _error;
+
+  // Filtros activos
+  int? _idCategoria;
+  String? _genero;
+  int? _idTalla;
+  int? _idColor;
+  double? _precioMin;
+  double? _precioMax;
+
+  Timer? _debounce;
+
+  @override
+  void initState() {
+    super.initState();
+    _cargarFiltros();
+    _consultar();
+  }
+
+  @override
+  void dispose() {
+    _debounce?.cancel();
+    _busquedaCtrl.dispose();
+    super.dispose();
+  }
+
+  Future<void> _cargarFiltros() async {
+    try {
+      final filtros = await _servicio.obtenerFiltros();
+      if (!mounted) return;
+      setState(() => _filtros = filtros);
+    } catch (_) {
+      // Los filtros son auxiliares: si fallan, la vitrina sigue funcionando.
+    }
+  }
+
+  Future<void> _consultar() async {
+    setState(() {
+      _cargando = true;
+      _error = null;
+    });
+
+    try {
+      final busqueda = _busquedaCtrl.text.trim();
+      final respuesta = await _servicio.consultar(
+        busqueda: busqueda.isEmpty ? null : busqueda,
+        idCategoria: _idCategoria,
+        genero: _genero,
+        idTalla: _idTalla,
+        idColor: _idColor,
+        precioMin: _precioMin,
+        precioMax: _precioMax,
+        limite: _limite,
+        desplazamiento: _desplazamiento,
+      );
+      if (!mounted) return;
+      setState(() {
+        _prendas = _desplazamiento == 0
+            ? respuesta.prendas
+            : [..._prendas, ...respuesta.prendas];
+        _total = respuesta.total;
+      });
+    } on ApiException catch (e) {
+      if (!mounted) return;
+      setState(() => _error = e.message);
+    } catch (_) {
+      if (!mounted) return;
+      setState(() => _error = 'No se pudo contactar con el servidor.');
+    } finally {
+      if (mounted) setState(() => _cargando = false);
+    }
+  }
+
+  void _alBuscar(String valor) {
+    _debounce?.cancel();
+    _debounce = Timer(const Duration(milliseconds: 400), () {
+      _desplazamiento = 0;
+      _consultar();
+    });
+  }
+
+  void _cargarMas() {
+    _desplazamiento += _limite;
+    _consultar();
+  }
+
+  void _reintentar() {
+    _desplazamiento = 0;
+    _consultar();
+  }
+
+  void _cerrarSesion() {
+    _auth.logout();
+    setState(() {});
+    ScaffoldMessenger.of(context).showSnackBar(
+      const SnackBar(content: Text('Sesión cerrada.')),
+    );
+  }
+
+  void _abrirDetalle(int idPrenda) {
+    Navigator.of(context).push(
+      MaterialPageRoute(builder: (_) => PrendaDetalleScreen(idPrenda: idPrenda)),
+    );
+  }
+
+  Future<void> _abrirFiltros() async {
+    final f = _filtros;
+    if (f == null) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('Filtros no disponibles en este momento.')),
+      );
+      return;
+    }
+
+    int? tmpCategoria = _idCategoria;
+    String? tmpGenero = _genero;
+    int? tmpTalla = _idTalla;
+    int? tmpColor = _idColor;
+    final minCtrl = TextEditingController(text: _precioMin?.toString() ?? '');
+    final maxCtrl = TextEditingController(text: _precioMax?.toString() ?? '');
+
+    final aplicar = await showModalBottomSheet<bool>(
+      context: context,
+      isScrollControlled: true,
+      builder: (ctx) {
+        return StatefulBuilder(
+          builder: (ctx, setModal) {
+            return Padding(
+              padding: EdgeInsets.only(
+                left: 20,
+                right: 20,
+                top: 20,
+                bottom: MediaQuery.of(ctx).viewInsets.bottom + 20,
+              ),
+              child: SingleChildScrollView(
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: [
+                    Text('Filtros', style: Theme.of(ctx).textTheme.titleLarge),
+                    const SizedBox(height: 16),
+                    DropdownButtonFormField<int?>(
+                      initialValue: tmpCategoria,
+                      decoration: const InputDecoration(labelText: 'Categoría'),
+                      items: [
+                        const DropdownMenuItem<int?>(value: null, child: Text('Todas')),
+                        ...f.categorias.map(
+                          (c) => DropdownMenuItem<int?>(
+                            value: c.idCategoria,
+                            child: Text(c.nombre),
+                          ),
+                        ),
+                      ],
+                      onChanged: (v) => setModal(() => tmpCategoria = v),
+                    ),
+                    const SizedBox(height: 12),
+                    DropdownButtonFormField<String?>(
+                      initialValue: tmpGenero,
+                      decoration: const InputDecoration(labelText: 'Género'),
+                      items: [
+                        const DropdownMenuItem<String?>(value: null, child: Text('Todos')),
+                        ...f.generos.map(
+                          (g) => DropdownMenuItem<String?>(value: g, child: Text(g)),
+                        ),
+                      ],
+                      onChanged: (v) => setModal(() => tmpGenero = v),
+                    ),
+                    const SizedBox(height: 12),
+                    DropdownButtonFormField<int?>(
+                      initialValue: tmpTalla,
+                      decoration: const InputDecoration(labelText: 'Talla'),
+                      items: [
+                        const DropdownMenuItem<int?>(value: null, child: Text('Todas')),
+                        ...f.tallas.map(
+                          (t) => DropdownMenuItem<int?>(
+                            value: t.idTalla,
+                            child: Text(t.nombre),
+                          ),
+                        ),
+                      ],
+                      onChanged: (v) => setModal(() => tmpTalla = v),
+                    ),
+                    const SizedBox(height: 12),
+                    DropdownButtonFormField<int?>(
+                      initialValue: tmpColor,
+                      decoration: const InputDecoration(labelText: 'Color'),
+                      items: [
+                        const DropdownMenuItem<int?>(value: null, child: Text('Todos')),
+                        ...f.colores.map(
+                          (c) => DropdownMenuItem<int?>(
+                            value: c.idColor,
+                            child: Text(c.nombre),
+                          ),
+                        ),
+                      ],
+                      onChanged: (v) => setModal(() => tmpColor = v),
+                    ),
+                    const SizedBox(height: 12),
+                    Row(
+                      children: [
+                        Expanded(
+                          child: TextField(
+                            controller: minCtrl,
+                            keyboardType: TextInputType.number,
+                            decoration: const InputDecoration(labelText: 'Precio mín (Bs)'),
+                          ),
+                        ),
+                        const SizedBox(width: 12),
+                        Expanded(
+                          child: TextField(
+                            controller: maxCtrl,
+                            keyboardType: TextInputType.number,
+                            decoration: const InputDecoration(labelText: 'Precio máx (Bs)'),
+                          ),
+                        ),
+                      ],
+                    ),
+                    const SizedBox(height: 20),
+                    Row(
+                      children: [
+                        Expanded(
+                          child: OutlinedButton(
+                            onPressed: () => setModal(() {
+                              tmpCategoria = null;
+                              tmpGenero = null;
+                              tmpTalla = null;
+                              tmpColor = null;
+                              minCtrl.clear();
+                              maxCtrl.clear();
+                            }),
+                            child: const Text('Limpiar'),
+                          ),
+                        ),
+                        const SizedBox(width: 12),
+                        Expanded(
+                          child: FilledButton(
+                            onPressed: () => Navigator.of(ctx).pop(true),
+                            child: const Text('Aplicar'),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+            );
+          },
+        );
+      },
+    );
+
+    if (aplicar == true) {
+      setState(() {
+        _idCategoria = tmpCategoria;
+        _genero = tmpGenero;
+        _idTalla = tmpTalla;
+        _idColor = tmpColor;
+        _precioMin = double.tryParse(minCtrl.text.trim());
+        _precioMax = double.tryParse(maxCtrl.text.trim());
+        _desplazamiento = 0;
+      });
+      _consultar();
+    }
+
+    minCtrl.dispose();
+    maxCtrl.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('FashionStore'),
+        actions: [
+          ListenableBuilder(
+            listenable: CarritoService.instance,
+            builder: (context, _) {
+              final count = CarritoService.instance.totalItems;
+              return IconButton(
+                icon: Badge(
+                  isLabelVisible: count > 0,
+                  label: Text('$count'),
+                  backgroundColor: fsInk,
+                  child: const Icon(Icons.shopping_bag_outlined),
+                ),
+                tooltip: 'Mi Carrito',
+                onPressed: () {
+                  Navigator.of(context).push(
+                    MaterialPageRoute(builder: (_) => const CarritoScreen()),
+                  );
+                },
+              );
+            },
+          ),
+          if (_auth.autenticado)
+            IconButton(
+              icon: const Icon(Icons.logout),
+              tooltip: 'Cerrar sesión',
+              onPressed: _cerrarSesion,
+            ),
+        ],
+      ),
+      drawer: _construirDrawer(context),
+      body: Column(
+        children: [
+          Padding(
+            padding: const EdgeInsets.fromLTRB(16, 12, 16, 8),
+            child: Row(
+              children: [
+                Expanded(
+                  child: TextField(
+                    controller: _busquedaCtrl,
+                    decoration: const InputDecoration(
+                      hintText: 'Buscar prenda, SKU o marca…',
+                      prefixIcon: Icon(Icons.search),
+                    ),
+                    onChanged: _alBuscar,
+                  ),
+                ),
+                const SizedBox(width: 8),
+                OutlinedButton.icon(
+                  onPressed: _abrirFiltros,
+                  icon: const Icon(Icons.tune),
+                  label: const Text('Filtros'),
+                ),
+              ],
+            ),
+          ),
+          if (_error != null)
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16),
+              child: _bannerError(_error!),
+            ),
+          Expanded(child: _contenido()),
+        ],
+      ),
+    );
+  }
+
+  Widget _contenido() {
+    if (_cargando && _prendas.isEmpty) {
+      return const Center(child: CircularProgressIndicator());
+    }
+
+    if (_prendas.isEmpty && _error == null) {
+      return const Center(
+        child: Padding(
+          padding: EdgeInsets.all(24),
+          child: Text(
+            'No hay prendas que coincidan con los filtros elegidos.',
+            textAlign: TextAlign.center,
+            style: TextStyle(color: fsInkMuted),
+          ),
+        ),
+      );
+    }
+
+    final hayMas = _desplazamiento + _limite < _total;
+
+    return ListView(
+      padding: const EdgeInsets.all(16),
+      children: [
+        Text(
+          '$_total prenda(s) disponibles',
+          style: const TextStyle(fontSize: 12, letterSpacing: 1.2, color: fsInkMuted),
+        ),
+        const SizedBox(height: 12),
+        GridView.count(
+          shrinkWrap: true,
+          physics: const NeverScrollableScrollPhysics(),
+          crossAxisCount: 2,
+          mainAxisSpacing: 12,
+          crossAxisSpacing: 12,
+          childAspectRatio: 0.54,
+          children: _prendas.map(_tarjeta).toList(),
+        ),
+        const SizedBox(height: 8),
+        if (_cargando)
+          const Padding(
+            padding: EdgeInsets.all(16),
+            child: Center(child: CircularProgressIndicator()),
+          )
+        else if (hayMas)
+          OutlinedButton(
+            onPressed: _cargarMas,
+            child: const Text('Cargar más'),
+          ),
+      ],
+    );
+  }
+
+  Widget _tarjeta(PrendaCatalogo p) {
+    return GestureDetector(
+      onTap: () => _abrirDetalle(p.idPrenda),
+      child: Card(
+        clipBehavior: Clip.antiAlias,
+        elevation: 0,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(4),
+          side: const BorderSide(color: fsBorder),
+        ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Stack(
+              children: [
+                AspectRatio(aspectRatio: 1.0, child: redImagen(p.urlImagen)),
+                if (p.sku.startsWith('3D-') || (p.descripcion != null && p.descripcion!.contains('[3D:')))
+                  Positioned(
+                    top: 6,
+                    left: 6,
+                    child: Container(
+                      padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 3),
+                      decoration: BoxDecoration(
+                        color: const Color(0xFF0F172A).withAlpha(220),
+                        borderRadius: BorderRadius.circular(4),
+                        border: Border.all(color: const Color(0xFF6366F1), width: 1),
+                      ),
+                      child: Row(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Icon(
+                            p.descripcion?.contains('RIGGED: true') ?? false
+                                ? Icons.bolt_rounded
+                                : Icons.view_in_ar_rounded,
+                            size: 10,
+                            color: const Color(0xFF818CF8),
+                          ),
+                          const SizedBox(width: 3),
+                          Text(
+                            p.descripcion?.contains('RIGGED: true') ?? false
+                                ? 'RIGGED 3D'
+                                : '3D REAL',
+                            style: const TextStyle(
+                              color: Color(0xFFC7D2FE),
+                              fontSize: 9,
+                              fontWeight: FontWeight.w800,
+                              letterSpacing: 0.5,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+              ],
+            ),
+            Expanded(
+              child: Padding(
+                padding: const EdgeInsets.all(10),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      p.categoria ?? 'Sin categoría',
+                      style: const TextStyle(fontSize: 10, letterSpacing: 1.2, color: fsInkMuted),
+                    ),
+                    const SizedBox(height: 4),
+                    Text(
+                      p.nombre,
+                      maxLines: 2,
+                      overflow: TextOverflow.ellipsis,
+                      style: const TextStyle(fontWeight: FontWeight.w600, fontSize: 14),
+                    ),
+                    const Spacer(),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          formatearPrecio(p.precioBase),
+                          style: const TextStyle(fontWeight: FontWeight.w600),
+                        ),
+                        badgeStock(p.stockTotal),
+                      ],
+                    ),
+                    if (p.stockTotal > 0 && p.variantes.isNotEmpty) ...[
+                      const SizedBox(height: 6),
+                      SizedBox(
+                        width: double.infinity,
+                        height: 28,
+                        child: OutlinedButton.icon(
+                          icon: const Icon(Icons.add_shopping_cart, size: 13),
+                          label: const Text('Agregar', style: TextStyle(fontSize: 11)),
+                          style: OutlinedButton.styleFrom(
+                            padding: EdgeInsets.zero,
+                            side: const BorderSide(color: fsBorder),
+                          ),
+                          onPressed: () {
+                            final v = p.variantes.first;
+                            CarritoService.instance.agregarItem(
+                              CarritoItem(
+                                idVariantePrenda: v.idVariantePrenda,
+                                skuVariante: p.sku,
+                                prendaNombre: p.nombre,
+                                talla: v.talla,
+                                color: v.color,
+                                precioUnitario: (v.precio as num).toDouble(),
+                              ),
+                            );
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              SnackBar(
+                                content: Text('${p.nombre} agregado al carrito'),
+                                duration: const Duration(seconds: 2),
+                                action: SnackBarAction(
+                                  label: 'Ver',
+                                  onPressed: () {
+                                    Navigator.of(context).push(
+                                      MaterialPageRoute(
+                                        builder: (_) => const CarritoScreen(),
+                                      ),
+                                    );
+                                  },
+                                ),
+                              ),
+                            );
+                          },
+                        ),
+                      ),
+                    ],
+                  ],
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _bannerError(String mensaje) {
+    return Container(
+      margin: const EdgeInsets.only(bottom: 8),
+      padding: const EdgeInsets.all(12),
+      decoration: BoxDecoration(
+        color: fsDangerWash,
+        borderRadius: BorderRadius.circular(4),
+        border: Border.all(color: const Color(0xFFEBD8D8)),
+      ),
+      child: Row(
+        children: [
+          const Icon(Icons.error_outline, color: fsDanger, size: 18),
+          const SizedBox(width: 8),
+          Expanded(
+            child: Text(mensaje, style: const TextStyle(color: fsDanger, fontSize: 13)),
+          ),
+          TextButton(onPressed: _reintentar, child: const Text('Reintentar')),
+        ],
+      ),
+    );
+  }
+
+  Widget _construirDrawer(BuildContext context) {
+    final autenticado = _auth.autenticado;
+    final nombre = _auth.nombreUsuario ?? (_auth.correoUsuario ?? 'Invitado');
+    final rol = _auth.rol ?? 'Cliente';
+
+    return Drawer(
+      child: ListView(
+        padding: EdgeInsets.zero,
+        children: [
+          DrawerHeader(
+            decoration: const BoxDecoration(
+              color: fsInk,
+            ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                const Text(
+                  'FashionStore',
+                  style: TextStyle(
+                    fontSize: 22,
+                    fontWeight: FontWeight.w700,
+                    letterSpacing: 3,
+                    color: fsSurface,
+                  ),
+                ),
+                const SizedBox(height: 6),
+                Text(
+                  nombre,
+                  style: const TextStyle(
+                    fontSize: 14,
+                    color: fsSurface,
+                    fontWeight: FontWeight.w500,
+                  ),
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
+                ),
+                const SizedBox(height: 6),
+                ListTile(leading:const Icon(Icons.offline_bolt_outlined),title:const Text('Operación sin conexión'),onTap:()=>Navigator.of(context).push(MaterialPageRoute(builder:(_)=>const OfflineScreen()))),
+          if(autenticado)ListTile(leading:const Icon(Icons.swap_horiz),title:const Text('Cambios y notificaciones'),onTap:()=>Navigator.of(context).push(MaterialPageRoute(builder:(_)=>const CambiosScreen()))),
+          if(_auth.esPersonalAlmacen)ListTile(leading:const Icon(Icons.analytics_outlined),title:const Text('Reportes de la empresa'),onTap:()=>Navigator.of(context).push(MaterialPageRoute(builder:(_)=>const ReportesScreen()))),
+          if (autenticado) ...[
+                  Container(
+                    padding:
+                        const EdgeInsets.symmetric(horizontal: 8, vertical: 2),
+                    decoration: BoxDecoration(
+                      color: fsGoldWash,
+                      borderRadius: BorderRadius.circular(4),
+                    ),
+                    child: Text(
+                      rol.toUpperCase(),
+                      style: const TextStyle(
+                        fontSize: 10,
+                        fontWeight: FontWeight.w700,
+                        letterSpacing: 0.8,
+                        color: fsGoldDeep,
+                      ),
+                    ),
+                  ),
+                ] else ...[
+                  const Text(
+                    'Modo Invitado',
+                    style: TextStyle(fontSize: 12, color: fsInkMuted),
+                  ),
+                ],
+              ],
+            ),
+          ),
+          ListTile(
+            leading: const Icon(Icons.checkroom_outlined, color: fsInk),
+            title: const Text('Catálogo de Prendas'),
+            onTap: () => Navigator.of(context).pop(),
+          ),
+          if (autenticado) ...[
+            const Padding(
+              padding: EdgeInsets.fromLTRB(16, 16, 16, 8),
+              child: Text(
+                'INTELIGENCIA ARTIFICIAL',
+                style: TextStyle(
+                  fontSize: 11,
+                  fontWeight: FontWeight.w700,
+                  letterSpacing: 1.2,
+                  color: fsInkMuted,
+                ),
+              ),
+            ),
+            ListTile(
+              leading: const Icon(Icons.auto_awesome, color: fsInk),
+              title: const Text('Asistente de Moda IA'),
+              subtitle: const Text('Recomendador de outfits con Gemini (CU22)'),
+              onTap: () {
+                Navigator.of(context).pop();
+                Navigator.of(context).push(
+                  MaterialPageRoute(builder: (_) => const AsistenteModa()),
+                );
+              },
+            ),
+            const Padding(
+              padding: EdgeInsets.fromLTRB(16, 16, 16, 8),
+              child: Text(
+                'GESTIÓN DE ALMACÉN',
+                style: TextStyle(
+                  fontSize: 11,
+                  fontWeight: FontWeight.w700,
+                  letterSpacing: 1.2,
+                  color: fsInkMuted,
+                ),
+              ),
+            ),
+            ListTile(
+              leading: const Icon(Icons.inventory_2_outlined, color: fsInk),
+              title: const Text('Movimientos de Inventario'),
+              subtitle: const Text('Registro táctil y kardex físico (CU11)'),
+              onTap: () {
+                Navigator.of(context).pop();
+                Navigator.of(context).push(
+                  MaterialPageRoute(builder: (_) => const MovimientosScreen()),
+                );
+              },
+            ),
+            ListTile(
+              leading: const Icon(Icons.business_outlined, color: fsInk),
+              title: const Text('Directorio de Proveedores'),
+              subtitle: const Text('Búsqueda y consulta comercial (CU12)'),
+              onTap: () {
+                Navigator.of(context).pop();
+                Navigator.of(context).push(
+                  MaterialPageRoute(builder: (_) => const ProveedoresScreen()),
+                );
+              },
+            ),
+            ListTile(
+              leading: const Icon(Icons.receipt_long_outlined, color: fsInk),
+              title: const Text('Recepción de Compras'),
+              subtitle: const Text('Historial de lotes con 13% IVA (CU13)'),
+              onTap: () {
+                Navigator.of(context).pop();
+                Navigator.of(context).push(
+                  MaterialPageRoute(builder: (_) => const ComprasScreen()),
+                );
+              },
+            ),
+            ListTile(
+              leading: const Icon(Icons.analytics_outlined, color: fsInk),
+              title: const Text('Estado de Inventario'),
+              subtitle: const Text('Monitoreo multisucursal y existencias (CU10)'),
+              onTap: () {
+                Navigator.of(context).pop();
+                Navigator.of(context).push(
+                  MaterialPageRoute(builder: (_) => const EstadoInventarioScreen()),
+                );
+              },
+            ),
+          ],
+          const Divider(color: fsBorder),
+          if (autenticado)
+            ListTile(
+              leading: const Icon(Icons.logout_outlined, color: fsDanger),
+              title:
+                  const Text('Cerrar sesión', style: TextStyle(color: fsDanger)),
+              onTap: () {
+                Navigator.of(context).pop();
+                _cerrarSesion();
+              },
+            )
+          else
+            ListTile(
+              leading: const Icon(Icons.login_outlined, color: fsInk),
+              title: const Text('Iniciar sesión'),
+              subtitle: const Text('Acceso para personal de tienda/almacén'),
+              onTap: () {
+                Navigator.of(context).pop();
+                Navigator.of(context).push(
+                  MaterialPageRoute(builder: (_) => const LoginScreen()),
+                );
+              },
+            ),
+        ],
+      ),
+    );
+  }
+}

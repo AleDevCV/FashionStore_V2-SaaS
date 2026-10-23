@@ -1,0 +1,8 @@
+@startuml
+left to right direction
+actor "Encargado" as Actor
+rectangle "FashionStore SaaS" {
+usecase "CU-20\nPreparar entregar o cancelar reservas" as UC
+}
+Actor --> UC
+@enduml

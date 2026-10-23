@@ -1,0 +1,63 @@
+<div class="fs-modal-backdrop">
+  <div class="fs-modal fs-modal--wide">
+    <div class="fs-modal__header">
+      <h2 class="fs-modal__titulo">âš¡ Probador Virtual â€” {{ prenda().nombre }}</h2>
+      <button class="fs-modal__cerrar" (click)="cerrar()">âœ•</button>
+    </div>
+
+    <div class="fs-modal__body">
+      @if (error()) {
+        <div class="fs-alert fs-alert--error">{{ error() }}</div>
+      }
+
+      <div class="decart-container">
+        <!-- Columna Izquierda: Cámara Local (Siempre PiP en móvil) -->
+        <div class="decart-panel panel-local">
+          <div class="panel-header">
+            <span class="icon">■</span>
+            TU CÁMARA
+          </div>
+          <div class="video-wrapper">
+            <video #localVideo autoplay muted playsinline></video>
+            @if (conectando()) {
+              <div class="video-overlay">
+                <p>...</p>
+              </div>
+            }
+          </div>
+        </div>
+
+        <!-- Columna Derecha: Resultado AI -->
+        <div class="decart-panel panel-remote">
+          <div class="panel-header" style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
+            <div>
+              <span class="icon">➤</span>
+              RESULTADO AI
+            </div>
+            @if (!conectado() && !conectando()) {
+              <button class="fs-btn fs-btn--primary" style="padding: 6px 12px; font-size: 0.8rem;" (click)="iniciarExperiencia()">
+                ▶ INICIAR EXPERIENCIA
+              </button>
+            }
+          </div>
+          <div class="video-wrapper">
+            <video #remoteVideo autoplay playsinline muted></video>
+            @if (!conectado()) {
+              <div class="video-overlay">
+                <p>AquÃ­ verÃ¡s la transformaciÃ³n</p>
+              </div>
+            }
+          </div>
+        </div>
+      </div>
+      
+      <div class="decart-footer">
+        <div class="status-indicator">
+          <span class="dot" [class.connected]="conectado()"></span>
+          {{ conectado() ? 'LUCY 2 - DECART AI CONECTADO' : 'Desconectado' }}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

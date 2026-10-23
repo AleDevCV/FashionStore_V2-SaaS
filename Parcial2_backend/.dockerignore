@@ -1,0 +1,12 @@
+.env*
+venv
+.venv
+.runtime
+ml/datasets
+ml/train.py
+tests
+__pycache__
+**/__pycache__
+*.log
+static/comprobantes
+static/catalog-images

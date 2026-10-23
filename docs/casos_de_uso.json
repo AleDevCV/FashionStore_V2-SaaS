@@ -1,0 +1,838 @@
+[
+  {
+    "id": "CU-01",
+    "nombre": "Iniciar y cerrar sesión",
+    "actores": "Todos los usuarios",
+    "plataforma": "Web y Flutter",
+    "antecedente": "01",
+    "datos": "empresa, correo, contraseña",
+    "flujo": [
+      "Seleccionar empresa",
+      "Enviar credenciales",
+      "Validar cuenta activa y empresa",
+      "Emitir sesión con permisos y sucursales",
+      "Cerrar sesión por acción del usuario"
+    ],
+    "alternativos": [
+      "Credenciales incorrectas: respuesta uniforme sin revelar existencia",
+      "Empresa inactiva: impedir acceso",
+      "Sin red: solo sesión offline previamente habilitada"
+    ],
+    "postcondicion": "Sesión vinculada a una empresa y datos locales separados",
+    "estado": "especificado"
+  },
+  {
+    "id": "CU-02",
+    "nombre": "Recuperar contraseña",
+    "actores": "Usuario registrado",
+    "plataforma": "Web y Flutter",
+    "antecedente": "04",
+    "datos": "empresa, correo, token, contraseña nueva",
+    "flujo": [
+      "Solicitar recuperación",
+      "Emitir respuesta uniforme",
+      "Entregar enlace temporal por correo",
+      "Validar token de un solo uso",
+      "Actualizar hash e invalidar token"
+    ],
+    "alternativos": [
+      "Token vencido o reutilizado: rechazar",
+      "Cuenta inexistente: misma respuesta",
+      "Sin red: solicitar conexión"
+    ],
+    "postcondicion": "Acceso recuperable sin revelar información de cuentas",
+    "estado": "especificado"
+  },
+  {
+    "id": "CU-03",
+    "nombre": "Administrar empresas",
+    "actores": "Superadministrador",
+    "plataforma": "Web",
+    "antecedente": "nuevo",
+    "datos": "nombre, identificador público, administrador",
+    "flujo": [
+      "Validar identidad de plataforma",
+      "Registrar empresa",
+      "Crear administrador inicial",
+      "Asignar plan inicial",
+      "Consultar o modificar estado"
+    ],
+    "alternativos": [
+      "Identificador repetido: rechazar",
+      "Usuario de empresa: acceso denegado",
+      "Error de alta: revertir toda la operación"
+    ],
+    "postcondicion": "Empresa y administrador creados atómicamente",
+    "estado": "especificado"
+  },
+  {
+    "id": "CU-04",
+    "nombre": "Configurar planes",
+    "actores": "Superadministrador",
+    "plataforma": "Web",
+    "antecedente": "nuevo",
+    "datos": "nombre, máximo sucursales, reportes IA",
+    "flujo": [
+      "Consultar planes",
+      "Editar límites y capacidades",
+      "Validar valores positivos",
+      "Guardar configuración",
+      "Registrar auditoría"
+    ],
+    "alternativos": [
+      "Límite inválido: rechazar",
+      "Empresa intenta editar: denegar",
+      "Reducción incompatible: informar empresas afectadas"
+    ],
+    "postcondicion": "Límites centralizados y configurables",
+    "estado": "especificado"
+  },
+  {
+    "id": "CU-05",
+    "nombre": "Gestionar suscripciones",
+    "actores": "Superadministrador y administrador de empresa",
+    "plataforma": "Web",
+    "antecedente": "nuevo",
+    "datos": "empresa, plan, inicio, vencimiento",
+    "flujo": [
+      "Consultar suscripción",
+      "Asignar o renovar administrativamente",
+      "Validar fechas",
+      "Comprobar cupo al cambiar plan",
+      "Actualizar capacidades efectivas"
+    ],
+    "alternativos": [
+      "Vencida: permitir historial y renovación",
+      "Downgrade con exceso: rechazar",
+      "Empresa ajena: denegar"
+    ],
+    "postcondicion": "Vigencia y capacidades aplicadas en backend",
+    "estado": "especificado"
+  },
+  {
+    "id": "CU-06",
+    "nombre": "Gestionar roles y permisos",
+    "actores": "Administrador de empresa",
+    "plataforma": "Web",
+    "antecedente": "03",
+    "datos": "rol, descripción, permisos",
+    "flujo": [
+      "Consultar roles propios",
+      "Crear o editar rol",
+      "Seleccionar permisos permitidos",
+      "Guardar matriz",
+      "Verificar acceso con usuario afectado"
+    ],
+    "alternativos": [
+      "Permiso de plataforma: rechazar",
+      "Rol ajeno: no encontrado",
+      "Sin permiso de administrar: denegar"
+    ],
+    "postcondicion": "Roles propios sin escalamiento a plataforma",
+    "estado": "especificado"
+  },
+  {
+    "id": "CU-07",
+    "nombre": "Administrar usuarios",
+    "actores": "Administrador de empresa",
+    "plataforma": "Web",
+    "antecedente": "02",
+    "datos": "nombre, correo, rol, sucursales, estado",
+    "flujo": [
+      "Consultar personal",
+      "Registrar usuario",
+      "Asignar rol propio",
+      "Asignar sucursales propias",
+      "Activar o suspender cuenta"
+    ],
+    "alternativos": [
+      "Correo repetido en empresa: rechazar",
+      "Rol o sucursal ajena: rechazar",
+      "Cuenta revocada: impedir futuras operaciones"
+    ],
+    "postcondicion": "Personal y autorizaciones actualizados",
+    "estado": "especificado"
+  },
+  {
+    "id": "CU-08",
+    "nombre": "Gestionar ciudades y sucursales",
+    "actores": "Administrador de empresa",
+    "plataforma": "Web",
+    "antecedente": "06",
+    "datos": "nombre, dirección, ciudad, encargado, estado",
+    "flujo": [
+      "Consultar sucursales",
+      "Preparar alta o reactivación",
+      "Bloquear empresa para comprobar cupo",
+      "Guardar sucursal y encargado",
+      "Actualizar listado"
+    ],
+    "alternativos": [
+      "Cupo agotado: rechazar",
+      "Encargado ajeno: rechazar",
+      "Altas concurrentes: no exceder límite"
+    ],
+    "postcondicion": "Sucursal propia dentro del límite contratado",
+    "estado": "especificado"
+  },
+  {
+    "id": "CU-09",
+    "nombre": "Gestionar clientes",
+    "actores": "Administrador y cajero",
+    "plataforma": "Web",
+    "antecedente": "05",
+    "datos": "identificación, nombre, contacto",
+    "flujo": [
+      "Buscar ficha propia",
+      "Validar identificación",
+      "Crear o actualizar contacto",
+      "Comprobar permisos",
+      "Auditar modificación"
+    ],
+    "alternativos": [
+      "Identificación duplicada en empresa: rechazar",
+      "Cliente de otra empresa: no encontrado",
+      "Cliente autenticado: limitar a su ficha"
+    ],
+    "postcondicion": "Fichas comerciales aisladas",
+    "estado": "especificado"
+  },
+  {
+    "id": "CU-10",
+    "nombre": "Gestionar categorías",
+    "actores": "Administrador de empresa",
+    "plataforma": "Web",
+    "antecedente": "07",
+    "datos": "nombre, descripción, categoría padre",
+    "flujo": [
+      "Consultar categorías",
+      "Crear o editar",
+      "Validar padre propio",
+      "Comprobar ausencia de ciclos",
+      "Guardar estado"
+    ],
+    "alternativos": [
+      "Padre ajeno o ciclo: rechazar",
+      "Sin permiso: denegar",
+      "Categoría usada: mantener integridad"
+    ],
+    "postcondicion": "Categorías propias utilizables por catálogo",
+    "estado": "especificado"
+  },
+  {
+    "id": "CU-11",
+    "nombre": "Gestionar temporadas y colecciones",
+    "actores": "Administrador de empresa",
+    "plataforma": "Web",
+    "antecedente": "09",
+    "datos": "nombre, descripción, inicio, fin",
+    "flujo": [
+      "Consultar temporadas",
+      "Crear o editar período",
+      "Validar orden de fechas",
+      "Relacionar prendas propias",
+      "Guardar configuración"
+    ],
+    "alternativos": [
+      "Fin anterior a inicio: rechazar",
+      "Temporada ajena: no encontrado",
+      "Sin permiso: denegar"
+    ],
+    "postcondicion": "Períodos comerciales definidos",
+    "estado": "especificado"
+  },
+  {
+    "id": "CU-12",
+    "nombre": "Gestionar prendas y variantes",
+    "actores": "Administrador y responsable de inventario",
+    "plataforma": "Web",
+    "antecedente": "08",
+    "datos": "SKU, categoría, temporada, material, medidas, tallas, colores, precios",
+    "flujo": [
+      "Crear ficha de prenda",
+      "Definir variantes y combinaciones de colores",
+      "Asignar precios minoristas y mayoristas",
+      "Configurar oferta vigente",
+      "Publicar ficha"
+    ],
+    "alternativos": [
+      "SKU repetido en empresa: rechazar",
+      "Precio negativo o referencia ajena: rechazar",
+      "Descuento vencido: no aplicar"
+    ],
+    "postcondicion": "Catálogo consistente con variantes y precio calculable",
+    "estado": "especificado"
+  },
+  {
+    "id": "CU-13",
+    "nombre": "Gestionar proveedores",
+    "actores": "Responsable de inventario",
+    "plataforma": "Web y Flutter",
+    "antecedente": "12",
+    "datos": "NIT, razón social, contacto",
+    "flujo": [
+      "Buscar proveedor",
+      "Registrar o editar ficha",
+      "Validar identificación propia",
+      "Guardar contacto",
+      "Auditar cambio"
+    ],
+    "alternativos": [
+      "NIT repetido en empresa: rechazar",
+      "Sin rol autorizado: denegar",
+      "Proveedor ajeno: no encontrado"
+    ],
+    "postcondicion": "Proveedores disponibles para compras propias",
+    "estado": "especificado"
+  },
+  {
+    "id": "CU-14",
+    "nombre": "Registrar compras y recepciones",
+    "actores": "Responsable de inventario",
+    "plataforma": "Web y Flutter",
+    "antecedente": "13",
+    "datos": "proveedor, sucursal, variantes, cantidades, costos",
+    "flujo": [
+      "Seleccionar proveedor y destino",
+      "Registrar detalles",
+      "Validar cantidades y costos",
+      "Confirmar recepción",
+      "Crear entradas de inventario y auditoría en una transacción"
+    ],
+    "alternativos": [
+      "Referencia ajena: rechazar",
+      "Fallo de detalle: revertir recepción",
+      "Reenvío confirmado: no duplicar recepción"
+    ],
+    "postcondicion": "Compra y existencia física consistentes",
+    "estado": "especificado"
+  },
+  {
+    "id": "CU-15",
+    "nombre": "Consultar inventario",
+    "actores": "Encargado y responsable de inventario",
+    "plataforma": "Web y Flutter",
+    "antecedente": "10",
+    "datos": "sucursal, producto, variante",
+    "flujo": [
+      "Seleccionar sucursal autorizada",
+      "Consultar existencia física",
+      "Calcular retenciones vigentes",
+      "Mostrar disponible",
+      "Indicar actualización de datos"
+    ],
+    "alternativos": [
+      "Sucursal no autorizada: denegar",
+      "Sin datos: mostrar vacío",
+      "Sin red: mostrar copia conocida y fecha"
+    ],
+    "postcondicion": "Existencias interpretables sin prometer actualización offline",
+    "estado": "especificado"
+  },
+  {
+    "id": "CU-16",
+    "nombre": "Registrar movimientos de inventario",
+    "actores": "Responsable de inventario",
+    "plataforma": "Web y Flutter",
+    "antecedente": "11",
+    "datos": "origen, destino, variante, cantidad, motivo",
+    "flujo": [
+      "Seleccionar operación",
+      "Validar sucursales y variante",
+      "Bloquear existencia afectada",
+      "Registrar movimiento único",
+      "Confirmar transacción"
+    ],
+    "alternativos": [
+      "Cantidad no positiva: rechazar",
+      "Stock insuficiente: revertir",
+      "Fallo en transferencia: revertir ambos lados"
+    ],
+    "postcondicion": "Movimiento y saldo físico concordantes",
+    "estado": "especificado"
+  },
+  {
+    "id": "CU-17",
+    "nombre": "Consultar catálogo",
+    "actores": "Cliente y visitante",
+    "plataforma": "Web y Flutter",
+    "antecedente": "14",
+    "datos": "empresa pública, categoría, talla, colores, temporada",
+    "flujo": [
+      "Resolver empresa pública",
+      "Consultar prendas activas",
+      "Aplicar filtros",
+      "Mostrar variantes y precio aplicable",
+      "Consultar disponibilidad"
+    ],
+    "alternativos": [
+      "Empresa inexistente: no encontrado",
+      "Sin coincidencias: resultado vacío",
+      "Sin red: usar catálogo descargado"
+    ],
+    "postcondicion": "Catálogo público limitado a una empresa",
+    "estado": "especificado"
+  },
+  {
+    "id": "CU-18",
+    "nombre": "Gestionar carrito y checkout",
+    "actores": "Cliente",
+    "plataforma": "Web y Flutter",
+    "antecedente": "15",
+    "datos": "variantes, cantidades, sucursal, entrega",
+    "flujo": [
+      "Agregar variantes",
+      "Modificar cantidades",
+      "Recalcular precios en servidor",
+      "Seleccionar entrega",
+      "Iniciar checkout sin consolidar venta"
+    ],
+    "alternativos": [
+      "Stock cambiado: informar",
+      "Precio alterado: recalcular y confirmar",
+      "Pago pendiente: no confirmar venta"
+    ],
+    "postcondicion": "Pedido coherente pendiente de confirmación de pago",
+    "estado": "especificado"
+  },
+  {
+    "id": "CU-19",
+    "nombre": "Registrar reservas online",
+    "actores": "Cliente y personal autorizado",
+    "plataforma": "Web y Flutter",
+    "antecedente": "16",
+    "datos": "cliente, sucursal, variantes, cantidades",
+    "flujo": [
+      "Seleccionar prendas",
+      "Validar cliente y sucursal",
+      "Bloquear existencias",
+      "Crear reserva con retención de 24 horas",
+      "Mostrar comprobante de reserva"
+    ],
+    "alternativos": [
+      "Disponible insuficiente: rechazar",
+      "Referencia ajena: rechazar",
+      "Reserva vencida: liberar retención"
+    ],
+    "postcondicion": "Reserva central aceptada con vencimiento explícito",
+    "estado": "especificado"
+  },
+  {
+    "id": "CU-20",
+    "nombre": "Preparar entregar o cancelar reservas",
+    "actores": "Encargado",
+    "plataforma": "Web y Flutter",
+    "antecedente": "17",
+    "datos": "reserva, acción, observación",
+    "flujo": [
+      "Consultar reserva propia",
+      "Validar transición",
+      "Preparar prendas",
+      "Confirmar pago cuando corresponda",
+      "Entregar o cancelar liberando retención"
+    ],
+    "alternativos": [
+      "Preparar no cobra: mantener pendiente de pago",
+      "Ya atendida: no duplicar venta",
+      "Vencida: cancelar y liberar"
+    ],
+    "postcondicion": "Estados comerciales separados y trazables",
+    "estado": "especificado"
+  },
+  {
+    "id": "CU-21",
+    "nombre": "Registrar venta presencial",
+    "actores": "Cajero",
+    "plataforma": "Web y Flutter",
+    "antecedente": "19",
+    "datos": "sucursal, cliente opcional, variantes, efectivo",
+    "flujo": [
+      "Seleccionar sucursal autorizada",
+      "Agregar productos",
+      "Calcular precios",
+      "Registrar efectivo",
+      "Confirmar venta y movimientos atómicamente"
+    ],
+    "alternativos": [
+      "Stock insuficiente: rechazar",
+      "Precio manipulado: rechazar",
+      "Fallo intermedio: revertir toda la venta"
+    ],
+    "postcondicion": "Una venta de contado con un descuento de inventario",
+    "estado": "especificado"
+  },
+  {
+    "id": "CU-22",
+    "nombre": "Procesar pagos electrónicos",
+    "actores": "Cliente y pasarela",
+    "plataforma": "Web y Flutter",
+    "antecedente": "20",
+    "datos": "pedido, monto calculado, evento firmado",
+    "flujo": [
+      "Crear sesión sandbox",
+      "Redirigir a pasarela",
+      "Recibir evento firmado",
+      "Verificar importe y pedido",
+      "Confirmar una sola vez"
+    ],
+    "alternativos": [
+      "Firma inválida: rechazar",
+      "Rechazo o expiración: conservar estado fallido",
+      "Evento repetido: misma confirmación"
+    ],
+    "postcondicion": "Pago comprobado sin doble confirmación",
+    "estado": "especificado"
+  },
+  {
+    "id": "CU-23",
+    "nombre": "Emitir y consultar comprobantes",
+    "actores": "Cliente y cajero",
+    "plataforma": "Web y Flutter",
+    "antecedente": "21",
+    "datos": "venta, identificación fiscal",
+    "flujo": [
+      "Seleccionar venta confirmada",
+      "Validar propiedad y empresa",
+      "Generar documento",
+      "Guardar referencia protegida",
+      "Descargar con autorización"
+    ],
+    "alternativos": [
+      "Venta ajena: no encontrado",
+      "Pago no confirmado: impedir comprobante definitivo",
+      "Ruta privada directa: denegar"
+    ],
+    "postcondicion": "Documento coherente y protegido",
+    "estado": "especificado"
+  },
+  {
+    "id": "CU-24",
+    "nombre": "Solicitar y consultar cambios",
+    "actores": "Cliente",
+    "plataforma": "Web y Flutter",
+    "antecedente": "nuevo",
+    "datos": "venta, variante, unidades, motivo",
+    "flujo": [
+      "Consultar compra propia",
+      "Comprobar siete días y unidades",
+      "Registrar solicitud",
+      "Mostrar condiciones",
+      "Consultar avance y notificaciones"
+    ],
+    "alternativos": [
+      "Fuera de plazo: rechazar",
+      "Unidad cambiada: rechazar",
+      "Prenda no elegible: informar"
+    ],
+    "postcondicion": "Solicitud trazable sin modificar stock antes de recepción",
+    "estado": "especificado"
+  },
+  {
+    "id": "CU-25",
+    "nombre": "Atender cambios y reembolsos",
+    "actores": "Encargado y cajero",
+    "plataforma": "Web",
+    "antecedente": "nuevo",
+    "datos": "solicitud, recepción, reemplazo, diferencia",
+    "flujo": [
+      "Inspeccionar prenda",
+      "Registrar recepción aceptada y entrada",
+      "Seleccionar reemplazo",
+      "Cobrar o devolver diferencia y notificar",
+      "Entregar cuando corresponda y registrar salida"
+    ],
+    "alternativos": [
+      "Sin reemplazo: esperar o reembolsar",
+      "Sobreprecio rechazado: cancelar reemplazo",
+      "Notificación fallida: conservar bandeja"
+    ],
+    "postcondicion": "Recepción y entrega separadas con crédito y pagos trazables",
+    "estado": "especificado"
+  },
+  {
+    "id": "CU-26",
+    "nombre": "Utilizar vestidor existente",
+    "actores": "Cliente",
+    "plataforma": "Web y Flutter",
+    "antecedente": "18",
+    "datos": "prenda, imagen o cámara autorizada",
+    "flujo": [
+      "Seleccionar prenda propia del catálogo",
+      "Solicitar permiso de cámara",
+      "Abrir integración existente",
+      "Procesar visualización",
+      "Cerrar y liberar cámara"
+    ],
+    "alternativos": [
+      "Permiso rechazado: informar",
+      "Proveedor caído: error controlado",
+      "Sin red: función no disponible"
+    ],
+    "postcondicion": "Capacidad previa conservada y tecnología descrita fielmente",
+    "estado": "especificado"
+  },
+  {
+    "id": "CU-27",
+    "nombre": "Consultar recomendaciones",
+    "actores": "Cliente",
+    "plataforma": "Web y Flutter",
+    "antecedente": "22",
+    "datos": "preferencias, talla, catálogo propio",
+    "flujo": [
+      "Recibir preferencias",
+      "Consultar catálogo autorizado",
+      "Solicitar recomendación",
+      "Validar productos y disponibilidad",
+      "Presentar resultados"
+    ],
+    "alternativos": [
+      "Proveedor caído: informar o respaldo declarado",
+      "Producto inexistente: excluir",
+      "Tenant ajeno: impedir consulta"
+    ],
+    "postcondicion": "Recomendaciones limitadas a datos autorizados",
+    "estado": "especificado"
+  },
+  {
+    "id": "CU-28",
+    "nombre": "Preparar y consultar catálogo offline",
+    "actores": "Personal y cliente",
+    "plataforma": "Web y Flutter",
+    "antecedente": "nuevo",
+    "datos": "sucursal, productos, última actualización",
+    "flujo": [
+      "Autenticar con red",
+      "Descargar catálogo acotado",
+      "Guardar snapshot completo",
+      "Consultar sin conexión",
+      "Mostrar antigüedad de información"
+    ],
+    "alternativos": [
+      "Descarga interrumpida: conservar snapshot previo",
+      "Sin espacio: informar sin borrar pendientes",
+      "Cuenta distinta: no mostrar datos anteriores"
+    ],
+    "postcondicion": "PWA y SQLite consultables después de reiniciar",
+    "estado": "especificado"
+  },
+  {
+    "id": "CU-29",
+    "nombre": "Registrar reserva offline",
+    "actores": "Cliente y personal autorizado",
+    "plataforma": "Web y Flutter",
+    "antecedente": "nuevo",
+    "datos": "UUID, cliente conocido, sucursal, detalles",
+    "flujo": [
+      "Validar sesión offline",
+      "Seleccionar variantes locales",
+      "Crear UUID único",
+      "Guardar cabecera detalles y pendiente en una transacción",
+      "Mostrar reserva provisional"
+    ],
+    "alternativos": [
+      "Sesión offline vencida: bloquear registro",
+      "Fallo local: revertir",
+      "Sin stock local conocido: advertir o impedir cantidad inválida"
+    ],
+    "postcondicion": "Reserva local durable sin promesa de confirmación central",
+    "estado": "especificado"
+  },
+  {
+    "id": "CU-30",
+    "nombre": "Registrar venta de contado offline",
+    "actores": "Cajero",
+    "plataforma": "Web y Flutter",
+    "antecedente": "nuevo",
+    "datos": "UUID, responsable, sucursal, detalles, efectivo",
+    "flujo": [
+      "Validar permiso offline",
+      "Preparar venta con precios conocidos",
+      "Registrar efectivo recibido",
+      "Guardar venta detalles y outbox",
+      "Emitir constancia provisional"
+    ],
+    "alternativos": [
+      "Sin permiso: impedir venta",
+      "Fallo local: no declarar registro exitoso",
+      "Conflicto posterior: conservar efectivo y exigir resolución"
+    ],
+    "postcondicion": "Venta provisional recuperable tras cierre",
+    "estado": "especificado"
+  },
+  {
+    "id": "CU-31",
+    "nombre": "Consultar operaciones locales",
+    "actores": "Autor y encargado autorizado",
+    "plataforma": "Web y Flutter",
+    "antecedente": "nuevo",
+    "datos": "estado, tipo, UUID",
+    "flujo": [
+      "Abrir almacenamiento de sesión",
+      "Listar operaciones",
+      "Consultar detalles",
+      "Mostrar último intento y resultado",
+      "Mantener confirmaciones y pendientes"
+    ],
+    "alternativos": [
+      "Otra cuenta: ocultar datos",
+      "Almacenamiento inaccesible: informar",
+      "Enviando tras reinicio: recuperar a pendiente"
+    ],
+    "postcondicion": "Usuario conoce el estado real de cada operación",
+    "estado": "especificado"
+  },
+  {
+    "id": "CU-32",
+    "nombre": "Sincronizar operaciones",
+    "actores": "Cliente y personal autorizado",
+    "plataforma": "Web y Flutter",
+    "antecedente": "nuevo",
+    "datos": "lote, UUID, versión, identidad, payload",
+    "flujo": [
+      "Detectar conectividad o solicitud manual",
+      "Enviar lote sin cambiar UUID",
+      "Validar contexto y negocio por operación",
+      "Confirmar transacción idempotente",
+      "Guardar resultado local"
+    ],
+    "alternativos": [
+      "Timeout después del commit: consultar y reenviar",
+      "UUID con contenido diferente: rechazar",
+      "401: esperar reautenticación sin pérdida"
+    ],
+    "postcondicion": "Resultado durable por operación y ausencia de duplicados",
+    "estado": "especificado"
+  },
+  {
+    "id": "CU-33",
+    "nombre": "Resolver conflictos",
+    "actores": "Encargado y autor autorizado",
+    "plataforma": "Web y Flutter",
+    "antecedente": "nuevo",
+    "datos": "operación original, motivo, resolución",
+    "flujo": [
+      "Consultar conflicto",
+      "Revisar stock precio y efectivo",
+      "Elegir corrección o compensación",
+      "Crear revisión con nuevo UUID",
+      "Conservar vínculo y auditoría"
+    ],
+    "alternativos": [
+      "Sin permiso o empresa ajena: denegar",
+      "Precio no aceptado: compensar y cancelar",
+      "Conflicto concurrente: repetir evaluación"
+    ],
+    "postcondicion": "Conflicto resuelto sin sobrescribir original",
+    "estado": "especificado"
+  },
+  {
+    "id": "CU-34",
+    "nombre": "Consultar reportes convencionales",
+    "actores": "Administrador y encargado",
+    "plataforma": "Web",
+    "antecedente": "23",
+    "datos": "tipo, fechas, sucursales, categorías, productos",
+    "flujo": [
+      "Seleccionar reporte",
+      "Validar filtros",
+      "Ejecutar consulta parametrizada propia",
+      "Mostrar tabla o gráfico",
+      "Exportar mismos resultados"
+    ],
+    "alternativos": [
+      "Filtro ajeno: rechazar",
+      "Sin datos: mostrar vacío",
+      "Consulta excesiva: limitar alcance"
+    ],
+    "postcondicion": "Datos actuales autorizados disponibles en ambos planes",
+    "estado": "especificado"
+  },
+  {
+    "id": "CU-35",
+    "nombre": "Solicitar reportes generativos",
+    "actores": "Usuario autorizado Profesional",
+    "plataforma": "Web y Flutter",
+    "antecedente": "23",
+    "datos": "texto o transcripción, filtros, formato",
+    "flujo": [
+      "Recibir texto o voz editable",
+      "Interpretar intención estructurada",
+      "Validar plan permisos y filtros",
+      "Ejecutar consulta permitida",
+      "Presentar y exportar resultado"
+    ],
+    "alternativos": [
+      "Ambigüedad: pedir precisión",
+      "Proveedor caído: informar y ofrecer convencional",
+      "SQL o tenant arbitrario: rechazar"
+    ],
+    "postcondicion": "Reporte dinámico sobre datos reales sin SQL libre",
+    "estado": "especificado"
+  },
+  {
+    "id": "CU-36",
+    "nombre": "Preparar datos y entrenar modelos",
+    "actores": "Responsable técnico y administrador",
+    "plataforma": "Herramienta técnica y Web",
+    "antecedente": "nuevo",
+    "datos": "semilla, dataset, variables, particiones, versión",
+    "flujo": [
+      "Generar datos sintéticos reproducibles",
+      "Preparar variables sin fuga",
+      "Entrenar demanda y segmentación",
+      "Evaluar contra referencia y registrar métricas",
+      "Versionar artefactos"
+    ],
+    "alternativos": [
+      "Datos insuficientes: impedir entrenamiento",
+      "Modelo ausente: informar",
+      "Métrica desfavorable: conservar evidencia sin inventar precisión"
+    ],
+    "postcondicion": "Modelos evaluados y procedencia identificable",
+    "estado": "especificado"
+  },
+  {
+    "id": "CU-37",
+    "nombre": "Consultar dashboard y analítica",
+    "actores": "Administrador y encargado",
+    "plataforma": "Web",
+    "antecedente": "24",
+    "datos": "período, sucursal, versión modelo",
+    "flujo": [
+      "Consultar KPI propios",
+      "Preparar variables autorizadas",
+      "Ejecutar inferencia acotada",
+      "Mostrar predicción segmentos y métricas",
+      "Explicar limitaciones"
+    ],
+    "alternativos": [
+      "Sin historial: informar",
+      "Modelo ausente: mantener KPI y avisar",
+      "Tenant ajeno: denegar"
+    ],
+    "postcondicion": "Resultados comerciales y predictivos interpretables",
+    "estado": "especificado"
+  },
+  {
+    "id": "CU-38",
+    "nombre": "Consultar auditoría",
+    "actores": "Administrador autorizado",
+    "plataforma": "Web",
+    "antecedente": "25",
+    "datos": "acción, fecha, usuario, UUID",
+    "flujo": [
+      "Autenticar permiso de auditoría",
+      "Aplicar filtros propios",
+      "Consultar eventos paginados",
+      "Relacionar operación y resultado",
+      "Presentar diagnóstico sin secretos"
+    ],
+    "alternativos": [
+      "Sin permiso: denegar",
+      "Empresa ajena: no encontrado",
+      "Filtros extensos: paginar y limitar"
+    ],
+    "postcondicion": "Historial de acciones y fallos accesible solo a responsables",
+    "estado": "especificado"
+  }
+]

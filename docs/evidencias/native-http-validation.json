@@ -1,0 +1,22 @@
+{
+  "checked_at_utc": "2026-10-23T13:58:51.567181+00:00",
+  "base_url": "http://127.0.0.1:2468",
+  "health_and_pwa_assets": true,
+  "private_dotfile_denied": true,
+  "companies": 2,
+  "offline_catalog_variants_per_company": 12,
+  "tenant_isolation_and_cross_report_denial": true,
+  "basic_generative_denied_without_provider_call": true,
+  "pdf_and_xlsx": true,
+  "native_ml_forecasts": 4,
+  "native_ml_segments": 12,
+  "first_dashboard_seconds": 3.509,
+  "concurrency": {
+    "workers": 3,
+    "requests": 30,
+    "failed": 0,
+    "median_seconds": 0.194,
+    "max_seconds": 0.282
+  },
+  "limitations": "Smoke y concurrencia breve; no es una prueba de carga sostenida ni de integraciones externas."
+}

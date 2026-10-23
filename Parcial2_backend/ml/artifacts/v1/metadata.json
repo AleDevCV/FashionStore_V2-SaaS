@@ -1,0 +1,91 @@
+{
+  "version": "v1",
+  "seed": 262026,
+  "trained_at": "2026-10-23T09:29:36.298323+00:00",
+  "sklearn": "1.9.1",
+  "numpy": "2.3.5",
+  "joblib": "1.6.0",
+  "source": "Exclusivamente datos sintéticos reproducibles; sin información de clientes reales.",
+  "features": [
+    "media_7",
+    "media_28",
+    "ayer",
+    "hace_7",
+    "dia_sin",
+    "dia_cos",
+    "mes_sin",
+    "mes_cos",
+    "precio",
+    "oferta"
+  ],
+  "horizon": "Un día; unidades por producto y sucursal",
+  "minimum_history_days": 28,
+  "split": {
+    "training_days": [
+      28,
+      293
+    ],
+    "validation_days": [
+      294,
+      356
+    ],
+    "test_days": [
+      357,
+      419
+    ],
+    "training_rows": 6384,
+    "validation_rows": 1512,
+    "test_rows": 1512,
+    "rule": "Cortes temporales comunes a todas las series. Las variables solo observan días anteriores al objetivo. Selección en validación y refit train+validación antes del test final."
+  },
+  "demand": {
+    "algorithm": "HistGradientBoostingRegressor",
+    "loss": "poisson",
+    "selected_max_leaf_nodes": 15,
+    "validation_candidates": [
+      {
+        "leaves": 15,
+        "MAE": 2.007516012792258
+      },
+      {
+        "leaves": 31,
+        "MAE": 2.0243865571022206
+      }
+    ],
+    "metrics": {
+      "MAE": 2.1641885858240886,
+      "RMSE": 2.8978137212301314,
+      "baseline_MAE": 3.172996976568405,
+      "baseline_RMSE": 4.1003221487288055
+    },
+    "baseline": "Media de unidades de los siete días anteriores"
+  },
+  "segments": {
+    "algorithm": "KMeans",
+    "k": 3,
+    "rows": 600,
+    "transformation": "log1p(R,F,M), StandardScaler ajustado únicamente sobre el dataset sintético",
+    "silhouette": 0.26163191367926236,
+    "labels": {
+      "0": "Ocasionales",
+      "1": "Habituales",
+      "2": "Mayor actividad"
+    },
+    "interpretation": "Nombres descriptivos relativos a los centroides; no son etiquetas verificadas ni juicios sobre personas."
+  },
+  "datasets": {
+    "demanda_sintetica.csv": "23f7a69bbc231ed82936bf0d0273356a31ec534d1e4816ddbe6a4802f012d5e5",
+    "rfm_sintetico.csv": "3007fb0fb64df324afdf335733c384ac4ae4ed241391d844289e226b34d63e90"
+  },
+  "artifacts": {
+    "demand.joblib": "7bfca73a3fe519eafc876cc995c8e57466ee10f234bc7fd716ca1e662521e310",
+    "segments.joblib": "5be5c20725d7c7e18bd6c07d44831ceb5423da686deea08b7fb7e0f33856029f"
+  },
+  "limitations": [
+    "El patrón simulado no prueba precisión en una tienda real.",
+    "La demanda observada está afectada por faltantes de stock y devoluciones.",
+    "La inferencia debe evaluarse con datos reales antes de decisiones de compra.",
+    "No se entrenan modelos en el servidor doméstico.",
+    "No se aceptan archivos de modelos subidos por clientes."
+  ]
+}

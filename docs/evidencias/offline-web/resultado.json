@@ -1,0 +1,16 @@
+{
+  "fecha": "2026-10-23T04:48:33.351Z",
+  "catalogo_variantes": 12,
+  "reapertura_sin_red": true,
+  "service_worker": true,
+  "id": "158421e8-562b-443c-b792-ffa3ce87e3bb",
+  "state": "CONFIRMADA",
+  "result": {
+    "operation_id": "158421e8-562b-443c-b792-ffa3ce87e3bb",
+    "state": "CONFIRMADA",
+    "server_id": 1,
+    "kind": "venta",
+    "total": "120.00",
+    "receipt_url": "/api/comprobantes/FS-2026-00000001/pdf"
+  }
+}

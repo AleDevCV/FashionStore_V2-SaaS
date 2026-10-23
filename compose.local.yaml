@@ -1,0 +1,17 @@
+services:
+  api:
+    environment:
+      SMTP_HOST: mailpit
+      SMTP_PORT: 1025
+      SMTP_FROM: noreply@example.invalid
+      SMTP_USER: ''
+      SMTP_PASSWORD: ''
+      SMTP_USE_TLS: 'false'
+  mailpit:
+    image: axllent/mailpit:latest
+    ports:
+      - 127.0.0.1:8025:8025
+    mem_limit: 64m
+  db:
+    ports:
+      - 127.0.0.1:55433:5432

@@ -1,0 +1,8 @@
+@startuml
+left to right direction
+actor "Cliente y personal autorizado" as Actor
+rectangle "FashionStore SaaS" {
+usecase "CU-32\nSincronizar operaciones" as UC
+}
+Actor --> UC
+@enduml
