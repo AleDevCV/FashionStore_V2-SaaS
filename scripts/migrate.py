@@ -39,6 +39,10 @@ def grant_application_access(cur, app_user, password):
         'GRANT EXECUTE ON FUNCTION bind_push_device(TEXT) TO {}',
     ):
         cur.execute(sql.SQL(statement).format(sql.Identifier(app_user)))
+    for signature in ('identity_lookup(TEXT,BIGINT)', 'identity_index_user(INTEGER)', 'identity_register(JSONB)',
+                      'identity_customer_profile(BIGINT,INTEGER)', 'identity_revoke(BIGINT)',
+                      'identity_reset_issue(BIGINT,TEXT)', 'identity_reset_lookup(TEXT)', 'identity_reset_apply(TEXT,TEXT)', 'identity_event(BIGINT,TEXT)'):
+        cur.execute(sql.SQL('GRANT EXECUTE ON FUNCTION ' + signature + ' TO {}').format(sql.Identifier(app_user)))
 
 def executable_content(content,adopt_legacy=False):
     # Bloque 3 del P1 puede haber creado estado/created_at; conservar sus valores.

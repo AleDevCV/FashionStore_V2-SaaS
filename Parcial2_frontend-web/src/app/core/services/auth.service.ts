@@ -91,6 +91,11 @@ export class AuthService {
       );
   }
 
+  seleccionarTienda(empresa: string): Observable<RespuestaLogin> {
+    return this.http.post<RespuestaLogin>(`${environment.apiUrl}/api/auth/seleccionar-tienda`, {empresa})
+      .pipe(tap(respuesta => this.guardarToken(respuesta.access_token)));
+  }
+
   /**
    * Cierra la sesión del usuario.
    *
@@ -219,10 +224,12 @@ export class AuthService {
 
     try {
       const key=`fashionstore_p2_cart_${usuario.tenant_id}:${usuario.id_usuario}`;
-      const publicKey='fashionstore_p2_cart_public_'+(localStorage.getItem('fashionstore_p2_empresa')||'demo-a');
-      if(!localStorage.getItem('fashionstore_p2_active')&&!localStorage.getItem(key)&&localStorage.getItem(publicKey)){localStorage.setItem(key,localStorage.getItem(publicKey)!);localStorage.removeItem(publicKey);}
+      const publicKey='fashionstore_p2_cart_public_'+(usuario.empresa_slug||localStorage.getItem('fashionstore_p2_empresa')||'demo-a');
+      if(usuario.tenant_id&&!localStorage.getItem('fashionstore_p2_active')&&!localStorage.getItem(key)&&localStorage.getItem(publicKey)){localStorage.setItem(key,localStorage.getItem(publicKey)!);localStorage.removeItem(publicKey);}
       localStorage.setItem(this.claveToken, token);
-      localStorage.setItem('fashionstore_p2_active', `${usuario.tenant_id}:${usuario.id_usuario}`);
+      if (usuario.empresa_slug) localStorage.setItem('fashionstore_p2_empresa', usuario.empresa_slug);
+      if (usuario.tenant_id) localStorage.setItem('fashionstore_p2_active', `${usuario.tenant_id}:${usuario.id_usuario}`);
+      else localStorage.removeItem('fashionstore_p2_active');
     } catch {
       // Si el almacenamiento no está disponible, la sesión vivirá solo en
       // memoria hasta que se recargue la página.

@@ -25,12 +25,13 @@ class ApiClient {
 
   ApiClient({required this.baseUrl, this.tokenProvider});
 
-  Map<String, String> get _headers {
+  Map<String, String> _headers(String path) {
     final token = tokenProvider?.call();
+    final publicAuth=path.startsWith('/api/login') || path.startsWith('/api/auth/registro') || path.startsWith('/api/auth/recuperar-password') || path.startsWith('/api/auth/verificar-token-recuperacion') || path.startsWith('/api/auth/restablecer-password');
     return {
       'Content-Type': 'application/json',
-      'X-Empresa': empresa,
-      if (token != null && token.isNotEmpty) 'Authorization': 'Bearer $token',
+      if (!publicAuth && empresa.isNotEmpty) 'X-Empresa': empresa,
+      if (!publicAuth && token != null && token.isNotEmpty) 'Authorization': 'Bearer $token',
     };
   }
 
@@ -40,7 +41,7 @@ class ApiClient {
     if (query != null && query.isNotEmpty) {
       uri = uri.replace(queryParameters: query);
     }
-    final resp = await http.get(uri, headers: _headers).timeout(const Duration(seconds:30));
+    final resp = await http.get(uri, headers: _headers(path)).timeout(const Duration(seconds:30));
     return _decodificar(resp);
   }
 
@@ -48,23 +49,23 @@ class ApiClient {
   Future<dynamic> post(String path, {Object? body}) async {
     final resp = await http.post(
       Uri.parse('$baseUrl$path'),
-      headers: _headers,
+      headers: _headers(path),
       body: body == null ? null : jsonEncode(body),
     ).timeout(const Duration(seconds:30));
     return _decodificar(resp);
   }
 
   Future<dynamic> delete(String path,{Object? body}) async {
-    final response=await http.delete(Uri.parse('$baseUrl$path'),headers:_headers,body:body==null?null:jsonEncode(body)).timeout(const Duration(seconds:30));
+    final response=await http.delete(Uri.parse('$baseUrl$path'),headers:_headers(path),body:body==null?null:jsonEncode(body)).timeout(const Duration(seconds:30));
     return _decodificar(response);
   }
 
   Future<dynamic> patch(String path,{Object? body}) async {
-    final response=await http.patch(Uri.parse('$baseUrl$path'),headers:_headers,body:body==null?null:jsonEncode(body)).timeout(const Duration(seconds:30));return _decodificar(response);
+    final response=await http.patch(Uri.parse('$baseUrl$path'),headers:_headers(path),body:body==null?null:jsonEncode(body)).timeout(const Duration(seconds:30));return _decodificar(response);
   }
 
   Future<http.Response> download(String path) async {
-    final response=await http.get(Uri.parse('$baseUrl$path'),headers:_headers).timeout(const Duration(seconds:30));
+    final response=await http.get(Uri.parse('$baseUrl$path'),headers:_headers(path)).timeout(const Duration(seconds:30));
     if(response.statusCode<200 || response.statusCode>=300)_decodificar(response);
     return response;
   }

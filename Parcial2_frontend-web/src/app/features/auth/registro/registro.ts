@@ -154,6 +154,6 @@ export class Registro {
   }
 
   irAlCatalogo(): void {
-    this.router.navigate(['/catalogo']);
+    this.router.navigate(['/tiendas']);
   }
 }

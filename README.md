@@ -10,3 +10,5 @@ Angular, Flutter y FastAPI con PostgreSQL compartido y aislamiento por empresa. 
 La configuración privada se mantiene fuera de Git. `.env.example` corresponde al desarrollo local. `scripts/generate_native_config.py` genera archivos privados independientes para producción, sin reutilizar las claves JWT ni las contraseñas de la base local.
 
 No ejecutar `git push` ni publicar mediante API: las subidas a GitHub son manuales por indicación del equipo. La transferencia SSH al servidor es independiente de GitHub.
+
+Acceso actualizado: [ACCESO_GLOBAL.md](docs/ACCESO_GLOBAL.md). Correo y contraseña para todos los roles; cliente con una identidad para todas las tiendas y datos comerciales aislados. Producción: https://fashionstore.aledevcv.me. Las cuentas demo y sus claves están en el archivo privado ignorado `infra/secrets/native/acceso-demo.txt`.

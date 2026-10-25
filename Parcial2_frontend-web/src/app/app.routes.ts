@@ -15,11 +15,12 @@
 
 import { Routes } from '@angular/router';
 
-import { authGuard, invitadoGuard } from './core/guards/auth.guard';
+import { authGuard, invitadoGuard, tiendaGuard } from './core/guards/auth.guard';
 import { rolGuard } from './core/guards/rol.guard';
 import { ROLES } from './core/models/auth.model';
 
 export const routes: Routes = [
+  {path:'tiendas',title:'Tiendas · FashionStore',loadComponent:()=>import('./features/tiendas/tiendas').then(m=>m.Tiendas)},
   {path:'offline',title:'Operación sin conexión · FashionStore',loadComponent:()=>import('./features/offline/offline').then(m=>m.Offline)},
   {path: 'cambios', canActivate: [authGuard], title: 'Cambios y devoluciones', loadComponent: () => import('./features/cambios/cambios').then(m => m.Cambios)},
     {
@@ -298,6 +299,7 @@ export const routes: Routes = [
     // guardiÃ¡n de sesiÃ³n: un visitante puede explorar la vitrina antes de
     // autenticarse. El endpoint /api/catalogo no exige token.
     path: 'catalogo',
+    canActivate: [tiendaGuard],
     title: 'CatÃ¡logo Â· FashionStore',
     loadComponent: () => import('./features/catalogo/catalogo').then((m) => m.Catalogo),
   },

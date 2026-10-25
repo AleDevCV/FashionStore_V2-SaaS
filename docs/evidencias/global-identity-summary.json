@@ -1,0 +1,22 @@
+{
+  "checked_at_utc": "2026-10-25T05:25:09.405620+00:00",
+  "release": "20261025T051010Z-f476f223",
+  "backend_tests_passed": 96,
+  "infrastructure_tests_passed": 11,
+  "angular_auth_tests_passed": 30,
+  "flutter_tests_passed": 11,
+  "flutter_analyze": "No issues found",
+  "angular_production_build": "passed",
+  "apk_sha256": "24809d9f93358c5cb120c805edd1b943c52737b3257f65f9890bd76a95744aad",
+  "apk_bytes": 57387864,
+  "known_private_values_in_nonignored_files": 0,
+  "known_private_values_in_native_package": 0,
+  "scanned_nonignored_files": 620,
+  "git_commands_executed": false,
+  "limitations": [
+    "SMTP productivo sin configurar; entrega real de recuperación pendiente",
+    "Android físico pendiente",
+    "Suite Angular general: pruebas heredadas del vestidor incompatibles; suite auth ejecutada por separado",
+    "No equivale al cierre de los 38 CU ni a carga sostenida"
+  ]
+}

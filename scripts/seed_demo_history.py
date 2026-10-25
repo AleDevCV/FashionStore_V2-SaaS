@@ -20,7 +20,7 @@ def main():
             cur.execute("SELECT count(*) AS n FROM venta WHERE tenant_id=%s AND referencia_demo LIKE 'HIST-V1-%%'",(tid,))
             if cur.fetchone()['n']:print(slug+': historial ya preparado; no se duplica.');continue
             cur.execute('SELECT id_sucursal FROM sucursal WHERE tenant_id=%s ORDER BY id_sucursal LIMIT 1',(tid,));branch=cur.fetchone()['id_sucursal']
-            cur.execute("SELECT id_usuario FROM usuario WHERE tenant_id=%s AND correo='admin@example.com'",(tid,));admin=cur.fetchone()['id_usuario']
+            cur.execute("SELECT u.id_usuario FROM usuario u JOIN rol r ON r.id_rol=u.id_role WHERE u.tenant_id=%s AND r.nombre='Administrador' ORDER BY u.id_usuario LIMIT 1",(tid,));admin=cur.fetchone()['id_usuario']
             clients=[]
             for i in range(1,13):
                 cur.execute('INSERT INTO cliente(ci,nombre_completo,correo) VALUES(%s,%s,%s) ON CONFLICT(tenant_id,ci) DO UPDATE SET ci=excluded.ci RETURNING id_cliente',(f'HIST-DEMO-{i:02}',f'Cliente sintético {i:02}',f'demo{i:02}@example.com'));clients.append(cur.fetchone()['id_cliente'])

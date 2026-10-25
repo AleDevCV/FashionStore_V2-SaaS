@@ -248,6 +248,8 @@ def crear_usuario(
         )
 
     # --- Auditoría (paso 9 del CU02) ----------------------------------------
+    from app.services.identity import index_user
+    index_user(cursor, nuevo_id)
     registrar_bitacora(
         cursor=cursor,
         accion=ACCION_INSERT,
@@ -349,6 +351,8 @@ def actualizar_usuario(
     # `updated_at` se refresca siempre: la tabla solo tiene un DEFAULT para el
     # alta, no un trigger que lo mantenga al actualizar.
     columnas.append("updated_at = CURRENT_TIMESTAMP")
+    if 'id_role' in cambios or 'estado' in cambios:
+        columnas.append('token_version = token_version + 1')
     valores.append(id_usuario)
 
     cursor.execute(
@@ -357,6 +361,8 @@ def actualizar_usuario(
     )
 
     # --- Auditoría ----------------------------------------------------------
+    from app.services.identity import index_user
+    index_user(cursor, id_usuario)
     resumen = ", ".join(f"{clave}={valor}" for clave, valor in cambios.items())
     registrar_bitacora(
         cursor=cursor,

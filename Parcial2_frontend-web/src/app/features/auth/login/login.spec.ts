@@ -8,7 +8,7 @@
  */
 
 import { TestBed, ComponentFixture } from '@angular/core/testing';
-import { provideRouter } from '@angular/router';
+import { provideRouter, Router } from '@angular/router';
 import { Subject, throwError, of } from 'rxjs';
 
 import { Login } from './login';
@@ -28,12 +28,15 @@ describe('Login (CU01)', () => {
       'obtenerToken',
       'tokenExpirado',
       'estaAutenticado',
+      'obtenerRol',
+      'usuarioActual',
     ]);
 
     await TestBed.configureTestingModule({
       imports: [Login],
       providers: [provideRouter([]), { provide: AuthService, useValue: authSpy }],
     }).compileComponents();
+    spyOn(TestBed.inject(Router), 'navigateByUrl').and.resolveTo(true);
 
     fixture = TestBed.createComponent(Login);
     componente = fixture.componentInstance;
@@ -48,6 +51,27 @@ describe('Login (CU01)', () => {
     expect(componente.formulario.valid).toBeFalse();
     expect(componente.correo.value).toBe('');
   });
+
+  it('solo solicita correo y contraseña, sin campo empresa', () => {
+    expect(Object.keys(componente.formulario.controls).sort()).toEqual(['correo','password']);
+    expect(fixture.nativeElement.querySelector('app-empresa-selector')).toBeNull();
+  });
+
+  for(const [role,type,destination] of [
+    ['Cliente','CLIENTE','/tiendas'],
+    ['Administrador','PLATAFORMA','/panel/saas'],
+    ['Administrador','PERSONAL','/panel'],
+    ['Cajero (POS)','PERSONAL','/panel/pos'],
+  ]) {
+    it('dirige '+role+'/'+type+' a su acceso correcto', () => {
+      authSpy.obtenerRol.and.returnValue(role);
+      authSpy.usuarioActual.and.returnValue({tipo_cuenta:type} as any);
+      authSpy.login.and.returnValue(of({access_token:'test-token',token_type:'bearer'}));
+      componente.formulario.setValue({correo:'persona@example.com',password:'test-password'});
+      componente.iniciarSesion();
+      expect(TestBed.inject(Router).navigateByUrl).toHaveBeenCalledWith(destination);
+    });
+  }
 
   it('rechaza un correo con formato inválido', () => {
     componente.correo.setValue('correo-sin-arroba');

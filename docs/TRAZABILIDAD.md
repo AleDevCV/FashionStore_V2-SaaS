@@ -2,8 +2,8 @@
 
 | CU | Antecedente P1 | Fuente | Componente esperado | Prueba de aceptación | Estado | Evidencia |
 |---|---|---|---|---|---|---|
-| CU-01 | 01 | Examen P2 y reglas capítulo II | Backend y Web y Flutter | CP-01: principal y alternativas de la ficha | especificado | pendiente de ejecución |
-| CU-02 | 04 | Examen P2 y reglas capítulo II | Backend y Web y Flutter | CP-02: principal y alternativas de la ficha | especificado | pendiente de ejecución |
+| CU-01 | 01 | Examen P2 y reglas capítulo II | Backend y Web y Flutter | CP-01: principal y alternativas de la ficha | probado | ACCESO_GLOBAL.md; backend XML, Angular 30, Flutter 11; aceptación Android físico pendiente |
+| CU-02 | 04 | Examen P2 y reglas capítulo II | Backend y Web y Flutter | CP-02: principal y alternativas de la ficha | implementado | recuperación global y revocación probadas; SMTP productivo pendiente |
 | CU-03 | nuevo | Examen P2 y reglas capítulo II | Backend y Web | CP-03: principal y alternativas de la ficha | especificado | pendiente de ejecución |
 | CU-04 | nuevo | Examen P2 y reglas capítulo II | Backend y Web | CP-04: principal y alternativas de la ficha | especificado | pendiente de ejecución |
 | CU-05 | nuevo | Examen P2 y reglas capítulo II | Backend y Web | CP-05: principal y alternativas de la ficha | especificado | pendiente de ejecución |

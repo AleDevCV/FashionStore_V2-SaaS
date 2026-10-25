@@ -22,7 +22,7 @@ FashionStore SaaS presta servicios a empresas independientes. Cada empresa dispo
 
 | ID | Capacidad | CU relacionados |
 |---|---|---|
-| RF01 | Autenticar, cerrar sesión y recuperar acceso dentro de una empresa | 01, 02 |
+| RF01 | Autenticar por correo global sin campo Empresa, recuperar y revocar acceso; personal vinculado a su empresa y cliente con una cuenta para todas las tiendas | 01, 02 |
 | RF02 | Registrar empresas independientes y su administrador | 03 |
 | RF03 | Configurar límites de planes y vigencia de suscripciones | 04, 05 |
 | RF04 | Administrar roles, permisos, usuarios y sucursales | 06, 07, 08 |

@@ -22,5 +22,9 @@ def main():
     ALTER DEFAULT PRIVILEGES IN SCHEMA public GRANT USAGE,SELECT ON SEQUENCES TO fashionstore_app;""")
     execute('REVOKE UPDATE,DELETE ON bitacora FROM fashionstore_app;')
     execute('GRANT EXECUTE ON FUNCTION bind_push_device(TEXT) TO fashionstore_app;')
+    for signature in ('identity_lookup(TEXT,BIGINT)', 'identity_index_user(INTEGER)', 'identity_register(JSONB)',
+                      'identity_customer_profile(BIGINT,INTEGER)', 'identity_revoke(BIGINT)',
+                      'identity_reset_issue(BIGINT,TEXT)', 'identity_reset_lookup(TEXT)', 'identity_reset_apply(TEXT,TEXT)', 'identity_event(BIGINT,TEXT)'):
+        execute('GRANT EXECUTE ON FUNCTION '+signature+' TO fashionstore_app;')
     print('Base temporal y rol no propietario preparados.')
 if __name__=='__main__':main()

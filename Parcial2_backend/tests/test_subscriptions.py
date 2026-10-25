@@ -17,9 +17,10 @@ def make_platform_headers():
 def test_provision_company_is_atomic_and_login_works(client):
     import secrets
     h=make_platform_headers();slug='new-'+secrets.token_hex(5)
-    r=client.post('/api/empresas',headers=h,json=dict(nombre='Nueva empresa',slug=slug,correo_admin='new@example.com',password_admin='new-password-123',id_plan=1))
+    email=slug+'@example.com'
+    r=client.post('/api/empresas',headers=h,json=dict(nombre='Nueva empresa',slug=slug,correo_admin=email,password_admin='new-password-123',id_plan=1))
     assert r.status_code==201,r.text
-    r=client.post('/api/login/',headers={'X-Empresa':slug},json=dict(correo='new@example.com',password='new-password-123'));assert r.status_code==200,r.text
+    r=client.post('/api/login/',headers={'X-Empresa':slug},json=dict(correo=email,password='new-password-123'));assert r.status_code==200,r.text
     r=client.get('/api/contexto',headers={'Authorization':'Bearer '+r.json()['access_token']});assert r.json()['suscripcion']['max_sucursales']==2
 
 def test_downgrade_refuses_active_branch_excess(client,companies):

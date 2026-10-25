@@ -10,6 +10,7 @@
 
 import { inject } from '@angular/core';
 import { CanActivateFn, Router } from '@angular/router';
+import { firstValueFrom } from 'rxjs';
 
 import { AuthService } from '../services/auth.service';
 
@@ -49,9 +50,23 @@ export const invitadoGuard: CanActivateFn = () => {
   const router = inject(Router);
 
   if (authService.estaAutenticado() && !authService.tokenExpirado()) {
-    router.navigate(['/panel']);
+    router.navigate([authService.obtenerRol()==='Cliente' ? '/tiendas' : authService.usuarioActual()?.tipo_cuenta==='PLATAFORMA' ? '/panel/saas' : authService.obtenerRol()==='Cajero (POS)' ? '/panel/pos' : '/panel']);
     return false;
   }
 
+  return true;
+};
+
+/** Vincula el cliente autenticado a la tienda de la navegación, nunca desde el login. */
+export const tiendaGuard: CanActivateFn = async (ruta) => {
+  const auth=inject(AuthService); const router=inject(Router);
+  const user=auth.usuarioActual();
+  const empresa=ruta.queryParamMap.get('empresa') || (user?.tenant_id ? user.empresa_slug : null);
+  if (user?.tipo_cuenta==='CLIENTE' && empresa && empresa!==user.empresa_slug) {
+    try { await firstValueFrom(auth.seleccionarTienda(empresa)); }
+    catch { return router.parseUrl('/tiendas'); }
+  }
+  if (user?.tipo_cuenta==='CLIENTE' && !empresa) return router.parseUrl('/tiendas');
+  if (empresa) localStorage.setItem('fashionstore_p2_empresa',empresa);
   return true;
 };

@@ -42,10 +42,10 @@
     <div class="login__form-wrap">
       <!-- Encabezado del formulario -->
       <div class="login__head">
-        <span class="fs-eyebrow">Panel administrativo</span>
+        <span class="fs-eyebrow">Tu cuenta FashionStore</span>
         <h1 class="login__title">Iniciar sesión</h1>
         <p class="login__subtitle">
-          Introduzca sus credenciales para acceder al sistema de gestión.
+          Ingresa con tu correo y contraseña. Tu cuenta identifica el acceso que te corresponde.
         </p>
       </div>
 
@@ -53,7 +53,7 @@
         Formulario reactivo. `novalidate` desactiva las burbujas de validación
         nativas del navegador para usar exclusivamente las de Angular.
       -->
-      <app-empresa-selector />
+      
       <form
         class="login__form"
         [formGroup]="formulario"
@@ -143,7 +143,7 @@
             <span class="fs-spinner" aria-hidden="true"></span>
             <span>Verificando</span>
           } @else {
-            <span>Ingresar al panel</span>
+            <span>Iniciar sesión</span>
           }
         </button>
 
@@ -154,14 +154,14 @@
           </a>
         </div>
         <div class="login__links login__links--sub">
-          <span class="login__link-muted">¿Es cliente de FashionStore?</span>
-          <a routerLink="/login-cliente" class="login__link login__link--highlight">
-            Acceso clientes
+          <span class="login__link-muted">¿Primera visita?</span>
+          <a routerLink="/registro" class="login__link login__link--highlight">
+            Crear cuenta
           </a>
         </div>
         <div class="login__links login__links--sub">
-          <a routerLink="/catalogo" class="login__link-back">
-            ← Volver al catálogo público
+          <a routerLink="/tiendas" class="login__link-back">
+            ← Explorar las tiendas
           </a>
         </div>
       </form><p><a routerLink="/offline">Continuar con las operaciones sin conexión</a></p>
@@ -170,7 +170,7 @@
       <footer class="login__foot">
         <span class="login__foot-rule"></span>
         <p class="login__foot-text">
-          Acceso restringido al personal autorizado de FashionStore.
+          Un acceso para clientes, tiendas y sus equipos.
           Toda actividad queda registrada en la bitácora del sistema.
         </p>
       </footer>

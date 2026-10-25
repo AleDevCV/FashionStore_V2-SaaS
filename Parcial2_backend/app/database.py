@@ -64,6 +64,7 @@ def get_connection():
         with conn.cursor() as setup:
             setup.execute("SELECT set_config('app.tenant_id', %s, true), set_config('app.user_id', %s, true), set_config('app.role', %s, true), set_config('app.email', %s, true)",
                           (str(tenant.tenant_id) if tenant else '', str(tenant.user_id or '') if tenant else '', tenant.role if tenant else '', tenant.email if tenant else ''))
+            setup.execute("SELECT set_config('app.account_id', %s, true)", (str(tenant.account_id or '') if tenant else '',))
         yield conn
         conn.commit()
     except Exception:

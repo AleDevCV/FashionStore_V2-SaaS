@@ -1,6 +1,14 @@
 # Estado de implementación
 
-Actualización del 23 de octubre de 2026. El proyecto completo sigue en implementación; no se declaran los 38 CU terminados por disponer de pantallas o código.
+Actualización del 25 de octubre de 2026. El proyecto completo sigue en implementación; no se declaran los 38 CU terminados por disponer de pantallas o código.
+
+## Actualización vigente: acceso global
+
+La versión `20261025T051010Z-f476f223` está activa en https://fashionstore.aledevcv.me. Angular y Flutter autentican por correo y contraseña, sin campo Empresa. El servidor identifica plataforma, personal de empresa y clientes. Los clientes tienen cuenta global con selección posterior de tienda e historial propio entre tiendas; las operaciones comerciales y permisos mantienen aislamiento.
+
+Regresión: 96 pruebas backend, 11 de infraestructura, 30 de autenticación Angular y 11 Flutter aprobadas. Flutter analyze sin problemas; Angular de producción y APK release compilados. Ensayo de migración sobre copia real y comprobación HTTP productiva de diez cuentas aprobados. Detalles, evidencia y límites en `ACCESO_GLOBAL.md`.
+
+El despliegue fue nativo por SSH, con respaldo previo. HTTPS del dominio definitivo comprobado. SMTP productivo y Android físico siguen pendientes. La suite general Angular conserva pruebas heredadas incompatibles del vestidor; la suite de autenticación fue ejecutada por separado. Los apartados siguientes registran el despliegue previo del 23 de octubre y sus mediciones históricas.
 
 ## Cambio de producción solicitado
 

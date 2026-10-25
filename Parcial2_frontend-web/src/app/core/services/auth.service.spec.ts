@@ -94,6 +94,23 @@ describe('AuthService', () => {
     expect(payload.id_usuario).toBe(1);
   });
 
+  it('conserva carritos separados al elegir tiendas con una cuenta global', () => {
+    servicio=crearServicio();
+    const base={...payloadAdmin,account_id:10,tipo_cuenta:'CLIENTE',rol:'Cliente'};
+    localStorage.setItem('fashionstore_p2_empresa','demo-b');
+    localStorage.setItem('fashionstore_p2_cart_public_demo-a','[{"tienda":"A"}]');
+    localStorage.setItem('fashionstore_p2_cart_public_demo-b','[{"tienda":"B"}]');
+    servicio.guardarToken(crearJwtFalso({...base,tenant_id:0,id_usuario:10}));
+    expect(localStorage.getItem('fashionstore_p2_active')).toBeNull();
+    servicio.guardarToken(crearJwtFalso({...base,tenant_id:2,id_usuario:21,empresa_slug:'demo-a'}));
+    expect(localStorage.getItem('fashionstore_p2_active')).toBe('2:21');
+    expect(localStorage.getItem('fashionstore_p2_cart_2:21')).toBe('[{"tienda":"A"}]');
+    expect(localStorage.getItem('fashionstore_p2_cart_public_demo-b')).toBe('[{"tienda":"B"}]');
+    servicio.guardarToken(crearJwtFalso({...base,tenant_id:3,id_usuario:31,empresa_slug:'demo-b'}));
+    expect(localStorage.getItem('fashionstore_p2_active')).toBe('3:31');
+    expect(localStorage.getItem('fashionstore_p2_cart_2:21')).toBe('[{"tienda":"A"}]');
+  });
+
   it('devuelve null ante un token malformado', () => {
     servicio = crearServicio();
 
@@ -208,6 +225,7 @@ describe('AuthService', () => {
     expect(servicio.estaAutenticado()).toBeTrue();
 
     servicio.logout();
+    httpMock.expectOne(`${environment.apiUrl}/api/logout`).flush({mensaje:'Sesión revocada'});
 
     expect(servicio.estaAutenticado()).toBeFalse();
     expect(servicio.obtenerToken()).toBeNull();

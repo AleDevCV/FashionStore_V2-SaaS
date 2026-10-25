@@ -251,6 +251,11 @@ def sincronizar_contacto_usuario(
     propiedad. Mantener el correo alineado es imprescindible porque, ante la
     ausencia de una FK, ese dato es la vinculación disponible entre tablas.
     """
+    from app.tenant import require_context
+    tenant=require_context()
+    if tenant.account_id and 'correo' in cambios_cliente and str(cambios_cliente['correo']).strip().lower()!=tenant.email.lower():
+        from fastapi import HTTPException
+        raise HTTPException(400,'El correo de acceso global no se cambia desde una ficha comercial.')
     campos_sincronizables = {
         campo: cambios_cliente[campo]
         for campo in ("correo", "telefono")

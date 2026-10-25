@@ -48,11 +48,8 @@ def enviar_correo_recuperacion(
     Retorna:
         bool: True si el correo fue despachado por SMTP o procesado por el fallback.
     """
-    from app.tenant import require_context
-    from app.database import get_connection
     from urllib.parse import urlencode
-    slug=require_context().slug
-    enlace_recuperacion = FRONTEND_URL + "/restablecer-password?" + urlencode({"token": token, "empresa": slug})
+    enlace_recuperacion = FRONTEND_URL + "/restablecer-password?" + urlencode({"token": token})
 
     # Nunca registrar enlaces, tokens ni destinatarios en logs.
     if not SMTP_HOST or SMTP_HOST == "test":

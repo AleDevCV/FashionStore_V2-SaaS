@@ -20,10 +20,11 @@ def resolve(slug, claims):
         marker=context.set(tenant)
         try:
             with get_connection() as conn, conn.cursor(cursor_factory=RealDictCursor) as cur:
-                cur.execute('SELECT u.id_usuario,u.correo,u.estado,u.token_version,r.nombre AS rol FROM usuario u JOIN rol r ON r.id_rol=u.id_role WHERE u.id_usuario=%s',(claims['id_usuario'],))
+                cur.execute('SELECT u.id_usuario,u.account_id,u.correo,u.estado,u.token_version,r.nombre AS rol FROM usuario u JOIN rol r ON r.id_rol=u.id_role WHERE u.id_usuario=%s',(claims['id_usuario'],))
                 user=cur.fetchone()
             if not user or user['estado']!='Activo' or user['token_version']!=claims.get('token_version',0):return None
-            tenant=replace(tenant,user_id=user['id_usuario'],role=user['rol'],email=user['correo'])
+            if claims.get('account_id') and user['account_id']!=claims['account_id']:return None
+            tenant=replace(tenant,user_id=user['id_usuario'],role=user['rol'],email=user['correo'],account_id=claims.get('account_id'))
         finally:context.reset(marker)
     return tenant
 
@@ -36,7 +37,16 @@ def subscription_active(tenant):
     finally:context.reset(marker)
 
 async def tenant_middleware(request, call_next):
+    from fastapi import HTTPException
+    from app.services import identity
+    path=request.url.path
     if request.method=='OPTIONS' or request.url.path in {'/health','/docs','/openapi.json','/redoc'}:
+        return await call_next(request)
+    public_identity={'/api/login','/api/login/','/api/auth/registro','/api/auth/registro/',
+        '/api/auth/recuperar-password','/api/auth/recuperar-password/',
+        '/api/auth/verificar-token-recuperacion','/api/auth/verificar-token-recuperacion/',
+        '/api/auth/restablecer-password','/api/auth/restablecer-password/','/api/tiendas'}
+    if path in public_identity:
         return await call_next(request)
     from app.services.auth_service import decodificar_token_acceso
     if request.url.path.endswith('/stripe/webhook'):
@@ -62,8 +72,30 @@ async def tenant_middleware(request, call_next):
     if authorization:
         parts=authorization.split(' ',1)
         claims=decodificar_token_acceso(parts[1]) if len(parts)==2 and parts[0].lower()=='bearer' else None
-        if not claims or not claims.get('tenant_id') or not claims.get('id_usuario'):
+        if not claims or (not claims.get('tenant_id') and not claims.get('account_id')) or not claims.get('id_usuario'):
             return JSONResponse({'detail':'Sesión inválida o expirada.'},status_code=401)
+    global_paths={'/api/auth/seleccionar-tienda','/api/cuenta/perfil','/api/cuenta/compras'}
+    if claims and claims.get('account_id'):
+        try:
+            account=await asyncio.to_thread(identity.validate_claims,claims)
+        except HTTPException as error:
+            return JSONResponse({'detail':error.detail},status_code=error.status_code)
+        request.state.identity=account
+        if path in global_paths or not claims.get('tenant_id'):
+            marker=context.set(TenantContext(0,user_id=account['id'],role='Cliente' if account['tipo']=='CLIENTE' else '',email=account['correo'],account_id=account['id']))
+            try:
+                if path=='/api/contexto':return JSONResponse(identity.unbound_context(account))
+                if path=='/api/logout':
+                    def revoke():
+                        with identity.cursor() as cur:cur.execute('SELECT identity_revoke(%s)',(account['id'],))
+                    await asyncio.to_thread(revoke)
+                    return JSONResponse({'mensaje':'Sesión global revocada. Sus pendientes se conservan.'})
+                if path not in global_paths:
+                    return JSONResponse({'detail':'Elija una tienda desde el catálogo para continuar.'},status_code=409)
+                return await call_next(request)
+            finally:context.reset(marker)
+    elif path in global_paths:
+        return JSONResponse({'detail':'Inicie sesión con su cuenta global.'},status_code=401)
     slug=request.headers.get('x-empresa') or request.query_params.get('empresa')
     if request.url.path.startswith('/api/catalogo/imagenes/'):
         parts=request.url.path.split('/')

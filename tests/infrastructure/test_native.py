@@ -80,7 +80,7 @@ def sample_sources(root):
              'Parcial2_backend/requirements.txt': 'fastapi',
              'infra/native/verify_release.py': 'pass',
              'infra/native/api.env': 'never-package-private',
-             'scripts/migrate.py': 'pass', 'scripts/seed_demo.py': 'pass', 'scripts/seed_demo_history.py': 'pass',
+             'scripts/migrate.py': 'pass', 'scripts/seed_demo.py': 'pass', 'scripts/seed_demo_history.py': 'pass', 'scripts/seed_login_accounts.py': 'pass',
              'Parcial2_frontend-web/src/main.ts': 'app',
              'Parcial2_frontend-web/angular.json': '{}', 'Parcial2_frontend-web/package-lock.json': '{}',
              'Parcial2_frontend-web/package.json': '{}', 'Parcial2_frontend-web/ngsw-config.json': '{}',

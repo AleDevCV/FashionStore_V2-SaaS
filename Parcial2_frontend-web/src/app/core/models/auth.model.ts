@@ -38,6 +38,9 @@ export interface RespuestaLogin {
  * estándar del estándar JWT (RFC 7519).
  */
 export interface PayloadJwt {
+  account_id?: number;
+  tipo_cuenta?: 'CLIENTE'|'PERSONAL'|'PLATAFORMA';
+  empresa_slug?: string;
   tenant_id: number;
   /** Identificador del usuario en la tabla `usuario`. */
   id_usuario: number;

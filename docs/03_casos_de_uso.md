@@ -8,31 +8,34 @@ Las fichas expresan comportamiento requerido. El estado de implementación y de 
 
 **Actor:** Todos los usuarios. **Plataforma:** Web y Flutter. **Antecedente P1:** 01.
 
-**Objetivo:** Sesión vinculada a una empresa y datos locales separados.
+**Objetivo:** Acceso por identidad global con contexto comercial y almacenamiento separados por tienda.
 
-**Precondiciones:** empresa identificada y activa; permisos vigentes para operaciones privadas; referencias pertenecientes a la misma empresa. Para registro offline, snapshot y sesión previamente habilitados.
+**Precondiciones:** conexión para autenticar o recuperar; cuenta activa. El personal requiere empresa activa. El cliente elige tienda después de autenticarse.
 
 **Disparador:** el actor solicita iniciar y cerrar sesión.
 
-**Datos:** empresa, correo, contraseña.
+**Datos:** correo, contraseña.
 
 **Flujo principal**
 
-1. Seleccionar empresa.
-2. Enviar credenciales.
-3. Validar cuenta activa y empresa.
-4. Emitir sesión con permisos y sucursales.
-5. Cerrar sesión por acción del usuario.
+1. Enviar correo y contraseña sin campo Empresa.
+2. Validar identidad global activa.
+3. Obtener del servidor tipo de cuenta rol y empresa del personal.
+4. Dirigir plataforma al SaaS personal a su empresa y cliente a las tiendas.
+5. Elegir tienda después del acceso del cliente conservando su identidad global.
+6. Cerrar y revocar sesiones sin borrar operaciones offline.
 
 **Flujos alternativos**
 
-- Credenciales incorrectas: respuesta uniforme sin revelar existencia.
-- Empresa inactiva: impedir acceso.
+- Credenciales incorrectas: respuesta uniforme.
+- Cuenta o empresa del personal inactiva: impedir acceso.
+- Personal intenta cambiar empresa: denegar.
+- Cliente: limitar cada operación a la tienda elegida y a sus propios datos.
 - Sin red: solo sesión offline previamente habilitada.
 
-**Postcondición:** Sesión vinculada a una empresa y datos locales separados.
+**Postcondición:** Acceso por identidad global con contexto comercial y almacenamiento separados por tienda.
 
-**Aceptación:** ejecutar el flujo con datos de la empresa A, comprobar el resultado y repetir una petición con referencias de B para verificar la restricción cuando corresponda. Ejecutar cada alternativa y conservar el resultado real; no basta una captura de la pantalla inicial.
+**Aceptación:** pruebas de identidad global, recuperación, permisos e historial propio; suite Angular de autenticación y pruebas Flutter. Evidencias y límites en `ACCESO_GLOBAL.md`. La entrega de correo en producción requiere SMTP real. Android físico y aceptación manual final pendientes.
 
 **Prototipo:** `prototipos/CU-01.svg`. **Diagrama:** `diagramas/casos_uso/CU-01.puml`.
 
@@ -40,31 +43,32 @@ Las fichas expresan comportamiento requerido. El estado de implementación y de 
 
 **Actor:** Usuario registrado. **Plataforma:** Web y Flutter. **Antecedente P1:** 04.
 
-**Objetivo:** Acceso recuperable sin revelar información de cuentas.
+**Objetivo:** Acceso global recuperable sin revelar información de cuentas.
 
-**Precondiciones:** empresa identificada y activa; permisos vigentes para operaciones privadas; referencias pertenecientes a la misma empresa. Para registro offline, snapshot y sesión previamente habilitados.
+**Precondiciones:** conexión para autenticar o recuperar; cuenta activa. El personal requiere empresa activa. El cliente elige tienda después de autenticarse.
 
 **Disparador:** el actor solicita recuperar contraseña.
 
-**Datos:** empresa, correo, token, contraseña nueva.
+**Datos:** correo, token, contraseña nueva.
 
 **Flujo principal**
 
-1. Solicitar recuperación.
+1. Solicitar recuperación global sin campo Empresa.
 2. Emitir respuesta uniforme.
-3. Entregar enlace temporal por correo.
-4. Validar token de un solo uso.
-5. Actualizar hash e invalidar token.
+3. Enviar enlace temporal al correo de recuperación disponible.
+4. Validar token de un solo uso almacenado como hash.
+5. Actualizar contraseña global e invalidar sesiones en todas las tiendas.
 
 **Flujos alternativos**
 
 - Token vencido o reutilizado: rechazar.
 - Cuenta inexistente: misma respuesta.
 - Sin red: solicitar conexión.
+- SMTP externo no configurado: entrega real pendiente de habilitación.
 
-**Postcondición:** Acceso recuperable sin revelar información de cuentas.
+**Postcondición:** Acceso global recuperable sin revelar información de cuentas.
 
-**Aceptación:** ejecutar el flujo con datos de la empresa A, comprobar el resultado y repetir una petición con referencias de B para verificar la restricción cuando corresponda. Ejecutar cada alternativa y conservar el resultado real; no basta una captura de la pantalla inicial.
+**Aceptación:** pruebas de identidad global, recuperación, permisos e historial propio; suite Angular de autenticación y pruebas Flutter. Evidencias y límites en `ACCESO_GLOBAL.md`. La entrega de correo en producción requiere SMTP real. Android físico y aceptación manual final pendientes.
 
 **Prototipo:** `prototipos/CU-02.svg`. **Diagrama:** `diagramas/casos_uso/CU-02.puml`.
 

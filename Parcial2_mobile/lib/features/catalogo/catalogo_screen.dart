@@ -1,3 +1,4 @@
+import '../tiendas/tiendas_screen.dart';
 import '../reportes/reportes_screen.dart';
 import '../cambios/cambios_screen.dart';
 import '../offline/offline_screen.dart';
@@ -665,6 +666,7 @@ class _CatalogoScreenState extends State<CatalogoScreen> {
               ],
             ),
           ),
+          if (!autenticado || rol == 'Cliente') ListTile(leading:const Icon(Icons.storefront_outlined),title:const Text('Todas las tiendas y mis compras'),onTap:()=>Navigator.of(context).pushReplacement(MaterialPageRoute(builder:(_)=>const TiendasScreen()))),
           ListTile(
             leading: const Icon(Icons.checkroom_outlined, color: fsInk),
             title: const Text('Catálogo de Prendas'),

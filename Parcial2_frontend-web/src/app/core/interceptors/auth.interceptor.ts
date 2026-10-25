@@ -48,10 +48,10 @@ export const authInterceptor: HttpInterceptorFn = (solicitud, siguiente) => {
     solicitud.url.includes('/api/auth/verificar-token-recuperacion') ||
     solicitud.url.includes('/api/auth/restablecer-password');
 
-  const esPeticionExcluida = esPeticionDeLogin || esPeticionRecuperacion || solicitud.url.includes('/api/logout');
+  const esPeticionExcluida = esPeticionDeLogin || esPeticionRecuperacion || solicitud.url.includes('/api/auth/registro') || solicitud.url.includes('/api/logout');
 
   const token = authService.obtenerToken();
-  if (solicitud.url.includes('/api/')) {
+  if (!esPeticionExcluida && solicitud.url.includes('/api/')) {
     solicitud = solicitud.clone({setHeaders: {'X-Empresa': new URLSearchParams(location.search).get('empresa') || localStorage.getItem('fashionstore_p2_empresa') || 'demo-a'}});
   }
 

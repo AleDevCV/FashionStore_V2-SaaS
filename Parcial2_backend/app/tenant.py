@@ -11,6 +11,7 @@ class TenantContext:
     email: str = ''
     platform: bool = False
     slug: str = ''
+    account_id: Optional[int] = None
 
 context: ContextVar[Optional[TenantContext]] = ContextVar('tenant_context', default=None)
 

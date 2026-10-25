@@ -19,6 +19,7 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('--base', default='http://127.0.0.1:2468')
     parser.add_argument('--output', type=Path, required=True)
+    parser.add_argument('--api-only', action='store_true')
     args = parser.parse_args()
     base = args.base.rstrip('/')
     password = os.environ['DEMO_PASSWORD']
@@ -49,15 +50,16 @@ def main():
         return result, time.monotonic() - start
 
     call('/health')
-    for path in ('/', '/login', '/ngsw.json', '/ngsw-worker.js', '/manifest.webmanifest'):
+    for path in (() if args.api_only else ('/', '/login', '/ngsw.json', '/ngsw-worker.js', '/manifest.webmanifest')):
         body, _ = call(path)
         assert body
-    call('/.env', expected=403)
+    if not args.api_only:call('/.env', expected=403)
     call('/api/contexto', expected=400)
     tokens, contexts, variants = {}, {}, {}
     for company in ('demo-a', 'demo-b'):
-        login, _ = call('/api/login', company, data={
-            'correo': 'admin@example.com', 'password': password})
+        brand='atelierandino' if company=='demo-a' else 'casatextil'
+        login, _ = call('/api/login', data={
+            'correo': brand+'@fashionstore.com', 'password': password})
         tokens[company] = login['access_token']
         context, _ = call('/api/contexto', token=tokens[company])
         assert context['empresa']['slug'] == company
@@ -69,6 +71,25 @@ def main():
         variants[company] = {row['id_variante_prenda'] for row in catalog['products']}
     assert contexts['demo-a']['empresa']['id_empresa'] != contexts['demo-b']['empresa']['id_empresa']
     assert not variants['demo-a'].intersection(variants['demo-b'])
+    platform,_=call('/api/login',data={'correo':'admin@fashionstore.com','password':os.environ['DEMO_PLATFORM_PASSWORD']})
+    companies,_=call('/api/empresas',token=platform['access_token'])
+    assert {'demo-a','demo-b'}.issubset({item['slug'] for item in companies})
+    for company,brand in (('demo-a','atelierandino'),('demo-b','casatextil')):
+        for prefix,role in (('cajero','Cajero (POS)'),('encargado','Encargado de Sucursal')):
+            login,_=call('/api/login',data={'correo':f'{prefix}-{brand}-01@fashionstore.com','password':password})
+            ctx,_=call('/api/contexto',token=login['access_token'])
+            assert ctx['empresa']['slug']==company and ctx['usuario']['rol']==role
+            call('/api/usuarios/',token=login['access_token'],expected=403)
+    for number in range(1,4):
+        login,_=call('/api/login',data={'correo':f'cliente{number}@fashionstore.com','password':password})
+        ctx,_=call('/api/contexto',token=login['access_token'])
+        assert ctx['empresa'] is None and ctx['usuario']['rol']=='Cliente'
+        for company in ('demo-a','demo-b'):
+            selected,_=call('/api/auth/seleccionar-tienda',token=login['access_token'],data={'empresa':company})
+            ctx,_=call('/api/contexto',token=selected['access_token'])
+            assert ctx['empresa']['slug']==company and ctx['usuario']['rol']=='Cliente'
+            call('/api/usuarios/',token=selected['access_token'],expected=403)
+        call('/api/cuenta/compras',token=login['access_token'])
     branch_b = contexts['demo-b']['sucursales'][0]['id_sucursal']
     call(f'/api/offline/catalogo?branch_id={branch_b}', token=tokens['demo-a'], expected=404)
     call('/api/reportes/generativo', token=tokens['demo-a'],
@@ -96,7 +117,8 @@ def main():
         timings = list(executor.map(read_context, range(30)))
     evidence = {
         'checked_at_utc': datetime.now(timezone.utc).isoformat(), 'base_url': base,
-        'health_and_pwa_assets': True, 'private_dotfile_denied': True,
+        'health_and_pwa_assets': not args.api_only, 'private_dotfile_denied': not args.api_only,
+        'email_only_login': True, 'verified_demo_accounts':10, 'global_customers_switch_stores':True,
         'companies': 2, 'offline_catalog_variants_per_company': 12,
         'tenant_isolation_and_cross_report_denial': True,
         'basic_generative_denied_without_provider_call': True,

@@ -27,10 +27,10 @@ def test_context_is_separated_in_reused_pool(client,companies,headers):
             assert r.json()['empresa']['id_empresa']==company['tenant']
             assert [s['id_sucursal'] for s in r.json()['sucursales']]==[company['branch']]
 
-def test_login_same_email_in_two_companies(client,companies):
+def test_login_resolves_company_from_unique_email(client,companies):
     from app.services.auth_service import decodificar_token_acceso
     for company in companies:
-        r=client.post('/api/login/',headers={'X-Empresa':company['slug']},json={'correo':'admin@example.com','password':'test-password-123'})
+        r=client.post('/api/login/',json={'correo':company['email'],'password':'test-password-123'})
         assert r.status_code==200,r.text
         assert decodificar_token_acceso(r.json()['access_token'])['tenant_id']==company['tenant']
 

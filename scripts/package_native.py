@@ -38,7 +38,7 @@ def collect(root):
             if path.is_file():
                 files[(Path(target) / path.relative_to(directory)).as_posix()] = path.read_bytes()
     for name in ('Parcial2_backend/requirements.txt', 'scripts/migrate.py',
-                 'scripts/seed_demo.py', 'scripts/seed_demo_history.py'):
+                 'scripts/seed_demo.py', 'scripts/seed_demo_history.py', 'scripts/seed_login_accounts.py'):
         files[name] = (root / name).read_bytes()
     if not {'web/index.html', 'web/ngsw.json', 'web/ngsw-worker.js'}.issubset(files):
         raise ValueError('Se requiere una compilación Angular de producción con Service Worker.')

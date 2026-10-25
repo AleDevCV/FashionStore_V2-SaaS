@@ -11,7 +11,7 @@ const wait=async(fn,message)=>{for(let i=0;i<60;i++){if(await fn())return;await 
  page.on('console',m=>{if(m.type()==='error')console.error('Navegador:',m.text().replace(/eyJ[\w.-]+/g,'[token]'));});
  await page.goto('http://localhost:8082/login');
  await page.evaluate(()=>{localStorage.removeItem('fashionstore_p2_token');});await page.goto('http://localhost:8082/login');
- await page.getByLabel('Identificador de empresa').fill('demo-a');await page.locator('#correo').fill('admin@example.com');await page.locator('#password').fill(env.DEMO_PASSWORD);
+ await page.locator('#correo').fill('atelierandino@fashionstore.com');await page.locator('#password').fill(env.DEMO_PASSWORD);
  await page.locator('button[type=submit]').click();await page.waitForURL('**/panel/**');
  await page.goto('http://localhost:8082/offline');await page.screenshot({path:path.join(out,'diagnostico.png'),fullPage:true});console.log('Sesión local:',await page.evaluate(()=>({active:localStorage.getItem('fashionstore_p2_active'),token:!!localStorage.getItem('fashionstore_p2_token')})));await page.locator('#offline-branch option').nth(1).waitFor({state:'attached'});await page.locator('#offline-branch').selectOption({index:1});
  await page.getByRole('button',{name:'Actualizar catÃ¡logo'}).click();await page.getByText('CatÃ¡logo guardado.',{exact:false}).waitFor();

@@ -5,21 +5,24 @@
     "actores": "Todos los usuarios",
     "plataforma": "Web y Flutter",
     "antecedente": "01",
-    "datos": "empresa, correo, contraseña",
+    "datos": "correo, contraseña",
     "flujo": [
-      "Seleccionar empresa",
-      "Enviar credenciales",
-      "Validar cuenta activa y empresa",
-      "Emitir sesión con permisos y sucursales",
-      "Cerrar sesión por acción del usuario"
+      "Enviar correo y contraseña sin campo Empresa",
+      "Validar identidad global activa",
+      "Obtener del servidor tipo de cuenta rol y empresa del personal",
+      "Dirigir plataforma al SaaS personal a su empresa y cliente a las tiendas",
+      "Elegir tienda después del acceso del cliente conservando su identidad global",
+      "Cerrar y revocar sesiones sin borrar operaciones offline"
     ],
     "alternativos": [
-      "Credenciales incorrectas: respuesta uniforme sin revelar existencia",
-      "Empresa inactiva: impedir acceso",
+      "Credenciales incorrectas: respuesta uniforme",
+      "Cuenta o empresa del personal inactiva: impedir acceso",
+      "Personal intenta cambiar empresa: denegar",
+      "Cliente: limitar cada operación a la tienda elegida y a sus propios datos",
       "Sin red: solo sesión offline previamente habilitada"
     ],
-    "postcondicion": "Sesión vinculada a una empresa y datos locales separados",
-    "estado": "especificado"
+    "postcondicion": "Acceso por identidad global con contexto comercial y almacenamiento separados por tienda",
+    "estado": "probado"
   },
   {
     "id": "CU-02",
@@ -27,21 +30,22 @@
     "actores": "Usuario registrado",
     "plataforma": "Web y Flutter",
     "antecedente": "04",
-    "datos": "empresa, correo, token, contraseña nueva",
+    "datos": "correo, token, contraseña nueva",
     "flujo": [
-      "Solicitar recuperación",
+      "Solicitar recuperación global sin campo Empresa",
       "Emitir respuesta uniforme",
-      "Entregar enlace temporal por correo",
-      "Validar token de un solo uso",
-      "Actualizar hash e invalidar token"
+      "Enviar enlace temporal al correo de recuperación disponible",
+      "Validar token de un solo uso almacenado como hash",
+      "Actualizar contraseña global e invalidar sesiones en todas las tiendas"
     ],
     "alternativos": [
       "Token vencido o reutilizado: rechazar",
       "Cuenta inexistente: misma respuesta",
-      "Sin red: solicitar conexión"
+      "Sin red: solicitar conexión",
+      "SMTP externo no configurado: entrega real pendiente de habilitación"
     ],
-    "postcondicion": "Acceso recuperable sin revelar información de cuentas",
-    "estado": "especificado"
+    "postcondicion": "Acceso global recuperable sin revelar información de cuentas",
+    "estado": "implementado"
   },
   {
     "id": "CU-03",

@@ -2,6 +2,8 @@
 
 Decisión vigente desde el 23 de octubre de 2026: **no instalar ni ejecutar Docker en el servidor**. Docker se conserva en Windows para desarrollo y pruebas. Este documento sustituye el despliegue con contenedores del plan inicial.
 
+Actualización del 25 de octubre: producción en https://fashionstore.aledevcv.me, versión `20261025T051010Z-f476f223`, con migración 017 y acceso global por correo. Procedimiento aplicado, respaldo previo y evidencia en `ACCESO_GLOBAL.md`. Las claves demo del SaaS y del resto de usuarios usan variables privadas diferentes (`DEMO_PLATFORM_PASSWORD` y `DEMO_PASSWORD`).
+
 ## Entorno comprobado y estado
 
 Servidor Debian 13, dos CPU, 1934 MiB RAM, Python 3.13.5 y PostgreSQL 17.11. PostgreSQL, Nginx, Cloudflared, Tailscale y VecinoMarket ya están activos. No se instala otra instancia de PostgreSQL, no se detienen los servicios ajenos y no se cambian sus puertos ni la configuración global de memoria. Docker no estaba instalado; la sesión anterior que esperaba sudo fue cerrada y el instalador anterior quedó desactivado.

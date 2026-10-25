@@ -13,10 +13,10 @@ library;
 ///   flutter run --dart-define=API_BASE_URL=http://192.168.1.9:8000
 const String apiBaseUrl = String.fromEnvironment(
   'API_BASE_URL',
-  defaultValue: 'https://fashionstore-v2.aledevcv.me',
+  defaultValue: 'https://fashionstore.aledevcv.me',
 );
 
 const String webBaseUrl = String.fromEnvironment(
   'WEB_BASE_URL',
-  defaultValue: 'https://fashionstore-v2.aledevcv.me',
+  defaultValue: 'https://fashionstore.aledevcv.me',
 );

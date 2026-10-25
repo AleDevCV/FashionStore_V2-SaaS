@@ -1,4 +1,4 @@
-param([string]$JdkPath='C:\Program Files\Android\Android Studio\jbr',[string]$ApiUrl='https://fashionstore-v2.aledevcv.me')
+param([string]$JdkPath='C:\Program Files\Android\Android Studio\jbr',[string]$ApiUrl='https://fashionstore.aledevcv.me')
 $ErrorActionPreference='Stop'
 $p2Root=Split-Path -Parent $PSScriptRoot
 $p2Temp=Join-Path $p2Root 'tmp\java'

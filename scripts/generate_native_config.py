@@ -38,7 +38,8 @@ def generate(output, source, base_url):
     admin = {'POSTGRES_DB': provision['database'], 'POSTGRES_USER': provision['owner'],
              'POSTGRES_PASSWORD': provision['owner_password'], 'APP_DB_USER': provision['app'],
              'APP_DB_PASSWORD': provision['app_password'], 'MIGRATION_HOST': '127.0.0.1',
-             'MIGRATION_PORT': '5432', 'DEMO_PASSWORD': secrets.token_urlsafe(20), 'SECRET_KEY': session_key}
+             'MIGRATION_PORT': '5432', 'DEMO_PASSWORD': secrets.token_urlsafe(20),
+             'DEMO_PLATFORM_PASSWORD': secrets.token_urlsafe(20), 'SECRET_KEY': session_key}
     api = {'DB_HOST': '127.0.0.1', 'DB_PORT': '5432', 'DB_NAME': provision['database'],
            'DB_USER': provision['app'], 'DB_PASSWORD': provision['app_password'],
            'DB_MIN_CONNECTIONS': '1', 'DB_MAX_CONNECTIONS': '3',
@@ -64,7 +65,7 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('--output', type=Path, default=ROOT / 'infra/secrets/native')
     parser.add_argument('--source', type=Path, default=ROOT / '.env')
-    parser.add_argument('--base-url', default='https://fashionstore-v2.aledevcv.me')
+    parser.add_argument('--base-url', default='https://fashionstore.aledevcv.me')
     args = parser.parse_args()
     result = generate(args.output, args.source, args.base_url)
     print('Configuración privada preparada en', result)

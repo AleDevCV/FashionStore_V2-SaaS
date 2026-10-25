@@ -1,4 +1,3 @@
-import { EmpresaSelector } from '../../../core/empresa-selector';
 /**
  * =============================================================================
  * FASHIONSTORE - COMPONENTE DE INICIO DE SESIÓN (CU01)
@@ -26,7 +25,7 @@ import { AuthService } from '../../../core/services/auth.service';
 
 @Component({
   selector: 'app-login',
-  imports: [EmpresaSelector, ReactiveFormsModule, RouterLink],
+  imports: [ReactiveFormsModule, RouterLink],
   templateUrl: './login.html',
   styleUrl: './login.scss',
 })
@@ -133,9 +132,13 @@ export class Login {
         // Si el usuario autenticado es un Cliente, se redirige al catálogo
         const rol = this.authService.obtenerRol();
         if (rol === 'Cliente') {
-          this.router.navigateByUrl('/catalogo');
+          this.router.navigateByUrl('/tiendas');
           return;
         }
+
+        const tipo = this.authService.usuarioActual()?.tipo_cuenta;
+        if (tipo === 'PLATAFORMA') { this.router.navigateByUrl('/panel/saas'); return; }
+        if (rol === 'Cajero (POS)') { this.router.navigateByUrl('/panel/pos'); return; }
 
         // Si el guardián interceptó una ruta protegida, se vuelve a ella.
         const returnUrl =

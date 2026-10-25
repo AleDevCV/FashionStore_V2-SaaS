@@ -4,7 +4,7 @@
 
 FastAPI mantiene routers, esquemas y servicios SQL. El contexto de empresa se resuelve por petición y se aplica con set_config local en cada transacción del pool. RLS aplica al rol de ejecución no propietario. El propietario se utiliza exclusivamente para migraciones y semillas controladas.
 
-Angular conserva componentes standalone y añade selección de empresa y administración SaaS. Flutter utiliza el mismo identificador público en las peticiones previas al login; después el token determina el tenant de forma autoritativa. Los datos de una sucursal siempre pertenecen a una empresa.
+Angular conserva componentes standalone y administración SaaS. Angular y Flutter autentican únicamente por correo y contraseña. El personal recibe un token vinculado a su empresa; el cliente recibe una sesión global y selecciona tienda después del acceso mediante un nuevo token firmado. El identificador público se usa para navegar catálogos, sin conceder permisos. Los datos de una sucursal siempre pertenecen a una empresa. Detalles y evidencias en `ACCESO_GLOBAL.md`.
 
 ## Ejecución local y producción nativa
 
@@ -17,14 +17,18 @@ Los comprobantes e imágenes quedan en `shared/files`, fuera del código y del d
 - Empresa: identificador interno, slug público, nombre, estado y condición de plataforma.
 - Plan: nombre, máximo de sucursales activas y acceso a reportes generativos.
 - Suscripción: empresa, plan, inicio y vencimiento con zona horaria.
-- Usuario y rol: pertenecen a la empresa, incluso cuando el correo coincide en otra.
+- Cuenta global: correo único, identidad, hash y versión de sesión. El cliente opera en varias tiendas con la misma cuenta.
+- Usuario y rol: perfil operativo perteneciente a una empresa, vinculado a la cuenta global y con sus IDs comerciales conservados.
 - Usuario sucursal: relación explícita para futuras operaciones restringidas por sucursal.
 
 ## Contratos iniciales implementados
 
 | Método y ruta | Autorización | Resultado |
 |---|---|---|
-| POST /api/login/ | X-Empresa y credenciales | JWT con tenant, usuario y versión de sesión |
+| POST /api/login/ | Correo y contraseña | JWT global del cliente o vinculado a la empresa del personal |
+| GET /api/tiendas | Público | Tiendas comerciales activas |
+| POST /api/auth/seleccionar-tienda | Cliente global vigente | Nuevo token firmado para operar en la tienda elegida |
+| GET /api/cuenta/compras | Cliente global vigente | Historial propio entre tiendas |
 | POST /api/logout | Sesión vigente | Revoca sesiones del usuario conservando datos locales |
 | GET /api/contexto | Sesión vigente | Empresa, usuario, suscripción y sucursales |
 | GET o POST /api/empresas | Administrador de plataforma | Consulta o aprovisionamiento atómico |

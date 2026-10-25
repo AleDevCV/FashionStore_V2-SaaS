@@ -43,6 +43,8 @@ def initialize_company(cur,tenant_id,email,password,plan_id):
     provision_permissions(cur,dict(zip(roles,role_ids)))
     cur.execute("INSERT INTO usuario(nombre,apellido,correo,password_hash,id_role) VALUES('Administrador','Empresa',%s,%s,%s) RETURNING id_usuario",(email,generar_hash_password(password),role_ids[0]))
     admin=cur.fetchone()['id_usuario']
+    from app.services.identity import index_user
+    index_user(cur, admin)
     cur.execute("INSERT INTO cliente(ci,nombre_completo) VALUES('MOSTRADOR','Cliente Mostrador')")
     return admin
 
@@ -58,6 +60,9 @@ def session_context(user=Depends(get_current_user),cur=Depends(get_db)):
 
 @router.post('/logout')
 def logout(user=Depends(get_current_user),cur=Depends(get_db)):
+    ctx=require_context()
+    if ctx.account_id:
+        cur.execute('SELECT identity_revoke(%s)',(ctx.account_id,))
     cur.execute('UPDATE usuario SET token_version=token_version+1 WHERE id_usuario=%s',(user['id_usuario'],))
     return {'mensaje':'Sesiones revocadas. Las operaciones locales se conservan.'}
 

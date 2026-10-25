@@ -92,13 +92,30 @@ class AuthService {
       body: SolicitudLogin(correo: correo, password: password).toJson(),
     );
     final respuesta = RespuestaToken.fromJson(data as Map<String, dynamic>);
-    _token = respuesta.accessToken;
+    await acceptToken(respuesta.accessToken);
+    return respuesta;
+  }
+
+  Future<void> selectStore(String empresa) async {
+    final data=await ApiClient(baseUrl:apiBaseUrl,tokenProvider:()=>token).post('/api/auth/seleccionar-tienda',body:{'empresa':empresa});
+    await acceptToken(data['access_token']);
+  }
+
+  Future<void> acceptToken(String value) async {
+    _token = value;
+    final claims=tokenClaims!;
+    ApiClient.empresa=claims['empresa_slug'] as String? ?? '';
     await SessionVault.storage.write(key:SessionVault.key('token'),value:_token);
     await SessionVault.storage.write(key:SessionVault.key('empresa'),value:ApiClient.empresa);
-    await SessionVault.select('${tokenClaims!['tenant_id']}:${tokenClaims!['id_usuario']}');
-    CarritoService.instance.selectAccount(SessionVault.active!);
-    await PushService.register(()=>token);
-    return respuesta;
+    if(claims['tenant_id']!=0){
+      await SessionVault.select('${claims['tenant_id']}:${claims['id_usuario']}');
+      CarritoService.instance.selectAccount(SessionVault.active!);
+      await PushService.register(()=>token);
+    }else{
+      SessionVault.active=null;
+      await SessionVault.storage.delete(key:SessionVault.key('active'));
+      CarritoService.instance.resetAccount();
+    }
   }
 
   /// Solicita el envío de un enlace/token de recuperación (CU04).

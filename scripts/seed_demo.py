@@ -22,7 +22,8 @@ def main():
             cur.execute('SELECT id_empresa FROM empresa WHERE slug=%s',(slug,))
             if cur.fetchone():print(slug+': ya existe; no se sobrescribieron datos.');continue
             cur.execute('INSERT INTO empresa(slug,nombre) VALUES(%s,%s) RETURNING id_empresa',(slug,name));tenant=cur.fetchone()['id_empresa']
-            admin=initialize_company(cur,tenant,'admin@example.com',password,plan)
+            brand='atelierandino' if slug=='demo-a' else 'casatextil'
+            admin=initialize_company(cur,tenant,brand+'@fashionstore.com',password,plan)
             cur.execute("INSERT INTO ciudad(nombre) VALUES('Santa Cruz de la Sierra') RETURNING id_ciudad");city=cur.fetchone()['id_ciudad']
             cur.execute("INSERT INTO sucursal(nombre,direccion,id_ciudad,id_encargado) VALUES('Central','Avenida de demostración 100',%s,%s) RETURNING id_sucursal",(city,admin));branch=cur.fetchone()['id_sucursal']
             cur.execute('INSERT INTO usuario_sucursal(tenant_id,id_usuario,id_sucursal) VALUES(%s,%s,%s)',(tenant,admin,branch))

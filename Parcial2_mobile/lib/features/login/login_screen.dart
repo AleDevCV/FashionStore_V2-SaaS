@@ -1,3 +1,5 @@
+import '../tiendas/tiendas_screen.dart';
+import 'registro_screen.dart';
 import 'package:flutter/material.dart';
 
 import '../../core/api_client.dart';
@@ -21,7 +23,6 @@ class LoginScreen extends StatefulWidget {
 class _LoginScreenState extends State<LoginScreen> {
   final _formKey = GlobalKey<FormState>();
   final _correoCtrl = TextEditingController();
-  final _empresaCtrl = TextEditingController(text: ApiClient.empresa);
   final _passwordCtrl = TextEditingController();
   final AuthService _auth = AuthService();
 
@@ -32,7 +33,6 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   void dispose() {
     _correoCtrl.dispose();
-    _empresaCtrl.dispose();
     _passwordCtrl.dispose();
     super.dispose();
   }
@@ -46,14 +46,13 @@ class _LoginScreenState extends State<LoginScreen> {
     });
 
     try {
-      ApiClient.empresa = _empresaCtrl.text.trim().toLowerCase();
       await _auth.login(_correoCtrl.text.trim(), _passwordCtrl.text);
       if (!mounted) return;
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(content: Text('Bienvenido a FashionStore.')),
       );
       Navigator.of(context).pushReplacement(
-        MaterialPageRoute(builder: (_) => const CatalogoScreen()),
+        MaterialPageRoute(builder: (_) => _auth.rol=='Cliente' ? const TiendasScreen() : _auth.tokenClaims?['tipo_cuenta']=='PLATAFORMA' ? const PlataformaScreen() : const CatalogoScreen()),
       );
     } on ApiException catch (e) {
       if (!mounted) return;
@@ -68,7 +67,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
   void _irComoInvitado() {
     Navigator.of(context).pushReplacement(
-      MaterialPageRoute(builder: (_) => const CatalogoScreen()),
+      MaterialPageRoute(builder: (_) => const TiendasScreen()),
     );
   }
 
@@ -103,7 +102,6 @@ class _LoginScreenState extends State<LoginScreen> {
                       style: TextStyle(fontSize: 12, letterSpacing: 2, color: fsInkMuted),
                     ),
                     const SizedBox(height: 32),
-                    TextFormField(controller: _empresaCtrl, decoration: const InputDecoration(labelText: 'Empresa', hintText: 'demo-a'), validator: (value) => value == null || !RegExp(r'^[a-z0-9][a-z0-9-]{1,60}$').hasMatch(value.trim()) ? 'Identificador de empresa requerido' : null),
                     const SizedBox(height: 16),
                     TextFormField(
                       controller: _correoCtrl,
@@ -183,6 +181,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           : const Text('INICIAR SESIÓN'),
                     ),
                     const SizedBox(height: 12),
+                    TextButton(onPressed:()=>Navigator.of(context).push(MaterialPageRoute(builder:(_)=>const RegistroScreen())),child:const Text('Crear una cuenta de cliente')),
                     TextButton(
                       onPressed: _irComoInvitado,
                       child: const Text('Explorar catálogo sin cuenta'),
