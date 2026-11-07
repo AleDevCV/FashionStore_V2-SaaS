@@ -1,0 +1,501 @@
+[
+  {
+    "cu": "CU07",
+    "archivo": "CU07_Diagrama_Secuencia.drawio",
+    "participantes": 8,
+    "mensajes": 37,
+    "fragmentos": {
+      "alt": 5,
+      "opt": 1,
+      "loop": 1
+    },
+    "ancho": 2675,
+    "alto": 3805,
+    "sha256": "a6e629ae8fa3963eb8eaadb103e4999f7117beb4ba2e3633f8defee44ad8b5b7",
+    "fuentes": [
+      {
+        "file": "Parcial2_backend/app/routers/compras.py",
+        "sha256": "48b2dad21128d252c657acff0cb63f91a550f2442b8bad98e779a06e7e56ec7e"
+      },
+      {
+        "file": "Parcial2_backend/app/routers/proveedores.py",
+        "sha256": "67001665a6e323b51b32427c94a378a69c541e9743a32cb31b7a6e9cde51c303"
+      },
+      {
+        "file": "Parcial2_backend/app/services/bitacora_service.py",
+        "sha256": "ec5d5294930c1b8e3e1d4628fd0b1f8b183bdab2ba205c19751245c33e5608a0"
+      },
+      {
+        "file": "Parcial2_backend/app/services/compra_service.py",
+        "sha256": "db7d658566a7cc4a1c8de8a35071ff8159d92af75d75aacea8c56f861c04e846"
+      },
+      {
+        "file": "Parcial2_backend/app/services/proveedor_service.py",
+        "sha256": "9dc662d1d7bfe087ebd2055de348c860bbe99c1da64fcadb6473a9ddbda56c9e"
+      },
+      {
+        "file": "Parcial2_frontend-web/src/app/features/compras/compras.ts",
+        "sha256": "06b6f3d55f277d4417eb1e070623ca0d9f7af7581cdd8ca2d3049cc1278a24cc"
+      },
+      {
+        "file": "Parcial2_frontend-web/src/app/features/proveedores/proveedores.ts",
+        "sha256": "f03ec68cd738d0ec55c88e930ef1798eed16db7460a6a2ad32a008fc7b9d8e48"
+      },
+      {
+        "file": "Parcial2_mobile/lib/features/compras/compras_screen.dart",
+        "sha256": "fc5bad381dfa5ea35918ca01b5272066919038cf28acd269f2b69e209a254f1f"
+      }
+    ],
+    "actores": 1,
+    "interfaces": 1,
+    "controles": 1,
+    "entidades": 5,
+    "participantes_identicos_a_robustez": true,
+    "mensajes_principales_cubiertos": 32,
+    "xsd_valido": true,
+    "limites_fragmentos_validados": true,
+    "bucles_solo_participantes_involucrados": true,
+    "sin_actores_dentro_de_fragmentos": true,
+    "sin_comunicacion_entre_entidades": true
+  },
+  {
+    "cu": "CU08",
+    "archivo": "CU08_Diagrama_Secuencia.drawio",
+    "participantes": 5,
+    "mensajes": 21,
+    "fragmentos": {
+      "alt": 3,
+      "opt": 0,
+      "loop": 0
+    },
+    "ancho": 1670,
+    "alto": 2303,
+    "sha256": "b3ff676cddf65fcc186b5fc1a8ef80a62e7cc2876f571fa24eb368cfe1080ded",
+    "fuentes": [
+      {
+        "file": "Parcial2_backend/app/routers/catalogo.py",
+        "sha256": "a05748ee7d167f5313501c9c05cef9decc152593eea9afc9f24940927e887856"
+      },
+      {
+        "file": "Parcial2_backend/app/routers/geografia.py",
+        "sha256": "678fb6feab2f92428179c011ce5354cd0cd46706ab402669f649e25bb4884ab3"
+      },
+      {
+        "file": "Parcial2_backend/app/routers/inventario.py",
+        "sha256": "d62751dbe81d9451f2b3b0a2a91e6e09ce365f6157d9eaac037b29eba966490b"
+      },
+      {
+        "file": "Parcial2_backend/app/services/catalogo_service.py",
+        "sha256": "ebb601822e558f04bbffb61b277c7667d979b78edc08debabff723369f1515b7"
+      },
+      {
+        "file": "Parcial2_backend/app/services/geografia_service.py",
+        "sha256": "d3dc34addaf66d8b447aa4aceea17d45500dfb49949dca5eb843b4906022a176"
+      },
+      {
+        "file": "Parcial2_backend/app/services/inventario_service.py",
+        "sha256": "dc671f5d47a6639708258652c345a28733825d55260f7988c6807fe85b34ecf1"
+      },
+      {
+        "file": "Parcial2_frontend-web/src/app/features/catalogo/prenda-detalle/prenda-detalle.ts",
+        "sha256": "0d055dccdeff214d6273faa7a0666ef55bd6e0f89ac29ce78ea7de572efe302b"
+      },
+      {
+        "file": "Parcial2_frontend-web/src/app/features/inventario-monitoreo/inventario-monitoreo.ts",
+        "sha256": "171574ccafc4a711f4882a95687dee996b91d52d7f02057097fe1d3f91298a80"
+      },
+      {
+        "file": "Parcial2_mobile/lib/features/inventario_monitoreo/estado_inventario_screen.dart",
+        "sha256": "42b5e04d70ad9ba957ccb8c9c37c4a476334e60b2b495dc7f46e7e851be7cb72"
+      }
+    ],
+    "actores": 1,
+    "interfaces": 1,
+    "controles": 1,
+    "entidades": 2,
+    "participantes_identicos_a_robustez": true,
+    "mensajes_principales_cubiertos": 18,
+    "xsd_valido": true,
+    "limites_fragmentos_validados": true,
+    "bucles_solo_participantes_involucrados": true,
+    "sin_actores_dentro_de_fragmentos": true,
+    "sin_comunicacion_entre_entidades": true
+  },
+  {
+    "cu": "CU09",
+    "archivo": "CU09_Diagrama_Secuencia.drawio",
+    "participantes": 7,
+    "mensajes": 38,
+    "fragmentos": {
+      "alt": 4,
+      "opt": 2,
+      "loop": 0
+    },
+    "ancho": 2340,
+    "alto": 3815,
+    "sha256": "3d28ee48de4cf42b90b09b6833f22e18b934279ba0fb5cd680e3d36f321c039d",
+    "fuentes": [
+      {
+        "file": "Parcial2_backend/app/routers/catalogo.py",
+        "sha256": "a05748ee7d167f5313501c9c05cef9decc152593eea9afc9f24940927e887856"
+      },
+      {
+        "file": "Parcial2_backend/app/routers/ia.py",
+        "sha256": "e7a20c370647e9aff8fed2885a2b9ba763504a4ccf865ddc7422d8ca335d5c94"
+      },
+      {
+        "file": "Parcial2_backend/app/services/bitacora_service.py",
+        "sha256": "ec5d5294930c1b8e3e1d4628fd0b1f8b183bdab2ba205c19751245c33e5608a0"
+      },
+      {
+        "file": "Parcial2_backend/app/services/catalogo_service.py",
+        "sha256": "ebb601822e558f04bbffb61b277c7667d979b78edc08debabff723369f1515b7"
+      },
+      {
+        "file": "Parcial2_backend/app/services/ia_service.py",
+        "sha256": "331b7a456aef2092046c9d38935222a5be21f2496d522d3496654b9a8d29e9c7"
+      },
+      {
+        "file": "Parcial2_backend/app/services/tryon_service.py",
+        "sha256": "aab687549972e9d53af922a68e44c70a87973d8dfec602aae5e3438645fdee23"
+      },
+      {
+        "file": "Parcial2_frontend-web/src/app/features/catalogo/catalogo.ts",
+        "sha256": "e6ef1512b1003aed2767cbcbc94ddf67e8caf285bce5bc1852e12534c2b386f7"
+      },
+      {
+        "file": "Parcial2_frontend-web/src/app/features/catalogo/probador-ia/probador-ia.ts",
+        "sha256": "db53cf5250138f90b3beab4b289a499fa6ab293fa0cfe5b79806b2fd8bac78d5"
+      },
+      {
+        "file": "Parcial2_mobile/lib/features/catalogo/catalogo_screen.dart",
+        "sha256": "f09885a4d6a5b82756eb80047cbec549a88959174aaefe9512f4e5416e54d1a3"
+      }
+    ],
+    "actores": 1,
+    "interfaces": 2,
+    "controles": 1,
+    "entidades": 3,
+    "participantes_identicos_a_robustez": true,
+    "mensajes_principales_cubiertos": 33,
+    "xsd_valido": true,
+    "limites_fragmentos_validados": true,
+    "bucles_solo_participantes_involucrados": true,
+    "sin_actores_dentro_de_fragmentos": true,
+    "sin_comunicacion_entre_entidades": true
+  },
+  {
+    "cu": "CU10",
+    "archivo": "CU10_Diagrama_Secuencia.drawio",
+    "participantes": 6,
+    "mensajes": 21,
+    "fragmentos": {
+      "alt": 2,
+      "opt": 0,
+      "loop": 0
+    },
+    "ancho": 2005,
+    "alto": 2040,
+    "sha256": "e4bdf59973d4eddffe95838dbbf632db649c9481a697aab5baf9fb1281987600",
+    "fuentes": [
+      {
+        "file": "Parcial2_backend/app/routers/movimientos.py",
+        "sha256": "b2caaf4edc1bf5c7b889c1197d21ca89a8d5a443533b3da230c46ff2bd919e00"
+      },
+      {
+        "file": "Parcial2_backend/app/services/bitacora_service.py",
+        "sha256": "ec5d5294930c1b8e3e1d4628fd0b1f8b183bdab2ba205c19751245c33e5608a0"
+      },
+      {
+        "file": "Parcial2_backend/app/services/movimiento_service.py",
+        "sha256": "61d34960182d30005bd4846a1650fee06be13af51f1434dd7ba949459a935993"
+      },
+      {
+        "file": "Parcial2_frontend-web/src/app/features/inventario-movimientos/movimientos.ts",
+        "sha256": "5dbb6e55a794f48d1b17becab23ace0e60d3d060da10c51dac33ff080918a770"
+      },
+      {
+        "file": "Parcial2_mobile/lib/features/movimientos/movimientos_screen.dart",
+        "sha256": "41faae491afd90d799168b4b0f8d406d54caaa0d79b716747ebe9d6f5bf7e075"
+      }
+    ],
+    "actores": 1,
+    "interfaces": 1,
+    "controles": 1,
+    "entidades": 3,
+    "participantes_identicos_a_robustez": true,
+    "mensajes_principales_cubiertos": 19,
+    "xsd_valido": true,
+    "limites_fragmentos_validados": true,
+    "bucles_solo_participantes_involucrados": true,
+    "sin_actores_dentro_de_fragmentos": true,
+    "sin_comunicacion_entre_entidades": true
+  },
+  {
+    "cu": "CU11",
+    "archivo": "CU11_Diagrama_Secuencia.drawio",
+    "participantes": 9,
+    "mensajes": 34,
+    "fragmentos": {
+      "alt": 4,
+      "opt": 1,
+      "loop": 1
+    },
+    "ancho": 3010,
+    "alto": 3527,
+    "sha256": "b39d88c5a90c14ea08dc4f55a99ba28989d4d15c78fa466ff58e91091f631868",
+    "fuentes": [
+      {
+        "file": "Parcial2_backend/app/routers/order_lifecycle.py",
+        "sha256": "118ad09756dab1f4e0bf6fe3511b207cf48416580a9c63281970f68be12b2732"
+      },
+      {
+        "file": "Parcial2_backend/app/routers/pagos.py",
+        "sha256": "d4db9ce48893e6b7d7957460947d1df05337d1fba777a97cfc6fc26613a0a5f9"
+      },
+      {
+        "file": "Parcial2_backend/app/routers/ventas.py",
+        "sha256": "4d7d8fc4ce4c07a7207030c7e6ef353b9d051a39a9e9e64e35de412ab750375a"
+      },
+      {
+        "file": "Parcial2_backend/app/services/commerce.py",
+        "sha256": "2e7b943a63d3cd6b0fbd3c1f6759681d62b67cfe22bd28d1caac0b907688a4b6"
+      },
+      {
+        "file": "Parcial2_backend/app/services/payments.py",
+        "sha256": "2cde4218e1d92fb362b4786ea118c27ed42990df9b221c9a90e299a676a3ce43"
+      },
+      {
+        "file": "Parcial2_backend/app/services/venta_service.py",
+        "sha256": "56ce9922c3c3a65c1c396550017251d9d84dc61db9f7b6d66d2e2a19742eed8a"
+      },
+      {
+        "file": "Parcial2_frontend-web/src/app/features/checkout/checkout.ts",
+        "sha256": "095be0b9ffc84c77a86ce72ba2141d4da026cc99ddb0f723052f4702be3cb3ff"
+      },
+      {
+        "file": "Parcial2_frontend-web/src/app/features/pago/pago-exitoso/pago-exitoso.ts",
+        "sha256": "9835a12c4da7c2ef4052111662913b83db8552d47a3f4f5ccdd9ad2550a6b558"
+      },
+      {
+        "file": "Parcial2_mobile/lib/features/checkout/checkout_screen.dart",
+        "sha256": "ea311de9395a925cdc09401a7e2195c8b08acedf96255a13b78ffc8c9e836306"
+      }
+    ],
+    "actores": 1,
+    "interfaces": 2,
+    "controles": 1,
+    "entidades": 5,
+    "participantes_identicos_a_robustez": true,
+    "mensajes_principales_cubiertos": 29,
+    "xsd_valido": true,
+    "limites_fragmentos_validados": true,
+    "bucles_solo_participantes_involucrados": true,
+    "sin_actores_dentro_de_fragmentos": true,
+    "sin_comunicacion_entre_entidades": true
+  },
+  {
+    "cu": "CU12",
+    "archivo": "CU12_Diagrama_Secuencia.drawio",
+    "participantes": 9,
+    "mensajes": 36,
+    "fragmentos": {
+      "alt": 5,
+      "opt": 0,
+      "loop": 1
+    },
+    "ancho": 3010,
+    "alto": 3680,
+    "sha256": "dd84ca88518c8395fe7869582823db4ff733b2dd7dabe9b746c619597d7b926a",
+    "fuentes": [
+      {
+        "file": "Parcial2_backend/app/routers/order_lifecycle.py",
+        "sha256": "118ad09756dab1f4e0bf6fe3511b207cf48416580a9c63281970f68be12b2732"
+      },
+      {
+        "file": "Parcial2_backend/app/routers/ventas.py",
+        "sha256": "4d7d8fc4ce4c07a7207030c7e6ef353b9d051a39a9e9e64e35de412ab750375a"
+      },
+      {
+        "file": "Parcial2_backend/app/services/commerce.py",
+        "sha256": "2e7b943a63d3cd6b0fbd3c1f6759681d62b67cfe22bd28d1caac0b907688a4b6"
+      },
+      {
+        "file": "Parcial2_backend/app/services/venta_service.py",
+        "sha256": "56ce9922c3c3a65c1c396550017251d9d84dc61db9f7b6d66d2e2a19742eed8a"
+      },
+      {
+        "file": "Parcial2_frontend-web/src/app/features/checkout/checkout.ts",
+        "sha256": "095be0b9ffc84c77a86ce72ba2141d4da026cc99ddb0f723052f4702be3cb3ff"
+      },
+      {
+        "file": "Parcial2_frontend-web/src/app/features/reservas-atencion/reservas-atencion.ts",
+        "sha256": "36d1f7e63dab8bd9b16fa969c64e48759155920cb4afc71332c587c70e6e6231"
+      },
+      {
+        "file": "Parcial2_mobile/lib/features/reservas/ticket_reserva_screen.dart",
+        "sha256": "9a2afa75faee94bbdb71e57f6ea46c8e3e34b77112821fb2d1ac6cde2e6f25ac"
+      }
+    ],
+    "actores": 2,
+    "interfaces": 1,
+    "controles": 1,
+    "entidades": 5,
+    "participantes_identicos_a_robustez": true,
+    "mensajes_principales_cubiertos": 31,
+    "xsd_valido": true,
+    "limites_fragmentos_validados": true,
+    "bucles_solo_participantes_involucrados": true,
+    "sin_actores_dentro_de_fragmentos": true,
+    "sin_comunicacion_entre_entidades": true
+  },
+  {
+    "cu": "CU13",
+    "archivo": "CU13_Diagrama_Secuencia.drawio",
+    "participantes": 8,
+    "mensajes": 25,
+    "fragmentos": {
+      "alt": 3,
+      "opt": 0,
+      "loop": 1
+    },
+    "ancho": 2675,
+    "alto": 2646,
+    "sha256": "3a69975701f957105413c2e4aa1d891dd5675b80da5302a0a560e53bf3b7d835",
+    "fuentes": [
+      {
+        "file": "Parcial2_backend/app/routers/pos.py",
+        "sha256": "750ec2ddf7f52c88f2140cb8dfb4efe8210241cc2acc8b4c6101f68f4dbae6d4"
+      },
+      {
+        "file": "Parcial2_backend/app/routers/ventas.py",
+        "sha256": "4d7d8fc4ce4c07a7207030c7e6ef353b9d051a39a9e9e64e35de412ab750375a"
+      },
+      {
+        "file": "Parcial2_backend/app/services/bitacora_service.py",
+        "sha256": "ec5d5294930c1b8e3e1d4628fd0b1f8b183bdab2ba205c19751245c33e5608a0"
+      },
+      {
+        "file": "Parcial2_backend/app/services/commerce.py",
+        "sha256": "2e7b943a63d3cd6b0fbd3c1f6759681d62b67cfe22bd28d1caac0b907688a4b6"
+      },
+      {
+        "file": "Parcial2_backend/app/services/pos_service.py",
+        "sha256": "dd8a87a909d66f256cd13368fe77e787e36c5cb86b376133f6a47c31ea7779e3"
+      },
+      {
+        "file": "Parcial2_backend/app/services/venta_service.py",
+        "sha256": "56ce9922c3c3a65c1c396550017251d9d84dc61db9f7b6d66d2e2a19742eed8a"
+      },
+      {
+        "file": "Parcial2_frontend-web/src/app/features/pos/pos.ts",
+        "sha256": "ebfe108ff0ea16af9dfa78881a53f502bc250a16e7f484971e18b40d80694951"
+      }
+    ],
+    "actores": 1,
+    "interfaces": 1,
+    "controles": 1,
+    "entidades": 5,
+    "participantes_identicos_a_robustez": true,
+    "mensajes_principales_cubiertos": 22,
+    "xsd_valido": true,
+    "limites_fragmentos_validados": true,
+    "bucles_solo_participantes_involucrados": true,
+    "sin_actores_dentro_de_fragmentos": true,
+    "sin_comunicacion_entre_entidades": true
+  },
+  {
+    "cu": "CU14",
+    "archivo": "CU14_Diagrama_Secuencia.drawio",
+    "participantes": 7,
+    "mensajes": 26,
+    "fragmentos": {
+      "alt": 3,
+      "opt": 1,
+      "loop": 0
+    },
+    "ancho": 2340,
+    "alto": 2757,
+    "sha256": "3c6cc23d0e116f293bf43abf7d0a26738c29ccc6ab41cd1f785ae3dd748e2602",
+    "fuentes": [
+      {
+        "file": "Parcial2_backend/app/routers/comprobantes.py",
+        "sha256": "67103a9b9b690a51b5437f85e710650352f1c9a974ea7640c170233d75650813"
+      },
+      {
+        "file": "Parcial2_backend/app/services/bitacora_service.py",
+        "sha256": "ec5d5294930c1b8e3e1d4628fd0b1f8b183bdab2ba205c19751245c33e5608a0"
+      },
+      {
+        "file": "Parcial2_backend/app/services/comprobante_service.py",
+        "sha256": "dce52ff9ce31f378bdf6e03c2b927c87385b13a5a034a3ef17c3e9b06583aec8"
+      },
+      {
+        "file": "Parcial2_frontend-web/src/app/core/services/comprobante.service.ts",
+        "sha256": "2b6b30fd14aa714ad7d66d7d121d9c0755e14dc8afd4c88c4f5e9e4b259b5bfb"
+      },
+      {
+        "file": "Parcial2_mobile/lib/services/venta_service.dart",
+        "sha256": "52b7c5a44e4db2bf4fb1defa3e833231b846bd866a2fa20983f6450732b19c50"
+      }
+    ],
+    "actores": 1,
+    "interfaces": 1,
+    "controles": 1,
+    "entidades": 4,
+    "participantes_identicos_a_robustez": true,
+    "mensajes_principales_cubiertos": 23,
+    "xsd_valido": true,
+    "limites_fragmentos_validados": true,
+    "bucles_solo_participantes_involucrados": true,
+    "sin_actores_dentro_de_fragmentos": true,
+    "sin_comunicacion_entre_entidades": true
+  },
+  {
+    "cu": "CU16",
+    "archivo": "CU16_Diagrama_Secuencia.drawio",
+    "participantes": 8,
+    "mensajes": 39,
+    "fragmentos": {
+      "alt": 4,
+      "opt": 0,
+      "loop": 3
+    },
+    "ancho": 2675,
+    "alto": 3985,
+    "sha256": "4ef45f12093a25d78f709902f42e63a2877231e1adc780679766ad1d9b243883",
+    "fuentes": [
+      {
+        "file": "Parcial2_backend/app/routers/offline.py",
+        "sha256": "1ab8e79883eff1070df624320eb27474f190b8527e35d804e5c6cc44e4f297b8"
+      },
+      {
+        "file": "Parcial2_frontend-web/src/app/core/services/offline.service.ts",
+        "sha256": "c6d3e069eba58375894c1def8607f35b3da204dcb1af90df0242d9471f38111d"
+      },
+      {
+        "file": "Parcial2_frontend-web/src/app/features/offline/offline.ts",
+        "sha256": "88afbf6e4d033fbc4b0847ba12eda8c0eb04562da9649d1784c342fa2d2bc454"
+      },
+      {
+        "file": "Parcial2_mobile/lib/features/offline/local_database.dart",
+        "sha256": "e56edb4e7b70b68689767b52ca096d62519128e13fd1343f333d97f024379a43"
+      },
+      {
+        "file": "Parcial2_mobile/lib/features/offline/offline_controller.dart",
+        "sha256": "1e036ed4c15f247d722f4993531d97f7bf146d5d7fa76aabdb522a237c550bdc"
+      }
+    ],
+    "actores": 1,
+    "interfaces": 1,
+    "controles": 2,
+    "entidades": 4,
+    "participantes_identicos_a_robustez": true,
+    "mensajes_principales_cubiertos": 35,
+    "xsd_valido": true,
+    "limites_fragmentos_validados": true,
+    "bucles_solo_participantes_involucrados": true,
+    "sin_actores_dentro_de_fragmentos": true,
+    "sin_comunicacion_entre_entidades": true
+  }
+]

@@ -1,0 +1,668 @@
+[
+  {
+    "mensaje": 1,
+    "texto": "Consultar o mantener información comercial del cliente",
+    "fuentes": []
+  },
+  {
+    "mensaje": 2,
+    "texto": "GET /api/clientes/?busqueda=...&estado=...",
+    "fuentes": []
+  },
+  {
+    "mensaje": 3,
+    "texto": "requiere_permiso(clientes.ver)",
+    "fuentes": [
+      {
+        "simbolo": "requiere_permiso",
+        "archivo": "Parcial2_backend/app/services/auth_service.py",
+        "linea": 347
+      }
+    ]
+  },
+  {
+    "mensaje": 4,
+    "texto": "listar_clientes(cursor, busqueda, estado)",
+    "fuentes": [
+      {
+        "simbolo": "listar_clientes",
+        "archivo": "Parcial2_backend/app/routers/clientes.py",
+        "linea": 51
+      },
+      {
+        "simbolo": "listar_clientes",
+        "archivo": "Parcial2_backend/app/services/cliente_service.py",
+        "linea": 26
+      }
+    ]
+  },
+  {
+    "mensaje": 5,
+    "texto": "SELECT con ILIKE(ci, nombre) y filtro de estado, bajo RLS",
+    "fuentes": []
+  },
+  {
+    "mensaje": 6,
+    "texto": "fichas de la empresa",
+    "fuentes": []
+  },
+  {
+    "mensaje": 7,
+    "texto": "fichas visibles",
+    "fuentes": []
+  },
+  {
+    "mensaje": 8,
+    "texto": "200: resultados de búsqueda",
+    "fuentes": []
+  },
+  {
+    "mensaje": 9,
+    "texto": "POST /api/clientes/ → crear_cliente(datos)",
+    "fuentes": [
+      {
+        "simbolo": "crear_cliente",
+        "archivo": "Parcial2_backend/app/routers/clientes.py",
+        "linea": 206
+      },
+      {
+        "simbolo": "crear_cliente",
+        "archivo": "Parcial2_backend/app/services/cliente_service.py",
+        "linea": 147
+      }
+    ]
+  },
+  {
+    "mensaje": 10,
+    "texto": "requiere_permiso(clientes.crear)",
+    "fuentes": [
+      {
+        "simbolo": "requiere_permiso",
+        "archivo": "Parcial2_backend/app/services/auth_service.py",
+        "linea": 347
+      }
+    ]
+  },
+  {
+    "mensaje": 11,
+    "texto": "existe_ci(ci) y existe_correo(correo)",
+    "fuentes": [
+      {
+        "simbolo": "existe_ci",
+        "archivo": "Parcial2_backend/app/services/cliente_service.py",
+        "linea": 98
+      },
+      {
+        "simbolo": "existe_correo",
+        "archivo": "Parcial2_backend/app/services/cliente_service.py",
+        "linea": 123
+      }
+    ]
+  },
+  {
+    "mensaje": 12,
+    "texto": "duplicidad en la empresa o datos libres",
+    "fuentes": []
+  },
+  {
+    "mensaje": 13,
+    "texto": "400: ficha duplicada",
+    "fuentes": []
+  },
+  {
+    "mensaje": 14,
+    "texto": "crear_cliente(cursor, datos)",
+    "fuentes": [
+      {
+        "simbolo": "crear_cliente",
+        "archivo": "Parcial2_backend/app/routers/clientes.py",
+        "linea": 206
+      },
+      {
+        "simbolo": "crear_cliente",
+        "archivo": "Parcial2_backend/app/services/cliente_service.py",
+        "linea": 147
+      }
+    ]
+  },
+  {
+    "mensaje": 15,
+    "texto": "INSERT cliente RETURNING id_cliente",
+    "fuentes": []
+  },
+  {
+    "mensaje": 16,
+    "texto": "ficha creada o UniqueViolation",
+    "fuentes": []
+  },
+  {
+    "mensaje": 17,
+    "texto": "400; ROLLBACK",
+    "fuentes": []
+  },
+  {
+    "mensaje": 18,
+    "texto": "registrar_bitacora(INSERT, cliente)",
+    "fuentes": []
+  },
+  {
+    "mensaje": 19,
+    "texto": "201: ficha creada; COMMIT",
+    "fuentes": []
+  },
+  {
+    "mensaje": 20,
+    "texto": "PUT /api/clientes/{id} → actualizar_cliente()",
+    "fuentes": [
+      {
+        "simbolo": "actualizar_cliente",
+        "archivo": "Parcial2_backend/app/routers/clientes.py",
+        "linea": 271
+      },
+      {
+        "simbolo": "actualizar_cliente",
+        "archivo": "Parcial2_backend/app/services/cliente_service.py",
+        "linea": 174
+      }
+    ]
+  },
+  {
+    "mensaje": 21,
+    "texto": "requiere_permiso(clientes.editar)",
+    "fuentes": [
+      {
+        "simbolo": "requiere_permiso",
+        "archivo": "Parcial2_backend/app/services/auth_service.py",
+        "linea": 347
+      }
+    ]
+  },
+  {
+    "mensaje": 22,
+    "texto": "obtener_cliente(id_cliente)",
+    "fuentes": [
+      {
+        "simbolo": "obtener_cliente",
+        "archivo": "Parcial2_backend/app/routers/clientes.py",
+        "linea": 173
+      },
+      {
+        "simbolo": "obtener_cliente",
+        "archivo": "Parcial2_backend/app/services/cliente_service.py",
+        "linea": 67
+      }
+    ]
+  },
+  {
+    "mensaje": 23,
+    "texto": "ficha bajo RLS o ausencia",
+    "fuentes": []
+  },
+  {
+    "mensaje": 24,
+    "texto": "existe_ci / existe_correo excluyendo id_cliente",
+    "fuentes": []
+  },
+  {
+    "mensaje": 25,
+    "texto": "identificadores disponibles o duplicados",
+    "fuentes": []
+  },
+  {
+    "mensaje": 26,
+    "texto": "404 / 400",
+    "fuentes": []
+  },
+  {
+    "mensaje": 27,
+    "texto": "actualizar_cliente(cursor, id_cliente, cambios)",
+    "fuentes": [
+      {
+        "simbolo": "actualizar_cliente",
+        "archivo": "Parcial2_backend/app/routers/clientes.py",
+        "linea": 271
+      },
+      {
+        "simbolo": "actualizar_cliente",
+        "archivo": "Parcial2_backend/app/services/cliente_service.py",
+        "linea": 174
+      }
+    ]
+  },
+  {
+    "mensaje": 28,
+    "texto": "actualizar_cliente(): UPDATE campos enviados",
+    "fuentes": [
+      {
+        "simbolo": "actualizar_cliente",
+        "archivo": "Parcial2_backend/app/routers/clientes.py",
+        "linea": 271
+      },
+      {
+        "simbolo": "actualizar_cliente",
+        "archivo": "Parcial2_backend/app/services/cliente_service.py",
+        "linea": 174
+      }
+    ]
+  },
+  {
+    "mensaje": 29,
+    "texto": "ficha actualizada",
+    "fuentes": []
+  },
+  {
+    "mensaje": 30,
+    "texto": "actualización completada",
+    "fuentes": []
+  },
+  {
+    "mensaje": 31,
+    "texto": "registrar_bitacora(UPDATE, cliente)",
+    "fuentes": []
+  },
+  {
+    "mensaje": 32,
+    "texto": "200: ficha actualizada; COMMIT",
+    "fuentes": []
+  },
+  {
+    "mensaje": 33,
+    "texto": "DELETE /api/clientes/{id} → inhabilitar_cliente()",
+    "fuentes": [
+      {
+        "simbolo": "inhabilitar_cliente",
+        "archivo": "Parcial2_backend/app/routers/clientes.py",
+        "linea": 348
+      },
+      {
+        "simbolo": "inhabilitar_cliente",
+        "archivo": "Parcial2_backend/app/services/cliente_service.py",
+        "linea": 197
+      }
+    ]
+  },
+  {
+    "mensaje": 34,
+    "texto": "requiere_permiso(clientes.inactivar)",
+    "fuentes": [
+      {
+        "simbolo": "requiere_permiso",
+        "archivo": "Parcial2_backend/app/services/auth_service.py",
+        "linea": 347
+      }
+    ]
+  },
+  {
+    "mensaje": 35,
+    "texto": "obtener_cliente(id_cliente)",
+    "fuentes": [
+      {
+        "simbolo": "obtener_cliente",
+        "archivo": "Parcial2_backend/app/routers/clientes.py",
+        "linea": 173
+      },
+      {
+        "simbolo": "obtener_cliente",
+        "archivo": "Parcial2_backend/app/services/cliente_service.py",
+        "linea": 67
+      }
+    ]
+  },
+  {
+    "mensaje": 36,
+    "texto": "ficha y estado",
+    "fuentes": []
+  },
+  {
+    "mensaje": 37,
+    "texto": "404 / 409",
+    "fuentes": []
+  },
+  {
+    "mensaje": 38,
+    "texto": "inhabilitar_cliente(cursor, id_cliente)",
+    "fuentes": [
+      {
+        "simbolo": "inhabilitar_cliente",
+        "archivo": "Parcial2_backend/app/routers/clientes.py",
+        "linea": 348
+      },
+      {
+        "simbolo": "inhabilitar_cliente",
+        "archivo": "Parcial2_backend/app/services/cliente_service.py",
+        "linea": 197
+      }
+    ]
+  },
+  {
+    "mensaje": 39,
+    "texto": "inhabilitar_cliente(): UPDATE estado='Inactivo'",
+    "fuentes": [
+      {
+        "simbolo": "inhabilitar_cliente",
+        "archivo": "Parcial2_backend/app/routers/clientes.py",
+        "linea": 348
+      },
+      {
+        "simbolo": "inhabilitar_cliente",
+        "archivo": "Parcial2_backend/app/services/cliente_service.py",
+        "linea": 197
+      }
+    ]
+  },
+  {
+    "mensaje": 40,
+    "texto": "historial conservado",
+    "fuentes": []
+  },
+  {
+    "mensaje": 41,
+    "texto": "baja lógica completada",
+    "fuentes": []
+  },
+  {
+    "mensaje": 42,
+    "texto": "registrar_bitacora(INACTIVAR, cliente)",
+    "fuentes": []
+  },
+  {
+    "mensaje": 43,
+    "texto": "200: ficha inhabilitada; COMMIT",
+    "fuentes": []
+  },
+  {
+    "mensaje": 44,
+    "texto": "GET /api/clientes/{id} → obtener_cliente()",
+    "fuentes": [
+      {
+        "simbolo": "obtener_cliente",
+        "archivo": "Parcial2_backend/app/routers/clientes.py",
+        "linea": 173
+      },
+      {
+        "simbolo": "obtener_cliente",
+        "archivo": "Parcial2_backend/app/services/cliente_service.py",
+        "linea": 67
+      }
+    ]
+  },
+  {
+    "mensaje": 45,
+    "texto": "obtener_cliente(id_cliente)",
+    "fuentes": [
+      {
+        "simbolo": "obtener_cliente",
+        "archivo": "Parcial2_backend/app/routers/clientes.py",
+        "linea": 173
+      },
+      {
+        "simbolo": "obtener_cliente",
+        "archivo": "Parcial2_backend/app/services/cliente_service.py",
+        "linea": 67
+      }
+    ]
+  },
+  {
+    "mensaje": 46,
+    "texto": "ficha autorizada o ausencia",
+    "fuentes": []
+  },
+  {
+    "mensaje": 47,
+    "texto": "200: ficha / 404: no visible",
+    "fuentes": []
+  },
+  {
+    "mensaje": 48,
+    "texto": "GET /api/clientes/me → obtener_mi_ficha()",
+    "fuentes": [
+      {
+        "simbolo": "obtener_mi_ficha",
+        "archivo": "Parcial2_backend/app/routers/clientes.py",
+        "linea": 90
+      }
+    ]
+  },
+  {
+    "mensaje": 49,
+    "texto": "requiere_rol([Cliente]); _obtener_ficha_propia()",
+    "fuentes": [
+      {
+        "simbolo": "_obtener_ficha_propia",
+        "archivo": "Parcial2_backend/app/routers/clientes.py",
+        "linea": 74
+      },
+      {
+        "simbolo": "requiere_rol",
+        "archivo": "Parcial2_backend/app/services/auth_service.py",
+        "linea": 298
+      }
+    ]
+  },
+  {
+    "mensaje": 50,
+    "texto": "obtener_cliente_por_correo(usuario.correo)",
+    "fuentes": [
+      {
+        "simbolo": "obtener_cliente_por_correo",
+        "archivo": "Parcial2_backend/app/services/cliente_service.py",
+        "linea": 82
+      }
+    ]
+  },
+  {
+    "mensaje": 51,
+    "texto": "SELECT por correo autenticado y empresa actual",
+    "fuentes": []
+  },
+  {
+    "mensaje": 52,
+    "texto": "ficha propia",
+    "fuentes": []
+  },
+  {
+    "mensaje": 53,
+    "texto": "ficha propia o ausencia",
+    "fuentes": []
+  },
+  {
+    "mensaje": 54,
+    "texto": "200: ficha propia / 404: no vinculada",
+    "fuentes": []
+  },
+  {
+    "mensaje": 55,
+    "texto": "PUT /api/clientes/me → actualizar_mi_ficha()",
+    "fuentes": [
+      {
+        "simbolo": "actualizar_mi_ficha",
+        "archivo": "Parcial2_backend/app/routers/clientes.py",
+        "linea": 103
+      }
+    ]
+  },
+  {
+    "mensaje": 56,
+    "texto": "Resolver ficha propia; validar campos, CI y correo",
+    "fuentes": []
+  },
+  {
+    "mensaje": 57,
+    "texto": "validación empresarial",
+    "fuentes": []
+  },
+  {
+    "mensaje": 58,
+    "texto": "400: datos no admitidos",
+    "fuentes": []
+  },
+  {
+    "mensaje": 59,
+    "texto": "actualizar_cliente(cursor, id_propio, cambios)",
+    "fuentes": [
+      {
+        "simbolo": "actualizar_cliente",
+        "archivo": "Parcial2_backend/app/routers/clientes.py",
+        "linea": 271
+      },
+      {
+        "simbolo": "actualizar_cliente",
+        "archivo": "Parcial2_backend/app/services/cliente_service.py",
+        "linea": 174
+      }
+    ]
+  },
+  {
+    "mensaje": 60,
+    "texto": "UPDATE datos comerciales",
+    "fuentes": []
+  },
+  {
+    "mensaje": 61,
+    "texto": "actualización pendiente de COMMIT",
+    "fuentes": []
+  },
+  {
+    "mensaje": 62,
+    "texto": "ficha modificada en la transacción",
+    "fuentes": []
+  },
+  {
+    "mensaje": 63,
+    "texto": "sincronizar_contacto_usuario(id_usuario, cambios)",
+    "fuentes": [
+      {
+        "simbolo": "sincronizar_contacto_usuario",
+        "archivo": "Parcial2_backend/app/services/cliente_service.py",
+        "linea": 243
+      }
+    ]
+  },
+  {
+    "mensaje": 64,
+    "texto": "400: identidad global protegida",
+    "fuentes": []
+  },
+  {
+    "mensaje": 65,
+    "texto": "400; ROLLBACK de la ficha y del contacto",
+    "fuentes": []
+  },
+  {
+    "mensaje": 66,
+    "texto": "UPDATE contacto permitido del usuario propio",
+    "fuentes": []
+  },
+  {
+    "mensaje": 67,
+    "texto": "contacto sincronizado",
+    "fuentes": []
+  },
+  {
+    "mensaje": 68,
+    "texto": "contacto validado",
+    "fuentes": []
+  },
+  {
+    "mensaje": 69,
+    "texto": "registrar_bitacora(UPDATE, cliente propio)",
+    "fuentes": []
+  },
+  {
+    "mensaje": 70,
+    "texto": "200: ficha propia actualizada; COMMIT",
+    "fuentes": []
+  },
+  {
+    "mensaje": 71,
+    "texto": "GET /api/cuenta/compras → purchases(request)",
+    "fuentes": [
+      {
+        "simbolo": "purchases",
+        "archivo": "Parcial2_backend/app/routers/auth.py",
+        "linea": 74
+      },
+      {
+        "simbolo": "purchases",
+        "archivo": "Parcial2_backend/app/services/identity.py",
+        "linea": 89
+      }
+    ]
+  },
+  {
+    "mensaje": 72,
+    "texto": "identity.purchases(account autenticado)",
+    "fuentes": [
+      {
+        "simbolo": "purchases",
+        "archivo": "Parcial2_backend/app/routers/auth.py",
+        "linea": 74
+      },
+      {
+        "simbolo": "purchases",
+        "archivo": "Parcial2_backend/app/services/identity.py",
+        "linea": 89
+      }
+    ]
+  },
+  {
+    "mensaje": 73,
+    "texto": "SELECT empresas ORDER BY id_empresa LIMIT 500",
+    "fuentes": []
+  },
+  {
+    "mensaje": 74,
+    "texto": "empresas a recorrer",
+    "fuentes": []
+  },
+  {
+    "mensaje": 75,
+    "texto": "Fijar TenantContext de la empresa,\nrol Cliente, correo y account_id del titular",
+    "fuentes": []
+  },
+  {
+    "mensaje": 76,
+    "texto": "SELECT perfil WHERE account_id y estado='Activo'",
+    "fuentes": []
+  },
+  {
+    "mensaje": 77,
+    "texto": "perfil o ausencia",
+    "fuentes": []
+  },
+  {
+    "mensaje": 78,
+    "texto": "SELECT venta JOIN cliente por correo del titular\nORDER BY fecha DESC LIMIT 100, bajo RLS",
+    "fuentes": []
+  },
+  {
+    "mensaje": 79,
+    "texto": "compras propias de esa tienda",
+    "fuentes": []
+  },
+  {
+    "mensaje": 80,
+    "texto": "Acumular compras con slug y nombre de tienda",
+    "fuentes": []
+  },
+  {
+    "mensaje": 81,
+    "texto": "Restaurar el contexto anterior",
+    "fuentes": []
+  },
+  {
+    "mensaje": 82,
+    "texto": "historial de ventas propias entre tiendas",
+    "fuentes": []
+  },
+  {
+    "mensaje": 83,
+    "texto": "200: compras del titular",
+    "fuentes": []
+  },
+  {
+    "mensaje": 84,
+    "texto": "Mostrar ficha, historial o motivo del rechazo",
+    "fuentes": []
+  }
+]

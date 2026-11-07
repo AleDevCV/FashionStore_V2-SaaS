@@ -1,0 +1,580 @@
+{
+  "case": "CU08",
+  "title": "CU08 - Consultar inventario y disponibilidad",
+  "nodes": {
+    "actor": {
+      "kind": "actor",
+      "name": "Personal autorizado"
+    },
+    "b_pre": {
+      "kind": "boundary",
+      "name": "Frontend : Inventario y disponibilidad"
+    },
+    "control": {
+      "kind": "control",
+      "name": "Backend : Consulta de inventario",
+      "note": "Control de análisis que agrupa los módulos indicados en las referencias del caso de uso."
+    },
+    "sucursal": {
+      "kind": "entity",
+      "name": "Sucursal",
+      "table": "sucursal"
+    },
+    "inventario": {
+      "kind": "entity",
+      "name": "Inventario y disponibilidad",
+      "table": "inventario / inventario_catalogo"
+    }
+  },
+  "messages": [
+    {
+      "n": 1,
+      "action": 1,
+      "a": "actor",
+      "b": "b_pre",
+      "text": "Seleccionar sucursal autorizada",
+      "kind": "ui",
+      "color": "#28343E",
+      "source": null,
+      "symbol": null
+    },
+    {
+      "n": 2,
+      "action": 1,
+      "a": "b_pre",
+      "b": "control",
+      "text": "listar_sucursales(filtros)",
+      "kind": "read",
+      "color": "#28343E",
+      "source": "Parcial2_backend/app/routers/geografia.py",
+      "symbol": "listar_sucursales",
+      "line": 130
+    },
+    {
+      "n": 3,
+      "action": 1,
+      "a": "control",
+      "b": "sucursal",
+      "text": "listar_sucursales(filtros)",
+      "kind": "read",
+      "color": "#28343E",
+      "source": "Parcial2_backend/app/services/geografia_service.py",
+      "symbol": "listar_sucursales",
+      "line": 122
+    },
+    {
+      "n": 4,
+      "action": 1,
+      "a": "sucursal",
+      "b": "control",
+      "text": "sucursales autorizadas",
+      "kind": "reply",
+      "color": "#287947",
+      "source": null,
+      "symbol": null
+    },
+    {
+      "n": 5,
+      "action": 1,
+      "a": "control",
+      "b": "b_pre",
+      "text": "sucursales",
+      "kind": "reply",
+      "color": "#287947",
+      "source": null,
+      "symbol": null
+    },
+    {
+      "n": 6,
+      "action": 1,
+      "a": "b_pre",
+      "b": "actor",
+      "text": "Mostrar sucursales",
+      "kind": "reply",
+      "color": "#287947",
+      "source": null,
+      "symbol": null
+    },
+    {
+      "n": 7,
+      "action": 2,
+      "a": "actor",
+      "b": "b_pre",
+      "text": "Consultar existencias físicas",
+      "kind": "ui",
+      "color": "#28343E",
+      "source": null,
+      "symbol": null
+    },
+    {
+      "n": 8,
+      "action": 2,
+      "a": "b_pre",
+      "b": "control",
+      "text": "obtener_monitoreo_inventario(sucursal, filtros)",
+      "kind": "read",
+      "color": "#28343E",
+      "source": "Parcial2_backend/app/routers/inventario.py",
+      "symbol": "obtener_monitoreo_inventario",
+      "line": 79
+    },
+    {
+      "n": 9,
+      "action": 2,
+      "a": "control",
+      "b": "inventario",
+      "text": "obtener_monitoreo_inventario(filtros)",
+      "kind": "read",
+      "color": "#28343E",
+      "source": "Parcial2_backend/app/services/inventario_service.py",
+      "symbol": "obtener_monitoreo_inventario",
+      "line": 132
+    },
+    {
+      "n": 10,
+      "action": 2,
+      "a": "inventario",
+      "b": "control",
+      "text": "stock físico por variante",
+      "kind": "reply",
+      "color": "#287947",
+      "source": null,
+      "symbol": null
+    },
+    {
+      "n": 11,
+      "action": 2,
+      "a": "control",
+      "b": "b_pre",
+      "text": "existencias",
+      "kind": "reply",
+      "color": "#287947",
+      "source": null,
+      "symbol": null
+    },
+    {
+      "n": 12,
+      "action": 2,
+      "a": "b_pre",
+      "b": "actor",
+      "text": "Mostrar existencias",
+      "kind": "reply",
+      "color": "#287947",
+      "source": null,
+      "symbol": null
+    },
+    {
+      "n": 13,
+      "action": 3,
+      "a": "actor",
+      "b": "b_pre",
+      "text": "Consultar disponibilidad de variante",
+      "kind": "ui",
+      "color": "#28343E",
+      "source": null,
+      "symbol": null
+    },
+    {
+      "n": 14,
+      "action": 3,
+      "a": "b_pre",
+      "b": "control",
+      "text": "consultar_disponibilidad(id_variante)",
+      "kind": "read",
+      "color": "#28343E",
+      "source": "Parcial2_backend/app/routers/catalogo.py",
+      "symbol": "consultar_disponibilidad",
+      "line": 169
+    },
+    {
+      "n": 15,
+      "action": 3,
+      "a": "control",
+      "b": "inventario",
+      "text": "consultar_disponibilidad(id_variante)",
+      "kind": "read",
+      "color": "#28343E",
+      "source": "Parcial2_backend/app/services/catalogo_service.py",
+      "symbol": "consultar_disponibilidad",
+      "line": 266
+    },
+    {
+      "n": 16,
+      "action": 3,
+      "a": "inventario",
+      "b": "control",
+      "text": "disponible por sucursal",
+      "kind": "reply",
+      "color": "#287947",
+      "source": null,
+      "symbol": null
+    },
+    {
+      "n": 17,
+      "action": 3,
+      "a": "control",
+      "b": "b_pre",
+      "text": "disponibilidad",
+      "kind": "reply",
+      "color": "#287947",
+      "source": null,
+      "symbol": null
+    },
+    {
+      "n": 18,
+      "action": 3,
+      "a": "b_pre",
+      "b": "actor",
+      "text": "Mostrar disponibilidad conocida",
+      "kind": "reply",
+      "color": "#287947",
+      "source": null,
+      "symbol": null
+    }
+  ],
+  "actions": [
+    {
+      "id": 1,
+      "name": "Seleccionar sucursal autorizada",
+      "first": 1,
+      "actor": "actor",
+      "ui": "b_pre",
+      "last": 6
+    },
+    {
+      "id": 2,
+      "name": "Consultar existencias físicas",
+      "first": 7,
+      "actor": "actor",
+      "ui": "b_pre",
+      "last": 12
+    },
+    {
+      "id": 3,
+      "name": "Consultar disponibilidad de variante",
+      "first": 13,
+      "actor": "actor",
+      "ui": "b_pre",
+      "last": 18
+    }
+  ],
+  "views": [
+    {
+      "name": "CU08 - Robustez simplificada",
+      "title": "CU08 - Consultar inventario y disponibilidad - Diagrama de robustez",
+      "width": 4600,
+      "height": 2100,
+      "nodes": {
+        "actor": {
+          "x": 180,
+          "y": 1050.0
+        },
+        "b_pre": {
+          "x": 1100,
+          "y": 1050.0
+        },
+        "control": {
+          "x": 2400,
+          "y": 1050.0
+        },
+        "sucursal": {
+          "x": 4300,
+          "y": 289
+        },
+        "inventario": {
+          "x": 4300,
+          "y": 688
+        }
+      },
+      "groups": [
+        {
+          "pair": [
+            "actor",
+            "b_pre"
+          ],
+          "points": [
+            [
+              215,
+              1050.0
+            ],
+            [
+              1035,
+              1050.0
+            ]
+          ],
+          "rows": [
+            {
+              "n": 1,
+              "x": 650,
+              "y": 902.0,
+              "width": 600,
+              "height": 44,
+              "forward": true,
+              "rightward": true
+            },
+            {
+              "n": 7,
+              "x": 650,
+              "y": 946.0,
+              "width": 600,
+              "height": 44,
+              "forward": true,
+              "rightward": true
+            },
+            {
+              "n": 13,
+              "x": 650,
+              "y": 990.0,
+              "width": 600,
+              "height": 44,
+              "forward": true,
+              "rightward": true
+            },
+            {
+              "n": 6,
+              "x": 650,
+              "y": 1110.0,
+              "width": 600,
+              "height": 44,
+              "forward": false,
+              "rightward": false
+            },
+            {
+              "n": 12,
+              "x": 650,
+              "y": 1154.0,
+              "width": 600,
+              "height": 44,
+              "forward": false,
+              "rightward": false
+            },
+            {
+              "n": 18,
+              "x": 650,
+              "y": 1198.0,
+              "width": 600,
+              "height": 44,
+              "forward": false,
+              "rightward": false
+            }
+          ]
+        },
+        {
+          "pair": [
+            "b_pre",
+            "control"
+          ],
+          "points": [
+            [
+              1165,
+              1050.0
+            ],
+            [
+              2335,
+              1050.0
+            ]
+          ],
+          "rows": [
+            {
+              "n": 2,
+              "x": 1650,
+              "y": 870.0,
+              "width": 550,
+              "height": 44,
+              "forward": true,
+              "rightward": true
+            },
+            {
+              "n": 8,
+              "x": 1650,
+              "y": 930.0,
+              "width": 550,
+              "height": 76,
+              "forward": true,
+              "rightward": true
+            },
+            {
+              "n": 14,
+              "x": 1650,
+              "y": 990.0,
+              "width": 550,
+              "height": 44,
+              "forward": true,
+              "rightward": true
+            },
+            {
+              "n": 5,
+              "x": 1650,
+              "y": 1110.0,
+              "width": 550,
+              "height": 44,
+              "forward": false,
+              "rightward": false
+            },
+            {
+              "n": 11,
+              "x": 1650,
+              "y": 1154.0,
+              "width": 550,
+              "height": 44,
+              "forward": false,
+              "rightward": false
+            },
+            {
+              "n": 17,
+              "x": 1650,
+              "y": 1198.0,
+              "width": 550,
+              "height": 44,
+              "forward": false,
+              "rightward": false
+            }
+          ]
+        },
+        {
+          "pair": [
+            "control",
+            "sucursal"
+          ],
+          "points": [
+            [
+              2465,
+              1050.0
+            ],
+            [
+              2720,
+              289
+            ],
+            [
+              4235,
+              289
+            ]
+          ],
+          "rows": [
+            {
+              "n": 3,
+              "x": 3300,
+              "y": 229.0,
+              "width": 1050,
+              "height": 44,
+              "forward": true,
+              "rightward": true
+            },
+            {
+              "n": 4,
+              "x": 3300,
+              "y": 349.0,
+              "width": 1050,
+              "height": 44,
+              "forward": false,
+              "rightward": false
+            }
+          ]
+        },
+        {
+          "pair": [
+            "control",
+            "inventario"
+          ],
+          "points": [
+            [
+              2465,
+              1050.0
+            ],
+            [
+              2720,
+              688
+            ],
+            [
+              4235,
+              688
+            ]
+          ],
+          "rows": [
+            {
+              "n": 9,
+              "x": 3300,
+              "y": 584.0,
+              "width": 1050,
+              "height": 44,
+              "forward": true,
+              "rightward": true
+            },
+            {
+              "n": 15,
+              "x": 3300,
+              "y": 628.0,
+              "width": 1050,
+              "height": 44,
+              "forward": true,
+              "rightward": true
+            },
+            {
+              "n": 10,
+              "x": 3300,
+              "y": 748.0,
+              "width": 1050,
+              "height": 44,
+              "forward": false,
+              "rightward": false
+            },
+            {
+              "n": 16,
+              "x": 3300,
+              "y": 792.0,
+              "width": 1050,
+              "height": 44,
+              "forward": false,
+              "rightward": false
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "exports": [
+    "General"
+  ],
+  "notes": [
+    "El monitoreo consulta inventario físico; consultar_disponibilidad utiliza la vista inventario_catalogo. No se atribuye a obtener_monitoreo_inventario una resta de reservas que no realiza.",
+    "La vista de disponibilidad integra las retenciones. Sus tablas auxiliares se omiten del dibujo. No se modifica stock ni se inventan eventos de bitácora para consultas."
+  ],
+  "sources": [
+    {
+      "file": "Parcial2_backend/app/routers/catalogo.py",
+      "sha256": "a05748ee7d167f5313501c9c05cef9decc152593eea9afc9f24940927e887856"
+    },
+    {
+      "file": "Parcial2_backend/app/routers/geografia.py",
+      "sha256": "678fb6feab2f92428179c011ce5354cd0cd46706ab402669f649e25bb4884ab3"
+    },
+    {
+      "file": "Parcial2_backend/app/routers/inventario.py",
+      "sha256": "d62751dbe81d9451f2b3b0a2a91e6e09ce365f6157d9eaac037b29eba966490b"
+    },
+    {
+      "file": "Parcial2_backend/app/services/catalogo_service.py",
+      "sha256": "ebb601822e558f04bbffb61b277c7667d979b78edc08debabff723369f1515b7"
+    },
+    {
+      "file": "Parcial2_backend/app/services/geografia_service.py",
+      "sha256": "d3dc34addaf66d8b447aa4aceea17d45500dfb49949dca5eb843b4906022a176"
+    },
+    {
+      "file": "Parcial2_backend/app/services/inventario_service.py",
+      "sha256": "dc671f5d47a6639708258652c345a28733825d55260f7988c6807fe85b34ecf1"
+    },
+    {
+      "file": "Parcial2_frontend-web/src/app/features/catalogo/prenda-detalle/prenda-detalle.ts",
+      "sha256": "0d055dccdeff214d6273faa7a0666ef55bd6e0f89ac29ce78ea7de572efe302b"
+    },
+    {
+      "file": "Parcial2_frontend-web/src/app/features/inventario-monitoreo/inventario-monitoreo.ts",
+      "sha256": "171574ccafc4a711f4882a95687dee996b91d52d7f02057097fe1d3f91298a80"
+    },
+    {
+      "file": "Parcial2_mobile/lib/features/inventario_monitoreo/estado_inventario_screen.dart",
+      "sha256": "42b5e04d70ad9ba957ccb8c9c37c4a476334e60b2b495dc7f46e7e851be7cb72"
+    }
+  ]
+}

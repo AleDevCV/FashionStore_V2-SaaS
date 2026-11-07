@@ -1,0 +1,16 @@
+{
+  "actores": 1,
+  "interfaces": 1,
+  "controles": 1,
+  "entidades": 5,
+  "acciones": 6,
+  "mensajes": 37,
+  "paginas": 1,
+  "entidades_sin_comunicacion_directa": true,
+  "un_control_por_entidad": true,
+  "numeracion_consecutiva": true,
+  "bitacora_conservada": true,
+  "metodos_existentes_comprobados": true,
+  "xsd_valido": true,
+  "filas_sin_solapamiento": true
+}

@@ -1,0 +1,17 @@
+{
+  "caso": "CU11",
+  "mensajes": 29,
+  "acciones": 4,
+  "entidades": 5,
+  "interfaces": 2,
+  "controles": 1,
+  "paginas": 1,
+  "xsd_valido": true,
+  "numeracion_consecutiva": true,
+  "entidades_solo_con_un_control": true,
+  "actores_solo_con_interfaces": true,
+  "sin_interfaces_interconectadas": true,
+  "sin_etiquetas_HTTP": true,
+  "simbolos_en_fuentes_comprobados": true,
+  "filas_sin_solapamiento": true
+}

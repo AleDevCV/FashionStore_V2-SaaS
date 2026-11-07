@@ -1,0 +1,317 @@
+<?xml version='1.0' encoding='utf-8'?>
+<mxfile host="app.diagrams.net" version="24.0.0" type="device">
+  <diagram id="cu06-robustez-iconix" name="CU06 - Administrar Catálogo de Prendas">
+    <mxGraphModel dx="2000" dy="1400" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="3400" pageHeight="2200" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="frame_bg" value="" style="fillColor=#FFFFFF;strokeColor=#B0BEC5;strokeWidth=1.5;pointerEvents=0;" vertex="1" parent="1" connectable="0">
+          <mxGeometry x="20" y="20" width="3360" height="2160" as="geometry" />
+        </mxCell>
+        <mxCell id="banner_header" value="" style="fillColor=#1E293B;strokeColor=none;rounded=0;" vertex="1" parent="1" connectable="0">
+          <mxGeometry x="20" y="20" width="3360" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="title_text" value="&amp;lt;font color='#FFFFFF' style='font-size:26px;font-weight:bold;'&amp;gt;DIAGRAMA DE ROBUSTEZ (ICONIX): CU06 - ADMINISTRAR CATÁLOGO DE PRENDAS&amp;lt;/font&amp;gt;&amp;lt;br&amp;gt;&amp;lt;font color='#94A3B8' style='font-size:15px;'&amp;gt;FashionStore SaaS · Arquitectura de Casos de Uso del 2do Parcial · Separación Estricta: Actores, Fronteras, Controles y Entidades&amp;lt;/font&amp;gt;" style="text;html=1;align=center;verticalAlign=middle;fillColor=none;strokeColor=none;" vertex="1" parent="1" connectable="0">
+          <mxGeometry x="40" y="30" width="3320" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="zone_act" value="&amp;lt;b&amp;gt;ZONA 1: ACTORES&amp;lt;/b&amp;gt;" style="rounded=1;fillColor=#FAF5FF;strokeColor=#D8B4FE;strokeWidth=1.5;verticalAlign=top;align=left;spacingLeft=15;spacingTop=12;fontFamily=Arial;fontSize=13;fontColor=#475569;dashed=1;" vertex="1" parent="1" connectable="0">
+          <mxGeometry x="50" y="150" width="310" height="2010" as="geometry" />
+        </mxCell>
+        <mxCell id="zone_bnd" value="&amp;lt;b&amp;gt;ZONA 2: OBJETOS DE FRONTERA (INTERFACES)&amp;lt;/b&amp;gt;" style="rounded=1;fillColor=#F0F9FF;strokeColor=#BAE6FD;strokeWidth=1.5;verticalAlign=top;align=left;spacingLeft=15;spacingTop=12;fontFamily=Arial;fontSize=13;fontColor=#475569;dashed=1;" vertex="1" parent="1" connectable="0">
+          <mxGeometry x="400" y="150" width="560" height="2010" as="geometry" />
+        </mxCell>
+        <mxCell id="zone_ctrl" value="&amp;lt;b&amp;gt;ZONA 3: CONTROLES DE NEGOCIO Y ORQUESTACIÓN&amp;lt;/b&amp;gt;" style="rounded=1;fillColor=#F0FDF4;strokeColor=#BBF7D0;strokeWidth=1.5;verticalAlign=top;align=left;spacingLeft=15;spacingTop=12;fontFamily=Arial;fontSize=13;fontColor=#475569;dashed=1;" vertex="1" parent="1" connectable="0">
+          <mxGeometry x="1000" y="150" width="1340" height="2010" as="geometry" />
+        </mxCell>
+        <mxCell id="zone_ent" value="&amp;lt;b&amp;gt;ZONA 4: ENTIDADES DE DOMINIO Y PERSISTENCIA&amp;lt;/b&amp;gt;" style="rounded=1;fillColor=#FFFBEB;strokeColor=#FDE68A;strokeWidth=1.5;verticalAlign=top;align=left;spacingLeft=15;spacingTop=12;fontFamily=Arial;fontSize=13;fontColor=#475569;dashed=1;" vertex="1" parent="1" connectable="0">
+          <mxGeometry x="2380" y="150" width="970" height="2010" as="geometry" />
+        </mxCell>
+        <mxCell id="rules_card" value="&amp;lt;b style='font-size:15px;color:#0F172A;'&amp;gt;REGLAS FUNDAMENTALES DE ROBUSTEZ (ICONIX)&amp;lt;/b&amp;gt;&amp;lt;br&amp;gt;&amp;lt;br&amp;gt;&amp;lt;b style='color:#7B1FA2;'&amp;gt;1. Actores solo hablan con Frontera:&amp;lt;/b&amp;gt;&amp;lt;br&amp;gt;&amp;amp;nbsp;&amp;amp;nbsp;Un actor no interactúa directamente con controles o entidades.&amp;lt;br&amp;gt;&amp;lt;br&amp;gt;&amp;lt;b style='color:#0288D1;'&amp;gt;2. Fronteras solo conectan con Actores y Controles:&amp;lt;/b&amp;gt;&amp;lt;br&amp;gt;&amp;amp;nbsp;&amp;amp;nbsp;Dos interfaces nunca se comunican directamente sin un control intermedio.&amp;lt;br&amp;gt;&amp;lt;br&amp;gt;&amp;lt;b style='color:#E65100;'&amp;gt;3. Entidades solo conectan con Controles:&amp;lt;/b&amp;gt;&amp;lt;br&amp;gt;&amp;amp;nbsp;&amp;amp;nbsp;Las tablas no se comunican directamente; toda lógica pasa por un control.&amp;lt;br&amp;gt;&amp;lt;br&amp;gt;&amp;lt;b style='color:#2E7D32;'&amp;gt;4. Controles pueden conectar con todo:&amp;lt;/b&amp;gt;&amp;lt;br&amp;gt;&amp;amp;nbsp;&amp;amp;nbsp;Tienen capacidad de enlazarse con fronteras, entidades y otros controles.&amp;lt;br&amp;gt;&amp;lt;br&amp;gt;&amp;lt;i style='color:#64748B;'&amp;gt;Verificado: 100% de cumplimiento en las 42 conexiones.&amp;lt;/i&amp;gt;" style="rounded=1;fillColor=#FFFFFF;strokeColor=#CBD5E1;strokeWidth=1.5;align=left;verticalAlign=top;spacing=12;fontFamily=Arial;fontSize=12;html=1;shadow=1;" vertex="1" parent="1" connectable="0">
+          <mxGeometry x="60" y="1640" width="290" height="480" as="geometry" />
+        </mxCell>
+        <mxCell id="act_admin" value="" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;fillColor=#F3E5F5;strokeColor=#7B1FA2;strokeWidth=2;fontFamily=Arial;" vertex="1" parent="1">
+          <mxGeometry x="130" y="615" width="60" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="lbl_act_admin" value="&amp;lt;b style='font-size:13px;color:#0F172A;'&amp;gt;Administrador de Empresa&amp;lt;/b&amp;gt;&amp;lt;br&amp;gt;&amp;lt;span style='font-size:11px;color:#475569;'&amp;gt;«actor»&amp;lt;br&amp;gt;Gestión integral del catálogo,&amp;lt;br&amp;gt;precios, ofertas y clasificación&amp;lt;/span&amp;gt;" style="text;html=1;align=center;verticalAlign=top;whiteSpace=wrap;fillColor=none;strokeColor=none;fontFamily=Arial;" vertex="1" parent="1" connectable="0">
+          <mxGeometry x="30" y="715" width="260" height="75" as="geometry" />
+        </mxCell>
+        <mxCell id="act_inventario" value="" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;fillColor=#F3E5F5;strokeColor=#7B1FA2;strokeWidth=2;fontFamily=Arial;" vertex="1" parent="1">
+          <mxGeometry x="130" y="1315" width="60" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="lbl_act_inventario" value="&amp;lt;b style='font-size:13px;color:#0F172A;'&amp;gt;Encargado de Inventario&amp;lt;/b&amp;gt;&amp;lt;br&amp;gt;&amp;lt;span style='font-size:11px;color:#475569;'&amp;gt;«actor»&amp;lt;br&amp;gt;Gestión de prendas, variantes,&amp;lt;br&amp;gt;medidas y stock por sucursal&amp;lt;/span&amp;gt;" style="text;html=1;align=center;verticalAlign=top;whiteSpace=wrap;fillColor=none;strokeColor=none;fontFamily=Arial;" vertex="1" parent="1" connectable="0">
+          <mxGeometry x="30" y="1415" width="260" height="75" as="geometry" />
+        </mxCell>
+        <mxCell id="bnd_notificaciones" value="" style="shape=umlBoundary;whiteSpace=wrap;html=1;verticalAlign=top;verticalLabelPosition=bottom;fillColor=#E1F5FE;strokeColor=#0288D1;strokeWidth=2;aspect=fixed;fontFamily=Arial;" vertex="1" parent="1">
+          <mxGeometry x="600" y="200" width="80" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="lbl_bnd_notificaciones" value="&amp;lt;b style='font-size:13px;color:#0F172A;'&amp;gt;UI_Notificaciones&amp;lt;/b&amp;gt;&amp;lt;br&amp;gt;&amp;lt;span style='font-size:11px;color:#475569;'&amp;gt;«boundary»&amp;lt;br&amp;gt;Panel de Retroalimentación&amp;lt;br&amp;gt;(Toast / Alertas Éxito y Error)&amp;lt;/span&amp;gt;" style="text;html=1;align=center;verticalAlign=top;whiteSpace=wrap;fillColor=none;strokeColor=none;fontFamily=Arial;" vertex="1" parent="1" connectable="0">
+          <mxGeometry x="510" y="290" width="260" height="75" as="geometry" />
+        </mxCell>
+        <mxCell id="bnd_panel_catalogo" value="" style="shape=umlBoundary;whiteSpace=wrap;html=1;verticalAlign=top;verticalLabelPosition=bottom;fillColor=#E1F5FE;strokeColor=#0288D1;strokeWidth=2;aspect=fixed;fontFamily=Arial;" vertex="1" parent="1">
+          <mxGeometry x="600" y="560" width="80" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="lbl_bnd_panel_catalogo" value="&amp;lt;b style='font-size:13px;color:#0F172A;'&amp;gt;UI_PanelCatalogo&amp;lt;/b&amp;gt;&amp;lt;br&amp;gt;&amp;lt;span style='font-size:11px;color:#475569;'&amp;gt;«boundary»&amp;lt;br&amp;gt;Panel Catálogo de Prendas&amp;lt;br&amp;gt;(Prendas / Tabla Maestra)&amp;lt;/span&amp;gt;" style="text;html=1;align=center;verticalAlign=top;whiteSpace=wrap;fillColor=none;strokeColor=none;fontFamily=Arial;" vertex="1" parent="1" connectable="0">
+          <mxGeometry x="510" y="650" width="260" height="75" as="geometry" />
+        </mxCell>
+        <mxCell id="bnd_modal_prenda" value="" style="shape=umlBoundary;whiteSpace=wrap;html=1;verticalAlign=top;verticalLabelPosition=bottom;fillColor=#E1F5FE;strokeColor=#0288D1;strokeWidth=2;aspect=fixed;fontFamily=Arial;" vertex="1" parent="1">
+          <mxGeometry x="600" y="980" width="80" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="lbl_bnd_modal_prenda" value="&amp;lt;b style='font-size:13px;color:#0F172A;'&amp;gt;UI_ModalPrenda&amp;lt;/b&amp;gt;&amp;lt;br&amp;gt;&amp;lt;span style='font-size:11px;color:#475569;'&amp;gt;«boundary»&amp;lt;br&amp;gt;Formulario Prenda y Variantes&amp;lt;br&amp;gt;(PrendaModal / Matriz Talla-Color)&amp;lt;/span&amp;gt;" style="text;html=1;align=center;verticalAlign=top;whiteSpace=wrap;fillColor=none;strokeColor=none;fontFamily=Arial;" vertex="1" parent="1" connectable="0">
+          <mxGeometry x="510" y="1070" width="260" height="75" as="geometry" />
+        </mxCell>
+        <mxCell id="bnd_modal_categoria" value="" style="shape=umlBoundary;whiteSpace=wrap;html=1;verticalAlign=top;verticalLabelPosition=bottom;fillColor=#E1F5FE;strokeColor=#0288D1;strokeWidth=2;aspect=fixed;fontFamily=Arial;" vertex="1" parent="1">
+          <mxGeometry x="600" y="1440" width="80" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="lbl_bnd_modal_categoria" value="&amp;lt;b style='font-size:13px;color:#0F172A;'&amp;gt;UI_ModalCategoria&amp;lt;/b&amp;gt;&amp;lt;br&amp;gt;&amp;lt;span style='font-size:11px;color:#475569;'&amp;gt;«boundary»&amp;lt;br&amp;gt;Gestor de Categorías&amp;lt;br&amp;gt;(CategoriaModal / Jerarquía)&amp;lt;/span&amp;gt;" style="text;html=1;align=center;verticalAlign=top;whiteSpace=wrap;fillColor=none;strokeColor=none;fontFamily=Arial;" vertex="1" parent="1" connectable="0">
+          <mxGeometry x="510" y="1530" width="260" height="75" as="geometry" />
+        </mxCell>
+        <mxCell id="bnd_modal_temporada" value="" style="shape=umlBoundary;whiteSpace=wrap;html=1;verticalAlign=top;verticalLabelPosition=bottom;fillColor=#E1F5FE;strokeColor=#0288D1;strokeWidth=2;aspect=fixed;fontFamily=Arial;" vertex="1" parent="1">
+          <mxGeometry x="600" y="1800" width="80" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="lbl_bnd_modal_temporada" value="&amp;lt;b style='font-size:13px;color:#0F172A;'&amp;gt;UI_ModalTemporada&amp;lt;/b&amp;gt;&amp;lt;br&amp;gt;&amp;lt;span style='font-size:11px;color:#475569;'&amp;gt;«boundary»&amp;lt;br&amp;gt;Gestor de Temporadas&amp;lt;br&amp;gt;(TemporadaModal / Vigencias)&amp;lt;/span&amp;gt;" style="text;html=1;align=center;verticalAlign=top;whiteSpace=wrap;fillColor=none;strokeColor=none;fontFamily=Arial;" vertex="1" parent="1" connectable="0">
+          <mxGeometry x="510" y="1890" width="260" height="75" as="geometry" />
+        </mxCell>
+        <mxCell id="ctrl_consultar_catalogo" value="" style="shape=umlControl;whiteSpace=wrap;html=1;verticalAlign=top;verticalLabelPosition=bottom;fillColor=#E8F5E9;strokeColor=#2E7D32;strokeWidth=2;aspect=fixed;fontFamily=Arial;" vertex="1" parent="1">
+          <mxGeometry x="1200" y="460" width="80" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="lbl_ctrl_consultar_catalogo" value="&amp;lt;b style='font-size:13px;color:#0F172A;'&amp;gt;Ctrl_ConsultarCatalogo&amp;lt;/b&amp;gt;&amp;lt;br&amp;gt;&amp;lt;span style='font-size:11px;color:#475569;'&amp;gt;«control»&amp;lt;br&amp;gt;Consultar Catálogo y Filtros&amp;lt;br&amp;gt;(catalogo.py / svc.listar_prendas)&amp;lt;/span&amp;gt;" style="text;html=1;align=center;verticalAlign=top;whiteSpace=wrap;fillColor=none;strokeColor=none;fontFamily=Arial;" vertex="1" parent="1" connectable="0">
+          <mxGeometry x="1110" y="550" width="260" height="75" as="geometry" />
+        </mxCell>
+        <mxCell id="ctrl_gestionar_prenda" value="" style="shape=umlControl;whiteSpace=wrap;html=1;verticalAlign=top;verticalLabelPosition=bottom;fillColor=#E8F5E9;strokeColor=#2E7D32;strokeWidth=2;aspect=fixed;fontFamily=Arial;" vertex="1" parent="1">
+          <mxGeometry x="1200" y="980" width="80" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="lbl_ctrl_gestionar_prenda" value="&amp;lt;b style='font-size:13px;color:#0F172A;'&amp;gt;Ctrl_GestionarPrenda&amp;lt;/b&amp;gt;&amp;lt;br&amp;gt;&amp;lt;span style='font-size:11px;color:#475569;'&amp;gt;«control»&amp;lt;br&amp;gt;Gestionar Prenda Maestra&amp;lt;br&amp;gt;(prendas.py / svc.crear_prenda)&amp;lt;/span&amp;gt;" style="text;html=1;align=center;verticalAlign=top;whiteSpace=wrap;fillColor=none;strokeColor=none;fontFamily=Arial;" vertex="1" parent="1" connectable="0">
+          <mxGeometry x="1110" y="1070" width="260" height="75" as="geometry" />
+        </mxCell>
+        <mxCell id="ctrl_gestionar_clasificacion" value="" style="shape=umlControl;whiteSpace=wrap;html=1;verticalAlign=top;verticalLabelPosition=bottom;fillColor=#E8F5E9;strokeColor=#2E7D32;strokeWidth=2;aspect=fixed;fontFamily=Arial;" vertex="1" parent="1">
+          <mxGeometry x="1200" y="1620" width="80" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="lbl_ctrl_gestionar_clasificacion" value="&amp;lt;b style='font-size:13px;color:#0F172A;'&amp;gt;Ctrl_GestionarClasificacion&amp;lt;/b&amp;gt;&amp;lt;br&amp;gt;&amp;lt;span style='font-size:11px;color:#475569;'&amp;gt;«control»&amp;lt;br&amp;gt;Gestionar Categorías y Períodos&amp;lt;br&amp;gt;(categorias.py / temporadas.py)&amp;lt;/span&amp;gt;" style="text;html=1;align=center;verticalAlign=top;whiteSpace=wrap;fillColor=none;strokeColor=none;fontFamily=Arial;" vertex="1" parent="1" connectable="0">
+          <mxGeometry x="1110" y="1710" width="260" height="75" as="geometry" />
+        </mxCell>
+        <mxCell id="ctrl_validar_reglas" value="" style="shape=umlControl;whiteSpace=wrap;html=1;verticalAlign=top;verticalLabelPosition=bottom;fillColor=#E8F5E9;strokeColor=#2E7D32;strokeWidth=2;aspect=fixed;fontFamily=Arial;" vertex="1" parent="1">
+          <mxGeometry x="1810" y="700" width="80" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="lbl_ctrl_validar_reglas" value="&amp;lt;b style='font-size:13px;color:#0F172A;'&amp;gt;Ctrl_ValidarReglasNegocio&amp;lt;/b&amp;gt;&amp;lt;br&amp;gt;&amp;lt;span style='font-size:11px;color:#475569;'&amp;gt;«control»&amp;lt;br&amp;gt;Validar Reglas y Unicidad SKU&amp;lt;br&amp;gt;(svc.existe_sku / validaciones)&amp;lt;/span&amp;gt;" style="text;html=1;align=center;verticalAlign=top;whiteSpace=wrap;fillColor=none;strokeColor=none;fontFamily=Arial;" vertex="1" parent="1" connectable="0">
+          <mxGeometry x="1720" y="790" width="260" height="75" as="geometry" />
+        </mxCell>
+        <mxCell id="ctrl_procesar_imagen" value="" style="shape=umlControl;whiteSpace=wrap;html=1;verticalAlign=top;verticalLabelPosition=bottom;fillColor=#E8F5E9;strokeColor=#2E7D32;strokeWidth=2;aspect=fixed;fontFamily=Arial;" vertex="1" parent="1">
+          <mxGeometry x="1810" y="900" width="80" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="lbl_ctrl_procesar_imagen" value="&amp;lt;b style='font-size:13px;color:#0F172A;'&amp;gt;Ctrl_ProcesarImagen&amp;lt;/b&amp;gt;&amp;lt;br&amp;gt;&amp;lt;span style='font-size:11px;color:#475569;'&amp;gt;«control»&amp;lt;br&amp;gt;Procesar Fotografía Principal&amp;lt;br&amp;gt;(image_storage_service)&amp;lt;/span&amp;gt;" style="text;html=1;align=center;verticalAlign=top;whiteSpace=wrap;fillColor=none;strokeColor=none;fontFamily=Arial;" vertex="1" parent="1" connectable="0">
+          <mxGeometry x="1720" y="990" width="260" height="75" as="geometry" />
+        </mxCell>
+        <mxCell id="ctrl_generar_variantes" value="" style="shape=umlControl;whiteSpace=wrap;html=1;verticalAlign=top;verticalLabelPosition=bottom;fillColor=#E8F5E9;strokeColor=#2E7D32;strokeWidth=2;aspect=fixed;fontFamily=Arial;" vertex="1" parent="1">
+          <mxGeometry x="1810" y="1100" width="80" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="lbl_ctrl_generar_variantes" value="&amp;lt;b style='font-size:13px;color:#0F172A;'&amp;gt;Ctrl_GenerarVariantesSKU&amp;lt;/b&amp;gt;&amp;lt;br&amp;gt;&amp;lt;span style='font-size:11px;color:#475569;'&amp;gt;«control»&amp;lt;br&amp;gt;Generar Variantes y Multicolores&amp;lt;br&amp;gt;(svc._crear_variante / SKU derivado)&amp;lt;/span&amp;gt;" style="text;html=1;align=center;verticalAlign=top;whiteSpace=wrap;fillColor=none;strokeColor=none;fontFamily=Arial;" vertex="1" parent="1" connectable="0">
+          <mxGeometry x="1720" y="1190" width="260" height="75" as="geometry" />
+        </mxCell>
+        <mxCell id="ctrl_inicializar_stock" value="" style="shape=umlControl;whiteSpace=wrap;html=1;verticalAlign=top;verticalLabelPosition=bottom;fillColor=#E8F5E9;strokeColor=#2E7D32;strokeWidth=2;aspect=fixed;fontFamily=Arial;" vertex="1" parent="1">
+          <mxGeometry x="1810" y="1300" width="80" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="lbl_ctrl_inicializar_stock" value="&amp;lt;b style='font-size:13px;color:#0F172A;'&amp;gt;Ctrl_InicializarInventario&amp;lt;/b&amp;gt;&amp;lt;br&amp;gt;&amp;lt;span style='font-size:11px;color:#475569;'&amp;gt;«control»&amp;lt;br&amp;gt;Inicializar Stock en Sucursales&amp;lt;br&amp;gt;(inventario / stock_inicial)&amp;lt;/span&amp;gt;" style="text;html=1;align=center;verticalAlign=top;whiteSpace=wrap;fillColor=none;strokeColor=none;fontFamily=Arial;" vertex="1" parent="1" connectable="0">
+          <mxGeometry x="1720" y="1390" width="260" height="75" as="geometry" />
+        </mxCell>
+        <mxCell id="ctrl_registrar_auditoria" value="" style="shape=umlControl;whiteSpace=wrap;html=1;verticalAlign=top;verticalLabelPosition=bottom;fillColor=#E8F5E9;strokeColor=#2E7D32;strokeWidth=2;aspect=fixed;fontFamily=Arial;" vertex="1" parent="1">
+          <mxGeometry x="1810" y="1760" width="80" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="lbl_ctrl_registrar_auditoria" value="&amp;lt;b style='font-size:13px;color:#0F172A;'&amp;gt;Ctrl_RegistrarAuditoria&amp;lt;/b&amp;gt;&amp;lt;br&amp;gt;&amp;lt;span style='font-size:11px;color:#475569;'&amp;gt;«control»&amp;lt;br&amp;gt;Registrar Bitácora Forense&amp;lt;br&amp;gt;(bitacora_service / IP y Acción)&amp;lt;/span&amp;gt;" style="text;html=1;align=center;verticalAlign=top;whiteSpace=wrap;fillColor=none;strokeColor=none;fontFamily=Arial;" vertex="1" parent="1" connectable="0">
+          <mxGeometry x="1720" y="1850" width="260" height="75" as="geometry" />
+        </mxCell>
+        <mxCell id="ent_categoria" value="" style="shape=umlEntity;whiteSpace=wrap;html=1;verticalAlign=top;verticalLabelPosition=bottom;fillColor=#FFF3E0;strokeColor=#E65100;strokeWidth=2;aspect=fixed;fontFamily=Arial;" vertex="1" parent="1">
+          <mxGeometry x="2660" y="240" width="80" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="lbl_ent_categoria" value="&amp;lt;b style='font-size:13px;color:#0F172A;'&amp;gt;Categoría&amp;lt;/b&amp;gt;&amp;lt;br&amp;gt;&amp;lt;span style='font-size:11px;color:#475569;'&amp;gt;«entity»&amp;lt;br&amp;gt;Categoría de Prenda&amp;lt;br&amp;gt;(categoria)&amp;lt;/span&amp;gt;" style="text;html=1;align=center;verticalAlign=top;whiteSpace=wrap;fillColor=none;strokeColor=none;fontFamily=Arial;" vertex="1" parent="1" connectable="0">
+          <mxGeometry x="2570" y="330" width="260" height="75" as="geometry" />
+        </mxCell>
+        <mxCell id="ent_temporada" value="" style="shape=umlEntity;whiteSpace=wrap;html=1;verticalAlign=top;verticalLabelPosition=bottom;fillColor=#FFF3E0;strokeColor=#E65100;strokeWidth=2;aspect=fixed;fontFamily=Arial;" vertex="1" parent="1">
+          <mxGeometry x="2660" y="400" width="80" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="lbl_ent_temporada" value="&amp;lt;b style='font-size:13px;color:#0F172A;'&amp;gt;Temporada / Colección&amp;lt;/b&amp;gt;&amp;lt;br&amp;gt;&amp;lt;span style='font-size:11px;color:#475569;'&amp;gt;«entity»&amp;lt;br&amp;gt;Temporada y Colección&amp;lt;br&amp;gt;(temporada)&amp;lt;/span&amp;gt;" style="text;html=1;align=center;verticalAlign=top;whiteSpace=wrap;fillColor=none;strokeColor=none;fontFamily=Arial;" vertex="1" parent="1" connectable="0">
+          <mxGeometry x="2570" y="490" width="260" height="75" as="geometry" />
+        </mxCell>
+        <mxCell id="ent_prenda" value="" style="shape=umlEntity;whiteSpace=wrap;html=1;verticalAlign=top;verticalLabelPosition=bottom;fillColor=#FFF3E0;strokeColor=#E65100;strokeWidth=2;aspect=fixed;fontFamily=Arial;" vertex="1" parent="1">
+          <mxGeometry x="2660" y="600" width="80" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="lbl_ent_prenda" value="&amp;lt;b style='font-size:13px;color:#0F172A;'&amp;gt;Prenda&amp;lt;/b&amp;gt;&amp;lt;br&amp;gt;&amp;lt;span style='font-size:11px;color:#475569;'&amp;gt;«entity»&amp;lt;br&amp;gt;Prenda Maestra del Catálogo&amp;lt;br&amp;gt;(prenda)&amp;lt;/span&amp;gt;" style="text;html=1;align=center;verticalAlign=top;whiteSpace=wrap;fillColor=none;strokeColor=none;fontFamily=Arial;" vertex="1" parent="1" connectable="0">
+          <mxGeometry x="2570" y="690" width="260" height="75" as="geometry" />
+        </mxCell>
+        <mxCell id="ent_imagen" value="" style="shape=umlEntity;whiteSpace=wrap;html=1;verticalAlign=top;verticalLabelPosition=bottom;fillColor=#FFF3E0;strokeColor=#E65100;strokeWidth=2;aspect=fixed;fontFamily=Arial;" vertex="1" parent="1">
+          <mxGeometry x="2660" y="780" width="80" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="lbl_ent_imagen" value="&amp;lt;b style='font-size:13px;color:#0F172A;'&amp;gt;Imagen de Prenda&amp;lt;/b&amp;gt;&amp;lt;br&amp;gt;&amp;lt;span style='font-size:11px;color:#475569;'&amp;gt;«entity»&amp;lt;br&amp;gt;Fotografía Principal / Galería&amp;lt;br&amp;gt;(imagen_prenda)&amp;lt;/span&amp;gt;" style="text;html=1;align=center;verticalAlign=top;whiteSpace=wrap;fillColor=none;strokeColor=none;fontFamily=Arial;" vertex="1" parent="1" connectable="0">
+          <mxGeometry x="2570" y="870" width="260" height="75" as="geometry" />
+        </mxCell>
+        <mxCell id="ent_talla" value="" style="shape=umlEntity;whiteSpace=wrap;html=1;verticalAlign=top;verticalLabelPosition=bottom;fillColor=#FFF3E0;strokeColor=#E65100;strokeWidth=2;aspect=fixed;fontFamily=Arial;" vertex="1" parent="1">
+          <mxGeometry x="2660" y="940" width="80" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="lbl_ent_talla" value="&amp;lt;b style='font-size:13px;color:#0F172A;'&amp;gt;Talla&amp;lt;/b&amp;gt;&amp;lt;br&amp;gt;&amp;lt;span style='font-size:11px;color:#475569;'&amp;gt;«entity»&amp;lt;br&amp;gt;Talla Comercial&amp;lt;br&amp;gt;(talla)&amp;lt;/span&amp;gt;" style="text;html=1;align=center;verticalAlign=top;whiteSpace=wrap;fillColor=none;strokeColor=none;fontFamily=Arial;" vertex="1" parent="1" connectable="0">
+          <mxGeometry x="2570" y="1030" width="260" height="75" as="geometry" />
+        </mxCell>
+        <mxCell id="ent_color" value="" style="shape=umlEntity;whiteSpace=wrap;html=1;verticalAlign=top;verticalLabelPosition=bottom;fillColor=#FFF3E0;strokeColor=#E65100;strokeWidth=2;aspect=fixed;fontFamily=Arial;" vertex="1" parent="1">
+          <mxGeometry x="2660" y="1080" width="80" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="lbl_ent_color" value="&amp;lt;b style='font-size:13px;color:#0F172A;'&amp;gt;Color&amp;lt;/b&amp;gt;&amp;lt;br&amp;gt;&amp;lt;span style='font-size:11px;color:#475569;'&amp;gt;«entity»&amp;lt;br&amp;gt;Color y Código HEX&amp;lt;br&amp;gt;(color)&amp;lt;/span&amp;gt;" style="text;html=1;align=center;verticalAlign=top;whiteSpace=wrap;fillColor=none;strokeColor=none;fontFamily=Arial;" vertex="1" parent="1" connectable="0">
+          <mxGeometry x="2570" y="1170" width="260" height="75" as="geometry" />
+        </mxCell>
+        <mxCell id="ent_variante" value="" style="shape=umlEntity;whiteSpace=wrap;html=1;verticalAlign=top;verticalLabelPosition=bottom;fillColor=#FFF3E0;strokeColor=#E65100;strokeWidth=2;aspect=fixed;fontFamily=Arial;" vertex="1" parent="1">
+          <mxGeometry x="2660" y="1240" width="80" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="lbl_ent_variante" value="&amp;lt;b style='font-size:13px;color:#0F172A;'&amp;gt;Variante de Prenda&amp;lt;/b&amp;gt;&amp;lt;br&amp;gt;&amp;lt;span style='font-size:11px;color:#475569;'&amp;gt;«entity»&amp;lt;br&amp;gt;Variante Física Talla-Color&amp;lt;br&amp;gt;(variante_prenda)&amp;lt;/span&amp;gt;" style="text;html=1;align=center;verticalAlign=top;whiteSpace=wrap;fillColor=none;strokeColor=none;fontFamily=Arial;" vertex="1" parent="1" connectable="0">
+          <mxGeometry x="2570" y="1330" width="260" height="75" as="geometry" />
+        </mxCell>
+        <mxCell id="ent_sucursal" value="" style="shape=umlEntity;whiteSpace=wrap;html=1;verticalAlign=top;verticalLabelPosition=bottom;fillColor=#FFF3E0;strokeColor=#E65100;strokeWidth=2;aspect=fixed;fontFamily=Arial;" vertex="1" parent="1">
+          <mxGeometry x="2660" y="1400" width="80" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="lbl_ent_sucursal" value="&amp;lt;b style='font-size:13px;color:#0F172A;'&amp;gt;Sucursal&amp;lt;/b&amp;gt;&amp;lt;br&amp;gt;&amp;lt;span style='font-size:11px;color:#475569;'&amp;gt;«entity»&amp;lt;br&amp;gt;Sucursales Activas&amp;lt;br&amp;gt;(sucursal)&amp;lt;/span&amp;gt;" style="text;html=1;align=center;verticalAlign=top;whiteSpace=wrap;fillColor=none;strokeColor=none;fontFamily=Arial;" vertex="1" parent="1" connectable="0">
+          <mxGeometry x="2570" y="1490" width="260" height="75" as="geometry" />
+        </mxCell>
+        <mxCell id="ent_inventario" value="" style="shape=umlEntity;whiteSpace=wrap;html=1;verticalAlign=top;verticalLabelPosition=bottom;fillColor=#FFF3E0;strokeColor=#E65100;strokeWidth=2;aspect=fixed;fontFamily=Arial;" vertex="1" parent="1">
+          <mxGeometry x="2660" y="1560" width="80" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="lbl_ent_inventario" value="&amp;lt;b style='font-size:13px;color:#0F172A;'&amp;gt;Inventario&amp;lt;/b&amp;gt;&amp;lt;br&amp;gt;&amp;lt;span style='font-size:11px;color:#475569;'&amp;gt;«entity»&amp;lt;br&amp;gt;Stock por Sucursal y Variante&amp;lt;br&amp;gt;(inventario)&amp;lt;/span&amp;gt;" style="text;html=1;align=center;verticalAlign=top;whiteSpace=wrap;fillColor=none;strokeColor=none;fontFamily=Arial;" vertex="1" parent="1" connectable="0">
+          <mxGeometry x="2570" y="1650" width="260" height="75" as="geometry" />
+        </mxCell>
+        <mxCell id="ent_movimiento" value="" style="shape=umlEntity;whiteSpace=wrap;html=1;verticalAlign=top;verticalLabelPosition=bottom;fillColor=#FFF3E0;strokeColor=#E65100;strokeWidth=2;aspect=fixed;fontFamily=Arial;" vertex="1" parent="1">
+          <mxGeometry x="2660" y="1720" width="80" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="lbl_ent_movimiento" value="&amp;lt;b style='font-size:13px;color:#0F172A;'&amp;gt;Movimiento de Inventario&amp;lt;/b&amp;gt;&amp;lt;br&amp;gt;&amp;lt;span style='font-size:11px;color:#475569;'&amp;gt;«entity»&amp;lt;br&amp;gt;Kardex y Entrada Inicial&amp;lt;br&amp;gt;(movimiento_inventario)&amp;lt;/span&amp;gt;" style="text;html=1;align=center;verticalAlign=top;whiteSpace=wrap;fillColor=none;strokeColor=none;fontFamily=Arial;" vertex="1" parent="1" connectable="0">
+          <mxGeometry x="2570" y="1810" width="260" height="75" as="geometry" />
+        </mxCell>
+        <mxCell id="ent_bitacora" value="" style="shape=umlEntity;whiteSpace=wrap;html=1;verticalAlign=top;verticalLabelPosition=bottom;fillColor=#FFF3E0;strokeColor=#E65100;strokeWidth=2;aspect=fixed;fontFamily=Arial;" vertex="1" parent="1">
+          <mxGeometry x="2660" y="1900" width="80" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="lbl_ent_bitacora" value="&amp;lt;b style='font-size:13px;color:#0F172A;'&amp;gt;Bitácora&amp;lt;/b&amp;gt;&amp;lt;br&amp;gt;&amp;lt;span style='font-size:11px;color:#475569;'&amp;gt;«entity»&amp;lt;br&amp;gt;Registro Forense de Auditoría&amp;lt;br&amp;gt;(bitacora)&amp;lt;/span&amp;gt;" style="text;html=1;align=center;verticalAlign=top;whiteSpace=wrap;fillColor=none;strokeColor=none;fontFamily=Arial;" vertex="1" parent="1" connectable="0">
+          <mxGeometry x="2570" y="1990" width="260" height="75" as="geometry" />
+        </mxCell>
+        <mxCell id="e_01" value="1: Solicitar gestión de catálogo" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#546E7A;strokeWidth=1.8;endArrow=classic;endFill=1;startArrow=none;fontFamily=Arial;fontSize=11;fontColor=#546E7A;labelBackgroundColor=#FFFFFF;labelBorderColor=#546E7A;spacing=3;" edge="1" parent="1" source="act_admin" target="bnd_panel_catalogo">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_02" value="2: Abrir formulario alta / edición de prenda" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#546E7A;strokeWidth=1.8;endArrow=classic;endFill=1;startArrow=none;fontFamily=Arial;fontSize=11;fontColor=#546E7A;labelBackgroundColor=#FFFFFF;labelBorderColor=#546E7A;spacing=3;" edge="1" parent="1" source="act_admin" target="bnd_modal_prenda">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_03" value="Gestionar árbol de categorías" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#546E7A;strokeWidth=1.8;endArrow=classic;endFill=1;startArrow=none;fontFamily=Arial;fontSize=11;fontColor=#546E7A;labelBackgroundColor=#FFFFFF;labelBorderColor=#546E7A;spacing=3;" edge="1" parent="1" source="act_admin" target="bnd_modal_categoria">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_04" value="Gestionar temporadas y colecciones" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#546E7A;strokeWidth=1.8;endArrow=classic;endFill=1;startArrow=none;fontFamily=Arial;fontSize=11;fontColor=#546E7A;labelBackgroundColor=#FFFFFF;labelBorderColor=#546E7A;spacing=3;" edge="1" parent="1" source="act_admin" target="bnd_modal_temporada">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_05" value="Consultar catálogo y existencias" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#546E7A;strokeWidth=1.8;endArrow=classic;endFill=1;startArrow=none;fontFamily=Arial;fontSize=11;fontColor=#546E7A;labelBackgroundColor=#FFFFFF;labelBorderColor=#546E7A;spacing=3;" edge="1" parent="1" source="act_inventario" target="bnd_panel_catalogo">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_06" value="Registrar variantes, medidas y stock inicial" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#546E7A;strokeWidth=1.8;endArrow=classic;endFill=1;startArrow=none;fontFamily=Arial;fontSize=11;fontColor=#546E7A;labelBackgroundColor=#FFFFFF;labelBorderColor=#546E7A;spacing=3;" edge="1" parent="1" source="act_inventario" target="bnd_modal_prenda">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_07" value="Visualizar confirmaciones y alertas" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#00838F;strokeWidth=1.8;endArrow=classic;endFill=1;startArrow=none;fontFamily=Arial;fontSize=11;fontColor=#00838F;labelBackgroundColor=#FFFFFF;labelBorderColor=#00838F;spacing=3;" edge="1" parent="1" source="bnd_notificaciones" target="act_admin">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_08" value="Visualizar confirmaciones y alertas" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#00838F;strokeWidth=1.8;endArrow=classic;endFill=1;startArrow=none;fontFamily=Arial;fontSize=11;fontColor=#00838F;labelBackgroundColor=#FFFFFF;labelBorderColor=#00838F;spacing=3;" edge="1" parent="1" source="bnd_notificaciones" target="act_inventario">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_09" value="3: Enviar parámetros de búsqueda y filtros" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#546E7A;strokeWidth=1.8;endArrow=classic;endFill=1;startArrow=none;fontFamily=Arial;fontSize=11;fontColor=#546E7A;labelBackgroundColor=#FFFFFF;labelBorderColor=#546E7A;spacing=3;" edge="1" parent="1" source="bnd_panel_catalogo" target="ctrl_consultar_catalogo">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_10" value="4: Devolver lista de prendas con stock consolidado" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#00838F;strokeWidth=1.8;endArrow=classic;endFill=1;startArrow=none;fontFamily=Arial;fontSize=11;fontColor=#00838F;labelBackgroundColor=#FFFFFF;labelBorderColor=#00838F;spacing=3;" edge="1" parent="1" source="ctrl_consultar_catalogo" target="bnd_panel_catalogo">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_11" value="5: Enviar formulario de prenda, variantes y foto" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#546E7A;strokeWidth=1.8;endArrow=classic;endFill=1;startArrow=none;fontFamily=Arial;fontSize=11;fontColor=#546E7A;labelBackgroundColor=#FFFFFF;labelBorderColor=#546E7A;spacing=3;" edge="1" parent="1" source="bnd_modal_prenda" target="ctrl_gestionar_prenda">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_12" value="Cargar selectores de tallas y colores" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#00838F;strokeWidth=1.8;endArrow=classic;endFill=1;startArrow=none;fontFamily=Arial;fontSize=11;fontColor=#00838F;labelBackgroundColor=#FFFFFF;labelBorderColor=#00838F;spacing=3;" edge="1" parent="1" source="ctrl_gestionar_prenda" target="bnd_modal_prenda">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_13" value="Enviar datos de categoría y categoría padre" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#546E7A;strokeWidth=1.8;endArrow=classic;endFill=1;startArrow=none;fontFamily=Arial;fontSize=11;fontColor=#546E7A;labelBackgroundColor=#FFFFFF;labelBorderColor=#546E7A;spacing=3;" edge="1" parent="1" source="bnd_modal_categoria" target="ctrl_gestionar_clasificacion">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_14" value="Enviar temporada, descripción y fechas de vigencia" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#546E7A;strokeWidth=1.8;endArrow=classic;endFill=1;startArrow=none;fontFamily=Arial;fontSize=11;fontColor=#546E7A;labelBackgroundColor=#FFFFFF;labelBorderColor=#546E7A;spacing=3;" edge="1" parent="1" source="bnd_modal_temporada" target="ctrl_gestionar_clasificacion">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_15" value="[Alt: Error]: Alerta SKU duplicado / precio negativo" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#C62828;strokeWidth=1.8;endArrow=classic;endFill=1;startArrow=none;fontFamily=Arial;fontSize=11;fontColor=#C62828;labelBackgroundColor=#FFFFFF;labelBorderColor=#C62828;spacing=3;" edge="1" parent="1" source="ctrl_validar_reglas" target="bnd_notificaciones">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_16" value="12: [Éxito]: Notificar confirmación de guardado" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#00838F;strokeWidth=1.8;endArrow=classic;endFill=1;startArrow=none;fontFamily=Arial;fontSize=11;fontColor=#00838F;labelBackgroundColor=#FFFFFF;labelBorderColor=#00838F;spacing=3;" edge="1" parent="1" source="ctrl_gestionar_prenda" target="bnd_notificaciones">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_17" value="13: Refrescar catálogo maestro actualizado" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#00838F;strokeWidth=1.8;endArrow=classic;endFill=1;startArrow=none;fontFamily=Arial;fontSize=11;fontColor=#00838F;labelBackgroundColor=#FFFFFF;labelBorderColor=#00838F;spacing=3;" edge="1" parent="1" source="ctrl_gestionar_prenda" target="bnd_panel_catalogo">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_18" value="Notificar resultado de clasificación" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#00838F;strokeWidth=1.8;endArrow=classic;endFill=1;startArrow=none;fontFamily=Arial;fontSize=11;fontColor=#00838F;labelBackgroundColor=#FFFFFF;labelBorderColor=#00838F;spacing=3;" edge="1" parent="1" source="ctrl_gestionar_clasificacion" target="bnd_notificaciones">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_19" value="6: Validar unicidad SKU, categoría y precios" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#1565C0;strokeWidth=1.8;endArrow=classic;endFill=1;startArrow=none;fontFamily=Arial;fontSize=11;fontColor=#1565C0;labelBackgroundColor=#FFFFFF;labelBorderColor=#1565C0;spacing=3;" edge="1" parent="1" source="ctrl_gestionar_prenda" target="ctrl_validar_reglas">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_20" value="8: Procesar y almacenar fotografía principal" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#1565C0;strokeWidth=1.8;endArrow=classic;endFill=1;startArrow=none;fontFamily=Arial;fontSize=11;fontColor=#1565C0;labelBackgroundColor=#FFFFFF;labelBorderColor=#1565C0;spacing=3;" edge="1" parent="1" source="ctrl_gestionar_prenda" target="ctrl_procesar_imagen">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_21" value="9: Generar matriz de variantes y multicolores" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#1565C0;strokeWidth=1.8;endArrow=classic;endFill=1;startArrow=none;fontFamily=Arial;fontSize=11;fontColor=#1565C0;labelBackgroundColor=#FFFFFF;labelBorderColor=#1565C0;spacing=3;" edge="1" parent="1" source="ctrl_gestionar_prenda" target="ctrl_generar_variantes">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_22" value="10: Inicializar inventario en sucursales activas" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#1565C0;strokeWidth=1.8;endArrow=classic;endFill=1;startArrow=none;fontFamily=Arial;fontSize=11;fontColor=#1565C0;labelBackgroundColor=#FFFFFF;labelBorderColor=#1565C0;spacing=3;" edge="1" parent="1" source="ctrl_gestionar_prenda" target="ctrl_inicializar_stock">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_23" value="11: Auditar alta/edición (INSERT/UPDATE)" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#1565C0;strokeWidth=1.8;endArrow=classic;endFill=1;startArrow=none;fontFamily=Arial;fontSize=11;fontColor=#1565C0;labelBackgroundColor=#FFFFFF;labelBorderColor=#1565C0;spacing=3;" edge="1" parent="1" source="ctrl_gestionar_prenda" target="ctrl_registrar_auditoria">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_24" value="Auditar cambios en categorías / temporadas" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#1565C0;strokeWidth=1.8;endArrow=classic;endFill=1;startArrow=none;fontFamily=Arial;fontSize=11;fontColor=#1565C0;labelBackgroundColor=#FFFFFF;labelBorderColor=#1565C0;spacing=3;" edge="1" parent="1" source="ctrl_gestionar_clasificacion" target="ctrl_registrar_auditoria">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_25" value="SELECT * FROM prenda WHERE filtros" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#E65100;strokeWidth=1.8;endArrow=classic;endFill=1;startArrow=none;fontFamily=Arial;fontSize=11;fontColor=#E65100;labelBackgroundColor=#FFFFFF;labelBorderColor=#E65100;spacing=3;" edge="1" parent="1" source="ctrl_consultar_catalogo" target="ent_prenda">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_26" value="Resolver nombre de categorías" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#E65100;strokeWidth=1.8;endArrow=classic;endFill=1;startArrow=none;fontFamily=Arial;fontSize=11;fontColor=#E65100;labelBackgroundColor=#FFFFFF;labelBorderColor=#E65100;spacing=3;" edge="1" parent="1" source="ctrl_consultar_catalogo" target="ent_categoria">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_27" value="Resolver temporadas comerciales activas" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#E65100;strokeWidth=1.8;endArrow=classic;endFill=1;startArrow=none;fontFamily=Arial;fontSize=11;fontColor=#E65100;labelBackgroundColor=#FFFFFF;labelBorderColor=#E65100;spacing=3;" edge="1" parent="1" source="ctrl_consultar_catalogo" target="ent_temporada">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_28" value="SUM(stock) consolidado por variante" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#E65100;strokeWidth=1.8;endArrow=classic;endFill=1;startArrow=none;fontFamily=Arial;fontSize=11;fontColor=#E65100;labelBackgroundColor=#FFFFFF;labelBorderColor=#E65100;spacing=3;" edge="1" parent="1" source="ctrl_consultar_catalogo" target="ent_inventario">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_29" value="SELECT 1 WHERE sku = %s (existe_sku)" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#E65100;strokeWidth=1.8;endArrow=classic;endFill=1;startArrow=none;fontFamily=Arial;fontSize=11;fontColor=#E65100;labelBackgroundColor=#FFFFFF;labelBorderColor=#E65100;spacing=3;" edge="1" parent="1" source="ctrl_validar_reglas" target="ent_prenda">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_30" value="Verificar categoría activa del tenant" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#E65100;strokeWidth=1.8;endArrow=classic;endFill=1;startArrow=none;fontFamily=Arial;fontSize=11;fontColor=#E65100;labelBackgroundColor=#FFFFFF;labelBorderColor=#E65100;spacing=3;" edge="1" parent="1" source="ctrl_validar_reglas" target="ent_categoria">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_31" value="Verificar temporada comercial existente" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#E65100;strokeWidth=1.8;endArrow=classic;endFill=1;startArrow=none;fontFamily=Arial;fontSize=11;fontColor=#E65100;labelBackgroundColor=#FFFFFF;labelBorderColor=#E65100;spacing=3;" edge="1" parent="1" source="ctrl_validar_reglas" target="ent_temporada">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_32" value="7: INSERT / UPDATE datos maestros y precios" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#E65100;strokeWidth=1.8;endArrow=classic;endFill=1;startArrow=none;fontFamily=Arial;fontSize=11;fontColor=#E65100;labelBackgroundColor=#FFFFFF;labelBorderColor=#E65100;spacing=3;" edge="1" parent="1" source="ctrl_gestionar_prenda" target="ent_prenda">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_33" value="SELECT tallas disponibles (listar_tallas)" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#E65100;strokeWidth=1.8;endArrow=classic;endFill=1;startArrow=none;fontFamily=Arial;fontSize=11;fontColor=#E65100;labelBackgroundColor=#FFFFFF;labelBorderColor=#E65100;spacing=3;" edge="1" parent="1" source="ctrl_gestionar_prenda" target="ent_talla">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_34" value="SELECT colores disponibles (listar_colores)" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#E65100;strokeWidth=1.8;endArrow=classic;endFill=1;startArrow=none;fontFamily=Arial;fontSize=11;fontColor=#E65100;labelBackgroundColor=#FFFFFF;labelBorderColor=#E65100;spacing=3;" edge="1" parent="1" source="ctrl_gestionar_prenda" target="ent_color">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_35" value="INSERT imagen_prenda (url, es_principal)" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#E65100;strokeWidth=1.8;endArrow=classic;endFill=1;startArrow=none;fontFamily=Arial;fontSize=11;fontColor=#E65100;labelBackgroundColor=#FFFFFF;labelBorderColor=#E65100;spacing=3;" edge="1" parent="1" source="ctrl_procesar_imagen" target="ent_imagen">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_36" value="INSERT variante_prenda (sku_variante, color_ids)" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#E65100;strokeWidth=1.8;endArrow=classic;endFill=1;startArrow=none;fontFamily=Arial;fontSize=11;fontColor=#E65100;labelBackgroundColor=#FFFFFF;labelBorderColor=#E65100;spacing=3;" edge="1" parent="1" source="ctrl_generar_variantes" target="ent_variante">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_37" value="SELECT sucursales activas autorizadas" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#E65100;strokeWidth=1.8;endArrow=classic;endFill=1;startArrow=none;fontFamily=Arial;fontSize=11;fontColor=#E65100;labelBackgroundColor=#FFFFFF;labelBorderColor=#E65100;spacing=3;" edge="1" parent="1" source="ctrl_inicializar_stock" target="ent_sucursal">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_38" value="INSERT inventario (sucursal, variante, stock)" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#E65100;strokeWidth=1.8;endArrow=classic;endFill=1;startArrow=none;fontFamily=Arial;fontSize=11;fontColor=#E65100;labelBackgroundColor=#FFFFFF;labelBorderColor=#E65100;spacing=3;" edge="1" parent="1" source="ctrl_inicializar_stock" target="ent_inventario">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_39" value="INSERT movimiento_inventario (Entrada inicial)" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#E65100;strokeWidth=1.8;endArrow=classic;endFill=1;startArrow=none;fontFamily=Arial;fontSize=11;fontColor=#E65100;labelBackgroundColor=#FFFFFF;labelBorderColor=#E65100;spacing=3;" edge="1" parent="1" source="ctrl_inicializar_stock" target="ent_movimiento">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_40" value="INSERT / UPDATE categoria (validar sin ciclos)" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#E65100;strokeWidth=1.8;endArrow=classic;endFill=1;startArrow=none;fontFamily=Arial;fontSize=11;fontColor=#E65100;labelBackgroundColor=#FFFFFF;labelBorderColor=#E65100;spacing=3;" edge="1" parent="1" source="ctrl_gestionar_clasificacion" target="ent_categoria">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_41" value="INSERT / UPDATE temporada (validar inicio &lt;= fin)" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#E65100;strokeWidth=1.8;endArrow=classic;endFill=1;startArrow=none;fontFamily=Arial;fontSize=11;fontColor=#E65100;labelBackgroundColor=#FFFFFF;labelBorderColor=#E65100;spacing=3;" edge="1" parent="1" source="ctrl_gestionar_clasificacion" target="ent_temporada">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_42" value="INSERT bitacora (usuario, ip, accion, detalle)" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#E65100;strokeWidth=1.8;endArrow=classic;endFill=1;startArrow=none;fontFamily=Arial;fontSize=11;fontColor=#E65100;labelBackgroundColor=#FFFFFF;labelBorderColor=#E65100;spacing=3;" edge="1" parent="1" source="ctrl_registrar_auditoria" target="ent_bitacora">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

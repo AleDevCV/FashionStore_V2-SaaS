@@ -1,0 +1,63 @@
+{
+  "cu": "CU11",
+  "archivo": "CU11_Diagrama_Secuencia.drawio",
+  "participantes": 9,
+  "mensajes": 34,
+  "fragmentos": {
+    "alt": 4,
+    "opt": 1,
+    "loop": 1
+  },
+  "ancho": 3010,
+  "alto": 3527,
+  "sha256": "b39d88c5a90c14ea08dc4f55a99ba28989d4d15c78fa466ff58e91091f631868",
+  "fuentes": [
+    {
+      "file": "Parcial2_backend/app/routers/order_lifecycle.py",
+      "sha256": "118ad09756dab1f4e0bf6fe3511b207cf48416580a9c63281970f68be12b2732"
+    },
+    {
+      "file": "Parcial2_backend/app/routers/pagos.py",
+      "sha256": "d4db9ce48893e6b7d7957460947d1df05337d1fba777a97cfc6fc26613a0a5f9"
+    },
+    {
+      "file": "Parcial2_backend/app/routers/ventas.py",
+      "sha256": "4d7d8fc4ce4c07a7207030c7e6ef353b9d051a39a9e9e64e35de412ab750375a"
+    },
+    {
+      "file": "Parcial2_backend/app/services/commerce.py",
+      "sha256": "2e7b943a63d3cd6b0fbd3c1f6759681d62b67cfe22bd28d1caac0b907688a4b6"
+    },
+    {
+      "file": "Parcial2_backend/app/services/payments.py",
+      "sha256": "2cde4218e1d92fb362b4786ea118c27ed42990df9b221c9a90e299a676a3ce43"
+    },
+    {
+      "file": "Parcial2_backend/app/services/venta_service.py",
+      "sha256": "56ce9922c3c3a65c1c396550017251d9d84dc61db9f7b6d66d2e2a19742eed8a"
+    },
+    {
+      "file": "Parcial2_frontend-web/src/app/features/checkout/checkout.ts",
+      "sha256": "095be0b9ffc84c77a86ce72ba2141d4da026cc99ddb0f723052f4702be3cb3ff"
+    },
+    {
+      "file": "Parcial2_frontend-web/src/app/features/pago/pago-exitoso/pago-exitoso.ts",
+      "sha256": "9835a12c4da7c2ef4052111662913b83db8552d47a3f4f5ccdd9ad2550a6b558"
+    },
+    {
+      "file": "Parcial2_mobile/lib/features/checkout/checkout_screen.dart",
+      "sha256": "ea311de9395a925cdc09401a7e2195c8b08acedf96255a13b78ffc8c9e836306"
+    }
+  ],
+  "actores": 1,
+  "interfaces": 2,
+  "controles": 1,
+  "entidades": 5,
+  "participantes_identicos_a_robustez": true,
+  "mensajes_principales_cubiertos": 29,
+  "xsd_valido": true,
+  "limites_fragmentos_validados": true,
+  "bucles_solo_participantes_involucrados": true,
+  "sin_actores_dentro_de_fragmentos": true,
+  "sin_comunicacion_entre_entidades": true
+}

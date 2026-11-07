@@ -1,0 +1,974 @@
+{
+  "case": "CU07",
+  "title": "CU07 - Gestionar proveedores, compras y recepciones",
+  "nodes": {
+    "actor": {
+      "kind": "actor",
+      "name": "Administrador de empresa"
+    },
+    "b_pre": {
+      "kind": "boundary",
+      "name": "Frontend : Proveedores y compras"
+    },
+    "control": {
+      "kind": "control",
+      "name": "Backend : Gestión de abastecimiento",
+      "note": "Control de análisis que agrupa los módulos indicados en las referencias del caso de uso."
+    },
+    "proveedor": {
+      "kind": "entity",
+      "name": "Proveedor",
+      "table": "proveedor"
+    },
+    "compra": {
+      "kind": "entity",
+      "name": "Compra",
+      "table": "compra"
+    },
+    "detalle": {
+      "kind": "entity",
+      "name": "Detalle de compra",
+      "table": "detalle_compra"
+    },
+    "movimiento": {
+      "kind": "entity",
+      "name": "Movimiento de inventario",
+      "table": "movimiento_inventario"
+    },
+    "bitacora": {
+      "kind": "entity",
+      "name": "Bitácora",
+      "table": "bitacora"
+    }
+  },
+  "messages": [
+    {
+      "n": 1,
+      "action": 1,
+      "a": "actor",
+      "b": "b_pre",
+      "text": "Consultar proveedores",
+      "kind": "ui",
+      "color": "#28343E",
+      "source": null,
+      "symbol": null
+    },
+    {
+      "n": 2,
+      "action": 1,
+      "a": "b_pre",
+      "b": "control",
+      "text": "listar_proveedores(búsqueda)",
+      "kind": "read",
+      "color": "#28343E",
+      "source": "Parcial2_backend/app/routers/proveedores.py",
+      "symbol": "listar_proveedores",
+      "line": 39
+    },
+    {
+      "n": 3,
+      "action": 1,
+      "a": "control",
+      "b": "proveedor",
+      "text": "listar_proveedores(búsqueda)",
+      "kind": "read",
+      "color": "#28343E",
+      "source": "Parcial2_backend/app/services/proveedor_service.py",
+      "symbol": "listar_proveedores",
+      "line": 25
+    },
+    {
+      "n": 4,
+      "action": 1,
+      "a": "proveedor",
+      "b": "control",
+      "text": "proveedores",
+      "kind": "reply",
+      "color": "#287947",
+      "source": null,
+      "symbol": null
+    },
+    {
+      "n": 5,
+      "action": 1,
+      "a": "control",
+      "b": "b_pre",
+      "text": "proveedores",
+      "kind": "reply",
+      "color": "#287947",
+      "source": null,
+      "symbol": null
+    },
+    {
+      "n": 6,
+      "action": 1,
+      "a": "b_pre",
+      "b": "actor",
+      "text": "Mostrar proveedores",
+      "kind": "reply",
+      "color": "#287947",
+      "source": null,
+      "symbol": null
+    },
+    {
+      "n": 7,
+      "action": 2,
+      "a": "actor",
+      "b": "b_pre",
+      "text": "Registrar proveedor",
+      "kind": "ui",
+      "color": "#28343E",
+      "source": null,
+      "symbol": null
+    },
+    {
+      "n": 8,
+      "action": 2,
+      "a": "b_pre",
+      "b": "control",
+      "text": "crear_proveedor(datos)",
+      "kind": "invoke",
+      "color": "#215D9C",
+      "source": "Parcial2_backend/app/routers/proveedores.py",
+      "symbol": "crear_proveedor",
+      "line": 94
+    },
+    {
+      "n": 9,
+      "action": 2,
+      "a": "control",
+      "b": "proveedor",
+      "text": "crear_proveedor(datos)",
+      "kind": "write",
+      "color": "#AC3636",
+      "source": "Parcial2_backend/app/services/proveedor_service.py",
+      "symbol": "crear_proveedor",
+      "line": 109
+    },
+    {
+      "n": 10,
+      "action": 2,
+      "a": "proveedor",
+      "b": "control",
+      "text": "proveedor creado",
+      "kind": "reply",
+      "color": "#287947",
+      "source": null,
+      "symbol": null
+    },
+    {
+      "n": 11,
+      "action": 2,
+      "a": "control",
+      "b": "bitacora",
+      "text": "registrar_bitacora(proveedor, alta)",
+      "kind": "write",
+      "color": "#AC3636",
+      "source": "Parcial2_backend/app/services/bitacora_service.py",
+      "symbol": "registrar_bitacora",
+      "line": 65
+    },
+    {
+      "n": 12,
+      "action": 2,
+      "a": "control",
+      "b": "b_pre",
+      "text": "proveedor registrado",
+      "kind": "reply",
+      "color": "#287947",
+      "source": null,
+      "symbol": null
+    },
+    {
+      "n": 13,
+      "action": 3,
+      "a": "actor",
+      "b": "b_pre",
+      "text": "Editar proveedor",
+      "kind": "ui",
+      "color": "#28343E",
+      "source": null,
+      "symbol": null
+    },
+    {
+      "n": 14,
+      "action": 3,
+      "a": "b_pre",
+      "b": "control",
+      "text": "actualizar_proveedor(id, cambios)",
+      "kind": "invoke",
+      "color": "#215D9C",
+      "source": "Parcial2_backend/app/routers/proveedores.py",
+      "symbol": "actualizar_proveedor",
+      "line": 119
+    },
+    {
+      "n": 15,
+      "action": 3,
+      "a": "control",
+      "b": "proveedor",
+      "text": "actualizar_proveedor(id, cambios)",
+      "kind": "write",
+      "color": "#AC3636",
+      "source": "Parcial2_backend/app/services/proveedor_service.py",
+      "symbol": "actualizar_proveedor",
+      "line": 174
+    },
+    {
+      "n": 16,
+      "action": 3,
+      "a": "control",
+      "b": "bitacora",
+      "text": "registrar_bitacora(proveedor, modificación)",
+      "kind": "write",
+      "color": "#AC3636",
+      "source": "Parcial2_backend/app/services/bitacora_service.py",
+      "symbol": "registrar_bitacora",
+      "line": 65
+    },
+    {
+      "n": 17,
+      "action": 3,
+      "a": "control",
+      "b": "b_pre",
+      "text": "proveedor actualizado",
+      "kind": "reply",
+      "color": "#287947",
+      "source": null,
+      "symbol": null
+    },
+    {
+      "n": 18,
+      "action": 4,
+      "a": "actor",
+      "b": "b_pre",
+      "text": "Confirmar compra y recepción",
+      "kind": "ui",
+      "color": "#28343E",
+      "source": null,
+      "symbol": null
+    },
+    {
+      "n": 19,
+      "action": 4,
+      "a": "b_pre",
+      "b": "control",
+      "text": "registrar_compra(datos e ítems)",
+      "kind": "invoke",
+      "color": "#215D9C",
+      "source": "Parcial2_backend/app/routers/compras.py",
+      "symbol": "registrar_compra",
+      "line": 39
+    },
+    {
+      "n": 20,
+      "action": 4,
+      "a": "control",
+      "b": "compra",
+      "text": "registrar_compra(datos)",
+      "kind": "write",
+      "color": "#AC3636",
+      "source": "Parcial2_backend/app/services/compra_service.py",
+      "symbol": "registrar_compra",
+      "line": 30
+    },
+    {
+      "n": 21,
+      "action": 4,
+      "a": "compra",
+      "b": "control",
+      "text": "id_compra",
+      "kind": "reply",
+      "color": "#287947",
+      "source": null,
+      "symbol": null
+    },
+    {
+      "n": 22,
+      "action": 4,
+      "a": "control",
+      "b": "detalle",
+      "text": "Guardar detalle [por ítem]",
+      "kind": "write",
+      "color": "#AC3636",
+      "source": "Parcial2_backend/app/services/compra_service.py",
+      "symbol": "registrar_compra",
+      "line": 30
+    },
+    {
+      "n": 23,
+      "action": 4,
+      "a": "control",
+      "b": "movimiento",
+      "text": "Registrar Entrada [por ítem recibido]",
+      "kind": "write",
+      "color": "#AC3636",
+      "source": "Parcial2_backend/app/services/compra_service.py",
+      "symbol": "registrar_compra",
+      "line": 30
+    },
+    {
+      "n": 24,
+      "action": 4,
+      "a": "control",
+      "b": "bitacora",
+      "text": "registrar_bitacora(compra, recepción)",
+      "kind": "write",
+      "color": "#AC3636",
+      "source": "Parcial2_backend/app/services/bitacora_service.py",
+      "symbol": "registrar_bitacora",
+      "line": 65
+    },
+    {
+      "n": 25,
+      "action": 4,
+      "a": "control",
+      "b": "b_pre",
+      "text": "compra y recepción confirmadas",
+      "kind": "reply",
+      "color": "#287947",
+      "source": null,
+      "symbol": null
+    },
+    {
+      "n": 26,
+      "action": 4,
+      "a": "b_pre",
+      "b": "actor",
+      "text": "Mostrar recepción registrada",
+      "kind": "reply",
+      "color": "#287947",
+      "source": null,
+      "symbol": null
+    },
+    {
+      "n": 27,
+      "action": 5,
+      "a": "actor",
+      "b": "b_pre",
+      "text": "Consultar compra y detalles",
+      "kind": "ui",
+      "color": "#28343E",
+      "source": null,
+      "symbol": null
+    },
+    {
+      "n": 28,
+      "action": 5,
+      "a": "b_pre",
+      "b": "control",
+      "text": "obtener_compra(id_compra)",
+      "kind": "read",
+      "color": "#28343E",
+      "source": "Parcial2_backend/app/routers/compras.py",
+      "symbol": "obtener_compra",
+      "line": 94
+    },
+    {
+      "n": 29,
+      "action": 5,
+      "a": "control",
+      "b": "compra",
+      "text": "obtener_compra_por_id(id_compra)",
+      "kind": "read",
+      "color": "#28343E",
+      "source": "Parcial2_backend/app/services/compra_service.py",
+      "symbol": "obtener_compra_por_id",
+      "line": 250
+    },
+    {
+      "n": 30,
+      "action": 5,
+      "a": "compra",
+      "b": "control",
+      "text": "compra con sus detalles",
+      "kind": "reply",
+      "color": "#287947",
+      "source": null,
+      "symbol": null
+    },
+    {
+      "n": 31,
+      "action": 5,
+      "a": "control",
+      "b": "b_pre",
+      "text": "detalle de compra",
+      "kind": "reply",
+      "color": "#287947",
+      "source": null,
+      "symbol": null
+    },
+    {
+      "n": 32,
+      "action": 5,
+      "a": "b_pre",
+      "b": "actor",
+      "text": "Mostrar compra recibida",
+      "kind": "reply",
+      "color": "#287947",
+      "source": null,
+      "symbol": null
+    }
+  ],
+  "actions": [
+    {
+      "id": 1,
+      "name": "Consultar proveedores",
+      "first": 1,
+      "actor": "actor",
+      "ui": "b_pre",
+      "last": 6
+    },
+    {
+      "id": 2,
+      "name": "Registrar proveedor",
+      "first": 7,
+      "actor": "actor",
+      "ui": "b_pre",
+      "last": 12
+    },
+    {
+      "id": 3,
+      "name": "Editar proveedor",
+      "first": 13,
+      "actor": "actor",
+      "ui": "b_pre",
+      "last": 17
+    },
+    {
+      "id": 4,
+      "name": "Confirmar compra y recepción",
+      "first": 18,
+      "actor": "actor",
+      "ui": "b_pre",
+      "last": 26
+    },
+    {
+      "id": 5,
+      "name": "Consultar compra y detalles",
+      "first": 27,
+      "actor": "actor",
+      "ui": "b_pre",
+      "last": 32
+    }
+  ],
+  "views": [
+    {
+      "name": "CU07 - Robustez simplificada",
+      "title": "CU07 - Gestionar proveedores, compras y recepciones - Diagrama de robustez",
+      "width": 4600,
+      "height": 2258,
+      "nodes": {
+        "actor": {
+          "x": 180,
+          "y": 1129.0
+        },
+        "b_pre": {
+          "x": 1100,
+          "y": 1129.0
+        },
+        "control": {
+          "x": 2400,
+          "y": 1129.0
+        },
+        "proveedor": {
+          "x": 4300,
+          "y": 377
+        },
+        "compra": {
+          "x": 4300,
+          "y": 793
+        },
+        "detalle": {
+          "x": 4300,
+          "y": 1165
+        },
+        "movimiento": {
+          "x": 4300,
+          "y": 1520
+        },
+        "bitacora": {
+          "x": 4300,
+          "y": 1963
+        }
+      },
+      "groups": [
+        {
+          "pair": [
+            "actor",
+            "b_pre"
+          ],
+          "points": [
+            [
+              215,
+              1129.0
+            ],
+            [
+              1035,
+              1129.0
+            ]
+          ],
+          "rows": [
+            {
+              "n": 1,
+              "x": 650,
+              "y": 893.0,
+              "width": 600,
+              "height": 44,
+              "forward": true,
+              "rightward": true
+            },
+            {
+              "n": 7,
+              "x": 650,
+              "y": 937.0,
+              "width": 600,
+              "height": 44,
+              "forward": true,
+              "rightward": true
+            },
+            {
+              "n": 13,
+              "x": 650,
+              "y": 981.0,
+              "width": 600,
+              "height": 44,
+              "forward": true,
+              "rightward": true
+            },
+            {
+              "n": 18,
+              "x": 650,
+              "y": 1025.0,
+              "width": 600,
+              "height": 44,
+              "forward": true,
+              "rightward": true
+            },
+            {
+              "n": 27,
+              "x": 650,
+              "y": 1069.0,
+              "width": 600,
+              "height": 44,
+              "forward": true,
+              "rightward": true
+            },
+            {
+              "n": 6,
+              "x": 650,
+              "y": 1189.0,
+              "width": 600,
+              "height": 44,
+              "forward": false,
+              "rightward": false
+            },
+            {
+              "n": 26,
+              "x": 650,
+              "y": 1233.0,
+              "width": 600,
+              "height": 44,
+              "forward": false,
+              "rightward": false
+            },
+            {
+              "n": 32,
+              "x": 650,
+              "y": 1277.0,
+              "width": 600,
+              "height": 44,
+              "forward": false,
+              "rightward": false
+            }
+          ]
+        },
+        {
+          "pair": [
+            "b_pre",
+            "control"
+          ],
+          "points": [
+            [
+              1165,
+              1129.0
+            ],
+            [
+              2335,
+              1129.0
+            ]
+          ],
+          "rows": [
+            {
+              "n": 2,
+              "x": 1650,
+              "y": 893.0,
+              "width": 550,
+              "height": 44,
+              "forward": true,
+              "rightward": true
+            },
+            {
+              "n": 8,
+              "x": 1650,
+              "y": 937.0,
+              "width": 550,
+              "height": 44,
+              "forward": true,
+              "rightward": true
+            },
+            {
+              "n": 14,
+              "x": 1650,
+              "y": 981.0,
+              "width": 550,
+              "height": 44,
+              "forward": true,
+              "rightward": true
+            },
+            {
+              "n": 19,
+              "x": 1650,
+              "y": 1025.0,
+              "width": 550,
+              "height": 44,
+              "forward": true,
+              "rightward": true
+            },
+            {
+              "n": 28,
+              "x": 1650,
+              "y": 1069.0,
+              "width": 550,
+              "height": 44,
+              "forward": true,
+              "rightward": true
+            },
+            {
+              "n": 5,
+              "x": 1650,
+              "y": 1189.0,
+              "width": 550,
+              "height": 44,
+              "forward": false,
+              "rightward": false
+            },
+            {
+              "n": 12,
+              "x": 1650,
+              "y": 1233.0,
+              "width": 550,
+              "height": 44,
+              "forward": false,
+              "rightward": false
+            },
+            {
+              "n": 17,
+              "x": 1650,
+              "y": 1277.0,
+              "width": 550,
+              "height": 44,
+              "forward": false,
+              "rightward": false
+            },
+            {
+              "n": 25,
+              "x": 1650,
+              "y": 1321.0,
+              "width": 550,
+              "height": 44,
+              "forward": false,
+              "rightward": false
+            },
+            {
+              "n": 31,
+              "x": 1650,
+              "y": 1365.0,
+              "width": 550,
+              "height": 44,
+              "forward": false,
+              "rightward": false
+            }
+          ]
+        },
+        {
+          "pair": [
+            "control",
+            "proveedor"
+          ],
+          "points": [
+            [
+              2465,
+              1129.0
+            ],
+            [
+              2720,
+              377
+            ],
+            [
+              4235,
+              377
+            ]
+          ],
+          "rows": [
+            {
+              "n": 3,
+              "x": 3300,
+              "y": 229.0,
+              "width": 1050,
+              "height": 44,
+              "forward": true,
+              "rightward": true
+            },
+            {
+              "n": 9,
+              "x": 3300,
+              "y": 273.0,
+              "width": 1050,
+              "height": 44,
+              "forward": true,
+              "rightward": true
+            },
+            {
+              "n": 15,
+              "x": 3300,
+              "y": 317.0,
+              "width": 1050,
+              "height": 44,
+              "forward": true,
+              "rightward": true
+            },
+            {
+              "n": 4,
+              "x": 3300,
+              "y": 437.0,
+              "width": 1050,
+              "height": 44,
+              "forward": false,
+              "rightward": false
+            },
+            {
+              "n": 10,
+              "x": 3300,
+              "y": 481.0,
+              "width": 1050,
+              "height": 44,
+              "forward": false,
+              "rightward": false
+            }
+          ]
+        },
+        {
+          "pair": [
+            "control",
+            "bitacora"
+          ],
+          "points": [
+            [
+              2465,
+              1129.0
+            ],
+            [
+              2720,
+              1963
+            ],
+            [
+              4235,
+              1963
+            ]
+          ],
+          "rows": [
+            {
+              "n": 11,
+              "x": 3300,
+              "y": 1815.0,
+              "width": 1050,
+              "height": 44,
+              "forward": true,
+              "rightward": true
+            },
+            {
+              "n": 16,
+              "x": 3300,
+              "y": 1859.0,
+              "width": 1050,
+              "height": 44,
+              "forward": true,
+              "rightward": true
+            },
+            {
+              "n": 24,
+              "x": 3300,
+              "y": 1903.0,
+              "width": 1050,
+              "height": 44,
+              "forward": true,
+              "rightward": true
+            }
+          ]
+        },
+        {
+          "pair": [
+            "control",
+            "compra"
+          ],
+          "points": [
+            [
+              2465,
+              1129.0
+            ],
+            [
+              2720,
+              793
+            ],
+            [
+              4235,
+              793
+            ]
+          ],
+          "rows": [
+            {
+              "n": 20,
+              "x": 3300,
+              "y": 689.0,
+              "width": 1050,
+              "height": 44,
+              "forward": true,
+              "rightward": true
+            },
+            {
+              "n": 29,
+              "x": 3300,
+              "y": 733.0,
+              "width": 1050,
+              "height": 44,
+              "forward": true,
+              "rightward": true
+            },
+            {
+              "n": 21,
+              "x": 3300,
+              "y": 853.0,
+              "width": 1050,
+              "height": 44,
+              "forward": false,
+              "rightward": false
+            },
+            {
+              "n": 30,
+              "x": 3300,
+              "y": 897.0,
+              "width": 1050,
+              "height": 44,
+              "forward": false,
+              "rightward": false
+            }
+          ]
+        },
+        {
+          "pair": [
+            "control",
+            "detalle"
+          ],
+          "points": [
+            [
+              2465,
+              1129.0
+            ],
+            [
+              2720,
+              1165
+            ],
+            [
+              4235,
+              1165
+            ]
+          ],
+          "rows": [
+            {
+              "n": 22,
+              "x": 3300,
+              "y": 1105.0,
+              "width": 1050,
+              "height": 44,
+              "forward": true,
+              "rightward": true
+            }
+          ]
+        },
+        {
+          "pair": [
+            "control",
+            "movimiento"
+          ],
+          "points": [
+            [
+              2465,
+              1129.0
+            ],
+            [
+              2720,
+              1520
+            ],
+            [
+              4235,
+              1520
+            ]
+          ],
+          "rows": [
+            {
+              "n": 23,
+              "x": 3300,
+              "y": 1460.0,
+              "width": 1050,
+              "height": 44,
+              "forward": true,
+              "rightward": true
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "exports": [
+    "General"
+  ],
+  "notes": [
+    "La recepción ocurre al registrar_compra; no existe una segunda API de recepción independiente. Los movimientos actualizan el inventario mediante el trigger existente.",
+    "No se inventa una entidad Recepción ni se duplica el descuento/entrada de stock. La consulta móvil se conserva; el registro se representa en la interfaz administrativa."
+  ],
+  "sources": [
+    {
+      "file": "Parcial2_backend/app/routers/compras.py",
+      "sha256": "48b2dad21128d252c657acff0cb63f91a550f2442b8bad98e779a06e7e56ec7e"
+    },
+    {
+      "file": "Parcial2_backend/app/routers/proveedores.py",
+      "sha256": "67001665a6e323b51b32427c94a378a69c541e9743a32cb31b7a6e9cde51c303"
+    },
+    {
+      "file": "Parcial2_backend/app/services/bitacora_service.py",
+      "sha256": "ec5d5294930c1b8e3e1d4628fd0b1f8b183bdab2ba205c19751245c33e5608a0"
+    },
+    {
+      "file": "Parcial2_backend/app/services/compra_service.py",
+      "sha256": "db7d658566a7cc4a1c8de8a35071ff8159d92af75d75aacea8c56f861c04e846"
+    },
+    {
+      "file": "Parcial2_backend/app/services/proveedor_service.py",
+      "sha256": "9dc662d1d7bfe087ebd2055de348c860bbe99c1da64fcadb6473a9ddbda56c9e"
+    },
+    {
+      "file": "Parcial2_frontend-web/src/app/features/compras/compras.ts",
+      "sha256": "06b6f3d55f277d4417eb1e070623ca0d9f7af7581cdd8ca2d3049cc1278a24cc"
+    },
+    {
+      "file": "Parcial2_frontend-web/src/app/features/proveedores/proveedores.ts",
+      "sha256": "f03ec68cd738d0ec55c88e930ef1798eed16db7460a6a2ad32a008fc7b9d8e48"
+    },
+    {
+      "file": "Parcial2_mobile/lib/features/compras/compras_screen.dart",
+      "sha256": "fc5bad381dfa5ea35918ca01b5272066919038cf28acd269f2b69e209a254f1f"
+    }
+  ]
+}

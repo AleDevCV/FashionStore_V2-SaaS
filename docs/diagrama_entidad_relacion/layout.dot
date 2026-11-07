@@ -1,0 +1,126 @@
+digraph FashionStore {
+graph [rankdir=LR, splines=ortho, nodesep=0.65, ranksep=1.4, pad=0.5, compound=true, newrank=true, concentrate=false, outputorder=edgesfirst];
+node [shape=box, fixedsize=true, label="", margin=0];
+edge [arrowhead=none,arrowtail=none];
+subgraph cluster_saas { graph [label="Administraci\u00f3n SaaS", fontsize=18, margin=28];
+empresa [width=5.833333333333333,height=1.8333333333333333];
+plan [width=5.833333333333333,height=1.8333333333333333];
+suscripcion [width=5.833333333333333,height=2.1666666666666665];
+}
+subgraph cluster_acceso { graph [label="Identidad y autorizaci\u00f3n", fontsize=18, margin=28];
+cuenta_global [width=5.833333333333333,height=1.8333333333333333];
+rol [width=5.833333333333333,height=1.5];
+permiso [width=5.833333333333333,height=1.5];
+usuario [width=5.833333333333333,height=2.5];
+rol_permiso [width=5.833333333333333,height=1.5];
+usuario_sucursal [width=5.833333333333333,height=1.5];
+}
+subgraph cluster_organizacion { graph [label="Organizaci\u00f3n y clientes", fontsize=18, margin=28];
+ciudad [width=5.833333333333333,height=1.5];
+sucursal [width=5.833333333333333,height=2.5];
+cliente [width=5.833333333333333,height=2.1666666666666665];
+}
+subgraph cluster_catalogo { graph [label="Cat\u00e1logo de prendas", fontsize=18, margin=28];
+categoria [width=5.833333333333333,height=2.1666666666666665];
+temporada [width=5.833333333333333,height=2.1666666666666665];
+prenda [width=5.833333333333333,height=3.8333333333333335];
+imagen_prenda [width=5.833333333333333,height=2.1666666666666665];
+talla [width=5.833333333333333,height=1.5];
+color [width=5.833333333333333,height=1.8333333333333333];
+variante_prenda [width=5.833333333333333,height=2.8333333333333335];
+variante_color [width=5.833333333333333,height=1.5];
+}
+subgraph cluster_inventario { graph [label="Abastecimiento e inventario", fontsize=18, margin=28];
+proveedor [width=5.833333333333333,height=1.8333333333333333];
+compra [width=5.833333333333333,height=2.8333333333333335];
+detalle_compra [width=5.833333333333333,height=2.1666666666666665];
+inventario [width=5.833333333333333,height=1.8333333333333333];
+movimiento_inventario [width=5.833333333333333,height=3.1666666666666665];
+}
+subgraph cluster_comercio { graph [label="Reservas y ventas", fontsize=18, margin=28];
+reserva [width=5.833333333333333,height=2.8333333333333335];
+detalle_reserva [width=5.833333333333333,height=2.1666666666666665];
+retencion [width=5.833333333333333,height=2.5];
+venta [width=5.833333333333333,height=3.5];
+detalle_venta [width=5.833333333333333,height=2.5];
+}
+subgraph cluster_pagos { graph [label="Pagos y comprobantes", fontsize=18, margin=28];
+pago_transaccion [width=5.833333333333333,height=2.8333333333333335];
+comprobante [width=5.833333333333333,height=2.1666666666666665];
+}
+subgraph cluster_cambios { graph [label="Cambios y notificaciones", fontsize=18, margin=28];
+cambio [width=5.833333333333333,height=4.166666666666667];
+ajuste_monetario [width=5.833333333333333,height=2.5];
+notificacion [width=5.833333333333333,height=2.5];
+}
+subgraph cluster_servicios { graph [label="Sincronizaci\u00f3n, reportes y auditor\u00eda", fontsize=18, margin=28];
+operacion_sync [width=5.833333333333333,height=3.5];
+reporte_resultado [width=5.833333333333333,height=2.5];
+bitacora [width=5.833333333333333,height=2.5];
+}
+plan -> suscripcion [id="relation_1", weight=2];
+empresa -> suscripcion [id="relation_2", weight=0.4];
+empresa -> rol [id="relation_3", weight=0.4];
+rol -> usuario [id="relation_4", weight=2];
+cuenta_global -> usuario [id="relation_5", weight=2];
+permiso -> rol_permiso [id="relation_6", weight=2];
+rol -> rol_permiso [id="relation_7", weight=2];
+sucursal -> usuario_sucursal [id="relation_8", weight=2];
+usuario -> usuario_sucursal [id="relation_9", weight=2];
+empresa -> sucursal [id="relation_10", weight=0.4];
+ciudad -> sucursal [id="relation_11", weight=2];
+usuario -> sucursal [id="relation_12", weight=2];
+empresa -> cliente [id="relation_13", weight=0.4];
+categoria -> categoria [id="relation_14", weight=2];
+empresa -> prenda [id="relation_15", weight=0.4];
+categoria -> prenda [id="relation_16", weight=2];
+temporada -> prenda [id="relation_17", weight=2];
+prenda -> imagen_prenda [id="relation_18", weight=2];
+color -> variante_prenda [id="relation_19", weight=2];
+prenda -> variante_prenda [id="relation_20", weight=2];
+talla -> variante_prenda [id="relation_21", weight=2];
+color -> variante_color [id="relation_22", weight=2];
+variante_prenda -> variante_color [id="relation_23", weight=2];
+empresa -> proveedor [id="relation_24", weight=0.4];
+proveedor -> compra [id="relation_25", weight=2];
+sucursal -> compra [id="relation_26", weight=2];
+usuario -> compra [id="relation_27", weight=2];
+compra -> detalle_compra [id="relation_28", weight=2];
+variante_prenda -> detalle_compra [id="relation_29", weight=2];
+sucursal -> inventario [id="relation_30", weight=2];
+variante_prenda -> inventario [id="relation_31", weight=2];
+sucursal -> movimiento_inventario [id="relation_32", weight=2];
+usuario -> movimiento_inventario [id="relation_33", weight=2];
+variante_prenda -> movimiento_inventario [id="relation_34", weight=2];
+cliente -> reserva [id="relation_35", weight=2];
+sucursal -> reserva [id="relation_36", weight=2];
+reserva -> detalle_reserva [id="relation_37", weight=2];
+variante_prenda -> detalle_reserva [id="relation_38", weight=2];
+reserva -> retencion [id="relation_39", weight=2];
+sucursal -> retencion [id="relation_40", weight=2];
+variante_prenda -> retencion [id="relation_41", weight=2];
+usuario -> venta [id="relation_42", weight=2];
+cliente -> venta [id="relation_43", weight=2];
+reserva -> venta [id="relation_44", weight=2];
+sucursal -> venta [id="relation_45", weight=2];
+variante_prenda -> detalle_venta [id="relation_46", weight=2];
+venta -> detalle_venta [id="relation_47", weight=2];
+reserva -> pago_transaccion [id="relation_48", weight=2];
+venta -> pago_transaccion [id="relation_49", weight=2];
+venta -> comprobante [id="relation_50", weight=2];
+cliente -> cambio [id="relation_51", weight=2];
+reserva -> cambio [id="relation_52", weight=2];
+sucursal -> cambio [id="relation_53", weight=2];
+detalle_venta -> cambio [id="relation_54", weight=2];
+cambio -> ajuste_monetario [id="relation_55", weight=2];
+cambio -> notificacion [id="relation_56", weight=2];
+cliente -> notificacion [id="relation_57", weight=2];
+usuario -> operacion_sync [id="relation_58", weight=2];
+sucursal -> operacion_sync [id="relation_59", weight=2];
+empresa -> operacion_sync [id="relation_60", weight=0.4];
+operacion_sync -> operacion_sync [id="relation_61", weight=2];
+usuario -> operacion_sync [id="relation_62", weight=2];
+usuario -> reporte_resultado [id="relation_63", weight=2];
+empresa -> bitacora [id="relation_64", weight=0.4];
+usuario -> bitacora [id="relation_65", weight=2];
+}

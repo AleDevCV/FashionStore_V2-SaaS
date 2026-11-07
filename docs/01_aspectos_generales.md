@@ -47,7 +47,7 @@ En el ámbito académico, el proyecto integra modelado, implementación y prueba
 
 ## 1.5 Alcance y limitaciones
 
-El alcance comprende 38 casos de uso especificados en el capítulo II. Se conservan las capacidades comerciales y del vestidor previo, y se incorporan multitenencia lógica sobre PostgreSQL compartido, suscripciones administrativas, PWA con IndexedDB, Flutter con SQLite, sincronización, cambios de prendas, reportes y analítica.
+El alcance se organiza en 20 casos de uso principales, con equivalencia completa al inventario técnico anterior de 38 CU. El modelo consolidado se encuentra en `modelo_20_cu/CAPITULO_II_20_CU.md`. Se conservan las capacidades comerciales y del vestidor previo, y se incorporan multitenencia lógica sobre PostgreSQL compartido, suscripciones administrativas, PWA con IndexedDB, Flutter con SQLite, sincronización, cambios de prendas, reportes y analítica.
 
 Las ventas offline son de contado. Los pagos electrónicos, el primer inicio de sesión, el alta de cuentas y la IA requieren conexión. El stock local representa la última información descargada; una operación local puede terminar en conflicto. No se promete inventario global actualizado durante una desconexión. El cobro SaaS recurrente, la sustitución del vestidor y las aplicaciones iOS quedan fuera del alcance inicial.
 

@@ -1,0 +1,1006 @@
+{
+  "clasificadores": 563,
+  "por_lenguaje": {
+    "Python": 204,
+    "TypeScript": 231,
+    "Dart": 128
+  },
+  "por_tipo": {
+    "module": 88,
+    "class": 331,
+    "interface": 118,
+    "type": 25,
+    "enum": 1
+  },
+  "atributos": 2835,
+  "operaciones": 1402,
+  "relaciones": 1070,
+  "ancho": 1200,
+  "alto": 184491,
+  "laminas": [
+    {
+      "numero": 1,
+      "archivo": "Lamina_001",
+      "y_inicio": 0,
+      "y_fin": 1496,
+      "ancho": 1200,
+      "alto": 1496
+    },
+    {
+      "numero": 2,
+      "archivo": "Lamina_002",
+      "y_inicio": 1496,
+      "y_fin": 2984,
+      "ancho": 1200,
+      "alto": 1488
+    },
+    {
+      "numero": 3,
+      "archivo": "Lamina_003",
+      "y_inicio": 2984,
+      "y_fin": 4494,
+      "ancho": 1200,
+      "alto": 1510
+    },
+    {
+      "numero": 4,
+      "archivo": "Lamina_004",
+      "y_inicio": 4494,
+      "y_fin": 6006,
+      "ancho": 1200,
+      "alto": 1512
+    },
+    {
+      "numero": 5,
+      "archivo": "Lamina_005",
+      "y_inicio": 6006,
+      "y_fin": 7518,
+      "ancho": 1200,
+      "alto": 1512
+    },
+    {
+      "numero": 6,
+      "archivo": "Lamina_006",
+      "y_inicio": 7518,
+      "y_fin": 9030,
+      "ancho": 1200,
+      "alto": 1512
+    },
+    {
+      "numero": 7,
+      "archivo": "Lamina_007",
+      "y_inicio": 9030,
+      "y_fin": 10542,
+      "ancho": 1200,
+      "alto": 1512
+    },
+    {
+      "numero": 8,
+      "archivo": "Lamina_008",
+      "y_inicio": 10542,
+      "y_fin": 12054,
+      "ancho": 1200,
+      "alto": 1512
+    },
+    {
+      "numero": 9,
+      "archivo": "Lamina_009",
+      "y_inicio": 12054,
+      "y_fin": 13551,
+      "ancho": 1200,
+      "alto": 1497
+    },
+    {
+      "numero": 10,
+      "archivo": "Lamina_010",
+      "y_inicio": 13551,
+      "y_fin": 15051,
+      "ancho": 1200,
+      "alto": 1500
+    },
+    {
+      "numero": 11,
+      "archivo": "Lamina_011",
+      "y_inicio": 15051,
+      "y_fin": 16587,
+      "ancho": 1200,
+      "alto": 1536
+    },
+    {
+      "numero": 12,
+      "archivo": "Lamina_012",
+      "y_inicio": 16587,
+      "y_fin": 18077,
+      "ancho": 1200,
+      "alto": 1490
+    },
+    {
+      "numero": 13,
+      "archivo": "Lamina_013",
+      "y_inicio": 18077,
+      "y_fin": 19587,
+      "ancho": 1200,
+      "alto": 1510
+    },
+    {
+      "numero": 14,
+      "archivo": "Lamina_014",
+      "y_inicio": 19587,
+      "y_fin": 21096,
+      "ancho": 1200,
+      "alto": 1509
+    },
+    {
+      "numero": 15,
+      "archivo": "Lamina_015",
+      "y_inicio": 21096,
+      "y_fin": 22586,
+      "ancho": 1200,
+      "alto": 1490
+    },
+    {
+      "numero": 16,
+      "archivo": "Lamina_016",
+      "y_inicio": 22586,
+      "y_fin": 24096,
+      "ancho": 1200,
+      "alto": 1510
+    },
+    {
+      "numero": 17,
+      "archivo": "Lamina_017",
+      "y_inicio": 24096,
+      "y_fin": 25608,
+      "ancho": 1200,
+      "alto": 1512
+    },
+    {
+      "numero": 18,
+      "archivo": "Lamina_018",
+      "y_inicio": 25608,
+      "y_fin": 27120,
+      "ancho": 1200,
+      "alto": 1512
+    },
+    {
+      "numero": 19,
+      "archivo": "Lamina_019",
+      "y_inicio": 27120,
+      "y_fin": 28632,
+      "ancho": 1200,
+      "alto": 1512
+    },
+    {
+      "numero": 20,
+      "archivo": "Lamina_020",
+      "y_inicio": 28632,
+      "y_fin": 30144,
+      "ancho": 1200,
+      "alto": 1512
+    },
+    {
+      "numero": 21,
+      "archivo": "Lamina_021",
+      "y_inicio": 30144,
+      "y_fin": 31641,
+      "ancho": 1200,
+      "alto": 1497
+    },
+    {
+      "numero": 22,
+      "archivo": "Lamina_022",
+      "y_inicio": 31641,
+      "y_fin": 33141,
+      "ancho": 1200,
+      "alto": 1500
+    },
+    {
+      "numero": 23,
+      "archivo": "Lamina_023",
+      "y_inicio": 33141,
+      "y_fin": 34641,
+      "ancho": 1200,
+      "alto": 1500
+    },
+    {
+      "numero": 24,
+      "archivo": "Lamina_024",
+      "y_inicio": 34641,
+      "y_fin": 36140,
+      "ancho": 1200,
+      "alto": 1499
+    },
+    {
+      "numero": 25,
+      "archivo": "Lamina_025",
+      "y_inicio": 36140,
+      "y_fin": 37641,
+      "ancho": 1200,
+      "alto": 1501
+    },
+    {
+      "numero": 26,
+      "archivo": "Lamina_026",
+      "y_inicio": 37641,
+      "y_fin": 39137,
+      "ancho": 1200,
+      "alto": 1496
+    },
+    {
+      "numero": 27,
+      "archivo": "Lamina_027",
+      "y_inicio": 39137,
+      "y_fin": 40647,
+      "ancho": 1200,
+      "alto": 1510
+    },
+    {
+      "numero": 28,
+      "archivo": "Lamina_028",
+      "y_inicio": 40647,
+      "y_fin": 42159,
+      "ancho": 1200,
+      "alto": 1512
+    },
+    {
+      "numero": 29,
+      "archivo": "Lamina_029",
+      "y_inicio": 42159,
+      "y_fin": 43671,
+      "ancho": 1200,
+      "alto": 1512
+    },
+    {
+      "numero": 30,
+      "archivo": "Lamina_030",
+      "y_inicio": 43671,
+      "y_fin": 45168,
+      "ancho": 1200,
+      "alto": 1497
+    },
+    {
+      "numero": 31,
+      "archivo": "Lamina_031",
+      "y_inicio": 45168,
+      "y_fin": 46668,
+      "ancho": 1200,
+      "alto": 1500
+    },
+    {
+      "numero": 32,
+      "archivo": "Lamina_032",
+      "y_inicio": 46668,
+      "y_fin": 48180,
+      "ancho": 1200,
+      "alto": 1512
+    },
+    {
+      "numero": 33,
+      "archivo": "Lamina_033",
+      "y_inicio": 48180,
+      "y_fin": 49677,
+      "ancho": 1200,
+      "alto": 1497
+    },
+    {
+      "numero": 34,
+      "archivo": "Lamina_034",
+      "y_inicio": 49677,
+      "y_fin": 51177,
+      "ancho": 1200,
+      "alto": 1500
+    },
+    {
+      "numero": 35,
+      "archivo": "Lamina_035",
+      "y_inicio": 51177,
+      "y_fin": 52674,
+      "ancho": 1200,
+      "alto": 1497
+    },
+    {
+      "numero": 36,
+      "archivo": "Lamina_036",
+      "y_inicio": 52674,
+      "y_fin": 54174,
+      "ancho": 1200,
+      "alto": 1500
+    },
+    {
+      "numero": 37,
+      "archivo": "Lamina_037",
+      "y_inicio": 54174,
+      "y_fin": 55686,
+      "ancho": 1200,
+      "alto": 1512
+    },
+    {
+      "numero": 38,
+      "archivo": "Lamina_038",
+      "y_inicio": 55686,
+      "y_fin": 57198,
+      "ancho": 1200,
+      "alto": 1512
+    },
+    {
+      "numero": 39,
+      "archivo": "Lamina_039",
+      "y_inicio": 57198,
+      "y_fin": 58710,
+      "ancho": 1200,
+      "alto": 1512
+    },
+    {
+      "numero": 40,
+      "archivo": "Lamina_040",
+      "y_inicio": 58710,
+      "y_fin": 60222,
+      "ancho": 1200,
+      "alto": 1512
+    },
+    {
+      "numero": 41,
+      "archivo": "Lamina_041",
+      "y_inicio": 60222,
+      "y_fin": 61734,
+      "ancho": 1200,
+      "alto": 1512
+    },
+    {
+      "numero": 42,
+      "archivo": "Lamina_042",
+      "y_inicio": 61734,
+      "y_fin": 63243,
+      "ancho": 1200,
+      "alto": 1509
+    },
+    {
+      "numero": 43,
+      "archivo": "Lamina_043",
+      "y_inicio": 63243,
+      "y_fin": 64733,
+      "ancho": 1200,
+      "alto": 1490
+    },
+    {
+      "numero": 44,
+      "archivo": "Lamina_044",
+      "y_inicio": 64733,
+      "y_fin": 66243,
+      "ancho": 1200,
+      "alto": 1510
+    },
+    {
+      "numero": 45,
+      "archivo": "Lamina_045",
+      "y_inicio": 66243,
+      "y_fin": 67743,
+      "ancho": 1200,
+      "alto": 1500
+    },
+    {
+      "numero": 46,
+      "archivo": "Lamina_046",
+      "y_inicio": 67743,
+      "y_fin": 69242,
+      "ancho": 1200,
+      "alto": 1499
+    },
+    {
+      "numero": 47,
+      "archivo": "Lamina_047",
+      "y_inicio": 69242,
+      "y_fin": 70752,
+      "ancho": 1200,
+      "alto": 1510
+    },
+    {
+      "numero": 48,
+      "archivo": "Lamina_048",
+      "y_inicio": 70752,
+      "y_fin": 72264,
+      "ancho": 1200,
+      "alto": 1512
+    },
+    {
+      "numero": 49,
+      "archivo": "Lamina_049",
+      "y_inicio": 72264,
+      "y_fin": 73776,
+      "ancho": 1200,
+      "alto": 1512
+    },
+    {
+      "numero": 50,
+      "archivo": "Lamina_050",
+      "y_inicio": 73776,
+      "y_fin": 75288,
+      "ancho": 1200,
+      "alto": 1512
+    },
+    {
+      "numero": 51,
+      "archivo": "Lamina_051",
+      "y_inicio": 75288,
+      "y_fin": 76800,
+      "ancho": 1200,
+      "alto": 1512
+    },
+    {
+      "numero": 52,
+      "archivo": "Lamina_052",
+      "y_inicio": 76800,
+      "y_fin": 78312,
+      "ancho": 1200,
+      "alto": 1512
+    },
+    {
+      "numero": 53,
+      "archivo": "Lamina_053",
+      "y_inicio": 78312,
+      "y_fin": 79824,
+      "ancho": 1200,
+      "alto": 1512
+    },
+    {
+      "numero": 54,
+      "archivo": "Lamina_054",
+      "y_inicio": 79824,
+      "y_fin": 81336,
+      "ancho": 1200,
+      "alto": 1512
+    },
+    {
+      "numero": 55,
+      "archivo": "Lamina_055",
+      "y_inicio": 81336,
+      "y_fin": 82833,
+      "ancho": 1200,
+      "alto": 1497
+    },
+    {
+      "numero": 56,
+      "archivo": "Lamina_056",
+      "y_inicio": 82833,
+      "y_fin": 84333,
+      "ancho": 1200,
+      "alto": 1500
+    },
+    {
+      "numero": 57,
+      "archivo": "Lamina_057",
+      "y_inicio": 84333,
+      "y_fin": 85816,
+      "ancho": 1200,
+      "alto": 1483
+    },
+    {
+      "numero": 58,
+      "archivo": "Lamina_058",
+      "y_inicio": 85816,
+      "y_fin": 87305,
+      "ancho": 1200,
+      "alto": 1489
+    },
+    {
+      "numero": 59,
+      "archivo": "Lamina_059",
+      "y_inicio": 87305,
+      "y_fin": 88815,
+      "ancho": 1200,
+      "alto": 1510
+    },
+    {
+      "numero": 60,
+      "archivo": "Lamina_060",
+      "y_inicio": 88815,
+      "y_fin": 90329,
+      "ancho": 1200,
+      "alto": 1514
+    },
+    {
+      "numero": 61,
+      "archivo": "Lamina_061",
+      "y_inicio": 90329,
+      "y_fin": 91810,
+      "ancho": 1200,
+      "alto": 1481
+    },
+    {
+      "numero": 62,
+      "archivo": "Lamina_062",
+      "y_inicio": 91810,
+      "y_fin": 93299,
+      "ancho": 1200,
+      "alto": 1489
+    },
+    {
+      "numero": 63,
+      "archivo": "Lamina_063",
+      "y_inicio": 93299,
+      "y_fin": 94800,
+      "ancho": 1200,
+      "alto": 1501
+    },
+    {
+      "numero": 64,
+      "archivo": "Lamina_064",
+      "y_inicio": 94800,
+      "y_fin": 96296,
+      "ancho": 1200,
+      "alto": 1496
+    },
+    {
+      "numero": 65,
+      "archivo": "Lamina_065",
+      "y_inicio": 96296,
+      "y_fin": 97796,
+      "ancho": 1200,
+      "alto": 1500
+    },
+    {
+      "numero": 66,
+      "archivo": "Lamina_066",
+      "y_inicio": 97796,
+      "y_fin": 99293,
+      "ancho": 1200,
+      "alto": 1497
+    },
+    {
+      "numero": 67,
+      "archivo": "Lamina_067",
+      "y_inicio": 99293,
+      "y_fin": 100794,
+      "ancho": 1200,
+      "alto": 1501
+    },
+    {
+      "numero": 68,
+      "archivo": "Lamina_068",
+      "y_inicio": 100794,
+      "y_fin": 102290,
+      "ancho": 1200,
+      "alto": 1496
+    },
+    {
+      "numero": 69,
+      "archivo": "Lamina_069",
+      "y_inicio": 102290,
+      "y_fin": 103800,
+      "ancho": 1200,
+      "alto": 1510
+    },
+    {
+      "numero": 70,
+      "archivo": "Lamina_070",
+      "y_inicio": 103800,
+      "y_fin": 105312,
+      "ancho": 1200,
+      "alto": 1512
+    },
+    {
+      "numero": 71,
+      "archivo": "Lamina_071",
+      "y_inicio": 105312,
+      "y_fin": 106824,
+      "ancho": 1200,
+      "alto": 1512
+    },
+    {
+      "numero": 72,
+      "archivo": "Lamina_072",
+      "y_inicio": 106824,
+      "y_fin": 108333,
+      "ancho": 1200,
+      "alto": 1509
+    },
+    {
+      "numero": 73,
+      "archivo": "Lamina_073",
+      "y_inicio": 108333,
+      "y_fin": 109823,
+      "ancho": 1200,
+      "alto": 1490
+    },
+    {
+      "numero": 74,
+      "archivo": "Lamina_074",
+      "y_inicio": 109823,
+      "y_fin": 111323,
+      "ancho": 1200,
+      "alto": 1500
+    },
+    {
+      "numero": 75,
+      "archivo": "Lamina_075",
+      "y_inicio": 111323,
+      "y_fin": 112820,
+      "ancho": 1200,
+      "alto": 1497
+    },
+    {
+      "numero": 76,
+      "archivo": "Lamina_076",
+      "y_inicio": 112820,
+      "y_fin": 114330,
+      "ancho": 1200,
+      "alto": 1510
+    },
+    {
+      "numero": 77,
+      "archivo": "Lamina_077",
+      "y_inicio": 114330,
+      "y_fin": 115842,
+      "ancho": 1200,
+      "alto": 1512
+    },
+    {
+      "numero": 78,
+      "archivo": "Lamina_078",
+      "y_inicio": 115842,
+      "y_fin": 117339,
+      "ancho": 1200,
+      "alto": 1497
+    },
+    {
+      "numero": 79,
+      "archivo": "Lamina_079",
+      "y_inicio": 117339,
+      "y_fin": 118839,
+      "ancho": 1200,
+      "alto": 1500
+    },
+    {
+      "numero": 80,
+      "archivo": "Lamina_080",
+      "y_inicio": 118839,
+      "y_fin": 120351,
+      "ancho": 1200,
+      "alto": 1512
+    },
+    {
+      "numero": 81,
+      "archivo": "Lamina_081",
+      "y_inicio": 120351,
+      "y_fin": 121863,
+      "ancho": 1200,
+      "alto": 1512
+    },
+    {
+      "numero": 82,
+      "archivo": "Lamina_082",
+      "y_inicio": 121863,
+      "y_fin": 123375,
+      "ancho": 1200,
+      "alto": 1512
+    },
+    {
+      "numero": 83,
+      "archivo": "Lamina_083",
+      "y_inicio": 123375,
+      "y_fin": 124887,
+      "ancho": 1200,
+      "alto": 1512
+    },
+    {
+      "numero": 84,
+      "archivo": "Lamina_084",
+      "y_inicio": 124887,
+      "y_fin": 126399,
+      "ancho": 1200,
+      "alto": 1512
+    },
+    {
+      "numero": 85,
+      "archivo": "Lamina_085",
+      "y_inicio": 126399,
+      "y_fin": 127911,
+      "ancho": 1200,
+      "alto": 1512
+    },
+    {
+      "numero": 86,
+      "archivo": "Lamina_086",
+      "y_inicio": 127911,
+      "y_fin": 129423,
+      "ancho": 1200,
+      "alto": 1512
+    },
+    {
+      "numero": 87,
+      "archivo": "Lamina_087",
+      "y_inicio": 129423,
+      "y_fin": 130935,
+      "ancho": 1200,
+      "alto": 1512
+    },
+    {
+      "numero": 88,
+      "archivo": "Lamina_088",
+      "y_inicio": 130935,
+      "y_fin": 132417,
+      "ancho": 1200,
+      "alto": 1482
+    },
+    {
+      "numero": 89,
+      "archivo": "Lamina_089",
+      "y_inicio": 132417,
+      "y_fin": 133907,
+      "ancho": 1200,
+      "alto": 1490
+    },
+    {
+      "numero": 90,
+      "archivo": "Lamina_090",
+      "y_inicio": 133907,
+      "y_fin": 135417,
+      "ancho": 1200,
+      "alto": 1510
+    },
+    {
+      "numero": 91,
+      "archivo": "Lamina_091",
+      "y_inicio": 135417,
+      "y_fin": 136929,
+      "ancho": 1200,
+      "alto": 1512
+    },
+    {
+      "numero": 92,
+      "archivo": "Lamina_092",
+      "y_inicio": 136929,
+      "y_fin": 138429,
+      "ancho": 1200,
+      "alto": 1500
+    },
+    {
+      "numero": 93,
+      "archivo": "Lamina_093",
+      "y_inicio": 138429,
+      "y_fin": 139928,
+      "ancho": 1200,
+      "alto": 1499
+    },
+    {
+      "numero": 94,
+      "archivo": "Lamina_094",
+      "y_inicio": 139928,
+      "y_fin": 141429,
+      "ancho": 1200,
+      "alto": 1501
+    },
+    {
+      "numero": 95,
+      "archivo": "Lamina_095",
+      "y_inicio": 141429,
+      "y_fin": 142925,
+      "ancho": 1200,
+      "alto": 1496
+    },
+    {
+      "numero": 96,
+      "archivo": "Lamina_096",
+      "y_inicio": 142925,
+      "y_fin": 144435,
+      "ancho": 1200,
+      "alto": 1510
+    },
+    {
+      "numero": 97,
+      "archivo": "Lamina_097",
+      "y_inicio": 144435,
+      "y_fin": 145947,
+      "ancho": 1200,
+      "alto": 1512
+    },
+    {
+      "numero": 98,
+      "archivo": "Lamina_098",
+      "y_inicio": 145947,
+      "y_fin": 147459,
+      "ancho": 1200,
+      "alto": 1512
+    },
+    {
+      "numero": 99,
+      "archivo": "Lamina_099",
+      "y_inicio": 147459,
+      "y_fin": 148956,
+      "ancho": 1200,
+      "alto": 1497
+    },
+    {
+      "numero": 100,
+      "archivo": "Lamina_100",
+      "y_inicio": 148956,
+      "y_fin": 150455,
+      "ancho": 1200,
+      "alto": 1499
+    },
+    {
+      "numero": 101,
+      "archivo": "Lamina_101",
+      "y_inicio": 150455,
+      "y_fin": 151953,
+      "ancho": 1200,
+      "alto": 1498
+    },
+    {
+      "numero": 102,
+      "archivo": "Lamina_102",
+      "y_inicio": 151953,
+      "y_fin": 153453,
+      "ancho": 1200,
+      "alto": 1500
+    },
+    {
+      "numero": 103,
+      "archivo": "Lamina_103",
+      "y_inicio": 153453,
+      "y_fin": 154965,
+      "ancho": 1200,
+      "alto": 1512
+    },
+    {
+      "numero": 104,
+      "archivo": "Lamina_104",
+      "y_inicio": 154965,
+      "y_fin": 156449,
+      "ancho": 1200,
+      "alto": 1484
+    },
+    {
+      "numero": 105,
+      "archivo": "Lamina_105",
+      "y_inicio": 156449,
+      "y_fin": 157949,
+      "ancho": 1200,
+      "alto": 1500
+    },
+    {
+      "numero": 106,
+      "archivo": "Lamina_106",
+      "y_inicio": 157949,
+      "y_fin": 159449,
+      "ancho": 1200,
+      "alto": 1500
+    },
+    {
+      "numero": 107,
+      "archivo": "Lamina_107",
+      "y_inicio": 159449,
+      "y_fin": 160959,
+      "ancho": 1200,
+      "alto": 1510
+    },
+    {
+      "numero": 108,
+      "archivo": "Lamina_108",
+      "y_inicio": 160959,
+      "y_fin": 162471,
+      "ancho": 1200,
+      "alto": 1512
+    },
+    {
+      "numero": 109,
+      "archivo": "Lamina_109",
+      "y_inicio": 162471,
+      "y_fin": 163983,
+      "ancho": 1200,
+      "alto": 1512
+    },
+    {
+      "numero": 110,
+      "archivo": "Lamina_110",
+      "y_inicio": 163983,
+      "y_fin": 165480,
+      "ancho": 1200,
+      "alto": 1497
+    },
+    {
+      "numero": 111,
+      "archivo": "Lamina_111",
+      "y_inicio": 165480,
+      "y_fin": 167004,
+      "ancho": 1200,
+      "alto": 1524
+    },
+    {
+      "numero": 112,
+      "archivo": "Lamina_112",
+      "y_inicio": 167004,
+      "y_fin": 168494,
+      "ancho": 1200,
+      "alto": 1490
+    },
+    {
+      "numero": 113,
+      "archivo": "Lamina_113",
+      "y_inicio": 168494,
+      "y_fin": 170004,
+      "ancho": 1200,
+      "alto": 1510
+    },
+    {
+      "numero": 114,
+      "archivo": "Lamina_114",
+      "y_inicio": 170004,
+      "y_fin": 171516,
+      "ancho": 1200,
+      "alto": 1512
+    },
+    {
+      "numero": 115,
+      "archivo": "Lamina_115",
+      "y_inicio": 171516,
+      "y_fin": 173028,
+      "ancho": 1200,
+      "alto": 1512
+    },
+    {
+      "numero": 116,
+      "archivo": "Lamina_116",
+      "y_inicio": 173028,
+      "y_fin": 174528,
+      "ancho": 1200,
+      "alto": 1500
+    },
+    {
+      "numero": 117,
+      "archivo": "Lamina_117",
+      "y_inicio": 174528,
+      "y_fin": 176028,
+      "ancho": 1200,
+      "alto": 1500
+    },
+    {
+      "numero": 118,
+      "archivo": "Lamina_118",
+      "y_inicio": 176028,
+      "y_fin": 177528,
+      "ancho": 1200,
+      "alto": 1500
+    },
+    {
+      "numero": 119,
+      "archivo": "Lamina_119",
+      "y_inicio": 177528,
+      "y_fin": 179024,
+      "ancho": 1200,
+      "alto": 1496
+    },
+    {
+      "numero": 120,
+      "archivo": "Lamina_120",
+      "y_inicio": 179024,
+      "y_fin": 180534,
+      "ancho": 1200,
+      "alto": 1510
+    },
+    {
+      "numero": 121,
+      "archivo": "Lamina_121",
+      "y_inicio": 180534,
+      "y_fin": 182046,
+      "ancho": 1200,
+      "alto": 1512
+    },
+    {
+      "numero": 122,
+      "archivo": "Lamina_122",
+      "y_inicio": 182046,
+      "y_fin": 183546,
+      "ancho": 1200,
+      "alto": 1500
+    },
+    {
+      "numero": 123,
+      "archivo": "Lamina_123",
+      "y_inicio": 183546,
+      "y_fin": 184491,
+      "ancho": 1200,
+      "alto": 945
+    }
+  ]
+}

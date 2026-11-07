@@ -1,0 +1,12 @@
+{
+  "vista_general_unica": true,
+  "conceptos": 71,
+  "relaciones": 131,
+  "casos_cubiertos": 20,
+  "esquema_drawio_oficial_valido": true,
+  "referencias_y_multiplicidades_validas": true,
+  "saltos_de_linea_atributos_preservados": true,
+  "notas_y_comentarios_en_diagrama": 0,
+  "word_y_especificaciones_sin_modificar": true,
+  "sha256_drawio": "e10a0b668ea773d746f2991f31ad898dad0851d4677655a504dab0ec1a4edd73"
+}

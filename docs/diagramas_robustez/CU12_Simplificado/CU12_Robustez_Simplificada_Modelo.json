@@ -1,0 +1,981 @@
+{
+  "case": "CU12",
+  "title": "CU12 - Gestionar reservas de prendas",
+  "nodes": {
+    "actor": {
+      "kind": "actor",
+      "name": "Cliente"
+    },
+    "b_pre": {
+      "kind": "boundary",
+      "name": "Frontend : Reservas y atención"
+    },
+    "control": {
+      "kind": "control",
+      "name": "Backend : Gestión de reservas",
+      "note": "Control de análisis que agrupa los módulos indicados en las referencias del caso de uso."
+    },
+    "staff": {
+      "kind": "actor",
+      "name": "Personal autorizado"
+    },
+    "inventario": {
+      "kind": "entity",
+      "name": "Inventario",
+      "table": "inventario"
+    },
+    "reserva": {
+      "kind": "entity",
+      "name": "Reserva",
+      "table": "reserva"
+    },
+    "retencion": {
+      "kind": "entity",
+      "name": "Retención",
+      "table": "retencion"
+    },
+    "venta": {
+      "kind": "entity",
+      "name": "Venta pagada",
+      "table": "venta"
+    },
+    "bitacora": {
+      "kind": "entity",
+      "name": "Bitácora",
+      "table": "bitacora"
+    }
+  },
+  "messages": [
+    {
+      "n": 1,
+      "action": 1,
+      "a": "actor",
+      "b": "b_pre",
+      "text": "Registrar reserva de prendas",
+      "kind": "ui",
+      "color": "#28343E",
+      "source": null,
+      "symbol": null
+    },
+    {
+      "n": 2,
+      "action": 1,
+      "a": "b_pre",
+      "b": "control",
+      "text": "crear_reserva(cliente, sucursal, ítems)",
+      "kind": "invoke",
+      "color": "#215D9C",
+      "source": "Parcial2_backend/app/routers/ventas.py",
+      "symbol": "crear_reserva",
+      "line": 70
+    },
+    {
+      "n": 3,
+      "action": 1,
+      "a": "control",
+      "b": "inventario",
+      "text": "quote(ítems, sucursal)",
+      "kind": "read",
+      "color": "#28343E",
+      "source": "Parcial2_backend/app/services/commerce.py",
+      "symbol": "quote",
+      "line": 26
+    },
+    {
+      "n": 4,
+      "action": 1,
+      "a": "inventario",
+      "b": "control",
+      "text": "disponibilidad y precios válidos",
+      "kind": "reply",
+      "color": "#287947",
+      "source": null,
+      "symbol": null
+    },
+    {
+      "n": 5,
+      "action": 1,
+      "a": "control",
+      "b": "reserva",
+      "text": "reserve(cliente, sucursal, ítems)",
+      "kind": "write",
+      "color": "#AC3636",
+      "source": "Parcial2_backend/app/services/commerce.py",
+      "symbol": "reserve",
+      "line": 49
+    },
+    {
+      "n": 6,
+      "action": 1,
+      "a": "reserva",
+      "b": "control",
+      "text": "id_reserva",
+      "kind": "reply",
+      "color": "#287947",
+      "source": null,
+      "symbol": null
+    },
+    {
+      "n": 7,
+      "action": 1,
+      "a": "control",
+      "b": "retencion",
+      "text": "Retener unidades durante 24 horas",
+      "kind": "write",
+      "color": "#AC3636",
+      "source": "Parcial2_backend/app/services/commerce.py",
+      "symbol": "reserve",
+      "line": 49
+    },
+    {
+      "n": 8,
+      "action": 1,
+      "a": "control",
+      "b": "bitacora",
+      "text": "Auditar reserva",
+      "kind": "write",
+      "color": "#AC3636",
+      "source": "Parcial2_backend/app/services/commerce.py",
+      "symbol": "reserve",
+      "line": 49
+    },
+    {
+      "n": 9,
+      "action": 1,
+      "a": "control",
+      "b": "b_pre",
+      "text": "reserva pendiente",
+      "kind": "reply",
+      "color": "#287947",
+      "source": null,
+      "symbol": null
+    },
+    {
+      "n": 10,
+      "action": 1,
+      "a": "b_pre",
+      "b": "actor",
+      "text": "Mostrar reserva",
+      "kind": "reply",
+      "color": "#287947",
+      "source": null,
+      "symbol": null
+    },
+    {
+      "n": 11,
+      "action": 2,
+      "a": "actor",
+      "b": "b_pre",
+      "text": "Consultar reserva propia",
+      "kind": "ui",
+      "color": "#28343E",
+      "source": null,
+      "symbol": null
+    },
+    {
+      "n": 12,
+      "action": 2,
+      "a": "b_pre",
+      "b": "control",
+      "text": "obtener_reserva(id_reserva)",
+      "kind": "read",
+      "color": "#28343E",
+      "source": "Parcial2_backend/app/routers/ventas.py",
+      "symbol": "obtener_reserva",
+      "line": 91
+    },
+    {
+      "n": 13,
+      "action": 2,
+      "a": "control",
+      "b": "reserva",
+      "text": "obtener_reserva_por_id(id_reserva)",
+      "kind": "read",
+      "color": "#28343E",
+      "source": "Parcial2_backend/app/services/venta_service.py",
+      "symbol": "obtener_reserva_por_id",
+      "line": 88
+    },
+    {
+      "n": 14,
+      "action": 2,
+      "a": "reserva",
+      "b": "control",
+      "text": "reserva y detalles",
+      "kind": "reply",
+      "color": "#287947",
+      "source": null,
+      "symbol": null
+    },
+    {
+      "n": 15,
+      "action": 2,
+      "a": "control",
+      "b": "b_pre",
+      "text": "reserva",
+      "kind": "reply",
+      "color": "#287947",
+      "source": null,
+      "symbol": null
+    },
+    {
+      "n": 16,
+      "action": 2,
+      "a": "b_pre",
+      "b": "actor",
+      "text": "Mostrar seguimiento",
+      "kind": "reply",
+      "color": "#287947",
+      "source": null,
+      "symbol": null
+    },
+    {
+      "n": 17,
+      "action": 3,
+      "a": "staff",
+      "b": "b_pre",
+      "text": "Preparar prendas",
+      "kind": "ui",
+      "color": "#28343E",
+      "source": null,
+      "symbol": null
+    },
+    {
+      "n": 18,
+      "action": 3,
+      "a": "b_pre",
+      "b": "control",
+      "text": "actualizar_estado_reserva_endpoint(id, 'Preparado')",
+      "kind": "invoke",
+      "color": "#215D9C",
+      "source": "Parcial2_backend/app/routers/ventas.py",
+      "symbol": "actualizar_estado_reserva_endpoint",
+      "line": 283
+    },
+    {
+      "n": 19,
+      "action": 3,
+      "a": "control",
+      "b": "reserva",
+      "text": "transition_reservation(id, 'Preparado')",
+      "kind": "write",
+      "color": "#AC3636",
+      "source": "Parcial2_backend/app/services/commerce.py",
+      "symbol": "transition_reservation",
+      "line": 64
+    },
+    {
+      "n": 20,
+      "action": 3,
+      "a": "control",
+      "b": "b_pre",
+      "text": "reserva preparada",
+      "kind": "reply",
+      "color": "#287947",
+      "source": null,
+      "symbol": null
+    },
+    {
+      "n": 21,
+      "action": 4,
+      "a": "staff",
+      "b": "b_pre",
+      "text": "Entregar reserva ya pagada",
+      "kind": "ui",
+      "color": "#28343E",
+      "source": null,
+      "symbol": null
+    },
+    {
+      "n": 22,
+      "action": 4,
+      "a": "b_pre",
+      "b": "control",
+      "text": "deliver(id_venta)",
+      "kind": "invoke",
+      "color": "#215D9C",
+      "source": "Parcial2_backend/app/routers/order_lifecycle.py",
+      "symbol": "deliver",
+      "line": 30
+    },
+    {
+      "n": 23,
+      "action": 4,
+      "a": "control",
+      "b": "venta",
+      "text": "Registrar entrega [venta pagada existente]",
+      "kind": "write",
+      "color": "#AC3636",
+      "source": "Parcial2_backend/app/routers/order_lifecycle.py",
+      "symbol": "deliver",
+      "line": 30
+    },
+    {
+      "n": 24,
+      "action": 4,
+      "a": "control",
+      "b": "reserva",
+      "text": "Marcar reserva 'Atendido'",
+      "kind": "write",
+      "color": "#AC3636",
+      "source": "Parcial2_backend/app/routers/order_lifecycle.py",
+      "symbol": "deliver",
+      "line": 30
+    },
+    {
+      "n": 25,
+      "action": 4,
+      "a": "control",
+      "b": "b_pre",
+      "text": "entrega confirmada",
+      "kind": "reply",
+      "color": "#287947",
+      "source": null,
+      "symbol": null
+    },
+    {
+      "n": 26,
+      "action": 4,
+      "a": "b_pre",
+      "b": "staff",
+      "text": "Mostrar entrega registrada",
+      "kind": "reply",
+      "color": "#287947",
+      "source": null,
+      "symbol": null
+    },
+    {
+      "n": 27,
+      "action": 5,
+      "a": "actor",
+      "b": "b_pre",
+      "text": "Cancelar reserva sin pago",
+      "kind": "ui",
+      "color": "#28343E",
+      "source": null,
+      "symbol": null
+    },
+    {
+      "n": 28,
+      "action": 5,
+      "a": "b_pre",
+      "b": "control",
+      "text": "cancel(id_reserva)",
+      "kind": "invoke",
+      "color": "#215D9C",
+      "source": "Parcial2_backend/app/routers/order_lifecycle.py",
+      "symbol": "cancel",
+      "line": 20
+    },
+    {
+      "n": 29,
+      "action": 5,
+      "a": "control",
+      "b": "retencion",
+      "text": "Liberar retenciones",
+      "kind": "write",
+      "color": "#AC3636",
+      "source": "Parcial2_backend/app/routers/order_lifecycle.py",
+      "symbol": "cancel",
+      "line": 20
+    },
+    {
+      "n": 30,
+      "action": 5,
+      "a": "control",
+      "b": "reserva",
+      "text": "Marcar reserva 'Cancelado'",
+      "kind": "write",
+      "color": "#AC3636",
+      "source": "Parcial2_backend/app/routers/order_lifecycle.py",
+      "symbol": "cancel",
+      "line": 20
+    },
+    {
+      "n": 31,
+      "action": 5,
+      "a": "control",
+      "b": "b_pre",
+      "text": "reserva cancelada",
+      "kind": "reply",
+      "color": "#287947",
+      "source": null,
+      "symbol": null
+    }
+  ],
+  "actions": [
+    {
+      "id": 1,
+      "name": "Registrar reserva de prendas",
+      "first": 1,
+      "actor": "actor",
+      "ui": "b_pre",
+      "last": 10
+    },
+    {
+      "id": 2,
+      "name": "Consultar reserva propia",
+      "first": 11,
+      "actor": "actor",
+      "ui": "b_pre",
+      "last": 16
+    },
+    {
+      "id": 3,
+      "name": "Preparar prendas",
+      "first": 17,
+      "actor": "staff",
+      "ui": "b_pre",
+      "last": 20
+    },
+    {
+      "id": 4,
+      "name": "Entregar reserva ya pagada",
+      "first": 21,
+      "actor": "staff",
+      "ui": "b_pre",
+      "last": 26
+    },
+    {
+      "id": 5,
+      "name": "Cancelar reserva sin pago",
+      "first": 27,
+      "actor": "actor",
+      "ui": "b_pre",
+      "last": 31
+    }
+  ],
+  "views": [
+    {
+      "name": "CU12 - Robustez simplificada",
+      "title": "CU12 - Gestionar reservas de prendas - Diagrama de robustez",
+      "width": 4600,
+      "height": 2268,
+      "nodes": {
+        "actor": {
+          "x": 180,
+          "y": 1134.0
+        },
+        "b_pre": {
+          "x": 1100,
+          "y": 1134.0
+        },
+        "control": {
+          "x": 2400,
+          "y": 1134.0
+        },
+        "inventario": {
+          "x": 4300,
+          "y": 289
+        },
+        "reserva": {
+          "x": 4300,
+          "y": 820
+        },
+        "retencion": {
+          "x": 4300,
+          "y": 1236
+        },
+        "venta": {
+          "x": 4300,
+          "y": 1547
+        },
+        "bitacora": {
+          "x": 4300,
+          "y": 1902
+        },
+        "staff": {
+          "x": 180,
+          "y": 1918
+        }
+      },
+      "groups": [
+        {
+          "pair": [
+            "actor",
+            "b_pre"
+          ],
+          "points": [
+            [
+              215,
+              1134.0
+            ],
+            [
+              1035,
+              1134.0
+            ]
+          ],
+          "rows": [
+            {
+              "n": 1,
+              "x": 650,
+              "y": 986.0,
+              "width": 600,
+              "height": 44,
+              "forward": true,
+              "rightward": true
+            },
+            {
+              "n": 11,
+              "x": 650,
+              "y": 1030.0,
+              "width": 600,
+              "height": 44,
+              "forward": true,
+              "rightward": true
+            },
+            {
+              "n": 27,
+              "x": 650,
+              "y": 1074.0,
+              "width": 600,
+              "height": 44,
+              "forward": true,
+              "rightward": true
+            },
+            {
+              "n": 10,
+              "x": 650,
+              "y": 1194.0,
+              "width": 600,
+              "height": 44,
+              "forward": false,
+              "rightward": false
+            },
+            {
+              "n": 16,
+              "x": 650,
+              "y": 1238.0,
+              "width": 600,
+              "height": 44,
+              "forward": false,
+              "rightward": false
+            }
+          ]
+        },
+        {
+          "pair": [
+            "b_pre",
+            "control"
+          ],
+          "points": [
+            [
+              1165,
+              1134.0
+            ],
+            [
+              2335,
+              1134.0
+            ]
+          ],
+          "rows": [
+            {
+              "n": 2,
+              "x": 1650,
+              "y": 866.0,
+              "width": 550,
+              "height": 44,
+              "forward": true,
+              "rightward": true
+            },
+            {
+              "n": 12,
+              "x": 1650,
+              "y": 910.0,
+              "width": 550,
+              "height": 44,
+              "forward": true,
+              "rightward": true
+            },
+            {
+              "n": 18,
+              "x": 1650,
+              "y": 970.0,
+              "width": 550,
+              "height": 76,
+              "forward": true,
+              "rightward": true
+            },
+            {
+              "n": 22,
+              "x": 1650,
+              "y": 1030.0,
+              "width": 550,
+              "height": 44,
+              "forward": true,
+              "rightward": true
+            },
+            {
+              "n": 28,
+              "x": 1650,
+              "y": 1074.0,
+              "width": 550,
+              "height": 44,
+              "forward": true,
+              "rightward": true
+            },
+            {
+              "n": 9,
+              "x": 1650,
+              "y": 1194.0,
+              "width": 550,
+              "height": 44,
+              "forward": false,
+              "rightward": false
+            },
+            {
+              "n": 15,
+              "x": 1650,
+              "y": 1238.0,
+              "width": 550,
+              "height": 44,
+              "forward": false,
+              "rightward": false
+            },
+            {
+              "n": 20,
+              "x": 1650,
+              "y": 1282.0,
+              "width": 550,
+              "height": 44,
+              "forward": false,
+              "rightward": false
+            },
+            {
+              "n": 25,
+              "x": 1650,
+              "y": 1326.0,
+              "width": 550,
+              "height": 44,
+              "forward": false,
+              "rightward": false
+            },
+            {
+              "n": 31,
+              "x": 1650,
+              "y": 1370.0,
+              "width": 550,
+              "height": 44,
+              "forward": false,
+              "rightward": false
+            }
+          ]
+        },
+        {
+          "pair": [
+            "control",
+            "inventario"
+          ],
+          "points": [
+            [
+              2465,
+              1134.0
+            ],
+            [
+              2720,
+              289
+            ],
+            [
+              4235,
+              289
+            ]
+          ],
+          "rows": [
+            {
+              "n": 3,
+              "x": 3300,
+              "y": 229.0,
+              "width": 1050,
+              "height": 44,
+              "forward": true,
+              "rightward": true
+            },
+            {
+              "n": 4,
+              "x": 3300,
+              "y": 349.0,
+              "width": 1050,
+              "height": 44,
+              "forward": false,
+              "rightward": false
+            }
+          ]
+        },
+        {
+          "pair": [
+            "control",
+            "reserva"
+          ],
+          "points": [
+            [
+              2465,
+              1134.0
+            ],
+            [
+              2720,
+              820
+            ],
+            [
+              4235,
+              820
+            ]
+          ],
+          "rows": [
+            {
+              "n": 5,
+              "x": 3300,
+              "y": 584.0,
+              "width": 1050,
+              "height": 44,
+              "forward": true,
+              "rightward": true
+            },
+            {
+              "n": 13,
+              "x": 3300,
+              "y": 628.0,
+              "width": 1050,
+              "height": 44,
+              "forward": true,
+              "rightward": true
+            },
+            {
+              "n": 19,
+              "x": 3300,
+              "y": 672.0,
+              "width": 1050,
+              "height": 44,
+              "forward": true,
+              "rightward": true
+            },
+            {
+              "n": 24,
+              "x": 3300,
+              "y": 716.0,
+              "width": 1050,
+              "height": 44,
+              "forward": true,
+              "rightward": true
+            },
+            {
+              "n": 30,
+              "x": 3300,
+              "y": 760.0,
+              "width": 1050,
+              "height": 44,
+              "forward": true,
+              "rightward": true
+            },
+            {
+              "n": 6,
+              "x": 3300,
+              "y": 880.0,
+              "width": 1050,
+              "height": 44,
+              "forward": false,
+              "rightward": false
+            },
+            {
+              "n": 14,
+              "x": 3300,
+              "y": 924.0,
+              "width": 1050,
+              "height": 44,
+              "forward": false,
+              "rightward": false
+            }
+          ]
+        },
+        {
+          "pair": [
+            "control",
+            "retencion"
+          ],
+          "points": [
+            [
+              2465,
+              1134.0
+            ],
+            [
+              2720,
+              1236
+            ],
+            [
+              4235,
+              1236
+            ]
+          ],
+          "rows": [
+            {
+              "n": 7,
+              "x": 3300,
+              "y": 1132.0,
+              "width": 1050,
+              "height": 44,
+              "forward": true,
+              "rightward": true
+            },
+            {
+              "n": 29,
+              "x": 3300,
+              "y": 1176.0,
+              "width": 1050,
+              "height": 44,
+              "forward": true,
+              "rightward": true
+            }
+          ]
+        },
+        {
+          "pair": [
+            "control",
+            "bitacora"
+          ],
+          "points": [
+            [
+              2465,
+              1134.0
+            ],
+            [
+              2720,
+              1902
+            ],
+            [
+              4235,
+              1902
+            ]
+          ],
+          "rows": [
+            {
+              "n": 8,
+              "x": 3300,
+              "y": 1842.0,
+              "width": 1050,
+              "height": 44,
+              "forward": true,
+              "rightward": true
+            }
+          ]
+        },
+        {
+          "pair": [
+            "staff",
+            "b_pre"
+          ],
+          "points": [
+            [
+              215,
+              1918
+            ],
+            [
+              340,
+              1858
+            ],
+            [
+              1035,
+              1134.0
+            ]
+          ],
+          "rows": [
+            {
+              "n": 17,
+              "x": 650,
+              "y": 1754.0,
+              "width": 600,
+              "height": 44,
+              "forward": true,
+              "rightward": true
+            },
+            {
+              "n": 21,
+              "x": 650,
+              "y": 1798.0,
+              "width": 600,
+              "height": 44,
+              "forward": true,
+              "rightward": true
+            },
+            {
+              "n": 26,
+              "x": 650,
+              "y": 1918.0,
+              "width": 600,
+              "height": 44,
+              "forward": false,
+              "rightward": false
+            }
+          ]
+        },
+        {
+          "pair": [
+            "control",
+            "venta"
+          ],
+          "points": [
+            [
+              2465,
+              1134.0
+            ],
+            [
+              2720,
+              1547
+            ],
+            [
+              4235,
+              1547
+            ]
+          ],
+          "rows": [
+            {
+              "n": 23,
+              "x": 3300,
+              "y": 1487.0,
+              "width": 1050,
+              "height": 44,
+              "forward": true,
+              "rightward": true
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "exports": [
+    "General"
+  ],
+  "notes": [
+    "Crear reserva retiene disponibilidad; preparar no crea una venta. El cobro pertenece a CU11 o CU13. deliver exige una venta existente y registra la entrega física por separado.",
+    "La caducidad de disponibilidad se deriva de la vigencia de retencion; no se inventa una tarea programada que actualice estados. Los detalles se incluyen en Reserva como agregado.",
+    "El código audita la creación; no se añaden escrituras de bitácora a preparar, cancelar o entregar si esas rutas no las realizan actualmente."
+  ],
+  "sources": [
+    {
+      "file": "Parcial2_backend/app/routers/order_lifecycle.py",
+      "sha256": "118ad09756dab1f4e0bf6fe3511b207cf48416580a9c63281970f68be12b2732"
+    },
+    {
+      "file": "Parcial2_backend/app/routers/ventas.py",
+      "sha256": "4d7d8fc4ce4c07a7207030c7e6ef353b9d051a39a9e9e64e35de412ab750375a"
+    },
+    {
+      "file": "Parcial2_backend/app/services/commerce.py",
+      "sha256": "2e7b943a63d3cd6b0fbd3c1f6759681d62b67cfe22bd28d1caac0b907688a4b6"
+    },
+    {
+      "file": "Parcial2_backend/app/services/venta_service.py",
+      "sha256": "56ce9922c3c3a65c1c396550017251d9d84dc61db9f7b6d66d2e2a19742eed8a"
+    },
+    {
+      "file": "Parcial2_frontend-web/src/app/features/checkout/checkout.ts",
+      "sha256": "095be0b9ffc84c77a86ce72ba2141d4da026cc99ddb0f723052f4702be3cb3ff"
+    },
+    {
+      "file": "Parcial2_frontend-web/src/app/features/reservas-atencion/reservas-atencion.ts",
+      "sha256": "36d1f7e63dab8bd9b16fa969c64e48759155920cb4afc71332c587c70e6e6231"
+    },
+    {
+      "file": "Parcial2_mobile/lib/features/reservas/ticket_reserva_screen.dart",
+      "sha256": "9a2afa75faee94bbdb71e57f6ea46c8e3e34b77112821fb2d1ac6cde2e6f25ac"
+    }
+  ]
+}

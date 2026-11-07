@@ -1,0 +1,338 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="3400" height="2200" viewBox="0 0 3400 2200">
+<defs>
+<marker id="arrow_act" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#546E7A"/></marker>
+<marker id="arrow_ctrl" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#1565C0"/></marker>
+<marker id="arrow_ent" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#E65100"/></marker>
+<marker id="arrow_reply" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#00838F"/></marker>
+<marker id="arrow_err" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#C62828"/></marker>
+</defs>
+<rect width="3400" height="2200" fill="#FFFFFF"/>
+<rect x="20" y="20" width="3360" height="2160" fill="none" stroke="#B0BEC5" stroke-width="1.5"/>
+<rect x="20" y="20" width="3360" height="110" fill="#1E293B"/>
+<text x="1700.0" y="65" text-anchor="middle" fill="#FFFFFF" font-family="Arial, sans-serif" font-size="26" font-weight="bold">DIAGRAMA DE ROBUSTEZ (ICONIX): CU06 - ADMINISTRAR CATÁLOGO DE PRENDAS</text>
+<text x="1700.0" y="100" text-anchor="middle" fill="#94A3B8" font-family="Arial, sans-serif" font-size="15">FashionStore SaaS · Arquitectura de Casos de Uso del 2do Parcial · Separación Estricta: Actores, Fronteras, Controles y Entidades</text>
+<rect x="50" y="150" width="310" height="2010" rx="8" fill="#FAF5FF" stroke="#D8B4FE" stroke-width="1.5" stroke-dasharray="6,6"/>
+<text x="65" y="178" fill="#475569" font-family="Arial, sans-serif" font-size="13" font-weight="bold">ZONA 1: ACTORES</text>
+<rect x="400" y="150" width="560" height="2010" rx="8" fill="#F0F9FF" stroke="#BAE6FD" stroke-width="1.5" stroke-dasharray="6,6"/>
+<text x="415" y="178" fill="#475569" font-family="Arial, sans-serif" font-size="13" font-weight="bold">ZONA 2: OBJETOS DE FRONTERA (INTERFACES)</text>
+<rect x="1000" y="150" width="1340" height="2010" rx="8" fill="#F0FDF4" stroke="#BBF7D0" stroke-width="1.5" stroke-dasharray="6,6"/>
+<text x="1015" y="178" fill="#475569" font-family="Arial, sans-serif" font-size="13" font-weight="bold">ZONA 3: CONTROLES DE NEGOCIO Y ORQUESTACIÓN</text>
+<rect x="2380" y="150" width="970" height="2010" rx="8" fill="#FFFBEB" stroke="#FDE68A" stroke-width="1.5" stroke-dasharray="6,6"/>
+<text x="2395" y="178" fill="#475569" font-family="Arial, sans-serif" font-size="13" font-weight="bold">ZONA 4: ENTIDADES DE DOMINIO Y PERSISTENCIA</text>
+<rect x="60" y="1640" width="290" height="480" rx="8" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1.5"/>
+<text x="75" y="1670" fill="#0F172A" font-family="Arial, sans-serif" font-size="14" font-weight="bold">REGLAS DE ROBUSTEZ (ICONIX)</text>
+<text x="75" y="1710" fill="#7B1FA2" font-family="Arial, sans-serif" font-size="12" font-weight="bold">1. Actores solo hablan con Frontera:</text>
+<text x="75" y="1730" fill="#475569" font-family="Arial, sans-serif" font-size="11">   No interactúan con control o entidad.</text>
+<text x="75" y="1760" fill="#0288D1" font-family="Arial, sans-serif" font-size="12" font-weight="bold">2. Fronteras solo conectan con:</text>
+<text x="75" y="1780" fill="#475569" font-family="Arial, sans-serif" font-size="11">   Actores y Controles (no pantallas directas).</text>
+<text x="75" y="1810" fill="#E65100" font-family="Arial, sans-serif" font-size="12" font-weight="bold">3. Entidades solo conectan con:</text>
+<text x="75" y="1830" fill="#475569" font-family="Arial, sans-serif" font-size="11">   Controles (lógica media persistencia).</text>
+<text x="75" y="1860" fill="#2E7D32" font-family="Arial, sans-serif" font-size="12" font-weight="bold">4. Controles conectan con todo:</text>
+<text x="75" y="1880" fill="#475569" font-family="Arial, sans-serif" font-size="11">   Fronteras, Entidades y otros Controles.</text>
+<text x="75" y="1930" fill="#059669" font-family="Arial, sans-serif" font-size="12" font-style="italic">✓ Verificado: 100% de cumplimiento.</text>
+<path d="M190,660 C395,660 395,600 600,600" fill="none" stroke="#546E7A" stroke-width="1.8" marker-end="url(#arrow_act)"/>
+<rect x="275.0" y="610.0" width="240" height="20" rx="4" fill="#FFFFFF" stroke="#546E7A" stroke-width="1"/>
+<text x="395.0" y="624.0" text-anchor="middle" fill="#546E7A" font-family="Arial, sans-serif" font-size="10.5" font-weight="bold">1: Solicitar gestión de catálogo</text>
+<path d="M190,660 C395,660 395,1020 600,1020" fill="none" stroke="#546E7A" stroke-width="1.8" marker-end="url(#arrow_act)"/>
+<rect x="233.0" y="820.0" width="324" height="20" rx="4" fill="#FFFFFF" stroke="#546E7A" stroke-width="1"/>
+<text x="395.0" y="834.0" text-anchor="middle" fill="#546E7A" font-family="Arial, sans-serif" font-size="10.5" font-weight="bold">2: Abrir formulario alta / edición de prenda</text>
+<path d="M190,660 C395,660 395,1480 600,1480" fill="none" stroke="#546E7A" stroke-width="1.8" marker-end="url(#arrow_act)"/>
+<rect x="285.5" y="1050.0" width="219" height="20" rx="4" fill="#FFFFFF" stroke="#546E7A" stroke-width="1"/>
+<text x="395.0" y="1064.0" text-anchor="middle" fill="#546E7A" font-family="Arial, sans-serif" font-size="10.5" font-weight="bold">Gestionar árbol de categorías</text>
+<path d="M190,660 C395,660 395,1840 600,1840" fill="none" stroke="#546E7A" stroke-width="1.8" marker-end="url(#arrow_act)"/>
+<rect x="268.0" y="1230.0" width="254" height="20" rx="4" fill="#FFFFFF" stroke="#546E7A" stroke-width="1"/>
+<text x="395.0" y="1244.0" text-anchor="middle" fill="#546E7A" font-family="Arial, sans-serif" font-size="10.5" font-weight="bold">Gestionar temporadas y colecciones</text>
+<path d="M190,1360 C395,1360 395,600 600,600" fill="none" stroke="#546E7A" stroke-width="1.8" marker-end="url(#arrow_act)"/>
+<rect x="275.0" y="960.0" width="240" height="20" rx="4" fill="#FFFFFF" stroke="#546E7A" stroke-width="1"/>
+<text x="395.0" y="974.0" text-anchor="middle" fill="#546E7A" font-family="Arial, sans-serif" font-size="10.5" font-weight="bold">Consultar catálogo y existencias</text>
+<path d="M190,1360 C395,1360 395,1020 600,1020" fill="none" stroke="#546E7A" stroke-width="1.8" marker-end="url(#arrow_act)"/>
+<rect x="233.0" y="1170.0" width="324" height="20" rx="4" fill="#FFFFFF" stroke="#546E7A" stroke-width="1"/>
+<text x="395.0" y="1184.0" text-anchor="middle" fill="#546E7A" font-family="Arial, sans-serif" font-size="10.5" font-weight="bold">Registrar variantes, medidas y stock inicial</text>
+<path d="M600,240 C395,240 395,660 190,660" fill="none" stroke="#00838F" stroke-width="1.8" marker-end="url(#arrow_reply)"/>
+<rect x="264.5" y="430.0" width="261" height="20" rx="4" fill="#FFFFFF" stroke="#00838F" stroke-width="1"/>
+<text x="395.0" y="444.0" text-anchor="middle" fill="#00838F" font-family="Arial, sans-serif" font-size="10.5" font-weight="bold">Visualizar confirmaciones y alertas</text>
+<path d="M600,240 C395,240 395,1360 190,1360" fill="none" stroke="#00838F" stroke-width="1.8" marker-end="url(#arrow_reply)"/>
+<rect x="264.5" y="780.0" width="261" height="20" rx="4" fill="#FFFFFF" stroke="#00838F" stroke-width="1"/>
+<text x="395.0" y="794.0" text-anchor="middle" fill="#00838F" font-family="Arial, sans-serif" font-size="10.5" font-weight="bold">Visualizar confirmaciones y alertas</text>
+<path d="M680,600 C940,600 940,500 1200,500" fill="none" stroke="#546E7A" stroke-width="1.8" marker-end="url(#arrow_act)"/>
+<rect x="785.0" y="530.0" width="310" height="20" rx="4" fill="#FFFFFF" stroke="#546E7A" stroke-width="1"/>
+<text x="940.0" y="544.0" text-anchor="middle" fill="#546E7A" font-family="Arial, sans-serif" font-size="10.5" font-weight="bold">3: Enviar parámetros de búsqueda y filtros</text>
+<path d="M1200,500 C940,500 940,600 680,600" fill="none" stroke="#00838F" stroke-width="1.8" marker-end="url(#arrow_reply)"/>
+<rect x="757.0" y="530.0" width="366" height="20" rx="4" fill="#FFFFFF" stroke="#00838F" stroke-width="1"/>
+<text x="940.0" y="544.0" text-anchor="middle" fill="#00838F" font-family="Arial, sans-serif" font-size="10.5" font-weight="bold">4: Devolver lista de prendas con stock consolidado</text>
+<path d="M680,1020 C940,1020 940,1020 1200,1020" fill="none" stroke="#546E7A" stroke-width="1.8" marker-end="url(#arrow_act)"/>
+<rect x="764.0" y="1000.0" width="352" height="20" rx="4" fill="#FFFFFF" stroke="#546E7A" stroke-width="1"/>
+<text x="940.0" y="1014.0" text-anchor="middle" fill="#546E7A" font-family="Arial, sans-serif" font-size="10.5" font-weight="bold">5: Enviar formulario de prenda, variantes y foto</text>
+<path d="M1200,1020 C940,1020 940,1020 680,1020" fill="none" stroke="#00838F" stroke-width="1.8" marker-end="url(#arrow_reply)"/>
+<rect x="802.5" y="1000.0" width="275" height="20" rx="4" fill="#FFFFFF" stroke="#00838F" stroke-width="1"/>
+<text x="940.0" y="1014.0" text-anchor="middle" fill="#00838F" font-family="Arial, sans-serif" font-size="10.5" font-weight="bold">Cargar selectores de tallas y colores</text>
+<path d="M680,1480 C940,1480 940,1660 1200,1660" fill="none" stroke="#546E7A" stroke-width="1.8" marker-end="url(#arrow_act)"/>
+<rect x="781.5" y="1550.0" width="317" height="20" rx="4" fill="#FFFFFF" stroke="#546E7A" stroke-width="1"/>
+<text x="940.0" y="1564.0" text-anchor="middle" fill="#546E7A" font-family="Arial, sans-serif" font-size="10.5" font-weight="bold">Enviar datos de categoría y categoría padre</text>
+<path d="M680,1840 C940,1840 940,1660 1200,1660" fill="none" stroke="#546E7A" stroke-width="1.8" marker-end="url(#arrow_act)"/>
+<rect x="757.0" y="1730.0" width="366" height="20" rx="4" fill="#FFFFFF" stroke="#546E7A" stroke-width="1"/>
+<text x="940.0" y="1744.0" text-anchor="middle" fill="#546E7A" font-family="Arial, sans-serif" font-size="10.5" font-weight="bold">Enviar temporada, descripción y fechas de vigencia</text>
+<path d="M1810,740 C1245,740 1245,240 680,240" fill="none" stroke="#C62828" stroke-width="1.8" marker-end="url(#arrow_err)"/>
+<rect x="1055.0" y="470.0" width="380" height="20" rx="4" fill="#FFFFFF" stroke="#C62828" stroke-width="1"/>
+<text x="1245.0" y="484.0" text-anchor="middle" fill="#C62828" font-family="Arial, sans-serif" font-size="10.5" font-weight="bold">[Alt: Error]: Alerta SKU duplicado / precio negativo</text>
+<path d="M1200,1020 C940,1020 940,240 680,240" fill="none" stroke="#00838F" stroke-width="1.8" marker-end="url(#arrow_reply)"/>
+<rect x="767.5" y="610.0" width="345" height="20" rx="4" fill="#FFFFFF" stroke="#00838F" stroke-width="1"/>
+<text x="940.0" y="624.0" text-anchor="middle" fill="#00838F" font-family="Arial, sans-serif" font-size="10.5" font-weight="bold">12: [Éxito]: Notificar confirmación de guardado</text>
+<path d="M1200,1020 C940,1020 940,600 680,600" fill="none" stroke="#00838F" stroke-width="1.8" marker-end="url(#arrow_reply)"/>
+<rect x="785.0" y="790.0" width="310" height="20" rx="4" fill="#FFFFFF" stroke="#00838F" stroke-width="1"/>
+<text x="940.0" y="804.0" text-anchor="middle" fill="#00838F" font-family="Arial, sans-serif" font-size="10.5" font-weight="bold">13: Refrescar catálogo maestro actualizado</text>
+<path d="M1200,1660 C940,1660 940,240 680,240" fill="none" stroke="#00838F" stroke-width="1.8" marker-end="url(#arrow_reply)"/>
+<rect x="806.0" y="930.0" width="268" height="20" rx="4" fill="#FFFFFF" stroke="#00838F" stroke-width="1"/>
+<text x="940.0" y="944.0" text-anchor="middle" fill="#00838F" font-family="Arial, sans-serif" font-size="10.5" font-weight="bold">Notificar resultado de clasificación</text>
+<path d="M1280,1020 C1545,1020 1545,740 1810,740" fill="none" stroke="#1565C0" stroke-width="1.8" marker-end="url(#arrow_ctrl)"/>
+<rect x="1383.0" y="860.0" width="324" height="20" rx="4" fill="#FFFFFF" stroke="#1565C0" stroke-width="1"/>
+<text x="1545.0" y="874.0" text-anchor="middle" fill="#1565C0" font-family="Arial, sans-serif" font-size="10.5" font-weight="bold">6: Validar unicidad SKU, categoría y precios</text>
+<path d="M1280,1020 C1545,1020 1545,940 1810,940" fill="none" stroke="#1565C0" stroke-width="1.8" marker-end="url(#arrow_ctrl)"/>
+<rect x="1383.0" y="960.0" width="324" height="20" rx="4" fill="#FFFFFF" stroke="#1565C0" stroke-width="1"/>
+<text x="1545.0" y="974.0" text-anchor="middle" fill="#1565C0" font-family="Arial, sans-serif" font-size="10.5" font-weight="bold">8: Procesar y almacenar fotografía principal</text>
+<path d="M1280,1020 C1545,1020 1545,1140 1810,1140" fill="none" stroke="#1565C0" stroke-width="1.8" marker-end="url(#arrow_ctrl)"/>
+<rect x="1379.5" y="1060.0" width="331" height="20" rx="4" fill="#FFFFFF" stroke="#1565C0" stroke-width="1"/>
+<text x="1545.0" y="1074.0" text-anchor="middle" fill="#1565C0" font-family="Arial, sans-serif" font-size="10.5" font-weight="bold">9: Generar matriz de variantes y multicolores</text>
+<path d="M1280,1020 C1545,1020 1545,1340 1810,1340" fill="none" stroke="#1565C0" stroke-width="1.8" marker-end="url(#arrow_ctrl)"/>
+<rect x="1369.0" y="1160.0" width="352" height="20" rx="4" fill="#FFFFFF" stroke="#1565C0" stroke-width="1"/>
+<text x="1545.0" y="1174.0" text-anchor="middle" fill="#1565C0" font-family="Arial, sans-serif" font-size="10.5" font-weight="bold">10: Inicializar inventario en sucursales activas</text>
+<path d="M1280,1020 C1545,1020 1545,1800 1810,1800" fill="none" stroke="#1565C0" stroke-width="1.8" marker-end="url(#arrow_ctrl)"/>
+<rect x="1397.0" y="1390.0" width="296" height="20" rx="4" fill="#FFFFFF" stroke="#1565C0" stroke-width="1"/>
+<text x="1545.0" y="1404.0" text-anchor="middle" fill="#1565C0" font-family="Arial, sans-serif" font-size="10.5" font-weight="bold">11: Auditar alta/edición (INSERT/UPDATE)</text>
+<path d="M1280,1660 C1545,1660 1545,1800 1810,1800" fill="none" stroke="#1565C0" stroke-width="1.8" marker-end="url(#arrow_ctrl)"/>
+<rect x="1390.0" y="1710.0" width="310" height="20" rx="4" fill="#FFFFFF" stroke="#1565C0" stroke-width="1"/>
+<text x="1545.0" y="1724.0" text-anchor="middle" fill="#1565C0" font-family="Arial, sans-serif" font-size="10.5" font-weight="bold">Auditar cambios en categorías / temporadas</text>
+<path d="M1280,500 C1970,500 1970,640 2660,640" fill="none" stroke="#E65100" stroke-width="1.8" marker-end="url(#arrow_ent)"/>
+<rect x="1843.0" y="550.0" width="254" height="20" rx="4" fill="#FFFFFF" stroke="#E65100" stroke-width="1"/>
+<text x="1970.0" y="564.0" text-anchor="middle" fill="#E65100" font-family="Arial, sans-serif" font-size="10.5" font-weight="bold">SELECT * FROM prenda WHERE filtros</text>
+<path d="M1280,500 C1970,500 1970,280 2660,280" fill="none" stroke="#E65100" stroke-width="1.8" marker-end="url(#arrow_ent)"/>
+<rect x="1860.5" y="370.0" width="219" height="20" rx="4" fill="#FFFFFF" stroke="#E65100" stroke-width="1"/>
+<text x="1970.0" y="384.0" text-anchor="middle" fill="#E65100" font-family="Arial, sans-serif" font-size="10.5" font-weight="bold">Resolver nombre de categorías</text>
+<path d="M1280,500 C1970,500 1970,440 2660,440" fill="none" stroke="#E65100" stroke-width="1.8" marker-end="url(#arrow_ent)"/>
+<rect x="1825.5" y="450.0" width="289" height="20" rx="4" fill="#FFFFFF" stroke="#E65100" stroke-width="1"/>
+<text x="1970.0" y="464.0" text-anchor="middle" fill="#E65100" font-family="Arial, sans-serif" font-size="10.5" font-weight="bold">Resolver temporadas comerciales activas</text>
+<path d="M1280,500 C1970,500 1970,1600 2660,1600" fill="none" stroke="#E65100" stroke-width="1.8" marker-end="url(#arrow_ent)"/>
+<rect x="1839.5" y="1030.0" width="261" height="20" rx="4" fill="#FFFFFF" stroke="#E65100" stroke-width="1"/>
+<text x="1970.0" y="1044.0" text-anchor="middle" fill="#E65100" font-family="Arial, sans-serif" font-size="10.5" font-weight="bold">SUM(stock) consolidado por variante</text>
+<path d="M1890,740 C2275,740 2275,640 2660,640" fill="none" stroke="#E65100" stroke-width="1.8" marker-end="url(#arrow_ent)"/>
+<rect x="2141.0" y="670.0" width="268" height="20" rx="4" fill="#FFFFFF" stroke="#E65100" stroke-width="1"/>
+<text x="2275.0" y="684.0" text-anchor="middle" fill="#E65100" font-family="Arial, sans-serif" font-size="10.5" font-weight="bold">SELECT 1 WHERE sku = %s (existe_sku)</text>
+<path d="M1890,740 C2275,740 2275,280 2660,280" fill="none" stroke="#E65100" stroke-width="1.8" marker-end="url(#arrow_ent)"/>
+<rect x="2137.5" y="490.0" width="275" height="20" rx="4" fill="#FFFFFF" stroke="#E65100" stroke-width="1"/>
+<text x="2275.0" y="504.0" text-anchor="middle" fill="#E65100" font-family="Arial, sans-serif" font-size="10.5" font-weight="bold">Verificar categoría activa del tenant</text>
+<path d="M1890,740 C2275,740 2275,440 2660,440" fill="none" stroke="#E65100" stroke-width="1.8" marker-end="url(#arrow_ent)"/>
+<rect x="2130.5" y="570.0" width="289" height="20" rx="4" fill="#FFFFFF" stroke="#E65100" stroke-width="1"/>
+<text x="2275.0" y="584.0" text-anchor="middle" fill="#E65100" font-family="Arial, sans-serif" font-size="10.5" font-weight="bold">Verificar temporada comercial existente</text>
+<path d="M1280,1020 C1970,1020 1970,640 2660,640" fill="none" stroke="#E65100" stroke-width="1.8" marker-end="url(#arrow_ent)"/>
+<rect x="1811.5" y="810.0" width="317" height="20" rx="4" fill="#FFFFFF" stroke="#E65100" stroke-width="1"/>
+<text x="1970.0" y="824.0" text-anchor="middle" fill="#E65100" font-family="Arial, sans-serif" font-size="10.5" font-weight="bold">7: INSERT / UPDATE datos maestros y precios</text>
+<path d="M1280,1020 C1970,1020 1970,980 2660,980" fill="none" stroke="#E65100" stroke-width="1.8" marker-end="url(#arrow_ent)"/>
+<rect x="1818.5" y="980.0" width="303" height="20" rx="4" fill="#FFFFFF" stroke="#E65100" stroke-width="1"/>
+<text x="1970.0" y="994.0" text-anchor="middle" fill="#E65100" font-family="Arial, sans-serif" font-size="10.5" font-weight="bold">SELECT tallas disponibles (listar_tallas)</text>
+<path d="M1280,1020 C1970,1020 1970,1120 2660,1120" fill="none" stroke="#E65100" stroke-width="1.8" marker-end="url(#arrow_ent)"/>
+<rect x="1811.5" y="1050.0" width="317" height="20" rx="4" fill="#FFFFFF" stroke="#E65100" stroke-width="1"/>
+<text x="1970.0" y="1064.0" text-anchor="middle" fill="#E65100" font-family="Arial, sans-serif" font-size="10.5" font-weight="bold">SELECT colores disponibles (listar_colores)</text>
+<path d="M1890,940 C2275,940 2275,820 2660,820" fill="none" stroke="#E65100" stroke-width="1.8" marker-end="url(#arrow_ent)"/>
+<rect x="2127.0" y="860.0" width="296" height="20" rx="4" fill="#FFFFFF" stroke="#E65100" stroke-width="1"/>
+<text x="2275.0" y="874.0" text-anchor="middle" fill="#E65100" font-family="Arial, sans-serif" font-size="10.5" font-weight="bold">INSERT imagen_prenda (url, es_principal)</text>
+<path d="M1890,1140 C2275,1140 2275,1280 2660,1280" fill="none" stroke="#E65100" stroke-width="1.8" marker-end="url(#arrow_ent)"/>
+<rect x="2099.0" y="1190.0" width="352" height="20" rx="4" fill="#FFFFFF" stroke="#E65100" stroke-width="1"/>
+<text x="2275.0" y="1204.0" text-anchor="middle" fill="#E65100" font-family="Arial, sans-serif" font-size="10.5" font-weight="bold">INSERT variante_prenda (sku_variante, color_ids)</text>
+<path d="M1890,1340 C2275,1340 2275,1440 2660,1440" fill="none" stroke="#E65100" stroke-width="1.8" marker-end="url(#arrow_ent)"/>
+<rect x="2137.5" y="1370.0" width="275" height="20" rx="4" fill="#FFFFFF" stroke="#E65100" stroke-width="1"/>
+<text x="2275.0" y="1384.0" text-anchor="middle" fill="#E65100" font-family="Arial, sans-serif" font-size="10.5" font-weight="bold">SELECT sucursales activas autorizadas</text>
+<path d="M1890,1340 C2275,1340 2275,1600 2660,1600" fill="none" stroke="#E65100" stroke-width="1.8" marker-end="url(#arrow_ent)"/>
+<rect x="2109.5" y="1450.0" width="331" height="20" rx="4" fill="#FFFFFF" stroke="#E65100" stroke-width="1"/>
+<text x="2275.0" y="1464.0" text-anchor="middle" fill="#E65100" font-family="Arial, sans-serif" font-size="10.5" font-weight="bold">INSERT inventario (sucursal, variante, stock)</text>
+<path d="M1890,1340 C2275,1340 2275,1760 2660,1760" fill="none" stroke="#E65100" stroke-width="1.8" marker-end="url(#arrow_ent)"/>
+<rect x="2106.0" y="1530.0" width="338" height="20" rx="4" fill="#FFFFFF" stroke="#E65100" stroke-width="1"/>
+<text x="2275.0" y="1544.0" text-anchor="middle" fill="#E65100" font-family="Arial, sans-serif" font-size="10.5" font-weight="bold">INSERT movimiento_inventario (Entrada inicial)</text>
+<path d="M1280,1660 C1970,1660 1970,280 2660,280" fill="none" stroke="#E65100" stroke-width="1.8" marker-end="url(#arrow_ent)"/>
+<rect x="1801.0" y="950.0" width="338" height="20" rx="4" fill="#FFFFFF" stroke="#E65100" stroke-width="1"/>
+<text x="1970.0" y="964.0" text-anchor="middle" fill="#E65100" font-family="Arial, sans-serif" font-size="10.5" font-weight="bold">INSERT / UPDATE categoria (validar sin ciclos)</text>
+<path d="M1280,1660 C1970,1660 1970,440 2660,440" fill="none" stroke="#E65100" stroke-width="1.8" marker-end="url(#arrow_ent)"/>
+<rect x="1780.0" y="1030.0" width="380" height="20" rx="4" fill="#FFFFFF" stroke="#E65100" stroke-width="1"/>
+<text x="1970.0" y="1044.0" text-anchor="middle" fill="#E65100" font-family="Arial, sans-serif" font-size="10.5" font-weight="bold">INSERT / UPDATE temporada (validar inicio &lt;= fin)</text>
+<path d="M1890,1800 C2275,1800 2275,1940 2660,1940" fill="none" stroke="#E65100" stroke-width="1.8" marker-end="url(#arrow_ent)"/>
+<rect x="2106.0" y="1850.0" width="338" height="20" rx="4" fill="#FFFFFF" stroke="#E65100" stroke-width="1"/>
+<text x="2275.0" y="1864.0" text-anchor="middle" fill="#E65100" font-family="Arial, sans-serif" font-size="10.5" font-weight="bold">INSERT bitacora (usuario, ip, accion, detalle)</text>
+<g stroke="#7B1FA2" stroke-width="2" fill="#F3E5F5">
+<circle cx="160" cy="627" r="12"/>
+<line x1="160" y1="639" x2="160" y2="675"/>
+<line x1="134" y1="655" x2="186" y2="655"/>
+<line x1="160" y1="675" x2="136" y2="705"/>
+<line x1="160" y1="675" x2="184" y2="705"/>
+</g>
+<text x="160" y="720" text-anchor="middle" fill="#0F172A" font-family="Arial, sans-serif" font-size="13" font-weight="bold">Administrador de Empresa</text>
+<text x="160" y="738" text-anchor="middle" fill="#475569" font-family="Arial, sans-serif" font-size="10.5">«actor»</text>
+<text x="160" y="754" text-anchor="middle" fill="#475569" font-family="Arial, sans-serif" font-size="10.5">Gestión integral del catálogo,</text>
+<text x="160" y="770" text-anchor="middle" fill="#475569" font-family="Arial, sans-serif" font-size="10.5">precios, ofertas y clasificación</text>
+<g stroke="#7B1FA2" stroke-width="2" fill="#F3E5F5">
+<circle cx="160" cy="1327" r="12"/>
+<line x1="160" y1="1339" x2="160" y2="1375"/>
+<line x1="134" y1="1355" x2="186" y2="1355"/>
+<line x1="160" y1="1375" x2="136" y2="1405"/>
+<line x1="160" y1="1375" x2="184" y2="1405"/>
+</g>
+<text x="160" y="1420" text-anchor="middle" fill="#0F172A" font-family="Arial, sans-serif" font-size="13" font-weight="bold">Encargado de Inventario</text>
+<text x="160" y="1438" text-anchor="middle" fill="#475569" font-family="Arial, sans-serif" font-size="10.5">«actor»</text>
+<text x="160" y="1454" text-anchor="middle" fill="#475569" font-family="Arial, sans-serif" font-size="10.5">Gestión de prendas, variantes,</text>
+<text x="160" y="1470" text-anchor="middle" fill="#475569" font-family="Arial, sans-serif" font-size="10.5">medidas y stock por sucursal</text>
+<circle cx="640" cy="240" r="36" fill="#E1F5FE" stroke="#0288D1" stroke-width="2"/>
+<line x1="592" y1="204" x2="592" y2="276" stroke="#0288D1" stroke-width="2.5"/>
+<line x1="592" y1="240" x2="604" y2="240" stroke="#0288D1" stroke-width="2.5"/>
+<text x="640" y="300" text-anchor="middle" fill="#0F172A" font-family="Arial, sans-serif" font-size="13" font-weight="bold">UI_Notificaciones</text>
+<text x="640" y="318" text-anchor="middle" fill="#475569" font-family="Arial, sans-serif" font-size="10.5">«boundary»</text>
+<text x="640" y="334" text-anchor="middle" fill="#475569" font-family="Arial, sans-serif" font-size="10.5">Panel de Retroalimentación</text>
+<text x="640" y="350" text-anchor="middle" fill="#475569" font-family="Arial, sans-serif" font-size="10.5">(Toast / Alertas Éxito y Error)</text>
+<circle cx="640" cy="600" r="36" fill="#E1F5FE" stroke="#0288D1" stroke-width="2"/>
+<line x1="592" y1="564" x2="592" y2="636" stroke="#0288D1" stroke-width="2.5"/>
+<line x1="592" y1="600" x2="604" y2="600" stroke="#0288D1" stroke-width="2.5"/>
+<text x="640" y="660" text-anchor="middle" fill="#0F172A" font-family="Arial, sans-serif" font-size="13" font-weight="bold">UI_PanelCatalogo</text>
+<text x="640" y="678" text-anchor="middle" fill="#475569" font-family="Arial, sans-serif" font-size="10.5">«boundary»</text>
+<text x="640" y="694" text-anchor="middle" fill="#475569" font-family="Arial, sans-serif" font-size="10.5">Panel Catálogo de Prendas</text>
+<text x="640" y="710" text-anchor="middle" fill="#475569" font-family="Arial, sans-serif" font-size="10.5">(Prendas / Tabla Maestra)</text>
+<circle cx="640" cy="1020" r="36" fill="#E1F5FE" stroke="#0288D1" stroke-width="2"/>
+<line x1="592" y1="984" x2="592" y2="1056" stroke="#0288D1" stroke-width="2.5"/>
+<line x1="592" y1="1020" x2="604" y2="1020" stroke="#0288D1" stroke-width="2.5"/>
+<text x="640" y="1080" text-anchor="middle" fill="#0F172A" font-family="Arial, sans-serif" font-size="13" font-weight="bold">UI_ModalPrenda</text>
+<text x="640" y="1098" text-anchor="middle" fill="#475569" font-family="Arial, sans-serif" font-size="10.5">«boundary»</text>
+<text x="640" y="1114" text-anchor="middle" fill="#475569" font-family="Arial, sans-serif" font-size="10.5">Formulario Prenda y Variantes</text>
+<text x="640" y="1130" text-anchor="middle" fill="#475569" font-family="Arial, sans-serif" font-size="10.5">(PrendaModal / Matriz Talla-Color)</text>
+<circle cx="640" cy="1480" r="36" fill="#E1F5FE" stroke="#0288D1" stroke-width="2"/>
+<line x1="592" y1="1444" x2="592" y2="1516" stroke="#0288D1" stroke-width="2.5"/>
+<line x1="592" y1="1480" x2="604" y2="1480" stroke="#0288D1" stroke-width="2.5"/>
+<text x="640" y="1540" text-anchor="middle" fill="#0F172A" font-family="Arial, sans-serif" font-size="13" font-weight="bold">UI_ModalCategoria</text>
+<text x="640" y="1558" text-anchor="middle" fill="#475569" font-family="Arial, sans-serif" font-size="10.5">«boundary»</text>
+<text x="640" y="1574" text-anchor="middle" fill="#475569" font-family="Arial, sans-serif" font-size="10.5">Gestor de Categorías</text>
+<text x="640" y="1590" text-anchor="middle" fill="#475569" font-family="Arial, sans-serif" font-size="10.5">(CategoriaModal / Jerarquía)</text>
+<circle cx="640" cy="1840" r="36" fill="#E1F5FE" stroke="#0288D1" stroke-width="2"/>
+<line x1="592" y1="1804" x2="592" y2="1876" stroke="#0288D1" stroke-width="2.5"/>
+<line x1="592" y1="1840" x2="604" y2="1840" stroke="#0288D1" stroke-width="2.5"/>
+<text x="640" y="1900" text-anchor="middle" fill="#0F172A" font-family="Arial, sans-serif" font-size="13" font-weight="bold">UI_ModalTemporada</text>
+<text x="640" y="1918" text-anchor="middle" fill="#475569" font-family="Arial, sans-serif" font-size="10.5">«boundary»</text>
+<text x="640" y="1934" text-anchor="middle" fill="#475569" font-family="Arial, sans-serif" font-size="10.5">Gestor de Temporadas</text>
+<text x="640" y="1950" text-anchor="middle" fill="#475569" font-family="Arial, sans-serif" font-size="10.5">(TemporadaModal / Vigencias)</text>
+<circle cx="1240" cy="500" r="36" fill="#E8F5E9" stroke="#2E7D32" stroke-width="2"/>
+<path d="M1258,460 C1242,456 1226,466 1218,474" fill="none" stroke="#2E7D32" stroke-width="2.5"/>
+<polygon points="1216,466 1220,479 1229,471" fill="#2E7D32"/>
+<text x="1240" y="560" text-anchor="middle" fill="#0F172A" font-family="Arial, sans-serif" font-size="13" font-weight="bold">Ctrl_ConsultarCatalogo</text>
+<text x="1240" y="578" text-anchor="middle" fill="#475569" font-family="Arial, sans-serif" font-size="10.5">«control»</text>
+<text x="1240" y="594" text-anchor="middle" fill="#475569" font-family="Arial, sans-serif" font-size="10.5">Consultar Catálogo y Filtros</text>
+<text x="1240" y="610" text-anchor="middle" fill="#475569" font-family="Arial, sans-serif" font-size="10.5">(catalogo.py / svc.listar_prendas)</text>
+<circle cx="1240" cy="1020" r="36" fill="#E8F5E9" stroke="#2E7D32" stroke-width="2"/>
+<path d="M1258,980 C1242,976 1226,986 1218,994" fill="none" stroke="#2E7D32" stroke-width="2.5"/>
+<polygon points="1216,986 1220,999 1229,991" fill="#2E7D32"/>
+<text x="1240" y="1080" text-anchor="middle" fill="#0F172A" font-family="Arial, sans-serif" font-size="13" font-weight="bold">Ctrl_GestionarPrenda</text>
+<text x="1240" y="1098" text-anchor="middle" fill="#475569" font-family="Arial, sans-serif" font-size="10.5">«control»</text>
+<text x="1240" y="1114" text-anchor="middle" fill="#475569" font-family="Arial, sans-serif" font-size="10.5">Gestionar Prenda Maestra</text>
+<text x="1240" y="1130" text-anchor="middle" fill="#475569" font-family="Arial, sans-serif" font-size="10.5">(prendas.py / svc.crear_prenda)</text>
+<circle cx="1240" cy="1660" r="36" fill="#E8F5E9" stroke="#2E7D32" stroke-width="2"/>
+<path d="M1258,1620 C1242,1616 1226,1626 1218,1634" fill="none" stroke="#2E7D32" stroke-width="2.5"/>
+<polygon points="1216,1626 1220,1639 1229,1631" fill="#2E7D32"/>
+<text x="1240" y="1720" text-anchor="middle" fill="#0F172A" font-family="Arial, sans-serif" font-size="13" font-weight="bold">Ctrl_GestionarClasificacion</text>
+<text x="1240" y="1738" text-anchor="middle" fill="#475569" font-family="Arial, sans-serif" font-size="10.5">«control»</text>
+<text x="1240" y="1754" text-anchor="middle" fill="#475569" font-family="Arial, sans-serif" font-size="10.5">Gestionar Categorías y Períodos</text>
+<text x="1240" y="1770" text-anchor="middle" fill="#475569" font-family="Arial, sans-serif" font-size="10.5">(categorias.py / temporadas.py)</text>
+<circle cx="1850" cy="740" r="36" fill="#E8F5E9" stroke="#2E7D32" stroke-width="2"/>
+<path d="M1868,700 C1852,696 1836,706 1828,714" fill="none" stroke="#2E7D32" stroke-width="2.5"/>
+<polygon points="1826,706 1830,719 1839,711" fill="#2E7D32"/>
+<text x="1850" y="800" text-anchor="middle" fill="#0F172A" font-family="Arial, sans-serif" font-size="13" font-weight="bold">Ctrl_ValidarReglasNegocio</text>
+<text x="1850" y="818" text-anchor="middle" fill="#475569" font-family="Arial, sans-serif" font-size="10.5">«control»</text>
+<text x="1850" y="834" text-anchor="middle" fill="#475569" font-family="Arial, sans-serif" font-size="10.5">Validar Reglas y Unicidad SKU</text>
+<text x="1850" y="850" text-anchor="middle" fill="#475569" font-family="Arial, sans-serif" font-size="10.5">(svc.existe_sku / validaciones)</text>
+<circle cx="1850" cy="940" r="36" fill="#E8F5E9" stroke="#2E7D32" stroke-width="2"/>
+<path d="M1868,900 C1852,896 1836,906 1828,914" fill="none" stroke="#2E7D32" stroke-width="2.5"/>
+<polygon points="1826,906 1830,919 1839,911" fill="#2E7D32"/>
+<text x="1850" y="1000" text-anchor="middle" fill="#0F172A" font-family="Arial, sans-serif" font-size="13" font-weight="bold">Ctrl_ProcesarImagen</text>
+<text x="1850" y="1018" text-anchor="middle" fill="#475569" font-family="Arial, sans-serif" font-size="10.5">«control»</text>
+<text x="1850" y="1034" text-anchor="middle" fill="#475569" font-family="Arial, sans-serif" font-size="10.5">Procesar Fotografía Principal</text>
+<text x="1850" y="1050" text-anchor="middle" fill="#475569" font-family="Arial, sans-serif" font-size="10.5">(image_storage_service)</text>
+<circle cx="1850" cy="1140" r="36" fill="#E8F5E9" stroke="#2E7D32" stroke-width="2"/>
+<path d="M1868,1100 C1852,1096 1836,1106 1828,1114" fill="none" stroke="#2E7D32" stroke-width="2.5"/>
+<polygon points="1826,1106 1830,1119 1839,1111" fill="#2E7D32"/>
+<text x="1850" y="1200" text-anchor="middle" fill="#0F172A" font-family="Arial, sans-serif" font-size="13" font-weight="bold">Ctrl_GenerarVariantesSKU</text>
+<text x="1850" y="1218" text-anchor="middle" fill="#475569" font-family="Arial, sans-serif" font-size="10.5">«control»</text>
+<text x="1850" y="1234" text-anchor="middle" fill="#475569" font-family="Arial, sans-serif" font-size="10.5">Generar Variantes y Multicolores</text>
+<text x="1850" y="1250" text-anchor="middle" fill="#475569" font-family="Arial, sans-serif" font-size="10.5">(svc._crear_variante / SKU derivado)</text>
+<circle cx="1850" cy="1340" r="36" fill="#E8F5E9" stroke="#2E7D32" stroke-width="2"/>
+<path d="M1868,1300 C1852,1296 1836,1306 1828,1314" fill="none" stroke="#2E7D32" stroke-width="2.5"/>
+<polygon points="1826,1306 1830,1319 1839,1311" fill="#2E7D32"/>
+<text x="1850" y="1400" text-anchor="middle" fill="#0F172A" font-family="Arial, sans-serif" font-size="13" font-weight="bold">Ctrl_InicializarInventario</text>
+<text x="1850" y="1418" text-anchor="middle" fill="#475569" font-family="Arial, sans-serif" font-size="10.5">«control»</text>
+<text x="1850" y="1434" text-anchor="middle" fill="#475569" font-family="Arial, sans-serif" font-size="10.5">Inicializar Stock en Sucursales</text>
+<text x="1850" y="1450" text-anchor="middle" fill="#475569" font-family="Arial, sans-serif" font-size="10.5">(inventario / stock_inicial)</text>
+<circle cx="1850" cy="1800" r="36" fill="#E8F5E9" stroke="#2E7D32" stroke-width="2"/>
+<path d="M1868,1760 C1852,1756 1836,1766 1828,1774" fill="none" stroke="#2E7D32" stroke-width="2.5"/>
+<polygon points="1826,1766 1830,1779 1839,1771" fill="#2E7D32"/>
+<text x="1850" y="1860" text-anchor="middle" fill="#0F172A" font-family="Arial, sans-serif" font-size="13" font-weight="bold">Ctrl_RegistrarAuditoria</text>
+<text x="1850" y="1878" text-anchor="middle" fill="#475569" font-family="Arial, sans-serif" font-size="10.5">«control»</text>
+<text x="1850" y="1894" text-anchor="middle" fill="#475569" font-family="Arial, sans-serif" font-size="10.5">Registrar Bitácora Forense</text>
+<text x="1850" y="1910" text-anchor="middle" fill="#475569" font-family="Arial, sans-serif" font-size="10.5">(bitacora_service / IP y Acción)</text>
+<circle cx="2700" cy="280" r="36" fill="#FFF3E0" stroke="#E65100" stroke-width="2"/>
+<line x1="2656" y1="322" x2="2744" y2="322" stroke="#E65100" stroke-width="3"/>
+<text x="2700" y="340" text-anchor="middle" fill="#0F172A" font-family="Arial, sans-serif" font-size="13" font-weight="bold">Categoría</text>
+<text x="2700" y="358" text-anchor="middle" fill="#475569" font-family="Arial, sans-serif" font-size="10.5">«entity»</text>
+<text x="2700" y="374" text-anchor="middle" fill="#475569" font-family="Arial, sans-serif" font-size="10.5">Categoría de Prenda</text>
+<text x="2700" y="390" text-anchor="middle" fill="#475569" font-family="Arial, sans-serif" font-size="10.5">(categoria)</text>
+<circle cx="2700" cy="440" r="36" fill="#FFF3E0" stroke="#E65100" stroke-width="2"/>
+<line x1="2656" y1="482" x2="2744" y2="482" stroke="#E65100" stroke-width="3"/>
+<text x="2700" y="500" text-anchor="middle" fill="#0F172A" font-family="Arial, sans-serif" font-size="13" font-weight="bold">Temporada / Colección</text>
+<text x="2700" y="518" text-anchor="middle" fill="#475569" font-family="Arial, sans-serif" font-size="10.5">«entity»</text>
+<text x="2700" y="534" text-anchor="middle" fill="#475569" font-family="Arial, sans-serif" font-size="10.5">Temporada y Colección</text>
+<text x="2700" y="550" text-anchor="middle" fill="#475569" font-family="Arial, sans-serif" font-size="10.5">(temporada)</text>
+<circle cx="2700" cy="640" r="36" fill="#FFF3E0" stroke="#E65100" stroke-width="2"/>
+<line x1="2656" y1="682" x2="2744" y2="682" stroke="#E65100" stroke-width="3"/>
+<text x="2700" y="700" text-anchor="middle" fill="#0F172A" font-family="Arial, sans-serif" font-size="13" font-weight="bold">Prenda</text>
+<text x="2700" y="718" text-anchor="middle" fill="#475569" font-family="Arial, sans-serif" font-size="10.5">«entity»</text>
+<text x="2700" y="734" text-anchor="middle" fill="#475569" font-family="Arial, sans-serif" font-size="10.5">Prenda Maestra del Catálogo</text>
+<text x="2700" y="750" text-anchor="middle" fill="#475569" font-family="Arial, sans-serif" font-size="10.5">(prenda)</text>
+<circle cx="2700" cy="820" r="36" fill="#FFF3E0" stroke="#E65100" stroke-width="2"/>
+<line x1="2656" y1="862" x2="2744" y2="862" stroke="#E65100" stroke-width="3"/>
+<text x="2700" y="880" text-anchor="middle" fill="#0F172A" font-family="Arial, sans-serif" font-size="13" font-weight="bold">Imagen de Prenda</text>
+<text x="2700" y="898" text-anchor="middle" fill="#475569" font-family="Arial, sans-serif" font-size="10.5">«entity»</text>
+<text x="2700" y="914" text-anchor="middle" fill="#475569" font-family="Arial, sans-serif" font-size="10.5">Fotografía Principal / Galería</text>
+<text x="2700" y="930" text-anchor="middle" fill="#475569" font-family="Arial, sans-serif" font-size="10.5">(imagen_prenda)</text>
+<circle cx="2700" cy="980" r="36" fill="#FFF3E0" stroke="#E65100" stroke-width="2"/>
+<line x1="2656" y1="1022" x2="2744" y2="1022" stroke="#E65100" stroke-width="3"/>
+<text x="2700" y="1040" text-anchor="middle" fill="#0F172A" font-family="Arial, sans-serif" font-size="13" font-weight="bold">Talla</text>
+<text x="2700" y="1058" text-anchor="middle" fill="#475569" font-family="Arial, sans-serif" font-size="10.5">«entity»</text>
+<text x="2700" y="1074" text-anchor="middle" fill="#475569" font-family="Arial, sans-serif" font-size="10.5">Talla Comercial</text>
+<text x="2700" y="1090" text-anchor="middle" fill="#475569" font-family="Arial, sans-serif" font-size="10.5">(talla)</text>
+<circle cx="2700" cy="1120" r="36" fill="#FFF3E0" stroke="#E65100" stroke-width="2"/>
+<line x1="2656" y1="1162" x2="2744" y2="1162" stroke="#E65100" stroke-width="3"/>
+<text x="2700" y="1180" text-anchor="middle" fill="#0F172A" font-family="Arial, sans-serif" font-size="13" font-weight="bold">Color</text>
+<text x="2700" y="1198" text-anchor="middle" fill="#475569" font-family="Arial, sans-serif" font-size="10.5">«entity»</text>
+<text x="2700" y="1214" text-anchor="middle" fill="#475569" font-family="Arial, sans-serif" font-size="10.5">Color y Código HEX</text>
+<text x="2700" y="1230" text-anchor="middle" fill="#475569" font-family="Arial, sans-serif" font-size="10.5">(color)</text>
+<circle cx="2700" cy="1280" r="36" fill="#FFF3E0" stroke="#E65100" stroke-width="2"/>
+<line x1="2656" y1="1322" x2="2744" y2="1322" stroke="#E65100" stroke-width="3"/>
+<text x="2700" y="1340" text-anchor="middle" fill="#0F172A" font-family="Arial, sans-serif" font-size="13" font-weight="bold">Variante de Prenda</text>
+<text x="2700" y="1358" text-anchor="middle" fill="#475569" font-family="Arial, sans-serif" font-size="10.5">«entity»</text>
+<text x="2700" y="1374" text-anchor="middle" fill="#475569" font-family="Arial, sans-serif" font-size="10.5">Variante Física Talla-Color</text>
+<text x="2700" y="1390" text-anchor="middle" fill="#475569" font-family="Arial, sans-serif" font-size="10.5">(variante_prenda)</text>
+<circle cx="2700" cy="1440" r="36" fill="#FFF3E0" stroke="#E65100" stroke-width="2"/>
+<line x1="2656" y1="1482" x2="2744" y2="1482" stroke="#E65100" stroke-width="3"/>
+<text x="2700" y="1500" text-anchor="middle" fill="#0F172A" font-family="Arial, sans-serif" font-size="13" font-weight="bold">Sucursal</text>
+<text x="2700" y="1518" text-anchor="middle" fill="#475569" font-family="Arial, sans-serif" font-size="10.5">«entity»</text>
+<text x="2700" y="1534" text-anchor="middle" fill="#475569" font-family="Arial, sans-serif" font-size="10.5">Sucursales Activas</text>
+<text x="2700" y="1550" text-anchor="middle" fill="#475569" font-family="Arial, sans-serif" font-size="10.5">(sucursal)</text>
+<circle cx="2700" cy="1600" r="36" fill="#FFF3E0" stroke="#E65100" stroke-width="2"/>
+<line x1="2656" y1="1642" x2="2744" y2="1642" stroke="#E65100" stroke-width="3"/>
+<text x="2700" y="1660" text-anchor="middle" fill="#0F172A" font-family="Arial, sans-serif" font-size="13" font-weight="bold">Inventario</text>
+<text x="2700" y="1678" text-anchor="middle" fill="#475569" font-family="Arial, sans-serif" font-size="10.5">«entity»</text>
+<text x="2700" y="1694" text-anchor="middle" fill="#475569" font-family="Arial, sans-serif" font-size="10.5">Stock por Sucursal y Variante</text>
+<text x="2700" y="1710" text-anchor="middle" fill="#475569" font-family="Arial, sans-serif" font-size="10.5">(inventario)</text>
+<circle cx="2700" cy="1760" r="36" fill="#FFF3E0" stroke="#E65100" stroke-width="2"/>
+<line x1="2656" y1="1802" x2="2744" y2="1802" stroke="#E65100" stroke-width="3"/>
+<text x="2700" y="1820" text-anchor="middle" fill="#0F172A" font-family="Arial, sans-serif" font-size="13" font-weight="bold">Movimiento de Inventario</text>
+<text x="2700" y="1838" text-anchor="middle" fill="#475569" font-family="Arial, sans-serif" font-size="10.5">«entity»</text>
+<text x="2700" y="1854" text-anchor="middle" fill="#475569" font-family="Arial, sans-serif" font-size="10.5">Kardex y Entrada Inicial</text>
+<text x="2700" y="1870" text-anchor="middle" fill="#475569" font-family="Arial, sans-serif" font-size="10.5">(movimiento_inventario)</text>
+<circle cx="2700" cy="1940" r="36" fill="#FFF3E0" stroke="#E65100" stroke-width="2"/>
+<line x1="2656" y1="1982" x2="2744" y2="1982" stroke="#E65100" stroke-width="3"/>
+<text x="2700" y="2000" text-anchor="middle" fill="#0F172A" font-family="Arial, sans-serif" font-size="13" font-weight="bold">Bitácora</text>
+<text x="2700" y="2018" text-anchor="middle" fill="#475569" font-family="Arial, sans-serif" font-size="10.5">«entity»</text>
+<text x="2700" y="2034" text-anchor="middle" fill="#475569" font-family="Arial, sans-serif" font-size="10.5">Registro Forense de Auditoría</text>
+<text x="2700" y="2050" text-anchor="middle" fill="#475569" font-family="Arial, sans-serif" font-size="10.5">(bitacora)</text>
+</svg>

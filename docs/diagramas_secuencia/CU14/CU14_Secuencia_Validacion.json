@@ -1,0 +1,47 @@
+{
+  "cu": "CU14",
+  "archivo": "CU14_Diagrama_Secuencia.drawio",
+  "participantes": 7,
+  "mensajes": 26,
+  "fragmentos": {
+    "alt": 3,
+    "opt": 1,
+    "loop": 0
+  },
+  "ancho": 2340,
+  "alto": 2757,
+  "sha256": "3c6cc23d0e116f293bf43abf7d0a26738c29ccc6ab41cd1f785ae3dd748e2602",
+  "fuentes": [
+    {
+      "file": "Parcial2_backend/app/routers/comprobantes.py",
+      "sha256": "67103a9b9b690a51b5437f85e710650352f1c9a974ea7640c170233d75650813"
+    },
+    {
+      "file": "Parcial2_backend/app/services/bitacora_service.py",
+      "sha256": "ec5d5294930c1b8e3e1d4628fd0b1f8b183bdab2ba205c19751245c33e5608a0"
+    },
+    {
+      "file": "Parcial2_backend/app/services/comprobante_service.py",
+      "sha256": "dce52ff9ce31f378bdf6e03c2b927c87385b13a5a034a3ef17c3e9b06583aec8"
+    },
+    {
+      "file": "Parcial2_frontend-web/src/app/core/services/comprobante.service.ts",
+      "sha256": "2b6b30fd14aa714ad7d66d7d121d9c0755e14dc8afd4c88c4f5e9e4b259b5bfb"
+    },
+    {
+      "file": "Parcial2_mobile/lib/services/venta_service.dart",
+      "sha256": "52b7c5a44e4db2bf4fb1defa3e833231b846bd866a2fa20983f6450732b19c50"
+    }
+  ],
+  "actores": 1,
+  "interfaces": 1,
+  "controles": 1,
+  "entidades": 4,
+  "participantes_identicos_a_robustez": true,
+  "mensajes_principales_cubiertos": 23,
+  "xsd_valido": true,
+  "limites_fragmentos_validados": true,
+  "bucles_solo_participantes_involucrados": true,
+  "sin_actores_dentro_de_fragmentos": true,
+  "sin_comunicacion_entre_entidades": true
+}

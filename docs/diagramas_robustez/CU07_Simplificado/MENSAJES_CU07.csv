@@ -1,0 +1,33 @@
+﻿numero,origen,destino,mensaje,archivo,linea
+1,actor,b_pre,Consultar proveedores,,
+2,b_pre,control,listar_proveedores(búsqueda),Parcial2_backend/app/routers/proveedores.py,39
+3,control,proveedor,listar_proveedores(búsqueda),Parcial2_backend/app/services/proveedor_service.py,25
+4,proveedor,control,proveedores,,
+5,control,b_pre,proveedores,,
+6,b_pre,actor,Mostrar proveedores,,
+7,actor,b_pre,Registrar proveedor,,
+8,b_pre,control,crear_proveedor(datos),Parcial2_backend/app/routers/proveedores.py,94
+9,control,proveedor,crear_proveedor(datos),Parcial2_backend/app/services/proveedor_service.py,109
+10,proveedor,control,proveedor creado,,
+11,control,bitacora,"registrar_bitacora(proveedor, alta)",Parcial2_backend/app/services/bitacora_service.py,65
+12,control,b_pre,proveedor registrado,,
+13,actor,b_pre,Editar proveedor,,
+14,b_pre,control,"actualizar_proveedor(id, cambios)",Parcial2_backend/app/routers/proveedores.py,119
+15,control,proveedor,"actualizar_proveedor(id, cambios)",Parcial2_backend/app/services/proveedor_service.py,174
+16,control,bitacora,"registrar_bitacora(proveedor, modificación)",Parcial2_backend/app/services/bitacora_service.py,65
+17,control,b_pre,proveedor actualizado,,
+18,actor,b_pre,Confirmar compra y recepción,,
+19,b_pre,control,registrar_compra(datos e ítems),Parcial2_backend/app/routers/compras.py,39
+20,control,compra,registrar_compra(datos),Parcial2_backend/app/services/compra_service.py,30
+21,compra,control,id_compra,,
+22,control,detalle,Guardar detalle [por ítem],Parcial2_backend/app/services/compra_service.py,30
+23,control,movimiento,Registrar Entrada [por ítem recibido],Parcial2_backend/app/services/compra_service.py,30
+24,control,bitacora,"registrar_bitacora(compra, recepción)",Parcial2_backend/app/services/bitacora_service.py,65
+25,control,b_pre,compra y recepción confirmadas,,
+26,b_pre,actor,Mostrar recepción registrada,,
+27,actor,b_pre,Consultar compra y detalles,,
+28,b_pre,control,obtener_compra(id_compra),Parcial2_backend/app/routers/compras.py,94
+29,control,compra,obtener_compra_por_id(id_compra),Parcial2_backend/app/services/compra_service.py,250
+30,compra,control,compra con sus detalles,,
+31,control,b_pre,detalle de compra,,
+32,b_pre,actor,Mostrar compra recibida,,

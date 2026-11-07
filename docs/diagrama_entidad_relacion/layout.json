@@ -1,0 +1,2862 @@
+{
+  "name": "FashionStore",
+  "directed": true,
+  "strict": false,
+  "_draw_": 
+  [
+    {
+      "op": "c",
+      "grad": "none",
+      "color": "#fffffe00"
+    },
+    {
+      "op": "C",
+      "grad": "none",
+      "color": "#ffffff"
+    },
+    {
+      "op": "P",
+      "points": [[-36.000,-36.000],[-36.000,4338.000],[4696.000,4338.000],[4696.000,-36.000]]
+    }
+  ],
+  "bb": "0,0,4660,4302",
+  "compound": "true",
+  "concentrate": "false",
+  "label": "",
+  "newrank": "true",
+  "nodesep": "0.65",
+  "outputorder": "edgesfirst",
+  "pad": "0.5",
+  "rankdir": "LR",
+  "ranksep": "1.4",
+  "splines": "ortho",
+  "xdotversion": "1.7",
+  "_subgraph_cnt": 9,
+  "objects": [
+    {
+      "name": "cluster_saas",
+      "_draw_": 
+      [
+        {
+          "op": "c",
+          "grad": "none",
+          "color": "#000000"
+        },
+        {
+          "op": "p",
+          "points": [[8.000,2930.000],[8.000,3327.000],[1005.000,3327.000],[1005.000,2930.000]]
+        }
+      ],
+      "_ldraw_": 
+      [
+        {
+          "op": "F",
+          "size": 18.000,
+          "face": "Times-Roman"
+        },
+        {
+          "op": "c",
+          "grad": "none",
+          "color": "#000000"
+        },
+        {
+          "op": "T",
+          "pt": [506.500,3306.800],
+          "align": "c",
+          "width": 185.480,
+          "text": "Administraciu00f3n SaaS"
+        }
+      ],
+      "bb": "8,2930,1005,3327",
+      "compound": "true",
+      "concentrate": "false",
+      "fontsize": "18",
+      "label": "Administraci\\u00f3n SaaS",
+      "lheight": "0.30",
+      "lp": "506.5,3312.2",
+      "lwidth": "2.58",
+      "margin": "28",
+      "newrank": "true",
+      "nodesep": "0.65",
+      "outputorder": "edgesfirst",
+      "pad": "0.5",
+      "rankdir": "LR",
+      "ranksep": "1.4",
+      "splines": "ortho",
+      "_gvid": 0,
+      "nodes": [
+        9,10,11
+      ],
+      "edges": [
+        8,0
+      ]
+    },
+    {
+      "name": "cluster_acceso",
+      "_draw_": 
+      [
+        {
+          "op": "c",
+          "grad": "none",
+          "color": "#000000"
+        },
+        {
+          "op": "p",
+          "points": [[529.000,2358.000],[529.000,2886.000],[2568.000,2886.000],[2568.000,2358.000]]
+        }
+      ],
+      "_ldraw_": 
+      [
+        {
+          "op": "F",
+          "size": 18.000,
+          "face": "Times-Roman"
+        },
+        {
+          "op": "c",
+          "grad": "none",
+          "color": "#000000"
+        },
+        {
+          "op": "T",
+          "pt": [1548.500,2865.800],
+          "align": "c",
+          "width": 207.920,
+          "text": "Identidad y autorizaciu00f3n"
+        }
+      ],
+      "bb": "529,2358,2568,2886",
+      "compound": "true",
+      "concentrate": "false",
+      "fontsize": "18",
+      "label": "Identidad y autorizaci\\u00f3n",
+      "lheight": "0.30",
+      "lp": "1548.5,2871.2",
+      "lwidth": "2.89",
+      "margin": "28",
+      "newrank": "true",
+      "nodesep": "0.65",
+      "outputorder": "edgesfirst",
+      "pad": "0.5",
+      "rankdir": "LR",
+      "ranksep": "1.4",
+      "splines": "ortho",
+      "_gvid": 1,
+      "nodes": [
+        12,13,14,15,16,17
+      ],
+      "edges": [
+        10,9,12,11,13
+      ]
+    },
+    {
+      "name": "cluster_organizacion",
+      "_draw_": 
+      [
+        {
+          "op": "c",
+          "grad": "none",
+          "color": "#000000"
+        },
+        {
+          "op": "p",
+          "points": [[1050.000,1565.000],[1050.000,2034.000],[2047.000,2034.000],[2047.000,1565.000]]
+        }
+      ],
+      "_ldraw_": 
+      [
+        {
+          "op": "F",
+          "size": 18.000,
+          "face": "Times-Roman"
+        },
+        {
+          "op": "c",
+          "grad": "none",
+          "color": "#000000"
+        },
+        {
+          "op": "T",
+          "pt": [1548.500,2013.800],
+          "align": "c",
+          "width": 202.920,
+          "text": "Organizaciu00f3n y clientes"
+        }
+      ],
+      "bb": "1050,1565,2047,2034",
+      "compound": "true",
+      "concentrate": "false",
+      "fontsize": "18",
+      "label": "Organizaci\\u00f3n y clientes",
+      "lheight": "0.30",
+      "lp": "1548.5,2019.2",
+      "lwidth": "2.82",
+      "margin": "28",
+      "newrank": "true",
+      "nodesep": "0.65",
+      "outputorder": "edgesfirst",
+      "pad": "0.5",
+      "rankdir": "LR",
+      "ranksep": "1.4",
+      "splines": "ortho",
+      "_gvid": 2,
+      "nodes": [
+        18,19,20
+      ],
+      "edges": [
+        22
+      ]
+    },
+    {
+      "name": "cluster_catalogo",
+      "_draw_": 
+      [
+        {
+          "op": "c",
+          "grad": "none",
+          "color": "#000000"
+        },
+        {
+          "op": "p",
+          "points": [[1050.000,3598.000],[1050.000,4294.000],[3089.000,4294.000],[3089.000,3598.000]]
+        }
+      ],
+      "_ldraw_": 
+      [
+        {
+          "op": "F",
+          "size": 18.000,
+          "face": "Times-Roman"
+        },
+        {
+          "op": "c",
+          "grad": "none",
+          "color": "#000000"
+        },
+        {
+          "op": "T",
+          "pt": [2069.500,4273.800],
+          "align": "c",
+          "width": 182.950,
+          "text": "Catu00e1logo de prendas"
+        }
+      ],
+      "bb": "1050,3598,3089,4294",
+      "compound": "true",
+      "concentrate": "false",
+      "fontsize": "18",
+      "label": "Cat\\u00e1logo de prendas",
+      "lheight": "0.30",
+      "lp": "2069.5,4279.2",
+      "lwidth": "2.54",
+      "margin": "28",
+      "newrank": "true",
+      "nodesep": "0.65",
+      "outputorder": "edgesfirst",
+      "pad": "0.5",
+      "rankdir": "LR",
+      "ranksep": "1.4",
+      "splines": "ortho",
+      "_gvid": 3,
+      "nodes": [
+        21,22,23,24,25,26,27,28
+      ],
+      "edges": [
+        36,37,38,39,42,40,41,43,44
+      ]
+    },
+    {
+      "name": "cluster_inventario",
+      "_draw_": 
+      [
+        {
+          "op": "c",
+          "grad": "none",
+          "color": "#000000"
+        },
+        {
+          "op": "p",
+          "points": [[1571.000,2894.000],[1571.000,3590.000],[3089.000,3590.000],[3089.000,2894.000]]
+        }
+      ],
+      "_ldraw_": 
+      [
+        {
+          "op": "F",
+          "size": 18.000,
+          "face": "Times-Roman"
+        },
+        {
+          "op": "c",
+          "grad": "none",
+          "color": "#000000"
+        },
+        {
+          "op": "T",
+          "pt": [2330.000,3569.800],
+          "align": "c",
+          "width": 202.930,
+          "text": "Abastecimiento e inventario"
+        }
+      ],
+      "bb": "1571,2894,3089,3590",
+      "compound": "true",
+      "concentrate": "false",
+      "fontsize": "18",
+      "label": "Abastecimiento e inventario",
+      "lheight": "0.30",
+      "lp": "2330,3575.2",
+      "lwidth": "2.82",
+      "margin": "28",
+      "newrank": "true",
+      "nodesep": "0.65",
+      "outputorder": "edgesfirst",
+      "pad": "0.5",
+      "rankdir": "LR",
+      "ranksep": "1.4",
+      "splines": "ortho",
+      "_gvid": 4,
+      "nodes": [
+        29,30,31,32,33
+      ],
+      "edges": [
+        51,52
+      ]
+    },
+    {
+      "name": "cluster_comercio",
+      "_draw_": 
+      [
+        {
+          "op": "c",
+          "grad": "none",
+          "color": "#000000"
+        },
+        {
+          "op": "p",
+          "points": [[2092.000,1391.000],[2092.000,2159.000],[3610.000,2159.000],[3610.000,1391.000]]
+        }
+      ],
+      "_ldraw_": 
+      [
+        {
+          "op": "F",
+          "size": 18.000,
+          "face": "Times-Roman"
+        },
+        {
+          "op": "c",
+          "grad": "none",
+          "color": "#000000"
+        },
+        {
+          "op": "T",
+          "pt": [2851.000,2138.800],
+          "align": "c",
+          "width": 128.960,
+          "text": "Reservas y ventas"
+        }
+      ],
+      "bb": "2092,1391,3610,2159",
+      "compound": "true",
+      "concentrate": "false",
+      "fontsize": "18",
+      "label": "Reservas y ventas",
+      "lheight": "0.30",
+      "lp": "2851,2144.2",
+      "lwidth": "1.79",
+      "margin": "28",
+      "newrank": "true",
+      "nodesep": "0.65",
+      "outputorder": "edgesfirst",
+      "pad": "0.5",
+      "rankdir": "LR",
+      "ranksep": "1.4",
+      "splines": "ortho",
+      "_gvid": 5,
+      "nodes": [
+        34,35,36,37,38
+      ],
+      "edges": [
+        53,54,55,58
+      ]
+    },
+    {
+      "name": "cluster_pagos",
+      "_draw_": 
+      [
+        {
+          "op": "c",
+          "grad": "none",
+          "color": "#000000"
+        },
+        {
+          "op": "p",
+          "points": [[3134.000,890.000],[3134.000,1383.000],[3610.000,1383.000],[3610.000,890.000]]
+        }
+      ],
+      "_ldraw_": 
+      [
+        {
+          "op": "F",
+          "size": 18.000,
+          "face": "Times-Roman"
+        },
+        {
+          "op": "c",
+          "grad": "none",
+          "color": "#000000"
+        },
+        {
+          "op": "T",
+          "pt": [3372.000,1362.800],
+          "align": "c",
+          "width": 161.970,
+          "text": "Pagos y comprobantes"
+        }
+      ],
+      "bb": "3134,890,3610,1383",
+      "compound": "true",
+      "concentrate": "false",
+      "fontsize": "18",
+      "label": "Pagos y comprobantes",
+      "lheight": "0.30",
+      "lp": "3372,1368.2",
+      "lwidth": "2.25",
+      "margin": "28",
+      "newrank": "true",
+      "nodesep": "0.65",
+      "outputorder": "edgesfirst",
+      "pad": "0.5",
+      "rankdir": "LR",
+      "ranksep": "1.4",
+      "splines": "ortho",
+      "_gvid": 6,
+      "nodes": [
+        39,40
+      ]
+    },
+    {
+      "name": "cluster_cambios",
+      "_draw_": 
+      [
+        {
+          "op": "c",
+          "grad": "none",
+          "color": "#000000"
+        },
+        {
+          "op": "p",
+          "points": [[3655.000,489.000],[3655.000,982.000],[4652.000,982.000],[4652.000,489.000]]
+        }
+      ],
+      "_ldraw_": 
+      [
+        {
+          "op": "F",
+          "size": 18.000,
+          "face": "Times-Roman"
+        },
+        {
+          "op": "c",
+          "grad": "none",
+          "color": "#000000"
+        },
+        {
+          "op": "T",
+          "pt": [4153.500,961.800],
+          "align": "c",
+          "width": 182.960,
+          "text": "Cambios y notificaciones"
+        }
+      ],
+      "bb": "3655,489,4652,982",
+      "compound": "true",
+      "concentrate": "false",
+      "fontsize": "18",
+      "label": "Cambios y notificaciones",
+      "lheight": "0.30",
+      "lp": "4153.5,967.2",
+      "lwidth": "2.54",
+      "margin": "28",
+      "newrank": "true",
+      "nodesep": "0.65",
+      "outputorder": "edgesfirst",
+      "pad": "0.5",
+      "rankdir": "LR",
+      "ranksep": "1.4",
+      "splines": "ortho",
+      "_gvid": 7,
+      "nodes": [
+        41,42,43
+      ],
+      "edges": [
+        62,63
+      ]
+    },
+    {
+      "name": "cluster_servicios",
+      "_draw_": 
+      [
+        {
+          "op": "c",
+          "grad": "none",
+          "color": "#000000"
+        },
+        {
+          "op": "p",
+          "points": [[1571.000,8.000],[1571.000,501.000],[2568.000,501.000],[2568.000,8.000]]
+        }
+      ],
+      "_ldraw_": 
+      [
+        {
+          "op": "F",
+          "size": 18.000,
+          "face": "Times-Roman"
+        },
+        {
+          "op": "c",
+          "grad": "none",
+          "color": "#000000"
+        },
+        {
+          "op": "T",
+          "pt": [2069.500,480.800],
+          "align": "c",
+          "width": 328.900,
+          "text": "Sincronizaciu00f3n, reportes y auditoru00eda"
+        }
+      ],
+      "bb": "1571,8,2568,501",
+      "compound": "true",
+      "concentrate": "false",
+      "fontsize": "18",
+      "label": "Sincronizaci\\u00f3n, reportes y auditor\\u00eda",
+      "lheight": "0.30",
+      "lp": "2069.5,486.2",
+      "lwidth": "4.57",
+      "margin": "28",
+      "newrank": "true",
+      "nodesep": "0.65",
+      "outputorder": "edgesfirst",
+      "pad": "0.5",
+      "rankdir": "LR",
+      "ranksep": "1.4",
+      "splines": "ortho",
+      "_gvid": 8,
+      "nodes": [
+        44,45,46
+      ],
+      "edges": [
+        64
+      ]
+    },
+    {
+      "_gvid": 9,
+      "name": "empresa",
+      "_draw_": 
+      [
+        {
+          "op": "c",
+          "grad": "none",
+          "color": "#000000"
+        },
+        {
+          "op": "p",
+          "points": [[456.000,3090.000],[36.000,3090.000],[36.000,2958.000],[456.000,2958.000]]
+        }
+      ],
+      "fixedsize": "true",
+      "height": "1.8333",
+      "label": "",
+      "margin": "0",
+      "pos": "246,3024",
+      "shape": "box",
+      "width": "5.8333"
+    },
+    {
+      "_gvid": 10,
+      "name": "plan",
+      "_draw_": 
+      [
+        {
+          "op": "c",
+          "grad": "none",
+          "color": "#000000"
+        },
+        {
+          "op": "p",
+          "points": [[456.000,3269.000],[36.000,3269.000],[36.000,3137.000],[456.000,3137.000]]
+        }
+      ],
+      "fixedsize": "true",
+      "height": "1.8333",
+      "label": "",
+      "margin": "0",
+      "pos": "246,3203",
+      "shape": "box",
+      "width": "5.8333"
+    },
+    {
+      "_gvid": 11,
+      "name": "suscripcion",
+      "_draw_": 
+      [
+        {
+          "op": "c",
+          "grad": "none",
+          "color": "#000000"
+        },
+        {
+          "op": "p",
+          "points": [[977.000,3269.000],[557.000,3269.000],[557.000,3113.000],[977.000,3113.000]]
+        }
+      ],
+      "fixedsize": "true",
+      "height": "2.1667",
+      "label": "",
+      "margin": "0",
+      "pos": "767,3191",
+      "shape": "box",
+      "width": "5.8333"
+    },
+    {
+      "_gvid": 12,
+      "name": "cuenta_global",
+      "_draw_": 
+      [
+        {
+          "op": "c",
+          "grad": "none",
+          "color": "#000000"
+        },
+        {
+          "op": "p",
+          "points": [[977.000,2518.000],[557.000,2518.000],[557.000,2386.000],[977.000,2386.000]]
+        }
+      ],
+      "fixedsize": "true",
+      "height": "1.8333",
+      "label": "",
+      "margin": "0",
+      "pos": "767,2452",
+      "shape": "box",
+      "width": "5.8333"
+    },
+    {
+      "_gvid": 13,
+      "name": "rol",
+      "_draw_": 
+      [
+        {
+          "op": "c",
+          "grad": "none",
+          "color": "#000000"
+        },
+        {
+          "op": "p",
+          "points": [[977.000,2673.000],[557.000,2673.000],[557.000,2565.000],[977.000,2565.000]]
+        }
+      ],
+      "fixedsize": "true",
+      "height": "1.5",
+      "label": "",
+      "margin": "0",
+      "pos": "767,2619",
+      "shape": "box",
+      "width": "5.8333"
+    },
+    {
+      "_gvid": 14,
+      "name": "permiso",
+      "_draw_": 
+      [
+        {
+          "op": "c",
+          "grad": "none",
+          "color": "#000000"
+        },
+        {
+          "op": "p",
+          "points": [[977.000,2828.000],[557.000,2828.000],[557.000,2720.000],[977.000,2720.000]]
+        }
+      ],
+      "fixedsize": "true",
+      "height": "1.5",
+      "label": "",
+      "margin": "0",
+      "pos": "767,2774",
+      "shape": "box",
+      "width": "5.8333"
+    },
+    {
+      "_gvid": 15,
+      "name": "usuario",
+      "_draw_": 
+      [
+        {
+          "op": "c",
+          "grad": "none",
+          "color": "#000000"
+        },
+        {
+          "op": "p",
+          "points": [[1498.000,2566.000],[1078.000,2566.000],[1078.000,2386.000],[1498.000,2386.000]]
+        }
+      ],
+      "fixedsize": "true",
+      "height": "2.5",
+      "label": "",
+      "margin": "0",
+      "pos": "1288,2476",
+      "shape": "box",
+      "width": "5.8333"
+    },
+    {
+      "_gvid": 16,
+      "name": "rol_permiso",
+      "_draw_": 
+      [
+        {
+          "op": "c",
+          "grad": "none",
+          "color": "#000000"
+        },
+        {
+          "op": "p",
+          "points": [[1498.000,2774.000],[1078.000,2774.000],[1078.000,2666.000],[1498.000,2666.000]]
+        }
+      ],
+      "fixedsize": "true",
+      "height": "1.5",
+      "label": "",
+      "margin": "0",
+      "pos": "1288,2720",
+      "shape": "box",
+      "width": "5.8333"
+    },
+    {
+      "_gvid": 17,
+      "name": "usuario_sucursal",
+      "_draw_": 
+      [
+        {
+          "op": "c",
+          "grad": "none",
+          "color": "#000000"
+        },
+        {
+          "op": "p",
+          "points": [[2540.000,2494.000],[2120.000,2494.000],[2120.000,2386.000],[2540.000,2386.000]]
+        }
+      ],
+      "fixedsize": "true",
+      "height": "1.5",
+      "label": "",
+      "margin": "0",
+      "pos": "2330,2440",
+      "shape": "box",
+      "width": "5.8333"
+    },
+    {
+      "_gvid": 18,
+      "name": "ciudad",
+      "_draw_": 
+      [
+        {
+          "op": "c",
+          "grad": "none",
+          "color": "#000000"
+        },
+        {
+          "op": "p",
+          "points": [[1498.000,1940.000],[1078.000,1940.000],[1078.000,1832.000],[1498.000,1832.000]]
+        }
+      ],
+      "fixedsize": "true",
+      "height": "1.5",
+      "label": "",
+      "margin": "0",
+      "pos": "1288,1886",
+      "shape": "box",
+      "width": "5.8333"
+    },
+    {
+      "_gvid": 19,
+      "name": "sucursal",
+      "_draw_": 
+      [
+        {
+          "op": "c",
+          "grad": "none",
+          "color": "#000000"
+        },
+        {
+          "op": "p",
+          "points": [[2019.000,1976.000],[1599.000,1976.000],[1599.000,1796.000],[2019.000,1796.000]]
+        }
+      ],
+      "fixedsize": "true",
+      "height": "2.5",
+      "label": "",
+      "margin": "0",
+      "pos": "1809,1886",
+      "shape": "box",
+      "width": "5.8333"
+    },
+    {
+      "_gvid": 20,
+      "name": "cliente",
+      "_draw_": 
+      [
+        {
+          "op": "c",
+          "grad": "none",
+          "color": "#000000"
+        },
+        {
+          "op": "p",
+          "points": [[2019.000,1749.000],[1599.000,1749.000],[1599.000,1593.000],[2019.000,1593.000]]
+        }
+      ],
+      "fixedsize": "true",
+      "height": "2.1667",
+      "label": "",
+      "margin": "0",
+      "pos": "1809,1671",
+      "shape": "box",
+      "width": "5.8333"
+    },
+    {
+      "_gvid": 21,
+      "name": "categoria",
+      "_draw_": 
+      [
+        {
+          "op": "c",
+          "grad": "none",
+          "color": "#000000"
+        },
+        {
+          "op": "p",
+          "points": [[1498.000,3812.000],[1078.000,3812.000],[1078.000,3656.000],[1498.000,3656.000]]
+        }
+      ],
+      "fixedsize": "true",
+      "height": "2.1667",
+      "label": "",
+      "margin": "0",
+      "pos": "1288,3734",
+      "shape": "box",
+      "width": "5.8333"
+    },
+    {
+      "_gvid": 22,
+      "name": "temporada",
+      "_draw_": 
+      [
+        {
+          "op": "c",
+          "grad": "none",
+          "color": "#000000"
+        },
+        {
+          "op": "p",
+          "points": [[1498.000,4033.000],[1078.000,4033.000],[1078.000,3877.000],[1498.000,3877.000]]
+        }
+      ],
+      "fixedsize": "true",
+      "height": "2.1667",
+      "label": "",
+      "margin": "0",
+      "pos": "1288,3955",
+      "shape": "box",
+      "width": "5.8333"
+    },
+    {
+      "_gvid": 23,
+      "name": "prenda",
+      "_draw_": 
+      [
+        {
+          "op": "c",
+          "grad": "none",
+          "color": "#000000"
+        },
+        {
+          "op": "p",
+          "points": [[2019.000,3902.000],[1599.000,3902.000],[1599.000,3626.000],[2019.000,3626.000]]
+        }
+      ],
+      "fixedsize": "true",
+      "height": "3.8333",
+      "label": "",
+      "margin": "0",
+      "pos": "1809,3764",
+      "shape": "box",
+      "width": "5.8333"
+    },
+    {
+      "_gvid": 24,
+      "name": "imagen_prenda",
+      "_draw_": 
+      [
+        {
+          "op": "c",
+          "grad": "none",
+          "color": "#000000"
+        },
+        {
+          "op": "p",
+          "points": [[2540.000,3782.000],[2120.000,3782.000],[2120.000,3626.000],[2540.000,3626.000]]
+        }
+      ],
+      "fixedsize": "true",
+      "height": "2.1667",
+      "label": "",
+      "margin": "0",
+      "pos": "2330,3704",
+      "shape": "box",
+      "width": "5.8333"
+    },
+    {
+      "_gvid": 25,
+      "name": "talla",
+      "_draw_": 
+      [
+        {
+          "op": "c",
+          "grad": "none",
+          "color": "#000000"
+        },
+        {
+          "op": "p",
+          "points": [[2019.000,4057.000],[1599.000,4057.000],[1599.000,3949.000],[2019.000,3949.000]]
+        }
+      ],
+      "fixedsize": "true",
+      "height": "1.5",
+      "label": "",
+      "margin": "0",
+      "pos": "1809,4003",
+      "shape": "box",
+      "width": "5.8333"
+    },
+    {
+      "_gvid": 26,
+      "name": "color",
+      "_draw_": 
+      [
+        {
+          "op": "c",
+          "grad": "none",
+          "color": "#000000"
+        },
+        {
+          "op": "p",
+          "points": [[2019.000,4236.000],[1599.000,4236.000],[1599.000,4104.000],[2019.000,4104.000]]
+        }
+      ],
+      "fixedsize": "true",
+      "height": "1.8333",
+      "label": "",
+      "margin": "0",
+      "pos": "1809,4170",
+      "shape": "box",
+      "width": "5.8333"
+    },
+    {
+      "_gvid": 27,
+      "name": "variante_prenda",
+      "_draw_": 
+      [
+        {
+          "op": "c",
+          "grad": "none",
+          "color": "#000000"
+        },
+        {
+          "op": "p",
+          "points": [[2540.000,4033.000],[2120.000,4033.000],[2120.000,3829.000],[2540.000,3829.000]]
+        }
+      ],
+      "fixedsize": "true",
+      "height": "2.8333",
+      "label": "",
+      "margin": "0",
+      "pos": "2330,3931",
+      "shape": "box",
+      "width": "5.8333"
+    },
+    {
+      "_gvid": 28,
+      "name": "variante_color",
+      "_draw_": 
+      [
+        {
+          "op": "c",
+          "grad": "none",
+          "color": "#000000"
+        },
+        {
+          "op": "p",
+          "points": [[3061.000,3922.000],[2641.000,3922.000],[2641.000,3814.000],[3061.000,3814.000]]
+        }
+      ],
+      "fixedsize": "true",
+      "height": "1.5",
+      "label": "",
+      "margin": "0",
+      "pos": "2851,3868",
+      "shape": "box",
+      "width": "5.8333"
+    },
+    {
+      "_gvid": 29,
+      "name": "proveedor",
+      "_draw_": 
+      [
+        {
+          "op": "c",
+          "grad": "none",
+          "color": "#000000"
+        },
+        {
+          "op": "p",
+          "points": [[2019.000,3090.000],[1599.000,3090.000],[1599.000,2958.000],[2019.000,2958.000]]
+        }
+      ],
+      "fixedsize": "true",
+      "height": "1.8333",
+      "label": "",
+      "margin": "0",
+      "pos": "1809,3024",
+      "shape": "box",
+      "width": "5.8333"
+    },
+    {
+      "_gvid": 30,
+      "name": "compra",
+      "_draw_": 
+      [
+        {
+          "op": "c",
+          "grad": "none",
+          "color": "#000000"
+        },
+        {
+          "op": "p",
+          "points": [[2540.000,3126.000],[2120.000,3126.000],[2120.000,2922.000],[2540.000,2922.000]]
+        }
+      ],
+      "fixedsize": "true",
+      "height": "2.8333",
+      "label": "",
+      "margin": "0",
+      "pos": "2330,3024",
+      "shape": "box",
+      "width": "5.8333"
+    },
+    {
+      "_gvid": 31,
+      "name": "detalle_compra",
+      "_draw_": 
+      [
+        {
+          "op": "c",
+          "grad": "none",
+          "color": "#000000"
+        },
+        {
+          "op": "p",
+          "points": [[3061.000,3532.000],[2641.000,3532.000],[2641.000,3376.000],[3061.000,3376.000]]
+        }
+      ],
+      "fixedsize": "true",
+      "height": "2.1667",
+      "label": "",
+      "margin": "0",
+      "pos": "2851,3454",
+      "shape": "box",
+      "width": "5.8333"
+    },
+    {
+      "_gvid": 32,
+      "name": "inventario",
+      "_draw_": 
+      [
+        {
+          "op": "c",
+          "grad": "none",
+          "color": "#000000"
+        },
+        {
+          "op": "p",
+          "points": [[3061.000,3054.000],[2641.000,3054.000],[2641.000,2922.000],[3061.000,2922.000]]
+        }
+      ],
+      "fixedsize": "true",
+      "height": "1.8333",
+      "label": "",
+      "margin": "0",
+      "pos": "2851,2988",
+      "shape": "box",
+      "width": "5.8333"
+    },
+    {
+      "_gvid": 33,
+      "name": "movimiento_inventario",
+      "_draw_": 
+      [
+        {
+          "op": "c",
+          "grad": "none",
+          "color": "#000000"
+        },
+        {
+          "op": "p",
+          "points": [[3061.000,3329.000],[2641.000,3329.000],[2641.000,3101.000],[3061.000,3101.000]]
+        }
+      ],
+      "fixedsize": "true",
+      "height": "3.1667",
+      "label": "",
+      "margin": "0",
+      "pos": "2851,3215",
+      "shape": "box",
+      "width": "5.8333"
+    },
+    {
+      "_gvid": 34,
+      "name": "reserva",
+      "_draw_": 
+      [
+        {
+          "op": "c",
+          "grad": "none",
+          "color": "#000000"
+        },
+        {
+          "op": "p",
+          "points": [[2540.000,1647.000],[2120.000,1647.000],[2120.000,1443.000],[2540.000,1443.000]]
+        }
+      ],
+      "fixedsize": "true",
+      "height": "2.8333",
+      "label": "",
+      "margin": "0",
+      "pos": "2330,1545",
+      "shape": "box",
+      "width": "5.8333"
+    },
+    {
+      "_gvid": 35,
+      "name": "detalle_reserva",
+      "_draw_": 
+      [
+        {
+          "op": "c",
+          "grad": "none",
+          "color": "#000000"
+        },
+        {
+          "op": "p",
+          "points": [[3061.000,1874.000],[2641.000,1874.000],[2641.000,1718.000],[3061.000,1718.000]]
+        }
+      ],
+      "fixedsize": "true",
+      "height": "2.1667",
+      "label": "",
+      "margin": "0",
+      "pos": "2851,1796",
+      "shape": "box",
+      "width": "5.8333"
+    },
+    {
+      "_gvid": 36,
+      "name": "retencion",
+      "_draw_": 
+      [
+        {
+          "op": "c",
+          "grad": "none",
+          "color": "#000000"
+        },
+        {
+          "op": "p",
+          "points": [[3061.000,2101.000],[2641.000,2101.000],[2641.000,1921.000],[3061.000,1921.000]]
+        }
+      ],
+      "fixedsize": "true",
+      "height": "2.5",
+      "label": "",
+      "margin": "0",
+      "pos": "2851,2011",
+      "shape": "box",
+      "width": "5.8333"
+    },
+    {
+      "_gvid": 37,
+      "name": "venta",
+      "_draw_": 
+      [
+        {
+          "op": "c",
+          "grad": "none",
+          "color": "#000000"
+        },
+        {
+          "op": "p",
+          "points": [[3061.000,1671.000],[2641.000,1671.000],[2641.000,1419.000],[3061.000,1419.000]]
+        }
+      ],
+      "fixedsize": "true",
+      "height": "3.5",
+      "label": "",
+      "margin": "0",
+      "pos": "2851,1545",
+      "shape": "box",
+      "width": "5.8333"
+    },
+    {
+      "_gvid": 38,
+      "name": "detalle_venta",
+      "_draw_": 
+      [
+        {
+          "op": "c",
+          "grad": "none",
+          "color": "#000000"
+        },
+        {
+          "op": "p",
+          "points": [[3582.000,1635.000],[3162.000,1635.000],[3162.000,1455.000],[3582.000,1455.000]]
+        }
+      ],
+      "fixedsize": "true",
+      "height": "2.5",
+      "label": "",
+      "margin": "0",
+      "pos": "3372,1545",
+      "shape": "box",
+      "width": "5.8333"
+    },
+    {
+      "_gvid": 39,
+      "name": "pago_transaccion",
+      "_draw_": 
+      [
+        {
+          "op": "c",
+          "grad": "none",
+          "color": "#000000"
+        },
+        {
+          "op": "p",
+          "points": [[3582.000,1122.000],[3162.000,1122.000],[3162.000,918.000],[3582.000,918.000]]
+        }
+      ],
+      "fixedsize": "true",
+      "height": "2.8333",
+      "label": "",
+      "margin": "0",
+      "pos": "3372,1020",
+      "shape": "box",
+      "width": "5.8333"
+    },
+    {
+      "_gvid": 40,
+      "name": "comprobante",
+      "_draw_": 
+      [
+        {
+          "op": "c",
+          "grad": "none",
+          "color": "#000000"
+        },
+        {
+          "op": "p",
+          "points": [[3582.000,1325.000],[3162.000,1325.000],[3162.000,1169.000],[3582.000,1169.000]]
+        }
+      ],
+      "fixedsize": "true",
+      "height": "2.1667",
+      "label": "",
+      "margin": "0",
+      "pos": "3372,1247",
+      "shape": "box",
+      "width": "5.8333"
+    },
+    {
+      "_gvid": 41,
+      "name": "cambio",
+      "_draw_": 
+      [
+        {
+          "op": "c",
+          "grad": "none",
+          "color": "#000000"
+        },
+        {
+          "op": "p",
+          "points": [[4103.000,924.000],[3683.000,924.000],[3683.000,624.000],[4103.000,624.000]]
+        }
+      ],
+      "fixedsize": "true",
+      "height": "4.1667",
+      "label": "",
+      "margin": "0",
+      "pos": "3893,774",
+      "shape": "box",
+      "width": "5.8333"
+    },
+    {
+      "_gvid": 42,
+      "name": "ajuste_monetario",
+      "_draw_": 
+      [
+        {
+          "op": "c",
+          "grad": "none",
+          "color": "#000000"
+        },
+        {
+          "op": "p",
+          "points": [[4624.000,924.000],[4204.000,924.000],[4204.000,744.000],[4624.000,744.000]]
+        }
+      ],
+      "fixedsize": "true",
+      "height": "2.5",
+      "label": "",
+      "margin": "0",
+      "pos": "4414,834",
+      "shape": "box",
+      "width": "5.8333"
+    },
+    {
+      "_gvid": 43,
+      "name": "notificacion",
+      "_draw_": 
+      [
+        {
+          "op": "c",
+          "grad": "none",
+          "color": "#000000"
+        },
+        {
+          "op": "p",
+          "points": [[4624.000,697.000],[4204.000,697.000],[4204.000,517.000],[4624.000,517.000]]
+        }
+      ],
+      "fixedsize": "true",
+      "height": "2.5",
+      "label": "",
+      "margin": "0",
+      "pos": "4414,607",
+      "shape": "box",
+      "width": "5.8333"
+    },
+    {
+      "_gvid": 44,
+      "name": "operacion_sync",
+      "_draw_": 
+      [
+        {
+          "op": "c",
+          "grad": "none",
+          "color": "#000000"
+        },
+        {
+          "op": "p",
+          "points": [[2540.000,425.000],[2120.000,425.000],[2120.000,173.000],[2540.000,173.000]]
+        }
+      ],
+      "fixedsize": "true",
+      "height": "3.5",
+      "label": "",
+      "margin": "0",
+      "pos": "2330,299",
+      "shape": "box",
+      "width": "5.8333"
+    },
+    {
+      "_gvid": 45,
+      "name": "reporte_resultado",
+      "_draw_": 
+      [
+        {
+          "op": "c",
+          "grad": "none",
+          "color": "#000000"
+        },
+        {
+          "op": "p",
+          "points": [[2019.000,443.000],[1599.000,443.000],[1599.000,263.000],[2019.000,263.000]]
+        }
+      ],
+      "fixedsize": "true",
+      "height": "2.5",
+      "label": "",
+      "margin": "0",
+      "pos": "1809,353",
+      "shape": "box",
+      "width": "5.8333"
+    },
+    {
+      "_gvid": 46,
+      "name": "bitacora",
+      "_draw_": 
+      [
+        {
+          "op": "c",
+          "grad": "none",
+          "color": "#000000"
+        },
+        {
+          "op": "p",
+          "points": [[2019.000,216.000],[1599.000,216.000],[1599.000,36.000],[2019.000,36.000]]
+        }
+      ],
+      "fixedsize": "true",
+      "height": "2.5",
+      "label": "",
+      "margin": "0",
+      "pos": "1809,126",
+      "shape": "box",
+      "width": "5.8333"
+    }
+  ],
+  "edges": [
+    {
+      "_gvid": 8,
+      "tail": 10,
+      "head": 11,
+      "_draw_": 
+      [
+        {
+          "op": "c",
+          "grad": "none",
+          "color": "#000000"
+        },
+        {
+          "op": "b",
+          "points": [[456.410,3203.000],[489.450,3203.000],[523.610,3203.000],[556.650,3203.000]]
+        }
+      ],
+      "arrowhead": "none",
+      "arrowtail": "none",
+      "id": "relation_1",
+      "pos": "456.41,3203 489.45,3203 523.61,3203 556.65,3203",
+      "weight": "2"
+    },
+    {
+      "_gvid": 0,
+      "tail": 9,
+      "head": 11,
+      "_draw_": 
+      [
+        {
+          "op": "c",
+          "grad": "none",
+          "color": "#000000"
+        },
+        {
+          "op": "b",
+          "points": [[246.000,3090.240],[246.000,3109.280],[246.000,3125.000],[246.000,3125.000],[246.000,3125.000],[411.990,3125.000],[556.590,3125.000]]
+        }
+      ],
+      "arrowhead": "none",
+      "arrowtail": "none",
+      "id": "relation_2",
+      "pos": "246,3090.2 246,3109.3 246,3125 246,3125 246,3125 411.99,3125 556.59,3125",
+      "weight": "0.4"
+    },
+    {
+      "_gvid": 1,
+      "tail": 9,
+      "head": 13,
+      "_draw_": 
+      [
+        {
+          "op": "c",
+          "grad": "none",
+          "color": "#000000"
+        },
+        {
+          "op": "b",
+          "points": [[386.000,2957.580],[386.000,2842.680],[386.000,2619.000],[386.000,2619.000],[386.000,2619.000],[468.500,2619.000],[556.720,2619.000]]
+        }
+      ],
+      "arrowhead": "none",
+      "arrowtail": "none",
+      "id": "relation_3",
+      "pos": "386,2957.6 386,2842.7 386,2619 386,2619 386,2619 468.5,2619 556.72,2619",
+      "weight": "0.4"
+    },
+    {
+      "_gvid": 10,
+      "tail": 13,
+      "head": 15,
+      "_draw_": 
+      [
+        {
+          "op": "c",
+          "grad": "none",
+          "color": "#000000"
+        },
+        {
+          "op": "b",
+          "points": [[767.000,2564.750],[767.000,2551.730],[767.000,2541.500],[767.000,2541.500],[767.000,2541.500],[932.990,2541.500],[1077.590,2541.500]]
+        }
+      ],
+      "arrowhead": "none",
+      "arrowtail": "none",
+      "id": "relation_4",
+      "pos": "767,2564.8 767,2551.7 767,2541.5 767,2541.5 767,2541.5 932.99,2541.5 1077.6,2541.5",
+      "weight": "2"
+    },
+    {
+      "_gvid": 9,
+      "tail": 12,
+      "head": 15,
+      "_draw_": 
+      [
+        {
+          "op": "c",
+          "grad": "none",
+          "color": "#000000"
+        },
+        {
+          "op": "b",
+          "points": [[977.410,2452.000],[1010.450,2452.000],[1044.610,2452.000],[1077.650,2452.000]]
+        }
+      ],
+      "arrowhead": "none",
+      "arrowtail": "none",
+      "id": "relation_5",
+      "pos": "977.41,2452 1010.5,2452 1044.6,2452 1077.7,2452",
+      "weight": "2"
+    },
+    {
+      "_gvid": 12,
+      "tail": 14,
+      "head": 16,
+      "_draw_": 
+      [
+        {
+          "op": "c",
+          "grad": "none",
+          "color": "#000000"
+        },
+        {
+          "op": "b",
+          "points": [[977.410,2747.000],[1010.450,2747.000],[1044.610,2747.000],[1077.650,2747.000]]
+        }
+      ],
+      "arrowhead": "none",
+      "arrowtail": "none",
+      "id": "relation_6",
+      "pos": "977.41,2747 1010.5,2747 1044.6,2747 1077.7,2747",
+      "weight": "2"
+    },
+    {
+      "_gvid": 11,
+      "tail": 13,
+      "head": 16,
+      "_draw_": 
+      [
+        {
+          "op": "c",
+          "grad": "none",
+          "color": "#000000"
+        },
+        {
+          "op": "b",
+          "points": [[977.410,2669.500],[1010.450,2669.500],[1044.610,2669.500],[1077.650,2669.500]]
+        }
+      ],
+      "arrowhead": "none",
+      "arrowtail": "none",
+      "id": "relation_7",
+      "pos": "977.41,2669.5 1010.5,2669.5 1044.6,2669.5 1077.7,2669.5",
+      "weight": "2"
+    },
+    {
+      "_gvid": 23,
+      "tail": 19,
+      "head": 17,
+      "_draw_": 
+      [
+        {
+          "op": "c",
+          "grad": "none",
+          "color": "#000000"
+        },
+        {
+          "op": "b",
+          "points": [[2019.220,1966.830],[2113.550,1966.830],[2204.000,1966.830],[2204.000,1966.830],[2204.000,1966.830],[2204.000,2261.440],[2204.000,2385.720]]
+        }
+      ],
+      "arrowhead": "none",
+      "arrowtail": "none",
+      "id": "relation_8",
+      "pos": "2019.2,1966.8 2113.6,1966.8 2204,1966.8 2204,1966.8 2204,1966.8 2204,2261.4 2204,2385.7",
+      "weight": "2"
+    },
+    {
+      "_gvid": 13,
+      "tail": 15,
+      "head": 17,
+      "_draw_": 
+      [
+        {
+          "op": "c",
+          "grad": "none",
+          "color": "#000000"
+        },
+        {
+          "op": "b",
+          "points": [[1498.240,2478.570],[1679.110,2478.570],[1938.730,2478.570],[2119.640,2478.570]]
+        }
+      ],
+      "arrowhead": "none",
+      "arrowtail": "none",
+      "id": "relation_9",
+      "pos": "1498.2,2478.6 1679.1,2478.6 1938.7,2478.6 2119.6,2478.6",
+      "weight": "2"
+    },
+    {
+      "_gvid": 2,
+      "tail": 9,
+      "head": 19,
+      "_draw_": 
+      [
+        {
+          "op": "c",
+          "grad": "none",
+          "color": "#000000"
+        },
+        {
+          "op": "b",
+          "points": [[316.000,2957.750],[316.000,2724.030],[316.000,1952.000],[316.000,1952.000],[316.000,1952.000],[1187.270,1952.000],[1598.650,1952.000]]
+        }
+      ],
+      "arrowhead": "none",
+      "arrowtail": "none",
+      "id": "relation_10",
+      "pos": "316,2957.8 316,2724 316,1952 316,1952 316,1952 1187.3,1952 1598.7,1952",
+      "weight": "0.4"
+    },
+    {
+      "_gvid": 22,
+      "tail": 18,
+      "head": 19,
+      "_draw_": 
+      [
+        {
+          "op": "c",
+          "grad": "none",
+          "color": "#000000"
+        },
+        {
+          "op": "b",
+          "points": [[1498.410,1886.000],[1531.450,1886.000],[1565.610,1886.000],[1598.650,1886.000]]
+        }
+      ],
+      "arrowhead": "none",
+      "arrowtail": "none",
+      "id": "relation_11",
+      "pos": "1498.4,1886 1531.5,1886 1565.6,1886 1598.7,1886",
+      "weight": "2"
+    },
+    {
+      "_gvid": 14,
+      "tail": 15,
+      "head": 19,
+      "_draw_": 
+      [
+        {
+          "op": "c",
+          "grad": "none",
+          "color": "#000000"
+        },
+        {
+          "op": "b",
+          "points": [[1288.000,2385.640],[1288.000,2238.660],[1288.000,1964.000],[1288.000,1964.000],[1288.000,1964.000],[1453.990,1964.000],[1598.590,1964.000]]
+        }
+      ],
+      "arrowhead": "none",
+      "arrowtail": "none",
+      "id": "relation_12",
+      "pos": "1288,2385.6 1288,2238.7 1288,1964 1288,1964 1288,1964 1454,1964 1598.6,1964",
+      "weight": "2"
+    },
+    {
+      "_gvid": 3,
+      "tail": 9,
+      "head": 20,
+      "_draw_": 
+      [
+        {
+          "op": "c",
+          "grad": "none",
+          "color": "#000000"
+        },
+        {
+          "op": "b",
+          "points": [[246.000,2957.830],[246.000,2686.180],[246.000,1671.000],[246.000,1671.000],[246.000,1671.000],[1172.160,1671.000],[1598.610,1671.000]]
+        }
+      ],
+      "arrowhead": "none",
+      "arrowtail": "none",
+      "id": "relation_13",
+      "pos": "246,2957.8 246,2686.2 246,1671 246,1671 246,1671 1172.2,1671 1598.6,1671",
+      "weight": "0.4"
+    },
+    {
+      "_gvid": 36,
+      "tail": 21,
+      "head": 21,
+      "_draw_": 
+      [
+        {
+          "op": "c",
+          "grad": "none",
+          "color": "#000000"
+        },
+        {
+          "op": "b",
+          "points": [[1077.630,3734.000],[1047.790,3734.000],[1027.000,3734.000],[1027.000,3734.000],[1027.000,3734.000],[1027.000,3646.000],[1027.000,3646.000],[1027.000,3646.000],[1574.000,3646.000],[1574.000,3646.000],[1574.000,3646.000],[1574.000,3708.000],[1574.000,3708.000],[1574.000,3708.000],[1541.540,3708.000],[1498.480,3708.000]]
+        }
+      ],
+      "arrowhead": "none",
+      "arrowtail": "none",
+      "id": "relation_14",
+      "pos": "1077.6,3734 1047.8,3734 1027,3734 1027,3734 1027,3734 1027,3646 1027,3646 1027,3646 1574,3646 1574,3646 1574,3646 1574,3708 1574,3708 1574,3708 1541.5,3708 1498.5,3708",
+      "weight": "2"
+    },
+    {
+      "_gvid": 4,
+      "tail": 9,
+      "head": 23,
+      "_draw_": 
+      [
+        {
+          "op": "c",
+          "grad": "none",
+          "color": "#000000"
+        },
+        {
+          "op": "b",
+          "points": [[456.480,3002.000],[485.720,3002.000],[506.000,3002.000],[506.000,3002.000],[506.000,3002.000],[506.000,3636.000],[506.000,3636.000],[506.000,3636.000],[1229.900,3636.000],[1598.560,3636.000]]
+        }
+      ],
+      "arrowhead": "none",
+      "arrowtail": "none",
+      "id": "relation_15",
+      "pos": "456.48,3002 485.72,3002 506,3002 506,3002 506,3002 506,3636 506,3636 506,3636 1229.9,3636 1598.6,3636",
+      "weight": "0.4"
+    },
+    {
+      "_gvid": 37,
+      "tail": 21,
+      "head": 23,
+      "_draw_": 
+      [
+        {
+          "op": "c",
+          "grad": "none",
+          "color": "#000000"
+        },
+        {
+          "op": "b",
+          "points": [[1498.410,3760.000],[1531.450,3760.000],[1565.610,3760.000],[1598.650,3760.000]]
+        }
+      ],
+      "arrowhead": "none",
+      "arrowtail": "none",
+      "id": "relation_16",
+      "pos": "1498.4,3760 1531.5,3760 1565.6,3760 1598.7,3760",
+      "weight": "2"
+    },
+    {
+      "_gvid": 38,
+      "tail": 22,
+      "head": 23,
+      "_draw_": 
+      [
+        {
+          "op": "c",
+          "grad": "none",
+          "color": "#000000"
+        },
+        {
+          "op": "b",
+          "points": [[1498.410,3889.500],[1531.450,3889.500],[1565.610,3889.500],[1598.650,3889.500]]
+        }
+      ],
+      "arrowhead": "none",
+      "arrowtail": "none",
+      "id": "relation_17",
+      "pos": "1498.4,3889.5 1531.5,3889.5 1565.6,3889.5 1598.7,3889.5",
+      "weight": "2"
+    },
+    {
+      "_gvid": 39,
+      "tail": 23,
+      "head": 24,
+      "_draw_": 
+      [
+        {
+          "op": "c",
+          "grad": "none",
+          "color": "#000000"
+        },
+        {
+          "op": "b",
+          "points": [[2019.410,3704.000],[2052.450,3704.000],[2086.610,3704.000],[2119.650,3704.000]]
+        }
+      ],
+      "arrowhead": "none",
+      "arrowtail": "none",
+      "id": "relation_18",
+      "pos": "2019.4,3704 2052.5,3704 2086.6,3704 2119.7,3704",
+      "weight": "2"
+    },
+    {
+      "_gvid": 42,
+      "tail": 26,
+      "head": 27,
+      "_draw_": 
+      [
+        {
+          "op": "c",
+          "grad": "none",
+          "color": "#000000"
+        },
+        {
+          "op": "b",
+          "points": [[2019.410,4148.000],[2164.010,4148.000],[2330.000,4148.000],[2330.000,4148.000],[2330.000,4148.000],[2330.000,4089.650],[2330.000,4033.460]]
+        }
+      ],
+      "arrowhead": "none",
+      "arrowtail": "none",
+      "id": "relation_19",
+      "pos": "2019.4,4148 2164,4148 2330,4148 2330,4148 2330,4148 2330,4089.6 2330,4033.5",
+      "weight": "2"
+    },
+    {
+      "_gvid": 40,
+      "tail": 23,
+      "head": 27,
+      "_draw_": 
+      [
+        {
+          "op": "c",
+          "grad": "none",
+          "color": "#000000"
+        },
+        {
+          "op": "b",
+          "points": [[2019.410,3865.500],[2052.450,3865.500],[2086.610,3865.500],[2119.650,3865.500]]
+        }
+      ],
+      "arrowhead": "none",
+      "arrowtail": "none",
+      "id": "relation_20",
+      "pos": "2019.4,3865.5 2052.5,3865.5 2086.6,3865.5 2119.7,3865.5",
+      "weight": "2"
+    },
+    {
+      "_gvid": 41,
+      "tail": 25,
+      "head": 27,
+      "_draw_": 
+      [
+        {
+          "op": "c",
+          "grad": "none",
+          "color": "#000000"
+        },
+        {
+          "op": "b",
+          "points": [[2019.410,3991.000],[2052.450,3991.000],[2086.610,3991.000],[2119.650,3991.000]]
+        }
+      ],
+      "arrowhead": "none",
+      "arrowtail": "none",
+      "id": "relation_21",
+      "pos": "2019.4,3991 2052.5,3991 2086.6,3991 2119.7,3991",
+      "weight": "2"
+    },
+    {
+      "_gvid": 43,
+      "tail": 26,
+      "head": 28,
+      "_draw_": 
+      [
+        {
+          "op": "c",
+          "grad": "none",
+          "color": "#000000"
+        },
+        {
+          "op": "b",
+          "points": [[2019.240,4192.000],[2323.620,4192.000],[2851.000,4192.000],[2851.000,4192.000],[2851.000,4192.000],[2851.000,4014.470],[2851.000,3922.230]]
+        }
+      ],
+      "arrowhead": "none",
+      "arrowtail": "none",
+      "id": "relation_22",
+      "pos": "2019.2,4192 2323.6,4192 2851,4192 2851,4192 2851,4192 2851,4014.5 2851,3922.2",
+      "weight": "2"
+    },
+    {
+      "_gvid": 44,
+      "tail": 27,
+      "head": 28,
+      "_draw_": 
+      [
+        {
+          "op": "c",
+          "grad": "none",
+          "color": "#000000"
+        },
+        {
+          "op": "b",
+          "points": [[2540.410,3908.710],[2573.450,3908.710],[2607.610,3908.710],[2640.650,3908.710]]
+        }
+      ],
+      "arrowhead": "none",
+      "arrowtail": "none",
+      "id": "relation_23",
+      "pos": "2540.4,3908.7 2573.5,3908.7 2607.6,3908.7 2640.7,3908.7",
+      "weight": "2"
+    },
+    {
+      "_gvid": 5,
+      "tail": 9,
+      "head": 29,
+      "_draw_": 
+      [
+        {
+          "op": "c",
+          "grad": "none",
+          "color": "#000000"
+        },
+        {
+          "op": "b",
+          "points": [[456.390,3046.000],[755.300,3046.000],[1299.720,3046.000],[1598.620,3046.000]]
+        }
+      ],
+      "arrowhead": "none",
+      "arrowtail": "none",
+      "id": "relation_24",
+      "pos": "456.39,3046 755.3,3046 1299.7,3046 1598.6,3046",
+      "weight": "0.4"
+    },
+    {
+      "_gvid": 51,
+      "tail": 29,
+      "head": 30,
+      "_draw_": 
+      [
+        {
+          "op": "c",
+          "grad": "none",
+          "color": "#000000"
+        },
+        {
+          "op": "b",
+          "points": [[2019.410,3024.000],[2052.450,3024.000],[2086.610,3024.000],[2119.650,3024.000]]
+        }
+      ],
+      "arrowhead": "none",
+      "arrowtail": "none",
+      "id": "relation_25",
+      "pos": "2019.4,3024 2052.5,3024 2086.6,3024 2119.7,3024",
+      "weight": "2"
+    },
+    {
+      "_gvid": 24,
+      "tail": 19,
+      "head": 30,
+      "_draw_": 
+      [
+        {
+          "op": "c",
+          "grad": "none",
+          "color": "#000000"
+        },
+        {
+          "op": "b",
+          "points": [[1809.000,1976.320],[1809.000,2231.590],[1809.000,2940.000],[1809.000,2940.000],[1809.000,2940.000],[1974.990,2940.000],[2119.590,2940.000]]
+        }
+      ],
+      "arrowhead": "none",
+      "arrowtail": "none",
+      "id": "relation_26",
+      "pos": "1809,1976.3 1809,2231.6 1809,2940 1809,2940 1809,2940 1975,2940 2119.6,2940",
+      "weight": "2"
+    },
+    {
+      "_gvid": 15,
+      "tail": 15,
+      "head": 30,
+      "_draw_": 
+      [
+        {
+          "op": "c",
+          "grad": "none",
+          "color": "#000000"
+        },
+        {
+          "op": "b",
+          "points": [[1498.240,2542.000],[1802.620,2542.000],[2330.000,2542.000],[2330.000,2542.000],[2330.000,2542.000],[2330.000,2780.290],[2330.000,2921.780]]
+        }
+      ],
+      "arrowhead": "none",
+      "arrowtail": "none",
+      "id": "relation_27",
+      "pos": "1498.2,2542 1802.6,2542 2330,2542 2330,2542 2330,2542 2330,2780.3 2330,2921.8",
+      "weight": "2"
+    },
+    {
+      "_gvid": 52,
+      "tail": 30,
+      "head": 31,
+      "_draw_": 
+      [
+        {
+          "op": "c",
+          "grad": "none",
+          "color": "#000000"
+        },
+        {
+          "op": "b",
+          "points": [[2330.000,3126.470],[2330.000,3246.160],[2330.000,3428.000],[2330.000,3428.000],[2330.000,3428.000],[2495.990,3428.000],[2640.590,3428.000]]
+        }
+      ],
+      "arrowhead": "none",
+      "arrowtail": "none",
+      "id": "relation_28",
+      "pos": "2330,3126.5 2330,3246.2 2330,3428 2330,3428 2330,3428 2496,3428 2640.6,3428",
+      "weight": "2"
+    },
+    {
+      "_gvid": 45,
+      "tail": 27,
+      "head": 31,
+      "_draw_": 
+      [
+        {
+          "op": "c",
+          "grad": "none",
+          "color": "#000000"
+        },
+        {
+          "op": "b",
+          "points": [[2540.330,3895.430],[2586.030,3895.430],[2621.000,3895.430],[2621.000,3895.430],[2621.000,3895.430],[2621.000,3480.000],[2621.000,3480.000],[2621.000,3480.000],[2628.430,3480.000],[2640.610,3480.000]]
+        }
+      ],
+      "arrowhead": "none",
+      "arrowtail": "none",
+      "id": "relation_29",
+      "pos": "2540.3,3895.4 2586,3895.4 2621,3895.4 2621,3895.4 2621,3895.4 2621,3480 2621,3480 2621,3480 2628.4,3480 2640.6,3480",
+      "weight": "2"
+    },
+    {
+      "_gvid": 25,
+      "tail": 19,
+      "head": 32,
+      "_draw_": 
+      [
+        {
+          "op": "c",
+          "grad": "none",
+          "color": "#000000"
+        },
+        {
+          "op": "b",
+          "points": [[2019.320,1948.500],[2250.640,1948.500],[2590.000,1948.500],[2590.000,1948.500],[2590.000,1948.500],[2590.000,2966.000],[2590.000,2966.000],[2590.000,2966.000],[2610.790,2966.000],[2640.630,2966.000]]
+        }
+      ],
+      "arrowhead": "none",
+      "arrowtail": "none",
+      "id": "relation_30",
+      "pos": "2019.3,1948.5 2250.6,1948.5 2590,1948.5 2590,1948.5 2590,1948.5 2590,2966 2590,2966 2590,2966 2610.8,2966 2640.6,2966",
+      "weight": "2"
+    },
+    {
+      "_gvid": 46,
+      "tail": 27,
+      "head": 32,
+      "_draw_": 
+      [
+        {
+          "op": "c",
+          "grad": "none",
+          "color": "#000000"
+        },
+        {
+          "op": "b",
+          "points": [[2540.180,3868.860],[2575.520,3868.860],[2601.000,3868.860],[2601.000,3868.860],[2601.000,3868.860],[2601.000,3010.000],[2601.000,3010.000],[2601.000,3010.000],[2616.870,3010.000],[2640.610,3010.000]]
+        }
+      ],
+      "arrowhead": "none",
+      "arrowtail": "none",
+      "id": "relation_31",
+      "pos": "2540.2,3868.9 2575.5,3868.9 2601,3868.9 2601,3868.9 2601,3868.9 2601,3010 2601,3010 2601,3010 2616.9,3010 2640.6,3010",
+      "weight": "2"
+    },
+    {
+      "_gvid": 26,
+      "tail": 19,
+      "head": 33,
+      "_draw_": 
+      [
+        {
+          "op": "c",
+          "grad": "none",
+          "color": "#000000"
+        },
+        {
+          "op": "b",
+          "points": [[2019.420,1957.670],[2247.710,1957.670],[2580.000,1957.670],[2580.000,1957.670],[2580.000,1957.670],[2580.000,3109.330],[2580.000,3109.330],[2580.000,3109.330],[2605.480,3109.330],[2640.820,3109.330]]
+        }
+      ],
+      "arrowhead": "none",
+      "arrowtail": "none",
+      "id": "relation_32",
+      "pos": "2019.4,1957.7 2247.7,1957.7 2580,1957.7 2580,1957.7 2580,1957.7 2580,3109.3 2580,3109.3 2580,3109.3 2605.5,3109.3 2640.8,3109.3",
+      "weight": "2"
+    },
+    {
+      "_gvid": 16,
+      "tail": 15,
+      "head": 33,
+      "_draw_": 
+      [
+        {
+          "op": "c",
+          "grad": "none",
+          "color": "#000000"
+        },
+        {
+          "op": "b",
+          "points": [[1498.260,2518.000],[1861.960,2518.000],[2570.000,2518.000],[2570.000,2518.000],[2570.000,2518.000],[2570.000,3117.670],[2570.000,3117.670],[2570.000,3117.670],[2600.070,3117.670],[2640.550,3117.670]]
+        }
+      ],
+      "arrowhead": "none",
+      "arrowtail": "none",
+      "id": "relation_33",
+      "pos": "1498.3,2518 1862,2518 2570,2518 2570,2518 2570,2518 2570,3117.7 2570,3117.7 2570,3117.7 2600.1,3117.7 2640.5,3117.7",
+      "weight": "2"
+    },
+    {
+      "_gvid": 47,
+      "tail": 27,
+      "head": 33,
+      "_draw_": 
+      [
+        {
+          "op": "c",
+          "grad": "none",
+          "color": "#000000"
+        },
+        {
+          "op": "b",
+          "points": [[2540.450,3882.140],[2580.930,3882.140],[2611.000,3882.140],[2611.000,3882.140],[2611.000,3882.140],[2611.000,3299.000],[2611.000,3299.000],[2611.000,3299.000],[2622.690,3299.000],[2640.910,3299.000]]
+        }
+      ],
+      "arrowhead": "none",
+      "arrowtail": "none",
+      "id": "relation_34",
+      "pos": "2540.5,3882.1 2580.9,3882.1 2611,3882.1 2611,3882.1 2611,3882.1 2611,3299 2611,3299 2611,3299 2622.7,3299 2640.9,3299",
+      "weight": "2"
+    },
+    {
+      "_gvid": 32,
+      "tail": 20,
+      "head": 34,
+      "_draw_": 
+      [
+        {
+          "op": "c",
+          "grad": "none",
+          "color": "#000000"
+        },
+        {
+          "op": "b",
+          "points": [[2019.410,1620.000],[2052.450,1620.000],[2086.610,1620.000],[2119.650,1620.000]]
+        }
+      ],
+      "arrowhead": "none",
+      "arrowtail": "none",
+      "id": "relation_35",
+      "pos": "2019.4,1620 2052.5,1620 2086.6,1620 2119.7,1620",
+      "weight": "2"
+    },
+    {
+      "_gvid": 27,
+      "tail": 19,
+      "head": 34,
+      "_draw_": 
+      [
+        {
+          "op": "c",
+          "grad": "none",
+          "color": "#000000"
+        },
+        {
+          "op": "b",
+          "points": [[2019.440,1858.400],[2148.050,1858.400],[2288.000,1858.400],[2288.000,1858.400],[2288.000,1858.400],[2288.000,1738.640],[2288.000,1647.190]]
+        }
+      ],
+      "arrowhead": "none",
+      "arrowtail": "none",
+      "id": "relation_36",
+      "pos": "2019.4,1858.4 2148.1,1858.4 2288,1858.4 2288,1858.4 2288,1858.4 2288,1738.6 2288,1647.2",
+      "weight": "2"
+    },
+    {
+      "_gvid": 53,
+      "tail": 34,
+      "head": 35,
+      "_draw_": 
+      [
+        {
+          "op": "c",
+          "grad": "none",
+          "color": "#000000"
+        },
+        {
+          "op": "b",
+          "points": [[2456.000,1647.250],[2456.000,1691.560],[2456.000,1733.500],[2456.000,1733.500],[2456.000,1733.500],[2546.450,1733.500],[2640.780,1733.500]]
+        }
+      ],
+      "arrowhead": "none",
+      "arrowtail": "none",
+      "id": "relation_37",
+      "pos": "2456,1647.2 2456,1691.6 2456,1733.5 2456,1733.5 2456,1733.5 2546.4,1733.5 2640.8,1733.5",
+      "weight": "2"
+    },
+    {
+      "_gvid": 48,
+      "tail": 27,
+      "head": 35,
+      "_draw_": 
+      [
+        {
+          "op": "c",
+          "grad": "none",
+          "color": "#000000"
+        },
+        {
+          "op": "b",
+          "points": [[2540.260,3842.290],[2546.450,3842.290],[2550.000,3842.290],[2550.000,3842.290],[2550.000,3842.290],[2550.000,1811.600],[2550.000,1811.600],[2550.000,1811.600],[2589.940,1811.600],[2640.720,1811.600]]
+        }
+      ],
+      "arrowhead": "none",
+      "arrowtail": "none",
+      "id": "relation_38",
+      "pos": "2540.3,3842.3 2546.5,3842.3 2550,3842.3 2550,3842.3 2550,3842.3 2550,1811.6 2550,1811.6 2550,1811.6 2589.9,1811.6 2640.7,1811.6",
+      "weight": "2"
+    },
+    {
+      "_gvid": 54,
+      "tail": 34,
+      "head": 36,
+      "_draw_": 
+      [
+        {
+          "op": "c",
+          "grad": "none",
+          "color": "#000000"
+        },
+        {
+          "op": "b",
+          "points": [[2372.000,1647.460],[2372.000,1761.560],[2372.000,1930.170],[2372.000,1930.170],[2372.000,1930.170],[2511.950,1930.170],[2640.560,1930.170]]
+        }
+      ],
+      "arrowhead": "none",
+      "arrowtail": "none",
+      "id": "relation_39",
+      "pos": "2372,1647.5 2372,1761.6 2372,1930.2 2372,1930.2 2372,1930.2 2511.9,1930.2 2640.6,1930.2",
+      "weight": "2"
+    },
+    {
+      "_gvid": 28,
+      "tail": 19,
+      "head": 36,
+      "_draw_": 
+      [
+        {
+          "op": "c",
+          "grad": "none",
+          "color": "#000000"
+        },
+        {
+          "op": "b",
+          "points": [[2019.240,1939.330],[2200.110,1939.330],[2459.730,1939.330],[2640.640,1939.330]]
+        }
+      ],
+      "arrowhead": "none",
+      "arrowtail": "none",
+      "id": "relation_40",
+      "pos": "2019.2,1939.3 2200.1,1939.3 2459.7,1939.3 2640.6,1939.3",
+      "weight": "2"
+    },
+    {
+      "_gvid": 49,
+      "tail": 27,
+      "head": 36,
+      "_draw_": 
+      [
+        {
+          "op": "c",
+          "grad": "none",
+          "color": "#000000"
+        },
+        {
+          "op": "b",
+          "points": [[2540.390,3855.570],[2552.570,3855.570],[2560.000,3855.570],[2560.000,3855.570],[2560.000,3855.570],[2560.000,2038.500],[2560.000,2038.500],[2560.000,2038.500],[2594.970,2038.500],[2640.670,2038.500]]
+        }
+      ],
+      "arrowhead": "none",
+      "arrowtail": "none",
+      "id": "relation_41",
+      "pos": "2540.4,3855.6 2552.6,3855.6 2560,3855.6 2560,3855.6 2560,3855.6 2560,2038.5 2560,2038.5 2560,2038.5 2595,2038.5 2640.7,2038.5",
+      "weight": "2"
+    },
+    {
+      "_gvid": 17,
+      "tail": 15,
+      "head": 37,
+      "_draw_": 
+      [
+        {
+          "op": "c",
+          "grad": "none",
+          "color": "#000000"
+        },
+        {
+          "op": "b",
+          "points": [[1498.450,2463.140],[1736.370,2463.140],[2091.000,2463.140],[2091.000,2463.140],[2091.000,2463.140],[2091.000,1665.000],[2091.000,1665.000],[2091.000,1665.000],[2415.630,1665.000],[2640.560,1665.000]]
+        }
+      ],
+      "arrowhead": "none",
+      "arrowtail": "none",
+      "id": "relation_42",
+      "pos": "1498.5,2463.1 1736.4,2463.1 2091,2463.1 2091,2463.1 2091,2463.1 2091,1665 2091,1665 2091,1665 2415.6,1665 2640.6,1665",
+      "weight": "2"
+    },
+    {
+      "_gvid": 33,
+      "tail": 20,
+      "head": 37,
+      "_draw_": 
+      [
+        {
+          "op": "c",
+          "grad": "none",
+          "color": "#000000"
+        },
+        {
+          "op": "b",
+          "points": [[2019.240,1653.000],[2200.110,1653.000],[2459.730,1653.000],[2640.640,1653.000]]
+        }
+      ],
+      "arrowhead": "none",
+      "arrowtail": "none",
+      "id": "relation_43",
+      "pos": "2019.2,1653 2200.1,1653 2459.7,1653 2640.6,1653",
+      "weight": "2"
+    },
+    {
+      "_gvid": 55,
+      "tail": 34,
+      "head": 37,
+      "_draw_": 
+      [
+        {
+          "op": "c",
+          "grad": "none",
+          "color": "#000000"
+        },
+        {
+          "op": "b",
+          "points": [[2540.410,1545.000],[2573.450,1545.000],[2607.610,1545.000],[2640.650,1545.000]]
+        }
+      ],
+      "arrowhead": "none",
+      "arrowtail": "none",
+      "id": "relation_44",
+      "pos": "2540.4,1545 2573.5,1545 2607.6,1545 2640.7,1545",
+      "weight": "2"
+    },
+    {
+      "_gvid": 29,
+      "tail": 19,
+      "head": 37,
+      "_draw_": 
+      [
+        {
+          "op": "c",
+          "grad": "none",
+          "color": "#000000"
+        },
+        {
+          "op": "b",
+          "points": [[2019.180,1842.800],[2052.910,1842.800],[2077.000,1842.800],[2077.000,1842.800],[2077.000,1842.800],[2077.000,1659.000],[2077.000,1659.000],[2077.000,1659.000],[2411.330,1659.000],[2640.520,1659.000]]
+        }
+      ],
+      "arrowhead": "none",
+      "arrowtail": "none",
+      "id": "relation_45",
+      "pos": "2019.2,1842.8 2052.9,1842.8 2077,1842.8 2077,1842.8 2077,1842.8 2077,1659 2077,1659 2077,1659 2411.3,1659 2640.5,1659",
+      "weight": "2"
+    },
+    {
+      "_gvid": 50,
+      "tail": 27,
+      "head": 38,
+      "_draw_": 
+      [
+        {
+          "op": "c",
+          "grad": "none",
+          "color": "#000000"
+        },
+        {
+          "op": "b",
+          "points": [[2540.240,3977.500],[2844.620,3977.500],[3372.000,3977.500],[3372.000,3977.500],[3372.000,3977.500],[3372.000,2075.420],[3372.000,1635.190]]
+        }
+      ],
+      "arrowhead": "none",
+      "arrowtail": "none",
+      "id": "relation_46",
+      "pos": "2540.2,3977.5 2844.6,3977.5 3372,3977.5 3372,3977.5 3372,3977.5 3372,2075.4 3372,1635.2",
+      "weight": "2"
+    },
+    {
+      "_gvid": 58,
+      "tail": 37,
+      "head": 38,
+      "_draw_": 
+      [
+        {
+          "op": "c",
+          "grad": "none",
+          "color": "#000000"
+        },
+        {
+          "op": "b",
+          "points": [[3061.410,1545.000],[3094.450,1545.000],[3128.610,1545.000],[3161.650,1545.000]]
+        }
+      ],
+      "arrowhead": "none",
+      "arrowtail": "none",
+      "id": "relation_47",
+      "pos": "3061.4,1545 3094.5,1545 3128.6,1545 3161.7,1545",
+      "weight": "2"
+    },
+    {
+      "_gvid": 56,
+      "tail": 34,
+      "head": 39,
+      "_draw_": 
+      [
+        {
+          "op": "c",
+          "grad": "none",
+          "color": "#000000"
+        },
+        {
+          "op": "b",
+          "points": [[2400.000,1442.800],[2400.000,1281.490],[2400.000,986.000],[2400.000,986.000],[2400.000,986.000],[2875.880,986.000],[3161.690,986.000]]
+        }
+      ],
+      "arrowhead": "none",
+      "arrowtail": "none",
+      "id": "relation_48",
+      "pos": "2400,1442.8 2400,1281.5 2400,986 2400,986 2400,986 2875.9,986 3161.7,986",
+      "weight": "2"
+    },
+    {
+      "_gvid": 59,
+      "tail": 37,
+      "head": 39,
+      "_draw_": 
+      [
+        {
+          "op": "c",
+          "grad": "none",
+          "color": "#000000"
+        },
+        {
+          "op": "b",
+          "points": [[2851.000,1418.560],[2851.000,1273.080],[2851.000,1054.000],[2851.000,1054.000],[2851.000,1054.000],[3016.990,1054.000],[3161.590,1054.000]]
+        }
+      ],
+      "arrowhead": "none",
+      "arrowtail": "none",
+      "id": "relation_49",
+      "pos": "2851,1418.6 2851,1273.1 2851,1054 2851,1054 2851,1054 3017,1054 3161.6,1054",
+      "weight": "2"
+    },
+    {
+      "_gvid": 60,
+      "tail": 37,
+      "head": 40,
+      "_draw_": 
+      [
+        {
+          "op": "c",
+          "grad": "none",
+          "color": "#000000"
+        },
+        {
+          "op": "b",
+          "points": [[3061.410,1437.000],[3206.010,1437.000],[3372.000,1437.000],[3372.000,1437.000],[3372.000,1437.000],[3372.000,1377.710],[3372.000,1325.380]]
+        }
+      ],
+      "arrowhead": "none",
+      "arrowtail": "none",
+      "id": "relation_50",
+      "pos": "3061.4,1437 3206,1437 3372,1437 3372,1437 3372,1437 3372,1377.7 3372,1325.4",
+      "weight": "2"
+    },
+    {
+      "_gvid": 34,
+      "tail": 20,
+      "head": 41,
+      "_draw_": 
+      [
+        {
+          "op": "c",
+          "grad": "none",
+          "color": "#000000"
+        },
+        {
+          "op": "b",
+          "points": [[2019.330,1694.500],[2548.470,1694.500],[3893.000,1694.500],[3893.000,1694.500],[3893.000,1694.500],[3893.000,1185.450],[3893.000,924.460]]
+        }
+      ],
+      "arrowhead": "none",
+      "arrowtail": "none",
+      "id": "relation_51",
+      "pos": "2019.3,1694.5 2548.5,1694.5 3893,1694.5 3893,1694.5 3893,1694.5 3893,1185.4 3893,924.46",
+      "weight": "2"
+    },
+    {
+      "_gvid": 57,
+      "tail": 34,
+      "head": 41,
+      "_draw_": 
+      [
+        {
+          "op": "c",
+          "grad": "none",
+          "color": "#000000"
+        },
+        {
+          "op": "b",
+          "points": [[2260.000,1442.620],[2260.000,1232.260],[2260.000,771.000],[2260.000,771.000],[2260.000,771.000],[3241.810,771.000],[3682.860,771.000]]
+        }
+      ],
+      "arrowhead": "none",
+      "arrowtail": "none",
+      "id": "relation_52",
+      "pos": "2260,1442.6 2260,1232.3 2260,771 2260,771 2260,771 3241.8,771 3682.9,771",
+      "weight": "2"
+    },
+    {
+      "_gvid": 30,
+      "tail": 19,
+      "head": 41,
+      "_draw_": 
+      [
+        {
+          "op": "c",
+          "grad": "none",
+          "color": "#000000"
+        },
+        {
+          "op": "b",
+          "points": [[2019.390,1897.500],[2567.640,1897.500],[3998.000,1897.500],[3998.000,1897.500],[3998.000,1897.500],[3998.000,1230.500],[3998.000,924.350]]
+        }
+      ],
+      "arrowhead": "none",
+      "arrowtail": "none",
+      "id": "relation_53",
+      "pos": "2019.4,1897.5 2567.6,1897.5 3998,1897.5 3998,1897.5 3998,1897.5 3998,1230.5 3998,924.35",
+      "weight": "2"
+    },
+    {
+      "_gvid": 61,
+      "tail": 38,
+      "head": 41,
+      "_draw_": 
+      [
+        {
+          "op": "c",
+          "grad": "none",
+          "color": "#000000"
+        },
+        {
+          "op": "b",
+          "points": [[3582.440,1545.000],[3685.620,1545.000],[3788.000,1545.000],[3788.000,1545.000],[3788.000,1545.000],[3788.000,1148.860],[3788.000,924.490]]
+        }
+      ],
+      "arrowhead": "none",
+      "arrowtail": "none",
+      "id": "relation_54",
+      "pos": "3582.4,1545 3685.6,1545 3788,1545 3788,1545 3788,1545 3788,1148.9 3788,924.49",
+      "weight": "2"
+    },
+    {
+      "_gvid": 62,
+      "tail": 41,
+      "head": 42,
+      "_draw_": 
+      [
+        {
+          "op": "c",
+          "grad": "none",
+          "color": "#000000"
+        },
+        {
+          "op": "b",
+          "points": [[4103.410,834.000],[4136.450,834.000],[4170.610,834.000],[4203.650,834.000]]
+        }
+      ],
+      "arrowhead": "none",
+      "arrowtail": "none",
+      "id": "relation_55",
+      "pos": "4103.4,834 4136.5,834 4170.6,834 4203.7,834",
+      "weight": "2"
+    },
+    {
+      "_gvid": 63,
+      "tail": 41,
+      "head": 43,
+      "_draw_": 
+      [
+        {
+          "op": "c",
+          "grad": "none",
+          "color": "#000000"
+        },
+        {
+          "op": "b",
+          "points": [[4103.410,660.500],[4136.450,660.500],[4170.610,660.500],[4203.650,660.500]]
+        }
+      ],
+      "arrowhead": "none",
+      "arrowtail": "none",
+      "id": "relation_56",
+      "pos": "4103.4,660.5 4136.5,660.5 4170.6,660.5 4203.7,660.5",
+      "weight": "2"
+    },
+    {
+      "_gvid": 35,
+      "tail": 20,
+      "head": 43,
+      "_draw_": 
+      [
+        {
+          "op": "c",
+          "grad": "none",
+          "color": "#000000"
+        },
+        {
+          "op": "b",
+          "points": [[1809.000,1592.740],[1809.000,1341.320],[1809.000,570.500],[1809.000,570.500],[1809.000,570.500],[3583.920,570.500],[4203.580,570.500]]
+        }
+      ],
+      "arrowhead": "none",
+      "arrowtail": "none",
+      "id": "relation_57",
+      "pos": "1809,1592.7 1809,1341.3 1809,570.5 1809,570.5 1809,570.5 3583.9,570.5 4203.6,570.5",
+      "weight": "2"
+    },
+    {
+      "_gvid": 18,
+      "tail": 15,
+      "head": 44,
+      "_draw_": 
+      [
+        {
+          "op": "c",
+          "grad": "none",
+          "color": "#000000"
+        },
+        {
+          "op": "b",
+          "points": [[1498.440,2432.290],[1723.370,2432.290],[2048.000,2432.290],[2048.000,2432.290],[2048.000,2432.290],[2048.000,327.800],[2048.000,327.800],[2048.000,327.800],[2078.540,327.800],[2119.530,327.800]]
+        }
+      ],
+      "arrowhead": "none",
+      "arrowtail": "none",
+      "id": "relation_58",
+      "pos": "1498.4,2432.3 1723.4,2432.3 2048,2432.3 2048,2432.3 2048,2432.3 2048,327.8 2048,327.8 2048,327.8 2078.5,327.8 2119.5,327.8",
+      "weight": "2"
+    },
+    {
+      "_gvid": 31,
+      "tail": 19,
+      "head": 44,
+      "_draw_": 
+      [
+        {
+          "op": "c",
+          "grad": "none",
+          "color": "#000000"
+        },
+        {
+          "op": "b",
+          "points": [[2019.320,1827.200],[2027.930,1827.200],[2033.000,1827.200],[2033.000,1827.200],[2033.000,1827.200],[2033.000,295.400],[2033.000,295.400],[2033.000,295.400],[2070.940,295.400],[2119.700,295.400]]
+        }
+      ],
+      "arrowhead": "none",
+      "arrowtail": "none",
+      "id": "relation_59",
+      "pos": "2019.3,1827.2 2027.9,1827.2 2033,1827.2 2033,1827.2 2033,1827.2 2033,295.4 2033,295.4 2033,295.4 2070.9,295.4 2119.7,295.4",
+      "weight": "2"
+    },
+    {
+      "_gvid": 6,
+      "tail": 9,
+      "head": 44,
+      "_draw_": 
+      [
+        {
+          "op": "c",
+          "grad": "none",
+          "color": "#000000"
+        },
+        {
+          "op": "b",
+          "points": [[176.000,2957.580],[176.000,2535.010],[176.000,239.500],[176.000,239.500],[176.000,239.500],[1577.540,239.500],[2119.540,239.500]]
+        }
+      ],
+      "arrowhead": "none",
+      "arrowtail": "none",
+      "id": "relation_60",
+      "pos": "176,2957.6 176,2535 176,239.5 176,239.5 176,239.5 1577.5,239.5 2119.5,239.5",
+      "weight": "0.4"
+    },
+    {
+      "_gvid": 64,
+      "tail": 44,
+      "head": 44,
+      "_draw_": 
+      [
+        {
+          "op": "c",
+          "grad": "none",
+          "color": "#000000"
+        },
+        {
+          "op": "b",
+          "points": [[2119.680,392.600],[2111.070,392.600],[2106.000,392.600],[2106.000,392.600],[2106.000,392.600],[2106.000,434.000],[2106.000,434.000],[2106.000,434.000],[2631.000,434.000],[2631.000,434.000],[2631.000,434.000],[2631.000,299.000],[2631.000,299.000],[2631.000,299.000],[2591.060,299.000],[2540.280,299.000]]
+        }
+      ],
+      "arrowhead": "none",
+      "arrowtail": "none",
+      "id": "relation_61",
+      "pos": "2119.7,392.6 2111.1,392.6 2106,392.6 2106,392.6 2106,392.6 2106,434 2106,434 2106,434 2631,434 2631,434 2631,434 2631,299 2631,299 2631,299 2591.1,299 2540.3,299",
+      "weight": "2"
+    },
+    {
+      "_gvid": 19,
+      "tail": 15,
+      "head": 44,
+      "_draw_": 
+      [
+        {
+          "op": "c",
+          "grad": "none",
+          "color": "#000000"
+        },
+        {
+          "op": "b",
+          "points": [[1498.480,2447.710],[1727.670,2447.710],[2062.000,2447.710],[2062.000,2447.710],[2062.000,2447.710],[2062.000,360.200],[2062.000,360.200],[2062.000,360.200],[2086.090,360.200],[2119.820,360.200]]
+        }
+      ],
+      "arrowhead": "none",
+      "arrowtail": "none",
+      "id": "relation_62",
+      "pos": "1498.5,2447.7 1727.7,2447.7 2062,2447.7 2062,2447.7 2062,2447.7 2062,360.2 2062,360.2 2062,360.2 2086.1,360.2 2119.8,360.2",
+      "weight": "2"
+    },
+    {
+      "_gvid": 20,
+      "tail": 15,
+      "head": 45,
+      "_draw_": 
+      [
+        {
+          "op": "c",
+          "grad": "none",
+          "color": "#000000"
+        },
+        {
+          "op": "b",
+          "points": [[1498.480,2416.860],[1527.720,2416.860],[1548.000,2416.860],[1548.000,2416.860],[1548.000,2416.860],[1548.000,353.000],[1548.000,353.000],[1548.000,353.000],[1568.790,353.000],[1598.630,353.000]]
+        }
+      ],
+      "arrowhead": "none",
+      "arrowtail": "none",
+      "id": "relation_63",
+      "pos": "1498.5,2416.9 1527.7,2416.9 1548,2416.9 1548,2416.9 1548,2416.9 1548,353 1548,353 1548,353 1568.8,353 1598.6,353",
+      "weight": "2"
+    },
+    {
+      "_gvid": 7,
+      "tail": 9,
+      "head": 46,
+      "_draw_": 
+      [
+        {
+          "op": "c",
+          "grad": "none",
+          "color": "#000000"
+        },
+        {
+          "op": "b",
+          "points": [[106.000,2957.690],[106.000,2522.810],[106.000,96.000],[106.000,96.000],[106.000,96.000],[1143.480,96.000],[1598.900,96.000]]
+        }
+      ],
+      "arrowhead": "none",
+      "arrowtail": "none",
+      "id": "relation_64",
+      "pos": "106,2957.7 106,2522.8 106,96 106,96 106,96 1143.5,96 1598.9,96",
+      "weight": "0.4"
+    },
+    {
+      "_gvid": 21,
+      "tail": 15,
+      "head": 46,
+      "_draw_": 
+      [
+        {
+          "op": "c",
+          "grad": "none",
+          "color": "#000000"
+        },
+        {
+          "op": "b",
+          "points": [[1498.300,2401.430],[1513.490,2401.430],[1523.000,2401.430],[1523.000,2401.430],[1523.000,2401.430],[1523.000,156.000],[1523.000,156.000],[1523.000,156.000],[1555.460,156.000],[1598.520,156.000]]
+        }
+      ],
+      "arrowhead": "none",
+      "arrowtail": "none",
+      "id": "relation_65",
+      "pos": "1498.3,2401.4 1513.5,2401.4 1523,2401.4 1523,2401.4 1523,2401.4 1523,156 1523,156 1523,156 1555.5,156 1598.5,156",
+      "weight": "2"
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "casos": 9,
+  "diagramas_individuales": 9,
+  "paginas_conjunto": 9,
+  "mensajes_principales_cubiertos": 242,
+  "mensajes_secuencia": 277,
+  "fragmentos": {
+    "alt": 33,
+    "opt": 5,
+    "loop": 7
+  },
+  "participantes_identicos_a_robustez": true,
+  "inicio_y_fin_fragmentos_validados": true,
+  "bucles_sin_lineas_ajenas": true,
+  "fuentes_sin_cambios": 50,
+  "png_300ppp": true,
+  "xsd_individuales_y_conjunto": true,
+  "revision_visual_realizada": true
+}

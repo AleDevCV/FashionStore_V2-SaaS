@@ -1,0 +1,4787 @@
+{
+  "title": "FashionStore · Diagrama entidad-relación general",
+  "entities": [
+    {
+      "id": "empresa",
+      "group": "saas",
+      "color": "#dce9fa",
+      "title": "empresa",
+      "fields": [
+        {
+          "name": "id_empresa",
+          "type": "int",
+          "key": "PK",
+          "nullable": false
+        },
+        {
+          "name": "slug",
+          "type": "text",
+          "key": "",
+          "nullable": false
+        },
+        {
+          "name": "nombre",
+          "type": "text",
+          "key": "",
+          "nullable": false
+        },
+        {
+          "name": "activa",
+          "type": "bool",
+          "key": "",
+          "nullable": false
+        }
+      ],
+      "width": 420,
+      "height": 132
+    },
+    {
+      "id": "plan",
+      "group": "saas",
+      "color": "#dce9fa",
+      "title": "plan",
+      "fields": [
+        {
+          "name": "id_plan",
+          "type": "int",
+          "key": "PK",
+          "nullable": false
+        },
+        {
+          "name": "nombre",
+          "type": "text",
+          "key": "",
+          "nullable": false
+        },
+        {
+          "name": "max_sucursales",
+          "type": "int",
+          "key": "",
+          "nullable": false
+        },
+        {
+          "name": "reportes_ia",
+          "type": "bool",
+          "key": "",
+          "nullable": false
+        }
+      ],
+      "width": 420,
+      "height": 132
+    },
+    {
+      "id": "suscripcion",
+      "group": "saas",
+      "color": "#dce9fa",
+      "title": "suscripcion",
+      "fields": [
+        {
+          "name": "id_suscripcion",
+          "type": "int",
+          "key": "PK",
+          "nullable": false
+        },
+        {
+          "name": "tenant_id",
+          "type": "int",
+          "key": "FK",
+          "nullable": false
+        },
+        {
+          "name": "id_plan",
+          "type": "int",
+          "key": "FK",
+          "nullable": false
+        },
+        {
+          "name": "inicio",
+          "type": "timestamptz",
+          "key": "",
+          "nullable": false
+        },
+        {
+          "name": "vencimiento",
+          "type": "timestamptz",
+          "key": "",
+          "nullable": false
+        }
+      ],
+      "width": 420,
+      "height": 156
+    },
+    {
+      "id": "cuenta_global",
+      "group": "acceso",
+      "color": "#e8e1f5",
+      "title": "cuenta_global",
+      "fields": [
+        {
+          "name": "id",
+          "type": "bigint",
+          "key": "PK",
+          "nullable": false
+        },
+        {
+          "name": "correo",
+          "type": "text",
+          "key": "",
+          "nullable": false
+        },
+        {
+          "name": "tipo",
+          "type": "text",
+          "key": "",
+          "nullable": false
+        },
+        {
+          "name": "estado",
+          "type": "text",
+          "key": "",
+          "nullable": false
+        }
+      ],
+      "width": 420,
+      "height": 132
+    },
+    {
+      "id": "rol",
+      "group": "acceso",
+      "color": "#e8e1f5",
+      "title": "rol",
+      "fields": [
+        {
+          "name": "id_rol",
+          "type": "int",
+          "key": "PK",
+          "nullable": false
+        },
+        {
+          "name": "tenant_id",
+          "type": "int",
+          "key": "FK",
+          "nullable": false
+        },
+        {
+          "name": "nombre",
+          "type": "varchar(50)",
+          "key": "",
+          "nullable": false
+        }
+      ],
+      "width": 420,
+      "height": 108
+    },
+    {
+      "id": "permiso",
+      "group": "acceso",
+      "color": "#e8e1f5",
+      "title": "permiso",
+      "fields": [
+        {
+          "name": "id_permiso",
+          "type": "int",
+          "key": "PK",
+          "nullable": false
+        },
+        {
+          "name": "codigo",
+          "type": "varchar(100)",
+          "key": "",
+          "nullable": false
+        },
+        {
+          "name": "modulo",
+          "type": "varchar(100)",
+          "key": "",
+          "nullable": true
+        }
+      ],
+      "width": 420,
+      "height": 108
+    },
+    {
+      "id": "usuario",
+      "group": "acceso",
+      "color": "#e8e1f5",
+      "title": "usuario",
+      "fields": [
+        {
+          "name": "id_usuario",
+          "type": "int",
+          "key": "PK",
+          "nullable": false
+        },
+        {
+          "name": "id_role",
+          "type": "int",
+          "key": "FK",
+          "nullable": true
+        },
+        {
+          "name": "tenant_id",
+          "type": "int",
+          "key": "FK",
+          "nullable": false
+        },
+        {
+          "name": "account_id",
+          "type": "bigint",
+          "key": "FK",
+          "nullable": true
+        },
+        {
+          "name": "correo",
+          "type": "varchar(150)",
+          "key": "",
+          "nullable": false
+        },
+        {
+          "name": "estado",
+          "type": "varchar(20)",
+          "key": "",
+          "nullable": true
+        }
+      ],
+      "width": 420,
+      "height": 180
+    },
+    {
+      "id": "rol_permiso",
+      "group": "acceso",
+      "color": "#e8e1f5",
+      "title": "rol_permiso",
+      "fields": [
+        {
+          "name": "id_rol",
+          "type": "int",
+          "key": "PK/FK",
+          "nullable": false
+        },
+        {
+          "name": "id_permiso",
+          "type": "int",
+          "key": "PK/FK",
+          "nullable": false
+        },
+        {
+          "name": "tenant_id",
+          "type": "int",
+          "key": "FK",
+          "nullable": false
+        }
+      ],
+      "width": 420,
+      "height": 108
+    },
+    {
+      "id": "usuario_sucursal",
+      "group": "acceso",
+      "color": "#e8e1f5",
+      "title": "usuario_sucursal",
+      "fields": [
+        {
+          "name": "tenant_id",
+          "type": "int",
+          "key": "PK/FK",
+          "nullable": false
+        },
+        {
+          "name": "id_usuario",
+          "type": "int",
+          "key": "PK/FK",
+          "nullable": false
+        },
+        {
+          "name": "id_sucursal",
+          "type": "int",
+          "key": "PK/FK",
+          "nullable": false
+        }
+      ],
+      "width": 420,
+      "height": 108
+    },
+    {
+      "id": "ciudad",
+      "group": "organizacion",
+      "color": "#dceee9",
+      "title": "ciudad",
+      "fields": [
+        {
+          "name": "id_ciudad",
+          "type": "int",
+          "key": "PK",
+          "nullable": false
+        },
+        {
+          "name": "tenant_id",
+          "type": "int",
+          "key": "FK",
+          "nullable": false
+        },
+        {
+          "name": "nombre",
+          "type": "varchar(100)",
+          "key": "",
+          "nullable": false
+        }
+      ],
+      "width": 420,
+      "height": 108
+    },
+    {
+      "id": "sucursal",
+      "group": "organizacion",
+      "color": "#dceee9",
+      "title": "sucursal",
+      "fields": [
+        {
+          "name": "id_sucursal",
+          "type": "int",
+          "key": "PK",
+          "nullable": false
+        },
+        {
+          "name": "id_ciudad",
+          "type": "int",
+          "key": "FK",
+          "nullable": true
+        },
+        {
+          "name": "id_encargado",
+          "type": "int",
+          "key": "FK",
+          "nullable": true
+        },
+        {
+          "name": "tenant_id",
+          "type": "int",
+          "key": "FK",
+          "nullable": false
+        },
+        {
+          "name": "nombre",
+          "type": "varchar(100)",
+          "key": "",
+          "nullable": false
+        },
+        {
+          "name": "activa",
+          "type": "bool",
+          "key": "",
+          "nullable": false
+        }
+      ],
+      "width": 420,
+      "height": 180
+    },
+    {
+      "id": "cliente",
+      "group": "organizacion",
+      "color": "#dceee9",
+      "title": "cliente",
+      "fields": [
+        {
+          "name": "id_cliente",
+          "type": "int",
+          "key": "PK",
+          "nullable": false
+        },
+        {
+          "name": "tenant_id",
+          "type": "int",
+          "key": "FK",
+          "nullable": false
+        },
+        {
+          "name": "ci",
+          "type": "varchar(20)",
+          "key": "",
+          "nullable": false
+        },
+        {
+          "name": "nombre_completo",
+          "type": "varchar(200)",
+          "key": "",
+          "nullable": false
+        },
+        {
+          "name": "correo",
+          "type": "varchar(150)",
+          "key": "",
+          "nullable": true
+        }
+      ],
+      "width": 420,
+      "height": 156
+    },
+    {
+      "id": "categoria",
+      "group": "catalogo",
+      "color": "#e4eedb",
+      "title": "categoria",
+      "fields": [
+        {
+          "name": "id_categoria",
+          "type": "int",
+          "key": "PK",
+          "nullable": false
+        },
+        {
+          "name": "id_categoria_padre",
+          "type": "int",
+          "key": "FK",
+          "nullable": true
+        },
+        {
+          "name": "tenant_id",
+          "type": "int",
+          "key": "FK",
+          "nullable": false
+        },
+        {
+          "name": "nombre",
+          "type": "varchar(100)",
+          "key": "",
+          "nullable": false
+        },
+        {
+          "name": "estado",
+          "type": "varchar(20)",
+          "key": "",
+          "nullable": true
+        }
+      ],
+      "width": 420,
+      "height": 156
+    },
+    {
+      "id": "temporada",
+      "group": "catalogo",
+      "color": "#e4eedb",
+      "title": "temporada",
+      "fields": [
+        {
+          "name": "id_temporada",
+          "type": "int",
+          "key": "PK",
+          "nullable": false
+        },
+        {
+          "name": "tenant_id",
+          "type": "int",
+          "key": "FK",
+          "nullable": false
+        },
+        {
+          "name": "nombre",
+          "type": "varchar(100)",
+          "key": "",
+          "nullable": false
+        },
+        {
+          "name": "fecha_inicio",
+          "type": "date",
+          "key": "",
+          "nullable": true
+        },
+        {
+          "name": "fecha_fin",
+          "type": "date",
+          "key": "",
+          "nullable": true
+        }
+      ],
+      "width": 420,
+      "height": 156
+    },
+    {
+      "id": "prenda",
+      "group": "catalogo",
+      "color": "#e4eedb",
+      "title": "prenda",
+      "fields": [
+        {
+          "name": "id_prenda",
+          "type": "int",
+          "key": "PK",
+          "nullable": false
+        },
+        {
+          "name": "id_categoria",
+          "type": "int",
+          "key": "FK",
+          "nullable": true
+        },
+        {
+          "name": "id_temporada",
+          "type": "int",
+          "key": "FK",
+          "nullable": true
+        },
+        {
+          "name": "tenant_id",
+          "type": "int",
+          "key": "FK",
+          "nullable": false
+        },
+        {
+          "name": "sku",
+          "type": "varchar(50)",
+          "key": "",
+          "nullable": false
+        },
+        {
+          "name": "nombre",
+          "type": "varchar(150)",
+          "key": "",
+          "nullable": false
+        },
+        {
+          "name": "precio_base",
+          "type": "numeric(10,2)",
+          "key": "",
+          "nullable": false
+        },
+        {
+          "name": "estado",
+          "type": "varchar(20)",
+          "key": "",
+          "nullable": true
+        },
+        {
+          "name": "precio_mayorista",
+          "type": "numeric(10,2)",
+          "key": "",
+          "nullable": true
+        },
+        {
+          "name": "precio_oferta",
+          "type": "numeric(10,2)",
+          "key": "",
+          "nullable": true
+        }
+      ],
+      "width": 420,
+      "height": 276
+    },
+    {
+      "id": "imagen_prenda",
+      "group": "catalogo",
+      "color": "#e4eedb",
+      "title": "imagen_prenda",
+      "fields": [
+        {
+          "name": "id_imagen",
+          "type": "int",
+          "key": "PK",
+          "nullable": false
+        },
+        {
+          "name": "id_prenda",
+          "type": "int",
+          "key": "FK",
+          "nullable": true
+        },
+        {
+          "name": "tenant_id",
+          "type": "int",
+          "key": "FK",
+          "nullable": false
+        },
+        {
+          "name": "url_imagen",
+          "type": "varchar(255)",
+          "key": "",
+          "nullable": false
+        },
+        {
+          "name": "es_principal",
+          "type": "bool",
+          "key": "",
+          "nullable": true
+        }
+      ],
+      "width": 420,
+      "height": 156
+    },
+    {
+      "id": "talla",
+      "group": "catalogo",
+      "color": "#e4eedb",
+      "title": "talla",
+      "fields": [
+        {
+          "name": "id_talla",
+          "type": "int",
+          "key": "PK",
+          "nullable": false
+        },
+        {
+          "name": "tenant_id",
+          "type": "int",
+          "key": "FK",
+          "nullable": false
+        },
+        {
+          "name": "nombre",
+          "type": "varchar(10)",
+          "key": "",
+          "nullable": false
+        }
+      ],
+      "width": 420,
+      "height": 108
+    },
+    {
+      "id": "color",
+      "group": "catalogo",
+      "color": "#e4eedb",
+      "title": "color",
+      "fields": [
+        {
+          "name": "id_color",
+          "type": "int",
+          "key": "PK",
+          "nullable": false
+        },
+        {
+          "name": "tenant_id",
+          "type": "int",
+          "key": "FK",
+          "nullable": false
+        },
+        {
+          "name": "nombre",
+          "type": "varchar(50)",
+          "key": "",
+          "nullable": false
+        },
+        {
+          "name": "codigo_hex",
+          "type": "varchar(10)",
+          "key": "",
+          "nullable": true
+        }
+      ],
+      "width": 420,
+      "height": 132
+    },
+    {
+      "id": "variante_prenda",
+      "group": "catalogo",
+      "color": "#e4eedb",
+      "title": "variante_prenda",
+      "fields": [
+        {
+          "name": "id_variante_prenda",
+          "type": "int",
+          "key": "PK",
+          "nullable": false
+        },
+        {
+          "name": "id_prenda",
+          "type": "int",
+          "key": "FK",
+          "nullable": true
+        },
+        {
+          "name": "id_talla",
+          "type": "int",
+          "key": "FK",
+          "nullable": true
+        },
+        {
+          "name": "id_color",
+          "type": "int",
+          "key": "FK",
+          "nullable": true
+        },
+        {
+          "name": "tenant_id",
+          "type": "int",
+          "key": "FK",
+          "nullable": false
+        },
+        {
+          "name": "sku_variante",
+          "type": "varchar(100)",
+          "key": "",
+          "nullable": false
+        },
+        {
+          "name": "precio_adicional",
+          "type": "numeric(10,2)",
+          "key": "",
+          "nullable": true
+        }
+      ],
+      "width": 420,
+      "height": 204
+    },
+    {
+      "id": "variante_color",
+      "group": "catalogo",
+      "color": "#e4eedb",
+      "title": "variante_color",
+      "fields": [
+        {
+          "name": "tenant_id",
+          "type": "int",
+          "key": "PK/FK",
+          "nullable": false
+        },
+        {
+          "name": "id_variante_prenda",
+          "type": "int",
+          "key": "PK/FK",
+          "nullable": false
+        },
+        {
+          "name": "id_color",
+          "type": "int",
+          "key": "PK/FK",
+          "nullable": false
+        }
+      ],
+      "width": 420,
+      "height": 108
+    },
+    {
+      "id": "proveedor",
+      "group": "inventario",
+      "color": "#fff0d2",
+      "title": "proveedor",
+      "fields": [
+        {
+          "name": "id_proveedor",
+          "type": "int",
+          "key": "PK",
+          "nullable": false
+        },
+        {
+          "name": "tenant_id",
+          "type": "int",
+          "key": "FK",
+          "nullable": false
+        },
+        {
+          "name": "nit",
+          "type": "varchar(30)",
+          "key": "",
+          "nullable": false
+        },
+        {
+          "name": "razon_social",
+          "type": "varchar(150)",
+          "key": "",
+          "nullable": false
+        }
+      ],
+      "width": 420,
+      "height": 132
+    },
+    {
+      "id": "compra",
+      "group": "inventario",
+      "color": "#fff0d2",
+      "title": "compra",
+      "fields": [
+        {
+          "name": "id_compra",
+          "type": "int",
+          "key": "PK",
+          "nullable": false
+        },
+        {
+          "name": "id_proveedor",
+          "type": "int",
+          "key": "FK",
+          "nullable": true
+        },
+        {
+          "name": "id_sucursal",
+          "type": "int",
+          "key": "FK",
+          "nullable": true
+        },
+        {
+          "name": "id_usuario",
+          "type": "int",
+          "key": "FK",
+          "nullable": true
+        },
+        {
+          "name": "tenant_id",
+          "type": "int",
+          "key": "FK",
+          "nullable": false
+        },
+        {
+          "name": "fecha",
+          "type": "timestamp",
+          "key": "",
+          "nullable": true
+        },
+        {
+          "name": "total",
+          "type": "numeric(12,2)",
+          "key": "",
+          "nullable": false
+        }
+      ],
+      "width": 420,
+      "height": 204
+    },
+    {
+      "id": "detalle_compra",
+      "group": "inventario",
+      "color": "#fff0d2",
+      "title": "detalle_compra",
+      "fields": [
+        {
+          "name": "id_compra",
+          "type": "int",
+          "key": "PK/FK",
+          "nullable": false
+        },
+        {
+          "name": "id_variante_prenda",
+          "type": "int",
+          "key": "PK/FK",
+          "nullable": false
+        },
+        {
+          "name": "tenant_id",
+          "type": "int",
+          "key": "FK",
+          "nullable": false
+        },
+        {
+          "name": "cantidad",
+          "type": "int",
+          "key": "",
+          "nullable": false
+        },
+        {
+          "name": "costo_unitario",
+          "type": "numeric(10,2)",
+          "key": "",
+          "nullable": false
+        }
+      ],
+      "width": 420,
+      "height": 156
+    },
+    {
+      "id": "inventario",
+      "group": "inventario",
+      "color": "#fff0d2",
+      "title": "inventario",
+      "fields": [
+        {
+          "name": "id_sucursal",
+          "type": "int",
+          "key": "PK/FK",
+          "nullable": false
+        },
+        {
+          "name": "id_variante_prenda",
+          "type": "int",
+          "key": "PK/FK",
+          "nullable": false
+        },
+        {
+          "name": "tenant_id",
+          "type": "int",
+          "key": "FK",
+          "nullable": false
+        },
+        {
+          "name": "stock",
+          "type": "int",
+          "key": "",
+          "nullable": false
+        }
+      ],
+      "width": 420,
+      "height": 132
+    },
+    {
+      "id": "movimiento_inventario",
+      "group": "inventario",
+      "color": "#fff0d2",
+      "title": "movimiento_inventario",
+      "fields": [
+        {
+          "name": "id_movimiento",
+          "type": "int",
+          "key": "PK",
+          "nullable": false
+        },
+        {
+          "name": "id_sucursal",
+          "type": "int",
+          "key": "FK",
+          "nullable": true
+        },
+        {
+          "name": "id_variante_prenda",
+          "type": "int",
+          "key": "FK",
+          "nullable": true
+        },
+        {
+          "name": "id_usuario",
+          "type": "int",
+          "key": "FK",
+          "nullable": true
+        },
+        {
+          "name": "tenant_id",
+          "type": "int",
+          "key": "FK",
+          "nullable": false
+        },
+        {
+          "name": "tipo",
+          "type": "varchar(20)",
+          "key": "",
+          "nullable": false
+        },
+        {
+          "name": "cantidad",
+          "type": "int",
+          "key": "",
+          "nullable": false
+        },
+        {
+          "name": "fecha",
+          "type": "timestamp",
+          "key": "",
+          "nullable": true
+        }
+      ],
+      "width": 420,
+      "height": 228
+    },
+    {
+      "id": "reserva",
+      "group": "comercio",
+      "color": "#dcecf5",
+      "title": "reserva",
+      "fields": [
+        {
+          "name": "id_reserva",
+          "type": "int",
+          "key": "PK",
+          "nullable": false
+        },
+        {
+          "name": "id_cliente",
+          "type": "int",
+          "key": "FK",
+          "nullable": true
+        },
+        {
+          "name": "id_sucursal",
+          "type": "int",
+          "key": "FK",
+          "nullable": true
+        },
+        {
+          "name": "tenant_id",
+          "type": "int",
+          "key": "FK",
+          "nullable": false
+        },
+        {
+          "name": "fecha_limite",
+          "type": "timestamp",
+          "key": "",
+          "nullable": false
+        },
+        {
+          "name": "estado",
+          "type": "varchar(30)",
+          "key": "",
+          "nullable": true
+        },
+        {
+          "name": "total",
+          "type": "numeric(10,2)",
+          "key": "",
+          "nullable": false
+        }
+      ],
+      "width": 420,
+      "height": 204
+    },
+    {
+      "id": "detalle_reserva",
+      "group": "comercio",
+      "color": "#dcecf5",
+      "title": "detalle_reserva",
+      "fields": [
+        {
+          "name": "id_reserva",
+          "type": "int",
+          "key": "PK/FK",
+          "nullable": false
+        },
+        {
+          "name": "id_variante_prenda",
+          "type": "int",
+          "key": "PK/FK",
+          "nullable": false
+        },
+        {
+          "name": "tenant_id",
+          "type": "int",
+          "key": "FK",
+          "nullable": false
+        },
+        {
+          "name": "cantidad",
+          "type": "int",
+          "key": "",
+          "nullable": false
+        },
+        {
+          "name": "precio_unitario",
+          "type": "numeric(10,2)",
+          "key": "",
+          "nullable": false
+        }
+      ],
+      "width": 420,
+      "height": 156
+    },
+    {
+      "id": "retencion",
+      "group": "comercio",
+      "color": "#dcecf5",
+      "title": "retencion",
+      "fields": [
+        {
+          "name": "tenant_id",
+          "type": "int",
+          "key": "PK/FK",
+          "nullable": false
+        },
+        {
+          "name": "id_reserva",
+          "type": "int",
+          "key": "PK/FK",
+          "nullable": false
+        },
+        {
+          "name": "id_variante_prenda",
+          "type": "int",
+          "key": "PK/FK",
+          "nullable": false
+        },
+        {
+          "name": "id_sucursal",
+          "type": "int",
+          "key": "FK",
+          "nullable": false
+        },
+        {
+          "name": "cantidad",
+          "type": "int",
+          "key": "",
+          "nullable": false
+        },
+        {
+          "name": "vence",
+          "type": "timestamptz",
+          "key": "",
+          "nullable": false
+        }
+      ],
+      "width": 420,
+      "height": 180
+    },
+    {
+      "id": "venta",
+      "group": "comercio",
+      "color": "#dcecf5",
+      "title": "venta",
+      "fields": [
+        {
+          "name": "id_venta",
+          "type": "int",
+          "key": "PK",
+          "nullable": false
+        },
+        {
+          "name": "id_cliente",
+          "type": "int",
+          "key": "FK",
+          "nullable": true
+        },
+        {
+          "name": "id_sucursal",
+          "type": "int",
+          "key": "FK",
+          "nullable": true
+        },
+        {
+          "name": "id_cajero",
+          "type": "int",
+          "key": "FK",
+          "nullable": true
+        },
+        {
+          "name": "id_reserva",
+          "type": "int",
+          "key": "FK",
+          "nullable": true
+        },
+        {
+          "name": "tenant_id",
+          "type": "int",
+          "key": "FK",
+          "nullable": false
+        },
+        {
+          "name": "metodo_pago",
+          "type": "varchar(30)",
+          "key": "",
+          "nullable": false
+        },
+        {
+          "name": "total",
+          "type": "numeric(10,2)",
+          "key": "",
+          "nullable": false
+        },
+        {
+          "name": "fecha_venta",
+          "type": "timestamp",
+          "key": "",
+          "nullable": true
+        }
+      ],
+      "width": 420,
+      "height": 252
+    },
+    {
+      "id": "detalle_venta",
+      "group": "comercio",
+      "color": "#dcecf5",
+      "title": "detalle_venta",
+      "fields": [
+        {
+          "name": "id_venta",
+          "type": "int",
+          "key": "PK/FK",
+          "nullable": false
+        },
+        {
+          "name": "id_variante_prenda",
+          "type": "int",
+          "key": "PK/FK",
+          "nullable": false
+        },
+        {
+          "name": "tenant_id",
+          "type": "int",
+          "key": "FK",
+          "nullable": false
+        },
+        {
+          "name": "cantidad",
+          "type": "int",
+          "key": "",
+          "nullable": false
+        },
+        {
+          "name": "precio_unitario",
+          "type": "numeric(10,2)",
+          "key": "",
+          "nullable": false
+        },
+        {
+          "name": "subtotal",
+          "type": "numeric(10,2)",
+          "key": "",
+          "nullable": false
+        }
+      ],
+      "width": 420,
+      "height": 180
+    },
+    {
+      "id": "pago_transaccion",
+      "group": "pagos",
+      "color": "#f8e4d7",
+      "title": "pago_transaccion",
+      "fields": [
+        {
+          "name": "id_pago",
+          "type": "int",
+          "key": "PK",
+          "nullable": false
+        },
+        {
+          "name": "id_venta",
+          "type": "int",
+          "key": "FK",
+          "nullable": true
+        },
+        {
+          "name": "tenant_id",
+          "type": "int",
+          "key": "FK",
+          "nullable": false
+        },
+        {
+          "name": "id_reserva",
+          "type": "int",
+          "key": "FK",
+          "nullable": true
+        },
+        {
+          "name": "transaccion_id",
+          "type": "varchar(100)",
+          "key": "",
+          "nullable": false
+        },
+        {
+          "name": "monto",
+          "type": "numeric(10,2)",
+          "key": "",
+          "nullable": false
+        },
+        {
+          "name": "estado_pago",
+          "type": "varchar(50)",
+          "key": "",
+          "nullable": false
+        }
+      ],
+      "width": 420,
+      "height": 204
+    },
+    {
+      "id": "comprobante",
+      "group": "pagos",
+      "color": "#f8e4d7",
+      "title": "comprobante",
+      "fields": [
+        {
+          "name": "id_comprobante",
+          "type": "int",
+          "key": "PK",
+          "nullable": false
+        },
+        {
+          "name": "id_venta",
+          "type": "int",
+          "key": "FK",
+          "nullable": true
+        },
+        {
+          "name": "tenant_id",
+          "type": "int",
+          "key": "FK",
+          "nullable": false
+        },
+        {
+          "name": "numero_comprobante",
+          "type": "varchar(50)",
+          "key": "",
+          "nullable": false
+        },
+        {
+          "name": "fecha_emision",
+          "type": "timestamp",
+          "key": "",
+          "nullable": true
+        }
+      ],
+      "width": 420,
+      "height": 156
+    },
+    {
+      "id": "cambio",
+      "group": "cambios",
+      "color": "#f4e1e8",
+      "title": "cambio",
+      "fields": [
+        {
+          "name": "id_cambio",
+          "type": "int",
+          "key": "PK",
+          "nullable": false
+        },
+        {
+          "name": "tenant_id",
+          "type": "int",
+          "key": "FK",
+          "nullable": false
+        },
+        {
+          "name": "id_venta",
+          "type": "int",
+          "key": "FK",
+          "nullable": false
+        },
+        {
+          "name": "id_cliente",
+          "type": "int",
+          "key": "FK",
+          "nullable": false
+        },
+        {
+          "name": "id_sucursal",
+          "type": "int",
+          "key": "FK",
+          "nullable": false
+        },
+        {
+          "name": "id_variante_original",
+          "type": "int",
+          "key": "FK",
+          "nullable": false
+        },
+        {
+          "name": "id_reserva_reemplazo",
+          "type": "int",
+          "key": "FK",
+          "nullable": true
+        },
+        {
+          "name": "cantidad",
+          "type": "int",
+          "key": "",
+          "nullable": false
+        },
+        {
+          "name": "estado",
+          "type": "text",
+          "key": "",
+          "nullable": false
+        },
+        {
+          "name": "credito",
+          "type": "numeric(12,2)",
+          "key": "",
+          "nullable": false
+        },
+        {
+          "name": "diferencia",
+          "type": "numeric(12,2)",
+          "key": "",
+          "nullable": true
+        }
+      ],
+      "width": 420,
+      "height": 300
+    },
+    {
+      "id": "ajuste_monetario",
+      "group": "cambios",
+      "color": "#f4e1e8",
+      "title": "ajuste_monetario",
+      "fields": [
+        {
+          "name": "id_ajuste",
+          "type": "int",
+          "key": "PK",
+          "nullable": false
+        },
+        {
+          "name": "tenant_id",
+          "type": "int",
+          "key": "FK",
+          "nullable": false
+        },
+        {
+          "name": "id_cambio",
+          "type": "int",
+          "key": "FK",
+          "nullable": false
+        },
+        {
+          "name": "tipo",
+          "type": "text",
+          "key": "",
+          "nullable": false
+        },
+        {
+          "name": "importe",
+          "type": "numeric(12,2)",
+          "key": "",
+          "nullable": false
+        },
+        {
+          "name": "referencia",
+          "type": "text",
+          "key": "",
+          "nullable": false
+        }
+      ],
+      "width": 420,
+      "height": 180
+    },
+    {
+      "id": "notificacion",
+      "group": "cambios",
+      "color": "#f4e1e8",
+      "title": "notificacion",
+      "fields": [
+        {
+          "name": "id_notificacion",
+          "type": "int",
+          "key": "PK",
+          "nullable": false
+        },
+        {
+          "name": "tenant_id",
+          "type": "int",
+          "key": "FK",
+          "nullable": false
+        },
+        {
+          "name": "id_cliente",
+          "type": "int",
+          "key": "FK",
+          "nullable": false
+        },
+        {
+          "name": "id_cambio",
+          "type": "int",
+          "key": "FK",
+          "nullable": true
+        },
+        {
+          "name": "titulo",
+          "type": "text",
+          "key": "",
+          "nullable": false
+        },
+        {
+          "name": "leida",
+          "type": "bool",
+          "key": "",
+          "nullable": false
+        }
+      ],
+      "width": 420,
+      "height": 180
+    },
+    {
+      "id": "operacion_sync",
+      "group": "servicios",
+      "color": "#e8e8e8",
+      "title": "operacion_sync",
+      "fields": [
+        {
+          "name": "tenant_id",
+          "type": "int",
+          "key": "PK/FK",
+          "nullable": false
+        },
+        {
+          "name": "operation_id",
+          "type": "uuid",
+          "key": "PK",
+          "nullable": false
+        },
+        {
+          "name": "author_id",
+          "type": "int",
+          "key": "FK",
+          "nullable": false
+        },
+        {
+          "name": "branch_id",
+          "type": "int",
+          "key": "FK",
+          "nullable": true
+        },
+        {
+          "name": "original_operation",
+          "type": "uuid",
+          "key": "FK",
+          "nullable": true
+        },
+        {
+          "name": "resolved_by",
+          "type": "int",
+          "key": "FK",
+          "nullable": true
+        },
+        {
+          "name": "kind",
+          "type": "text",
+          "key": "",
+          "nullable": false
+        },
+        {
+          "name": "state",
+          "type": "text",
+          "key": "",
+          "nullable": false
+        },
+        {
+          "name": "created_at",
+          "type": "timestamptz",
+          "key": "",
+          "nullable": false
+        }
+      ],
+      "width": 420,
+      "height": 252
+    },
+    {
+      "id": "reporte_resultado",
+      "group": "servicios",
+      "color": "#e8e8e8",
+      "title": "reporte_resultado",
+      "fields": [
+        {
+          "name": "id",
+          "type": "uuid",
+          "key": "PK",
+          "nullable": false
+        },
+        {
+          "name": "tenant_id",
+          "type": "bigint",
+          "key": "FK",
+          "nullable": false
+        },
+        {
+          "name": "author_id",
+          "type": "int",
+          "key": "FK",
+          "nullable": false
+        },
+        {
+          "name": "filters",
+          "type": "jsonb",
+          "key": "",
+          "nullable": false
+        },
+        {
+          "name": "result",
+          "type": "jsonb",
+          "key": "",
+          "nullable": false
+        },
+        {
+          "name": "expires_at",
+          "type": "timestamptz",
+          "key": "",
+          "nullable": false
+        }
+      ],
+      "width": 420,
+      "height": 180
+    },
+    {
+      "id": "bitacora",
+      "group": "servicios",
+      "color": "#e8e8e8",
+      "title": "bitacora",
+      "fields": [
+        {
+          "name": "id_bitacora",
+          "type": "int",
+          "key": "PK",
+          "nullable": false
+        },
+        {
+          "name": "id_usuario",
+          "type": "int",
+          "key": "FK",
+          "nullable": true
+        },
+        {
+          "name": "tenant_id",
+          "type": "int",
+          "key": "FK",
+          "nullable": false
+        },
+        {
+          "name": "accion",
+          "type": "varchar(100)",
+          "key": "",
+          "nullable": false
+        },
+        {
+          "name": "tabla_afectada",
+          "type": "varchar(100)",
+          "key": "",
+          "nullable": false
+        },
+        {
+          "name": "fecha",
+          "type": "timestamp",
+          "key": "",
+          "nullable": true
+        }
+      ],
+      "width": 420,
+      "height": 180
+    }
+  ],
+  "edges": [
+    {
+      "child": "suscripcion",
+      "columns": [
+        "id_plan"
+      ],
+      "parent": "plan",
+      "ref_columns": [
+        "id_plan"
+      ],
+      "constraint": "suscripcion_id_plan_fkey",
+      "definition": "FOREIGN KEY (id_plan) REFERENCES plan(id_plan)",
+      "id": "relation_1",
+      "parent_cardinality": "1",
+      "child_cardinality": "0..*",
+      "color": "#40546b"
+    },
+    {
+      "child": "suscripcion",
+      "columns": [
+        "tenant_id"
+      ],
+      "parent": "empresa",
+      "ref_columns": [
+        "id_empresa"
+      ],
+      "constraint": "suscripcion_tenant_id_fkey",
+      "definition": "FOREIGN KEY (tenant_id) REFERENCES empresa(id_empresa)",
+      "id": "relation_2",
+      "parent_cardinality": "1",
+      "child_cardinality": "0..1",
+      "color": "#40546b"
+    },
+    {
+      "child": "rol",
+      "columns": [
+        "tenant_id"
+      ],
+      "parent": "empresa",
+      "ref_columns": [
+        "id_empresa"
+      ],
+      "constraint": "rol_tenant_id_fkey",
+      "definition": "FOREIGN KEY (tenant_id) REFERENCES empresa(id_empresa)",
+      "id": "relation_3",
+      "parent_cardinality": "1",
+      "child_cardinality": "0..*",
+      "color": "#40546b"
+    },
+    {
+      "child": "usuario",
+      "columns": [
+        "tenant_id",
+        "id_role"
+      ],
+      "parent": "rol",
+      "ref_columns": [
+        "tenant_id",
+        "id_rol"
+      ],
+      "constraint": "tenant_usuario_id_role_fkey",
+      "definition": "FOREIGN KEY (tenant_id, id_role) REFERENCES rol(tenant_id, id_rol)",
+      "id": "relation_4",
+      "parent_cardinality": "0..1",
+      "child_cardinality": "0..*",
+      "color": "#40546b"
+    },
+    {
+      "child": "usuario",
+      "columns": [
+        "account_id"
+      ],
+      "parent": "cuenta_global",
+      "ref_columns": [
+        "id"
+      ],
+      "constraint": "usuario_account_id_fkey",
+      "definition": "FOREIGN KEY (account_id) REFERENCES cuenta_global(id)",
+      "id": "relation_5",
+      "parent_cardinality": "0..1",
+      "child_cardinality": "0..*",
+      "color": "#40546b"
+    },
+    {
+      "child": "rol_permiso",
+      "columns": [
+        "id_permiso"
+      ],
+      "parent": "permiso",
+      "ref_columns": [
+        "id_permiso"
+      ],
+      "constraint": "rol_permiso_id_permiso_fkey",
+      "definition": "FOREIGN KEY (id_permiso) REFERENCES permiso(id_permiso) ON DELETE CASCADE",
+      "id": "relation_6",
+      "parent_cardinality": "1",
+      "child_cardinality": "0..*",
+      "color": "#40546b"
+    },
+    {
+      "child": "rol_permiso",
+      "columns": [
+        "tenant_id",
+        "id_rol"
+      ],
+      "parent": "rol",
+      "ref_columns": [
+        "tenant_id",
+        "id_rol"
+      ],
+      "constraint": "tenant_rol_permiso_id_rol_fkey",
+      "definition": "FOREIGN KEY (tenant_id, id_rol) REFERENCES rol(tenant_id, id_rol)",
+      "id": "relation_7",
+      "parent_cardinality": "1",
+      "child_cardinality": "0..*",
+      "color": "#40546b"
+    },
+    {
+      "child": "usuario_sucursal",
+      "columns": [
+        "tenant_id",
+        "id_sucursal"
+      ],
+      "parent": "sucursal",
+      "ref_columns": [
+        "tenant_id",
+        "id_sucursal"
+      ],
+      "constraint": "usuario_sucursal_tenant_id_id_sucursal_fkey",
+      "definition": "FOREIGN KEY (tenant_id, id_sucursal) REFERENCES sucursal(tenant_id, id_sucursal)",
+      "id": "relation_8",
+      "parent_cardinality": "1",
+      "child_cardinality": "0..*",
+      "color": "#40546b"
+    },
+    {
+      "child": "usuario_sucursal",
+      "columns": [
+        "tenant_id",
+        "id_usuario"
+      ],
+      "parent": "usuario",
+      "ref_columns": [
+        "tenant_id",
+        "id_usuario"
+      ],
+      "constraint": "usuario_sucursal_tenant_id_id_usuario_fkey",
+      "definition": "FOREIGN KEY (tenant_id, id_usuario) REFERENCES usuario(tenant_id, id_usuario)",
+      "id": "relation_9",
+      "parent_cardinality": "1",
+      "child_cardinality": "0..*",
+      "color": "#40546b"
+    },
+    {
+      "child": "sucursal",
+      "columns": [
+        "tenant_id"
+      ],
+      "parent": "empresa",
+      "ref_columns": [
+        "id_empresa"
+      ],
+      "constraint": "sucursal_tenant_id_fkey",
+      "definition": "FOREIGN KEY (tenant_id) REFERENCES empresa(id_empresa)",
+      "id": "relation_10",
+      "parent_cardinality": "1",
+      "child_cardinality": "0..*",
+      "color": "#40546b"
+    },
+    {
+      "child": "sucursal",
+      "columns": [
+        "tenant_id",
+        "id_ciudad"
+      ],
+      "parent": "ciudad",
+      "ref_columns": [
+        "tenant_id",
+        "id_ciudad"
+      ],
+      "constraint": "tenant_sucursal_id_ciudad_fkey",
+      "definition": "FOREIGN KEY (tenant_id, id_ciudad) REFERENCES ciudad(tenant_id, id_ciudad)",
+      "id": "relation_11",
+      "parent_cardinality": "0..1",
+      "child_cardinality": "0..*",
+      "color": "#40546b"
+    },
+    {
+      "child": "sucursal",
+      "columns": [
+        "tenant_id",
+        "id_encargado"
+      ],
+      "parent": "usuario",
+      "ref_columns": [
+        "tenant_id",
+        "id_usuario"
+      ],
+      "constraint": "tenant_sucursal_id_encargado_fkey",
+      "definition": "FOREIGN KEY (tenant_id, id_encargado) REFERENCES usuario(tenant_id, id_usuario)",
+      "id": "relation_12",
+      "parent_cardinality": "0..1",
+      "child_cardinality": "0..*",
+      "color": "#40546b"
+    },
+    {
+      "child": "cliente",
+      "columns": [
+        "tenant_id"
+      ],
+      "parent": "empresa",
+      "ref_columns": [
+        "id_empresa"
+      ],
+      "constraint": "cliente_tenant_id_fkey",
+      "definition": "FOREIGN KEY (tenant_id) REFERENCES empresa(id_empresa)",
+      "id": "relation_13",
+      "parent_cardinality": "1",
+      "child_cardinality": "0..*",
+      "color": "#40546b"
+    },
+    {
+      "child": "categoria",
+      "columns": [
+        "tenant_id",
+        "id_categoria_padre"
+      ],
+      "parent": "categoria",
+      "ref_columns": [
+        "tenant_id",
+        "id_categoria"
+      ],
+      "constraint": "tenant_categoria_id_categoria_padre_fkey",
+      "definition": "FOREIGN KEY (tenant_id, id_categoria_padre) REFERENCES categoria(tenant_id, id_categoria)",
+      "id": "relation_14",
+      "parent_cardinality": "0..1",
+      "child_cardinality": "0..*",
+      "color": "#40546b"
+    },
+    {
+      "child": "prenda",
+      "columns": [
+        "tenant_id"
+      ],
+      "parent": "empresa",
+      "ref_columns": [
+        "id_empresa"
+      ],
+      "constraint": "prenda_tenant_id_fkey",
+      "definition": "FOREIGN KEY (tenant_id) REFERENCES empresa(id_empresa)",
+      "id": "relation_15",
+      "parent_cardinality": "1",
+      "child_cardinality": "0..*",
+      "color": "#40546b"
+    },
+    {
+      "child": "prenda",
+      "columns": [
+        "tenant_id",
+        "id_categoria"
+      ],
+      "parent": "categoria",
+      "ref_columns": [
+        "tenant_id",
+        "id_categoria"
+      ],
+      "constraint": "tenant_prenda_id_categoria_fkey",
+      "definition": "FOREIGN KEY (tenant_id, id_categoria) REFERENCES categoria(tenant_id, id_categoria)",
+      "id": "relation_16",
+      "parent_cardinality": "0..1",
+      "child_cardinality": "0..*",
+      "color": "#40546b"
+    },
+    {
+      "child": "prenda",
+      "columns": [
+        "tenant_id",
+        "id_temporada"
+      ],
+      "parent": "temporada",
+      "ref_columns": [
+        "tenant_id",
+        "id_temporada"
+      ],
+      "constraint": "tenant_prenda_id_temporada_fkey",
+      "definition": "FOREIGN KEY (tenant_id, id_temporada) REFERENCES temporada(tenant_id, id_temporada)",
+      "id": "relation_17",
+      "parent_cardinality": "0..1",
+      "child_cardinality": "0..*",
+      "color": "#40546b"
+    },
+    {
+      "child": "imagen_prenda",
+      "columns": [
+        "tenant_id",
+        "id_prenda"
+      ],
+      "parent": "prenda",
+      "ref_columns": [
+        "tenant_id",
+        "id_prenda"
+      ],
+      "constraint": "tenant_imagen_prenda_id_prenda_fkey",
+      "definition": "FOREIGN KEY (tenant_id, id_prenda) REFERENCES prenda(tenant_id, id_prenda)",
+      "id": "relation_18",
+      "parent_cardinality": "0..1",
+      "child_cardinality": "0..*",
+      "color": "#40546b"
+    },
+    {
+      "child": "variante_prenda",
+      "columns": [
+        "tenant_id",
+        "id_color"
+      ],
+      "parent": "color",
+      "ref_columns": [
+        "tenant_id",
+        "id_color"
+      ],
+      "constraint": "tenant_variante_prenda_id_color_fkey",
+      "definition": "FOREIGN KEY (tenant_id, id_color) REFERENCES color(tenant_id, id_color)",
+      "id": "relation_19",
+      "parent_cardinality": "0..1",
+      "child_cardinality": "0..*",
+      "color": "#40546b"
+    },
+    {
+      "child": "variante_prenda",
+      "columns": [
+        "tenant_id",
+        "id_prenda"
+      ],
+      "parent": "prenda",
+      "ref_columns": [
+        "tenant_id",
+        "id_prenda"
+      ],
+      "constraint": "tenant_variante_prenda_id_prenda_fkey",
+      "definition": "FOREIGN KEY (tenant_id, id_prenda) REFERENCES prenda(tenant_id, id_prenda)",
+      "id": "relation_20",
+      "parent_cardinality": "0..1",
+      "child_cardinality": "0..*",
+      "color": "#40546b"
+    },
+    {
+      "child": "variante_prenda",
+      "columns": [
+        "tenant_id",
+        "id_talla"
+      ],
+      "parent": "talla",
+      "ref_columns": [
+        "tenant_id",
+        "id_talla"
+      ],
+      "constraint": "tenant_variante_prenda_id_talla_fkey",
+      "definition": "FOREIGN KEY (tenant_id, id_talla) REFERENCES talla(tenant_id, id_talla)",
+      "id": "relation_21",
+      "parent_cardinality": "0..1",
+      "child_cardinality": "0..*",
+      "color": "#40546b"
+    },
+    {
+      "child": "variante_color",
+      "columns": [
+        "tenant_id",
+        "id_color"
+      ],
+      "parent": "color",
+      "ref_columns": [
+        "tenant_id",
+        "id_color"
+      ],
+      "constraint": "variante_color_tenant_id_id_color_fkey",
+      "definition": "FOREIGN KEY (tenant_id, id_color) REFERENCES color(tenant_id, id_color)",
+      "id": "relation_22",
+      "parent_cardinality": "1",
+      "child_cardinality": "0..*",
+      "color": "#40546b"
+    },
+    {
+      "child": "variante_color",
+      "columns": [
+        "tenant_id",
+        "id_variante_prenda"
+      ],
+      "parent": "variante_prenda",
+      "ref_columns": [
+        "tenant_id",
+        "id_variante_prenda"
+      ],
+      "constraint": "variante_color_tenant_id_id_variante_prenda_fkey",
+      "definition": "FOREIGN KEY (tenant_id, id_variante_prenda) REFERENCES variante_prenda(tenant_id, id_variante_prenda)",
+      "id": "relation_23",
+      "parent_cardinality": "1",
+      "child_cardinality": "0..*",
+      "color": "#40546b"
+    },
+    {
+      "child": "proveedor",
+      "columns": [
+        "tenant_id"
+      ],
+      "parent": "empresa",
+      "ref_columns": [
+        "id_empresa"
+      ],
+      "constraint": "proveedor_tenant_id_fkey",
+      "definition": "FOREIGN KEY (tenant_id) REFERENCES empresa(id_empresa)",
+      "id": "relation_24",
+      "parent_cardinality": "1",
+      "child_cardinality": "0..*",
+      "color": "#40546b"
+    },
+    {
+      "child": "compra",
+      "columns": [
+        "tenant_id",
+        "id_proveedor"
+      ],
+      "parent": "proveedor",
+      "ref_columns": [
+        "tenant_id",
+        "id_proveedor"
+      ],
+      "constraint": "tenant_compra_id_proveedor_fkey",
+      "definition": "FOREIGN KEY (tenant_id, id_proveedor) REFERENCES proveedor(tenant_id, id_proveedor)",
+      "id": "relation_25",
+      "parent_cardinality": "0..1",
+      "child_cardinality": "0..*",
+      "color": "#40546b"
+    },
+    {
+      "child": "compra",
+      "columns": [
+        "tenant_id",
+        "id_sucursal"
+      ],
+      "parent": "sucursal",
+      "ref_columns": [
+        "tenant_id",
+        "id_sucursal"
+      ],
+      "constraint": "tenant_compra_id_sucursal_fkey",
+      "definition": "FOREIGN KEY (tenant_id, id_sucursal) REFERENCES sucursal(tenant_id, id_sucursal)",
+      "id": "relation_26",
+      "parent_cardinality": "0..1",
+      "child_cardinality": "0..*",
+      "color": "#40546b"
+    },
+    {
+      "child": "compra",
+      "columns": [
+        "tenant_id",
+        "id_usuario"
+      ],
+      "parent": "usuario",
+      "ref_columns": [
+        "tenant_id",
+        "id_usuario"
+      ],
+      "constraint": "tenant_compra_id_usuario_fkey",
+      "definition": "FOREIGN KEY (tenant_id, id_usuario) REFERENCES usuario(tenant_id, id_usuario)",
+      "id": "relation_27",
+      "parent_cardinality": "0..1",
+      "child_cardinality": "0..*",
+      "color": "#40546b"
+    },
+    {
+      "child": "detalle_compra",
+      "columns": [
+        "tenant_id",
+        "id_compra"
+      ],
+      "parent": "compra",
+      "ref_columns": [
+        "tenant_id",
+        "id_compra"
+      ],
+      "constraint": "tenant_detalle_compra_id_compra_fkey",
+      "definition": "FOREIGN KEY (tenant_id, id_compra) REFERENCES compra(tenant_id, id_compra)",
+      "id": "relation_28",
+      "parent_cardinality": "1",
+      "child_cardinality": "0..*",
+      "color": "#40546b"
+    },
+    {
+      "child": "detalle_compra",
+      "columns": [
+        "tenant_id",
+        "id_variante_prenda"
+      ],
+      "parent": "variante_prenda",
+      "ref_columns": [
+        "tenant_id",
+        "id_variante_prenda"
+      ],
+      "constraint": "tenant_detalle_compra_id_variante_prenda_fkey",
+      "definition": "FOREIGN KEY (tenant_id, id_variante_prenda) REFERENCES variante_prenda(tenant_id, id_variante_prenda)",
+      "id": "relation_29",
+      "parent_cardinality": "1",
+      "child_cardinality": "0..*",
+      "color": "#40546b"
+    },
+    {
+      "child": "inventario",
+      "columns": [
+        "tenant_id",
+        "id_sucursal"
+      ],
+      "parent": "sucursal",
+      "ref_columns": [
+        "tenant_id",
+        "id_sucursal"
+      ],
+      "constraint": "tenant_inventario_id_sucursal_fkey",
+      "definition": "FOREIGN KEY (tenant_id, id_sucursal) REFERENCES sucursal(tenant_id, id_sucursal)",
+      "id": "relation_30",
+      "parent_cardinality": "1",
+      "child_cardinality": "0..*",
+      "color": "#40546b"
+    },
+    {
+      "child": "inventario",
+      "columns": [
+        "tenant_id",
+        "id_variante_prenda"
+      ],
+      "parent": "variante_prenda",
+      "ref_columns": [
+        "tenant_id",
+        "id_variante_prenda"
+      ],
+      "constraint": "tenant_inventario_id_variante_prenda_fkey",
+      "definition": "FOREIGN KEY (tenant_id, id_variante_prenda) REFERENCES variante_prenda(tenant_id, id_variante_prenda)",
+      "id": "relation_31",
+      "parent_cardinality": "1",
+      "child_cardinality": "0..*",
+      "color": "#40546b"
+    },
+    {
+      "child": "movimiento_inventario",
+      "columns": [
+        "tenant_id",
+        "id_sucursal"
+      ],
+      "parent": "sucursal",
+      "ref_columns": [
+        "tenant_id",
+        "id_sucursal"
+      ],
+      "constraint": "tenant_movimiento_inventario_id_sucursal_fkey",
+      "definition": "FOREIGN KEY (tenant_id, id_sucursal) REFERENCES sucursal(tenant_id, id_sucursal)",
+      "id": "relation_32",
+      "parent_cardinality": "0..1",
+      "child_cardinality": "0..*",
+      "color": "#40546b"
+    },
+    {
+      "child": "movimiento_inventario",
+      "columns": [
+        "tenant_id",
+        "id_usuario"
+      ],
+      "parent": "usuario",
+      "ref_columns": [
+        "tenant_id",
+        "id_usuario"
+      ],
+      "constraint": "tenant_movimiento_inventario_id_usuario_fkey",
+      "definition": "FOREIGN KEY (tenant_id, id_usuario) REFERENCES usuario(tenant_id, id_usuario)",
+      "id": "relation_33",
+      "parent_cardinality": "0..1",
+      "child_cardinality": "0..*",
+      "color": "#40546b"
+    },
+    {
+      "child": "movimiento_inventario",
+      "columns": [
+        "tenant_id",
+        "id_variante_prenda"
+      ],
+      "parent": "variante_prenda",
+      "ref_columns": [
+        "tenant_id",
+        "id_variante_prenda"
+      ],
+      "constraint": "tenant_movimiento_inventario_id_variante_prenda_fkey",
+      "definition": "FOREIGN KEY (tenant_id, id_variante_prenda) REFERENCES variante_prenda(tenant_id, id_variante_prenda)",
+      "id": "relation_34",
+      "parent_cardinality": "0..1",
+      "child_cardinality": "0..*",
+      "color": "#40546b"
+    },
+    {
+      "child": "reserva",
+      "columns": [
+        "tenant_id",
+        "id_cliente"
+      ],
+      "parent": "cliente",
+      "ref_columns": [
+        "tenant_id",
+        "id_cliente"
+      ],
+      "constraint": "tenant_reserva_id_cliente_fkey",
+      "definition": "FOREIGN KEY (tenant_id, id_cliente) REFERENCES cliente(tenant_id, id_cliente)",
+      "id": "relation_35",
+      "parent_cardinality": "0..1",
+      "child_cardinality": "0..*",
+      "color": "#40546b"
+    },
+    {
+      "child": "reserva",
+      "columns": [
+        "tenant_id",
+        "id_sucursal"
+      ],
+      "parent": "sucursal",
+      "ref_columns": [
+        "tenant_id",
+        "id_sucursal"
+      ],
+      "constraint": "tenant_reserva_id_sucursal_fkey",
+      "definition": "FOREIGN KEY (tenant_id, id_sucursal) REFERENCES sucursal(tenant_id, id_sucursal)",
+      "id": "relation_36",
+      "parent_cardinality": "0..1",
+      "child_cardinality": "0..*",
+      "color": "#40546b"
+    },
+    {
+      "child": "detalle_reserva",
+      "columns": [
+        "tenant_id",
+        "id_reserva"
+      ],
+      "parent": "reserva",
+      "ref_columns": [
+        "tenant_id",
+        "id_reserva"
+      ],
+      "constraint": "tenant_detalle_reserva_id_reserva_fkey",
+      "definition": "FOREIGN KEY (tenant_id, id_reserva) REFERENCES reserva(tenant_id, id_reserva)",
+      "id": "relation_37",
+      "parent_cardinality": "1",
+      "child_cardinality": "0..*",
+      "color": "#40546b"
+    },
+    {
+      "child": "detalle_reserva",
+      "columns": [
+        "tenant_id",
+        "id_variante_prenda"
+      ],
+      "parent": "variante_prenda",
+      "ref_columns": [
+        "tenant_id",
+        "id_variante_prenda"
+      ],
+      "constraint": "tenant_detalle_reserva_id_variante_prenda_fkey",
+      "definition": "FOREIGN KEY (tenant_id, id_variante_prenda) REFERENCES variante_prenda(tenant_id, id_variante_prenda)",
+      "id": "relation_38",
+      "parent_cardinality": "1",
+      "child_cardinality": "0..*",
+      "color": "#40546b"
+    },
+    {
+      "child": "retencion",
+      "columns": [
+        "tenant_id",
+        "id_reserva"
+      ],
+      "parent": "reserva",
+      "ref_columns": [
+        "tenant_id",
+        "id_reserva"
+      ],
+      "constraint": "retencion_tenant_id_id_reserva_fkey",
+      "definition": "FOREIGN KEY (tenant_id, id_reserva) REFERENCES reserva(tenant_id, id_reserva)",
+      "id": "relation_39",
+      "parent_cardinality": "1",
+      "child_cardinality": "0..*",
+      "color": "#40546b"
+    },
+    {
+      "child": "retencion",
+      "columns": [
+        "tenant_id",
+        "id_sucursal"
+      ],
+      "parent": "sucursal",
+      "ref_columns": [
+        "tenant_id",
+        "id_sucursal"
+      ],
+      "constraint": "retencion_tenant_id_id_sucursal_fkey",
+      "definition": "FOREIGN KEY (tenant_id, id_sucursal) REFERENCES sucursal(tenant_id, id_sucursal)",
+      "id": "relation_40",
+      "parent_cardinality": "1",
+      "child_cardinality": "0..*",
+      "color": "#40546b"
+    },
+    {
+      "child": "retencion",
+      "columns": [
+        "tenant_id",
+        "id_variante_prenda"
+      ],
+      "parent": "variante_prenda",
+      "ref_columns": [
+        "tenant_id",
+        "id_variante_prenda"
+      ],
+      "constraint": "retencion_tenant_id_id_variante_prenda_fkey",
+      "definition": "FOREIGN KEY (tenant_id, id_variante_prenda) REFERENCES variante_prenda(tenant_id, id_variante_prenda)",
+      "id": "relation_41",
+      "parent_cardinality": "1",
+      "child_cardinality": "0..*",
+      "color": "#40546b"
+    },
+    {
+      "child": "venta",
+      "columns": [
+        "tenant_id",
+        "id_cajero"
+      ],
+      "parent": "usuario",
+      "ref_columns": [
+        "tenant_id",
+        "id_usuario"
+      ],
+      "constraint": "tenant_venta_id_cajero_fkey",
+      "definition": "FOREIGN KEY (tenant_id, id_cajero) REFERENCES usuario(tenant_id, id_usuario)",
+      "id": "relation_42",
+      "parent_cardinality": "0..1",
+      "child_cardinality": "0..*",
+      "color": "#40546b"
+    },
+    {
+      "child": "venta",
+      "columns": [
+        "tenant_id",
+        "id_cliente"
+      ],
+      "parent": "cliente",
+      "ref_columns": [
+        "tenant_id",
+        "id_cliente"
+      ],
+      "constraint": "tenant_venta_id_cliente_fkey",
+      "definition": "FOREIGN KEY (tenant_id, id_cliente) REFERENCES cliente(tenant_id, id_cliente)",
+      "id": "relation_43",
+      "parent_cardinality": "0..1",
+      "child_cardinality": "0..*",
+      "color": "#40546b"
+    },
+    {
+      "child": "venta",
+      "columns": [
+        "tenant_id",
+        "id_reserva"
+      ],
+      "parent": "reserva",
+      "ref_columns": [
+        "tenant_id",
+        "id_reserva"
+      ],
+      "constraint": "tenant_venta_id_reserva_fkey",
+      "definition": "FOREIGN KEY (tenant_id, id_reserva) REFERENCES reserva(tenant_id, id_reserva)",
+      "id": "relation_44",
+      "parent_cardinality": "0..1",
+      "child_cardinality": "0..1",
+      "color": "#40546b"
+    },
+    {
+      "child": "venta",
+      "columns": [
+        "tenant_id",
+        "id_sucursal"
+      ],
+      "parent": "sucursal",
+      "ref_columns": [
+        "tenant_id",
+        "id_sucursal"
+      ],
+      "constraint": "tenant_venta_id_sucursal_fkey",
+      "definition": "FOREIGN KEY (tenant_id, id_sucursal) REFERENCES sucursal(tenant_id, id_sucursal)",
+      "id": "relation_45",
+      "parent_cardinality": "0..1",
+      "child_cardinality": "0..*",
+      "color": "#40546b"
+    },
+    {
+      "child": "detalle_venta",
+      "columns": [
+        "tenant_id",
+        "id_variante_prenda"
+      ],
+      "parent": "variante_prenda",
+      "ref_columns": [
+        "tenant_id",
+        "id_variante_prenda"
+      ],
+      "constraint": "tenant_detalle_venta_id_variante_prenda_fkey",
+      "definition": "FOREIGN KEY (tenant_id, id_variante_prenda) REFERENCES variante_prenda(tenant_id, id_variante_prenda)",
+      "id": "relation_46",
+      "parent_cardinality": "1",
+      "child_cardinality": "0..*",
+      "color": "#40546b"
+    },
+    {
+      "child": "detalle_venta",
+      "columns": [
+        "tenant_id",
+        "id_venta"
+      ],
+      "parent": "venta",
+      "ref_columns": [
+        "tenant_id",
+        "id_venta"
+      ],
+      "constraint": "tenant_detalle_venta_id_venta_fkey",
+      "definition": "FOREIGN KEY (tenant_id, id_venta) REFERENCES venta(tenant_id, id_venta)",
+      "id": "relation_47",
+      "parent_cardinality": "1",
+      "child_cardinality": "0..*",
+      "color": "#40546b"
+    },
+    {
+      "child": "pago_transaccion",
+      "columns": [
+        "tenant_id",
+        "id_reserva"
+      ],
+      "parent": "reserva",
+      "ref_columns": [
+        "tenant_id",
+        "id_reserva"
+      ],
+      "constraint": "payment_reservation_tenant",
+      "definition": "FOREIGN KEY (tenant_id, id_reserva) REFERENCES reserva(tenant_id, id_reserva)",
+      "id": "relation_48",
+      "parent_cardinality": "0..1",
+      "child_cardinality": "0..*",
+      "color": "#40546b"
+    },
+    {
+      "child": "pago_transaccion",
+      "columns": [
+        "tenant_id",
+        "id_venta"
+      ],
+      "parent": "venta",
+      "ref_columns": [
+        "tenant_id",
+        "id_venta"
+      ],
+      "constraint": "tenant_pago_transaccion_id_venta_fkey",
+      "definition": "FOREIGN KEY (tenant_id, id_venta) REFERENCES venta(tenant_id, id_venta)",
+      "id": "relation_49",
+      "parent_cardinality": "0..1",
+      "child_cardinality": "0..*",
+      "color": "#40546b"
+    },
+    {
+      "child": "comprobante",
+      "columns": [
+        "tenant_id",
+        "id_venta"
+      ],
+      "parent": "venta",
+      "ref_columns": [
+        "tenant_id",
+        "id_venta"
+      ],
+      "constraint": "tenant_comprobante_id_venta_fkey",
+      "definition": "FOREIGN KEY (tenant_id, id_venta) REFERENCES venta(tenant_id, id_venta)",
+      "id": "relation_50",
+      "parent_cardinality": "0..1",
+      "child_cardinality": "0..*",
+      "color": "#40546b"
+    },
+    {
+      "child": "cambio",
+      "columns": [
+        "tenant_id",
+        "id_cliente"
+      ],
+      "parent": "cliente",
+      "ref_columns": [
+        "tenant_id",
+        "id_cliente"
+      ],
+      "constraint": "cambio_tenant_id_id_cliente_fkey",
+      "definition": "FOREIGN KEY (tenant_id, id_cliente) REFERENCES cliente(tenant_id, id_cliente)",
+      "id": "relation_51",
+      "parent_cardinality": "1",
+      "child_cardinality": "0..*",
+      "color": "#40546b"
+    },
+    {
+      "child": "cambio",
+      "columns": [
+        "tenant_id",
+        "id_reserva_reemplazo"
+      ],
+      "parent": "reserva",
+      "ref_columns": [
+        "tenant_id",
+        "id_reserva"
+      ],
+      "constraint": "cambio_tenant_id_id_reserva_reemplazo_fkey",
+      "definition": "FOREIGN KEY (tenant_id, id_reserva_reemplazo) REFERENCES reserva(tenant_id, id_reserva)",
+      "id": "relation_52",
+      "parent_cardinality": "0..1",
+      "child_cardinality": "0..*",
+      "color": "#40546b"
+    },
+    {
+      "child": "cambio",
+      "columns": [
+        "tenant_id",
+        "id_sucursal"
+      ],
+      "parent": "sucursal",
+      "ref_columns": [
+        "tenant_id",
+        "id_sucursal"
+      ],
+      "constraint": "cambio_tenant_id_id_sucursal_fkey",
+      "definition": "FOREIGN KEY (tenant_id, id_sucursal) REFERENCES sucursal(tenant_id, id_sucursal)",
+      "id": "relation_53",
+      "parent_cardinality": "1",
+      "child_cardinality": "0..*",
+      "color": "#40546b"
+    },
+    {
+      "child": "cambio",
+      "columns": [
+        "tenant_id",
+        "id_venta",
+        "id_variante_original"
+      ],
+      "parent": "detalle_venta",
+      "ref_columns": [
+        "tenant_id",
+        "id_venta",
+        "id_variante_prenda"
+      ],
+      "constraint": "cambio_tenant_id_id_venta_id_variante_original_fkey",
+      "definition": "FOREIGN KEY (tenant_id, id_venta, id_variante_original) REFERENCES detalle_venta(tenant_id, id_venta, id_variante_prenda)",
+      "id": "relation_54",
+      "parent_cardinality": "1",
+      "child_cardinality": "0..*",
+      "color": "#40546b"
+    },
+    {
+      "child": "ajuste_monetario",
+      "columns": [
+        "tenant_id",
+        "id_cambio"
+      ],
+      "parent": "cambio",
+      "ref_columns": [
+        "tenant_id",
+        "id_cambio"
+      ],
+      "constraint": "ajuste_monetario_tenant_id_id_cambio_fkey",
+      "definition": "FOREIGN KEY (tenant_id, id_cambio) REFERENCES cambio(tenant_id, id_cambio)",
+      "id": "relation_55",
+      "parent_cardinality": "1",
+      "child_cardinality": "0..*",
+      "color": "#40546b"
+    },
+    {
+      "child": "notificacion",
+      "columns": [
+        "tenant_id",
+        "id_cambio"
+      ],
+      "parent": "cambio",
+      "ref_columns": [
+        "tenant_id",
+        "id_cambio"
+      ],
+      "constraint": "notificacion_tenant_id_id_cambio_fkey",
+      "definition": "FOREIGN KEY (tenant_id, id_cambio) REFERENCES cambio(tenant_id, id_cambio)",
+      "id": "relation_56",
+      "parent_cardinality": "0..1",
+      "child_cardinality": "0..*",
+      "color": "#40546b"
+    },
+    {
+      "child": "notificacion",
+      "columns": [
+        "tenant_id",
+        "id_cliente"
+      ],
+      "parent": "cliente",
+      "ref_columns": [
+        "tenant_id",
+        "id_cliente"
+      ],
+      "constraint": "notificacion_tenant_id_id_cliente_fkey",
+      "definition": "FOREIGN KEY (tenant_id, id_cliente) REFERENCES cliente(tenant_id, id_cliente)",
+      "id": "relation_57",
+      "parent_cardinality": "1",
+      "child_cardinality": "0..*",
+      "color": "#40546b"
+    },
+    {
+      "child": "operacion_sync",
+      "columns": [
+        "tenant_id",
+        "author_id"
+      ],
+      "parent": "usuario",
+      "ref_columns": [
+        "tenant_id",
+        "id_usuario"
+      ],
+      "constraint": "operacion_sync_tenant_id_author_id_fkey",
+      "definition": "FOREIGN KEY (tenant_id, author_id) REFERENCES usuario(tenant_id, id_usuario)",
+      "id": "relation_58",
+      "parent_cardinality": "1",
+      "child_cardinality": "0..*",
+      "color": "#40546b"
+    },
+    {
+      "child": "operacion_sync",
+      "columns": [
+        "tenant_id",
+        "branch_id"
+      ],
+      "parent": "sucursal",
+      "ref_columns": [
+        "tenant_id",
+        "id_sucursal"
+      ],
+      "constraint": "operacion_sync_tenant_id_branch_id_fkey",
+      "definition": "FOREIGN KEY (tenant_id, branch_id) REFERENCES sucursal(tenant_id, id_sucursal)",
+      "id": "relation_59",
+      "parent_cardinality": "0..1",
+      "child_cardinality": "0..*",
+      "color": "#40546b"
+    },
+    {
+      "child": "operacion_sync",
+      "columns": [
+        "tenant_id"
+      ],
+      "parent": "empresa",
+      "ref_columns": [
+        "id_empresa"
+      ],
+      "constraint": "operacion_sync_tenant_id_fkey",
+      "definition": "FOREIGN KEY (tenant_id) REFERENCES empresa(id_empresa)",
+      "id": "relation_60",
+      "parent_cardinality": "1",
+      "child_cardinality": "0..*",
+      "color": "#40546b"
+    },
+    {
+      "child": "operacion_sync",
+      "columns": [
+        "tenant_id",
+        "original_operation"
+      ],
+      "parent": "operacion_sync",
+      "ref_columns": [
+        "tenant_id",
+        "operation_id"
+      ],
+      "constraint": "operacion_sync_tenant_id_original_operation_fkey",
+      "definition": "FOREIGN KEY (tenant_id, original_operation) REFERENCES operacion_sync(tenant_id, operation_id)",
+      "id": "relation_61",
+      "parent_cardinality": "0..1",
+      "child_cardinality": "0..*",
+      "color": "#40546b"
+    },
+    {
+      "child": "operacion_sync",
+      "columns": [
+        "tenant_id",
+        "resolved_by"
+      ],
+      "parent": "usuario",
+      "ref_columns": [
+        "tenant_id",
+        "id_usuario"
+      ],
+      "constraint": "operacion_sync_tenant_id_resolved_by_fkey",
+      "definition": "FOREIGN KEY (tenant_id, resolved_by) REFERENCES usuario(tenant_id, id_usuario)",
+      "id": "relation_62",
+      "parent_cardinality": "0..1",
+      "child_cardinality": "0..*",
+      "color": "#40546b"
+    },
+    {
+      "child": "reporte_resultado",
+      "columns": [
+        "tenant_id",
+        "author_id"
+      ],
+      "parent": "usuario",
+      "ref_columns": [
+        "tenant_id",
+        "id_usuario"
+      ],
+      "constraint": "reporte_resultado_tenant_id_author_id_fkey",
+      "definition": "FOREIGN KEY (tenant_id, author_id) REFERENCES usuario(tenant_id, id_usuario)",
+      "id": "relation_63",
+      "parent_cardinality": "1",
+      "child_cardinality": "0..*",
+      "color": "#40546b"
+    },
+    {
+      "child": "bitacora",
+      "columns": [
+        "tenant_id"
+      ],
+      "parent": "empresa",
+      "ref_columns": [
+        "id_empresa"
+      ],
+      "constraint": "bitacora_tenant_id_fkey",
+      "definition": "FOREIGN KEY (tenant_id) REFERENCES empresa(id_empresa)",
+      "id": "relation_64",
+      "parent_cardinality": "1",
+      "child_cardinality": "0..*",
+      "color": "#40546b"
+    },
+    {
+      "child": "bitacora",
+      "columns": [
+        "tenant_id",
+        "id_usuario"
+      ],
+      "parent": "usuario",
+      "ref_columns": [
+        "tenant_id",
+        "id_usuario"
+      ],
+      "constraint": "tenant_bitacora_id_usuario_fkey",
+      "definition": "FOREIGN KEY (tenant_id, id_usuario) REFERENCES usuario(tenant_id, id_usuario)",
+      "id": "relation_65",
+      "parent_cardinality": "0..1",
+      "child_cardinality": "0..*",
+      "color": "#40546b"
+    }
+  ],
+  "groups": [
+    {
+      "id": "saas",
+      "title": "Administración SaaS",
+      "color": "#dce9fa"
+    },
+    {
+      "id": "acceso",
+      "title": "Identidad y autorización",
+      "color": "#e8e1f5"
+    },
+    {
+      "id": "organizacion",
+      "title": "Organización y clientes",
+      "color": "#dceee9"
+    },
+    {
+      "id": "catalogo",
+      "title": "Catálogo de prendas",
+      "color": "#e4eedb"
+    },
+    {
+      "id": "inventario",
+      "title": "Abastecimiento e inventario",
+      "color": "#fff0d2"
+    },
+    {
+      "id": "comercio",
+      "title": "Reservas y ventas",
+      "color": "#dcecf5"
+    },
+    {
+      "id": "pagos",
+      "title": "Pagos y comprobantes",
+      "color": "#f8e4d7"
+    },
+    {
+      "id": "cambios",
+      "title": "Cambios y notificaciones",
+      "color": "#f4e1e8"
+    },
+    {
+      "id": "servicios",
+      "title": "Sincronización, reportes y auditoría",
+      "color": "#e8e8e8"
+    }
+  ],
+  "source": "docs\\diseno_fisico_base_datos\\INVENTARIO_ORIGEN.json",
+  "source_sha256": "fd44bb3d1edc913ea3979b93cdbb82e84dd772e91348bbb3b234a7b49e45dc83",
+  "scope": "Vista principal de PostgreSQL. Atributos seleccionados; pertenencia empresarial común indicada por tenant_id FK. No representa IndexedDB ni SQLite.",
+  "omitted_relationships": [
+    {
+      "child": "usuario",
+      "columns": [
+        "tenant_id"
+      ],
+      "parent": "empresa",
+      "ref_columns": [
+        "id_empresa"
+      ],
+      "constraint": "usuario_tenant_id_fkey",
+      "definition": "FOREIGN KEY (tenant_id) REFERENCES empresa(id_empresa)",
+      "reason": "Pertenencia empresarial indicada por tenant_id FK; enlace repetitivo omitido."
+    },
+    {
+      "child": "rol_permiso",
+      "columns": [
+        "tenant_id"
+      ],
+      "parent": "empresa",
+      "ref_columns": [
+        "id_empresa"
+      ],
+      "constraint": "rol_permiso_tenant_id_fkey",
+      "definition": "FOREIGN KEY (tenant_id) REFERENCES empresa(id_empresa)",
+      "reason": "Pertenencia empresarial indicada por tenant_id FK; enlace repetitivo omitido."
+    },
+    {
+      "child": "usuario_sucursal",
+      "columns": [
+        "tenant_id"
+      ],
+      "parent": "empresa",
+      "ref_columns": [
+        "id_empresa"
+      ],
+      "constraint": "usuario_sucursal_tenant_id_fkey",
+      "definition": "FOREIGN KEY (tenant_id) REFERENCES empresa(id_empresa)",
+      "reason": "Pertenencia empresarial indicada por tenant_id FK; enlace repetitivo omitido."
+    },
+    {
+      "child": "ciudad",
+      "columns": [
+        "tenant_id"
+      ],
+      "parent": "empresa",
+      "ref_columns": [
+        "id_empresa"
+      ],
+      "constraint": "ciudad_tenant_id_fkey",
+      "definition": "FOREIGN KEY (tenant_id) REFERENCES empresa(id_empresa)",
+      "reason": "Pertenencia empresarial indicada por tenant_id FK; enlace repetitivo omitido."
+    },
+    {
+      "child": "categoria",
+      "columns": [
+        "tenant_id"
+      ],
+      "parent": "empresa",
+      "ref_columns": [
+        "id_empresa"
+      ],
+      "constraint": "categoria_tenant_id_fkey",
+      "definition": "FOREIGN KEY (tenant_id) REFERENCES empresa(id_empresa)",
+      "reason": "Pertenencia empresarial indicada por tenant_id FK; enlace repetitivo omitido."
+    },
+    {
+      "child": "temporada",
+      "columns": [
+        "tenant_id"
+      ],
+      "parent": "empresa",
+      "ref_columns": [
+        "id_empresa"
+      ],
+      "constraint": "temporada_tenant_id_fkey",
+      "definition": "FOREIGN KEY (tenant_id) REFERENCES empresa(id_empresa)",
+      "reason": "Pertenencia empresarial indicada por tenant_id FK; enlace repetitivo omitido."
+    },
+    {
+      "child": "imagen_prenda",
+      "columns": [
+        "tenant_id"
+      ],
+      "parent": "empresa",
+      "ref_columns": [
+        "id_empresa"
+      ],
+      "constraint": "imagen_prenda_tenant_id_fkey",
+      "definition": "FOREIGN KEY (tenant_id) REFERENCES empresa(id_empresa)",
+      "reason": "Pertenencia empresarial indicada por tenant_id FK; enlace repetitivo omitido."
+    },
+    {
+      "child": "talla",
+      "columns": [
+        "tenant_id"
+      ],
+      "parent": "empresa",
+      "ref_columns": [
+        "id_empresa"
+      ],
+      "constraint": "talla_tenant_id_fkey",
+      "definition": "FOREIGN KEY (tenant_id) REFERENCES empresa(id_empresa)",
+      "reason": "Pertenencia empresarial indicada por tenant_id FK; enlace repetitivo omitido."
+    },
+    {
+      "child": "color",
+      "columns": [
+        "tenant_id"
+      ],
+      "parent": "empresa",
+      "ref_columns": [
+        "id_empresa"
+      ],
+      "constraint": "color_tenant_id_fkey",
+      "definition": "FOREIGN KEY (tenant_id) REFERENCES empresa(id_empresa)",
+      "reason": "Pertenencia empresarial indicada por tenant_id FK; enlace repetitivo omitido."
+    },
+    {
+      "child": "variante_prenda",
+      "columns": [
+        "tenant_id"
+      ],
+      "parent": "empresa",
+      "ref_columns": [
+        "id_empresa"
+      ],
+      "constraint": "variante_prenda_tenant_id_fkey",
+      "definition": "FOREIGN KEY (tenant_id) REFERENCES empresa(id_empresa)",
+      "reason": "Pertenencia empresarial indicada por tenant_id FK; enlace repetitivo omitido."
+    },
+    {
+      "child": "variante_color",
+      "columns": [
+        "tenant_id"
+      ],
+      "parent": "empresa",
+      "ref_columns": [
+        "id_empresa"
+      ],
+      "constraint": "variante_color_tenant_id_fkey",
+      "definition": "FOREIGN KEY (tenant_id) REFERENCES empresa(id_empresa)",
+      "reason": "Pertenencia empresarial indicada por tenant_id FK; enlace repetitivo omitido."
+    },
+    {
+      "child": "compra",
+      "columns": [
+        "tenant_id"
+      ],
+      "parent": "empresa",
+      "ref_columns": [
+        "id_empresa"
+      ],
+      "constraint": "compra_tenant_id_fkey",
+      "definition": "FOREIGN KEY (tenant_id) REFERENCES empresa(id_empresa)",
+      "reason": "Pertenencia empresarial indicada por tenant_id FK; enlace repetitivo omitido."
+    },
+    {
+      "child": "detalle_compra",
+      "columns": [
+        "tenant_id"
+      ],
+      "parent": "empresa",
+      "ref_columns": [
+        "id_empresa"
+      ],
+      "constraint": "detalle_compra_tenant_id_fkey",
+      "definition": "FOREIGN KEY (tenant_id) REFERENCES empresa(id_empresa)",
+      "reason": "Pertenencia empresarial indicada por tenant_id FK; enlace repetitivo omitido."
+    },
+    {
+      "child": "inventario",
+      "columns": [
+        "tenant_id"
+      ],
+      "parent": "empresa",
+      "ref_columns": [
+        "id_empresa"
+      ],
+      "constraint": "inventario_tenant_id_fkey",
+      "definition": "FOREIGN KEY (tenant_id) REFERENCES empresa(id_empresa)",
+      "reason": "Pertenencia empresarial indicada por tenant_id FK; enlace repetitivo omitido."
+    },
+    {
+      "child": "movimiento_inventario",
+      "columns": [
+        "tenant_id"
+      ],
+      "parent": "empresa",
+      "ref_columns": [
+        "id_empresa"
+      ],
+      "constraint": "movimiento_inventario_tenant_id_fkey",
+      "definition": "FOREIGN KEY (tenant_id) REFERENCES empresa(id_empresa)",
+      "reason": "Pertenencia empresarial indicada por tenant_id FK; enlace repetitivo omitido."
+    },
+    {
+      "child": "reserva",
+      "columns": [
+        "tenant_id"
+      ],
+      "parent": "empresa",
+      "ref_columns": [
+        "id_empresa"
+      ],
+      "constraint": "reserva_tenant_id_fkey",
+      "definition": "FOREIGN KEY (tenant_id) REFERENCES empresa(id_empresa)",
+      "reason": "Pertenencia empresarial indicada por tenant_id FK; enlace repetitivo omitido."
+    },
+    {
+      "child": "detalle_reserva",
+      "columns": [
+        "tenant_id"
+      ],
+      "parent": "empresa",
+      "ref_columns": [
+        "id_empresa"
+      ],
+      "constraint": "detalle_reserva_tenant_id_fkey",
+      "definition": "FOREIGN KEY (tenant_id) REFERENCES empresa(id_empresa)",
+      "reason": "Pertenencia empresarial indicada por tenant_id FK; enlace repetitivo omitido."
+    },
+    {
+      "child": "retencion",
+      "columns": [
+        "tenant_id"
+      ],
+      "parent": "empresa",
+      "ref_columns": [
+        "id_empresa"
+      ],
+      "constraint": "retencion_tenant_id_fkey",
+      "definition": "FOREIGN KEY (tenant_id) REFERENCES empresa(id_empresa)",
+      "reason": "Pertenencia empresarial indicada por tenant_id FK; enlace repetitivo omitido."
+    },
+    {
+      "child": "venta",
+      "columns": [
+        "tenant_id"
+      ],
+      "parent": "empresa",
+      "ref_columns": [
+        "id_empresa"
+      ],
+      "constraint": "venta_tenant_id_fkey",
+      "definition": "FOREIGN KEY (tenant_id) REFERENCES empresa(id_empresa)",
+      "reason": "Pertenencia empresarial indicada por tenant_id FK; enlace repetitivo omitido."
+    },
+    {
+      "child": "detalle_venta",
+      "columns": [
+        "tenant_id"
+      ],
+      "parent": "empresa",
+      "ref_columns": [
+        "id_empresa"
+      ],
+      "constraint": "detalle_venta_tenant_id_fkey",
+      "definition": "FOREIGN KEY (tenant_id) REFERENCES empresa(id_empresa)",
+      "reason": "Pertenencia empresarial indicada por tenant_id FK; enlace repetitivo omitido."
+    },
+    {
+      "child": "pago_transaccion",
+      "columns": [
+        "tenant_id"
+      ],
+      "parent": "empresa",
+      "ref_columns": [
+        "id_empresa"
+      ],
+      "constraint": "pago_transaccion_tenant_id_fkey",
+      "definition": "FOREIGN KEY (tenant_id) REFERENCES empresa(id_empresa)",
+      "reason": "Pertenencia empresarial indicada por tenant_id FK; enlace repetitivo omitido."
+    },
+    {
+      "child": "comprobante",
+      "columns": [
+        "tenant_id"
+      ],
+      "parent": "empresa",
+      "ref_columns": [
+        "id_empresa"
+      ],
+      "constraint": "comprobante_tenant_id_fkey",
+      "definition": "FOREIGN KEY (tenant_id) REFERENCES empresa(id_empresa)",
+      "reason": "Pertenencia empresarial indicada por tenant_id FK; enlace repetitivo omitido."
+    },
+    {
+      "child": "cambio",
+      "columns": [
+        "tenant_id"
+      ],
+      "parent": "empresa",
+      "ref_columns": [
+        "id_empresa"
+      ],
+      "constraint": "cambio_tenant_id_fkey",
+      "definition": "FOREIGN KEY (tenant_id) REFERENCES empresa(id_empresa)",
+      "reason": "Pertenencia empresarial indicada por tenant_id FK; enlace repetitivo omitido."
+    },
+    {
+      "child": "ajuste_monetario",
+      "columns": [
+        "tenant_id"
+      ],
+      "parent": "empresa",
+      "ref_columns": [
+        "id_empresa"
+      ],
+      "constraint": "ajuste_monetario_tenant_id_fkey",
+      "definition": "FOREIGN KEY (tenant_id) REFERENCES empresa(id_empresa)",
+      "reason": "Pertenencia empresarial indicada por tenant_id FK; enlace repetitivo omitido."
+    },
+    {
+      "child": "notificacion",
+      "columns": [
+        "tenant_id"
+      ],
+      "parent": "empresa",
+      "ref_columns": [
+        "id_empresa"
+      ],
+      "constraint": "notificacion_tenant_id_fkey",
+      "definition": "FOREIGN KEY (tenant_id) REFERENCES empresa(id_empresa)",
+      "reason": "Pertenencia empresarial indicada por tenant_id FK; enlace repetitivo omitido."
+    },
+    {
+      "child": "reporte_resultado",
+      "columns": [
+        "tenant_id"
+      ],
+      "parent": "empresa",
+      "ref_columns": [
+        "id_empresa"
+      ],
+      "constraint": "reporte_resultado_tenant_id_fkey",
+      "definition": "FOREIGN KEY (tenant_id) REFERENCES empresa(id_empresa)",
+      "reason": "Pertenencia empresarial indicada por tenant_id FK; enlace repetitivo omitido."
+    }
+  ],
+  "source_foreign_keys": [
+    {
+      "child": "suscripcion",
+      "columns": [
+        "id_plan"
+      ],
+      "parent": "plan",
+      "ref_columns": [
+        "id_plan"
+      ],
+      "constraint": "suscripcion_id_plan_fkey",
+      "definition": "FOREIGN KEY (id_plan) REFERENCES plan(id_plan)"
+    },
+    {
+      "child": "suscripcion",
+      "columns": [
+        "tenant_id"
+      ],
+      "parent": "empresa",
+      "ref_columns": [
+        "id_empresa"
+      ],
+      "constraint": "suscripcion_tenant_id_fkey",
+      "definition": "FOREIGN KEY (tenant_id) REFERENCES empresa(id_empresa)"
+    },
+    {
+      "child": "rol",
+      "columns": [
+        "tenant_id"
+      ],
+      "parent": "empresa",
+      "ref_columns": [
+        "id_empresa"
+      ],
+      "constraint": "rol_tenant_id_fkey",
+      "definition": "FOREIGN KEY (tenant_id) REFERENCES empresa(id_empresa)"
+    },
+    {
+      "child": "usuario",
+      "columns": [
+        "tenant_id",
+        "id_role"
+      ],
+      "parent": "rol",
+      "ref_columns": [
+        "tenant_id",
+        "id_rol"
+      ],
+      "constraint": "tenant_usuario_id_role_fkey",
+      "definition": "FOREIGN KEY (tenant_id, id_role) REFERENCES rol(tenant_id, id_rol)"
+    },
+    {
+      "child": "usuario",
+      "columns": [
+        "account_id"
+      ],
+      "parent": "cuenta_global",
+      "ref_columns": [
+        "id"
+      ],
+      "constraint": "usuario_account_id_fkey",
+      "definition": "FOREIGN KEY (account_id) REFERENCES cuenta_global(id)"
+    },
+    {
+      "child": "usuario",
+      "columns": [
+        "id_role"
+      ],
+      "parent": "rol",
+      "ref_columns": [
+        "id_rol"
+      ],
+      "constraint": "usuario_id_role_fkey",
+      "definition": "FOREIGN KEY (id_role) REFERENCES rol(id_rol) ON DELETE RESTRICT"
+    },
+    {
+      "child": "usuario",
+      "columns": [
+        "tenant_id"
+      ],
+      "parent": "empresa",
+      "ref_columns": [
+        "id_empresa"
+      ],
+      "constraint": "usuario_tenant_id_fkey",
+      "definition": "FOREIGN KEY (tenant_id) REFERENCES empresa(id_empresa)"
+    },
+    {
+      "child": "rol_permiso",
+      "columns": [
+        "id_permiso"
+      ],
+      "parent": "permiso",
+      "ref_columns": [
+        "id_permiso"
+      ],
+      "constraint": "rol_permiso_id_permiso_fkey",
+      "definition": "FOREIGN KEY (id_permiso) REFERENCES permiso(id_permiso) ON DELETE CASCADE"
+    },
+    {
+      "child": "rol_permiso",
+      "columns": [
+        "id_rol"
+      ],
+      "parent": "rol",
+      "ref_columns": [
+        "id_rol"
+      ],
+      "constraint": "rol_permiso_id_rol_fkey",
+      "definition": "FOREIGN KEY (id_rol) REFERENCES rol(id_rol) ON DELETE CASCADE"
+    },
+    {
+      "child": "rol_permiso",
+      "columns": [
+        "tenant_id"
+      ],
+      "parent": "empresa",
+      "ref_columns": [
+        "id_empresa"
+      ],
+      "constraint": "rol_permiso_tenant_id_fkey",
+      "definition": "FOREIGN KEY (tenant_id) REFERENCES empresa(id_empresa)"
+    },
+    {
+      "child": "rol_permiso",
+      "columns": [
+        "tenant_id",
+        "id_rol"
+      ],
+      "parent": "rol",
+      "ref_columns": [
+        "tenant_id",
+        "id_rol"
+      ],
+      "constraint": "tenant_rol_permiso_id_rol_fkey",
+      "definition": "FOREIGN KEY (tenant_id, id_rol) REFERENCES rol(tenant_id, id_rol)"
+    },
+    {
+      "child": "usuario_sucursal",
+      "columns": [
+        "tenant_id"
+      ],
+      "parent": "empresa",
+      "ref_columns": [
+        "id_empresa"
+      ],
+      "constraint": "usuario_sucursal_tenant_id_fkey",
+      "definition": "FOREIGN KEY (tenant_id) REFERENCES empresa(id_empresa)"
+    },
+    {
+      "child": "usuario_sucursal",
+      "columns": [
+        "tenant_id",
+        "id_sucursal"
+      ],
+      "parent": "sucursal",
+      "ref_columns": [
+        "tenant_id",
+        "id_sucursal"
+      ],
+      "constraint": "usuario_sucursal_tenant_id_id_sucursal_fkey",
+      "definition": "FOREIGN KEY (tenant_id, id_sucursal) REFERENCES sucursal(tenant_id, id_sucursal)"
+    },
+    {
+      "child": "usuario_sucursal",
+      "columns": [
+        "tenant_id",
+        "id_usuario"
+      ],
+      "parent": "usuario",
+      "ref_columns": [
+        "tenant_id",
+        "id_usuario"
+      ],
+      "constraint": "usuario_sucursal_tenant_id_id_usuario_fkey",
+      "definition": "FOREIGN KEY (tenant_id, id_usuario) REFERENCES usuario(tenant_id, id_usuario)"
+    },
+    {
+      "child": "ciudad",
+      "columns": [
+        "tenant_id"
+      ],
+      "parent": "empresa",
+      "ref_columns": [
+        "id_empresa"
+      ],
+      "constraint": "ciudad_tenant_id_fkey",
+      "definition": "FOREIGN KEY (tenant_id) REFERENCES empresa(id_empresa)"
+    },
+    {
+      "child": "sucursal",
+      "columns": [
+        "id_ciudad"
+      ],
+      "parent": "ciudad",
+      "ref_columns": [
+        "id_ciudad"
+      ],
+      "constraint": "sucursal_id_ciudad_fkey",
+      "definition": "FOREIGN KEY (id_ciudad) REFERENCES ciudad(id_ciudad) ON DELETE RESTRICT"
+    },
+    {
+      "child": "sucursal",
+      "columns": [
+        "id_encargado"
+      ],
+      "parent": "usuario",
+      "ref_columns": [
+        "id_usuario"
+      ],
+      "constraint": "sucursal_id_encargado_fkey",
+      "definition": "FOREIGN KEY (id_encargado) REFERENCES usuario(id_usuario) ON DELETE SET NULL"
+    },
+    {
+      "child": "sucursal",
+      "columns": [
+        "tenant_id"
+      ],
+      "parent": "empresa",
+      "ref_columns": [
+        "id_empresa"
+      ],
+      "constraint": "sucursal_tenant_id_fkey",
+      "definition": "FOREIGN KEY (tenant_id) REFERENCES empresa(id_empresa)"
+    },
+    {
+      "child": "sucursal",
+      "columns": [
+        "tenant_id",
+        "id_ciudad"
+      ],
+      "parent": "ciudad",
+      "ref_columns": [
+        "tenant_id",
+        "id_ciudad"
+      ],
+      "constraint": "tenant_sucursal_id_ciudad_fkey",
+      "definition": "FOREIGN KEY (tenant_id, id_ciudad) REFERENCES ciudad(tenant_id, id_ciudad)"
+    },
+    {
+      "child": "sucursal",
+      "columns": [
+        "tenant_id",
+        "id_encargado"
+      ],
+      "parent": "usuario",
+      "ref_columns": [
+        "tenant_id",
+        "id_usuario"
+      ],
+      "constraint": "tenant_sucursal_id_encargado_fkey",
+      "definition": "FOREIGN KEY (tenant_id, id_encargado) REFERENCES usuario(tenant_id, id_usuario)"
+    },
+    {
+      "child": "cliente",
+      "columns": [
+        "tenant_id"
+      ],
+      "parent": "empresa",
+      "ref_columns": [
+        "id_empresa"
+      ],
+      "constraint": "cliente_tenant_id_fkey",
+      "definition": "FOREIGN KEY (tenant_id) REFERENCES empresa(id_empresa)"
+    },
+    {
+      "child": "categoria",
+      "columns": [
+        "id_categoria_padre"
+      ],
+      "parent": "categoria",
+      "ref_columns": [
+        "id_categoria"
+      ],
+      "constraint": "categoria_id_categoria_padre_fkey",
+      "definition": "FOREIGN KEY (id_categoria_padre) REFERENCES categoria(id_categoria) ON DELETE SET NULL"
+    },
+    {
+      "child": "categoria",
+      "columns": [
+        "tenant_id"
+      ],
+      "parent": "empresa",
+      "ref_columns": [
+        "id_empresa"
+      ],
+      "constraint": "categoria_tenant_id_fkey",
+      "definition": "FOREIGN KEY (tenant_id) REFERENCES empresa(id_empresa)"
+    },
+    {
+      "child": "categoria",
+      "columns": [
+        "tenant_id",
+        "id_categoria_padre"
+      ],
+      "parent": "categoria",
+      "ref_columns": [
+        "tenant_id",
+        "id_categoria"
+      ],
+      "constraint": "tenant_categoria_id_categoria_padre_fkey",
+      "definition": "FOREIGN KEY (tenant_id, id_categoria_padre) REFERENCES categoria(tenant_id, id_categoria)"
+    },
+    {
+      "child": "temporada",
+      "columns": [
+        "tenant_id"
+      ],
+      "parent": "empresa",
+      "ref_columns": [
+        "id_empresa"
+      ],
+      "constraint": "temporada_tenant_id_fkey",
+      "definition": "FOREIGN KEY (tenant_id) REFERENCES empresa(id_empresa)"
+    },
+    {
+      "child": "prenda",
+      "columns": [
+        "id_categoria"
+      ],
+      "parent": "categoria",
+      "ref_columns": [
+        "id_categoria"
+      ],
+      "constraint": "prenda_id_categoria_fkey",
+      "definition": "FOREIGN KEY (id_categoria) REFERENCES categoria(id_categoria) ON DELETE RESTRICT"
+    },
+    {
+      "child": "prenda",
+      "columns": [
+        "id_temporada"
+      ],
+      "parent": "temporada",
+      "ref_columns": [
+        "id_temporada"
+      ],
+      "constraint": "prenda_id_temporada_fkey",
+      "definition": "FOREIGN KEY (id_temporada) REFERENCES temporada(id_temporada) ON DELETE SET NULL"
+    },
+    {
+      "child": "prenda",
+      "columns": [
+        "tenant_id"
+      ],
+      "parent": "empresa",
+      "ref_columns": [
+        "id_empresa"
+      ],
+      "constraint": "prenda_tenant_id_fkey",
+      "definition": "FOREIGN KEY (tenant_id) REFERENCES empresa(id_empresa)"
+    },
+    {
+      "child": "prenda",
+      "columns": [
+        "tenant_id",
+        "id_categoria"
+      ],
+      "parent": "categoria",
+      "ref_columns": [
+        "tenant_id",
+        "id_categoria"
+      ],
+      "constraint": "tenant_prenda_id_categoria_fkey",
+      "definition": "FOREIGN KEY (tenant_id, id_categoria) REFERENCES categoria(tenant_id, id_categoria)"
+    },
+    {
+      "child": "prenda",
+      "columns": [
+        "tenant_id",
+        "id_temporada"
+      ],
+      "parent": "temporada",
+      "ref_columns": [
+        "tenant_id",
+        "id_temporada"
+      ],
+      "constraint": "tenant_prenda_id_temporada_fkey",
+      "definition": "FOREIGN KEY (tenant_id, id_temporada) REFERENCES temporada(tenant_id, id_temporada)"
+    },
+    {
+      "child": "imagen_prenda",
+      "columns": [
+        "id_prenda"
+      ],
+      "parent": "prenda",
+      "ref_columns": [
+        "id_prenda"
+      ],
+      "constraint": "imagen_prenda_id_prenda_fkey",
+      "definition": "FOREIGN KEY (id_prenda) REFERENCES prenda(id_prenda) ON DELETE CASCADE"
+    },
+    {
+      "child": "imagen_prenda",
+      "columns": [
+        "tenant_id"
+      ],
+      "parent": "empresa",
+      "ref_columns": [
+        "id_empresa"
+      ],
+      "constraint": "imagen_prenda_tenant_id_fkey",
+      "definition": "FOREIGN KEY (tenant_id) REFERENCES empresa(id_empresa)"
+    },
+    {
+      "child": "imagen_prenda",
+      "columns": [
+        "tenant_id",
+        "id_prenda"
+      ],
+      "parent": "prenda",
+      "ref_columns": [
+        "tenant_id",
+        "id_prenda"
+      ],
+      "constraint": "tenant_imagen_prenda_id_prenda_fkey",
+      "definition": "FOREIGN KEY (tenant_id, id_prenda) REFERENCES prenda(tenant_id, id_prenda)"
+    },
+    {
+      "child": "talla",
+      "columns": [
+        "tenant_id"
+      ],
+      "parent": "empresa",
+      "ref_columns": [
+        "id_empresa"
+      ],
+      "constraint": "talla_tenant_id_fkey",
+      "definition": "FOREIGN KEY (tenant_id) REFERENCES empresa(id_empresa)"
+    },
+    {
+      "child": "color",
+      "columns": [
+        "tenant_id"
+      ],
+      "parent": "empresa",
+      "ref_columns": [
+        "id_empresa"
+      ],
+      "constraint": "color_tenant_id_fkey",
+      "definition": "FOREIGN KEY (tenant_id) REFERENCES empresa(id_empresa)"
+    },
+    {
+      "child": "variante_prenda",
+      "columns": [
+        "tenant_id",
+        "id_color"
+      ],
+      "parent": "color",
+      "ref_columns": [
+        "tenant_id",
+        "id_color"
+      ],
+      "constraint": "tenant_variante_prenda_id_color_fkey",
+      "definition": "FOREIGN KEY (tenant_id, id_color) REFERENCES color(tenant_id, id_color)"
+    },
+    {
+      "child": "variante_prenda",
+      "columns": [
+        "tenant_id",
+        "id_prenda"
+      ],
+      "parent": "prenda",
+      "ref_columns": [
+        "tenant_id",
+        "id_prenda"
+      ],
+      "constraint": "tenant_variante_prenda_id_prenda_fkey",
+      "definition": "FOREIGN KEY (tenant_id, id_prenda) REFERENCES prenda(tenant_id, id_prenda)"
+    },
+    {
+      "child": "variante_prenda",
+      "columns": [
+        "tenant_id",
+        "id_talla"
+      ],
+      "parent": "talla",
+      "ref_columns": [
+        "tenant_id",
+        "id_talla"
+      ],
+      "constraint": "tenant_variante_prenda_id_talla_fkey",
+      "definition": "FOREIGN KEY (tenant_id, id_talla) REFERENCES talla(tenant_id, id_talla)"
+    },
+    {
+      "child": "variante_prenda",
+      "columns": [
+        "id_color"
+      ],
+      "parent": "color",
+      "ref_columns": [
+        "id_color"
+      ],
+      "constraint": "variante_prenda_id_color_fkey",
+      "definition": "FOREIGN KEY (id_color) REFERENCES color(id_color) ON DELETE RESTRICT"
+    },
+    {
+      "child": "variante_prenda",
+      "columns": [
+        "id_prenda"
+      ],
+      "parent": "prenda",
+      "ref_columns": [
+        "id_prenda"
+      ],
+      "constraint": "variante_prenda_id_prenda_fkey",
+      "definition": "FOREIGN KEY (id_prenda) REFERENCES prenda(id_prenda) ON DELETE CASCADE"
+    },
+    {
+      "child": "variante_prenda",
+      "columns": [
+        "id_talla"
+      ],
+      "parent": "talla",
+      "ref_columns": [
+        "id_talla"
+      ],
+      "constraint": "variante_prenda_id_talla_fkey",
+      "definition": "FOREIGN KEY (id_talla) REFERENCES talla(id_talla) ON DELETE RESTRICT"
+    },
+    {
+      "child": "variante_prenda",
+      "columns": [
+        "tenant_id"
+      ],
+      "parent": "empresa",
+      "ref_columns": [
+        "id_empresa"
+      ],
+      "constraint": "variante_prenda_tenant_id_fkey",
+      "definition": "FOREIGN KEY (tenant_id) REFERENCES empresa(id_empresa)"
+    },
+    {
+      "child": "variante_color",
+      "columns": [
+        "tenant_id"
+      ],
+      "parent": "empresa",
+      "ref_columns": [
+        "id_empresa"
+      ],
+      "constraint": "variante_color_tenant_id_fkey",
+      "definition": "FOREIGN KEY (tenant_id) REFERENCES empresa(id_empresa)"
+    },
+    {
+      "child": "variante_color",
+      "columns": [
+        "tenant_id",
+        "id_color"
+      ],
+      "parent": "color",
+      "ref_columns": [
+        "tenant_id",
+        "id_color"
+      ],
+      "constraint": "variante_color_tenant_id_id_color_fkey",
+      "definition": "FOREIGN KEY (tenant_id, id_color) REFERENCES color(tenant_id, id_color)"
+    },
+    {
+      "child": "variante_color",
+      "columns": [
+        "tenant_id",
+        "id_variante_prenda"
+      ],
+      "parent": "variante_prenda",
+      "ref_columns": [
+        "tenant_id",
+        "id_variante_prenda"
+      ],
+      "constraint": "variante_color_tenant_id_id_variante_prenda_fkey",
+      "definition": "FOREIGN KEY (tenant_id, id_variante_prenda) REFERENCES variante_prenda(tenant_id, id_variante_prenda)"
+    },
+    {
+      "child": "proveedor",
+      "columns": [
+        "tenant_id"
+      ],
+      "parent": "empresa",
+      "ref_columns": [
+        "id_empresa"
+      ],
+      "constraint": "proveedor_tenant_id_fkey",
+      "definition": "FOREIGN KEY (tenant_id) REFERENCES empresa(id_empresa)"
+    },
+    {
+      "child": "compra",
+      "columns": [
+        "id_proveedor"
+      ],
+      "parent": "proveedor",
+      "ref_columns": [
+        "id_proveedor"
+      ],
+      "constraint": "compra_id_proveedor_fkey",
+      "definition": "FOREIGN KEY (id_proveedor) REFERENCES proveedor(id_proveedor) ON DELETE RESTRICT"
+    },
+    {
+      "child": "compra",
+      "columns": [
+        "id_sucursal"
+      ],
+      "parent": "sucursal",
+      "ref_columns": [
+        "id_sucursal"
+      ],
+      "constraint": "compra_id_sucursal_fkey",
+      "definition": "FOREIGN KEY (id_sucursal) REFERENCES sucursal(id_sucursal) ON DELETE RESTRICT"
+    },
+    {
+      "child": "compra",
+      "columns": [
+        "id_usuario"
+      ],
+      "parent": "usuario",
+      "ref_columns": [
+        "id_usuario"
+      ],
+      "constraint": "compra_id_usuario_fkey",
+      "definition": "FOREIGN KEY (id_usuario) REFERENCES usuario(id_usuario) ON DELETE RESTRICT"
+    },
+    {
+      "child": "compra",
+      "columns": [
+        "tenant_id"
+      ],
+      "parent": "empresa",
+      "ref_columns": [
+        "id_empresa"
+      ],
+      "constraint": "compra_tenant_id_fkey",
+      "definition": "FOREIGN KEY (tenant_id) REFERENCES empresa(id_empresa)"
+    },
+    {
+      "child": "compra",
+      "columns": [
+        "tenant_id",
+        "id_proveedor"
+      ],
+      "parent": "proveedor",
+      "ref_columns": [
+        "tenant_id",
+        "id_proveedor"
+      ],
+      "constraint": "tenant_compra_id_proveedor_fkey",
+      "definition": "FOREIGN KEY (tenant_id, id_proveedor) REFERENCES proveedor(tenant_id, id_proveedor)"
+    },
+    {
+      "child": "compra",
+      "columns": [
+        "tenant_id",
+        "id_sucursal"
+      ],
+      "parent": "sucursal",
+      "ref_columns": [
+        "tenant_id",
+        "id_sucursal"
+      ],
+      "constraint": "tenant_compra_id_sucursal_fkey",
+      "definition": "FOREIGN KEY (tenant_id, id_sucursal) REFERENCES sucursal(tenant_id, id_sucursal)"
+    },
+    {
+      "child": "compra",
+      "columns": [
+        "tenant_id",
+        "id_usuario"
+      ],
+      "parent": "usuario",
+      "ref_columns": [
+        "tenant_id",
+        "id_usuario"
+      ],
+      "constraint": "tenant_compra_id_usuario_fkey",
+      "definition": "FOREIGN KEY (tenant_id, id_usuario) REFERENCES usuario(tenant_id, id_usuario)"
+    },
+    {
+      "child": "detalle_compra",
+      "columns": [
+        "id_compra"
+      ],
+      "parent": "compra",
+      "ref_columns": [
+        "id_compra"
+      ],
+      "constraint": "detalle_compra_id_compra_fkey",
+      "definition": "FOREIGN KEY (id_compra) REFERENCES compra(id_compra) ON DELETE CASCADE"
+    },
+    {
+      "child": "detalle_compra",
+      "columns": [
+        "id_variante_prenda"
+      ],
+      "parent": "variante_prenda",
+      "ref_columns": [
+        "id_variante_prenda"
+      ],
+      "constraint": "detalle_compra_id_variante_prenda_fkey",
+      "definition": "FOREIGN KEY (id_variante_prenda) REFERENCES variante_prenda(id_variante_prenda) ON DELETE RESTRICT"
+    },
+    {
+      "child": "detalle_compra",
+      "columns": [
+        "tenant_id"
+      ],
+      "parent": "empresa",
+      "ref_columns": [
+        "id_empresa"
+      ],
+      "constraint": "detalle_compra_tenant_id_fkey",
+      "definition": "FOREIGN KEY (tenant_id) REFERENCES empresa(id_empresa)"
+    },
+    {
+      "child": "detalle_compra",
+      "columns": [
+        "tenant_id",
+        "id_compra"
+      ],
+      "parent": "compra",
+      "ref_columns": [
+        "tenant_id",
+        "id_compra"
+      ],
+      "constraint": "tenant_detalle_compra_id_compra_fkey",
+      "definition": "FOREIGN KEY (tenant_id, id_compra) REFERENCES compra(tenant_id, id_compra)"
+    },
+    {
+      "child": "detalle_compra",
+      "columns": [
+        "tenant_id",
+        "id_variante_prenda"
+      ],
+      "parent": "variante_prenda",
+      "ref_columns": [
+        "tenant_id",
+        "id_variante_prenda"
+      ],
+      "constraint": "tenant_detalle_compra_id_variante_prenda_fkey",
+      "definition": "FOREIGN KEY (tenant_id, id_variante_prenda) REFERENCES variante_prenda(tenant_id, id_variante_prenda)"
+    },
+    {
+      "child": "inventario",
+      "columns": [
+        "id_sucursal"
+      ],
+      "parent": "sucursal",
+      "ref_columns": [
+        "id_sucursal"
+      ],
+      "constraint": "inventario_id_sucursal_fkey",
+      "definition": "FOREIGN KEY (id_sucursal) REFERENCES sucursal(id_sucursal) ON DELETE RESTRICT"
+    },
+    {
+      "child": "inventario",
+      "columns": [
+        "id_variante_prenda"
+      ],
+      "parent": "variante_prenda",
+      "ref_columns": [
+        "id_variante_prenda"
+      ],
+      "constraint": "inventario_id_variante_prenda_fkey",
+      "definition": "FOREIGN KEY (id_variante_prenda) REFERENCES variante_prenda(id_variante_prenda) ON DELETE RESTRICT"
+    },
+    {
+      "child": "inventario",
+      "columns": [
+        "tenant_id"
+      ],
+      "parent": "empresa",
+      "ref_columns": [
+        "id_empresa"
+      ],
+      "constraint": "inventario_tenant_id_fkey",
+      "definition": "FOREIGN KEY (tenant_id) REFERENCES empresa(id_empresa)"
+    },
+    {
+      "child": "inventario",
+      "columns": [
+        "tenant_id",
+        "id_sucursal"
+      ],
+      "parent": "sucursal",
+      "ref_columns": [
+        "tenant_id",
+        "id_sucursal"
+      ],
+      "constraint": "tenant_inventario_id_sucursal_fkey",
+      "definition": "FOREIGN KEY (tenant_id, id_sucursal) REFERENCES sucursal(tenant_id, id_sucursal)"
+    },
+    {
+      "child": "inventario",
+      "columns": [
+        "tenant_id",
+        "id_variante_prenda"
+      ],
+      "parent": "variante_prenda",
+      "ref_columns": [
+        "tenant_id",
+        "id_variante_prenda"
+      ],
+      "constraint": "tenant_inventario_id_variante_prenda_fkey",
+      "definition": "FOREIGN KEY (tenant_id, id_variante_prenda) REFERENCES variante_prenda(tenant_id, id_variante_prenda)"
+    },
+    {
+      "child": "movimiento_inventario",
+      "columns": [
+        "id_sucursal"
+      ],
+      "parent": "sucursal",
+      "ref_columns": [
+        "id_sucursal"
+      ],
+      "constraint": "movimiento_inventario_id_sucursal_fkey",
+      "definition": "FOREIGN KEY (id_sucursal) REFERENCES sucursal(id_sucursal) ON DELETE RESTRICT"
+    },
+    {
+      "child": "movimiento_inventario",
+      "columns": [
+        "id_usuario"
+      ],
+      "parent": "usuario",
+      "ref_columns": [
+        "id_usuario"
+      ],
+      "constraint": "movimiento_inventario_id_usuario_fkey",
+      "definition": "FOREIGN KEY (id_usuario) REFERENCES usuario(id_usuario) ON DELETE RESTRICT"
+    },
+    {
+      "child": "movimiento_inventario",
+      "columns": [
+        "id_variante_prenda"
+      ],
+      "parent": "variante_prenda",
+      "ref_columns": [
+        "id_variante_prenda"
+      ],
+      "constraint": "movimiento_inventario_id_variante_prenda_fkey",
+      "definition": "FOREIGN KEY (id_variante_prenda) REFERENCES variante_prenda(id_variante_prenda) ON DELETE RESTRICT"
+    },
+    {
+      "child": "movimiento_inventario",
+      "columns": [
+        "tenant_id"
+      ],
+      "parent": "empresa",
+      "ref_columns": [
+        "id_empresa"
+      ],
+      "constraint": "movimiento_inventario_tenant_id_fkey",
+      "definition": "FOREIGN KEY (tenant_id) REFERENCES empresa(id_empresa)"
+    },
+    {
+      "child": "movimiento_inventario",
+      "columns": [
+        "tenant_id",
+        "id_sucursal"
+      ],
+      "parent": "sucursal",
+      "ref_columns": [
+        "tenant_id",
+        "id_sucursal"
+      ],
+      "constraint": "tenant_movimiento_inventario_id_sucursal_fkey",
+      "definition": "FOREIGN KEY (tenant_id, id_sucursal) REFERENCES sucursal(tenant_id, id_sucursal)"
+    },
+    {
+      "child": "movimiento_inventario",
+      "columns": [
+        "tenant_id",
+        "id_usuario"
+      ],
+      "parent": "usuario",
+      "ref_columns": [
+        "tenant_id",
+        "id_usuario"
+      ],
+      "constraint": "tenant_movimiento_inventario_id_usuario_fkey",
+      "definition": "FOREIGN KEY (tenant_id, id_usuario) REFERENCES usuario(tenant_id, id_usuario)"
+    },
+    {
+      "child": "movimiento_inventario",
+      "columns": [
+        "tenant_id",
+        "id_variante_prenda"
+      ],
+      "parent": "variante_prenda",
+      "ref_columns": [
+        "tenant_id",
+        "id_variante_prenda"
+      ],
+      "constraint": "tenant_movimiento_inventario_id_variante_prenda_fkey",
+      "definition": "FOREIGN KEY (tenant_id, id_variante_prenda) REFERENCES variante_prenda(tenant_id, id_variante_prenda)"
+    },
+    {
+      "child": "reserva",
+      "columns": [
+        "id_cliente"
+      ],
+      "parent": "cliente",
+      "ref_columns": [
+        "id_cliente"
+      ],
+      "constraint": "reserva_id_cliente_fkey",
+      "definition": "FOREIGN KEY (id_cliente) REFERENCES cliente(id_cliente) ON DELETE RESTRICT"
+    },
+    {
+      "child": "reserva",
+      "columns": [
+        "id_sucursal"
+      ],
+      "parent": "sucursal",
+      "ref_columns": [
+        "id_sucursal"
+      ],
+      "constraint": "reserva_id_sucursal_fkey",
+      "definition": "FOREIGN KEY (id_sucursal) REFERENCES sucursal(id_sucursal) ON DELETE RESTRICT"
+    },
+    {
+      "child": "reserva",
+      "columns": [
+        "tenant_id"
+      ],
+      "parent": "empresa",
+      "ref_columns": [
+        "id_empresa"
+      ],
+      "constraint": "reserva_tenant_id_fkey",
+      "definition": "FOREIGN KEY (tenant_id) REFERENCES empresa(id_empresa)"
+    },
+    {
+      "child": "reserva",
+      "columns": [
+        "tenant_id",
+        "id_cliente"
+      ],
+      "parent": "cliente",
+      "ref_columns": [
+        "tenant_id",
+        "id_cliente"
+      ],
+      "constraint": "tenant_reserva_id_cliente_fkey",
+      "definition": "FOREIGN KEY (tenant_id, id_cliente) REFERENCES cliente(tenant_id, id_cliente)"
+    },
+    {
+      "child": "reserva",
+      "columns": [
+        "tenant_id",
+        "id_sucursal"
+      ],
+      "parent": "sucursal",
+      "ref_columns": [
+        "tenant_id",
+        "id_sucursal"
+      ],
+      "constraint": "tenant_reserva_id_sucursal_fkey",
+      "definition": "FOREIGN KEY (tenant_id, id_sucursal) REFERENCES sucursal(tenant_id, id_sucursal)"
+    },
+    {
+      "child": "detalle_reserva",
+      "columns": [
+        "id_reserva"
+      ],
+      "parent": "reserva",
+      "ref_columns": [
+        "id_reserva"
+      ],
+      "constraint": "detalle_reserva_id_reserva_fkey",
+      "definition": "FOREIGN KEY (id_reserva) REFERENCES reserva(id_reserva) ON DELETE CASCADE"
+    },
+    {
+      "child": "detalle_reserva",
+      "columns": [
+        "id_variante_prenda"
+      ],
+      "parent": "variante_prenda",
+      "ref_columns": [
+        "id_variante_prenda"
+      ],
+      "constraint": "detalle_reserva_id_variante_prenda_fkey",
+      "definition": "FOREIGN KEY (id_variante_prenda) REFERENCES variante_prenda(id_variante_prenda) ON DELETE RESTRICT"
+    },
+    {
+      "child": "detalle_reserva",
+      "columns": [
+        "tenant_id"
+      ],
+      "parent": "empresa",
+      "ref_columns": [
+        "id_empresa"
+      ],
+      "constraint": "detalle_reserva_tenant_id_fkey",
+      "definition": "FOREIGN KEY (tenant_id) REFERENCES empresa(id_empresa)"
+    },
+    {
+      "child": "detalle_reserva",
+      "columns": [
+        "tenant_id",
+        "id_reserva"
+      ],
+      "parent": "reserva",
+      "ref_columns": [
+        "tenant_id",
+        "id_reserva"
+      ],
+      "constraint": "tenant_detalle_reserva_id_reserva_fkey",
+      "definition": "FOREIGN KEY (tenant_id, id_reserva) REFERENCES reserva(tenant_id, id_reserva)"
+    },
+    {
+      "child": "detalle_reserva",
+      "columns": [
+        "tenant_id",
+        "id_variante_prenda"
+      ],
+      "parent": "variante_prenda",
+      "ref_columns": [
+        "tenant_id",
+        "id_variante_prenda"
+      ],
+      "constraint": "tenant_detalle_reserva_id_variante_prenda_fkey",
+      "definition": "FOREIGN KEY (tenant_id, id_variante_prenda) REFERENCES variante_prenda(tenant_id, id_variante_prenda)"
+    },
+    {
+      "child": "retencion",
+      "columns": [
+        "tenant_id"
+      ],
+      "parent": "empresa",
+      "ref_columns": [
+        "id_empresa"
+      ],
+      "constraint": "retencion_tenant_id_fkey",
+      "definition": "FOREIGN KEY (tenant_id) REFERENCES empresa(id_empresa)"
+    },
+    {
+      "child": "retencion",
+      "columns": [
+        "tenant_id",
+        "id_reserva"
+      ],
+      "parent": "reserva",
+      "ref_columns": [
+        "tenant_id",
+        "id_reserva"
+      ],
+      "constraint": "retencion_tenant_id_id_reserva_fkey",
+      "definition": "FOREIGN KEY (tenant_id, id_reserva) REFERENCES reserva(tenant_id, id_reserva)"
+    },
+    {
+      "child": "retencion",
+      "columns": [
+        "tenant_id",
+        "id_sucursal"
+      ],
+      "parent": "sucursal",
+      "ref_columns": [
+        "tenant_id",
+        "id_sucursal"
+      ],
+      "constraint": "retencion_tenant_id_id_sucursal_fkey",
+      "definition": "FOREIGN KEY (tenant_id, id_sucursal) REFERENCES sucursal(tenant_id, id_sucursal)"
+    },
+    {
+      "child": "retencion",
+      "columns": [
+        "tenant_id",
+        "id_variante_prenda"
+      ],
+      "parent": "variante_prenda",
+      "ref_columns": [
+        "tenant_id",
+        "id_variante_prenda"
+      ],
+      "constraint": "retencion_tenant_id_id_variante_prenda_fkey",
+      "definition": "FOREIGN KEY (tenant_id, id_variante_prenda) REFERENCES variante_prenda(tenant_id, id_variante_prenda)"
+    },
+    {
+      "child": "venta",
+      "columns": [
+        "tenant_id",
+        "id_cajero"
+      ],
+      "parent": "usuario",
+      "ref_columns": [
+        "tenant_id",
+        "id_usuario"
+      ],
+      "constraint": "tenant_venta_id_cajero_fkey",
+      "definition": "FOREIGN KEY (tenant_id, id_cajero) REFERENCES usuario(tenant_id, id_usuario)"
+    },
+    {
+      "child": "venta",
+      "columns": [
+        "tenant_id",
+        "id_cliente"
+      ],
+      "parent": "cliente",
+      "ref_columns": [
+        "tenant_id",
+        "id_cliente"
+      ],
+      "constraint": "tenant_venta_id_cliente_fkey",
+      "definition": "FOREIGN KEY (tenant_id, id_cliente) REFERENCES cliente(tenant_id, id_cliente)"
+    },
+    {
+      "child": "venta",
+      "columns": [
+        "tenant_id",
+        "id_reserva"
+      ],
+      "parent": "reserva",
+      "ref_columns": [
+        "tenant_id",
+        "id_reserva"
+      ],
+      "constraint": "tenant_venta_id_reserva_fkey",
+      "definition": "FOREIGN KEY (tenant_id, id_reserva) REFERENCES reserva(tenant_id, id_reserva)"
+    },
+    {
+      "child": "venta",
+      "columns": [
+        "tenant_id",
+        "id_sucursal"
+      ],
+      "parent": "sucursal",
+      "ref_columns": [
+        "tenant_id",
+        "id_sucursal"
+      ],
+      "constraint": "tenant_venta_id_sucursal_fkey",
+      "definition": "FOREIGN KEY (tenant_id, id_sucursal) REFERENCES sucursal(tenant_id, id_sucursal)"
+    },
+    {
+      "child": "venta",
+      "columns": [
+        "id_cajero"
+      ],
+      "parent": "usuario",
+      "ref_columns": [
+        "id_usuario"
+      ],
+      "constraint": "venta_id_cajero_fkey",
+      "definition": "FOREIGN KEY (id_cajero) REFERENCES usuario(id_usuario) ON DELETE RESTRICT"
+    },
+    {
+      "child": "venta",
+      "columns": [
+        "id_cliente"
+      ],
+      "parent": "cliente",
+      "ref_columns": [
+        "id_cliente"
+      ],
+      "constraint": "venta_id_cliente_fkey",
+      "definition": "FOREIGN KEY (id_cliente) REFERENCES cliente(id_cliente) ON DELETE RESTRICT"
+    },
+    {
+      "child": "venta",
+      "columns": [
+        "id_reserva"
+      ],
+      "parent": "reserva",
+      "ref_columns": [
+        "id_reserva"
+      ],
+      "constraint": "venta_id_reserva_fkey",
+      "definition": "FOREIGN KEY (id_reserva) REFERENCES reserva(id_reserva) ON DELETE SET NULL"
+    },
+    {
+      "child": "venta",
+      "columns": [
+        "id_sucursal"
+      ],
+      "parent": "sucursal",
+      "ref_columns": [
+        "id_sucursal"
+      ],
+      "constraint": "venta_id_sucursal_fkey",
+      "definition": "FOREIGN KEY (id_sucursal) REFERENCES sucursal(id_sucursal) ON DELETE RESTRICT"
+    },
+    {
+      "child": "venta",
+      "columns": [
+        "tenant_id"
+      ],
+      "parent": "empresa",
+      "ref_columns": [
+        "id_empresa"
+      ],
+      "constraint": "venta_tenant_id_fkey",
+      "definition": "FOREIGN KEY (tenant_id) REFERENCES empresa(id_empresa)"
+    },
+    {
+      "child": "detalle_venta",
+      "columns": [
+        "id_variante_prenda"
+      ],
+      "parent": "variante_prenda",
+      "ref_columns": [
+        "id_variante_prenda"
+      ],
+      "constraint": "detalle_venta_id_variante_prenda_fkey",
+      "definition": "FOREIGN KEY (id_variante_prenda) REFERENCES variante_prenda(id_variante_prenda) ON DELETE RESTRICT"
+    },
+    {
+      "child": "detalle_venta",
+      "columns": [
+        "id_venta"
+      ],
+      "parent": "venta",
+      "ref_columns": [
+        "id_venta"
+      ],
+      "constraint": "detalle_venta_id_venta_fkey",
+      "definition": "FOREIGN KEY (id_venta) REFERENCES venta(id_venta) ON DELETE CASCADE"
+    },
+    {
+      "child": "detalle_venta",
+      "columns": [
+        "tenant_id"
+      ],
+      "parent": "empresa",
+      "ref_columns": [
+        "id_empresa"
+      ],
+      "constraint": "detalle_venta_tenant_id_fkey",
+      "definition": "FOREIGN KEY (tenant_id) REFERENCES empresa(id_empresa)"
+    },
+    {
+      "child": "detalle_venta",
+      "columns": [
+        "tenant_id",
+        "id_variante_prenda"
+      ],
+      "parent": "variante_prenda",
+      "ref_columns": [
+        "tenant_id",
+        "id_variante_prenda"
+      ],
+      "constraint": "tenant_detalle_venta_id_variante_prenda_fkey",
+      "definition": "FOREIGN KEY (tenant_id, id_variante_prenda) REFERENCES variante_prenda(tenant_id, id_variante_prenda)"
+    },
+    {
+      "child": "detalle_venta",
+      "columns": [
+        "tenant_id",
+        "id_venta"
+      ],
+      "parent": "venta",
+      "ref_columns": [
+        "tenant_id",
+        "id_venta"
+      ],
+      "constraint": "tenant_detalle_venta_id_venta_fkey",
+      "definition": "FOREIGN KEY (tenant_id, id_venta) REFERENCES venta(tenant_id, id_venta)"
+    },
+    {
+      "child": "pago_transaccion",
+      "columns": [
+        "id_venta"
+      ],
+      "parent": "venta",
+      "ref_columns": [
+        "id_venta"
+      ],
+      "constraint": "pago_transaccion_id_venta_fkey",
+      "definition": "FOREIGN KEY (id_venta) REFERENCES venta(id_venta) ON DELETE CASCADE"
+    },
+    {
+      "child": "pago_transaccion",
+      "columns": [
+        "tenant_id"
+      ],
+      "parent": "empresa",
+      "ref_columns": [
+        "id_empresa"
+      ],
+      "constraint": "pago_transaccion_tenant_id_fkey",
+      "definition": "FOREIGN KEY (tenant_id) REFERENCES empresa(id_empresa)"
+    },
+    {
+      "child": "pago_transaccion",
+      "columns": [
+        "tenant_id",
+        "id_reserva"
+      ],
+      "parent": "reserva",
+      "ref_columns": [
+        "tenant_id",
+        "id_reserva"
+      ],
+      "constraint": "payment_reservation_tenant",
+      "definition": "FOREIGN KEY (tenant_id, id_reserva) REFERENCES reserva(tenant_id, id_reserva)"
+    },
+    {
+      "child": "pago_transaccion",
+      "columns": [
+        "tenant_id",
+        "id_venta"
+      ],
+      "parent": "venta",
+      "ref_columns": [
+        "tenant_id",
+        "id_venta"
+      ],
+      "constraint": "tenant_pago_transaccion_id_venta_fkey",
+      "definition": "FOREIGN KEY (tenant_id, id_venta) REFERENCES venta(tenant_id, id_venta)"
+    },
+    {
+      "child": "comprobante",
+      "columns": [
+        "id_venta"
+      ],
+      "parent": "venta",
+      "ref_columns": [
+        "id_venta"
+      ],
+      "constraint": "comprobante_id_venta_fkey",
+      "definition": "FOREIGN KEY (id_venta) REFERENCES venta(id_venta) ON DELETE CASCADE"
+    },
+    {
+      "child": "comprobante",
+      "columns": [
+        "tenant_id"
+      ],
+      "parent": "empresa",
+      "ref_columns": [
+        "id_empresa"
+      ],
+      "constraint": "comprobante_tenant_id_fkey",
+      "definition": "FOREIGN KEY (tenant_id) REFERENCES empresa(id_empresa)"
+    },
+    {
+      "child": "comprobante",
+      "columns": [
+        "tenant_id",
+        "id_venta"
+      ],
+      "parent": "venta",
+      "ref_columns": [
+        "tenant_id",
+        "id_venta"
+      ],
+      "constraint": "tenant_comprobante_id_venta_fkey",
+      "definition": "FOREIGN KEY (tenant_id, id_venta) REFERENCES venta(tenant_id, id_venta)"
+    },
+    {
+      "child": "cambio",
+      "columns": [
+        "tenant_id"
+      ],
+      "parent": "empresa",
+      "ref_columns": [
+        "id_empresa"
+      ],
+      "constraint": "cambio_tenant_id_fkey",
+      "definition": "FOREIGN KEY (tenant_id) REFERENCES empresa(id_empresa)"
+    },
+    {
+      "child": "cambio",
+      "columns": [
+        "tenant_id",
+        "id_cliente"
+      ],
+      "parent": "cliente",
+      "ref_columns": [
+        "tenant_id",
+        "id_cliente"
+      ],
+      "constraint": "cambio_tenant_id_id_cliente_fkey",
+      "definition": "FOREIGN KEY (tenant_id, id_cliente) REFERENCES cliente(tenant_id, id_cliente)"
+    },
+    {
+      "child": "cambio",
+      "columns": [
+        "tenant_id",
+        "id_reserva_reemplazo"
+      ],
+      "parent": "reserva",
+      "ref_columns": [
+        "tenant_id",
+        "id_reserva"
+      ],
+      "constraint": "cambio_tenant_id_id_reserva_reemplazo_fkey",
+      "definition": "FOREIGN KEY (tenant_id, id_reserva_reemplazo) REFERENCES reserva(tenant_id, id_reserva)"
+    },
+    {
+      "child": "cambio",
+      "columns": [
+        "tenant_id",
+        "id_sucursal"
+      ],
+      "parent": "sucursal",
+      "ref_columns": [
+        "tenant_id",
+        "id_sucursal"
+      ],
+      "constraint": "cambio_tenant_id_id_sucursal_fkey",
+      "definition": "FOREIGN KEY (tenant_id, id_sucursal) REFERENCES sucursal(tenant_id, id_sucursal)"
+    },
+    {
+      "child": "cambio",
+      "columns": [
+        "tenant_id",
+        "id_venta",
+        "id_variante_original"
+      ],
+      "parent": "detalle_venta",
+      "ref_columns": [
+        "tenant_id",
+        "id_venta",
+        "id_variante_prenda"
+      ],
+      "constraint": "cambio_tenant_id_id_venta_id_variante_original_fkey",
+      "definition": "FOREIGN KEY (tenant_id, id_venta, id_variante_original) REFERENCES detalle_venta(tenant_id, id_venta, id_variante_prenda)"
+    },
+    {
+      "child": "ajuste_monetario",
+      "columns": [
+        "tenant_id"
+      ],
+      "parent": "empresa",
+      "ref_columns": [
+        "id_empresa"
+      ],
+      "constraint": "ajuste_monetario_tenant_id_fkey",
+      "definition": "FOREIGN KEY (tenant_id) REFERENCES empresa(id_empresa)"
+    },
+    {
+      "child": "ajuste_monetario",
+      "columns": [
+        "tenant_id",
+        "id_cambio"
+      ],
+      "parent": "cambio",
+      "ref_columns": [
+        "tenant_id",
+        "id_cambio"
+      ],
+      "constraint": "ajuste_monetario_tenant_id_id_cambio_fkey",
+      "definition": "FOREIGN KEY (tenant_id, id_cambio) REFERENCES cambio(tenant_id, id_cambio)"
+    },
+    {
+      "child": "notificacion",
+      "columns": [
+        "tenant_id"
+      ],
+      "parent": "empresa",
+      "ref_columns": [
+        "id_empresa"
+      ],
+      "constraint": "notificacion_tenant_id_fkey",
+      "definition": "FOREIGN KEY (tenant_id) REFERENCES empresa(id_empresa)"
+    },
+    {
+      "child": "notificacion",
+      "columns": [
+        "tenant_id",
+        "id_cambio"
+      ],
+      "parent": "cambio",
+      "ref_columns": [
+        "tenant_id",
+        "id_cambio"
+      ],
+      "constraint": "notificacion_tenant_id_id_cambio_fkey",
+      "definition": "FOREIGN KEY (tenant_id, id_cambio) REFERENCES cambio(tenant_id, id_cambio)"
+    },
+    {
+      "child": "notificacion",
+      "columns": [
+        "tenant_id",
+        "id_cliente"
+      ],
+      "parent": "cliente",
+      "ref_columns": [
+        "tenant_id",
+        "id_cliente"
+      ],
+      "constraint": "notificacion_tenant_id_id_cliente_fkey",
+      "definition": "FOREIGN KEY (tenant_id, id_cliente) REFERENCES cliente(tenant_id, id_cliente)"
+    },
+    {
+      "child": "operacion_sync",
+      "columns": [
+        "tenant_id",
+        "author_id"
+      ],
+      "parent": "usuario",
+      "ref_columns": [
+        "tenant_id",
+        "id_usuario"
+      ],
+      "constraint": "operacion_sync_tenant_id_author_id_fkey",
+      "definition": "FOREIGN KEY (tenant_id, author_id) REFERENCES usuario(tenant_id, id_usuario)"
+    },
+    {
+      "child": "operacion_sync",
+      "columns": [
+        "tenant_id",
+        "branch_id"
+      ],
+      "parent": "sucursal",
+      "ref_columns": [
+        "tenant_id",
+        "id_sucursal"
+      ],
+      "constraint": "operacion_sync_tenant_id_branch_id_fkey",
+      "definition": "FOREIGN KEY (tenant_id, branch_id) REFERENCES sucursal(tenant_id, id_sucursal)"
+    },
+    {
+      "child": "operacion_sync",
+      "columns": [
+        "tenant_id"
+      ],
+      "parent": "empresa",
+      "ref_columns": [
+        "id_empresa"
+      ],
+      "constraint": "operacion_sync_tenant_id_fkey",
+      "definition": "FOREIGN KEY (tenant_id) REFERENCES empresa(id_empresa)"
+    },
+    {
+      "child": "operacion_sync",
+      "columns": [
+        "tenant_id",
+        "original_operation"
+      ],
+      "parent": "operacion_sync",
+      "ref_columns": [
+        "tenant_id",
+        "operation_id"
+      ],
+      "constraint": "operacion_sync_tenant_id_original_operation_fkey",
+      "definition": "FOREIGN KEY (tenant_id, original_operation) REFERENCES operacion_sync(tenant_id, operation_id)"
+    },
+    {
+      "child": "operacion_sync",
+      "columns": [
+        "tenant_id",
+        "resolved_by"
+      ],
+      "parent": "usuario",
+      "ref_columns": [
+        "tenant_id",
+        "id_usuario"
+      ],
+      "constraint": "operacion_sync_tenant_id_resolved_by_fkey",
+      "definition": "FOREIGN KEY (tenant_id, resolved_by) REFERENCES usuario(tenant_id, id_usuario)"
+    },
+    {
+      "child": "reporte_resultado",
+      "columns": [
+        "tenant_id",
+        "author_id"
+      ],
+      "parent": "usuario",
+      "ref_columns": [
+        "tenant_id",
+        "id_usuario"
+      ],
+      "constraint": "reporte_resultado_tenant_id_author_id_fkey",
+      "definition": "FOREIGN KEY (tenant_id, author_id) REFERENCES usuario(tenant_id, id_usuario)"
+    },
+    {
+      "child": "reporte_resultado",
+      "columns": [
+        "tenant_id"
+      ],
+      "parent": "empresa",
+      "ref_columns": [
+        "id_empresa"
+      ],
+      "constraint": "reporte_resultado_tenant_id_fkey",
+      "definition": "FOREIGN KEY (tenant_id) REFERENCES empresa(id_empresa)"
+    },
+    {
+      "child": "bitacora",
+      "columns": [
+        "id_usuario"
+      ],
+      "parent": "usuario",
+      "ref_columns": [
+        "id_usuario"
+      ],
+      "constraint": "bitacora_id_usuario_fkey",
+      "definition": "FOREIGN KEY (id_usuario) REFERENCES usuario(id_usuario) ON DELETE SET NULL"
+    },
+    {
+      "child": "bitacora",
+      "columns": [
+        "tenant_id"
+      ],
+      "parent": "empresa",
+      "ref_columns": [
+        "id_empresa"
+      ],
+      "constraint": "bitacora_tenant_id_fkey",
+      "definition": "FOREIGN KEY (tenant_id) REFERENCES empresa(id_empresa)"
+    },
+    {
+      "child": "bitacora",
+      "columns": [
+        "tenant_id",
+        "id_usuario"
+      ],
+      "parent": "usuario",
+      "ref_columns": [
+        "tenant_id",
+        "id_usuario"
+      ],
+      "constraint": "tenant_bitacora_id_usuario_fkey",
+      "definition": "FOREIGN KEY (tenant_id, id_usuario) REFERENCES usuario(tenant_id, id_usuario)"
+    }
+  ]
+}

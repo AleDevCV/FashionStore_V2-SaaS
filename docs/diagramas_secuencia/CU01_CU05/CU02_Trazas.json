@@ -1,0 +1,525 @@
+[
+  {
+    "mensaje": 1,
+    "texto": "Consultar la administración SaaS",
+    "fuentes": []
+  },
+  {
+    "mensaje": 2,
+    "texto": "load(): GET /api/contexto",
+    "fuentes": []
+  },
+  {
+    "mensaje": 3,
+    "texto": "session_context(): SELECT empresa y contexto autorizado",
+    "fuentes": [
+      {
+        "simbolo": "session_context",
+        "archivo": "Parcial2_backend/app/routers/saas.py",
+        "linea": 52
+      }
+    ]
+  },
+  {
+    "mensaje": 4,
+    "texto": "contexto empresarial o de plataforma",
+    "fuentes": []
+  },
+  {
+    "mensaje": 5,
+    "texto": "200: contexto",
+    "fuentes": []
+  },
+  {
+    "mensaje": 6,
+    "texto": "GET /api/planes",
+    "fuentes": []
+  },
+  {
+    "mensaje": 7,
+    "texto": "plans(): SELECT planes",
+    "fuentes": [
+      {
+        "simbolo": "plans",
+        "archivo": "Parcial2_backend/app/routers/saas.py",
+        "linea": 92
+      }
+    ]
+  },
+  {
+    "mensaje": 8,
+    "texto": "planes configurados",
+    "fuentes": []
+  },
+  {
+    "mensaje": 9,
+    "texto": "200: planes",
+    "fuentes": []
+  },
+  {
+    "mensaje": 10,
+    "texto": "GET /api/empresas → companies()",
+    "fuentes": [
+      {
+        "simbolo": "companies",
+        "archivo": "Parcial2_backend/app/routers/saas.py",
+        "linea": 70
+      }
+    ]
+  },
+  {
+    "mensaje": 11,
+    "texto": "SELECT empresas ORDER BY id_empresa",
+    "fuentes": []
+  },
+  {
+    "mensaje": 12,
+    "texto": "listado de empresas",
+    "fuentes": []
+  },
+  {
+    "mensaje": 13,
+    "texto": "200: empresas no plataforma",
+    "fuentes": []
+  },
+  {
+    "mensaje": 14,
+    "texto": "createCompany(): POST /api/empresas → create_company(datos)",
+    "fuentes": [
+      {
+        "simbolo": "create_company",
+        "archivo": "Parcial2_backend/app/routers/saas.py",
+        "linea": 75
+      }
+    ]
+  },
+  {
+    "mensaje": 15,
+    "texto": "platform_user(): validar administrador de plataforma",
+    "fuentes": [
+      {
+        "simbolo": "platform_user",
+        "archivo": "Parcial2_backend/app/routers/saas.py",
+        "linea": 28
+      }
+    ]
+  },
+  {
+    "mensaje": 16,
+    "texto": "SELECT plan por id_plan",
+    "fuentes": []
+  },
+  {
+    "mensaje": 17,
+    "texto": "plan o ausencia",
+    "fuentes": []
+  },
+  {
+    "mensaje": 18,
+    "texto": "SELECT empresa por slug",
+    "fuentes": []
+  },
+  {
+    "mensaje": 19,
+    "texto": "slug libre u ocupado",
+    "fuentes": []
+  },
+  {
+    "mensaje": 20,
+    "texto": "404 plan / 409 identificador utilizado",
+    "fuentes": []
+  },
+  {
+    "mensaje": 21,
+    "texto": "INSERT empresa(nombre, slug) RETURNING id_empresa",
+    "fuentes": []
+  },
+  {
+    "mensaje": 22,
+    "texto": "audit_business_row(): INSERT empresa",
+    "fuentes": [
+      {
+        "simbolo": "audit_business_row",
+        "archivo": "Parcial2_backend/database/migrations/007_transactional_audit.sql",
+        "linea": 1
+      }
+    ]
+  },
+  {
+    "mensaje": 23,
+    "texto": "tenant_id",
+    "fuentes": []
+  },
+  {
+    "mensaje": 24,
+    "texto": "initialize_company(): SET LOCAL app.tenant_id",
+    "fuentes": [
+      {
+        "simbolo": "initialize_company",
+        "archivo": "Parcial2_backend/app/routers/saas.py",
+        "linea": 34
+      }
+    ]
+  },
+  {
+    "mensaje": 25,
+    "texto": "INSERT suscripción al plan, vigente por 30 días",
+    "fuentes": []
+  },
+  {
+    "mensaje": 26,
+    "texto": "suscripción inicial",
+    "fuentes": []
+  },
+  {
+    "mensaje": 27,
+    "texto": "INSERT rol(nombre, descripción)",
+    "fuentes": []
+  },
+  {
+    "mensaje": 28,
+    "texto": "id_rol",
+    "fuentes": []
+  },
+  {
+    "mensaje": 29,
+    "texto": "provision_permissions(cur, role_ids)",
+    "fuentes": [
+      {
+        "simbolo": "provision_permissions",
+        "archivo": "Parcial2_backend/app/permissions.py",
+        "linea": 25
+      }
+    ]
+  },
+  {
+    "mensaje": 30,
+    "texto": "INSERT permiso ON CONFLICT DO NOTHING",
+    "fuentes": []
+  },
+  {
+    "mensaje": 31,
+    "texto": "catálogo de permisos",
+    "fuentes": []
+  },
+  {
+    "mensaje": 32,
+    "texto": "INSERT rol_permiso SELECT permisos predeterminados",
+    "fuentes": []
+  },
+  {
+    "mensaje": 33,
+    "texto": "asignación inicial",
+    "fuentes": []
+  },
+  {
+    "mensaje": 34,
+    "texto": "generar_hash_password(password_admin)",
+    "fuentes": []
+  },
+  {
+    "mensaje": 35,
+    "texto": "INSERT usuario administrador RETURNING id_usuario",
+    "fuentes": []
+  },
+  {
+    "mensaje": 36,
+    "texto": "administrador de empresa",
+    "fuentes": []
+  },
+  {
+    "mensaje": 37,
+    "texto": "index_user(): SQL identity_index_user(id_usuario)",
+    "fuentes": [
+      {
+        "simbolo": "identity_index_user",
+        "archivo": "Parcial2_backend/database/migrations/017_global_identity.sql",
+        "linea": 50
+      },
+      {
+        "simbolo": "index_user",
+        "archivo": "Parcial2_backend/app/services/identity.py",
+        "linea": 51
+      }
+    ]
+  },
+  {
+    "mensaje": 38,
+    "texto": "cuenta global o conflicto",
+    "fuentes": []
+  },
+  {
+    "mensaje": 39,
+    "texto": "409: ROLLBACK del alta completa de empresa",
+    "fuentes": []
+  },
+  {
+    "mensaje": 40,
+    "texto": "INSERT cliente con CI='MOSTRADOR'",
+    "fuentes": []
+  },
+  {
+    "mensaje": 41,
+    "texto": "ficha de mostrador",
+    "fuentes": []
+  },
+  {
+    "mensaje": 42,
+    "texto": "201: id_empresa, id_admin y slug; COMMIT",
+    "fuentes": []
+  },
+  {
+    "mensaje": 43,
+    "texto": "Vaciar contraseña del formulario y ejecutar load()",
+    "fuentes": []
+  },
+  {
+    "mensaje": 44,
+    "texto": "savePlan(): PATCH /api/planes/{id} → edit_plan()",
+    "fuentes": [
+      {
+        "simbolo": "edit_plan",
+        "archivo": "Parcial2_backend/app/routers/saas.py",
+        "linea": 96
+      }
+    ]
+  },
+  {
+    "mensaje": 45,
+    "texto": "platform_user()",
+    "fuentes": [
+      {
+        "simbolo": "platform_user",
+        "archivo": "Parcial2_backend/app/routers/saas.py",
+        "linea": 28
+      }
+    ]
+  },
+  {
+    "mensaje": 46,
+    "texto": "SELECT plan FOR UPDATE",
+    "fuentes": []
+  },
+  {
+    "mensaje": 47,
+    "texto": "plan bloqueado o ausencia",
+    "fuentes": []
+  },
+  {
+    "mensaje": 48,
+    "texto": "404: Plan no encontrado",
+    "fuentes": []
+  },
+  {
+    "mensaje": 49,
+    "texto": "UPDATE max_sucursales y reportes_ia RETURNING *",
+    "fuentes": []
+  },
+  {
+    "mensaje": 50,
+    "texto": "audit_business_row(): UPDATE plan",
+    "fuentes": [
+      {
+        "simbolo": "audit_business_row",
+        "archivo": "Parcial2_backend/database/migrations/007_transactional_audit.sql",
+        "linea": 1
+      }
+    ]
+  },
+  {
+    "mensaje": 51,
+    "texto": "plan actualizado",
+    "fuentes": []
+  },
+  {
+    "mensaje": 52,
+    "texto": "200: plan actualizado; COMMIT",
+    "fuentes": []
+  },
+  {
+    "mensaje": 53,
+    "texto": "saveSubscription(): PUT /api/suscripciones/{empresa}\nedit_subscription(datos)",
+    "fuentes": [
+      {
+        "simbolo": "edit_subscription",
+        "archivo": "Parcial2_backend/app/routers/saas.py",
+        "linea": 114
+      }
+    ]
+  },
+  {
+    "mensaje": 54,
+    "texto": "platform_user(); validar fechas con zona horaria",
+    "fuentes": [
+      {
+        "simbolo": "platform_user",
+        "archivo": "Parcial2_backend/app/routers/saas.py",
+        "linea": 28
+      }
+    ]
+  },
+  {
+    "mensaje": 55,
+    "texto": "422: vencimiento posterior al inicio requerido",
+    "fuentes": []
+  },
+  {
+    "mensaje": 56,
+    "texto": "SELECT empresa no plataforma FOR UPDATE",
+    "fuentes": []
+  },
+  {
+    "mensaje": 57,
+    "texto": "empresa bloqueada o ausencia",
+    "fuentes": []
+  },
+  {
+    "mensaje": 58,
+    "texto": "404: Empresa no encontrada",
+    "fuentes": []
+  },
+  {
+    "mensaje": 59,
+    "texto": "SELECT max_sucursales FOR SHARE",
+    "fuentes": []
+  },
+  {
+    "mensaje": 60,
+    "texto": "plan y cupo, o ausencia",
+    "fuentes": []
+  },
+  {
+    "mensaje": 61,
+    "texto": "404: Plan no encontrado",
+    "fuentes": []
+  },
+  {
+    "mensaje": 62,
+    "texto": "SET LOCAL app.tenant_id = empresa objetivo",
+    "fuentes": []
+  },
+  {
+    "mensaje": 63,
+    "texto": "SELECT count(*) WHERE activa",
+    "fuentes": []
+  },
+  {
+    "mensaje": 64,
+    "texto": "sucursales activas",
+    "fuentes": []
+  },
+  {
+    "mensaje": 65,
+    "texto": "409: desactivar sucursales antes de reducir el plan; ROLLBACK",
+    "fuentes": []
+  },
+  {
+    "mensaje": 66,
+    "texto": "INSERT ... ON CONFLICT(tenant_id) DO UPDATE\nplan, inicio y vencimiento",
+    "fuentes": []
+  },
+  {
+    "mensaje": 67,
+    "texto": "audit_business_row(): INSERT / UPDATE suscripcion",
+    "fuentes": [
+      {
+        "simbolo": "audit_business_row",
+        "archivo": "Parcial2_backend/database/migrations/007_transactional_audit.sql",
+        "linea": 1
+      }
+    ]
+  },
+  {
+    "mensaje": 68,
+    "texto": "suscripción actualizada",
+    "fuentes": []
+  },
+  {
+    "mensaje": 69,
+    "texto": "200: suscripción vigente según las fechas; COMMIT",
+    "fuentes": []
+  },
+  {
+    "mensaje": 70,
+    "texto": "toggleCompany(): PATCH /api/empresas/{id}?activa=...",
+    "fuentes": []
+  },
+  {
+    "mensaje": 71,
+    "texto": "company_state(): UPDATE activa WHERE NOT plataforma",
+    "fuentes": [
+      {
+        "simbolo": "company_state",
+        "archivo": "Parcial2_backend/app/routers/saas.py",
+        "linea": 85
+      }
+    ]
+  },
+  {
+    "mensaje": 72,
+    "texto": "empresa actualizada o ausencia",
+    "fuentes": []
+  },
+  {
+    "mensaje": 73,
+    "texto": "404: Empresa no encontrada",
+    "fuentes": []
+  },
+  {
+    "mensaje": 74,
+    "texto": "audit_business_row(): UPDATE empresa",
+    "fuentes": [
+      {
+        "simbolo": "audit_business_row",
+        "archivo": "Parcial2_backend/database/migrations/007_transactional_audit.sql",
+        "linea": 1
+      }
+    ]
+  },
+  {
+    "mensaje": 75,
+    "texto": "200: id_empresa y estado; COMMIT",
+    "fuentes": []
+  },
+  {
+    "mensaje": 76,
+    "texto": "GET /api/suscripciones/{empresa} → get_subscription()",
+    "fuentes": [
+      {
+        "simbolo": "get_subscription",
+        "archivo": "Parcial2_backend/app/routers/saas.py",
+        "linea": 103
+      }
+    ]
+  },
+  {
+    "mensaje": 77,
+    "texto": "SET LOCAL app.tenant_id = empresa objetivo",
+    "fuentes": []
+  },
+  {
+    "mensaje": 78,
+    "texto": "SELECT suscripcion JOIN plan para la empresa",
+    "fuentes": []
+  },
+  {
+    "mensaje": 79,
+    "texto": "suscripción o ausencia",
+    "fuentes": []
+  },
+  {
+    "mensaje": 80,
+    "texto": "200: suscripción / 404: no encontrada",
+    "fuentes": []
+  },
+  {
+    "mensaje": 81,
+    "texto": "403: Acceso no autorizado",
+    "fuentes": []
+  },
+  {
+    "mensaje": 82,
+    "texto": "Mostrar resultado y actualizar datos visibles",
+    "fuentes": []
+  }
+]

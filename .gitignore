@@ -22,9 +22,12 @@
 **/static/catalog-images/
 CONTEXTO/
 tmp/
-graphify-out/cache/
+# Grafo local de análisis e ingeniería inversa
+/graphify-out/
 infra/secrets/
 *.tar
+.dsh-acl-report/
+*.ldb
 
 # Cachés y archivos locales de herramientas
 **/.gradle/

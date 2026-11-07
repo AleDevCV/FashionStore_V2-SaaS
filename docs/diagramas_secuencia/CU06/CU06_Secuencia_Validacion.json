@@ -1,0 +1,66 @@
+{
+  "cu": "CU06",
+  "archivo": "CU06_Diagrama_Secuencia.drawio",
+  "participantes": 8,
+  "mensajes": 43,
+  "fragmentos": {
+    "alt": 6,
+    "opt": 1,
+    "loop": 1
+  },
+  "ancho": 2675,
+  "alto": 4343,
+  "sha256": "8974ebce63e1bf2e0c695adece9fd80c06a72c87cb7d210851649af92d75982d",
+  "fuentes": [
+    {
+      "file": "Parcial2_backend/app/routers/categorias.py",
+      "sha256": "52a063a25532341c3c7351f9ba5b94d6c62cb39a841d202b16c14c8c4349f317"
+    },
+    {
+      "file": "Parcial2_backend/app/routers/prendas.py",
+      "sha256": "12335fadc66cb3465cf28b1a18f7b1aef5e5a17654e970e04f03448a56df8e27"
+    },
+    {
+      "file": "Parcial2_backend/app/routers/temporadas.py",
+      "sha256": "2c3433b1726315557656c43c98a0ccfd81ec17699a2d22022961ad748096c2d8"
+    },
+    {
+      "file": "Parcial2_backend/app/services/bitacora_service.py",
+      "sha256": "ec5d5294930c1b8e3e1d4628fd0b1f8b183bdab2ba205c19751245c33e5608a0"
+    },
+    {
+      "file": "Parcial2_backend/app/services/categoria_service.py",
+      "sha256": "4d759b566cf92ffb8cb88d283ced48be9b5595197c5fffa92da1e8ce49adee72"
+    },
+    {
+      "file": "Parcial2_backend/app/services/prenda_service.py",
+      "sha256": "e71d3f7fbd9f8ae4667e40b8e5118aa5f0aa2b16a29784f7ed67a75bb4d14a6a"
+    },
+    {
+      "file": "Parcial2_backend/app/services/temporada_service.py",
+      "sha256": "64a77ec137dfa66b37b743b81a568f36175fb99a9171a703a235a3d7a5ce7dc3"
+    },
+    {
+      "file": "Parcial2_frontend-web/src/app/features/categorias/categorias.ts",
+      "sha256": "309dddaff4117bffe9538b1714561c5c32b1928deadfa7649c2a0ddc26f3d2c0"
+    },
+    {
+      "file": "Parcial2_frontend-web/src/app/features/prendas/prendas.ts",
+      "sha256": "6939f5e47dd81b031cd8dd4fa5793dfdc56889450f44b763f2c106fe781978c8"
+    },
+    {
+      "file": "Parcial2_frontend-web/src/app/features/temporadas/temporadas.ts",
+      "sha256": "b64062cd979424064075d43e1681092ee5028e53314e1f8f04cb5afaa9b796ae"
+    }
+  ],
+  "actores": 1,
+  "interfaces": 1,
+  "controles": 1,
+  "entidades": 5,
+  "xsd_valido": true,
+  "participantes_identicos_a_robustez": true,
+  "mensajes_principales_cubiertos": 37,
+  "fragmentos_con_inicio_y_fin_validado": true,
+  "loop_solo_control_y_variante": true,
+  "sin_comunicacion_entre_entidades": true
+}

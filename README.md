@@ -1,5 +1,7 @@
 # FashionStore SaaS — Parcial 2
 
+Modelo documental consolidado: [20 casos de uso, capítulo II y diagrama draw.io](docs/modelo_20_cu/LEEME.md). Conserva la equivalencia completa con los 38 CU del inventario técnico anterior; las rutas y referencias del código mantienen sus identificadores históricos.
+
 Angular, Flutter y FastAPI con PostgreSQL compartido y aislamiento por empresa. Proyecto en implementación: consultar la trazabilidad y las evidencias para distinguir código, pruebas y pendientes.
 
 - Local: Docker Compose para API, web y PostgreSQL. Usar `compose.yaml` junto con `compose.local.yaml`; este último publica la base únicamente en `127.0.0.1:55433` e incluye Mailpit de desarrollo.

@@ -1,0 +1,422 @@
+{
+  "robustness_source": "docs\\diagramas_robustez\\CU10_Simplificado\\CU10_Robustez_Simplificada_Modelo.json",
+  "participants": [
+    {
+      "id": "actor",
+      "name": "Personal autorizado",
+      "kind": "actor"
+    },
+    {
+      "id": "b_pre",
+      "name": "Frontend : Movimientos de inventario",
+      "kind": "boundary"
+    },
+    {
+      "id": "control",
+      "name": "Backend : Gestión de movimientos",
+      "kind": "control"
+    },
+    {
+      "id": "inventario",
+      "name": "Inventario",
+      "kind": "entity"
+    },
+    {
+      "id": "movimiento",
+      "name": "Movimiento de inventario",
+      "kind": "entity"
+    },
+    {
+      "id": "bitacora",
+      "name": "Bitácora",
+      "kind": "entity"
+    }
+  ],
+  "events": [
+    {
+      "type": "message",
+      "a": "actor",
+      "b": "b_pre",
+      "text": "Consultar stock de la variante",
+      "reply": false,
+      "robustness_number": 1,
+      "number": 1,
+      "lines": [
+        "1: Consultar stock de la variante"
+      ],
+      "y": 271,
+      "label_h": 23,
+      "label_w": 293
+    },
+    {
+      "type": "message",
+      "a": "b_pre",
+      "b": "control",
+      "text": "consultar_stock(sucursal, variante)",
+      "reply": false,
+      "robustness_number": 2,
+      "number": 2,
+      "lines": [
+        "2: consultar_stock(sucursal, variante)"
+      ],
+      "y": 336,
+      "label_h": 23,
+      "label_w": 293
+    },
+    {
+      "type": "message",
+      "a": "control",
+      "b": "inventario",
+      "text": "obtener_stock_actual(sucursal, variante)",
+      "reply": false,
+      "robustness_number": 3,
+      "number": 3,
+      "lines": [
+        "3: obtener_stock_actual(sucursal,",
+        "variante)"
+      ],
+      "y": 424,
+      "label_h": 46,
+      "label_w": 293
+    },
+    {
+      "type": "message",
+      "a": "inventario",
+      "b": "control",
+      "text": "stock físico",
+      "reply": true,
+      "robustness_number": 4,
+      "number": 4,
+      "lines": [
+        "4: stock físico"
+      ],
+      "y": 489,
+      "label_h": 23,
+      "label_w": 293
+    },
+    {
+      "type": "message",
+      "a": "control",
+      "b": "b_pre",
+      "text": "stock actual",
+      "reply": true,
+      "robustness_number": 5,
+      "number": 5,
+      "lines": [
+        "5: stock actual"
+      ],
+      "y": 554,
+      "label_h": 23,
+      "label_w": 293
+    },
+    {
+      "type": "message",
+      "a": "b_pre",
+      "b": "actor",
+      "text": "Mostrar stock",
+      "reply": true,
+      "robustness_number": 6,
+      "number": 6,
+      "lines": [
+        "6: Mostrar stock"
+      ],
+      "y": 619,
+      "label_h": 23,
+      "label_w": 293
+    },
+    {
+      "type": "message",
+      "a": "actor",
+      "b": "b_pre",
+      "text": "Registrar movimiento y motivo",
+      "reply": false,
+      "robustness_number": 7,
+      "number": 7,
+      "lines": [
+        "7: Registrar movimiento y motivo"
+      ],
+      "y": 684,
+      "label_h": 23,
+      "label_w": 293
+    },
+    {
+      "type": "message",
+      "a": "b_pre",
+      "b": "control",
+      "text": "registrar_movimiento(datos)",
+      "reply": false,
+      "robustness_number": 8,
+      "number": 8,
+      "lines": [
+        "8: registrar_movimiento(datos)"
+      ],
+      "y": 749,
+      "label_h": 23,
+      "label_w": 293
+    },
+    {
+      "type": "message",
+      "a": "control",
+      "b": "movimiento",
+      "text": "registrar_movimiento(datos)",
+      "reply": false,
+      "robustness_number": 9,
+      "number": 9,
+      "lines": [
+        "9: registrar_movimiento(datos)"
+      ],
+      "y": 875,
+      "label_h": 23,
+      "label_w": 628
+    },
+    {
+      "type": "message",
+      "a": "movimiento",
+      "b": "control",
+      "text": "movimiento y stock resultante",
+      "reply": true,
+      "robustness_number": 10,
+      "number": 10,
+      "lines": [
+        "10: movimiento y stock resultante"
+      ],
+      "y": 940,
+      "label_h": 23,
+      "label_w": 628
+    },
+    {
+      "type": "message",
+      "a": "control",
+      "b": "bitacora",
+      "text": "registrar_bitacora(movimiento)",
+      "reply": false,
+      "robustness_number": 11,
+      "number": 11,
+      "lines": [
+        "11: registrar_bitacora(movimiento)"
+      ],
+      "y": 1005,
+      "label_h": 23,
+      "label_w": 660
+    },
+    {
+      "type": "message",
+      "a": "control",
+      "b": "b_pre",
+      "text": "movimiento confirmado",
+      "reply": true,
+      "robustness_number": 12,
+      "number": 12,
+      "lines": [
+        "12: movimiento confirmado"
+      ],
+      "y": 1070,
+      "label_h": 23,
+      "label_w": 293
+    },
+    {
+      "type": "message",
+      "a": "control",
+      "b": "b_pre",
+      "text": "Rechazar movimiento sin efecto",
+      "reply": true,
+      "number": 13,
+      "lines": [
+        "13: Rechazar movimiento sin efecto"
+      ],
+      "y": 1200,
+      "label_h": 23,
+      "label_w": 293
+    },
+    {
+      "type": "message",
+      "a": "b_pre",
+      "b": "actor",
+      "text": "Mostrar resultado del movimiento",
+      "reply": true,
+      "robustness_number": 13,
+      "number": 14,
+      "lines": [
+        "14: Mostrar resultado del movimiento"
+      ],
+      "y": 1310,
+      "label_h": 23,
+      "label_w": 293
+    },
+    {
+      "type": "message",
+      "a": "actor",
+      "b": "b_pre",
+      "text": "Consultar historial de movimientos",
+      "reply": false,
+      "robustness_number": 14,
+      "number": 15,
+      "lines": [
+        "15: Consultar historial de movimientos"
+      ],
+      "y": 1375,
+      "label_h": 23,
+      "label_w": 293
+    },
+    {
+      "type": "message",
+      "a": "b_pre",
+      "b": "control",
+      "text": "listar_movimientos(filtros)",
+      "reply": false,
+      "robustness_number": 15,
+      "number": 16,
+      "lines": [
+        "16: listar_movimientos(filtros)"
+      ],
+      "y": 1440,
+      "label_h": 23,
+      "label_w": 293
+    },
+    {
+      "type": "message",
+      "a": "control",
+      "b": "movimiento",
+      "text": "listar_movimientos(filtros)",
+      "reply": false,
+      "robustness_number": 16,
+      "number": 17,
+      "lines": [
+        "17: listar_movimientos(filtros)"
+      ],
+      "y": 1505,
+      "label_h": 23,
+      "label_w": 628
+    },
+    {
+      "type": "message",
+      "a": "movimiento",
+      "b": "control",
+      "text": "movimientos autorizados",
+      "reply": true,
+      "robustness_number": 17,
+      "number": 18,
+      "lines": [
+        "18: movimientos autorizados"
+      ],
+      "y": 1570,
+      "label_h": 23,
+      "label_w": 628
+    },
+    {
+      "type": "message",
+      "a": "control",
+      "b": "b_pre",
+      "text": "historial",
+      "reply": true,
+      "robustness_number": 18,
+      "number": 19,
+      "lines": [
+        "19: historial"
+      ],
+      "y": 1696,
+      "label_h": 23,
+      "label_w": 293
+    },
+    {
+      "type": "message",
+      "a": "control",
+      "b": "b_pre",
+      "text": "Historial vacío",
+      "reply": true,
+      "number": 20,
+      "lines": [
+        "20: Historial vacío"
+      ],
+      "y": 1826,
+      "label_h": 23,
+      "label_w": 293
+    },
+    {
+      "type": "message",
+      "a": "b_pre",
+      "b": "actor",
+      "text": "Mostrar historial",
+      "reply": true,
+      "robustness_number": 19,
+      "number": 21,
+      "lines": [
+        "21: Mostrar historial"
+      ],
+      "y": 1936,
+      "label_h": 23,
+      "label_w": 293
+    }
+  ],
+  "frames": [
+    {
+      "kind": "alt",
+      "y": 783,
+      "h": 474,
+      "depth": 0,
+      "guards": [
+        [
+          783,
+          "movimiento autorizado",
+          true
+        ],
+        [
+          1119,
+          "datos o stock inválidos",
+          false
+        ]
+      ],
+      "event_range": [
+        8,
+        13
+      ],
+      "participants": [
+        "b_pre",
+        "bitacora",
+        "control",
+        "movimiento"
+      ],
+      "starts_at": "b_pre",
+      "left": 455,
+      "right": 1855,
+      "width": 1400
+    },
+    {
+      "kind": "alt",
+      "y": 1604,
+      "h": 279,
+      "depth": 0,
+      "guards": [
+        [
+          1604,
+          "hay movimientos",
+          true
+        ],
+        [
+          1745,
+          "sin resultados",
+          false
+        ]
+      ],
+      "event_range": [
+        18,
+        20
+      ],
+      "participants": [
+        "b_pre",
+        "control"
+      ],
+      "starts_at": "b_pre",
+      "left": 455,
+      "right": 850,
+      "width": 395
+    }
+  ],
+  "notes": [
+    "Las sucursales y variantes se validan dentro del control, sin desplegar todos los catálogos auxiliares. El stock se actualiza por trigger al insertar el movimiento.",
+    "El esquema actual recibe una sucursal y no una sucursal de destino: no se inventa un traslado completo de dos sucursales ni una API de idempotencia inexistente para este endpoint."
+  ],
+  "scope": "Mismos recorridos y participantes de robustez; numeración de secuencia nueva al añadir las alternativas.",
+  "geometry": "alt y opt parten de la interfaz principal; loop parte del control correspondiente. Margen de 30 px. El borde derecho corresponde al último participante afectado. Las líneas intermedias del orden fijo no implican interacciones adicionales.",
+  "presentation": "Los retornos al actor se generalizan cuando deben mostrar éxito o rechazo. Las acciones son escenarios independientes del CU, no un guion obligatorio."
+}

@@ -1,0 +1,1516 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="4756" height="4477" viewBox="0 0 4756 4477">
+<rect width="100%" height="100%" fill="white"/>
+<g font-family="Arial, Helvetica, sans-serif">
+<text x="48.00" y="40.00" font-size="28" font-weight="bold" fill="#1e293b" text-anchor="start">FashionStore — Diagrama entidad-relación general</text>
+<text x="48.00" y="69.00" font-size="14" font-weight="normal" fill="#1e293b" text-anchor="start">PK: clave primaria     FK: clave foránea     ?: admite NULL     Pata de cuervo: 0..*</text>
+<text x="48.00" y="91.00" font-size="13" font-weight="normal" fill="#475569" text-anchor="start">tenant_id FK → empresa · Los enlaces empresariales repetitivos se resumen en ese atributo.</text>
+<rect x="56.0" y="1090.0" width="997.0" height="397.0" rx="10" fill="#dce9fa" fill-opacity="0.17" stroke="#dce9fa" stroke-width="2"/>
+<text x="72.00" y="1114.00" font-size="18" font-weight="bold" fill="#1e293b" text-anchor="start">Administración SaaS</text>
+<rect x="577.0" y="1531.0" width="2039.0" height="528.0" rx="10" fill="#e8e1f5" fill-opacity="0.17" stroke="#e8e1f5" stroke-width="2"/>
+<text x="593.00" y="1555.00" font-size="18" font-weight="bold" fill="#1e293b" text-anchor="start">Identidad y autorización</text>
+<rect x="1098.0" y="2383.0" width="997.0" height="469.0" rx="10" fill="#dceee9" fill-opacity="0.17" stroke="#dceee9" stroke-width="2"/>
+<text x="1114.00" y="2407.00" font-size="18" font-weight="bold" fill="#1e293b" text-anchor="start">Organización y clientes</text>
+<rect x="1098.0" y="123.0" width="2039.0" height="696.0" rx="10" fill="#e4eedb" fill-opacity="0.17" stroke="#e4eedb" stroke-width="2"/>
+<text x="1114.00" y="147.00" font-size="18" font-weight="bold" fill="#1e293b" text-anchor="start">Catálogo de prendas</text>
+<rect x="1619.0" y="827.0" width="1518.0" height="696.0" rx="10" fill="#fff0d2" fill-opacity="0.17" stroke="#fff0d2" stroke-width="2"/>
+<text x="1635.00" y="851.00" font-size="18" font-weight="bold" fill="#1e293b" text-anchor="start">Abastecimiento e inventario</text>
+<rect x="2140.0" y="2258.0" width="1518.0" height="768.0" rx="10" fill="#dcecf5" fill-opacity="0.17" stroke="#dcecf5" stroke-width="2"/>
+<text x="2156.00" y="2282.00" font-size="18" font-weight="bold" fill="#1e293b" text-anchor="start">Reservas y ventas</text>
+<rect x="3182.0" y="3034.0" width="476.0" height="493.0" rx="10" fill="#f8e4d7" fill-opacity="0.17" stroke="#f8e4d7" stroke-width="2"/>
+<text x="3198.00" y="3058.00" font-size="18" font-weight="bold" fill="#1e293b" text-anchor="start">Pagos y comprobantes</text>
+<rect x="3703.0" y="3435.0" width="997.0" height="493.0" rx="10" fill="#f4e1e8" fill-opacity="0.17" stroke="#f4e1e8" stroke-width="2"/>
+<text x="3719.00" y="3459.00" font-size="18" font-weight="bold" fill="#1e293b" text-anchor="start">Cambios y notificaciones</text>
+<rect x="1619.0" y="3916.0" width="997.0" height="493.0" rx="10" fill="#e8e8e8" fill-opacity="0.17" stroke="#e8e8e8" stroke-width="2"/>
+<text x="1635.00" y="3940.00" font-size="18" font-weight="bold" fill="#1e293b" text-anchor="start">Sincronización, reportes y auditoría</text>
+<path d="M 504.00,1214.00 L 605.00,1214.00" fill="none" stroke="#40546b" stroke-width="1.45" stroke-linejoin="round"/>
+<path d="M 509.00,1209.00 L 509.00,1219.00" fill="none" stroke="#40546b" stroke-width="1.7"/>
+<path d="M 514.00,1209.00 L 514.00,1219.00" fill="none" stroke="#40546b" stroke-width="1.7"/>
+<circle cx="587.00" cy="1214.00" r="4" fill="white" stroke="#40546b" stroke-width="1.6"/>
+<path d="M 604.00,1220.00 L 594.00,1214.00" fill="none" stroke="#40546b" stroke-width="1.7"/>
+<path d="M 604.00,1214.00 L 594.00,1214.00" fill="none" stroke="#40546b" stroke-width="1.7"/>
+<path d="M 604.00,1208.00 L 594.00,1214.00" fill="none" stroke="#40546b" stroke-width="1.7"/>
+<path d="M 294.00,1327.00 L 294.00,1292.00 L 605.00,1292.00" fill="none" stroke="#40546b" stroke-width="1.45" stroke-linejoin="round"/>
+<path d="M 289.00,1322.00 L 299.00,1322.00" fill="none" stroke="#40546b" stroke-width="1.7"/>
+<path d="M 289.00,1317.00 L 299.00,1317.00" fill="none" stroke="#40546b" stroke-width="1.7"/>
+<circle cx="587.00" cy="1292.00" r="4" fill="white" stroke="#40546b" stroke-width="1.6"/>
+<path d="M 598.00,1297.00 L 598.00,1287.00" fill="none" stroke="#40546b" stroke-width="1.7"/>
+<path d="M 434.00,1459.00 L 434.00,1798.00 L 605.00,1798.00" fill="none" stroke="#40546b" stroke-width="1.45" stroke-linejoin="round"/>
+<path d="M 439.00,1464.00 L 429.00,1464.00" fill="none" stroke="#40546b" stroke-width="1.7"/>
+<path d="M 439.00,1469.00 L 429.00,1469.00" fill="none" stroke="#40546b" stroke-width="1.7"/>
+<circle cx="587.00" cy="1798.00" r="4" fill="white" stroke="#40546b" stroke-width="1.6"/>
+<path d="M 604.00,1804.00 L 594.00,1798.00" fill="none" stroke="#40546b" stroke-width="1.7"/>
+<path d="M 604.00,1798.00 L 594.00,1798.00" fill="none" stroke="#40546b" stroke-width="1.7"/>
+<path d="M 604.00,1792.00 L 594.00,1798.00" fill="none" stroke="#40546b" stroke-width="1.7"/>
+<path d="M 815.00,1852.00 L 815.00,1875.50 L 1126.00,1875.50" fill="none" stroke="#40546b" stroke-width="1.45" stroke-linejoin="round"/>
+<circle cx="815.00" cy="1870.00" r="4" fill="white" stroke="#40546b" stroke-width="1.6"/>
+<path d="M 820.00,1859.00 L 810.00,1859.00" fill="none" stroke="#40546b" stroke-width="1.7"/>
+<circle cx="1108.00" cy="1875.50" r="4" fill="white" stroke="#40546b" stroke-width="1.6"/>
+<path d="M 1125.00,1881.50 L 1115.00,1875.50" fill="none" stroke="#40546b" stroke-width="1.7"/>
+<path d="M 1125.00,1875.50 L 1115.00,1875.50" fill="none" stroke="#40546b" stroke-width="1.7"/>
+<path d="M 1125.00,1869.50 L 1115.00,1875.50" fill="none" stroke="#40546b" stroke-width="1.7"/>
+<path d="M 1025.00,1965.00 L 1126.00,1965.00" fill="none" stroke="#40546b" stroke-width="1.45" stroke-linejoin="round"/>
+<circle cx="1043.00" cy="1965.00" r="4" fill="white" stroke="#40546b" stroke-width="1.6"/>
+<path d="M 1032.00,1960.00 L 1032.00,1970.00" fill="none" stroke="#40546b" stroke-width="1.7"/>
+<circle cx="1108.00" cy="1965.00" r="4" fill="white" stroke="#40546b" stroke-width="1.6"/>
+<path d="M 1125.00,1971.00 L 1115.00,1965.00" fill="none" stroke="#40546b" stroke-width="1.7"/>
+<path d="M 1125.00,1965.00 L 1115.00,1965.00" fill="none" stroke="#40546b" stroke-width="1.7"/>
+<path d="M 1125.00,1959.00 L 1115.00,1965.00" fill="none" stroke="#40546b" stroke-width="1.7"/>
+<path d="M 1025.00,1670.00 L 1126.00,1670.00" fill="none" stroke="#40546b" stroke-width="1.45" stroke-linejoin="round"/>
+<path d="M 1030.00,1665.00 L 1030.00,1675.00" fill="none" stroke="#40546b" stroke-width="1.7"/>
+<path d="M 1035.00,1665.00 L 1035.00,1675.00" fill="none" stroke="#40546b" stroke-width="1.7"/>
+<circle cx="1108.00" cy="1670.00" r="4" fill="white" stroke="#40546b" stroke-width="1.6"/>
+<path d="M 1125.00,1676.00 L 1115.00,1670.00" fill="none" stroke="#40546b" stroke-width="1.7"/>
+<path d="M 1125.00,1670.00 L 1115.00,1670.00" fill="none" stroke="#40546b" stroke-width="1.7"/>
+<path d="M 1125.00,1664.00 L 1115.00,1670.00" fill="none" stroke="#40546b" stroke-width="1.7"/>
+<path d="M 1025.00,1747.50 L 1126.00,1747.50" fill="none" stroke="#40546b" stroke-width="1.45" stroke-linejoin="round"/>
+<path d="M 1030.00,1742.50 L 1030.00,1752.50" fill="none" stroke="#40546b" stroke-width="1.7"/>
+<path d="M 1035.00,1742.50 L 1035.00,1752.50" fill="none" stroke="#40546b" stroke-width="1.7"/>
+<circle cx="1108.00" cy="1747.50" r="4" fill="white" stroke="#40546b" stroke-width="1.6"/>
+<path d="M 1125.00,1753.50 L 1115.00,1747.50" fill="none" stroke="#40546b" stroke-width="1.7"/>
+<path d="M 1125.00,1747.50 L 1115.00,1747.50" fill="none" stroke="#40546b" stroke-width="1.7"/>
+<path d="M 1125.00,1741.50 L 1115.00,1747.50" fill="none" stroke="#40546b" stroke-width="1.7"/>
+<path d="M 2067.00,2450.17 L 2252.00,2450.17 L 2252.00,2031.00" fill="none" stroke="#40546b" stroke-width="1.45" stroke-linejoin="round"/>
+<path d="M 2072.00,2445.17 L 2072.00,2455.17" fill="none" stroke="#40546b" stroke-width="1.7"/>
+<path d="M 2077.00,2445.17 L 2077.00,2455.17" fill="none" stroke="#40546b" stroke-width="1.7"/>
+<circle cx="2252.00" cy="2049.00" r="4" fill="white" stroke="#40546b" stroke-width="1.6"/>
+<path d="M 2258.00,2032.00 L 2252.00,2042.00" fill="none" stroke="#40546b" stroke-width="1.7"/>
+<path d="M 2252.00,2032.00 L 2252.00,2042.00" fill="none" stroke="#40546b" stroke-width="1.7"/>
+<path d="M 2246.00,2032.00 L 2252.00,2042.00" fill="none" stroke="#40546b" stroke-width="1.7"/>
+<path d="M 1546.00,1938.43 L 2168.00,1938.43" fill="none" stroke="#40546b" stroke-width="1.45" stroke-linejoin="round"/>
+<path d="M 1551.00,1933.43 L 1551.00,1943.43" fill="none" stroke="#40546b" stroke-width="1.7"/>
+<path d="M 1556.00,1933.43 L 1556.00,1943.43" fill="none" stroke="#40546b" stroke-width="1.7"/>
+<circle cx="2150.00" cy="1938.43" r="4" fill="white" stroke="#40546b" stroke-width="1.6"/>
+<path d="M 2167.00,1944.43 L 2157.00,1938.43" fill="none" stroke="#40546b" stroke-width="1.7"/>
+<path d="M 2167.00,1938.43 L 2157.00,1938.43" fill="none" stroke="#40546b" stroke-width="1.7"/>
+<path d="M 2167.00,1932.43 L 2157.00,1938.43" fill="none" stroke="#40546b" stroke-width="1.7"/>
+<path d="M 364.00,1459.00 L 364.00,2465.00 L 1647.00,2465.00" fill="none" stroke="#40546b" stroke-width="1.45" stroke-linejoin="round"/>
+<path d="M 369.00,1464.00 L 359.00,1464.00" fill="none" stroke="#40546b" stroke-width="1.7"/>
+<path d="M 369.00,1469.00 L 359.00,1469.00" fill="none" stroke="#40546b" stroke-width="1.7"/>
+<circle cx="1629.00" cy="2465.00" r="4" fill="white" stroke="#40546b" stroke-width="1.6"/>
+<path d="M 1646.00,2471.00 L 1636.00,2465.00" fill="none" stroke="#40546b" stroke-width="1.7"/>
+<path d="M 1646.00,2465.00 L 1636.00,2465.00" fill="none" stroke="#40546b" stroke-width="1.7"/>
+<path d="M 1646.00,2459.00 L 1636.00,2465.00" fill="none" stroke="#40546b" stroke-width="1.7"/>
+<path d="M 1546.00,2531.00 L 1647.00,2531.00" fill="none" stroke="#40546b" stroke-width="1.45" stroke-linejoin="round"/>
+<circle cx="1564.00" cy="2531.00" r="4" fill="white" stroke="#40546b" stroke-width="1.6"/>
+<path d="M 1553.00,2526.00 L 1553.00,2536.00" fill="none" stroke="#40546b" stroke-width="1.7"/>
+<circle cx="1629.00" cy="2531.00" r="4" fill="white" stroke="#40546b" stroke-width="1.6"/>
+<path d="M 1646.00,2537.00 L 1636.00,2531.00" fill="none" stroke="#40546b" stroke-width="1.7"/>
+<path d="M 1646.00,2531.00 L 1636.00,2531.00" fill="none" stroke="#40546b" stroke-width="1.7"/>
+<path d="M 1646.00,2525.00 L 1636.00,2531.00" fill="none" stroke="#40546b" stroke-width="1.7"/>
+<path d="M 1336.00,2031.00 L 1336.00,2453.00 L 1647.00,2453.00" fill="none" stroke="#40546b" stroke-width="1.45" stroke-linejoin="round"/>
+<circle cx="1336.00" cy="2049.00" r="4" fill="white" stroke="#40546b" stroke-width="1.6"/>
+<path d="M 1341.00,2038.00 L 1331.00,2038.00" fill="none" stroke="#40546b" stroke-width="1.7"/>
+<circle cx="1629.00" cy="2453.00" r="4" fill="white" stroke="#40546b" stroke-width="1.6"/>
+<path d="M 1646.00,2459.00 L 1636.00,2453.00" fill="none" stroke="#40546b" stroke-width="1.7"/>
+<path d="M 1646.00,2453.00 L 1636.00,2453.00" fill="none" stroke="#40546b" stroke-width="1.7"/>
+<path d="M 1646.00,2447.00 L 1636.00,2453.00" fill="none" stroke="#40546b" stroke-width="1.7"/>
+<path d="M 294.00,1459.00 L 294.00,2746.00 L 1647.00,2746.00" fill="none" stroke="#40546b" stroke-width="1.45" stroke-linejoin="round"/>
+<path d="M 299.00,1464.00 L 289.00,1464.00" fill="none" stroke="#40546b" stroke-width="1.7"/>
+<path d="M 299.00,1469.00 L 289.00,1469.00" fill="none" stroke="#40546b" stroke-width="1.7"/>
+<circle cx="1629.00" cy="2746.00" r="4" fill="white" stroke="#40546b" stroke-width="1.6"/>
+<path d="M 1646.00,2752.00 L 1636.00,2746.00" fill="none" stroke="#40546b" stroke-width="1.7"/>
+<path d="M 1646.00,2746.00 L 1636.00,2746.00" fill="none" stroke="#40546b" stroke-width="1.7"/>
+<path d="M 1646.00,2740.00 L 1636.00,2746.00" fill="none" stroke="#40546b" stroke-width="1.7"/>
+<path d="M 1126.00,683.00 L 1075.00,683.00 L 1075.00,771.00 L 1622.00,771.00 L 1622.00,709.00 L 1546.00,709.00" fill="none" stroke="#40546b" stroke-width="1.45" stroke-linejoin="round"/>
+<circle cx="1108.00" cy="683.00" r="4" fill="white" stroke="#40546b" stroke-width="1.6"/>
+<path d="M 1119.00,688.00 L 1119.00,678.00" fill="none" stroke="#40546b" stroke-width="1.7"/>
+<circle cx="1564.00" cy="709.00" r="4" fill="white" stroke="#40546b" stroke-width="1.6"/>
+<path d="M 1547.00,703.00 L 1557.00,709.00" fill="none" stroke="#40546b" stroke-width="1.7"/>
+<path d="M 1547.00,709.00 L 1557.00,709.00" fill="none" stroke="#40546b" stroke-width="1.7"/>
+<path d="M 1547.00,715.00 L 1557.00,709.00" fill="none" stroke="#40546b" stroke-width="1.7"/>
+<path d="M 504.00,1415.00 L 554.00,1415.00 L 554.00,781.00 L 1647.00,781.00" fill="none" stroke="#40546b" stroke-width="1.45" stroke-linejoin="round"/>
+<path d="M 509.00,1410.00 L 509.00,1420.00" fill="none" stroke="#40546b" stroke-width="1.7"/>
+<path d="M 514.00,1410.00 L 514.00,1420.00" fill="none" stroke="#40546b" stroke-width="1.7"/>
+<circle cx="1629.00" cy="781.00" r="4" fill="white" stroke="#40546b" stroke-width="1.6"/>
+<path d="M 1646.00,787.00 L 1636.00,781.00" fill="none" stroke="#40546b" stroke-width="1.7"/>
+<path d="M 1646.00,781.00 L 1636.00,781.00" fill="none" stroke="#40546b" stroke-width="1.7"/>
+<path d="M 1646.00,775.00 L 1636.00,781.00" fill="none" stroke="#40546b" stroke-width="1.7"/>
+<path d="M 1546.00,657.00 L 1647.00,657.00" fill="none" stroke="#40546b" stroke-width="1.45" stroke-linejoin="round"/>
+<circle cx="1564.00" cy="657.00" r="4" fill="white" stroke="#40546b" stroke-width="1.6"/>
+<path d="M 1553.00,652.00 L 1553.00,662.00" fill="none" stroke="#40546b" stroke-width="1.7"/>
+<circle cx="1629.00" cy="657.00" r="4" fill="white" stroke="#40546b" stroke-width="1.6"/>
+<path d="M 1646.00,663.00 L 1636.00,657.00" fill="none" stroke="#40546b" stroke-width="1.7"/>
+<path d="M 1646.00,657.00 L 1636.00,657.00" fill="none" stroke="#40546b" stroke-width="1.7"/>
+<path d="M 1646.00,651.00 L 1636.00,657.00" fill="none" stroke="#40546b" stroke-width="1.7"/>
+<path d="M 1546.00,527.50 L 1647.00,527.50" fill="none" stroke="#40546b" stroke-width="1.45" stroke-linejoin="round"/>
+<circle cx="1564.00" cy="527.50" r="4" fill="white" stroke="#40546b" stroke-width="1.6"/>
+<path d="M 1553.00,522.50 L 1553.00,532.50" fill="none" stroke="#40546b" stroke-width="1.7"/>
+<circle cx="1629.00" cy="527.50" r="4" fill="white" stroke="#40546b" stroke-width="1.6"/>
+<path d="M 1646.00,533.50 L 1636.00,527.50" fill="none" stroke="#40546b" stroke-width="1.7"/>
+<path d="M 1646.00,527.50 L 1636.00,527.50" fill="none" stroke="#40546b" stroke-width="1.7"/>
+<path d="M 1646.00,521.50 L 1636.00,527.50" fill="none" stroke="#40546b" stroke-width="1.7"/>
+<path d="M 2067.00,713.00 L 2168.00,713.00" fill="none" stroke="#40546b" stroke-width="1.45" stroke-linejoin="round"/>
+<circle cx="2085.00" cy="713.00" r="4" fill="white" stroke="#40546b" stroke-width="1.6"/>
+<path d="M 2074.00,708.00 L 2074.00,718.00" fill="none" stroke="#40546b" stroke-width="1.7"/>
+<circle cx="2150.00" cy="713.00" r="4" fill="white" stroke="#40546b" stroke-width="1.6"/>
+<path d="M 2167.00,719.00 L 2157.00,713.00" fill="none" stroke="#40546b" stroke-width="1.7"/>
+<path d="M 2167.00,713.00 L 2157.00,713.00" fill="none" stroke="#40546b" stroke-width="1.7"/>
+<path d="M 2167.00,707.00 L 2157.00,713.00" fill="none" stroke="#40546b" stroke-width="1.7"/>
+<path d="M 2067.00,269.00 L 2378.00,269.00 L 2378.00,384.00" fill="none" stroke="#40546b" stroke-width="1.45" stroke-linejoin="round"/>
+<circle cx="2085.00" cy="269.00" r="4" fill="white" stroke="#40546b" stroke-width="1.6"/>
+<path d="M 2074.00,264.00 L 2074.00,274.00" fill="none" stroke="#40546b" stroke-width="1.7"/>
+<circle cx="2378.00" cy="366.00" r="4" fill="white" stroke="#40546b" stroke-width="1.6"/>
+<path d="M 2372.00,383.00 L 2378.00,373.00" fill="none" stroke="#40546b" stroke-width="1.7"/>
+<path d="M 2378.00,383.00 L 2378.00,373.00" fill="none" stroke="#40546b" stroke-width="1.7"/>
+<path d="M 2384.00,383.00 L 2378.00,373.00" fill="none" stroke="#40546b" stroke-width="1.7"/>
+<path d="M 2067.00,551.50 L 2168.00,551.50" fill="none" stroke="#40546b" stroke-width="1.45" stroke-linejoin="round"/>
+<circle cx="2085.00" cy="551.50" r="4" fill="white" stroke="#40546b" stroke-width="1.6"/>
+<path d="M 2074.00,546.50 L 2074.00,556.50" fill="none" stroke="#40546b" stroke-width="1.7"/>
+<circle cx="2150.00" cy="551.50" r="4" fill="white" stroke="#40546b" stroke-width="1.6"/>
+<path d="M 2167.00,557.50 L 2157.00,551.50" fill="none" stroke="#40546b" stroke-width="1.7"/>
+<path d="M 2167.00,551.50 L 2157.00,551.50" fill="none" stroke="#40546b" stroke-width="1.7"/>
+<path d="M 2167.00,545.50 L 2157.00,551.50" fill="none" stroke="#40546b" stroke-width="1.7"/>
+<path d="M 2067.00,426.00 L 2168.00,426.00" fill="none" stroke="#40546b" stroke-width="1.45" stroke-linejoin="round"/>
+<circle cx="2085.00" cy="426.00" r="4" fill="white" stroke="#40546b" stroke-width="1.6"/>
+<path d="M 2074.00,421.00 L 2074.00,431.00" fill="none" stroke="#40546b" stroke-width="1.7"/>
+<circle cx="2150.00" cy="426.00" r="4" fill="white" stroke="#40546b" stroke-width="1.6"/>
+<path d="M 2167.00,432.00 L 2157.00,426.00" fill="none" stroke="#40546b" stroke-width="1.7"/>
+<path d="M 2167.00,426.00 L 2157.00,426.00" fill="none" stroke="#40546b" stroke-width="1.7"/>
+<path d="M 2167.00,420.00 L 2157.00,426.00" fill="none" stroke="#40546b" stroke-width="1.7"/>
+<path d="M 2067.00,225.00 L 2899.00,225.00 L 2899.00,495.00" fill="none" stroke="#40546b" stroke-width="1.45" stroke-linejoin="round"/>
+<path d="M 2072.00,220.00 L 2072.00,230.00" fill="none" stroke="#40546b" stroke-width="1.7"/>
+<path d="M 2077.00,220.00 L 2077.00,230.00" fill="none" stroke="#40546b" stroke-width="1.7"/>
+<circle cx="2899.00" cy="477.00" r="4" fill="white" stroke="#40546b" stroke-width="1.6"/>
+<path d="M 2893.00,494.00 L 2899.00,484.00" fill="none" stroke="#40546b" stroke-width="1.7"/>
+<path d="M 2899.00,494.00 L 2899.00,484.00" fill="none" stroke="#40546b" stroke-width="1.7"/>
+<path d="M 2905.00,494.00 L 2899.00,484.00" fill="none" stroke="#40546b" stroke-width="1.7"/>
+<path d="M 2588.00,508.29 L 2689.00,508.29" fill="none" stroke="#40546b" stroke-width="1.45" stroke-linejoin="round"/>
+<path d="M 2593.00,503.29 L 2593.00,513.29" fill="none" stroke="#40546b" stroke-width="1.7"/>
+<path d="M 2598.00,503.29 L 2598.00,513.29" fill="none" stroke="#40546b" stroke-width="1.7"/>
+<circle cx="2671.00" cy="508.29" r="4" fill="white" stroke="#40546b" stroke-width="1.6"/>
+<path d="M 2688.00,514.29 L 2678.00,508.29" fill="none" stroke="#40546b" stroke-width="1.7"/>
+<path d="M 2688.00,508.29 L 2678.00,508.29" fill="none" stroke="#40546b" stroke-width="1.7"/>
+<path d="M 2688.00,502.29 L 2678.00,508.29" fill="none" stroke="#40546b" stroke-width="1.7"/>
+<path d="M 504.00,1371.00 L 1647.00,1371.00" fill="none" stroke="#40546b" stroke-width="1.45" stroke-linejoin="round"/>
+<path d="M 509.00,1366.00 L 509.00,1376.00" fill="none" stroke="#40546b" stroke-width="1.7"/>
+<path d="M 514.00,1366.00 L 514.00,1376.00" fill="none" stroke="#40546b" stroke-width="1.7"/>
+<circle cx="1629.00" cy="1371.00" r="4" fill="white" stroke="#40546b" stroke-width="1.6"/>
+<path d="M 1646.00,1377.00 L 1636.00,1371.00" fill="none" stroke="#40546b" stroke-width="1.7"/>
+<path d="M 1646.00,1371.00 L 1636.00,1371.00" fill="none" stroke="#40546b" stroke-width="1.7"/>
+<path d="M 1646.00,1365.00 L 1636.00,1371.00" fill="none" stroke="#40546b" stroke-width="1.7"/>
+<path d="M 2067.00,1393.00 L 2168.00,1393.00" fill="none" stroke="#40546b" stroke-width="1.45" stroke-linejoin="round"/>
+<circle cx="2085.00" cy="1393.00" r="4" fill="white" stroke="#40546b" stroke-width="1.6"/>
+<path d="M 2074.00,1388.00 L 2074.00,1398.00" fill="none" stroke="#40546b" stroke-width="1.7"/>
+<circle cx="2150.00" cy="1393.00" r="4" fill="white" stroke="#40546b" stroke-width="1.6"/>
+<path d="M 2167.00,1399.00 L 2157.00,1393.00" fill="none" stroke="#40546b" stroke-width="1.7"/>
+<path d="M 2167.00,1393.00 L 2157.00,1393.00" fill="none" stroke="#40546b" stroke-width="1.7"/>
+<path d="M 2167.00,1387.00 L 2157.00,1393.00" fill="none" stroke="#40546b" stroke-width="1.7"/>
+<path d="M 1857.00,2441.00 L 1857.00,1477.00 L 2168.00,1477.00" fill="none" stroke="#40546b" stroke-width="1.45" stroke-linejoin="round"/>
+<circle cx="1857.00" cy="2423.00" r="4" fill="white" stroke="#40546b" stroke-width="1.6"/>
+<path d="M 1852.00,2434.00 L 1862.00,2434.00" fill="none" stroke="#40546b" stroke-width="1.7"/>
+<circle cx="2150.00" cy="1477.00" r="4" fill="white" stroke="#40546b" stroke-width="1.6"/>
+<path d="M 2167.00,1483.00 L 2157.00,1477.00" fill="none" stroke="#40546b" stroke-width="1.7"/>
+<path d="M 2167.00,1477.00 L 2157.00,1477.00" fill="none" stroke="#40546b" stroke-width="1.7"/>
+<path d="M 2167.00,1471.00 L 2157.00,1477.00" fill="none" stroke="#40546b" stroke-width="1.7"/>
+<path d="M 1546.00,1875.00 L 2378.00,1875.00 L 2378.00,1495.00" fill="none" stroke="#40546b" stroke-width="1.45" stroke-linejoin="round"/>
+<circle cx="1564.00" cy="1875.00" r="4" fill="white" stroke="#40546b" stroke-width="1.6"/>
+<path d="M 1553.00,1870.00 L 1553.00,1880.00" fill="none" stroke="#40546b" stroke-width="1.7"/>
+<circle cx="2378.00" cy="1513.00" r="4" fill="white" stroke="#40546b" stroke-width="1.6"/>
+<path d="M 2384.00,1496.00 L 2378.00,1506.00" fill="none" stroke="#40546b" stroke-width="1.7"/>
+<path d="M 2378.00,1496.00 L 2378.00,1506.00" fill="none" stroke="#40546b" stroke-width="1.7"/>
+<path d="M 2372.00,1496.00 L 2378.00,1506.00" fill="none" stroke="#40546b" stroke-width="1.7"/>
+<path d="M 2378.00,1291.00 L 2378.00,989.00 L 2689.00,989.00" fill="none" stroke="#40546b" stroke-width="1.45" stroke-linejoin="round"/>
+<path d="M 2373.00,1286.00 L 2383.00,1286.00" fill="none" stroke="#40546b" stroke-width="1.7"/>
+<path d="M 2373.00,1281.00 L 2383.00,1281.00" fill="none" stroke="#40546b" stroke-width="1.7"/>
+<circle cx="2671.00" cy="989.00" r="4" fill="white" stroke="#40546b" stroke-width="1.6"/>
+<path d="M 2688.00,995.00 L 2678.00,989.00" fill="none" stroke="#40546b" stroke-width="1.7"/>
+<path d="M 2688.00,989.00 L 2678.00,989.00" fill="none" stroke="#40546b" stroke-width="1.7"/>
+<path d="M 2688.00,983.00 L 2678.00,989.00" fill="none" stroke="#40546b" stroke-width="1.7"/>
+<path d="M 2588.00,521.57 L 2669.00,521.57 L 2669.00,937.00 L 2689.00,937.00" fill="none" stroke="#40546b" stroke-width="1.45" stroke-linejoin="round"/>
+<path d="M 2593.00,516.57 L 2593.00,526.57" fill="none" stroke="#40546b" stroke-width="1.7"/>
+<path d="M 2598.00,516.57 L 2598.00,526.57" fill="none" stroke="#40546b" stroke-width="1.7"/>
+<circle cx="2671.00" cy="937.00" r="4" fill="white" stroke="#40546b" stroke-width="1.6"/>
+<path d="M 2688.00,943.00 L 2678.00,937.00" fill="none" stroke="#40546b" stroke-width="1.7"/>
+<path d="M 2688.00,937.00 L 2678.00,937.00" fill="none" stroke="#40546b" stroke-width="1.7"/>
+<path d="M 2688.00,931.00 L 2678.00,937.00" fill="none" stroke="#40546b" stroke-width="1.7"/>
+<path d="M 2067.00,2468.50 L 2638.00,2468.50 L 2638.00,1451.00 L 2689.00,1451.00" fill="none" stroke="#40546b" stroke-width="1.45" stroke-linejoin="round"/>
+<path d="M 2072.00,2463.50 L 2072.00,2473.50" fill="none" stroke="#40546b" stroke-width="1.7"/>
+<path d="M 2077.00,2463.50 L 2077.00,2473.50" fill="none" stroke="#40546b" stroke-width="1.7"/>
+<circle cx="2671.00" cy="1451.00" r="4" fill="white" stroke="#40546b" stroke-width="1.6"/>
+<path d="M 2688.00,1457.00 L 2678.00,1451.00" fill="none" stroke="#40546b" stroke-width="1.7"/>
+<path d="M 2688.00,1451.00 L 2678.00,1451.00" fill="none" stroke="#40546b" stroke-width="1.7"/>
+<path d="M 2688.00,1445.00 L 2678.00,1451.00" fill="none" stroke="#40546b" stroke-width="1.7"/>
+<path d="M 2588.00,548.14 L 2649.00,548.14 L 2649.00,1407.00 L 2689.00,1407.00" fill="none" stroke="#40546b" stroke-width="1.45" stroke-linejoin="round"/>
+<path d="M 2593.00,543.14 L 2593.00,553.14" fill="none" stroke="#40546b" stroke-width="1.7"/>
+<path d="M 2598.00,543.14 L 2598.00,553.14" fill="none" stroke="#40546b" stroke-width="1.7"/>
+<circle cx="2671.00" cy="1407.00" r="4" fill="white" stroke="#40546b" stroke-width="1.6"/>
+<path d="M 2688.00,1413.00 L 2678.00,1407.00" fill="none" stroke="#40546b" stroke-width="1.7"/>
+<path d="M 2688.00,1407.00 L 2678.00,1407.00" fill="none" stroke="#40546b" stroke-width="1.7"/>
+<path d="M 2688.00,1401.00 L 2678.00,1407.00" fill="none" stroke="#40546b" stroke-width="1.7"/>
+<path d="M 2067.00,2459.33 L 2628.00,2459.33 L 2628.00,1307.67 L 2689.00,1307.67" fill="none" stroke="#40546b" stroke-width="1.45" stroke-linejoin="round"/>
+<circle cx="2085.00" cy="2459.33" r="4" fill="white" stroke="#40546b" stroke-width="1.6"/>
+<path d="M 2074.00,2454.33 L 2074.00,2464.33" fill="none" stroke="#40546b" stroke-width="1.7"/>
+<circle cx="2671.00" cy="1307.67" r="4" fill="white" stroke="#40546b" stroke-width="1.6"/>
+<path d="M 2688.00,1313.67 L 2678.00,1307.67" fill="none" stroke="#40546b" stroke-width="1.7"/>
+<path d="M 2688.00,1307.67 L 2678.00,1307.67" fill="none" stroke="#40546b" stroke-width="1.7"/>
+<path d="M 2688.00,1301.67 L 2678.00,1307.67" fill="none" stroke="#40546b" stroke-width="1.7"/>
+<path d="M 1546.00,1899.00 L 2618.00,1899.00 L 2618.00,1299.33 L 2689.00,1299.33" fill="none" stroke="#40546b" stroke-width="1.45" stroke-linejoin="round"/>
+<circle cx="1564.00" cy="1899.00" r="4" fill="white" stroke="#40546b" stroke-width="1.6"/>
+<path d="M 1553.00,1894.00 L 1553.00,1904.00" fill="none" stroke="#40546b" stroke-width="1.7"/>
+<circle cx="2671.00" cy="1299.33" r="4" fill="white" stroke="#40546b" stroke-width="1.6"/>
+<path d="M 2688.00,1305.33 L 2678.00,1299.33" fill="none" stroke="#40546b" stroke-width="1.7"/>
+<path d="M 2688.00,1299.33 L 2678.00,1299.33" fill="none" stroke="#40546b" stroke-width="1.7"/>
+<path d="M 2688.00,1293.33 L 2678.00,1299.33" fill="none" stroke="#40546b" stroke-width="1.7"/>
+<path d="M 2588.00,534.86 L 2659.00,534.86 L 2659.00,1118.00 L 2689.00,1118.00" fill="none" stroke="#40546b" stroke-width="1.45" stroke-linejoin="round"/>
+<circle cx="2606.00" cy="534.86" r="4" fill="white" stroke="#40546b" stroke-width="1.6"/>
+<path d="M 2595.00,529.86 L 2595.00,539.86" fill="none" stroke="#40546b" stroke-width="1.7"/>
+<circle cx="2671.00" cy="1118.00" r="4" fill="white" stroke="#40546b" stroke-width="1.6"/>
+<path d="M 2688.00,1124.00 L 2678.00,1118.00" fill="none" stroke="#40546b" stroke-width="1.7"/>
+<path d="M 2688.00,1118.00 L 2678.00,1118.00" fill="none" stroke="#40546b" stroke-width="1.7"/>
+<path d="M 2688.00,1112.00 L 2678.00,1118.00" fill="none" stroke="#40546b" stroke-width="1.7"/>
+<path d="M 2067.00,2797.00 L 2168.00,2797.00" fill="none" stroke="#40546b" stroke-width="1.45" stroke-linejoin="round"/>
+<circle cx="2085.00" cy="2797.00" r="4" fill="white" stroke="#40546b" stroke-width="1.6"/>
+<path d="M 2074.00,2792.00 L 2074.00,2802.00" fill="none" stroke="#40546b" stroke-width="1.7"/>
+<circle cx="2150.00" cy="2797.00" r="4" fill="white" stroke="#40546b" stroke-width="1.6"/>
+<path d="M 2167.00,2803.00 L 2157.00,2797.00" fill="none" stroke="#40546b" stroke-width="1.7"/>
+<path d="M 2167.00,2797.00 L 2157.00,2797.00" fill="none" stroke="#40546b" stroke-width="1.7"/>
+<path d="M 2167.00,2791.00 L 2157.00,2797.00" fill="none" stroke="#40546b" stroke-width="1.7"/>
+<path d="M 2067.00,2558.60 L 2336.00,2558.60 L 2336.00,2770.00" fill="none" stroke="#40546b" stroke-width="1.45" stroke-linejoin="round"/>
+<circle cx="2085.00" cy="2558.60" r="4" fill="white" stroke="#40546b" stroke-width="1.6"/>
+<path d="M 2074.00,2553.60 L 2074.00,2563.60" fill="none" stroke="#40546b" stroke-width="1.7"/>
+<circle cx="2336.00" cy="2752.00" r="4" fill="white" stroke="#40546b" stroke-width="1.6"/>
+<path d="M 2330.00,2769.00 L 2336.00,2759.00" fill="none" stroke="#40546b" stroke-width="1.7"/>
+<path d="M 2336.00,2769.00 L 2336.00,2759.00" fill="none" stroke="#40546b" stroke-width="1.7"/>
+<path d="M 2342.00,2769.00 L 2336.00,2759.00" fill="none" stroke="#40546b" stroke-width="1.7"/>
+<path d="M 2504.00,2770.00 L 2504.00,2683.50 L 2689.00,2683.50" fill="none" stroke="#40546b" stroke-width="1.45" stroke-linejoin="round"/>
+<path d="M 2499.00,2765.00 L 2509.00,2765.00" fill="none" stroke="#40546b" stroke-width="1.7"/>
+<path d="M 2499.00,2760.00 L 2509.00,2760.00" fill="none" stroke="#40546b" stroke-width="1.7"/>
+<circle cx="2671.00" cy="2683.50" r="4" fill="white" stroke="#40546b" stroke-width="1.6"/>
+<path d="M 2688.00,2689.50 L 2678.00,2683.50" fill="none" stroke="#40546b" stroke-width="1.7"/>
+<path d="M 2688.00,2683.50 L 2678.00,2683.50" fill="none" stroke="#40546b" stroke-width="1.7"/>
+<path d="M 2688.00,2677.50 L 2678.00,2683.50" fill="none" stroke="#40546b" stroke-width="1.7"/>
+<path d="M 2588.00,574.71 L 2598.00,574.71 L 2598.00,2605.40 L 2689.00,2605.40" fill="none" stroke="#40546b" stroke-width="1.45" stroke-linejoin="round"/>
+<path d="M 2593.00,569.71 L 2593.00,579.71" fill="none" stroke="#40546b" stroke-width="1.7"/>
+<path d="M 2598.00,569.71 L 2598.00,579.71" fill="none" stroke="#40546b" stroke-width="1.7"/>
+<circle cx="2671.00" cy="2605.40" r="4" fill="white" stroke="#40546b" stroke-width="1.6"/>
+<path d="M 2688.00,2611.40 L 2678.00,2605.40" fill="none" stroke="#40546b" stroke-width="1.7"/>
+<path d="M 2688.00,2605.40 L 2678.00,2605.40" fill="none" stroke="#40546b" stroke-width="1.7"/>
+<path d="M 2688.00,2599.40 L 2678.00,2605.40" fill="none" stroke="#40546b" stroke-width="1.7"/>
+<path d="M 2420.00,2770.00 L 2420.00,2486.83 L 2689.00,2486.83" fill="none" stroke="#40546b" stroke-width="1.45" stroke-linejoin="round"/>
+<path d="M 2415.00,2765.00 L 2425.00,2765.00" fill="none" stroke="#40546b" stroke-width="1.7"/>
+<path d="M 2415.00,2760.00 L 2425.00,2760.00" fill="none" stroke="#40546b" stroke-width="1.7"/>
+<circle cx="2671.00" cy="2486.83" r="4" fill="white" stroke="#40546b" stroke-width="1.6"/>
+<path d="M 2688.00,2492.83 L 2678.00,2486.83" fill="none" stroke="#40546b" stroke-width="1.7"/>
+<path d="M 2688.00,2486.83 L 2678.00,2486.83" fill="none" stroke="#40546b" stroke-width="1.7"/>
+<path d="M 2688.00,2480.83 L 2678.00,2486.83" fill="none" stroke="#40546b" stroke-width="1.7"/>
+<path d="M 2067.00,2477.67 L 2689.00,2477.67" fill="none" stroke="#40546b" stroke-width="1.45" stroke-linejoin="round"/>
+<path d="M 2072.00,2472.67 L 2072.00,2482.67" fill="none" stroke="#40546b" stroke-width="1.7"/>
+<path d="M 2077.00,2472.67 L 2077.00,2482.67" fill="none" stroke="#40546b" stroke-width="1.7"/>
+<circle cx="2671.00" cy="2477.67" r="4" fill="white" stroke="#40546b" stroke-width="1.6"/>
+<path d="M 2688.00,2483.67 L 2678.00,2477.67" fill="none" stroke="#40546b" stroke-width="1.7"/>
+<path d="M 2688.00,2477.67 L 2678.00,2477.67" fill="none" stroke="#40546b" stroke-width="1.7"/>
+<path d="M 2688.00,2471.67 L 2678.00,2477.67" fill="none" stroke="#40546b" stroke-width="1.7"/>
+<path d="M 2588.00,561.43 L 2608.00,561.43 L 2608.00,2378.50 L 2689.00,2378.50" fill="none" stroke="#40546b" stroke-width="1.45" stroke-linejoin="round"/>
+<path d="M 2593.00,556.43 L 2593.00,566.43" fill="none" stroke="#40546b" stroke-width="1.7"/>
+<path d="M 2598.00,556.43 L 2598.00,566.43" fill="none" stroke="#40546b" stroke-width="1.7"/>
+<circle cx="2671.00" cy="2378.50" r="4" fill="white" stroke="#40546b" stroke-width="1.6"/>
+<path d="M 2688.00,2384.50 L 2678.00,2378.50" fill="none" stroke="#40546b" stroke-width="1.7"/>
+<path d="M 2688.00,2378.50 L 2678.00,2378.50" fill="none" stroke="#40546b" stroke-width="1.7"/>
+<path d="M 2688.00,2372.50 L 2678.00,2378.50" fill="none" stroke="#40546b" stroke-width="1.7"/>
+<path d="M 1546.00,1953.86 L 2139.00,1953.86 L 2139.00,2752.00 L 2689.00,2752.00" fill="none" stroke="#40546b" stroke-width="1.45" stroke-linejoin="round"/>
+<circle cx="1564.00" cy="1953.86" r="4" fill="white" stroke="#40546b" stroke-width="1.6"/>
+<path d="M 1553.00,1948.86 L 1553.00,1958.86" fill="none" stroke="#40546b" stroke-width="1.7"/>
+<circle cx="2671.00" cy="2752.00" r="4" fill="white" stroke="#40546b" stroke-width="1.6"/>
+<path d="M 2688.00,2758.00 L 2678.00,2752.00" fill="none" stroke="#40546b" stroke-width="1.7"/>
+<path d="M 2688.00,2752.00 L 2678.00,2752.00" fill="none" stroke="#40546b" stroke-width="1.7"/>
+<path d="M 2688.00,2746.00 L 2678.00,2752.00" fill="none" stroke="#40546b" stroke-width="1.7"/>
+<path d="M 2067.00,2764.00 L 2689.00,2764.00" fill="none" stroke="#40546b" stroke-width="1.45" stroke-linejoin="round"/>
+<circle cx="2085.00" cy="2764.00" r="4" fill="white" stroke="#40546b" stroke-width="1.6"/>
+<path d="M 2074.00,2759.00 L 2074.00,2769.00" fill="none" stroke="#40546b" stroke-width="1.7"/>
+<circle cx="2671.00" cy="2764.00" r="4" fill="white" stroke="#40546b" stroke-width="1.6"/>
+<path d="M 2688.00,2770.00 L 2678.00,2764.00" fill="none" stroke="#40546b" stroke-width="1.7"/>
+<path d="M 2688.00,2764.00 L 2678.00,2764.00" fill="none" stroke="#40546b" stroke-width="1.7"/>
+<path d="M 2688.00,2758.00 L 2678.00,2764.00" fill="none" stroke="#40546b" stroke-width="1.7"/>
+<path d="M 2588.00,2872.00 L 2689.00,2872.00" fill="none" stroke="#40546b" stroke-width="1.45" stroke-linejoin="round"/>
+<circle cx="2606.00" cy="2872.00" r="4" fill="white" stroke="#40546b" stroke-width="1.6"/>
+<path d="M 2595.00,2867.00 L 2595.00,2877.00" fill="none" stroke="#40546b" stroke-width="1.7"/>
+<circle cx="2671.00" cy="2872.00" r="4" fill="white" stroke="#40546b" stroke-width="1.6"/>
+<path d="M 2682.00,2877.00 L 2682.00,2867.00" fill="none" stroke="#40546b" stroke-width="1.7"/>
+<path d="M 2067.00,2574.20 L 2125.00,2574.20 L 2125.00,2758.00 L 2689.00,2758.00" fill="none" stroke="#40546b" stroke-width="1.45" stroke-linejoin="round"/>
+<circle cx="2085.00" cy="2574.20" r="4" fill="white" stroke="#40546b" stroke-width="1.6"/>
+<path d="M 2074.00,2569.20 L 2074.00,2579.20" fill="none" stroke="#40546b" stroke-width="1.7"/>
+<circle cx="2671.00" cy="2758.00" r="4" fill="white" stroke="#40546b" stroke-width="1.6"/>
+<path d="M 2688.00,2764.00 L 2678.00,2758.00" fill="none" stroke="#40546b" stroke-width="1.7"/>
+<path d="M 2688.00,2758.00 L 2678.00,2758.00" fill="none" stroke="#40546b" stroke-width="1.7"/>
+<path d="M 2688.00,2752.00 L 2678.00,2758.00" fill="none" stroke="#40546b" stroke-width="1.7"/>
+<path d="M 2588.00,439.50 L 3420.00,439.50 L 3420.00,2782.00" fill="none" stroke="#40546b" stroke-width="1.45" stroke-linejoin="round"/>
+<path d="M 2593.00,434.50 L 2593.00,444.50" fill="none" stroke="#40546b" stroke-width="1.7"/>
+<path d="M 2598.00,434.50 L 2598.00,444.50" fill="none" stroke="#40546b" stroke-width="1.7"/>
+<circle cx="3420.00" cy="2764.00" r="4" fill="white" stroke="#40546b" stroke-width="1.6"/>
+<path d="M 3414.00,2781.00 L 3420.00,2771.00" fill="none" stroke="#40546b" stroke-width="1.7"/>
+<path d="M 3420.00,2781.00 L 3420.00,2771.00" fill="none" stroke="#40546b" stroke-width="1.7"/>
+<path d="M 3426.00,2781.00 L 3420.00,2771.00" fill="none" stroke="#40546b" stroke-width="1.7"/>
+<path d="M 3109.00,2872.00 L 3210.00,2872.00" fill="none" stroke="#40546b" stroke-width="1.45" stroke-linejoin="round"/>
+<path d="M 3114.00,2867.00 L 3114.00,2877.00" fill="none" stroke="#40546b" stroke-width="1.7"/>
+<path d="M 3119.00,2867.00 L 3119.00,2877.00" fill="none" stroke="#40546b" stroke-width="1.7"/>
+<circle cx="3192.00" cy="2872.00" r="4" fill="white" stroke="#40546b" stroke-width="1.6"/>
+<path d="M 3209.00,2878.00 L 3199.00,2872.00" fill="none" stroke="#40546b" stroke-width="1.7"/>
+<path d="M 3209.00,2872.00 L 3199.00,2872.00" fill="none" stroke="#40546b" stroke-width="1.7"/>
+<path d="M 3209.00,2866.00 L 3199.00,2872.00" fill="none" stroke="#40546b" stroke-width="1.7"/>
+<path d="M 2448.00,2974.00 L 2448.00,3431.00 L 3210.00,3431.00" fill="none" stroke="#40546b" stroke-width="1.45" stroke-linejoin="round"/>
+<circle cx="2448.00" cy="2992.00" r="4" fill="white" stroke="#40546b" stroke-width="1.6"/>
+<path d="M 2453.00,2981.00 L 2443.00,2981.00" fill="none" stroke="#40546b" stroke-width="1.7"/>
+<circle cx="3192.00" cy="3431.00" r="4" fill="white" stroke="#40546b" stroke-width="1.6"/>
+<path d="M 3209.00,3437.00 L 3199.00,3431.00" fill="none" stroke="#40546b" stroke-width="1.7"/>
+<path d="M 3209.00,3431.00 L 3199.00,3431.00" fill="none" stroke="#40546b" stroke-width="1.7"/>
+<path d="M 3209.00,3425.00 L 3199.00,3431.00" fill="none" stroke="#40546b" stroke-width="1.7"/>
+<path d="M 2899.00,2998.00 L 2899.00,3363.00 L 3210.00,3363.00" fill="none" stroke="#40546b" stroke-width="1.45" stroke-linejoin="round"/>
+<circle cx="2899.00" cy="3016.00" r="4" fill="white" stroke="#40546b" stroke-width="1.6"/>
+<path d="M 2904.00,3005.00 L 2894.00,3005.00" fill="none" stroke="#40546b" stroke-width="1.7"/>
+<circle cx="3192.00" cy="3363.00" r="4" fill="white" stroke="#40546b" stroke-width="1.6"/>
+<path d="M 3209.00,3369.00 L 3199.00,3363.00" fill="none" stroke="#40546b" stroke-width="1.7"/>
+<path d="M 3209.00,3363.00 L 3199.00,3363.00" fill="none" stroke="#40546b" stroke-width="1.7"/>
+<path d="M 3209.00,3357.00 L 3199.00,3363.00" fill="none" stroke="#40546b" stroke-width="1.7"/>
+<path d="M 3109.00,2980.00 L 3420.00,2980.00 L 3420.00,3092.00" fill="none" stroke="#40546b" stroke-width="1.45" stroke-linejoin="round"/>
+<circle cx="3127.00" cy="2980.00" r="4" fill="white" stroke="#40546b" stroke-width="1.6"/>
+<path d="M 3116.00,2975.00 L 3116.00,2985.00" fill="none" stroke="#40546b" stroke-width="1.7"/>
+<circle cx="3420.00" cy="3074.00" r="4" fill="white" stroke="#40546b" stroke-width="1.6"/>
+<path d="M 3414.00,3091.00 L 3420.00,3081.00" fill="none" stroke="#40546b" stroke-width="1.7"/>
+<path d="M 3420.00,3091.00 L 3420.00,3081.00" fill="none" stroke="#40546b" stroke-width="1.7"/>
+<path d="M 3426.00,3091.00 L 3420.00,3081.00" fill="none" stroke="#40546b" stroke-width="1.7"/>
+<path d="M 2067.00,2722.50 L 3941.00,2722.50 L 3941.00,3493.00" fill="none" stroke="#40546b" stroke-width="1.45" stroke-linejoin="round"/>
+<path d="M 2072.00,2717.50 L 2072.00,2727.50" fill="none" stroke="#40546b" stroke-width="1.7"/>
+<path d="M 2077.00,2717.50 L 2077.00,2727.50" fill="none" stroke="#40546b" stroke-width="1.7"/>
+<circle cx="3941.00" cy="3475.00" r="4" fill="white" stroke="#40546b" stroke-width="1.6"/>
+<path d="M 3935.00,3492.00 L 3941.00,3482.00" fill="none" stroke="#40546b" stroke-width="1.7"/>
+<path d="M 3941.00,3492.00 L 3941.00,3482.00" fill="none" stroke="#40546b" stroke-width="1.7"/>
+<path d="M 3947.00,3492.00 L 3941.00,3482.00" fill="none" stroke="#40546b" stroke-width="1.7"/>
+<path d="M 2308.00,2974.00 L 2308.00,3646.00 L 3731.00,3646.00" fill="none" stroke="#40546b" stroke-width="1.45" stroke-linejoin="round"/>
+<circle cx="2308.00" cy="2992.00" r="4" fill="white" stroke="#40546b" stroke-width="1.6"/>
+<path d="M 2313.00,2981.00 L 2303.00,2981.00" fill="none" stroke="#40546b" stroke-width="1.7"/>
+<circle cx="3713.00" cy="3646.00" r="4" fill="white" stroke="#40546b" stroke-width="1.6"/>
+<path d="M 3730.00,3652.00 L 3720.00,3646.00" fill="none" stroke="#40546b" stroke-width="1.7"/>
+<path d="M 3730.00,3646.00 L 3720.00,3646.00" fill="none" stroke="#40546b" stroke-width="1.7"/>
+<path d="M 3730.00,3640.00 L 3720.00,3646.00" fill="none" stroke="#40546b" stroke-width="1.7"/>
+<path d="M 2067.00,2519.50 L 4046.00,2519.50 L 4046.00,3493.00" fill="none" stroke="#40546b" stroke-width="1.45" stroke-linejoin="round"/>
+<path d="M 2072.00,2514.50 L 2072.00,2524.50" fill="none" stroke="#40546b" stroke-width="1.7"/>
+<path d="M 2077.00,2514.50 L 2077.00,2524.50" fill="none" stroke="#40546b" stroke-width="1.7"/>
+<circle cx="4046.00" cy="3475.00" r="4" fill="white" stroke="#40546b" stroke-width="1.6"/>
+<path d="M 4040.00,3492.00 L 4046.00,3482.00" fill="none" stroke="#40546b" stroke-width="1.7"/>
+<path d="M 4046.00,3492.00 L 4046.00,3482.00" fill="none" stroke="#40546b" stroke-width="1.7"/>
+<path d="M 4052.00,3492.00 L 4046.00,3482.00" fill="none" stroke="#40546b" stroke-width="1.7"/>
+<path d="M 3630.00,2872.00 L 3836.00,2872.00 L 3836.00,3493.00" fill="none" stroke="#40546b" stroke-width="1.45" stroke-linejoin="round"/>
+<path d="M 3635.00,2867.00 L 3635.00,2877.00" fill="none" stroke="#40546b" stroke-width="1.7"/>
+<path d="M 3640.00,2867.00 L 3640.00,2877.00" fill="none" stroke="#40546b" stroke-width="1.7"/>
+<circle cx="3836.00" cy="3475.00" r="4" fill="white" stroke="#40546b" stroke-width="1.6"/>
+<path d="M 3830.00,3492.00 L 3836.00,3482.00" fill="none" stroke="#40546b" stroke-width="1.7"/>
+<path d="M 3836.00,3492.00 L 3836.00,3482.00" fill="none" stroke="#40546b" stroke-width="1.7"/>
+<path d="M 3842.00,3492.00 L 3836.00,3482.00" fill="none" stroke="#40546b" stroke-width="1.7"/>
+<path d="M 4151.00,3583.00 L 4252.00,3583.00" fill="none" stroke="#40546b" stroke-width="1.45" stroke-linejoin="round"/>
+<path d="M 4156.00,3578.00 L 4156.00,3588.00" fill="none" stroke="#40546b" stroke-width="1.7"/>
+<path d="M 4161.00,3578.00 L 4161.00,3588.00" fill="none" stroke="#40546b" stroke-width="1.7"/>
+<circle cx="4234.00" cy="3583.00" r="4" fill="white" stroke="#40546b" stroke-width="1.6"/>
+<path d="M 4251.00,3589.00 L 4241.00,3583.00" fill="none" stroke="#40546b" stroke-width="1.7"/>
+<path d="M 4251.00,3583.00 L 4241.00,3583.00" fill="none" stroke="#40546b" stroke-width="1.7"/>
+<path d="M 4251.00,3577.00 L 4241.00,3583.00" fill="none" stroke="#40546b" stroke-width="1.7"/>
+<path d="M 4151.00,3756.50 L 4252.00,3756.50" fill="none" stroke="#40546b" stroke-width="1.45" stroke-linejoin="round"/>
+<circle cx="4169.00" cy="3756.50" r="4" fill="white" stroke="#40546b" stroke-width="1.6"/>
+<path d="M 4158.00,3751.50 L 4158.00,3761.50" fill="none" stroke="#40546b" stroke-width="1.7"/>
+<circle cx="4234.00" cy="3756.50" r="4" fill="white" stroke="#40546b" stroke-width="1.6"/>
+<path d="M 4251.00,3762.50 L 4241.00,3756.50" fill="none" stroke="#40546b" stroke-width="1.7"/>
+<path d="M 4251.00,3756.50 L 4241.00,3756.50" fill="none" stroke="#40546b" stroke-width="1.7"/>
+<path d="M 4251.00,3750.50 L 4241.00,3756.50" fill="none" stroke="#40546b" stroke-width="1.7"/>
+<path d="M 1857.00,2824.00 L 1857.00,3846.50 L 4252.00,3846.50" fill="none" stroke="#40546b" stroke-width="1.45" stroke-linejoin="round"/>
+<path d="M 1862.00,2829.00 L 1852.00,2829.00" fill="none" stroke="#40546b" stroke-width="1.7"/>
+<path d="M 1862.00,2834.00 L 1852.00,2834.00" fill="none" stroke="#40546b" stroke-width="1.7"/>
+<circle cx="4234.00" cy="3846.50" r="4" fill="white" stroke="#40546b" stroke-width="1.6"/>
+<path d="M 4251.00,3852.50 L 4241.00,3846.50" fill="none" stroke="#40546b" stroke-width="1.7"/>
+<path d="M 4251.00,3846.50 L 4241.00,3846.50" fill="none" stroke="#40546b" stroke-width="1.7"/>
+<path d="M 4251.00,3840.50 L 4241.00,3846.50" fill="none" stroke="#40546b" stroke-width="1.7"/>
+<path d="M 1546.00,1984.71 L 2096.00,1984.71 L 2096.00,4089.20 L 2168.00,4089.20" fill="none" stroke="#40546b" stroke-width="1.45" stroke-linejoin="round"/>
+<path d="M 1551.00,1979.71 L 1551.00,1989.71" fill="none" stroke="#40546b" stroke-width="1.7"/>
+<path d="M 1556.00,1979.71 L 1556.00,1989.71" fill="none" stroke="#40546b" stroke-width="1.7"/>
+<circle cx="2150.00" cy="4089.20" r="4" fill="white" stroke="#40546b" stroke-width="1.6"/>
+<path d="M 2167.00,4095.20 L 2157.00,4089.20" fill="none" stroke="#40546b" stroke-width="1.7"/>
+<path d="M 2167.00,4089.20 L 2157.00,4089.20" fill="none" stroke="#40546b" stroke-width="1.7"/>
+<path d="M 2167.00,4083.20 L 2157.00,4089.20" fill="none" stroke="#40546b" stroke-width="1.7"/>
+<path d="M 2067.00,2589.80 L 2081.00,2589.80 L 2081.00,4121.60 L 2168.00,4121.60" fill="none" stroke="#40546b" stroke-width="1.45" stroke-linejoin="round"/>
+<circle cx="2085.00" cy="2589.80" r="4" fill="white" stroke="#40546b" stroke-width="1.6"/>
+<path d="M 2074.00,2584.80 L 2074.00,2594.80" fill="none" stroke="#40546b" stroke-width="1.7"/>
+<circle cx="2150.00" cy="4121.60" r="4" fill="white" stroke="#40546b" stroke-width="1.6"/>
+<path d="M 2167.00,4127.60 L 2157.00,4121.60" fill="none" stroke="#40546b" stroke-width="1.7"/>
+<path d="M 2167.00,4121.60 L 2157.00,4121.60" fill="none" stroke="#40546b" stroke-width="1.7"/>
+<path d="M 2167.00,4115.60 L 2157.00,4121.60" fill="none" stroke="#40546b" stroke-width="1.7"/>
+<path d="M 224.00,1459.00 L 224.00,4177.50 L 2168.00,4177.50" fill="none" stroke="#40546b" stroke-width="1.45" stroke-linejoin="round"/>
+<path d="M 229.00,1464.00 L 219.00,1464.00" fill="none" stroke="#40546b" stroke-width="1.7"/>
+<path d="M 229.00,1469.00 L 219.00,1469.00" fill="none" stroke="#40546b" stroke-width="1.7"/>
+<circle cx="2150.00" cy="4177.50" r="4" fill="white" stroke="#40546b" stroke-width="1.6"/>
+<path d="M 2167.00,4183.50 L 2157.00,4177.50" fill="none" stroke="#40546b" stroke-width="1.7"/>
+<path d="M 2167.00,4177.50 L 2157.00,4177.50" fill="none" stroke="#40546b" stroke-width="1.7"/>
+<path d="M 2167.00,4171.50 L 2157.00,4177.50" fill="none" stroke="#40546b" stroke-width="1.7"/>
+<path d="M 2168.00,4024.40 L 2154.00,4024.40 L 2154.00,3983.00 L 2679.00,3983.00 L 2679.00,4118.00 L 2588.00,4118.00" fill="none" stroke="#40546b" stroke-width="1.45" stroke-linejoin="round"/>
+<circle cx="2150.00" cy="4024.40" r="4" fill="white" stroke="#40546b" stroke-width="1.6"/>
+<path d="M 2161.00,4029.40 L 2161.00,4019.40" fill="none" stroke="#40546b" stroke-width="1.7"/>
+<circle cx="2606.00" cy="4118.00" r="4" fill="white" stroke="#40546b" stroke-width="1.6"/>
+<path d="M 2589.00,4112.00 L 2599.00,4118.00" fill="none" stroke="#40546b" stroke-width="1.7"/>
+<path d="M 2589.00,4118.00 L 2599.00,4118.00" fill="none" stroke="#40546b" stroke-width="1.7"/>
+<path d="M 2589.00,4124.00 L 2599.00,4118.00" fill="none" stroke="#40546b" stroke-width="1.7"/>
+<path d="M 1546.00,1969.29 L 2110.00,1969.29 L 2110.00,4056.80 L 2168.00,4056.80" fill="none" stroke="#40546b" stroke-width="1.45" stroke-linejoin="round"/>
+<circle cx="1564.00" cy="1969.29" r="4" fill="white" stroke="#40546b" stroke-width="1.6"/>
+<path d="M 1553.00,1964.29 L 1553.00,1974.29" fill="none" stroke="#40546b" stroke-width="1.7"/>
+<circle cx="2150.00" cy="4056.80" r="4" fill="white" stroke="#40546b" stroke-width="1.6"/>
+<path d="M 2167.00,4062.80 L 2157.00,4056.80" fill="none" stroke="#40546b" stroke-width="1.7"/>
+<path d="M 2167.00,4056.80 L 2157.00,4056.80" fill="none" stroke="#40546b" stroke-width="1.7"/>
+<path d="M 2167.00,4050.80 L 2157.00,4056.80" fill="none" stroke="#40546b" stroke-width="1.7"/>
+<path d="M 1546.00,2000.14 L 1596.00,2000.14 L 1596.00,4064.00 L 1647.00,4064.00" fill="none" stroke="#40546b" stroke-width="1.45" stroke-linejoin="round"/>
+<path d="M 1551.00,1995.14 L 1551.00,2005.14" fill="none" stroke="#40546b" stroke-width="1.7"/>
+<path d="M 1556.00,1995.14 L 1556.00,2005.14" fill="none" stroke="#40546b" stroke-width="1.7"/>
+<circle cx="1629.00" cy="4064.00" r="4" fill="white" stroke="#40546b" stroke-width="1.6"/>
+<path d="M 1646.00,4070.00 L 1636.00,4064.00" fill="none" stroke="#40546b" stroke-width="1.7"/>
+<path d="M 1646.00,4064.00 L 1636.00,4064.00" fill="none" stroke="#40546b" stroke-width="1.7"/>
+<path d="M 1646.00,4058.00 L 1636.00,4064.00" fill="none" stroke="#40546b" stroke-width="1.7"/>
+<path d="M 154.00,1459.00 L 154.00,4321.00 L 1647.00,4321.00" fill="none" stroke="#40546b" stroke-width="1.45" stroke-linejoin="round"/>
+<path d="M 159.00,1464.00 L 149.00,1464.00" fill="none" stroke="#40546b" stroke-width="1.7"/>
+<path d="M 159.00,1469.00 L 149.00,1469.00" fill="none" stroke="#40546b" stroke-width="1.7"/>
+<circle cx="1629.00" cy="4321.00" r="4" fill="white" stroke="#40546b" stroke-width="1.6"/>
+<path d="M 1646.00,4327.00 L 1636.00,4321.00" fill="none" stroke="#40546b" stroke-width="1.7"/>
+<path d="M 1646.00,4321.00 L 1636.00,4321.00" fill="none" stroke="#40546b" stroke-width="1.7"/>
+<path d="M 1646.00,4315.00 L 1636.00,4321.00" fill="none" stroke="#40546b" stroke-width="1.7"/>
+<path d="M 1546.00,2015.57 L 1571.00,2015.57 L 1571.00,4261.00 L 1647.00,4261.00" fill="none" stroke="#40546b" stroke-width="1.45" stroke-linejoin="round"/>
+<circle cx="1564.00" cy="2015.57" r="4" fill="white" stroke="#40546b" stroke-width="1.6"/>
+<path d="M 1553.00,2010.57 L 1553.00,2020.57" fill="none" stroke="#40546b" stroke-width="1.7"/>
+<circle cx="1629.00" cy="4261.00" r="4" fill="white" stroke="#40546b" stroke-width="1.6"/>
+<path d="M 1646.00,4267.00 L 1636.00,4261.00" fill="none" stroke="#40546b" stroke-width="1.7"/>
+<path d="M 1646.00,4261.00 L 1636.00,4261.00" fill="none" stroke="#40546b" stroke-width="1.7"/>
+<path d="M 1646.00,4255.00 L 1636.00,4261.00" fill="none" stroke="#40546b" stroke-width="1.7"/>
+<rect x="84.0" y="1327.0" width="420" height="132" fill="white" stroke="#53677c" stroke-width="1.5"/>
+<rect x="84.0" y="1327.0" width="420" height="36" fill="#dce9fa" stroke="#53677c" stroke-width="1.2"/>
+<text x="96.00" y="1351.00" font-size="16" font-weight="bold" fill="#1e293b" text-anchor="start">empresa</text>
+<path d="M 84.0,1387.0 H 504.0" stroke="#e2e8f0" stroke-width="0.6"/>
+<text x="91.00" y="1379.00" font-size="10" font-weight="bold" fill="#52677d" text-anchor="start">PK</text>
+<text x="135.00" y="1379.00" font-size="13" font-weight="bold" fill="#1e293b" text-anchor="start">id_empresa</text>
+<text x="361.00" y="1379.00" font-size="12" font-weight="normal" fill="#52677d" text-anchor="start">int</text>
+<rect x="85.0" y="1387.0" width="418" height="24" fill="#f8fafc"/>
+<path d="M 84.0,1411.0 H 504.0" stroke="#e2e8f0" stroke-width="0.6"/>
+<text x="91.00" y="1403.00" font-size="10" font-weight="bold" fill="#52677d" text-anchor="start"></text>
+<text x="135.00" y="1403.00" font-size="13" font-weight="normal" fill="#1e293b" text-anchor="start">slug</text>
+<text x="361.00" y="1403.00" font-size="12" font-weight="normal" fill="#52677d" text-anchor="start">text</text>
+<path d="M 84.0,1435.0 H 504.0" stroke="#e2e8f0" stroke-width="0.6"/>
+<text x="91.00" y="1427.00" font-size="10" font-weight="bold" fill="#52677d" text-anchor="start"></text>
+<text x="135.00" y="1427.00" font-size="13" font-weight="normal" fill="#1e293b" text-anchor="start">nombre</text>
+<text x="361.00" y="1427.00" font-size="12" font-weight="normal" fill="#52677d" text-anchor="start">text</text>
+<rect x="85.0" y="1435.0" width="418" height="24" fill="#f8fafc"/>
+<path d="M 84.0,1459.0 H 504.0" stroke="#e2e8f0" stroke-width="0.6"/>
+<text x="91.00" y="1451.00" font-size="10" font-weight="bold" fill="#52677d" text-anchor="start"></text>
+<text x="135.00" y="1451.00" font-size="13" font-weight="normal" fill="#1e293b" text-anchor="start">activa</text>
+<text x="361.00" y="1451.00" font-size="12" font-weight="normal" fill="#52677d" text-anchor="start">bool</text>
+<rect x="84.0" y="1148.0" width="420" height="132" fill="white" stroke="#53677c" stroke-width="1.5"/>
+<rect x="84.0" y="1148.0" width="420" height="36" fill="#dce9fa" stroke="#53677c" stroke-width="1.2"/>
+<text x="96.00" y="1172.00" font-size="16" font-weight="bold" fill="#1e293b" text-anchor="start">plan</text>
+<path d="M 84.0,1208.0 H 504.0" stroke="#e2e8f0" stroke-width="0.6"/>
+<text x="91.00" y="1200.00" font-size="10" font-weight="bold" fill="#52677d" text-anchor="start">PK</text>
+<text x="135.00" y="1200.00" font-size="13" font-weight="bold" fill="#1e293b" text-anchor="start">id_plan</text>
+<text x="361.00" y="1200.00" font-size="12" font-weight="normal" fill="#52677d" text-anchor="start">int</text>
+<rect x="85.0" y="1208.0" width="418" height="24" fill="#f8fafc"/>
+<path d="M 84.0,1232.0 H 504.0" stroke="#e2e8f0" stroke-width="0.6"/>
+<text x="91.00" y="1224.00" font-size="10" font-weight="bold" fill="#52677d" text-anchor="start"></text>
+<text x="135.00" y="1224.00" font-size="13" font-weight="normal" fill="#1e293b" text-anchor="start">nombre</text>
+<text x="361.00" y="1224.00" font-size="12" font-weight="normal" fill="#52677d" text-anchor="start">text</text>
+<path d="M 84.0,1256.0 H 504.0" stroke="#e2e8f0" stroke-width="0.6"/>
+<text x="91.00" y="1248.00" font-size="10" font-weight="bold" fill="#52677d" text-anchor="start"></text>
+<text x="135.00" y="1248.00" font-size="13" font-weight="normal" fill="#1e293b" text-anchor="start">max_sucursales</text>
+<text x="361.00" y="1248.00" font-size="12" font-weight="normal" fill="#52677d" text-anchor="start">int</text>
+<rect x="85.0" y="1256.0" width="418" height="24" fill="#f8fafc"/>
+<path d="M 84.0,1280.0 H 504.0" stroke="#e2e8f0" stroke-width="0.6"/>
+<text x="91.00" y="1272.00" font-size="10" font-weight="bold" fill="#52677d" text-anchor="start"></text>
+<text x="135.00" y="1272.00" font-size="13" font-weight="normal" fill="#1e293b" text-anchor="start">reportes_ia</text>
+<text x="361.00" y="1272.00" font-size="12" font-weight="normal" fill="#52677d" text-anchor="start">bool</text>
+<rect x="605.0" y="1148.0" width="420" height="156" fill="white" stroke="#53677c" stroke-width="1.5"/>
+<rect x="605.0" y="1148.0" width="420" height="36" fill="#dce9fa" stroke="#53677c" stroke-width="1.2"/>
+<text x="617.00" y="1172.00" font-size="16" font-weight="bold" fill="#1e293b" text-anchor="start">suscripcion</text>
+<path d="M 605.0,1208.0 H 1025.0" stroke="#e2e8f0" stroke-width="0.6"/>
+<text x="612.00" y="1200.00" font-size="10" font-weight="bold" fill="#52677d" text-anchor="start">PK</text>
+<text x="656.00" y="1200.00" font-size="13" font-weight="bold" fill="#1e293b" text-anchor="start">id_suscripcion</text>
+<text x="882.00" y="1200.00" font-size="12" font-weight="normal" fill="#52677d" text-anchor="start">int</text>
+<rect x="606.0" y="1208.0" width="418" height="24" fill="#f8fafc"/>
+<path d="M 605.0,1232.0 H 1025.0" stroke="#e2e8f0" stroke-width="0.6"/>
+<text x="612.00" y="1224.00" font-size="10" font-weight="bold" fill="#52677d" text-anchor="start">FK</text>
+<text x="656.00" y="1224.00" font-size="13" font-weight="normal" fill="#1e293b" text-anchor="start">tenant_id</text>
+<text x="882.00" y="1224.00" font-size="12" font-weight="normal" fill="#52677d" text-anchor="start">int</text>
+<path d="M 605.0,1256.0 H 1025.0" stroke="#e2e8f0" stroke-width="0.6"/>
+<text x="612.00" y="1248.00" font-size="10" font-weight="bold" fill="#52677d" text-anchor="start">FK</text>
+<text x="656.00" y="1248.00" font-size="13" font-weight="normal" fill="#1e293b" text-anchor="start">id_plan</text>
+<text x="882.00" y="1248.00" font-size="12" font-weight="normal" fill="#52677d" text-anchor="start">int</text>
+<rect x="606.0" y="1256.0" width="418" height="24" fill="#f8fafc"/>
+<path d="M 605.0,1280.0 H 1025.0" stroke="#e2e8f0" stroke-width="0.6"/>
+<text x="612.00" y="1272.00" font-size="10" font-weight="bold" fill="#52677d" text-anchor="start"></text>
+<text x="656.00" y="1272.00" font-size="13" font-weight="normal" fill="#1e293b" text-anchor="start">inicio</text>
+<text x="882.00" y="1272.00" font-size="12" font-weight="normal" fill="#52677d" text-anchor="start">timestamptz</text>
+<path d="M 605.0,1304.0 H 1025.0" stroke="#e2e8f0" stroke-width="0.6"/>
+<text x="612.00" y="1296.00" font-size="10" font-weight="bold" fill="#52677d" text-anchor="start"></text>
+<text x="656.00" y="1296.00" font-size="13" font-weight="normal" fill="#1e293b" text-anchor="start">vencimiento</text>
+<text x="882.00" y="1296.00" font-size="12" font-weight="normal" fill="#52677d" text-anchor="start">timestamptz</text>
+<rect x="605.0" y="1899.0" width="420" height="132" fill="white" stroke="#53677c" stroke-width="1.5"/>
+<rect x="605.0" y="1899.0" width="420" height="36" fill="#e8e1f5" stroke="#53677c" stroke-width="1.2"/>
+<text x="617.00" y="1923.00" font-size="16" font-weight="bold" fill="#1e293b" text-anchor="start">cuenta_global</text>
+<path d="M 605.0,1959.0 H 1025.0" stroke="#e2e8f0" stroke-width="0.6"/>
+<text x="612.00" y="1951.00" font-size="10" font-weight="bold" fill="#52677d" text-anchor="start">PK</text>
+<text x="656.00" y="1951.00" font-size="13" font-weight="bold" fill="#1e293b" text-anchor="start">id</text>
+<text x="882.00" y="1951.00" font-size="12" font-weight="normal" fill="#52677d" text-anchor="start">bigint</text>
+<rect x="606.0" y="1959.0" width="418" height="24" fill="#f8fafc"/>
+<path d="M 605.0,1983.0 H 1025.0" stroke="#e2e8f0" stroke-width="0.6"/>
+<text x="612.00" y="1975.00" font-size="10" font-weight="bold" fill="#52677d" text-anchor="start"></text>
+<text x="656.00" y="1975.00" font-size="13" font-weight="normal" fill="#1e293b" text-anchor="start">correo</text>
+<text x="882.00" y="1975.00" font-size="12" font-weight="normal" fill="#52677d" text-anchor="start">text</text>
+<path d="M 605.0,2007.0 H 1025.0" stroke="#e2e8f0" stroke-width="0.6"/>
+<text x="612.00" y="1999.00" font-size="10" font-weight="bold" fill="#52677d" text-anchor="start"></text>
+<text x="656.00" y="1999.00" font-size="13" font-weight="normal" fill="#1e293b" text-anchor="start">tipo</text>
+<text x="882.00" y="1999.00" font-size="12" font-weight="normal" fill="#52677d" text-anchor="start">text</text>
+<rect x="606.0" y="2007.0" width="418" height="24" fill="#f8fafc"/>
+<path d="M 605.0,2031.0 H 1025.0" stroke="#e2e8f0" stroke-width="0.6"/>
+<text x="612.00" y="2023.00" font-size="10" font-weight="bold" fill="#52677d" text-anchor="start"></text>
+<text x="656.00" y="2023.00" font-size="13" font-weight="normal" fill="#1e293b" text-anchor="start">estado</text>
+<text x="882.00" y="2023.00" font-size="12" font-weight="normal" fill="#52677d" text-anchor="start">text</text>
+<rect x="605.0" y="1744.0" width="420" height="108" fill="white" stroke="#53677c" stroke-width="1.5"/>
+<rect x="605.0" y="1744.0" width="420" height="36" fill="#e8e1f5" stroke="#53677c" stroke-width="1.2"/>
+<text x="617.00" y="1768.00" font-size="16" font-weight="bold" fill="#1e293b" text-anchor="start">rol</text>
+<path d="M 605.0,1804.0 H 1025.0" stroke="#e2e8f0" stroke-width="0.6"/>
+<text x="612.00" y="1796.00" font-size="10" font-weight="bold" fill="#52677d" text-anchor="start">PK</text>
+<text x="656.00" y="1796.00" font-size="13" font-weight="bold" fill="#1e293b" text-anchor="start">id_rol</text>
+<text x="882.00" y="1796.00" font-size="12" font-weight="normal" fill="#52677d" text-anchor="start">int</text>
+<rect x="606.0" y="1804.0" width="418" height="24" fill="#f8fafc"/>
+<path d="M 605.0,1828.0 H 1025.0" stroke="#e2e8f0" stroke-width="0.6"/>
+<text x="612.00" y="1820.00" font-size="10" font-weight="bold" fill="#52677d" text-anchor="start">FK</text>
+<text x="656.00" y="1820.00" font-size="13" font-weight="normal" fill="#1e293b" text-anchor="start">tenant_id</text>
+<text x="882.00" y="1820.00" font-size="12" font-weight="normal" fill="#52677d" text-anchor="start">int</text>
+<path d="M 605.0,1852.0 H 1025.0" stroke="#e2e8f0" stroke-width="0.6"/>
+<text x="612.00" y="1844.00" font-size="10" font-weight="bold" fill="#52677d" text-anchor="start"></text>
+<text x="656.00" y="1844.00" font-size="13" font-weight="normal" fill="#1e293b" text-anchor="start">nombre</text>
+<text x="882.00" y="1844.00" font-size="12" font-weight="normal" fill="#52677d" text-anchor="start">varchar(50)</text>
+<rect x="605.0" y="1589.0" width="420" height="108" fill="white" stroke="#53677c" stroke-width="1.5"/>
+<rect x="605.0" y="1589.0" width="420" height="36" fill="#e8e1f5" stroke="#53677c" stroke-width="1.2"/>
+<text x="617.00" y="1613.00" font-size="16" font-weight="bold" fill="#1e293b" text-anchor="start">permiso</text>
+<path d="M 605.0,1649.0 H 1025.0" stroke="#e2e8f0" stroke-width="0.6"/>
+<text x="612.00" y="1641.00" font-size="10" font-weight="bold" fill="#52677d" text-anchor="start">PK</text>
+<text x="656.00" y="1641.00" font-size="13" font-weight="bold" fill="#1e293b" text-anchor="start">id_permiso</text>
+<text x="882.00" y="1641.00" font-size="12" font-weight="normal" fill="#52677d" text-anchor="start">int</text>
+<rect x="606.0" y="1649.0" width="418" height="24" fill="#f8fafc"/>
+<path d="M 605.0,1673.0 H 1025.0" stroke="#e2e8f0" stroke-width="0.6"/>
+<text x="612.00" y="1665.00" font-size="10" font-weight="bold" fill="#52677d" text-anchor="start"></text>
+<text x="656.00" y="1665.00" font-size="13" font-weight="normal" fill="#1e293b" text-anchor="start">codigo</text>
+<text x="882.00" y="1665.00" font-size="12" font-weight="normal" fill="#52677d" text-anchor="start">varchar(100)</text>
+<path d="M 605.0,1697.0 H 1025.0" stroke="#e2e8f0" stroke-width="0.6"/>
+<text x="612.00" y="1689.00" font-size="10" font-weight="bold" fill="#52677d" text-anchor="start"></text>
+<text x="656.00" y="1689.00" font-size="13" font-weight="normal" fill="#1e293b" text-anchor="start">modulo</text>
+<text x="882.00" y="1689.00" font-size="12" font-weight="normal" fill="#52677d" text-anchor="start">varchar(100) ?</text>
+<rect x="1126.0" y="1851.0" width="420" height="180" fill="white" stroke="#53677c" stroke-width="1.5"/>
+<rect x="1126.0" y="1851.0" width="420" height="36" fill="#e8e1f5" stroke="#53677c" stroke-width="1.2"/>
+<text x="1138.00" y="1875.00" font-size="16" font-weight="bold" fill="#1e293b" text-anchor="start">usuario</text>
+<path d="M 1126.0,1911.0 H 1546.0" stroke="#e2e8f0" stroke-width="0.6"/>
+<text x="1133.00" y="1903.00" font-size="10" font-weight="bold" fill="#52677d" text-anchor="start">PK</text>
+<text x="1177.00" y="1903.00" font-size="13" font-weight="bold" fill="#1e293b" text-anchor="start">id_usuario</text>
+<text x="1403.00" y="1903.00" font-size="12" font-weight="normal" fill="#52677d" text-anchor="start">int</text>
+<rect x="1127.0" y="1911.0" width="418" height="24" fill="#f8fafc"/>
+<path d="M 1126.0,1935.0 H 1546.0" stroke="#e2e8f0" stroke-width="0.6"/>
+<text x="1133.00" y="1927.00" font-size="10" font-weight="bold" fill="#52677d" text-anchor="start">FK</text>
+<text x="1177.00" y="1927.00" font-size="13" font-weight="normal" fill="#1e293b" text-anchor="start">id_role</text>
+<text x="1403.00" y="1927.00" font-size="12" font-weight="normal" fill="#52677d" text-anchor="start">int ?</text>
+<path d="M 1126.0,1959.0 H 1546.0" stroke="#e2e8f0" stroke-width="0.6"/>
+<text x="1133.00" y="1951.00" font-size="10" font-weight="bold" fill="#52677d" text-anchor="start">FK</text>
+<text x="1177.00" y="1951.00" font-size="13" font-weight="normal" fill="#1e293b" text-anchor="start">tenant_id</text>
+<text x="1403.00" y="1951.00" font-size="12" font-weight="normal" fill="#52677d" text-anchor="start">int</text>
+<rect x="1127.0" y="1959.0" width="418" height="24" fill="#f8fafc"/>
+<path d="M 1126.0,1983.0 H 1546.0" stroke="#e2e8f0" stroke-width="0.6"/>
+<text x="1133.00" y="1975.00" font-size="10" font-weight="bold" fill="#52677d" text-anchor="start">FK</text>
+<text x="1177.00" y="1975.00" font-size="13" font-weight="normal" fill="#1e293b" text-anchor="start">account_id</text>
+<text x="1403.00" y="1975.00" font-size="12" font-weight="normal" fill="#52677d" text-anchor="start">bigint ?</text>
+<path d="M 1126.0,2007.0 H 1546.0" stroke="#e2e8f0" stroke-width="0.6"/>
+<text x="1133.00" y="1999.00" font-size="10" font-weight="bold" fill="#52677d" text-anchor="start"></text>
+<text x="1177.00" y="1999.00" font-size="13" font-weight="normal" fill="#1e293b" text-anchor="start">correo</text>
+<text x="1403.00" y="1999.00" font-size="12" font-weight="normal" fill="#52677d" text-anchor="start">varchar(150)</text>
+<rect x="1127.0" y="2007.0" width="418" height="24" fill="#f8fafc"/>
+<path d="M 1126.0,2031.0 H 1546.0" stroke="#e2e8f0" stroke-width="0.6"/>
+<text x="1133.00" y="2023.00" font-size="10" font-weight="bold" fill="#52677d" text-anchor="start"></text>
+<text x="1177.00" y="2023.00" font-size="13" font-weight="normal" fill="#1e293b" text-anchor="start">estado</text>
+<text x="1403.00" y="2023.00" font-size="12" font-weight="normal" fill="#52677d" text-anchor="start">varchar(20) ?</text>
+<rect x="1126.0" y="1643.0" width="420" height="108" fill="white" stroke="#53677c" stroke-width="1.5"/>
+<rect x="1126.0" y="1643.0" width="420" height="36" fill="#e8e1f5" stroke="#53677c" stroke-width="1.2"/>
+<text x="1138.00" y="1667.00" font-size="16" font-weight="bold" fill="#1e293b" text-anchor="start">rol_permiso</text>
+<path d="M 1126.0,1703.0 H 1546.0" stroke="#e2e8f0" stroke-width="0.6"/>
+<text x="1133.00" y="1695.00" font-size="10" font-weight="bold" fill="#52677d" text-anchor="start">PK/FK</text>
+<text x="1177.00" y="1695.00" font-size="13" font-weight="bold" fill="#1e293b" text-anchor="start">id_rol</text>
+<text x="1403.00" y="1695.00" font-size="12" font-weight="normal" fill="#52677d" text-anchor="start">int</text>
+<rect x="1127.0" y="1703.0" width="418" height="24" fill="#f8fafc"/>
+<path d="M 1126.0,1727.0 H 1546.0" stroke="#e2e8f0" stroke-width="0.6"/>
+<text x="1133.00" y="1719.00" font-size="10" font-weight="bold" fill="#52677d" text-anchor="start">PK/FK</text>
+<text x="1177.00" y="1719.00" font-size="13" font-weight="bold" fill="#1e293b" text-anchor="start">id_permiso</text>
+<text x="1403.00" y="1719.00" font-size="12" font-weight="normal" fill="#52677d" text-anchor="start">int</text>
+<path d="M 1126.0,1751.0 H 1546.0" stroke="#e2e8f0" stroke-width="0.6"/>
+<text x="1133.00" y="1743.00" font-size="10" font-weight="bold" fill="#52677d" text-anchor="start">FK</text>
+<text x="1177.00" y="1743.00" font-size="13" font-weight="normal" fill="#1e293b" text-anchor="start">tenant_id</text>
+<text x="1403.00" y="1743.00" font-size="12" font-weight="normal" fill="#52677d" text-anchor="start">int</text>
+<rect x="2168.0" y="1923.0" width="420" height="108" fill="white" stroke="#53677c" stroke-width="1.5"/>
+<rect x="2168.0" y="1923.0" width="420" height="36" fill="#e8e1f5" stroke="#53677c" stroke-width="1.2"/>
+<text x="2180.00" y="1947.00" font-size="16" font-weight="bold" fill="#1e293b" text-anchor="start">usuario_sucursal</text>
+<path d="M 2168.0,1983.0 H 2588.0" stroke="#e2e8f0" stroke-width="0.6"/>
+<text x="2175.00" y="1975.00" font-size="10" font-weight="bold" fill="#52677d" text-anchor="start">PK/FK</text>
+<text x="2219.00" y="1975.00" font-size="13" font-weight="bold" fill="#1e293b" text-anchor="start">tenant_id</text>
+<text x="2445.00" y="1975.00" font-size="12" font-weight="normal" fill="#52677d" text-anchor="start">int</text>
+<rect x="2169.0" y="1983.0" width="418" height="24" fill="#f8fafc"/>
+<path d="M 2168.0,2007.0 H 2588.0" stroke="#e2e8f0" stroke-width="0.6"/>
+<text x="2175.00" y="1999.00" font-size="10" font-weight="bold" fill="#52677d" text-anchor="start">PK/FK</text>
+<text x="2219.00" y="1999.00" font-size="13" font-weight="bold" fill="#1e293b" text-anchor="start">id_usuario</text>
+<text x="2445.00" y="1999.00" font-size="12" font-weight="normal" fill="#52677d" text-anchor="start">int</text>
+<path d="M 2168.0,2031.0 H 2588.0" stroke="#e2e8f0" stroke-width="0.6"/>
+<text x="2175.00" y="2023.00" font-size="10" font-weight="bold" fill="#52677d" text-anchor="start">PK/FK</text>
+<text x="2219.00" y="2023.00" font-size="13" font-weight="bold" fill="#1e293b" text-anchor="start">id_sucursal</text>
+<text x="2445.00" y="2023.00" font-size="12" font-weight="normal" fill="#52677d" text-anchor="start">int</text>
+<rect x="1126.0" y="2477.0" width="420" height="108" fill="white" stroke="#53677c" stroke-width="1.5"/>
+<rect x="1126.0" y="2477.0" width="420" height="36" fill="#dceee9" stroke="#53677c" stroke-width="1.2"/>
+<text x="1138.00" y="2501.00" font-size="16" font-weight="bold" fill="#1e293b" text-anchor="start">ciudad</text>
+<path d="M 1126.0,2537.0 H 1546.0" stroke="#e2e8f0" stroke-width="0.6"/>
+<text x="1133.00" y="2529.00" font-size="10" font-weight="bold" fill="#52677d" text-anchor="start">PK</text>
+<text x="1177.00" y="2529.00" font-size="13" font-weight="bold" fill="#1e293b" text-anchor="start">id_ciudad</text>
+<text x="1403.00" y="2529.00" font-size="12" font-weight="normal" fill="#52677d" text-anchor="start">int</text>
+<rect x="1127.0" y="2537.0" width="418" height="24" fill="#f8fafc"/>
+<path d="M 1126.0,2561.0 H 1546.0" stroke="#e2e8f0" stroke-width="0.6"/>
+<text x="1133.00" y="2553.00" font-size="10" font-weight="bold" fill="#52677d" text-anchor="start">FK</text>
+<text x="1177.00" y="2553.00" font-size="13" font-weight="normal" fill="#1e293b" text-anchor="start">tenant_id</text>
+<text x="1403.00" y="2553.00" font-size="12" font-weight="normal" fill="#52677d" text-anchor="start">int</text>
+<path d="M 1126.0,2585.0 H 1546.0" stroke="#e2e8f0" stroke-width="0.6"/>
+<text x="1133.00" y="2577.00" font-size="10" font-weight="bold" fill="#52677d" text-anchor="start"></text>
+<text x="1177.00" y="2577.00" font-size="13" font-weight="normal" fill="#1e293b" text-anchor="start">nombre</text>
+<text x="1403.00" y="2577.00" font-size="12" font-weight="normal" fill="#52677d" text-anchor="start">varchar(100)</text>
+<rect x="1647.0" y="2441.0" width="420" height="180" fill="white" stroke="#53677c" stroke-width="1.5"/>
+<rect x="1647.0" y="2441.0" width="420" height="36" fill="#dceee9" stroke="#53677c" stroke-width="1.2"/>
+<text x="1659.00" y="2465.00" font-size="16" font-weight="bold" fill="#1e293b" text-anchor="start">sucursal</text>
+<path d="M 1647.0,2501.0 H 2067.0" stroke="#e2e8f0" stroke-width="0.6"/>
+<text x="1654.00" y="2493.00" font-size="10" font-weight="bold" fill="#52677d" text-anchor="start">PK</text>
+<text x="1698.00" y="2493.00" font-size="13" font-weight="bold" fill="#1e293b" text-anchor="start">id_sucursal</text>
+<text x="1924.00" y="2493.00" font-size="12" font-weight="normal" fill="#52677d" text-anchor="start">int</text>
+<rect x="1648.0" y="2501.0" width="418" height="24" fill="#f8fafc"/>
+<path d="M 1647.0,2525.0 H 2067.0" stroke="#e2e8f0" stroke-width="0.6"/>
+<text x="1654.00" y="2517.00" font-size="10" font-weight="bold" fill="#52677d" text-anchor="start">FK</text>
+<text x="1698.00" y="2517.00" font-size="13" font-weight="normal" fill="#1e293b" text-anchor="start">id_ciudad</text>
+<text x="1924.00" y="2517.00" font-size="12" font-weight="normal" fill="#52677d" text-anchor="start">int ?</text>
+<path d="M 1647.0,2549.0 H 2067.0" stroke="#e2e8f0" stroke-width="0.6"/>
+<text x="1654.00" y="2541.00" font-size="10" font-weight="bold" fill="#52677d" text-anchor="start">FK</text>
+<text x="1698.00" y="2541.00" font-size="13" font-weight="normal" fill="#1e293b" text-anchor="start">id_encargado</text>
+<text x="1924.00" y="2541.00" font-size="12" font-weight="normal" fill="#52677d" text-anchor="start">int ?</text>
+<rect x="1648.0" y="2549.0" width="418" height="24" fill="#f8fafc"/>
+<path d="M 1647.0,2573.0 H 2067.0" stroke="#e2e8f0" stroke-width="0.6"/>
+<text x="1654.00" y="2565.00" font-size="10" font-weight="bold" fill="#52677d" text-anchor="start">FK</text>
+<text x="1698.00" y="2565.00" font-size="13" font-weight="normal" fill="#1e293b" text-anchor="start">tenant_id</text>
+<text x="1924.00" y="2565.00" font-size="12" font-weight="normal" fill="#52677d" text-anchor="start">int</text>
+<path d="M 1647.0,2597.0 H 2067.0" stroke="#e2e8f0" stroke-width="0.6"/>
+<text x="1654.00" y="2589.00" font-size="10" font-weight="bold" fill="#52677d" text-anchor="start"></text>
+<text x="1698.00" y="2589.00" font-size="13" font-weight="normal" fill="#1e293b" text-anchor="start">nombre</text>
+<text x="1924.00" y="2589.00" font-size="12" font-weight="normal" fill="#52677d" text-anchor="start">varchar(100)</text>
+<rect x="1648.0" y="2597.0" width="418" height="24" fill="#f8fafc"/>
+<path d="M 1647.0,2621.0 H 2067.0" stroke="#e2e8f0" stroke-width="0.6"/>
+<text x="1654.00" y="2613.00" font-size="10" font-weight="bold" fill="#52677d" text-anchor="start"></text>
+<text x="1698.00" y="2613.00" font-size="13" font-weight="normal" fill="#1e293b" text-anchor="start">activa</text>
+<text x="1924.00" y="2613.00" font-size="12" font-weight="normal" fill="#52677d" text-anchor="start">bool</text>
+<rect x="1647.0" y="2668.0" width="420" height="156" fill="white" stroke="#53677c" stroke-width="1.5"/>
+<rect x="1647.0" y="2668.0" width="420" height="36" fill="#dceee9" stroke="#53677c" stroke-width="1.2"/>
+<text x="1659.00" y="2692.00" font-size="16" font-weight="bold" fill="#1e293b" text-anchor="start">cliente</text>
+<path d="M 1647.0,2728.0 H 2067.0" stroke="#e2e8f0" stroke-width="0.6"/>
+<text x="1654.00" y="2720.00" font-size="10" font-weight="bold" fill="#52677d" text-anchor="start">PK</text>
+<text x="1698.00" y="2720.00" font-size="13" font-weight="bold" fill="#1e293b" text-anchor="start">id_cliente</text>
+<text x="1924.00" y="2720.00" font-size="12" font-weight="normal" fill="#52677d" text-anchor="start">int</text>
+<rect x="1648.0" y="2728.0" width="418" height="24" fill="#f8fafc"/>
+<path d="M 1647.0,2752.0 H 2067.0" stroke="#e2e8f0" stroke-width="0.6"/>
+<text x="1654.00" y="2744.00" font-size="10" font-weight="bold" fill="#52677d" text-anchor="start">FK</text>
+<text x="1698.00" y="2744.00" font-size="13" font-weight="normal" fill="#1e293b" text-anchor="start">tenant_id</text>
+<text x="1924.00" y="2744.00" font-size="12" font-weight="normal" fill="#52677d" text-anchor="start">int</text>
+<path d="M 1647.0,2776.0 H 2067.0" stroke="#e2e8f0" stroke-width="0.6"/>
+<text x="1654.00" y="2768.00" font-size="10" font-weight="bold" fill="#52677d" text-anchor="start"></text>
+<text x="1698.00" y="2768.00" font-size="13" font-weight="normal" fill="#1e293b" text-anchor="start">ci</text>
+<text x="1924.00" y="2768.00" font-size="12" font-weight="normal" fill="#52677d" text-anchor="start">varchar(20)</text>
+<rect x="1648.0" y="2776.0" width="418" height="24" fill="#f8fafc"/>
+<path d="M 1647.0,2800.0 H 2067.0" stroke="#e2e8f0" stroke-width="0.6"/>
+<text x="1654.00" y="2792.00" font-size="10" font-weight="bold" fill="#52677d" text-anchor="start"></text>
+<text x="1698.00" y="2792.00" font-size="13" font-weight="normal" fill="#1e293b" text-anchor="start">nombre_completo</text>
+<text x="1924.00" y="2792.00" font-size="12" font-weight="normal" fill="#52677d" text-anchor="start">varchar(200)</text>
+<path d="M 1647.0,2824.0 H 2067.0" stroke="#e2e8f0" stroke-width="0.6"/>
+<text x="1654.00" y="2816.00" font-size="10" font-weight="bold" fill="#52677d" text-anchor="start"></text>
+<text x="1698.00" y="2816.00" font-size="13" font-weight="normal" fill="#1e293b" text-anchor="start">correo</text>
+<text x="1924.00" y="2816.00" font-size="12" font-weight="normal" fill="#52677d" text-anchor="start">varchar(150) ?</text>
+<rect x="1126.0" y="605.0" width="420" height="156" fill="white" stroke="#53677c" stroke-width="1.5"/>
+<rect x="1126.0" y="605.0" width="420" height="36" fill="#e4eedb" stroke="#53677c" stroke-width="1.2"/>
+<text x="1138.00" y="629.00" font-size="16" font-weight="bold" fill="#1e293b" text-anchor="start">categoria</text>
+<path d="M 1126.0,665.0 H 1546.0" stroke="#e2e8f0" stroke-width="0.6"/>
+<text x="1133.00" y="657.00" font-size="10" font-weight="bold" fill="#52677d" text-anchor="start">PK</text>
+<text x="1177.00" y="657.00" font-size="13" font-weight="bold" fill="#1e293b" text-anchor="start">id_categoria</text>
+<text x="1403.00" y="657.00" font-size="12" font-weight="normal" fill="#52677d" text-anchor="start">int</text>
+<rect x="1127.0" y="665.0" width="418" height="24" fill="#f8fafc"/>
+<path d="M 1126.0,689.0 H 1546.0" stroke="#e2e8f0" stroke-width="0.6"/>
+<text x="1133.00" y="681.00" font-size="10" font-weight="bold" fill="#52677d" text-anchor="start">FK</text>
+<text x="1177.00" y="681.00" font-size="13" font-weight="normal" fill="#1e293b" text-anchor="start">id_categoria_padre</text>
+<text x="1403.00" y="681.00" font-size="12" font-weight="normal" fill="#52677d" text-anchor="start">int ?</text>
+<path d="M 1126.0,713.0 H 1546.0" stroke="#e2e8f0" stroke-width="0.6"/>
+<text x="1133.00" y="705.00" font-size="10" font-weight="bold" fill="#52677d" text-anchor="start">FK</text>
+<text x="1177.00" y="705.00" font-size="13" font-weight="normal" fill="#1e293b" text-anchor="start">tenant_id</text>
+<text x="1403.00" y="705.00" font-size="12" font-weight="normal" fill="#52677d" text-anchor="start">int</text>
+<rect x="1127.0" y="713.0" width="418" height="24" fill="#f8fafc"/>
+<path d="M 1126.0,737.0 H 1546.0" stroke="#e2e8f0" stroke-width="0.6"/>
+<text x="1133.00" y="729.00" font-size="10" font-weight="bold" fill="#52677d" text-anchor="start"></text>
+<text x="1177.00" y="729.00" font-size="13" font-weight="normal" fill="#1e293b" text-anchor="start">nombre</text>
+<text x="1403.00" y="729.00" font-size="12" font-weight="normal" fill="#52677d" text-anchor="start">varchar(100)</text>
+<path d="M 1126.0,761.0 H 1546.0" stroke="#e2e8f0" stroke-width="0.6"/>
+<text x="1133.00" y="753.00" font-size="10" font-weight="bold" fill="#52677d" text-anchor="start"></text>
+<text x="1177.00" y="753.00" font-size="13" font-weight="normal" fill="#1e293b" text-anchor="start">estado</text>
+<text x="1403.00" y="753.00" font-size="12" font-weight="normal" fill="#52677d" text-anchor="start">varchar(20) ?</text>
+<rect x="1126.0" y="384.0" width="420" height="156" fill="white" stroke="#53677c" stroke-width="1.5"/>
+<rect x="1126.0" y="384.0" width="420" height="36" fill="#e4eedb" stroke="#53677c" stroke-width="1.2"/>
+<text x="1138.00" y="408.00" font-size="16" font-weight="bold" fill="#1e293b" text-anchor="start">temporada</text>
+<path d="M 1126.0,444.0 H 1546.0" stroke="#e2e8f0" stroke-width="0.6"/>
+<text x="1133.00" y="436.00" font-size="10" font-weight="bold" fill="#52677d" text-anchor="start">PK</text>
+<text x="1177.00" y="436.00" font-size="13" font-weight="bold" fill="#1e293b" text-anchor="start">id_temporada</text>
+<text x="1403.00" y="436.00" font-size="12" font-weight="normal" fill="#52677d" text-anchor="start">int</text>
+<rect x="1127.0" y="444.0" width="418" height="24" fill="#f8fafc"/>
+<path d="M 1126.0,468.0 H 1546.0" stroke="#e2e8f0" stroke-width="0.6"/>
+<text x="1133.00" y="460.00" font-size="10" font-weight="bold" fill="#52677d" text-anchor="start">FK</text>
+<text x="1177.00" y="460.00" font-size="13" font-weight="normal" fill="#1e293b" text-anchor="start">tenant_id</text>
+<text x="1403.00" y="460.00" font-size="12" font-weight="normal" fill="#52677d" text-anchor="start">int</text>
+<path d="M 1126.0,492.0 H 1546.0" stroke="#e2e8f0" stroke-width="0.6"/>
+<text x="1133.00" y="484.00" font-size="10" font-weight="bold" fill="#52677d" text-anchor="start"></text>
+<text x="1177.00" y="484.00" font-size="13" font-weight="normal" fill="#1e293b" text-anchor="start">nombre</text>
+<text x="1403.00" y="484.00" font-size="12" font-weight="normal" fill="#52677d" text-anchor="start">varchar(100)</text>
+<rect x="1127.0" y="492.0" width="418" height="24" fill="#f8fafc"/>
+<path d="M 1126.0,516.0 H 1546.0" stroke="#e2e8f0" stroke-width="0.6"/>
+<text x="1133.00" y="508.00" font-size="10" font-weight="bold" fill="#52677d" text-anchor="start"></text>
+<text x="1177.00" y="508.00" font-size="13" font-weight="normal" fill="#1e293b" text-anchor="start">fecha_inicio</text>
+<text x="1403.00" y="508.00" font-size="12" font-weight="normal" fill="#52677d" text-anchor="start">date ?</text>
+<path d="M 1126.0,540.0 H 1546.0" stroke="#e2e8f0" stroke-width="0.6"/>
+<text x="1133.00" y="532.00" font-size="10" font-weight="bold" fill="#52677d" text-anchor="start"></text>
+<text x="1177.00" y="532.00" font-size="13" font-weight="normal" fill="#1e293b" text-anchor="start">fecha_fin</text>
+<text x="1403.00" y="532.00" font-size="12" font-weight="normal" fill="#52677d" text-anchor="start">date ?</text>
+<rect x="1647.0" y="515.0" width="420" height="276" fill="white" stroke="#53677c" stroke-width="1.5"/>
+<rect x="1647.0" y="515.0" width="420" height="36" fill="#e4eedb" stroke="#53677c" stroke-width="1.2"/>
+<text x="1659.00" y="539.00" font-size="16" font-weight="bold" fill="#1e293b" text-anchor="start">prenda</text>
+<path d="M 1647.0,575.0 H 2067.0" stroke="#e2e8f0" stroke-width="0.6"/>
+<text x="1654.00" y="567.00" font-size="10" font-weight="bold" fill="#52677d" text-anchor="start">PK</text>
+<text x="1698.00" y="567.00" font-size="13" font-weight="bold" fill="#1e293b" text-anchor="start">id_prenda</text>
+<text x="1924.00" y="567.00" font-size="12" font-weight="normal" fill="#52677d" text-anchor="start">int</text>
+<rect x="1648.0" y="575.0" width="418" height="24" fill="#f8fafc"/>
+<path d="M 1647.0,599.0 H 2067.0" stroke="#e2e8f0" stroke-width="0.6"/>
+<text x="1654.00" y="591.00" font-size="10" font-weight="bold" fill="#52677d" text-anchor="start">FK</text>
+<text x="1698.00" y="591.00" font-size="13" font-weight="normal" fill="#1e293b" text-anchor="start">id_categoria</text>
+<text x="1924.00" y="591.00" font-size="12" font-weight="normal" fill="#52677d" text-anchor="start">int ?</text>
+<path d="M 1647.0,623.0 H 2067.0" stroke="#e2e8f0" stroke-width="0.6"/>
+<text x="1654.00" y="615.00" font-size="10" font-weight="bold" fill="#52677d" text-anchor="start">FK</text>
+<text x="1698.00" y="615.00" font-size="13" font-weight="normal" fill="#1e293b" text-anchor="start">id_temporada</text>
+<text x="1924.00" y="615.00" font-size="12" font-weight="normal" fill="#52677d" text-anchor="start">int ?</text>
+<rect x="1648.0" y="623.0" width="418" height="24" fill="#f8fafc"/>
+<path d="M 1647.0,647.0 H 2067.0" stroke="#e2e8f0" stroke-width="0.6"/>
+<text x="1654.00" y="639.00" font-size="10" font-weight="bold" fill="#52677d" text-anchor="start">FK</text>
+<text x="1698.00" y="639.00" font-size="13" font-weight="normal" fill="#1e293b" text-anchor="start">tenant_id</text>
+<text x="1924.00" y="639.00" font-size="12" font-weight="normal" fill="#52677d" text-anchor="start">int</text>
+<path d="M 1647.0,671.0 H 2067.0" stroke="#e2e8f0" stroke-width="0.6"/>
+<text x="1654.00" y="663.00" font-size="10" font-weight="bold" fill="#52677d" text-anchor="start"></text>
+<text x="1698.00" y="663.00" font-size="13" font-weight="normal" fill="#1e293b" text-anchor="start">sku</text>
+<text x="1924.00" y="663.00" font-size="12" font-weight="normal" fill="#52677d" text-anchor="start">varchar(50)</text>
+<rect x="1648.0" y="671.0" width="418" height="24" fill="#f8fafc"/>
+<path d="M 1647.0,695.0 H 2067.0" stroke="#e2e8f0" stroke-width="0.6"/>
+<text x="1654.00" y="687.00" font-size="10" font-weight="bold" fill="#52677d" text-anchor="start"></text>
+<text x="1698.00" y="687.00" font-size="13" font-weight="normal" fill="#1e293b" text-anchor="start">nombre</text>
+<text x="1924.00" y="687.00" font-size="12" font-weight="normal" fill="#52677d" text-anchor="start">varchar(150)</text>
+<path d="M 1647.0,719.0 H 2067.0" stroke="#e2e8f0" stroke-width="0.6"/>
+<text x="1654.00" y="711.00" font-size="10" font-weight="bold" fill="#52677d" text-anchor="start"></text>
+<text x="1698.00" y="711.00" font-size="13" font-weight="normal" fill="#1e293b" text-anchor="start">precio_base</text>
+<text x="1924.00" y="711.00" font-size="12" font-weight="normal" fill="#52677d" text-anchor="start">numeric(10,2)</text>
+<rect x="1648.0" y="719.0" width="418" height="24" fill="#f8fafc"/>
+<path d="M 1647.0,743.0 H 2067.0" stroke="#e2e8f0" stroke-width="0.6"/>
+<text x="1654.00" y="735.00" font-size="10" font-weight="bold" fill="#52677d" text-anchor="start"></text>
+<text x="1698.00" y="735.00" font-size="13" font-weight="normal" fill="#1e293b" text-anchor="start">estado</text>
+<text x="1924.00" y="735.00" font-size="12" font-weight="normal" fill="#52677d" text-anchor="start">varchar(20) ?</text>
+<path d="M 1647.0,767.0 H 2067.0" stroke="#e2e8f0" stroke-width="0.6"/>
+<text x="1654.00" y="759.00" font-size="10" font-weight="bold" fill="#52677d" text-anchor="start"></text>
+<text x="1698.00" y="759.00" font-size="13" font-weight="normal" fill="#1e293b" text-anchor="start">precio_mayorista</text>
+<text x="1924.00" y="759.00" font-size="12" font-weight="normal" fill="#52677d" text-anchor="start">numeric(10,2) ?</text>
+<rect x="1648.0" y="767.0" width="418" height="24" fill="#f8fafc"/>
+<path d="M 1647.0,791.0 H 2067.0" stroke="#e2e8f0" stroke-width="0.6"/>
+<text x="1654.00" y="783.00" font-size="10" font-weight="bold" fill="#52677d" text-anchor="start"></text>
+<text x="1698.00" y="783.00" font-size="13" font-weight="normal" fill="#1e293b" text-anchor="start">precio_oferta</text>
+<text x="1924.00" y="783.00" font-size="12" font-weight="normal" fill="#52677d" text-anchor="start">numeric(10,2) ?</text>
+<rect x="2168.0" y="635.0" width="420" height="156" fill="white" stroke="#53677c" stroke-width="1.5"/>
+<rect x="2168.0" y="635.0" width="420" height="36" fill="#e4eedb" stroke="#53677c" stroke-width="1.2"/>
+<text x="2180.00" y="659.00" font-size="16" font-weight="bold" fill="#1e293b" text-anchor="start">imagen_prenda</text>
+<path d="M 2168.0,695.0 H 2588.0" stroke="#e2e8f0" stroke-width="0.6"/>
+<text x="2175.00" y="687.00" font-size="10" font-weight="bold" fill="#52677d" text-anchor="start">PK</text>
+<text x="2219.00" y="687.00" font-size="13" font-weight="bold" fill="#1e293b" text-anchor="start">id_imagen</text>
+<text x="2445.00" y="687.00" font-size="12" font-weight="normal" fill="#52677d" text-anchor="start">int</text>
+<rect x="2169.0" y="695.0" width="418" height="24" fill="#f8fafc"/>
+<path d="M 2168.0,719.0 H 2588.0" stroke="#e2e8f0" stroke-width="0.6"/>
+<text x="2175.00" y="711.00" font-size="10" font-weight="bold" fill="#52677d" text-anchor="start">FK</text>
+<text x="2219.00" y="711.00" font-size="13" font-weight="normal" fill="#1e293b" text-anchor="start">id_prenda</text>
+<text x="2445.00" y="711.00" font-size="12" font-weight="normal" fill="#52677d" text-anchor="start">int ?</text>
+<path d="M 2168.0,743.0 H 2588.0" stroke="#e2e8f0" stroke-width="0.6"/>
+<text x="2175.00" y="735.00" font-size="10" font-weight="bold" fill="#52677d" text-anchor="start">FK</text>
+<text x="2219.00" y="735.00" font-size="13" font-weight="normal" fill="#1e293b" text-anchor="start">tenant_id</text>
+<text x="2445.00" y="735.00" font-size="12" font-weight="normal" fill="#52677d" text-anchor="start">int</text>
+<rect x="2169.0" y="743.0" width="418" height="24" fill="#f8fafc"/>
+<path d="M 2168.0,767.0 H 2588.0" stroke="#e2e8f0" stroke-width="0.6"/>
+<text x="2175.00" y="759.00" font-size="10" font-weight="bold" fill="#52677d" text-anchor="start"></text>
+<text x="2219.00" y="759.00" font-size="13" font-weight="normal" fill="#1e293b" text-anchor="start">url_imagen</text>
+<text x="2445.00" y="759.00" font-size="12" font-weight="normal" fill="#52677d" text-anchor="start">varchar(255)</text>
+<path d="M 2168.0,791.0 H 2588.0" stroke="#e2e8f0" stroke-width="0.6"/>
+<text x="2175.00" y="783.00" font-size="10" font-weight="bold" fill="#52677d" text-anchor="start"></text>
+<text x="2219.00" y="783.00" font-size="13" font-weight="normal" fill="#1e293b" text-anchor="start">es_principal</text>
+<text x="2445.00" y="783.00" font-size="12" font-weight="normal" fill="#52677d" text-anchor="start">bool ?</text>
+<rect x="1647.0" y="360.0" width="420" height="108" fill="white" stroke="#53677c" stroke-width="1.5"/>
+<rect x="1647.0" y="360.0" width="420" height="36" fill="#e4eedb" stroke="#53677c" stroke-width="1.2"/>
+<text x="1659.00" y="384.00" font-size="16" font-weight="bold" fill="#1e293b" text-anchor="start">talla</text>
+<path d="M 1647.0,420.0 H 2067.0" stroke="#e2e8f0" stroke-width="0.6"/>
+<text x="1654.00" y="412.00" font-size="10" font-weight="bold" fill="#52677d" text-anchor="start">PK</text>
+<text x="1698.00" y="412.00" font-size="13" font-weight="bold" fill="#1e293b" text-anchor="start">id_talla</text>
+<text x="1924.00" y="412.00" font-size="12" font-weight="normal" fill="#52677d" text-anchor="start">int</text>
+<rect x="1648.0" y="420.0" width="418" height="24" fill="#f8fafc"/>
+<path d="M 1647.0,444.0 H 2067.0" stroke="#e2e8f0" stroke-width="0.6"/>
+<text x="1654.00" y="436.00" font-size="10" font-weight="bold" fill="#52677d" text-anchor="start">FK</text>
+<text x="1698.00" y="436.00" font-size="13" font-weight="normal" fill="#1e293b" text-anchor="start">tenant_id</text>
+<text x="1924.00" y="436.00" font-size="12" font-weight="normal" fill="#52677d" text-anchor="start">int</text>
+<path d="M 1647.0,468.0 H 2067.0" stroke="#e2e8f0" stroke-width="0.6"/>
+<text x="1654.00" y="460.00" font-size="10" font-weight="bold" fill="#52677d" text-anchor="start"></text>
+<text x="1698.00" y="460.00" font-size="13" font-weight="normal" fill="#1e293b" text-anchor="start">nombre</text>
+<text x="1924.00" y="460.00" font-size="12" font-weight="normal" fill="#52677d" text-anchor="start">varchar(10)</text>
+<rect x="1647.0" y="181.0" width="420" height="132" fill="white" stroke="#53677c" stroke-width="1.5"/>
+<rect x="1647.0" y="181.0" width="420" height="36" fill="#e4eedb" stroke="#53677c" stroke-width="1.2"/>
+<text x="1659.00" y="205.00" font-size="16" font-weight="bold" fill="#1e293b" text-anchor="start">color</text>
+<path d="M 1647.0,241.0 H 2067.0" stroke="#e2e8f0" stroke-width="0.6"/>
+<text x="1654.00" y="233.00" font-size="10" font-weight="bold" fill="#52677d" text-anchor="start">PK</text>
+<text x="1698.00" y="233.00" font-size="13" font-weight="bold" fill="#1e293b" text-anchor="start">id_color</text>
+<text x="1924.00" y="233.00" font-size="12" font-weight="normal" fill="#52677d" text-anchor="start">int</text>
+<rect x="1648.0" y="241.0" width="418" height="24" fill="#f8fafc"/>
+<path d="M 1647.0,265.0 H 2067.0" stroke="#e2e8f0" stroke-width="0.6"/>
+<text x="1654.00" y="257.00" font-size="10" font-weight="bold" fill="#52677d" text-anchor="start">FK</text>
+<text x="1698.00" y="257.00" font-size="13" font-weight="normal" fill="#1e293b" text-anchor="start">tenant_id</text>
+<text x="1924.00" y="257.00" font-size="12" font-weight="normal" fill="#52677d" text-anchor="start">int</text>
+<path d="M 1647.0,289.0 H 2067.0" stroke="#e2e8f0" stroke-width="0.6"/>
+<text x="1654.00" y="281.00" font-size="10" font-weight="bold" fill="#52677d" text-anchor="start"></text>
+<text x="1698.00" y="281.00" font-size="13" font-weight="normal" fill="#1e293b" text-anchor="start">nombre</text>
+<text x="1924.00" y="281.00" font-size="12" font-weight="normal" fill="#52677d" text-anchor="start">varchar(50)</text>
+<rect x="1648.0" y="289.0" width="418" height="24" fill="#f8fafc"/>
+<path d="M 1647.0,313.0 H 2067.0" stroke="#e2e8f0" stroke-width="0.6"/>
+<text x="1654.00" y="305.00" font-size="10" font-weight="bold" fill="#52677d" text-anchor="start"></text>
+<text x="1698.00" y="305.00" font-size="13" font-weight="normal" fill="#1e293b" text-anchor="start">codigo_hex</text>
+<text x="1924.00" y="305.00" font-size="12" font-weight="normal" fill="#52677d" text-anchor="start">varchar(10) ?</text>
+<rect x="2168.0" y="384.0" width="420" height="204" fill="white" stroke="#53677c" stroke-width="1.5"/>
+<rect x="2168.0" y="384.0" width="420" height="36" fill="#e4eedb" stroke="#53677c" stroke-width="1.2"/>
+<text x="2180.00" y="408.00" font-size="16" font-weight="bold" fill="#1e293b" text-anchor="start">variante_prenda</text>
+<path d="M 2168.0,444.0 H 2588.0" stroke="#e2e8f0" stroke-width="0.6"/>
+<text x="2175.00" y="436.00" font-size="10" font-weight="bold" fill="#52677d" text-anchor="start">PK</text>
+<text x="2219.00" y="436.00" font-size="13" font-weight="bold" fill="#1e293b" text-anchor="start">id_variante_prenda</text>
+<text x="2445.00" y="436.00" font-size="12" font-weight="normal" fill="#52677d" text-anchor="start">int</text>
+<rect x="2169.0" y="444.0" width="418" height="24" fill="#f8fafc"/>
+<path d="M 2168.0,468.0 H 2588.0" stroke="#e2e8f0" stroke-width="0.6"/>
+<text x="2175.00" y="460.00" font-size="10" font-weight="bold" fill="#52677d" text-anchor="start">FK</text>
+<text x="2219.00" y="460.00" font-size="13" font-weight="normal" fill="#1e293b" text-anchor="start">id_prenda</text>
+<text x="2445.00" y="460.00" font-size="12" font-weight="normal" fill="#52677d" text-anchor="start">int ?</text>
+<path d="M 2168.0,492.0 H 2588.0" stroke="#e2e8f0" stroke-width="0.6"/>
+<text x="2175.00" y="484.00" font-size="10" font-weight="bold" fill="#52677d" text-anchor="start">FK</text>
+<text x="2219.00" y="484.00" font-size="13" font-weight="normal" fill="#1e293b" text-anchor="start">id_talla</text>
+<text x="2445.00" y="484.00" font-size="12" font-weight="normal" fill="#52677d" text-anchor="start">int ?</text>
+<rect x="2169.0" y="492.0" width="418" height="24" fill="#f8fafc"/>
+<path d="M 2168.0,516.0 H 2588.0" stroke="#e2e8f0" stroke-width="0.6"/>
+<text x="2175.00" y="508.00" font-size="10" font-weight="bold" fill="#52677d" text-anchor="start">FK</text>
+<text x="2219.00" y="508.00" font-size="13" font-weight="normal" fill="#1e293b" text-anchor="start">id_color</text>
+<text x="2445.00" y="508.00" font-size="12" font-weight="normal" fill="#52677d" text-anchor="start">int ?</text>
+<path d="M 2168.0,540.0 H 2588.0" stroke="#e2e8f0" stroke-width="0.6"/>
+<text x="2175.00" y="532.00" font-size="10" font-weight="bold" fill="#52677d" text-anchor="start">FK</text>
+<text x="2219.00" y="532.00" font-size="13" font-weight="normal" fill="#1e293b" text-anchor="start">tenant_id</text>
+<text x="2445.00" y="532.00" font-size="12" font-weight="normal" fill="#52677d" text-anchor="start">int</text>
+<rect x="2169.0" y="540.0" width="418" height="24" fill="#f8fafc"/>
+<path d="M 2168.0,564.0 H 2588.0" stroke="#e2e8f0" stroke-width="0.6"/>
+<text x="2175.00" y="556.00" font-size="10" font-weight="bold" fill="#52677d" text-anchor="start"></text>
+<text x="2219.00" y="556.00" font-size="13" font-weight="normal" fill="#1e293b" text-anchor="start">sku_variante</text>
+<text x="2445.00" y="556.00" font-size="12" font-weight="normal" fill="#52677d" text-anchor="start">varchar(100)</text>
+<path d="M 2168.0,588.0 H 2588.0" stroke="#e2e8f0" stroke-width="0.6"/>
+<text x="2175.00" y="580.00" font-size="10" font-weight="bold" fill="#52677d" text-anchor="start"></text>
+<text x="2219.00" y="580.00" font-size="13" font-weight="normal" fill="#1e293b" text-anchor="start">precio_adicional</text>
+<text x="2445.00" y="580.00" font-size="12" font-weight="normal" fill="#52677d" text-anchor="start">numeric(10,2) ?</text>
+<rect x="2689.0" y="495.0" width="420" height="108" fill="white" stroke="#53677c" stroke-width="1.5"/>
+<rect x="2689.0" y="495.0" width="420" height="36" fill="#e4eedb" stroke="#53677c" stroke-width="1.2"/>
+<text x="2701.00" y="519.00" font-size="16" font-weight="bold" fill="#1e293b" text-anchor="start">variante_color</text>
+<path d="M 2689.0,555.0 H 3109.0" stroke="#e2e8f0" stroke-width="0.6"/>
+<text x="2696.00" y="547.00" font-size="10" font-weight="bold" fill="#52677d" text-anchor="start">PK/FK</text>
+<text x="2740.00" y="547.00" font-size="13" font-weight="bold" fill="#1e293b" text-anchor="start">tenant_id</text>
+<text x="2966.00" y="547.00" font-size="12" font-weight="normal" fill="#52677d" text-anchor="start">int</text>
+<rect x="2690.0" y="555.0" width="418" height="24" fill="#f8fafc"/>
+<path d="M 2689.0,579.0 H 3109.0" stroke="#e2e8f0" stroke-width="0.6"/>
+<text x="2696.00" y="571.00" font-size="10" font-weight="bold" fill="#52677d" text-anchor="start">PK/FK</text>
+<text x="2740.00" y="571.00" font-size="13" font-weight="bold" fill="#1e293b" text-anchor="start">id_variante_prenda</text>
+<text x="2966.00" y="571.00" font-size="12" font-weight="normal" fill="#52677d" text-anchor="start">int</text>
+<path d="M 2689.0,603.0 H 3109.0" stroke="#e2e8f0" stroke-width="0.6"/>
+<text x="2696.00" y="595.00" font-size="10" font-weight="bold" fill="#52677d" text-anchor="start">PK/FK</text>
+<text x="2740.00" y="595.00" font-size="13" font-weight="bold" fill="#1e293b" text-anchor="start">id_color</text>
+<text x="2966.00" y="595.00" font-size="12" font-weight="normal" fill="#52677d" text-anchor="start">int</text>
+<rect x="1647.0" y="1327.0" width="420" height="132" fill="white" stroke="#53677c" stroke-width="1.5"/>
+<rect x="1647.0" y="1327.0" width="420" height="36" fill="#fff0d2" stroke="#53677c" stroke-width="1.2"/>
+<text x="1659.00" y="1351.00" font-size="16" font-weight="bold" fill="#1e293b" text-anchor="start">proveedor</text>
+<path d="M 1647.0,1387.0 H 2067.0" stroke="#e2e8f0" stroke-width="0.6"/>
+<text x="1654.00" y="1379.00" font-size="10" font-weight="bold" fill="#52677d" text-anchor="start">PK</text>
+<text x="1698.00" y="1379.00" font-size="13" font-weight="bold" fill="#1e293b" text-anchor="start">id_proveedor</text>
+<text x="1924.00" y="1379.00" font-size="12" font-weight="normal" fill="#52677d" text-anchor="start">int</text>
+<rect x="1648.0" y="1387.0" width="418" height="24" fill="#f8fafc"/>
+<path d="M 1647.0,1411.0 H 2067.0" stroke="#e2e8f0" stroke-width="0.6"/>
+<text x="1654.00" y="1403.00" font-size="10" font-weight="bold" fill="#52677d" text-anchor="start">FK</text>
+<text x="1698.00" y="1403.00" font-size="13" font-weight="normal" fill="#1e293b" text-anchor="start">tenant_id</text>
+<text x="1924.00" y="1403.00" font-size="12" font-weight="normal" fill="#52677d" text-anchor="start">int</text>
+<path d="M 1647.0,1435.0 H 2067.0" stroke="#e2e8f0" stroke-width="0.6"/>
+<text x="1654.00" y="1427.00" font-size="10" font-weight="bold" fill="#52677d" text-anchor="start"></text>
+<text x="1698.00" y="1427.00" font-size="13" font-weight="normal" fill="#1e293b" text-anchor="start">nit</text>
+<text x="1924.00" y="1427.00" font-size="12" font-weight="normal" fill="#52677d" text-anchor="start">varchar(30)</text>
+<rect x="1648.0" y="1435.0" width="418" height="24" fill="#f8fafc"/>
+<path d="M 1647.0,1459.0 H 2067.0" stroke="#e2e8f0" stroke-width="0.6"/>
+<text x="1654.00" y="1451.00" font-size="10" font-weight="bold" fill="#52677d" text-anchor="start"></text>
+<text x="1698.00" y="1451.00" font-size="13" font-weight="normal" fill="#1e293b" text-anchor="start">razon_social</text>
+<text x="1924.00" y="1451.00" font-size="12" font-weight="normal" fill="#52677d" text-anchor="start">varchar(150)</text>
+<rect x="2168.0" y="1291.0" width="420" height="204" fill="white" stroke="#53677c" stroke-width="1.5"/>
+<rect x="2168.0" y="1291.0" width="420" height="36" fill="#fff0d2" stroke="#53677c" stroke-width="1.2"/>
+<text x="2180.00" y="1315.00" font-size="16" font-weight="bold" fill="#1e293b" text-anchor="start">compra</text>
+<path d="M 2168.0,1351.0 H 2588.0" stroke="#e2e8f0" stroke-width="0.6"/>
+<text x="2175.00" y="1343.00" font-size="10" font-weight="bold" fill="#52677d" text-anchor="start">PK</text>
+<text x="2219.00" y="1343.00" font-size="13" font-weight="bold" fill="#1e293b" text-anchor="start">id_compra</text>
+<text x="2445.00" y="1343.00" font-size="12" font-weight="normal" fill="#52677d" text-anchor="start">int</text>
+<rect x="2169.0" y="1351.0" width="418" height="24" fill="#f8fafc"/>
+<path d="M 2168.0,1375.0 H 2588.0" stroke="#e2e8f0" stroke-width="0.6"/>
+<text x="2175.00" y="1367.00" font-size="10" font-weight="bold" fill="#52677d" text-anchor="start">FK</text>
+<text x="2219.00" y="1367.00" font-size="13" font-weight="normal" fill="#1e293b" text-anchor="start">id_proveedor</text>
+<text x="2445.00" y="1367.00" font-size="12" font-weight="normal" fill="#52677d" text-anchor="start">int ?</text>
+<path d="M 2168.0,1399.0 H 2588.0" stroke="#e2e8f0" stroke-width="0.6"/>
+<text x="2175.00" y="1391.00" font-size="10" font-weight="bold" fill="#52677d" text-anchor="start">FK</text>
+<text x="2219.00" y="1391.00" font-size="13" font-weight="normal" fill="#1e293b" text-anchor="start">id_sucursal</text>
+<text x="2445.00" y="1391.00" font-size="12" font-weight="normal" fill="#52677d" text-anchor="start">int ?</text>
+<rect x="2169.0" y="1399.0" width="418" height="24" fill="#f8fafc"/>
+<path d="M 2168.0,1423.0 H 2588.0" stroke="#e2e8f0" stroke-width="0.6"/>
+<text x="2175.00" y="1415.00" font-size="10" font-weight="bold" fill="#52677d" text-anchor="start">FK</text>
+<text x="2219.00" y="1415.00" font-size="13" font-weight="normal" fill="#1e293b" text-anchor="start">id_usuario</text>
+<text x="2445.00" y="1415.00" font-size="12" font-weight="normal" fill="#52677d" text-anchor="start">int ?</text>
+<path d="M 2168.0,1447.0 H 2588.0" stroke="#e2e8f0" stroke-width="0.6"/>
+<text x="2175.00" y="1439.00" font-size="10" font-weight="bold" fill="#52677d" text-anchor="start">FK</text>
+<text x="2219.00" y="1439.00" font-size="13" font-weight="normal" fill="#1e293b" text-anchor="start">tenant_id</text>
+<text x="2445.00" y="1439.00" font-size="12" font-weight="normal" fill="#52677d" text-anchor="start">int</text>
+<rect x="2169.0" y="1447.0" width="418" height="24" fill="#f8fafc"/>
+<path d="M 2168.0,1471.0 H 2588.0" stroke="#e2e8f0" stroke-width="0.6"/>
+<text x="2175.00" y="1463.00" font-size="10" font-weight="bold" fill="#52677d" text-anchor="start"></text>
+<text x="2219.00" y="1463.00" font-size="13" font-weight="normal" fill="#1e293b" text-anchor="start">fecha</text>
+<text x="2445.00" y="1463.00" font-size="12" font-weight="normal" fill="#52677d" text-anchor="start">timestamp ?</text>
+<path d="M 2168.0,1495.0 H 2588.0" stroke="#e2e8f0" stroke-width="0.6"/>
+<text x="2175.00" y="1487.00" font-size="10" font-weight="bold" fill="#52677d" text-anchor="start"></text>
+<text x="2219.00" y="1487.00" font-size="13" font-weight="normal" fill="#1e293b" text-anchor="start">total</text>
+<text x="2445.00" y="1487.00" font-size="12" font-weight="normal" fill="#52677d" text-anchor="start">numeric(12,2)</text>
+<rect x="2689.0" y="885.0" width="420" height="156" fill="white" stroke="#53677c" stroke-width="1.5"/>
+<rect x="2689.0" y="885.0" width="420" height="36" fill="#fff0d2" stroke="#53677c" stroke-width="1.2"/>
+<text x="2701.00" y="909.00" font-size="16" font-weight="bold" fill="#1e293b" text-anchor="start">detalle_compra</text>
+<path d="M 2689.0,945.0 H 3109.0" stroke="#e2e8f0" stroke-width="0.6"/>
+<text x="2696.00" y="937.00" font-size="10" font-weight="bold" fill="#52677d" text-anchor="start">PK/FK</text>
+<text x="2740.00" y="937.00" font-size="13" font-weight="bold" fill="#1e293b" text-anchor="start">id_compra</text>
+<text x="2966.00" y="937.00" font-size="12" font-weight="normal" fill="#52677d" text-anchor="start">int</text>
+<rect x="2690.0" y="945.0" width="418" height="24" fill="#f8fafc"/>
+<path d="M 2689.0,969.0 H 3109.0" stroke="#e2e8f0" stroke-width="0.6"/>
+<text x="2696.00" y="961.00" font-size="10" font-weight="bold" fill="#52677d" text-anchor="start">PK/FK</text>
+<text x="2740.00" y="961.00" font-size="13" font-weight="bold" fill="#1e293b" text-anchor="start">id_variante_prenda</text>
+<text x="2966.00" y="961.00" font-size="12" font-weight="normal" fill="#52677d" text-anchor="start">int</text>
+<path d="M 2689.0,993.0 H 3109.0" stroke="#e2e8f0" stroke-width="0.6"/>
+<text x="2696.00" y="985.00" font-size="10" font-weight="bold" fill="#52677d" text-anchor="start">FK</text>
+<text x="2740.00" y="985.00" font-size="13" font-weight="normal" fill="#1e293b" text-anchor="start">tenant_id</text>
+<text x="2966.00" y="985.00" font-size="12" font-weight="normal" fill="#52677d" text-anchor="start">int</text>
+<rect x="2690.0" y="993.0" width="418" height="24" fill="#f8fafc"/>
+<path d="M 2689.0,1017.0 H 3109.0" stroke="#e2e8f0" stroke-width="0.6"/>
+<text x="2696.00" y="1009.00" font-size="10" font-weight="bold" fill="#52677d" text-anchor="start"></text>
+<text x="2740.00" y="1009.00" font-size="13" font-weight="normal" fill="#1e293b" text-anchor="start">cantidad</text>
+<text x="2966.00" y="1009.00" font-size="12" font-weight="normal" fill="#52677d" text-anchor="start">int</text>
+<path d="M 2689.0,1041.0 H 3109.0" stroke="#e2e8f0" stroke-width="0.6"/>
+<text x="2696.00" y="1033.00" font-size="10" font-weight="bold" fill="#52677d" text-anchor="start"></text>
+<text x="2740.00" y="1033.00" font-size="13" font-weight="normal" fill="#1e293b" text-anchor="start">costo_unitario</text>
+<text x="2966.00" y="1033.00" font-size="12" font-weight="normal" fill="#52677d" text-anchor="start">numeric(10,2)</text>
+<rect x="2689.0" y="1363.0" width="420" height="132" fill="white" stroke="#53677c" stroke-width="1.5"/>
+<rect x="2689.0" y="1363.0" width="420" height="36" fill="#fff0d2" stroke="#53677c" stroke-width="1.2"/>
+<text x="2701.00" y="1387.00" font-size="16" font-weight="bold" fill="#1e293b" text-anchor="start">inventario</text>
+<path d="M 2689.0,1423.0 H 3109.0" stroke="#e2e8f0" stroke-width="0.6"/>
+<text x="2696.00" y="1415.00" font-size="10" font-weight="bold" fill="#52677d" text-anchor="start">PK/FK</text>
+<text x="2740.00" y="1415.00" font-size="13" font-weight="bold" fill="#1e293b" text-anchor="start">id_sucursal</text>
+<text x="2966.00" y="1415.00" font-size="12" font-weight="normal" fill="#52677d" text-anchor="start">int</text>
+<rect x="2690.0" y="1423.0" width="418" height="24" fill="#f8fafc"/>
+<path d="M 2689.0,1447.0 H 3109.0" stroke="#e2e8f0" stroke-width="0.6"/>
+<text x="2696.00" y="1439.00" font-size="10" font-weight="bold" fill="#52677d" text-anchor="start">PK/FK</text>
+<text x="2740.00" y="1439.00" font-size="13" font-weight="bold" fill="#1e293b" text-anchor="start">id_variante_prenda</text>
+<text x="2966.00" y="1439.00" font-size="12" font-weight="normal" fill="#52677d" text-anchor="start">int</text>
+<path d="M 2689.0,1471.0 H 3109.0" stroke="#e2e8f0" stroke-width="0.6"/>
+<text x="2696.00" y="1463.00" font-size="10" font-weight="bold" fill="#52677d" text-anchor="start">FK</text>
+<text x="2740.00" y="1463.00" font-size="13" font-weight="normal" fill="#1e293b" text-anchor="start">tenant_id</text>
+<text x="2966.00" y="1463.00" font-size="12" font-weight="normal" fill="#52677d" text-anchor="start">int</text>
+<rect x="2690.0" y="1471.0" width="418" height="24" fill="#f8fafc"/>
+<path d="M 2689.0,1495.0 H 3109.0" stroke="#e2e8f0" stroke-width="0.6"/>
+<text x="2696.00" y="1487.00" font-size="10" font-weight="bold" fill="#52677d" text-anchor="start"></text>
+<text x="2740.00" y="1487.00" font-size="13" font-weight="normal" fill="#1e293b" text-anchor="start">stock</text>
+<text x="2966.00" y="1487.00" font-size="12" font-weight="normal" fill="#52677d" text-anchor="start">int</text>
+<rect x="2689.0" y="1088.0" width="420" height="228" fill="white" stroke="#53677c" stroke-width="1.5"/>
+<rect x="2689.0" y="1088.0" width="420" height="36" fill="#fff0d2" stroke="#53677c" stroke-width="1.2"/>
+<text x="2701.00" y="1112.00" font-size="16" font-weight="bold" fill="#1e293b" text-anchor="start">movimiento_inventario</text>
+<path d="M 2689.0,1148.0 H 3109.0" stroke="#e2e8f0" stroke-width="0.6"/>
+<text x="2696.00" y="1140.00" font-size="10" font-weight="bold" fill="#52677d" text-anchor="start">PK</text>
+<text x="2740.00" y="1140.00" font-size="13" font-weight="bold" fill="#1e293b" text-anchor="start">id_movimiento</text>
+<text x="2966.00" y="1140.00" font-size="12" font-weight="normal" fill="#52677d" text-anchor="start">int</text>
+<rect x="2690.0" y="1148.0" width="418" height="24" fill="#f8fafc"/>
+<path d="M 2689.0,1172.0 H 3109.0" stroke="#e2e8f0" stroke-width="0.6"/>
+<text x="2696.00" y="1164.00" font-size="10" font-weight="bold" fill="#52677d" text-anchor="start">FK</text>
+<text x="2740.00" y="1164.00" font-size="13" font-weight="normal" fill="#1e293b" text-anchor="start">id_sucursal</text>
+<text x="2966.00" y="1164.00" font-size="12" font-weight="normal" fill="#52677d" text-anchor="start">int ?</text>
+<path d="M 2689.0,1196.0 H 3109.0" stroke="#e2e8f0" stroke-width="0.6"/>
+<text x="2696.00" y="1188.00" font-size="10" font-weight="bold" fill="#52677d" text-anchor="start">FK</text>
+<text x="2740.00" y="1188.00" font-size="13" font-weight="normal" fill="#1e293b" text-anchor="start">id_variante_prenda</text>
+<text x="2966.00" y="1188.00" font-size="12" font-weight="normal" fill="#52677d" text-anchor="start">int ?</text>
+<rect x="2690.0" y="1196.0" width="418" height="24" fill="#f8fafc"/>
+<path d="M 2689.0,1220.0 H 3109.0" stroke="#e2e8f0" stroke-width="0.6"/>
+<text x="2696.00" y="1212.00" font-size="10" font-weight="bold" fill="#52677d" text-anchor="start">FK</text>
+<text x="2740.00" y="1212.00" font-size="13" font-weight="normal" fill="#1e293b" text-anchor="start">id_usuario</text>
+<text x="2966.00" y="1212.00" font-size="12" font-weight="normal" fill="#52677d" text-anchor="start">int ?</text>
+<path d="M 2689.0,1244.0 H 3109.0" stroke="#e2e8f0" stroke-width="0.6"/>
+<text x="2696.00" y="1236.00" font-size="10" font-weight="bold" fill="#52677d" text-anchor="start">FK</text>
+<text x="2740.00" y="1236.00" font-size="13" font-weight="normal" fill="#1e293b" text-anchor="start">tenant_id</text>
+<text x="2966.00" y="1236.00" font-size="12" font-weight="normal" fill="#52677d" text-anchor="start">int</text>
+<rect x="2690.0" y="1244.0" width="418" height="24" fill="#f8fafc"/>
+<path d="M 2689.0,1268.0 H 3109.0" stroke="#e2e8f0" stroke-width="0.6"/>
+<text x="2696.00" y="1260.00" font-size="10" font-weight="bold" fill="#52677d" text-anchor="start"></text>
+<text x="2740.00" y="1260.00" font-size="13" font-weight="normal" fill="#1e293b" text-anchor="start">tipo</text>
+<text x="2966.00" y="1260.00" font-size="12" font-weight="normal" fill="#52677d" text-anchor="start">varchar(20)</text>
+<path d="M 2689.0,1292.0 H 3109.0" stroke="#e2e8f0" stroke-width="0.6"/>
+<text x="2696.00" y="1284.00" font-size="10" font-weight="bold" fill="#52677d" text-anchor="start"></text>
+<text x="2740.00" y="1284.00" font-size="13" font-weight="normal" fill="#1e293b" text-anchor="start">cantidad</text>
+<text x="2966.00" y="1284.00" font-size="12" font-weight="normal" fill="#52677d" text-anchor="start">int</text>
+<rect x="2690.0" y="1292.0" width="418" height="24" fill="#f8fafc"/>
+<path d="M 2689.0,1316.0 H 3109.0" stroke="#e2e8f0" stroke-width="0.6"/>
+<text x="2696.00" y="1308.00" font-size="10" font-weight="bold" fill="#52677d" text-anchor="start"></text>
+<text x="2740.00" y="1308.00" font-size="13" font-weight="normal" fill="#1e293b" text-anchor="start">fecha</text>
+<text x="2966.00" y="1308.00" font-size="12" font-weight="normal" fill="#52677d" text-anchor="start">timestamp ?</text>
+<rect x="2168.0" y="2770.0" width="420" height="204" fill="white" stroke="#53677c" stroke-width="1.5"/>
+<rect x="2168.0" y="2770.0" width="420" height="36" fill="#dcecf5" stroke="#53677c" stroke-width="1.2"/>
+<text x="2180.00" y="2794.00" font-size="16" font-weight="bold" fill="#1e293b" text-anchor="start">reserva</text>
+<path d="M 2168.0,2830.0 H 2588.0" stroke="#e2e8f0" stroke-width="0.6"/>
+<text x="2175.00" y="2822.00" font-size="10" font-weight="bold" fill="#52677d" text-anchor="start">PK</text>
+<text x="2219.00" y="2822.00" font-size="13" font-weight="bold" fill="#1e293b" text-anchor="start">id_reserva</text>
+<text x="2445.00" y="2822.00" font-size="12" font-weight="normal" fill="#52677d" text-anchor="start">int</text>
+<rect x="2169.0" y="2830.0" width="418" height="24" fill="#f8fafc"/>
+<path d="M 2168.0,2854.0 H 2588.0" stroke="#e2e8f0" stroke-width="0.6"/>
+<text x="2175.00" y="2846.00" font-size="10" font-weight="bold" fill="#52677d" text-anchor="start">FK</text>
+<text x="2219.00" y="2846.00" font-size="13" font-weight="normal" fill="#1e293b" text-anchor="start">id_cliente</text>
+<text x="2445.00" y="2846.00" font-size="12" font-weight="normal" fill="#52677d" text-anchor="start">int ?</text>
+<path d="M 2168.0,2878.0 H 2588.0" stroke="#e2e8f0" stroke-width="0.6"/>
+<text x="2175.00" y="2870.00" font-size="10" font-weight="bold" fill="#52677d" text-anchor="start">FK</text>
+<text x="2219.00" y="2870.00" font-size="13" font-weight="normal" fill="#1e293b" text-anchor="start">id_sucursal</text>
+<text x="2445.00" y="2870.00" font-size="12" font-weight="normal" fill="#52677d" text-anchor="start">int ?</text>
+<rect x="2169.0" y="2878.0" width="418" height="24" fill="#f8fafc"/>
+<path d="M 2168.0,2902.0 H 2588.0" stroke="#e2e8f0" stroke-width="0.6"/>
+<text x="2175.00" y="2894.00" font-size="10" font-weight="bold" fill="#52677d" text-anchor="start">FK</text>
+<text x="2219.00" y="2894.00" font-size="13" font-weight="normal" fill="#1e293b" text-anchor="start">tenant_id</text>
+<text x="2445.00" y="2894.00" font-size="12" font-weight="normal" fill="#52677d" text-anchor="start">int</text>
+<path d="M 2168.0,2926.0 H 2588.0" stroke="#e2e8f0" stroke-width="0.6"/>
+<text x="2175.00" y="2918.00" font-size="10" font-weight="bold" fill="#52677d" text-anchor="start"></text>
+<text x="2219.00" y="2918.00" font-size="13" font-weight="normal" fill="#1e293b" text-anchor="start">fecha_limite</text>
+<text x="2445.00" y="2918.00" font-size="12" font-weight="normal" fill="#52677d" text-anchor="start">timestamp</text>
+<rect x="2169.0" y="2926.0" width="418" height="24" fill="#f8fafc"/>
+<path d="M 2168.0,2950.0 H 2588.0" stroke="#e2e8f0" stroke-width="0.6"/>
+<text x="2175.00" y="2942.00" font-size="10" font-weight="bold" fill="#52677d" text-anchor="start"></text>
+<text x="2219.00" y="2942.00" font-size="13" font-weight="normal" fill="#1e293b" text-anchor="start">estado</text>
+<text x="2445.00" y="2942.00" font-size="12" font-weight="normal" fill="#52677d" text-anchor="start">varchar(30) ?</text>
+<path d="M 2168.0,2974.0 H 2588.0" stroke="#e2e8f0" stroke-width="0.6"/>
+<text x="2175.00" y="2966.00" font-size="10" font-weight="bold" fill="#52677d" text-anchor="start"></text>
+<text x="2219.00" y="2966.00" font-size="13" font-weight="normal" fill="#1e293b" text-anchor="start">total</text>
+<text x="2445.00" y="2966.00" font-size="12" font-weight="normal" fill="#52677d" text-anchor="start">numeric(10,2)</text>
+<rect x="2689.0" y="2543.0" width="420" height="156" fill="white" stroke="#53677c" stroke-width="1.5"/>
+<rect x="2689.0" y="2543.0" width="420" height="36" fill="#dcecf5" stroke="#53677c" stroke-width="1.2"/>
+<text x="2701.00" y="2567.00" font-size="16" font-weight="bold" fill="#1e293b" text-anchor="start">detalle_reserva</text>
+<path d="M 2689.0,2603.0 H 3109.0" stroke="#e2e8f0" stroke-width="0.6"/>
+<text x="2696.00" y="2595.00" font-size="10" font-weight="bold" fill="#52677d" text-anchor="start">PK/FK</text>
+<text x="2740.00" y="2595.00" font-size="13" font-weight="bold" fill="#1e293b" text-anchor="start">id_reserva</text>
+<text x="2966.00" y="2595.00" font-size="12" font-weight="normal" fill="#52677d" text-anchor="start">int</text>
+<rect x="2690.0" y="2603.0" width="418" height="24" fill="#f8fafc"/>
+<path d="M 2689.0,2627.0 H 3109.0" stroke="#e2e8f0" stroke-width="0.6"/>
+<text x="2696.00" y="2619.00" font-size="10" font-weight="bold" fill="#52677d" text-anchor="start">PK/FK</text>
+<text x="2740.00" y="2619.00" font-size="13" font-weight="bold" fill="#1e293b" text-anchor="start">id_variante_prenda</text>
+<text x="2966.00" y="2619.00" font-size="12" font-weight="normal" fill="#52677d" text-anchor="start">int</text>
+<path d="M 2689.0,2651.0 H 3109.0" stroke="#e2e8f0" stroke-width="0.6"/>
+<text x="2696.00" y="2643.00" font-size="10" font-weight="bold" fill="#52677d" text-anchor="start">FK</text>
+<text x="2740.00" y="2643.00" font-size="13" font-weight="normal" fill="#1e293b" text-anchor="start">tenant_id</text>
+<text x="2966.00" y="2643.00" font-size="12" font-weight="normal" fill="#52677d" text-anchor="start">int</text>
+<rect x="2690.0" y="2651.0" width="418" height="24" fill="#f8fafc"/>
+<path d="M 2689.0,2675.0 H 3109.0" stroke="#e2e8f0" stroke-width="0.6"/>
+<text x="2696.00" y="2667.00" font-size="10" font-weight="bold" fill="#52677d" text-anchor="start"></text>
+<text x="2740.00" y="2667.00" font-size="13" font-weight="normal" fill="#1e293b" text-anchor="start">cantidad</text>
+<text x="2966.00" y="2667.00" font-size="12" font-weight="normal" fill="#52677d" text-anchor="start">int</text>
+<path d="M 2689.0,2699.0 H 3109.0" stroke="#e2e8f0" stroke-width="0.6"/>
+<text x="2696.00" y="2691.00" font-size="10" font-weight="bold" fill="#52677d" text-anchor="start"></text>
+<text x="2740.00" y="2691.00" font-size="13" font-weight="normal" fill="#1e293b" text-anchor="start">precio_unitario</text>
+<text x="2966.00" y="2691.00" font-size="12" font-weight="normal" fill="#52677d" text-anchor="start">numeric(10,2)</text>
+<rect x="2689.0" y="2316.0" width="420" height="180" fill="white" stroke="#53677c" stroke-width="1.5"/>
+<rect x="2689.0" y="2316.0" width="420" height="36" fill="#dcecf5" stroke="#53677c" stroke-width="1.2"/>
+<text x="2701.00" y="2340.00" font-size="16" font-weight="bold" fill="#1e293b" text-anchor="start">retencion</text>
+<path d="M 2689.0,2376.0 H 3109.0" stroke="#e2e8f0" stroke-width="0.6"/>
+<text x="2696.00" y="2368.00" font-size="10" font-weight="bold" fill="#52677d" text-anchor="start">PK/FK</text>
+<text x="2740.00" y="2368.00" font-size="13" font-weight="bold" fill="#1e293b" text-anchor="start">tenant_id</text>
+<text x="2966.00" y="2368.00" font-size="12" font-weight="normal" fill="#52677d" text-anchor="start">int</text>
+<rect x="2690.0" y="2376.0" width="418" height="24" fill="#f8fafc"/>
+<path d="M 2689.0,2400.0 H 3109.0" stroke="#e2e8f0" stroke-width="0.6"/>
+<text x="2696.00" y="2392.00" font-size="10" font-weight="bold" fill="#52677d" text-anchor="start">PK/FK</text>
+<text x="2740.00" y="2392.00" font-size="13" font-weight="bold" fill="#1e293b" text-anchor="start">id_reserva</text>
+<text x="2966.00" y="2392.00" font-size="12" font-weight="normal" fill="#52677d" text-anchor="start">int</text>
+<path d="M 2689.0,2424.0 H 3109.0" stroke="#e2e8f0" stroke-width="0.6"/>
+<text x="2696.00" y="2416.00" font-size="10" font-weight="bold" fill="#52677d" text-anchor="start">PK/FK</text>
+<text x="2740.00" y="2416.00" font-size="13" font-weight="bold" fill="#1e293b" text-anchor="start">id_variante_prenda</text>
+<text x="2966.00" y="2416.00" font-size="12" font-weight="normal" fill="#52677d" text-anchor="start">int</text>
+<rect x="2690.0" y="2424.0" width="418" height="24" fill="#f8fafc"/>
+<path d="M 2689.0,2448.0 H 3109.0" stroke="#e2e8f0" stroke-width="0.6"/>
+<text x="2696.00" y="2440.00" font-size="10" font-weight="bold" fill="#52677d" text-anchor="start">FK</text>
+<text x="2740.00" y="2440.00" font-size="13" font-weight="normal" fill="#1e293b" text-anchor="start">id_sucursal</text>
+<text x="2966.00" y="2440.00" font-size="12" font-weight="normal" fill="#52677d" text-anchor="start">int</text>
+<path d="M 2689.0,2472.0 H 3109.0" stroke="#e2e8f0" stroke-width="0.6"/>
+<text x="2696.00" y="2464.00" font-size="10" font-weight="bold" fill="#52677d" text-anchor="start"></text>
+<text x="2740.00" y="2464.00" font-size="13" font-weight="normal" fill="#1e293b" text-anchor="start">cantidad</text>
+<text x="2966.00" y="2464.00" font-size="12" font-weight="normal" fill="#52677d" text-anchor="start">int</text>
+<rect x="2690.0" y="2472.0" width="418" height="24" fill="#f8fafc"/>
+<path d="M 2689.0,2496.0 H 3109.0" stroke="#e2e8f0" stroke-width="0.6"/>
+<text x="2696.00" y="2488.00" font-size="10" font-weight="bold" fill="#52677d" text-anchor="start"></text>
+<text x="2740.00" y="2488.00" font-size="13" font-weight="normal" fill="#1e293b" text-anchor="start">vence</text>
+<text x="2966.00" y="2488.00" font-size="12" font-weight="normal" fill="#52677d" text-anchor="start">timestamptz</text>
+<rect x="2689.0" y="2746.0" width="420" height="252" fill="white" stroke="#53677c" stroke-width="1.5"/>
+<rect x="2689.0" y="2746.0" width="420" height="36" fill="#dcecf5" stroke="#53677c" stroke-width="1.2"/>
+<text x="2701.00" y="2770.00" font-size="16" font-weight="bold" fill="#1e293b" text-anchor="start">venta</text>
+<path d="M 2689.0,2806.0 H 3109.0" stroke="#e2e8f0" stroke-width="0.6"/>
+<text x="2696.00" y="2798.00" font-size="10" font-weight="bold" fill="#52677d" text-anchor="start">PK</text>
+<text x="2740.00" y="2798.00" font-size="13" font-weight="bold" fill="#1e293b" text-anchor="start">id_venta</text>
+<text x="2966.00" y="2798.00" font-size="12" font-weight="normal" fill="#52677d" text-anchor="start">int</text>
+<rect x="2690.0" y="2806.0" width="418" height="24" fill="#f8fafc"/>
+<path d="M 2689.0,2830.0 H 3109.0" stroke="#e2e8f0" stroke-width="0.6"/>
+<text x="2696.00" y="2822.00" font-size="10" font-weight="bold" fill="#52677d" text-anchor="start">FK</text>
+<text x="2740.00" y="2822.00" font-size="13" font-weight="normal" fill="#1e293b" text-anchor="start">id_cliente</text>
+<text x="2966.00" y="2822.00" font-size="12" font-weight="normal" fill="#52677d" text-anchor="start">int ?</text>
+<path d="M 2689.0,2854.0 H 3109.0" stroke="#e2e8f0" stroke-width="0.6"/>
+<text x="2696.00" y="2846.00" font-size="10" font-weight="bold" fill="#52677d" text-anchor="start">FK</text>
+<text x="2740.00" y="2846.00" font-size="13" font-weight="normal" fill="#1e293b" text-anchor="start">id_sucursal</text>
+<text x="2966.00" y="2846.00" font-size="12" font-weight="normal" fill="#52677d" text-anchor="start">int ?</text>
+<rect x="2690.0" y="2854.0" width="418" height="24" fill="#f8fafc"/>
+<path d="M 2689.0,2878.0 H 3109.0" stroke="#e2e8f0" stroke-width="0.6"/>
+<text x="2696.00" y="2870.00" font-size="10" font-weight="bold" fill="#52677d" text-anchor="start">FK</text>
+<text x="2740.00" y="2870.00" font-size="13" font-weight="normal" fill="#1e293b" text-anchor="start">id_cajero</text>
+<text x="2966.00" y="2870.00" font-size="12" font-weight="normal" fill="#52677d" text-anchor="start">int ?</text>
+<path d="M 2689.0,2902.0 H 3109.0" stroke="#e2e8f0" stroke-width="0.6"/>
+<text x="2696.00" y="2894.00" font-size="10" font-weight="bold" fill="#52677d" text-anchor="start">FK</text>
+<text x="2740.00" y="2894.00" font-size="13" font-weight="normal" fill="#1e293b" text-anchor="start">id_reserva</text>
+<text x="2966.00" y="2894.00" font-size="12" font-weight="normal" fill="#52677d" text-anchor="start">int ?</text>
+<rect x="2690.0" y="2902.0" width="418" height="24" fill="#f8fafc"/>
+<path d="M 2689.0,2926.0 H 3109.0" stroke="#e2e8f0" stroke-width="0.6"/>
+<text x="2696.00" y="2918.00" font-size="10" font-weight="bold" fill="#52677d" text-anchor="start">FK</text>
+<text x="2740.00" y="2918.00" font-size="13" font-weight="normal" fill="#1e293b" text-anchor="start">tenant_id</text>
+<text x="2966.00" y="2918.00" font-size="12" font-weight="normal" fill="#52677d" text-anchor="start">int</text>
+<path d="M 2689.0,2950.0 H 3109.0" stroke="#e2e8f0" stroke-width="0.6"/>
+<text x="2696.00" y="2942.00" font-size="10" font-weight="bold" fill="#52677d" text-anchor="start"></text>
+<text x="2740.00" y="2942.00" font-size="13" font-weight="normal" fill="#1e293b" text-anchor="start">metodo_pago</text>
+<text x="2966.00" y="2942.00" font-size="12" font-weight="normal" fill="#52677d" text-anchor="start">varchar(30)</text>
+<rect x="2690.0" y="2950.0" width="418" height="24" fill="#f8fafc"/>
+<path d="M 2689.0,2974.0 H 3109.0" stroke="#e2e8f0" stroke-width="0.6"/>
+<text x="2696.00" y="2966.00" font-size="10" font-weight="bold" fill="#52677d" text-anchor="start"></text>
+<text x="2740.00" y="2966.00" font-size="13" font-weight="normal" fill="#1e293b" text-anchor="start">total</text>
+<text x="2966.00" y="2966.00" font-size="12" font-weight="normal" fill="#52677d" text-anchor="start">numeric(10,2)</text>
+<path d="M 2689.0,2998.0 H 3109.0" stroke="#e2e8f0" stroke-width="0.6"/>
+<text x="2696.00" y="2990.00" font-size="10" font-weight="bold" fill="#52677d" text-anchor="start"></text>
+<text x="2740.00" y="2990.00" font-size="13" font-weight="normal" fill="#1e293b" text-anchor="start">fecha_venta</text>
+<text x="2966.00" y="2990.00" font-size="12" font-weight="normal" fill="#52677d" text-anchor="start">timestamp ?</text>
+<rect x="3210.0" y="2782.0" width="420" height="180" fill="white" stroke="#53677c" stroke-width="1.5"/>
+<rect x="3210.0" y="2782.0" width="420" height="36" fill="#dcecf5" stroke="#53677c" stroke-width="1.2"/>
+<text x="3222.00" y="2806.00" font-size="16" font-weight="bold" fill="#1e293b" text-anchor="start">detalle_venta</text>
+<path d="M 3210.0,2842.0 H 3630.0" stroke="#e2e8f0" stroke-width="0.6"/>
+<text x="3217.00" y="2834.00" font-size="10" font-weight="bold" fill="#52677d" text-anchor="start">PK/FK</text>
+<text x="3261.00" y="2834.00" font-size="13" font-weight="bold" fill="#1e293b" text-anchor="start">id_venta</text>
+<text x="3487.00" y="2834.00" font-size="12" font-weight="normal" fill="#52677d" text-anchor="start">int</text>
+<rect x="3211.0" y="2842.0" width="418" height="24" fill="#f8fafc"/>
+<path d="M 3210.0,2866.0 H 3630.0" stroke="#e2e8f0" stroke-width="0.6"/>
+<text x="3217.00" y="2858.00" font-size="10" font-weight="bold" fill="#52677d" text-anchor="start">PK/FK</text>
+<text x="3261.00" y="2858.00" font-size="13" font-weight="bold" fill="#1e293b" text-anchor="start">id_variante_prenda</text>
+<text x="3487.00" y="2858.00" font-size="12" font-weight="normal" fill="#52677d" text-anchor="start">int</text>
+<path d="M 3210.0,2890.0 H 3630.0" stroke="#e2e8f0" stroke-width="0.6"/>
+<text x="3217.00" y="2882.00" font-size="10" font-weight="bold" fill="#52677d" text-anchor="start">FK</text>
+<text x="3261.00" y="2882.00" font-size="13" font-weight="normal" fill="#1e293b" text-anchor="start">tenant_id</text>
+<text x="3487.00" y="2882.00" font-size="12" font-weight="normal" fill="#52677d" text-anchor="start">int</text>
+<rect x="3211.0" y="2890.0" width="418" height="24" fill="#f8fafc"/>
+<path d="M 3210.0,2914.0 H 3630.0" stroke="#e2e8f0" stroke-width="0.6"/>
+<text x="3217.00" y="2906.00" font-size="10" font-weight="bold" fill="#52677d" text-anchor="start"></text>
+<text x="3261.00" y="2906.00" font-size="13" font-weight="normal" fill="#1e293b" text-anchor="start">cantidad</text>
+<text x="3487.00" y="2906.00" font-size="12" font-weight="normal" fill="#52677d" text-anchor="start">int</text>
+<path d="M 3210.0,2938.0 H 3630.0" stroke="#e2e8f0" stroke-width="0.6"/>
+<text x="3217.00" y="2930.00" font-size="10" font-weight="bold" fill="#52677d" text-anchor="start"></text>
+<text x="3261.00" y="2930.00" font-size="13" font-weight="normal" fill="#1e293b" text-anchor="start">precio_unitario</text>
+<text x="3487.00" y="2930.00" font-size="12" font-weight="normal" fill="#52677d" text-anchor="start">numeric(10,2)</text>
+<rect x="3211.0" y="2938.0" width="418" height="24" fill="#f8fafc"/>
+<path d="M 3210.0,2962.0 H 3630.0" stroke="#e2e8f0" stroke-width="0.6"/>
+<text x="3217.00" y="2954.00" font-size="10" font-weight="bold" fill="#52677d" text-anchor="start"></text>
+<text x="3261.00" y="2954.00" font-size="13" font-weight="normal" fill="#1e293b" text-anchor="start">subtotal</text>
+<text x="3487.00" y="2954.00" font-size="12" font-weight="normal" fill="#52677d" text-anchor="start">numeric(10,2)</text>
+<rect x="3210.0" y="3295.0" width="420" height="204" fill="white" stroke="#53677c" stroke-width="1.5"/>
+<rect x="3210.0" y="3295.0" width="420" height="36" fill="#f8e4d7" stroke="#53677c" stroke-width="1.2"/>
+<text x="3222.00" y="3319.00" font-size="16" font-weight="bold" fill="#1e293b" text-anchor="start">pago_transaccion</text>
+<path d="M 3210.0,3355.0 H 3630.0" stroke="#e2e8f0" stroke-width="0.6"/>
+<text x="3217.00" y="3347.00" font-size="10" font-weight="bold" fill="#52677d" text-anchor="start">PK</text>
+<text x="3261.00" y="3347.00" font-size="13" font-weight="bold" fill="#1e293b" text-anchor="start">id_pago</text>
+<text x="3487.00" y="3347.00" font-size="12" font-weight="normal" fill="#52677d" text-anchor="start">int</text>
+<rect x="3211.0" y="3355.0" width="418" height="24" fill="#f8fafc"/>
+<path d="M 3210.0,3379.0 H 3630.0" stroke="#e2e8f0" stroke-width="0.6"/>
+<text x="3217.00" y="3371.00" font-size="10" font-weight="bold" fill="#52677d" text-anchor="start">FK</text>
+<text x="3261.00" y="3371.00" font-size="13" font-weight="normal" fill="#1e293b" text-anchor="start">id_venta</text>
+<text x="3487.00" y="3371.00" font-size="12" font-weight="normal" fill="#52677d" text-anchor="start">int ?</text>
+<path d="M 3210.0,3403.0 H 3630.0" stroke="#e2e8f0" stroke-width="0.6"/>
+<text x="3217.00" y="3395.00" font-size="10" font-weight="bold" fill="#52677d" text-anchor="start">FK</text>
+<text x="3261.00" y="3395.00" font-size="13" font-weight="normal" fill="#1e293b" text-anchor="start">tenant_id</text>
+<text x="3487.00" y="3395.00" font-size="12" font-weight="normal" fill="#52677d" text-anchor="start">int</text>
+<rect x="3211.0" y="3403.0" width="418" height="24" fill="#f8fafc"/>
+<path d="M 3210.0,3427.0 H 3630.0" stroke="#e2e8f0" stroke-width="0.6"/>
+<text x="3217.00" y="3419.00" font-size="10" font-weight="bold" fill="#52677d" text-anchor="start">FK</text>
+<text x="3261.00" y="3419.00" font-size="13" font-weight="normal" fill="#1e293b" text-anchor="start">id_reserva</text>
+<text x="3487.00" y="3419.00" font-size="12" font-weight="normal" fill="#52677d" text-anchor="start">int ?</text>
+<path d="M 3210.0,3451.0 H 3630.0" stroke="#e2e8f0" stroke-width="0.6"/>
+<text x="3217.00" y="3443.00" font-size="10" font-weight="bold" fill="#52677d" text-anchor="start"></text>
+<text x="3261.00" y="3443.00" font-size="13" font-weight="normal" fill="#1e293b" text-anchor="start">transaccion_id</text>
+<text x="3487.00" y="3443.00" font-size="12" font-weight="normal" fill="#52677d" text-anchor="start">varchar(100)</text>
+<rect x="3211.0" y="3451.0" width="418" height="24" fill="#f8fafc"/>
+<path d="M 3210.0,3475.0 H 3630.0" stroke="#e2e8f0" stroke-width="0.6"/>
+<text x="3217.00" y="3467.00" font-size="10" font-weight="bold" fill="#52677d" text-anchor="start"></text>
+<text x="3261.00" y="3467.00" font-size="13" font-weight="normal" fill="#1e293b" text-anchor="start">monto</text>
+<text x="3487.00" y="3467.00" font-size="12" font-weight="normal" fill="#52677d" text-anchor="start">numeric(10,2)</text>
+<path d="M 3210.0,3499.0 H 3630.0" stroke="#e2e8f0" stroke-width="0.6"/>
+<text x="3217.00" y="3491.00" font-size="10" font-weight="bold" fill="#52677d" text-anchor="start"></text>
+<text x="3261.00" y="3491.00" font-size="13" font-weight="normal" fill="#1e293b" text-anchor="start">estado_pago</text>
+<text x="3487.00" y="3491.00" font-size="12" font-weight="normal" fill="#52677d" text-anchor="start">varchar(50)</text>
+<rect x="3210.0" y="3092.0" width="420" height="156" fill="white" stroke="#53677c" stroke-width="1.5"/>
+<rect x="3210.0" y="3092.0" width="420" height="36" fill="#f8e4d7" stroke="#53677c" stroke-width="1.2"/>
+<text x="3222.00" y="3116.00" font-size="16" font-weight="bold" fill="#1e293b" text-anchor="start">comprobante</text>
+<path d="M 3210.0,3152.0 H 3630.0" stroke="#e2e8f0" stroke-width="0.6"/>
+<text x="3217.00" y="3144.00" font-size="10" font-weight="bold" fill="#52677d" text-anchor="start">PK</text>
+<text x="3261.00" y="3144.00" font-size="13" font-weight="bold" fill="#1e293b" text-anchor="start">id_comprobante</text>
+<text x="3487.00" y="3144.00" font-size="12" font-weight="normal" fill="#52677d" text-anchor="start">int</text>
+<rect x="3211.0" y="3152.0" width="418" height="24" fill="#f8fafc"/>
+<path d="M 3210.0,3176.0 H 3630.0" stroke="#e2e8f0" stroke-width="0.6"/>
+<text x="3217.00" y="3168.00" font-size="10" font-weight="bold" fill="#52677d" text-anchor="start">FK</text>
+<text x="3261.00" y="3168.00" font-size="13" font-weight="normal" fill="#1e293b" text-anchor="start">id_venta</text>
+<text x="3487.00" y="3168.00" font-size="12" font-weight="normal" fill="#52677d" text-anchor="start">int ?</text>
+<path d="M 3210.0,3200.0 H 3630.0" stroke="#e2e8f0" stroke-width="0.6"/>
+<text x="3217.00" y="3192.00" font-size="10" font-weight="bold" fill="#52677d" text-anchor="start">FK</text>
+<text x="3261.00" y="3192.00" font-size="13" font-weight="normal" fill="#1e293b" text-anchor="start">tenant_id</text>
+<text x="3487.00" y="3192.00" font-size="12" font-weight="normal" fill="#52677d" text-anchor="start">int</text>
+<rect x="3211.0" y="3200.0" width="418" height="24" fill="#f8fafc"/>
+<path d="M 3210.0,3224.0 H 3630.0" stroke="#e2e8f0" stroke-width="0.6"/>
+<text x="3217.00" y="3216.00" font-size="10" font-weight="bold" fill="#52677d" text-anchor="start"></text>
+<text x="3261.00" y="3216.00" font-size="13" font-weight="normal" fill="#1e293b" text-anchor="start">numero_comprobante</text>
+<text x="3487.00" y="3216.00" font-size="12" font-weight="normal" fill="#52677d" text-anchor="start">varchar(50)</text>
+<path d="M 3210.0,3248.0 H 3630.0" stroke="#e2e8f0" stroke-width="0.6"/>
+<text x="3217.00" y="3240.00" font-size="10" font-weight="bold" fill="#52677d" text-anchor="start"></text>
+<text x="3261.00" y="3240.00" font-size="13" font-weight="normal" fill="#1e293b" text-anchor="start">fecha_emision</text>
+<text x="3487.00" y="3240.00" font-size="12" font-weight="normal" fill="#52677d" text-anchor="start">timestamp ?</text>
+<rect x="3731.0" y="3493.0" width="420" height="300" fill="white" stroke="#53677c" stroke-width="1.5"/>
+<rect x="3731.0" y="3493.0" width="420" height="36" fill="#f4e1e8" stroke="#53677c" stroke-width="1.2"/>
+<text x="3743.00" y="3517.00" font-size="16" font-weight="bold" fill="#1e293b" text-anchor="start">cambio</text>
+<path d="M 3731.0,3553.0 H 4151.0" stroke="#e2e8f0" stroke-width="0.6"/>
+<text x="3738.00" y="3545.00" font-size="10" font-weight="bold" fill="#52677d" text-anchor="start">PK</text>
+<text x="3782.00" y="3545.00" font-size="13" font-weight="bold" fill="#1e293b" text-anchor="start">id_cambio</text>
+<text x="4008.00" y="3545.00" font-size="12" font-weight="normal" fill="#52677d" text-anchor="start">int</text>
+<rect x="3732.0" y="3553.0" width="418" height="24" fill="#f8fafc"/>
+<path d="M 3731.0,3577.0 H 4151.0" stroke="#e2e8f0" stroke-width="0.6"/>
+<text x="3738.00" y="3569.00" font-size="10" font-weight="bold" fill="#52677d" text-anchor="start">FK</text>
+<text x="3782.00" y="3569.00" font-size="13" font-weight="normal" fill="#1e293b" text-anchor="start">tenant_id</text>
+<text x="4008.00" y="3569.00" font-size="12" font-weight="normal" fill="#52677d" text-anchor="start">int</text>
+<path d="M 3731.0,3601.0 H 4151.0" stroke="#e2e8f0" stroke-width="0.6"/>
+<text x="3738.00" y="3593.00" font-size="10" font-weight="bold" fill="#52677d" text-anchor="start">FK</text>
+<text x="3782.00" y="3593.00" font-size="13" font-weight="normal" fill="#1e293b" text-anchor="start">id_venta</text>
+<text x="4008.00" y="3593.00" font-size="12" font-weight="normal" fill="#52677d" text-anchor="start">int</text>
+<rect x="3732.0" y="3601.0" width="418" height="24" fill="#f8fafc"/>
+<path d="M 3731.0,3625.0 H 4151.0" stroke="#e2e8f0" stroke-width="0.6"/>
+<text x="3738.00" y="3617.00" font-size="10" font-weight="bold" fill="#52677d" text-anchor="start">FK</text>
+<text x="3782.00" y="3617.00" font-size="13" font-weight="normal" fill="#1e293b" text-anchor="start">id_cliente</text>
+<text x="4008.00" y="3617.00" font-size="12" font-weight="normal" fill="#52677d" text-anchor="start">int</text>
+<path d="M 3731.0,3649.0 H 4151.0" stroke="#e2e8f0" stroke-width="0.6"/>
+<text x="3738.00" y="3641.00" font-size="10" font-weight="bold" fill="#52677d" text-anchor="start">FK</text>
+<text x="3782.00" y="3641.00" font-size="13" font-weight="normal" fill="#1e293b" text-anchor="start">id_sucursal</text>
+<text x="4008.00" y="3641.00" font-size="12" font-weight="normal" fill="#52677d" text-anchor="start">int</text>
+<rect x="3732.0" y="3649.0" width="418" height="24" fill="#f8fafc"/>
+<path d="M 3731.0,3673.0 H 4151.0" stroke="#e2e8f0" stroke-width="0.6"/>
+<text x="3738.00" y="3665.00" font-size="10" font-weight="bold" fill="#52677d" text-anchor="start">FK</text>
+<text x="3782.00" y="3665.00" font-size="13" font-weight="normal" fill="#1e293b" text-anchor="start">id_variante_original</text>
+<text x="4008.00" y="3665.00" font-size="12" font-weight="normal" fill="#52677d" text-anchor="start">int</text>
+<path d="M 3731.0,3697.0 H 4151.0" stroke="#e2e8f0" stroke-width="0.6"/>
+<text x="3738.00" y="3689.00" font-size="10" font-weight="bold" fill="#52677d" text-anchor="start">FK</text>
+<text x="3782.00" y="3689.00" font-size="13" font-weight="normal" fill="#1e293b" text-anchor="start">id_reserva_reemplazo</text>
+<text x="4008.00" y="3689.00" font-size="12" font-weight="normal" fill="#52677d" text-anchor="start">int ?</text>
+<rect x="3732.0" y="3697.0" width="418" height="24" fill="#f8fafc"/>
+<path d="M 3731.0,3721.0 H 4151.0" stroke="#e2e8f0" stroke-width="0.6"/>
+<text x="3738.00" y="3713.00" font-size="10" font-weight="bold" fill="#52677d" text-anchor="start"></text>
+<text x="3782.00" y="3713.00" font-size="13" font-weight="normal" fill="#1e293b" text-anchor="start">cantidad</text>
+<text x="4008.00" y="3713.00" font-size="12" font-weight="normal" fill="#52677d" text-anchor="start">int</text>
+<path d="M 3731.0,3745.0 H 4151.0" stroke="#e2e8f0" stroke-width="0.6"/>
+<text x="3738.00" y="3737.00" font-size="10" font-weight="bold" fill="#52677d" text-anchor="start"></text>
+<text x="3782.00" y="3737.00" font-size="13" font-weight="normal" fill="#1e293b" text-anchor="start">estado</text>
+<text x="4008.00" y="3737.00" font-size="12" font-weight="normal" fill="#52677d" text-anchor="start">text</text>
+<rect x="3732.0" y="3745.0" width="418" height="24" fill="#f8fafc"/>
+<path d="M 3731.0,3769.0 H 4151.0" stroke="#e2e8f0" stroke-width="0.6"/>
+<text x="3738.00" y="3761.00" font-size="10" font-weight="bold" fill="#52677d" text-anchor="start"></text>
+<text x="3782.00" y="3761.00" font-size="13" font-weight="normal" fill="#1e293b" text-anchor="start">credito</text>
+<text x="4008.00" y="3761.00" font-size="12" font-weight="normal" fill="#52677d" text-anchor="start">numeric(12,2)</text>
+<path d="M 3731.0,3793.0 H 4151.0" stroke="#e2e8f0" stroke-width="0.6"/>
+<text x="3738.00" y="3785.00" font-size="10" font-weight="bold" fill="#52677d" text-anchor="start"></text>
+<text x="3782.00" y="3785.00" font-size="13" font-weight="normal" fill="#1e293b" text-anchor="start">diferencia</text>
+<text x="4008.00" y="3785.00" font-size="12" font-weight="normal" fill="#52677d" text-anchor="start">numeric(12,2) ?</text>
+<rect x="4252.0" y="3493.0" width="420" height="180" fill="white" stroke="#53677c" stroke-width="1.5"/>
+<rect x="4252.0" y="3493.0" width="420" height="36" fill="#f4e1e8" stroke="#53677c" stroke-width="1.2"/>
+<text x="4264.00" y="3517.00" font-size="16" font-weight="bold" fill="#1e293b" text-anchor="start">ajuste_monetario</text>
+<path d="M 4252.0,3553.0 H 4672.0" stroke="#e2e8f0" stroke-width="0.6"/>
+<text x="4259.00" y="3545.00" font-size="10" font-weight="bold" fill="#52677d" text-anchor="start">PK</text>
+<text x="4303.00" y="3545.00" font-size="13" font-weight="bold" fill="#1e293b" text-anchor="start">id_ajuste</text>
+<text x="4529.00" y="3545.00" font-size="12" font-weight="normal" fill="#52677d" text-anchor="start">int</text>
+<rect x="4253.0" y="3553.0" width="418" height="24" fill="#f8fafc"/>
+<path d="M 4252.0,3577.0 H 4672.0" stroke="#e2e8f0" stroke-width="0.6"/>
+<text x="4259.00" y="3569.00" font-size="10" font-weight="bold" fill="#52677d" text-anchor="start">FK</text>
+<text x="4303.00" y="3569.00" font-size="13" font-weight="normal" fill="#1e293b" text-anchor="start">tenant_id</text>
+<text x="4529.00" y="3569.00" font-size="12" font-weight="normal" fill="#52677d" text-anchor="start">int</text>
+<path d="M 4252.0,3601.0 H 4672.0" stroke="#e2e8f0" stroke-width="0.6"/>
+<text x="4259.00" y="3593.00" font-size="10" font-weight="bold" fill="#52677d" text-anchor="start">FK</text>
+<text x="4303.00" y="3593.00" font-size="13" font-weight="normal" fill="#1e293b" text-anchor="start">id_cambio</text>
+<text x="4529.00" y="3593.00" font-size="12" font-weight="normal" fill="#52677d" text-anchor="start">int</text>
+<rect x="4253.0" y="3601.0" width="418" height="24" fill="#f8fafc"/>
+<path d="M 4252.0,3625.0 H 4672.0" stroke="#e2e8f0" stroke-width="0.6"/>
+<text x="4259.00" y="3617.00" font-size="10" font-weight="bold" fill="#52677d" text-anchor="start"></text>
+<text x="4303.00" y="3617.00" font-size="13" font-weight="normal" fill="#1e293b" text-anchor="start">tipo</text>
+<text x="4529.00" y="3617.00" font-size="12" font-weight="normal" fill="#52677d" text-anchor="start">text</text>
+<path d="M 4252.0,3649.0 H 4672.0" stroke="#e2e8f0" stroke-width="0.6"/>
+<text x="4259.00" y="3641.00" font-size="10" font-weight="bold" fill="#52677d" text-anchor="start"></text>
+<text x="4303.00" y="3641.00" font-size="13" font-weight="normal" fill="#1e293b" text-anchor="start">importe</text>
+<text x="4529.00" y="3641.00" font-size="12" font-weight="normal" fill="#52677d" text-anchor="start">numeric(12,2)</text>
+<rect x="4253.0" y="3649.0" width="418" height="24" fill="#f8fafc"/>
+<path d="M 4252.0,3673.0 H 4672.0" stroke="#e2e8f0" stroke-width="0.6"/>
+<text x="4259.00" y="3665.00" font-size="10" font-weight="bold" fill="#52677d" text-anchor="start"></text>
+<text x="4303.00" y="3665.00" font-size="13" font-weight="normal" fill="#1e293b" text-anchor="start">referencia</text>
+<text x="4529.00" y="3665.00" font-size="12" font-weight="normal" fill="#52677d" text-anchor="start">text</text>
+<rect x="4252.0" y="3720.0" width="420" height="180" fill="white" stroke="#53677c" stroke-width="1.5"/>
+<rect x="4252.0" y="3720.0" width="420" height="36" fill="#f4e1e8" stroke="#53677c" stroke-width="1.2"/>
+<text x="4264.00" y="3744.00" font-size="16" font-weight="bold" fill="#1e293b" text-anchor="start">notificacion</text>
+<path d="M 4252.0,3780.0 H 4672.0" stroke="#e2e8f0" stroke-width="0.6"/>
+<text x="4259.00" y="3772.00" font-size="10" font-weight="bold" fill="#52677d" text-anchor="start">PK</text>
+<text x="4303.00" y="3772.00" font-size="13" font-weight="bold" fill="#1e293b" text-anchor="start">id_notificacion</text>
+<text x="4529.00" y="3772.00" font-size="12" font-weight="normal" fill="#52677d" text-anchor="start">int</text>
+<rect x="4253.0" y="3780.0" width="418" height="24" fill="#f8fafc"/>
+<path d="M 4252.0,3804.0 H 4672.0" stroke="#e2e8f0" stroke-width="0.6"/>
+<text x="4259.00" y="3796.00" font-size="10" font-weight="bold" fill="#52677d" text-anchor="start">FK</text>
+<text x="4303.00" y="3796.00" font-size="13" font-weight="normal" fill="#1e293b" text-anchor="start">tenant_id</text>
+<text x="4529.00" y="3796.00" font-size="12" font-weight="normal" fill="#52677d" text-anchor="start">int</text>
+<path d="M 4252.0,3828.0 H 4672.0" stroke="#e2e8f0" stroke-width="0.6"/>
+<text x="4259.00" y="3820.00" font-size="10" font-weight="bold" fill="#52677d" text-anchor="start">FK</text>
+<text x="4303.00" y="3820.00" font-size="13" font-weight="normal" fill="#1e293b" text-anchor="start">id_cliente</text>
+<text x="4529.00" y="3820.00" font-size="12" font-weight="normal" fill="#52677d" text-anchor="start">int</text>
+<rect x="4253.0" y="3828.0" width="418" height="24" fill="#f8fafc"/>
+<path d="M 4252.0,3852.0 H 4672.0" stroke="#e2e8f0" stroke-width="0.6"/>
+<text x="4259.00" y="3844.00" font-size="10" font-weight="bold" fill="#52677d" text-anchor="start">FK</text>
+<text x="4303.00" y="3844.00" font-size="13" font-weight="normal" fill="#1e293b" text-anchor="start">id_cambio</text>
+<text x="4529.00" y="3844.00" font-size="12" font-weight="normal" fill="#52677d" text-anchor="start">int ?</text>
+<path d="M 4252.0,3876.0 H 4672.0" stroke="#e2e8f0" stroke-width="0.6"/>
+<text x="4259.00" y="3868.00" font-size="10" font-weight="bold" fill="#52677d" text-anchor="start"></text>
+<text x="4303.00" y="3868.00" font-size="13" font-weight="normal" fill="#1e293b" text-anchor="start">titulo</text>
+<text x="4529.00" y="3868.00" font-size="12" font-weight="normal" fill="#52677d" text-anchor="start">text</text>
+<rect x="4253.0" y="3876.0" width="418" height="24" fill="#f8fafc"/>
+<path d="M 4252.0,3900.0 H 4672.0" stroke="#e2e8f0" stroke-width="0.6"/>
+<text x="4259.00" y="3892.00" font-size="10" font-weight="bold" fill="#52677d" text-anchor="start"></text>
+<text x="4303.00" y="3892.00" font-size="13" font-weight="normal" fill="#1e293b" text-anchor="start">leida</text>
+<text x="4529.00" y="3892.00" font-size="12" font-weight="normal" fill="#52677d" text-anchor="start">bool</text>
+<rect x="2168.0" y="3992.0" width="420" height="252" fill="white" stroke="#53677c" stroke-width="1.5"/>
+<rect x="2168.0" y="3992.0" width="420" height="36" fill="#e8e8e8" stroke="#53677c" stroke-width="1.2"/>
+<text x="2180.00" y="4016.00" font-size="16" font-weight="bold" fill="#1e293b" text-anchor="start">operacion_sync</text>
+<path d="M 2168.0,4052.0 H 2588.0" stroke="#e2e8f0" stroke-width="0.6"/>
+<text x="2175.00" y="4044.00" font-size="10" font-weight="bold" fill="#52677d" text-anchor="start">PK/FK</text>
+<text x="2219.00" y="4044.00" font-size="13" font-weight="bold" fill="#1e293b" text-anchor="start">tenant_id</text>
+<text x="2445.00" y="4044.00" font-size="12" font-weight="normal" fill="#52677d" text-anchor="start">int</text>
+<rect x="2169.0" y="4052.0" width="418" height="24" fill="#f8fafc"/>
+<path d="M 2168.0,4076.0 H 2588.0" stroke="#e2e8f0" stroke-width="0.6"/>
+<text x="2175.00" y="4068.00" font-size="10" font-weight="bold" fill="#52677d" text-anchor="start">PK</text>
+<text x="2219.00" y="4068.00" font-size="13" font-weight="bold" fill="#1e293b" text-anchor="start">operation_id</text>
+<text x="2445.00" y="4068.00" font-size="12" font-weight="normal" fill="#52677d" text-anchor="start">uuid</text>
+<path d="M 2168.0,4100.0 H 2588.0" stroke="#e2e8f0" stroke-width="0.6"/>
+<text x="2175.00" y="4092.00" font-size="10" font-weight="bold" fill="#52677d" text-anchor="start">FK</text>
+<text x="2219.00" y="4092.00" font-size="13" font-weight="normal" fill="#1e293b" text-anchor="start">author_id</text>
+<text x="2445.00" y="4092.00" font-size="12" font-weight="normal" fill="#52677d" text-anchor="start">int</text>
+<rect x="2169.0" y="4100.0" width="418" height="24" fill="#f8fafc"/>
+<path d="M 2168.0,4124.0 H 2588.0" stroke="#e2e8f0" stroke-width="0.6"/>
+<text x="2175.00" y="4116.00" font-size="10" font-weight="bold" fill="#52677d" text-anchor="start">FK</text>
+<text x="2219.00" y="4116.00" font-size="13" font-weight="normal" fill="#1e293b" text-anchor="start">branch_id</text>
+<text x="2445.00" y="4116.00" font-size="12" font-weight="normal" fill="#52677d" text-anchor="start">int ?</text>
+<path d="M 2168.0,4148.0 H 2588.0" stroke="#e2e8f0" stroke-width="0.6"/>
+<text x="2175.00" y="4140.00" font-size="10" font-weight="bold" fill="#52677d" text-anchor="start">FK</text>
+<text x="2219.00" y="4140.00" font-size="13" font-weight="normal" fill="#1e293b" text-anchor="start">original_operation</text>
+<text x="2445.00" y="4140.00" font-size="12" font-weight="normal" fill="#52677d" text-anchor="start">uuid ?</text>
+<rect x="2169.0" y="4148.0" width="418" height="24" fill="#f8fafc"/>
+<path d="M 2168.0,4172.0 H 2588.0" stroke="#e2e8f0" stroke-width="0.6"/>
+<text x="2175.00" y="4164.00" font-size="10" font-weight="bold" fill="#52677d" text-anchor="start">FK</text>
+<text x="2219.00" y="4164.00" font-size="13" font-weight="normal" fill="#1e293b" text-anchor="start">resolved_by</text>
+<text x="2445.00" y="4164.00" font-size="12" font-weight="normal" fill="#52677d" text-anchor="start">int ?</text>
+<path d="M 2168.0,4196.0 H 2588.0" stroke="#e2e8f0" stroke-width="0.6"/>
+<text x="2175.00" y="4188.00" font-size="10" font-weight="bold" fill="#52677d" text-anchor="start"></text>
+<text x="2219.00" y="4188.00" font-size="13" font-weight="normal" fill="#1e293b" text-anchor="start">kind</text>
+<text x="2445.00" y="4188.00" font-size="12" font-weight="normal" fill="#52677d" text-anchor="start">text</text>
+<rect x="2169.0" y="4196.0" width="418" height="24" fill="#f8fafc"/>
+<path d="M 2168.0,4220.0 H 2588.0" stroke="#e2e8f0" stroke-width="0.6"/>
+<text x="2175.00" y="4212.00" font-size="10" font-weight="bold" fill="#52677d" text-anchor="start"></text>
+<text x="2219.00" y="4212.00" font-size="13" font-weight="normal" fill="#1e293b" text-anchor="start">state</text>
+<text x="2445.00" y="4212.00" font-size="12" font-weight="normal" fill="#52677d" text-anchor="start">text</text>
+<path d="M 2168.0,4244.0 H 2588.0" stroke="#e2e8f0" stroke-width="0.6"/>
+<text x="2175.00" y="4236.00" font-size="10" font-weight="bold" fill="#52677d" text-anchor="start"></text>
+<text x="2219.00" y="4236.00" font-size="13" font-weight="normal" fill="#1e293b" text-anchor="start">created_at</text>
+<text x="2445.00" y="4236.00" font-size="12" font-weight="normal" fill="#52677d" text-anchor="start">timestamptz</text>
+<rect x="1647.0" y="3974.0" width="420" height="180" fill="white" stroke="#53677c" stroke-width="1.5"/>
+<rect x="1647.0" y="3974.0" width="420" height="36" fill="#e8e8e8" stroke="#53677c" stroke-width="1.2"/>
+<text x="1659.00" y="3998.00" font-size="16" font-weight="bold" fill="#1e293b" text-anchor="start">reporte_resultado</text>
+<path d="M 1647.0,4034.0 H 2067.0" stroke="#e2e8f0" stroke-width="0.6"/>
+<text x="1654.00" y="4026.00" font-size="10" font-weight="bold" fill="#52677d" text-anchor="start">PK</text>
+<text x="1698.00" y="4026.00" font-size="13" font-weight="bold" fill="#1e293b" text-anchor="start">id</text>
+<text x="1924.00" y="4026.00" font-size="12" font-weight="normal" fill="#52677d" text-anchor="start">uuid</text>
+<rect x="1648.0" y="4034.0" width="418" height="24" fill="#f8fafc"/>
+<path d="M 1647.0,4058.0 H 2067.0" stroke="#e2e8f0" stroke-width="0.6"/>
+<text x="1654.00" y="4050.00" font-size="10" font-weight="bold" fill="#52677d" text-anchor="start">FK</text>
+<text x="1698.00" y="4050.00" font-size="13" font-weight="normal" fill="#1e293b" text-anchor="start">tenant_id</text>
+<text x="1924.00" y="4050.00" font-size="12" font-weight="normal" fill="#52677d" text-anchor="start">bigint</text>
+<path d="M 1647.0,4082.0 H 2067.0" stroke="#e2e8f0" stroke-width="0.6"/>
+<text x="1654.00" y="4074.00" font-size="10" font-weight="bold" fill="#52677d" text-anchor="start">FK</text>
+<text x="1698.00" y="4074.00" font-size="13" font-weight="normal" fill="#1e293b" text-anchor="start">author_id</text>
+<text x="1924.00" y="4074.00" font-size="12" font-weight="normal" fill="#52677d" text-anchor="start">int</text>
+<rect x="1648.0" y="4082.0" width="418" height="24" fill="#f8fafc"/>
+<path d="M 1647.0,4106.0 H 2067.0" stroke="#e2e8f0" stroke-width="0.6"/>
+<text x="1654.00" y="4098.00" font-size="10" font-weight="bold" fill="#52677d" text-anchor="start"></text>
+<text x="1698.00" y="4098.00" font-size="13" font-weight="normal" fill="#1e293b" text-anchor="start">filters</text>
+<text x="1924.00" y="4098.00" font-size="12" font-weight="normal" fill="#52677d" text-anchor="start">jsonb</text>
+<path d="M 1647.0,4130.0 H 2067.0" stroke="#e2e8f0" stroke-width="0.6"/>
+<text x="1654.00" y="4122.00" font-size="10" font-weight="bold" fill="#52677d" text-anchor="start"></text>
+<text x="1698.00" y="4122.00" font-size="13" font-weight="normal" fill="#1e293b" text-anchor="start">result</text>
+<text x="1924.00" y="4122.00" font-size="12" font-weight="normal" fill="#52677d" text-anchor="start">jsonb</text>
+<rect x="1648.0" y="4130.0" width="418" height="24" fill="#f8fafc"/>
+<path d="M 1647.0,4154.0 H 2067.0" stroke="#e2e8f0" stroke-width="0.6"/>
+<text x="1654.00" y="4146.00" font-size="10" font-weight="bold" fill="#52677d" text-anchor="start"></text>
+<text x="1698.00" y="4146.00" font-size="13" font-weight="normal" fill="#1e293b" text-anchor="start">expires_at</text>
+<text x="1924.00" y="4146.00" font-size="12" font-weight="normal" fill="#52677d" text-anchor="start">timestamptz</text>
+<rect x="1647.0" y="4201.0" width="420" height="180" fill="white" stroke="#53677c" stroke-width="1.5"/>
+<rect x="1647.0" y="4201.0" width="420" height="36" fill="#e8e8e8" stroke="#53677c" stroke-width="1.2"/>
+<text x="1659.00" y="4225.00" font-size="16" font-weight="bold" fill="#1e293b" text-anchor="start">bitacora</text>
+<path d="M 1647.0,4261.0 H 2067.0" stroke="#e2e8f0" stroke-width="0.6"/>
+<text x="1654.00" y="4253.00" font-size="10" font-weight="bold" fill="#52677d" text-anchor="start">PK</text>
+<text x="1698.00" y="4253.00" font-size="13" font-weight="bold" fill="#1e293b" text-anchor="start">id_bitacora</text>
+<text x="1924.00" y="4253.00" font-size="12" font-weight="normal" fill="#52677d" text-anchor="start">int</text>
+<rect x="1648.0" y="4261.0" width="418" height="24" fill="#f8fafc"/>
+<path d="M 1647.0,4285.0 H 2067.0" stroke="#e2e8f0" stroke-width="0.6"/>
+<text x="1654.00" y="4277.00" font-size="10" font-weight="bold" fill="#52677d" text-anchor="start">FK</text>
+<text x="1698.00" y="4277.00" font-size="13" font-weight="normal" fill="#1e293b" text-anchor="start">id_usuario</text>
+<text x="1924.00" y="4277.00" font-size="12" font-weight="normal" fill="#52677d" text-anchor="start">int ?</text>
+<path d="M 1647.0,4309.0 H 2067.0" stroke="#e2e8f0" stroke-width="0.6"/>
+<text x="1654.00" y="4301.00" font-size="10" font-weight="bold" fill="#52677d" text-anchor="start">FK</text>
+<text x="1698.00" y="4301.00" font-size="13" font-weight="normal" fill="#1e293b" text-anchor="start">tenant_id</text>
+<text x="1924.00" y="4301.00" font-size="12" font-weight="normal" fill="#52677d" text-anchor="start">int</text>
+<rect x="1648.0" y="4309.0" width="418" height="24" fill="#f8fafc"/>
+<path d="M 1647.0,4333.0 H 2067.0" stroke="#e2e8f0" stroke-width="0.6"/>
+<text x="1654.00" y="4325.00" font-size="10" font-weight="bold" fill="#52677d" text-anchor="start"></text>
+<text x="1698.00" y="4325.00" font-size="13" font-weight="normal" fill="#1e293b" text-anchor="start">accion</text>
+<text x="1924.00" y="4325.00" font-size="12" font-weight="normal" fill="#52677d" text-anchor="start">varchar(100)</text>
+<path d="M 1647.0,4357.0 H 2067.0" stroke="#e2e8f0" stroke-width="0.6"/>
+<text x="1654.00" y="4349.00" font-size="10" font-weight="bold" fill="#52677d" text-anchor="start"></text>
+<text x="1698.00" y="4349.00" font-size="13" font-weight="normal" fill="#1e293b" text-anchor="start">tabla_afectada</text>
+<text x="1924.00" y="4349.00" font-size="12" font-weight="normal" fill="#52677d" text-anchor="start">varchar(100)</text>
+<rect x="1648.0" y="4357.0" width="418" height="24" fill="#f8fafc"/>
+<path d="M 1647.0,4381.0 H 2067.0" stroke="#e2e8f0" stroke-width="0.6"/>
+<text x="1654.00" y="4373.00" font-size="10" font-weight="bold" fill="#52677d" text-anchor="start"></text>
+<text x="1698.00" y="4373.00" font-size="13" font-weight="normal" fill="#1e293b" text-anchor="start">fecha</text>
+<text x="1924.00" y="4373.00" font-size="12" font-weight="normal" fill="#52677d" text-anchor="start">timestamp ?</text>
+</g>
+</svg>

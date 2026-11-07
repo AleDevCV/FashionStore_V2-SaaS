@@ -1,0 +1,471 @@
+<?xml version='1.0' encoding='utf-8'?>
+<mxfile host="app.diagrams.net" type="device" version="29.0.0">
+  <diagram id="cu06-0" name="CU11 - Robustez simplificada">
+    <mxGraphModel dx="4600" dy="2913" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="4600" pageHeight="2913" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="frame" value="" style="fillColor=#FFFFFF;strokeColor=#A0A7AD;pointerEvents=0;" vertex="1" parent="1" connectable="0">
+          <mxGeometry x="20" y="20" width="4560" height="2873" as="geometry" />
+        </mxCell>
+        <mxCell id="title" value="CU11 - Realizar compra y pago en línea - Diagrama de robustez" style="text;html=0;fontFamily=Arial;fontSize=32;fontStyle=1;align=center;strokeColor=none;fillColor=none;" vertex="1" parent="1" connectable="0">
+          <mxGeometry x="40" y="45" width="4520" height="65" as="geometry" />
+        </mxCell>
+        <mxCell id="link_0" edge="1" parent="1" style="edgeStyle=none;html=0;rounded=0;strokeColor=#5A6065;strokeWidth=1.5;endArrow=none;endSize=12;" source="node_actor" target="node_b_pre">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="215" y="1306.5" as="sourcePoint" />
+            <mxPoint x="1035" y="1306.5" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="message_1" value="1: Preparar compra y confirmar resumen" style="text;html=0;fontFamily=Arial;fontSize=24;fontColor=#28343E;align=left;verticalAlign=middle;whiteSpace=wrap;spacing=3;strokeColor=none;fillColor=#FFFFFF;" vertex="1" parent="1" connectable="0">
+          <mxGeometry x="350.0" y="1136.5" width="441.0" height="44" as="geometry" />
+        </mxCell>
+        <mxCell id="arrow_1" edge="1" parent="1" style="edgeStyle=none;html=0;rounded=0;strokeColor=#28343E;strokeWidth=1.5;endArrow=classic;endSize=12;">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="803.0" y="1158.5" as="sourcePoint" />
+            <mxPoint x="849.0" y="1158.5" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="message_8" value="8: Iniciar pago de prueba" style="text;html=0;fontFamily=Arial;fontSize=24;fontColor=#28343E;align=left;verticalAlign=middle;whiteSpace=wrap;spacing=3;strokeColor=none;fillColor=#FFFFFF;" vertex="1" parent="1" connectable="0">
+          <mxGeometry x="350.0" y="1180.5" width="274.0" height="44" as="geometry" />
+        </mxCell>
+        <mxCell id="arrow_8" edge="1" parent="1" style="edgeStyle=none;html=0;rounded=0;strokeColor=#28343E;strokeWidth=1.5;endArrow=classic;endSize=12;">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="636.0" y="1202.5" as="sourcePoint" />
+            <mxPoint x="682.0" y="1202.5" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="message_24" value="24: Consultar resultado del pago" style="text;html=0;fontFamily=Arial;fontSize=24;fontColor=#28343E;align=left;verticalAlign=middle;whiteSpace=wrap;spacing=3;strokeColor=none;fillColor=#FFFFFF;" vertex="1" parent="1" connectable="0">
+          <mxGeometry x="350.0" y="1224.5" width="354.0" height="44" as="geometry" />
+        </mxCell>
+        <mxCell id="arrow_24" edge="1" parent="1" style="edgeStyle=none;html=0;rounded=0;strokeColor=#28343E;strokeWidth=1.5;endArrow=classic;endSize=12;">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="716.0" y="1246.5" as="sourcePoint" />
+            <mxPoint x="762.0" y="1246.5" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="message_7" value="7: Mostrar total y medios de pago" style="text;html=0;fontFamily=Arial;fontSize=24;fontColor=#287947;align=left;verticalAlign=middle;whiteSpace=wrap;spacing=3;strokeColor=none;fillColor=#FFFFFF;" vertex="1" parent="1" connectable="0">
+          <mxGeometry x="350.0" y="1344.5" width="366.0" height="44" as="geometry" />
+        </mxCell>
+        <mxCell id="arrow_7" edge="1" parent="1" style="edgeStyle=none;html=0;rounded=0;strokeColor=#287947;strokeWidth=1.5;endArrow=classic;endSize=12;">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="774.0" y="1366.5" as="sourcePoint" />
+            <mxPoint x="728.0" y="1366.5" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="message_14" value="14: Abrir portal Stripe" style="text;html=0;fontFamily=Arial;fontSize=24;fontColor=#287947;align=left;verticalAlign=middle;whiteSpace=wrap;spacing=3;strokeColor=none;fillColor=#FFFFFF;" vertex="1" parent="1" connectable="0">
+          <mxGeometry x="350.0" y="1388.5" width="236.984375" height="44" as="geometry" />
+        </mxCell>
+        <mxCell id="arrow_14" edge="1" parent="1" style="edgeStyle=none;html=0;rounded=0;strokeColor=#287947;strokeWidth=1.5;endArrow=classic;endSize=12;">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="644.984375" y="1410.5" as="sourcePoint" />
+            <mxPoint x="598.984375" y="1410.5" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="message_29" value="29: Mostrar compra confirmada" style="text;html=0;fontFamily=Arial;fontSize=24;fontColor=#287947;align=left;verticalAlign=middle;whiteSpace=wrap;spacing=3;strokeColor=none;fillColor=#FFFFFF;" vertex="1" parent="1" connectable="0">
+          <mxGeometry x="350.0" y="1432.5" width="343.0" height="44" as="geometry" />
+        </mxCell>
+        <mxCell id="arrow_29" edge="1" parent="1" style="edgeStyle=none;html=0;rounded=0;strokeColor=#287947;strokeWidth=1.5;endArrow=classic;endSize=12;">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="751.0" y="1454.5" as="sourcePoint" />
+            <mxPoint x="705.0" y="1454.5" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="link_1" edge="1" parent="1" style="edgeStyle=none;html=0;rounded=0;strokeColor=#5A6065;strokeWidth=1.5;endArrow=none;endSize=12;" source="node_b_pre" target="node_control">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1165" y="1306.5" as="sourcePoint" />
+            <mxPoint x="2335" y="1306.5" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="message_2" value="2: crear_reserva(carrito, sucursal)" style="text;html=0;fontFamily=Arial;fontSize=24;fontColor=#215D9C;align=left;verticalAlign=middle;whiteSpace=wrap;spacing=3;strokeColor=none;fillColor=#FFFFFF;" vertex="1" parent="1" connectable="0">
+          <mxGeometry x="1375.0" y="1136.5" width="369.0" height="44" as="geometry" />
+        </mxCell>
+        <mxCell id="arrow_2" edge="1" parent="1" style="edgeStyle=none;html=0;rounded=0;strokeColor=#215D9C;strokeWidth=1.5;endArrow=classic;endSize=12;">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1756.0" y="1158.5" as="sourcePoint" />
+            <mxPoint x="1802.0" y="1158.5" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="message_9" value="9: crear_sesion_stripe(id_reserva)" style="text;html=0;fontFamily=Arial;fontSize=24;fontColor=#215D9C;align=left;verticalAlign=middle;whiteSpace=wrap;spacing=3;strokeColor=none;fillColor=#FFFFFF;" vertex="1" parent="1" connectable="0">
+          <mxGeometry x="1375.0" y="1180.5" width="371.0" height="44" as="geometry" />
+        </mxCell>
+        <mxCell id="arrow_9" edge="1" parent="1" style="edgeStyle=none;html=0;rounded=0;strokeColor=#215D9C;strokeWidth=1.5;endArrow=classic;endSize=12;">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1758.0" y="1202.5" as="sourcePoint" />
+            <mxPoint x="1804.0" y="1202.5" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="message_25" value="25: payment_status(id_reserva)" style="text;html=0;fontFamily=Arial;fontSize=24;fontColor=#28343E;align=left;verticalAlign=middle;whiteSpace=wrap;spacing=3;strokeColor=none;fillColor=#FFFFFF;" vertex="1" parent="1" connectable="0">
+          <mxGeometry x="1375.0" y="1224.5" width="346.0" height="44" as="geometry" />
+        </mxCell>
+        <mxCell id="arrow_25" edge="1" parent="1" style="edgeStyle=none;html=0;rounded=0;strokeColor=#28343E;strokeWidth=1.5;endArrow=classic;endSize=12;">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1733.0" y="1246.5" as="sourcePoint" />
+            <mxPoint x="1779.0" y="1246.5" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="message_6" value="6: reserva pendiente de pago" style="text;html=0;fontFamily=Arial;fontSize=24;fontColor=#287947;align=left;verticalAlign=middle;whiteSpace=wrap;spacing=3;strokeColor=none;fillColor=#FFFFFF;" vertex="1" parent="1" connectable="0">
+          <mxGeometry x="1375.0" y="1344.5" width="320.0" height="44" as="geometry" />
+        </mxCell>
+        <mxCell id="arrow_6" edge="1" parent="1" style="edgeStyle=none;html=0;rounded=0;strokeColor=#287947;strokeWidth=1.5;endArrow=classic;endSize=12;">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1753.0" y="1366.5" as="sourcePoint" />
+            <mxPoint x="1707.0" y="1366.5" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="message_13" value="13: URL de pago" style="text;html=0;fontFamily=Arial;fontSize=24;fontColor=#287947;align=left;verticalAlign=middle;whiteSpace=wrap;spacing=3;strokeColor=none;fillColor=#FFFFFF;" vertex="1" parent="1" connectable="0">
+          <mxGeometry x="1375.0" y="1388.5" width="190.984375" height="44" as="geometry" />
+        </mxCell>
+        <mxCell id="arrow_13" edge="1" parent="1" style="edgeStyle=none;html=0;rounded=0;strokeColor=#287947;strokeWidth=1.5;endArrow=classic;endSize=12;">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1623.984375" y="1410.5" as="sourcePoint" />
+            <mxPoint x="1577.984375" y="1410.5" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="message_28" value="28: estado pagado y venta" style="text;html=0;fontFamily=Arial;fontSize=24;fontColor=#287947;align=left;verticalAlign=middle;whiteSpace=wrap;spacing=3;strokeColor=none;fillColor=#FFFFFF;" vertex="1" parent="1" connectable="0">
+          <mxGeometry x="1375.0" y="1432.5" width="292.0" height="44" as="geometry" />
+        </mxCell>
+        <mxCell id="arrow_28" edge="1" parent="1" style="edgeStyle=none;html=0;rounded=0;strokeColor=#287947;strokeWidth=1.5;endArrow=classic;endSize=12;">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1725.0" y="1454.5" as="sourcePoint" />
+            <mxPoint x="1679.0" y="1454.5" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="link_2" edge="1" parent="1" style="edgeStyle=none;html=0;rounded=0;strokeColor=#5A6065;strokeWidth=1.5;endArrow=none;endSize=12;" source="node_control" target="node_reserva">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="2465" y="1306.5" as="sourcePoint" />
+            <mxPoint x="4235" y="333" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="2720" y="333" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="message_3" value="3: reserve(cliente, sucursal, ítems)" style="text;html=0;fontFamily=Arial;fontSize=24;fontColor=#AC3636;align=left;verticalAlign=middle;whiteSpace=wrap;spacing=3;strokeColor=none;fillColor=#FFFFFF;" vertex="1" parent="1" connectable="0">
+          <mxGeometry x="2775.0" y="207.0" width="377.0" height="44" as="geometry" />
+        </mxCell>
+        <mxCell id="arrow_3" edge="1" parent="1" style="edgeStyle=none;html=0;rounded=0;strokeColor=#AC3636;strokeWidth=1.5;endArrow=classic;endSize=12;">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="3164.0" y="229.0" as="sourcePoint" />
+            <mxPoint x="3210.0" y="229.0" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="message_17" value="17: Validar reserva e importe del evento" style="text;html=0;fontFamily=Arial;fontSize=24;fontColor=#28343E;align=left;verticalAlign=middle;whiteSpace=wrap;spacing=3;strokeColor=none;fillColor=#FFFFFF;" vertex="1" parent="1" connectable="0">
+          <mxGeometry x="2775.0" y="251.0" width="432.96875" height="44" as="geometry" />
+        </mxCell>
+        <mxCell id="arrow_17" edge="1" parent="1" style="edgeStyle=none;html=0;rounded=0;strokeColor=#28343E;strokeWidth=1.5;endArrow=classic;endSize=12;">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="3219.96875" y="273.0" as="sourcePoint" />
+            <mxPoint x="3265.96875" y="273.0" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="message_4" value="4: reserva y total autorizado" style="text;html=0;fontFamily=Arial;fontSize=24;fontColor=#287947;align=left;verticalAlign=middle;whiteSpace=wrap;spacing=3;strokeColor=none;fillColor=#FFFFFF;" vertex="1" parent="1" connectable="0">
+          <mxGeometry x="2775.0" y="371.0" width="306.0" height="44" as="geometry" />
+        </mxCell>
+        <mxCell id="arrow_4" edge="1" parent="1" style="edgeStyle=none;html=0;rounded=0;strokeColor=#287947;strokeWidth=1.5;endArrow=classic;endSize=12;">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="3139.0" y="393.0" as="sourcePoint" />
+            <mxPoint x="3093.0" y="393.0" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="message_18" value="18: reserva e importe esperado" style="text;html=0;fontFamily=Arial;fontSize=24;fontColor=#287947;align=left;verticalAlign=middle;whiteSpace=wrap;spacing=3;strokeColor=none;fillColor=#FFFFFF;" vertex="1" parent="1" connectable="0">
+          <mxGeometry x="2775.0" y="415.0" width="342.0" height="44" as="geometry" />
+        </mxCell>
+        <mxCell id="arrow_18" edge="1" parent="1" style="edgeStyle=none;html=0;rounded=0;strokeColor=#287947;strokeWidth=1.5;endArrow=classic;endSize=12;">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="3175.0" y="437.0" as="sourcePoint" />
+            <mxPoint x="3129.0" y="437.0" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="link_3" edge="1" parent="1" style="edgeStyle=none;html=0;rounded=0;strokeColor=#5A6065;strokeWidth=1.5;endArrow=none;endSize=12;" source="node_control" target="node_bitacora">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="2465" y="1306.5" as="sourcePoint" />
+            <mxPoint x="4235" y="1831" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="2720" y="1831" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="message_5" value="5: Auditar reserva de checkout" style="text;html=0;fontFamily=Arial;fontSize=24;fontColor=#AC3636;align=left;verticalAlign=middle;whiteSpace=wrap;spacing=3;strokeColor=none;fillColor=#FFFFFF;" vertex="1" parent="1" connectable="0">
+          <mxGeometry x="2775.0" y="1749.0" width="334.984375" height="44" as="geometry" />
+        </mxCell>
+        <mxCell id="arrow_5" edge="1" parent="1" style="edgeStyle=none;html=0;rounded=0;strokeColor=#AC3636;strokeWidth=1.5;endArrow=classic;endSize=12;">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="3121.984375" y="1771.0" as="sourcePoint" />
+            <mxPoint x="3167.984375" y="1771.0" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="link_4" edge="1" parent="1" style="edgeStyle=none;html=0;rounded=0;strokeColor=#5A6065;strokeWidth=1.5;endArrow=none;endSize=12;" source="node_b_stripe" target="node_control">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="4235" y="2230" as="sourcePoint" />
+            <mxPoint x="2465" y="1306.5" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="2720" y="2230" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="message_11" value="11: sesión y URL de pago" style="text;html=0;fontFamily=Arial;fontSize=24;fontColor=#287947;align=left;verticalAlign=middle;whiteSpace=wrap;spacing=3;strokeColor=none;fillColor=#FFFFFF;" vertex="1" parent="1" connectable="0">
+          <mxGeometry x="2775.0" y="2104.0" width="284.953125" height="44" as="geometry" />
+        </mxCell>
+        <mxCell id="arrow_11" edge="1" parent="1" style="edgeStyle=none;html=0;rounded=0;strokeColor=#287947;strokeWidth=1.5;endArrow=classic;endSize=12;">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="3117.953125" y="2126.0" as="sourcePoint" />
+            <mxPoint x="3071.953125" y="2126.0" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="message_16" value="16: stripe_webhook(evento, firma)" style="text;html=0;fontFamily=Arial;fontSize=24;fontColor=#215D9C;align=left;verticalAlign=middle;whiteSpace=wrap;spacing=3;strokeColor=none;fillColor=#FFFFFF;" vertex="1" parent="1" connectable="0">
+          <mxGeometry x="2775.0" y="2148.0" width="371.0" height="44" as="geometry" />
+        </mxCell>
+        <mxCell id="arrow_16" edge="1" parent="1" style="edgeStyle=none;html=0;rounded=0;strokeColor=#215D9C;strokeWidth=1.5;endArrow=classic;endSize=12;">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="3204.0" y="2170.0" as="sourcePoint" />
+            <mxPoint x="3158.0" y="2170.0" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="message_10" value="10: Crear sesión de pago Stripe" style="text;html=0;fontFamily=Arial;fontSize=24;fontColor=#215D9C;align=left;verticalAlign=middle;whiteSpace=wrap;spacing=3;strokeColor=none;fillColor=#FFFFFF;" vertex="1" parent="1" connectable="0">
+          <mxGeometry x="2775.0" y="2268.0" width="347.0" height="44" as="geometry" />
+        </mxCell>
+        <mxCell id="arrow_10" edge="1" parent="1" style="edgeStyle=none;html=0;rounded=0;strokeColor=#215D9C;strokeWidth=1.5;endArrow=classic;endSize=12;">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="3134.0" y="2290.0" as="sourcePoint" />
+            <mxPoint x="3180.0" y="2290.0" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="message_23" value="23: evento procesado de forma idempotente" style="text;html=0;fontFamily=Arial;fontSize=24;fontColor=#287947;align=left;verticalAlign=middle;whiteSpace=wrap;spacing=3;strokeColor=none;fillColor=#FFFFFF;" vertex="1" parent="1" connectable="0">
+          <mxGeometry x="2775.0" y="2312.0" width="478.0" height="44" as="geometry" />
+        </mxCell>
+        <mxCell id="arrow_23" edge="1" parent="1" style="edgeStyle=none;html=0;rounded=0;strokeColor=#287947;strokeWidth=1.5;endArrow=classic;endSize=12;">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="3265.0" y="2334.0" as="sourcePoint" />
+            <mxPoint x="3311.0" y="2334.0" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="link_5" edge="1" parent="1" style="edgeStyle=none;html=0;rounded=0;strokeColor=#5A6065;strokeWidth=1.5;endArrow=none;endSize=12;" source="node_control" target="node_pago">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="2465" y="1306.5" as="sourcePoint" />
+            <mxPoint x="4235" y="749" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="2720" y="749" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="message_12" value="12: Guardar intento Pendiente" style="text;html=0;fontFamily=Arial;fontSize=24;fontColor=#AC3636;align=left;verticalAlign=middle;whiteSpace=wrap;spacing=3;strokeColor=none;fillColor=#FFFFFF;" vertex="1" parent="1" connectable="0">
+          <mxGeometry x="2775.0" y="623.0" width="330.0" height="44" as="geometry" />
+        </mxCell>
+        <mxCell id="arrow_12" edge="1" parent="1" style="edgeStyle=none;html=0;rounded=0;strokeColor=#AC3636;strokeWidth=1.5;endArrow=classic;endSize=12;">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="3117.0" y="645.0" as="sourcePoint" />
+            <mxPoint x="3163.0" y="645.0" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="message_22" value="22: Aprobar pago y enlazar venta" style="text;html=0;fontFamily=Arial;fontSize=24;fontColor=#AC3636;align=left;verticalAlign=middle;whiteSpace=wrap;spacing=3;strokeColor=none;fillColor=#FFFFFF;" vertex="1" parent="1" connectable="0">
+          <mxGeometry x="2775.0" y="667.0" width="362.984375" height="44" as="geometry" />
+        </mxCell>
+        <mxCell id="arrow_22" edge="1" parent="1" style="edgeStyle=none;html=0;rounded=0;strokeColor=#AC3636;strokeWidth=1.5;endArrow=classic;endSize=12;">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="3149.984375" y="689.0" as="sourcePoint" />
+            <mxPoint x="3195.984375" y="689.0" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="link_6" edge="1" parent="1" style="edgeStyle=none;html=0;rounded=0;strokeColor=#5A6065;strokeWidth=1.5;endArrow=none;endSize=12;" source="node_actor" target="node_b_stripe">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="215" y="1306.5" as="sourcePoint" />
+            <mxPoint x="4300" y="2295" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="340" y="2763" />
+              <mxPoint x="4300" y="2763" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="message_15" value="15: Completar pago de prueba" style="text;html=0;fontFamily=Arial;fontSize=24;fontColor=#28343E;align=left;verticalAlign=middle;whiteSpace=wrap;spacing=3;strokeColor=none;fillColor=#FFFFFF;" vertex="1" parent="1" connectable="0">
+          <mxGeometry x="1100.0" y="2681.0" width="333.0" height="44" as="geometry" />
+        </mxCell>
+        <mxCell id="arrow_15" edge="1" parent="1" style="edgeStyle=none;html=0;rounded=0;strokeColor=#28343E;strokeWidth=1.5;endArrow=classic;endSize=12;">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1445.0" y="2703.0" as="sourcePoint" />
+            <mxPoint x="1491.0" y="2703.0" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="link_7" edge="1" parent="1" style="edgeStyle=none;html=0;rounded=0;strokeColor=#5A6065;strokeWidth=1.5;endArrow=none;endSize=12;" source="node_control" target="node_venta">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="2465" y="1306.5" as="sourcePoint" />
+            <mxPoint x="4235" y="1104" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="2720" y="1104" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="message_19" value="19: confirm_reservation(pago verificado)" style="text;html=0;fontFamily=Arial;fontSize=24;fontColor=#AC3636;align=left;verticalAlign=middle;whiteSpace=wrap;spacing=3;strokeColor=none;fillColor=#FFFFFF;" vertex="1" parent="1" connectable="0">
+          <mxGeometry x="2775.0" y="978.0" width="436.0" height="44" as="geometry" />
+        </mxCell>
+        <mxCell id="arrow_19" edge="1" parent="1" style="edgeStyle=none;html=0;rounded=0;strokeColor=#AC3636;strokeWidth=1.5;endArrow=classic;endSize=12;">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="3223.0" y="1000.0" as="sourcePoint" />
+            <mxPoint x="3269.0" y="1000.0" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="message_26" value="26: obtener_venta_por_id(id_venta [si pagada])" style="text;html=0;fontFamily=Arial;fontSize=24;fontColor=#28343E;align=left;verticalAlign=middle;whiteSpace=wrap;spacing=3;strokeColor=none;fillColor=#FFFFFF;" vertex="1" parent="1" connectable="0">
+          <mxGeometry x="2775.0" y="1022.0" width="509.0" height="44" as="geometry" />
+        </mxCell>
+        <mxCell id="arrow_26" edge="1" parent="1" style="edgeStyle=none;html=0;rounded=0;strokeColor=#28343E;strokeWidth=1.5;endArrow=classic;endSize=12;">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="3296.0" y="1044.0" as="sourcePoint" />
+            <mxPoint x="3342.0" y="1044.0" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="message_20" value="20: id_venta" style="text;html=0;fontFamily=Arial;fontSize=24;fontColor=#287947;align=left;verticalAlign=middle;whiteSpace=wrap;spacing=3;strokeColor=none;fillColor=#FFFFFF;" vertex="1" parent="1" connectable="0">
+          <mxGeometry x="2775.0" y="1142.0" width="141.0" height="44" as="geometry" />
+        </mxCell>
+        <mxCell id="arrow_20" edge="1" parent="1" style="edgeStyle=none;html=0;rounded=0;strokeColor=#287947;strokeWidth=1.5;endArrow=classic;endSize=12;">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="2974.0" y="1164.0" as="sourcePoint" />
+            <mxPoint x="2928.0" y="1164.0" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="message_27" value="27: venta confirmada" style="text;html=0;fontFamily=Arial;fontSize=24;fontColor=#287947;align=left;verticalAlign=middle;whiteSpace=wrap;spacing=3;strokeColor=none;fillColor=#FFFFFF;" vertex="1" parent="1" connectable="0">
+          <mxGeometry x="2775.0" y="1186.0" width="234.0" height="44" as="geometry" />
+        </mxCell>
+        <mxCell id="arrow_27" edge="1" parent="1" style="edgeStyle=none;html=0;rounded=0;strokeColor=#287947;strokeWidth=1.5;endArrow=classic;endSize=12;">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="3067.0" y="1208.0" as="sourcePoint" />
+            <mxPoint x="3021.0" y="1208.0" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="link_8" edge="1" parent="1" style="edgeStyle=none;html=0;rounded=0;strokeColor=#5A6065;strokeWidth=1.5;endArrow=none;endSize=12;" source="node_control" target="node_movimiento">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="2465" y="1306.5" as="sourcePoint" />
+            <mxPoint x="4235" y="1476" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="2720" y="1476" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="message_21" value="21: Registrar Salida [por detalle]" style="text;html=0;fontFamily=Arial;fontSize=24;fontColor=#AC3636;align=left;verticalAlign=middle;whiteSpace=wrap;spacing=3;strokeColor=none;fillColor=#FFFFFF;" vertex="1" parent="1" connectable="0">
+          <mxGeometry x="2775.0" y="1394.0" width="351.0" height="44" as="geometry" />
+        </mxCell>
+        <mxCell id="arrow_21" edge="1" parent="1" style="edgeStyle=none;html=0;rounded=0;strokeColor=#AC3636;strokeWidth=1.5;endArrow=classic;endSize=12;">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="3138.0" y="1416.0" as="sourcePoint" />
+            <mxPoint x="3184.0" y="1416.0" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="node_actor" value="" style="shape=umlActor;fillColor=#FFFFFF;strokeColor=#30383E;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="145" y="1241.5" width="70" height="130" as="geometry" />
+        </mxCell>
+        <mxCell id="caption_actor" value="Cliente" style="text;html=0;fontFamily=Arial;fontSize=25;fontStyle=1;align=center;verticalAlign=top;whiteSpace=wrap;strokeColor=none;fillColor=#FFFFFF;" vertex="1" parent="1" connectable="0">
+          <mxGeometry x="35.0" y="1391.5" width="290" height="48" as="geometry" />
+        </mxCell>
+        <mxCell id="node_b_pre" value="" style="ellipse;fillColor=#E8F3F5;strokeColor=#52636C;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="1035" y="1241.5" width="130" height="130" as="geometry" />
+        </mxCell>
+        <mxCell id="bar_b_pre" edge="1" parent="1" style="edgeStyle=none;html=0;rounded=0;strokeColor=#5A6065;strokeWidth=1.5;endArrow=none;endSize=12;">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1018" y="1241.5" as="sourcePoint" />
+            <mxPoint x="1018" y="1371.5" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="arm_b_pre" edge="1" parent="1" style="edgeStyle=none;html=0;rounded=0;strokeColor=#5A6065;strokeWidth=1.5;endArrow=none;endSize=12;">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1018" y="1306.5" as="sourcePoint" />
+            <mxPoint x="1035" y="1306.5" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="caption_b_pre" value="«boundary»&#10;Frontend : Carrito y checkout" style="text;html=0;fontFamily=Arial;fontSize=25;fontStyle=1;align=center;verticalAlign=top;whiteSpace=wrap;strokeColor=none;fillColor=#FFFFFF;" vertex="1" parent="1" connectable="0">
+          <mxGeometry x="880.0" y="1397.5" width="440" height="82" as="geometry" />
+        </mxCell>
+        <mxCell id="node_control" value="" style="ellipse;fillColor=#E8F3F5;strokeColor=#52636C;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="2335" y="1241.5" width="130" height="130" as="geometry" />
+        </mxCell>
+        <mxCell id="c_arrow_control" edge="1" parent="1" style="edgeStyle=none;html=0;rounded=0;strokeColor=#5A6065;strokeWidth=1.5;endArrow=classic;endSize=12;">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="2428" y="1236.5" as="sourcePoint" />
+            <mxPoint x="2378" y="1246.5" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="2405" y="1229.5" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="caption_control" value="«control»&#10;Backend : Compra y pago" style="text;html=0;fontFamily=Arial;fontSize=25;fontStyle=1;align=center;verticalAlign=top;whiteSpace=wrap;strokeColor=none;fillColor=#FFFFFF;" vertex="1" parent="1" connectable="0">
+          <mxGeometry x="2150.0" y="1397.5" width="500" height="82" as="geometry" />
+        </mxCell>
+        <mxCell id="node_reserva" value="" style="ellipse;fillColor=#E8F3F5;strokeColor=#52636C;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="4235" y="268" width="130" height="130" as="geometry" />
+        </mxCell>
+        <mxCell id="base_reserva" edge="1" parent="1" style="edgeStyle=none;html=0;rounded=0;strokeColor=#5A6065;strokeWidth=1.5;endArrow=none;endSize=12;">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="4230" y="405" as="sourcePoint" />
+            <mxPoint x="4370" y="405" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="caption_reserva" value="Base de datos :&#10;Reserva" style="text;html=0;fontFamily=Arial;fontSize=25;fontStyle=1;align=center;verticalAlign=top;whiteSpace=wrap;strokeColor=none;fillColor=#FFFFFF;" vertex="1" parent="1" connectable="0">
+          <mxGeometry x="4080.0" y="424" width="440" height="82" as="geometry" />
+        </mxCell>
+        <mxCell id="node_pago" value="" style="ellipse;fillColor=#E8F3F5;strokeColor=#52636C;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="4235" y="684" width="130" height="130" as="geometry" />
+        </mxCell>
+        <mxCell id="base_pago" edge="1" parent="1" style="edgeStyle=none;html=0;rounded=0;strokeColor=#5A6065;strokeWidth=1.5;endArrow=none;endSize=12;">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="4230" y="821" as="sourcePoint" />
+            <mxPoint x="4370" y="821" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="caption_pago" value="Base de datos :&#10;Pago" style="text;html=0;fontFamily=Arial;fontSize=25;fontStyle=1;align=center;verticalAlign=top;whiteSpace=wrap;strokeColor=none;fillColor=#FFFFFF;" vertex="1" parent="1" connectable="0">
+          <mxGeometry x="4080.0" y="840" width="440" height="82" as="geometry" />
+        </mxCell>
+        <mxCell id="node_venta" value="" style="ellipse;fillColor=#E8F3F5;strokeColor=#52636C;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="4235" y="1039" width="130" height="130" as="geometry" />
+        </mxCell>
+        <mxCell id="base_venta" edge="1" parent="1" style="edgeStyle=none;html=0;rounded=0;strokeColor=#5A6065;strokeWidth=1.5;endArrow=none;endSize=12;">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="4230" y="1176" as="sourcePoint" />
+            <mxPoint x="4370" y="1176" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="caption_venta" value="Base de datos :&#10;Venta" style="text;html=0;fontFamily=Arial;fontSize=25;fontStyle=1;align=center;verticalAlign=top;whiteSpace=wrap;strokeColor=none;fillColor=#FFFFFF;" vertex="1" parent="1" connectable="0">
+          <mxGeometry x="4080.0" y="1195" width="440" height="82" as="geometry" />
+        </mxCell>
+        <mxCell id="node_movimiento" value="" style="ellipse;fillColor=#E8F3F5;strokeColor=#52636C;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="4235" y="1411" width="130" height="130" as="geometry" />
+        </mxCell>
+        <mxCell id="base_movimiento" edge="1" parent="1" style="edgeStyle=none;html=0;rounded=0;strokeColor=#5A6065;strokeWidth=1.5;endArrow=none;endSize=12;">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="4230" y="1548" as="sourcePoint" />
+            <mxPoint x="4370" y="1548" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="caption_movimiento" value="Base de datos :&#10;Movimiento de inventario" style="text;html=0;fontFamily=Arial;fontSize=25;fontStyle=1;align=center;verticalAlign=top;whiteSpace=wrap;strokeColor=none;fillColor=#FFFFFF;" vertex="1" parent="1" connectable="0">
+          <mxGeometry x="4080.0" y="1567" width="440" height="82" as="geometry" />
+        </mxCell>
+        <mxCell id="node_bitacora" value="" style="ellipse;fillColor=#E8F3F5;strokeColor=#52636C;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="4235" y="1766" width="130" height="130" as="geometry" />
+        </mxCell>
+        <mxCell id="base_bitacora" edge="1" parent="1" style="edgeStyle=none;html=0;rounded=0;strokeColor=#5A6065;strokeWidth=1.5;endArrow=none;endSize=12;">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="4230" y="1903" as="sourcePoint" />
+            <mxPoint x="4370" y="1903" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="caption_bitacora" value="Base de datos :&#10;Bitácora" style="text;html=0;fontFamily=Arial;fontSize=25;fontStyle=1;align=center;verticalAlign=top;whiteSpace=wrap;strokeColor=none;fillColor=#FFFFFF;" vertex="1" parent="1" connectable="0">
+          <mxGeometry x="4080.0" y="1922" width="440" height="82" as="geometry" />
+        </mxCell>
+        <mxCell id="node_b_stripe" value="" style="ellipse;fillColor=#E8F3F5;strokeColor=#52636C;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="4235" y="2165" width="130" height="130" as="geometry" />
+        </mxCell>
+        <mxCell id="bar_b_stripe" edge="1" parent="1" style="edgeStyle=none;html=0;rounded=0;strokeColor=#5A6065;strokeWidth=1.5;endArrow=none;endSize=12;">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="4218" y="2165" as="sourcePoint" />
+            <mxPoint x="4218" y="2295" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="arm_b_stripe" edge="1" parent="1" style="edgeStyle=none;html=0;rounded=0;strokeColor=#5A6065;strokeWidth=1.5;endArrow=none;endSize=12;">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="4218" y="2230" as="sourcePoint" />
+            <mxPoint x="4235" y="2230" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="caption_b_stripe" value="«boundary»&#10;Pasarela : Stripe" style="text;html=0;fontFamily=Arial;fontSize=25;fontStyle=1;align=center;verticalAlign=top;whiteSpace=wrap;strokeColor=none;fillColor=#FFFFFF;" vertex="1" parent="1" connectable="0">
+          <mxGeometry x="4080.0" y="2321" width="440" height="82" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

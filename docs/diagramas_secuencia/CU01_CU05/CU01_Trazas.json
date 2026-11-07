@@ -1,0 +1,716 @@
+[
+  {
+    "mensaje": 1,
+    "texto": "Solicitar una operación de acceso o cuenta",
+    "fuentes": []
+  },
+  {
+    "mensaje": 2,
+    "texto": "POST /api/auth/registro → register(datos)",
+    "fuentes": [
+      {
+        "simbolo": "register",
+        "archivo": "Parcial2_backend/app/routers/auth.py",
+        "linea": 84
+      }
+    ]
+  },
+  {
+    "mensaje": 3,
+    "texto": "generar_hash_password(password)",
+    "fuentes": [
+      {
+        "simbolo": "generar_hash_password",
+        "archivo": "Parcial2_backend/app/services/auth_service.py",
+        "linea": 92
+      }
+    ]
+  },
+  {
+    "mensaje": 4,
+    "texto": "password_hash",
+    "fuentes": []
+  },
+  {
+    "mensaje": 5,
+    "texto": "SQL identity_register(datos con hash)",
+    "fuentes": [
+      {
+        "simbolo": "identity_register",
+        "archivo": "Parcial2_backend/database/migrations/017_global_identity.sql",
+        "linea": 74
+      }
+    ]
+  },
+  {
+    "mensaje": 6,
+    "texto": "UniqueViolation",
+    "fuentes": []
+  },
+  {
+    "mensaje": 7,
+    "texto": "409: iniciar sesión o recuperar contraseña",
+    "fuentes": []
+  },
+  {
+    "mensaje": 8,
+    "texto": "identity_register(): INSERT evento REGISTRO",
+    "fuentes": [
+      {
+        "simbolo": "identity_register",
+        "archivo": "Parcial2_backend/database/migrations/017_global_identity.sql",
+        "linea": 74
+      }
+    ]
+  },
+  {
+    "mensaje": 9,
+    "texto": "id de cuenta creada",
+    "fuentes": []
+  },
+  {
+    "mensaje": 10,
+    "texto": "lookup(account_id) → token(account)",
+    "fuentes": [
+      {
+        "simbolo": "lookup",
+        "archivo": "Parcial2_backend/app/services/identity.py",
+        "linea": 18
+      },
+      {
+        "simbolo": "token",
+        "archivo": "Parcial2_backend/app/services/identity.py",
+        "linea": 33
+      }
+    ]
+  },
+  {
+    "mensaje": 11,
+    "texto": "JWT de cliente global, sin tienda",
+    "fuentes": []
+  },
+  {
+    "mensaje": 12,
+    "texto": "201: cuenta creada y access_token",
+    "fuentes": []
+  },
+  {
+    "mensaje": 13,
+    "texto": "Guardar JWT y abrir selección de tiendas",
+    "fuentes": []
+  },
+  {
+    "mensaje": 14,
+    "texto": "POST /api/login → iniciar_sesion(correo, password)",
+    "fuentes": [
+      {
+        "simbolo": "iniciar_sesion",
+        "archivo": "Parcial2_backend/app/routers/auth.py",
+        "linea": 31
+      }
+    ]
+  },
+  {
+    "mensaje": 15,
+    "texto": "429 + Retry-After: 60",
+    "fuentes": []
+  },
+  {
+    "mensaje": 16,
+    "texto": "lookup(email normalizado)",
+    "fuentes": [
+      {
+        "simbolo": "lookup",
+        "archivo": "Parcial2_backend/app/services/identity.py",
+        "linea": 18
+      }
+    ]
+  },
+  {
+    "mensaje": 17,
+    "texto": "SQL identity_lookup(correo, NULL)\nJOIN usuario, rol y empresa",
+    "fuentes": [
+      {
+        "simbolo": "identity_lookup",
+        "archivo": "Parcial2_backend/database/migrations/017_global_identity.sql",
+        "linea": 42
+      }
+    ]
+  },
+  {
+    "mensaje": 18,
+    "texto": "identidad global y contexto del personal",
+    "fuentes": []
+  },
+  {
+    "mensaje": 19,
+    "texto": "cuenta y perfil, o cuenta ausente",
+    "fuentes": []
+  },
+  {
+    "mensaje": 20,
+    "texto": "verificar_password(password, hash real o señuelo)",
+    "fuentes": [
+      {
+        "simbolo": "verificar_password",
+        "archivo": "Parcial2_backend/app/services/auth_service.py",
+        "linea": 65
+      }
+    ]
+  },
+  {
+    "mensaje": 21,
+    "texto": "válido / inválido",
+    "fuentes": []
+  },
+  {
+    "mensaje": 22,
+    "texto": "SQL identity_event(account_id, LOGIN_FALLIDO)",
+    "fuentes": [
+      {
+        "simbolo": "identity_event",
+        "archivo": "Parcial2_backend/database/migrations/017_global_identity.sql",
+        "linea": 135
+      }
+    ]
+  },
+  {
+    "mensaje": 23,
+    "texto": "evento registrado",
+    "fuentes": []
+  },
+  {
+    "mensaje": 24,
+    "texto": "401: Credenciales incorrectas",
+    "fuentes": []
+  },
+  {
+    "mensaje": 25,
+    "texto": "403: Cuenta o empresa no disponible",
+    "fuentes": []
+  },
+  {
+    "mensaje": 26,
+    "texto": "SQL identity_event(account_id, LOGIN_EXITOSO)",
+    "fuentes": [
+      {
+        "simbolo": "identity_event",
+        "archivo": "Parcial2_backend/database/migrations/017_global_identity.sql",
+        "linea": 135
+      }
+    ]
+  },
+  {
+    "mensaje": 27,
+    "texto": "evento registrado",
+    "fuentes": []
+  },
+  {
+    "mensaje": 28,
+    "texto": "token(account) → crear_token_acceso(claims)",
+    "fuentes": [
+      {
+        "simbolo": "token",
+        "archivo": "Parcial2_backend/app/services/identity.py",
+        "linea": 33
+      },
+      {
+        "simbolo": "crear_token_acceso",
+        "archivo": "Parcial2_backend/app/services/auth_service.py",
+        "linea": 112
+      }
+    ]
+  },
+  {
+    "mensaje": 29,
+    "texto": "JWT firmado con tipo, rol y ámbito",
+    "fuentes": []
+  },
+  {
+    "mensaje": 30,
+    "texto": "200: access_token",
+    "fuentes": []
+  },
+  {
+    "mensaje": 31,
+    "texto": "Guardar JWT y resolver navegación por tipo de cuenta",
+    "fuentes": []
+  },
+  {
+    "mensaje": 32,
+    "texto": "GET /api/contexto",
+    "fuentes": []
+  },
+  {
+    "mensaje": 33,
+    "texto": "unbound_context(): seleccionar_tienda=true",
+    "fuentes": [
+      {
+        "simbolo": "unbound_context",
+        "archivo": "Parcial2_backend/app/services/identity.py",
+        "linea": 82
+      }
+    ]
+  },
+  {
+    "mensaje": 34,
+    "texto": "get_current_user(): SELECT usuario JOIN rol",
+    "fuentes": [
+      {
+        "simbolo": "get_current_user",
+        "archivo": "Parcial2_backend/app/services/auth_service.py",
+        "linea": 200
+      }
+    ]
+  },
+  {
+    "mensaje": 35,
+    "texto": "usuario activo",
+    "fuentes": []
+  },
+  {
+    "mensaje": 36,
+    "texto": "session_context(): SELECT empresa,\nsuscripción y sucursales autorizadas",
+    "fuentes": [
+      {
+        "simbolo": "session_context",
+        "archivo": "Parcial2_backend/app/routers/saas.py",
+        "linea": 52
+      }
+    ]
+  },
+  {
+    "mensaje": 37,
+    "texto": "contexto y offline_hasta",
+    "fuentes": []
+  },
+  {
+    "mensaje": 38,
+    "texto": "200: contexto de empresa o plataforma",
+    "fuentes": []
+  },
+  {
+    "mensaje": 39,
+    "texto": "POST /api/auth/recuperar-password\nsolicitar_recuperacion_password(correo)",
+    "fuentes": [
+      {
+        "simbolo": "solicitar_recuperacion_password",
+        "archivo": "Parcial2_backend/app/routers/auth.py",
+        "linea": 100
+      }
+    ]
+  },
+  {
+    "mensaje": 40,
+    "texto": "lookup(email)",
+    "fuentes": [
+      {
+        "simbolo": "lookup",
+        "archivo": "Parcial2_backend/app/services/identity.py",
+        "linea": 18
+      }
+    ]
+  },
+  {
+    "mensaje": 41,
+    "texto": "cuenta o ausencia",
+    "fuentes": []
+  },
+  {
+    "mensaje": 42,
+    "texto": "SQL identity_reset_issue(account_id, SHA256(token))\ninvalidar anteriores y guardar nuevo hash",
+    "fuentes": [
+      {
+        "simbolo": "identity_reset_issue",
+        "archivo": "Parcial2_backend/database/migrations/017_global_identity.sql",
+        "linea": 110
+      }
+    ]
+  },
+  {
+    "mensaje": 43,
+    "texto": "identity_reset_issue(): SOLICITUD_RECUPERACION",
+    "fuentes": [
+      {
+        "simbolo": "identity_reset_issue",
+        "archivo": "Parcial2_backend/database/migrations/017_global_identity.sql",
+        "linea": 110
+      }
+    ]
+  },
+  {
+    "mensaje": 44,
+    "texto": "token temporal persistido",
+    "fuentes": []
+  },
+  {
+    "mensaje": 45,
+    "texto": "enviar_correo_recuperacion(destinatario, nombre, token)",
+    "fuentes": [
+      {
+        "simbolo": "enviar_correo_recuperacion",
+        "archivo": "Parcial2_backend/app/services/email_service.py",
+        "linea": 32
+      }
+    ]
+  },
+  {
+    "mensaje": 46,
+    "texto": "despachado o no disponible",
+    "fuentes": []
+  },
+  {
+    "mensaje": 47,
+    "texto": "200: respuesta uniforme, exista o no la cuenta",
+    "fuentes": []
+  },
+  {
+    "mensaje": 48,
+    "texto": "Abrir enlace y escribir nueva contraseña",
+    "fuentes": []
+  },
+  {
+    "mensaje": 49,
+    "texto": "POST /api/auth/verificar-token-recuperacion",
+    "fuentes": []
+  },
+  {
+    "mensaje": 50,
+    "texto": "SQL identity_reset_lookup(SHA256(token))",
+    "fuentes": [
+      {
+        "simbolo": "identity_reset_lookup",
+        "archivo": "Parcial2_backend/database/migrations/017_global_identity.sql",
+        "linea": 117
+      }
+    ]
+  },
+  {
+    "mensaje": 51,
+    "texto": "vigente, no usado y cuenta activa",
+    "fuentes": []
+  },
+  {
+    "mensaje": 52,
+    "texto": "valido y correo enmascarado",
+    "fuentes": []
+  },
+  {
+    "mensaje": 53,
+    "texto": "POST /api/auth/restablecer-password\nrestablecer_password(token, nueva_password)",
+    "fuentes": [
+      {
+        "simbolo": "restablecer_password",
+        "archivo": "Parcial2_backend/app/routers/auth.py",
+        "linea": 122
+      }
+    ]
+  },
+  {
+    "mensaje": 54,
+    "texto": "generar_hash_password(nueva_password)",
+    "fuentes": [
+      {
+        "simbolo": "generar_hash_password",
+        "archivo": "Parcial2_backend/app/services/auth_service.py",
+        "linea": 92
+      }
+    ]
+  },
+  {
+    "mensaje": 55,
+    "texto": "nuevo hash",
+    "fuentes": []
+  },
+  {
+    "mensaje": 56,
+    "texto": "SQL identity_reset_apply(hash_token, hash_password)",
+    "fuentes": [
+      {
+        "simbolo": "identity_reset_apply",
+        "archivo": "Parcial2_backend/database/migrations/017_global_identity.sql",
+        "linea": 121
+      }
+    ]
+  },
+  {
+    "mensaje": 57,
+    "texto": "false",
+    "fuentes": []
+  },
+  {
+    "mensaje": 58,
+    "texto": "400: token no disponible",
+    "fuentes": []
+  },
+  {
+    "mensaje": 59,
+    "texto": "identity_reset_apply(): UPDATE hash y token_version + 1",
+    "fuentes": [
+      {
+        "simbolo": "identity_reset_apply",
+        "archivo": "Parcial2_backend/database/migrations/017_global_identity.sql",
+        "linea": 121
+      }
+    ]
+  },
+  {
+    "mensaje": 60,
+    "texto": "UPDATE perfiles: hash y token_version + 1",
+    "fuentes": []
+  },
+  {
+    "mensaje": 61,
+    "texto": "Marcar tokens de la cuenta como usados",
+    "fuentes": []
+  },
+  {
+    "mensaje": 62,
+    "texto": "INSERT PASSWORD_RESTABLECIDA",
+    "fuentes": []
+  },
+  {
+    "mensaje": 63,
+    "texto": "true, transacción confirmada",
+    "fuentes": []
+  },
+  {
+    "mensaje": 64,
+    "texto": "200: iniciar sesión con la nueva contraseña",
+    "fuentes": []
+  },
+  {
+    "mensaje": 65,
+    "texto": "GET /api/cuenta/perfil",
+    "fuentes": []
+  },
+  {
+    "mensaje": 66,
+    "texto": "validate_claims(claims) → lookup(account_id)",
+    "fuentes": [
+      {
+        "simbolo": "lookup",
+        "archivo": "Parcial2_backend/app/services/identity.py",
+        "linea": 18
+      },
+      {
+        "simbolo": "validate_claims",
+        "archivo": "Parcial2_backend/app/services/identity.py",
+        "linea": 24
+      }
+    ]
+  },
+  {
+    "mensaje": 67,
+    "texto": "estado y versión actuales",
+    "fuentes": []
+  },
+  {
+    "mensaje": 68,
+    "texto": "401: sesión no disponible",
+    "fuentes": []
+  },
+  {
+    "mensaje": 69,
+    "texto": "200: datos permitidos de la cuenta global",
+    "fuentes": []
+  },
+  {
+    "mensaje": 70,
+    "texto": "GET /api/tiendas → stores()",
+    "fuentes": [
+      {
+        "simbolo": "stores",
+        "archivo": "Parcial2_backend/app/routers/auth.py",
+        "linea": 61
+      }
+    ]
+  },
+  {
+    "mensaje": 71,
+    "texto": "SELECT empresas activas y no plataforma",
+    "fuentes": []
+  },
+  {
+    "mensaje": 72,
+    "texto": "listado público de tiendas",
+    "fuentes": []
+  },
+  {
+    "mensaje": 73,
+    "texto": "tiendas activas, sin empresa de plataforma",
+    "fuentes": []
+  },
+  {
+    "mensaje": 74,
+    "texto": "Elegir tienda",
+    "fuentes": []
+  },
+  {
+    "mensaje": 75,
+    "texto": "POST /api/auth/seleccionar-tienda → choose_store(empresa)",
+    "fuentes": [
+      {
+        "simbolo": "choose_store",
+        "archivo": "Parcial2_backend/app/routers/auth.py",
+        "linea": 70
+      }
+    ]
+  },
+  {
+    "mensaje": 76,
+    "texto": "select_store(account, slug)",
+    "fuentes": [
+      {
+        "simbolo": "select_store",
+        "archivo": "Parcial2_backend/app/services/identity.py",
+        "linea": 60
+      }
+    ]
+  },
+  {
+    "mensaje": 77,
+    "texto": "SELECT empresa activa por slug",
+    "fuentes": []
+  },
+  {
+    "mensaje": 78,
+    "texto": "empresa o ausencia",
+    "fuentes": []
+  },
+  {
+    "mensaje": 79,
+    "texto": "403 / 404",
+    "fuentes": []
+  },
+  {
+    "mensaje": 80,
+    "texto": "Acceso o tienda no disponibles",
+    "fuentes": []
+  },
+  {
+    "mensaje": 81,
+    "texto": "SQL identity_customer_profile(account_id, tenant_id)\ncrear usuario y ficha cliente solo si faltan",
+    "fuentes": [
+      {
+        "simbolo": "identity_customer_profile",
+        "archivo": "Parcial2_backend/database/migrations/017_global_identity.sql",
+        "linea": 82
+      }
+    ]
+  },
+  {
+    "mensaje": 82,
+    "texto": "perfil activo o InsufficientPrivilege",
+    "fuentes": []
+  },
+  {
+    "mensaje": 83,
+    "texto": "403: cuenta o tienda no disponible",
+    "fuentes": []
+  },
+  {
+    "mensaje": 84,
+    "texto": "403: selección rechazada",
+    "fuentes": []
+  },
+  {
+    "mensaje": 85,
+    "texto": "token(account, profile)",
+    "fuentes": [
+      {
+        "simbolo": "token",
+        "archivo": "Parcial2_backend/app/services/identity.py",
+        "linea": 33
+      }
+    ]
+  },
+  {
+    "mensaje": 86,
+    "texto": "JWT con empresa elegida",
+    "fuentes": []
+  },
+  {
+    "mensaje": 87,
+    "texto": "access_token del perfil",
+    "fuentes": []
+  },
+  {
+    "mensaje": 88,
+    "texto": "200: token de la tienda",
+    "fuentes": []
+  },
+  {
+    "mensaje": 89,
+    "texto": "Sustituir JWT y contexto; abrir catálogo",
+    "fuentes": []
+  },
+  {
+    "mensaje": 90,
+    "texto": "Cerrar sesión",
+    "fuentes": []
+  },
+  {
+    "mensaje": 91,
+    "texto": "POST /api/logout",
+    "fuentes": []
+  },
+  {
+    "mensaje": 92,
+    "texto": "SQL identity_revoke(account_id)\ntoken_version + 1",
+    "fuentes": [
+      {
+        "simbolo": "identity_revoke",
+        "archivo": "Parcial2_backend/database/migrations/017_global_identity.sql",
+        "linea": 102
+      }
+    ]
+  },
+  {
+    "mensaje": 93,
+    "texto": "identity_revoke(): INSERT LOGOUT",
+    "fuentes": [
+      {
+        "simbolo": "identity_revoke",
+        "archivo": "Parcial2_backend/database/migrations/017_global_identity.sql",
+        "linea": 102
+      }
+    ]
+  },
+  {
+    "mensaje": 94,
+    "texto": "cuenta revocada",
+    "fuentes": []
+  },
+  {
+    "mensaje": 95,
+    "texto": "saas.logout(): UPDATE token_version + 1",
+    "fuentes": [
+      {
+        "simbolo": "logout",
+        "archivo": "Parcial2_backend/app/routers/saas.py",
+        "linea": 62
+      }
+    ]
+  },
+  {
+    "mensaje": 96,
+    "texto": "sesión empresarial revocada",
+    "fuentes": []
+  },
+  {
+    "mensaje": 97,
+    "texto": "200: sesiones revocadas",
+    "fuentes": []
+  },
+  {
+    "mensaje": 98,
+    "texto": "Eliminar token y selección activa;\nconservar IndexedDB / SQLite y pendientes",
+    "fuentes": []
+  },
+  {
+    "mensaje": 99,
+    "texto": "Pantalla de acceso",
+    "fuentes": []
+  }
+]

@@ -1,0 +1,555 @@
+{
+  "robustness_source": "docs\\diagramas_robustez\\CU13_Simplificado\\CU13_Robustez_Simplificada_Modelo.json",
+  "participants": [
+    {
+      "id": "actor",
+      "name": "Cajero / Personal autorizado",
+      "kind": "actor"
+    },
+    {
+      "id": "b_pre",
+      "name": "Frontend : Terminal de venta POS",
+      "kind": "boundary"
+    },
+    {
+      "id": "control",
+      "name": "Backend : Venta presencial",
+      "kind": "control"
+    },
+    {
+      "id": "detalle",
+      "name": "Detalle de venta",
+      "kind": "entity"
+    },
+    {
+      "id": "movimiento",
+      "name": "Movimiento de inventario",
+      "kind": "entity"
+    },
+    {
+      "id": "inventario",
+      "name": "Inventario",
+      "kind": "entity"
+    },
+    {
+      "id": "venta",
+      "name": "Venta",
+      "kind": "entity"
+    },
+    {
+      "id": "bitacora",
+      "name": "Bitácora",
+      "kind": "entity"
+    }
+  ],
+  "events": [
+    {
+      "type": "message",
+      "a": "actor",
+      "b": "b_pre",
+      "text": "Buscar productos para el ticket",
+      "reply": false,
+      "robustness_number": 1,
+      "number": 1,
+      "lines": [
+        "1: Buscar productos para el ticket"
+      ],
+      "y": 271,
+      "label_h": 23,
+      "label_w": 293
+    },
+    {
+      "type": "message",
+      "a": "b_pre",
+      "b": "control",
+      "text": "listar_productos_pos_endpoint(sucursal, búsqueda)",
+      "reply": false,
+      "robustness_number": 2,
+      "number": 2,
+      "lines": [
+        "2: listar_productos_pos_",
+        "endpoint(sucursal, búsqueda)"
+      ],
+      "y": 359,
+      "label_h": 46,
+      "label_w": 293
+    },
+    {
+      "type": "message",
+      "a": "control",
+      "b": "inventario",
+      "text": "listar_productos_pos(sucursal, búsqueda)",
+      "reply": false,
+      "robustness_number": 3,
+      "number": 3,
+      "lines": [
+        "3: listar_productos_pos(sucursal, búsqueda)"
+      ],
+      "y": 424,
+      "label_h": 23,
+      "label_w": 660
+    },
+    {
+      "type": "message",
+      "a": "inventario",
+      "b": "control",
+      "text": "productos y stock",
+      "reply": true,
+      "robustness_number": 4,
+      "number": 4,
+      "lines": [
+        "4: productos y stock"
+      ],
+      "y": 489,
+      "label_h": 23,
+      "label_w": 660
+    },
+    {
+      "type": "message",
+      "a": "control",
+      "b": "b_pre",
+      "text": "productos disponibles",
+      "reply": true,
+      "robustness_number": 5,
+      "number": 5,
+      "lines": [
+        "5: productos disponibles"
+      ],
+      "y": 615,
+      "label_h": 23,
+      "label_w": 293
+    },
+    {
+      "type": "message",
+      "a": "control",
+      "b": "b_pre",
+      "text": "No hay productos disponibles",
+      "reply": true,
+      "number": 6,
+      "lines": [
+        "6: No hay productos disponibles"
+      ],
+      "y": 745,
+      "label_h": 23,
+      "label_w": 293
+    },
+    {
+      "type": "message",
+      "a": "b_pre",
+      "b": "actor",
+      "text": "Mostrar productos",
+      "reply": true,
+      "robustness_number": 6,
+      "number": 7,
+      "lines": [
+        "7: Mostrar productos"
+      ],
+      "y": 855,
+      "label_h": 23,
+      "label_w": 293
+    },
+    {
+      "type": "message",
+      "a": "actor",
+      "b": "b_pre",
+      "text": "Confirmar venta y efectivo recibido",
+      "reply": false,
+      "robustness_number": 7,
+      "number": 8,
+      "lines": [
+        "8: Confirmar venta y efectivo recibido"
+      ],
+      "y": 920,
+      "label_h": 23,
+      "label_w": 293
+    },
+    {
+      "type": "message",
+      "a": "b_pre",
+      "b": "control",
+      "text": "procesar_venta_pos_endpoint(ticket y cobro)",
+      "reply": false,
+      "robustness_number": 8,
+      "number": 9,
+      "lines": [
+        "9: procesar_venta_pos_endpoint(ticket",
+        "y cobro)"
+      ],
+      "y": 1008,
+      "label_h": 46,
+      "label_w": 293
+    },
+    {
+      "type": "message",
+      "a": "control",
+      "b": "inventario",
+      "text": "quote(ítems, sucursal)",
+      "reply": false,
+      "robustness_number": 9,
+      "number": 10,
+      "lines": [
+        "10: quote(ítems, sucursal)"
+      ],
+      "y": 1134,
+      "label_h": 23,
+      "label_w": 660
+    },
+    {
+      "type": "message",
+      "a": "inventario",
+      "b": "control",
+      "text": "stock y precios verificados",
+      "reply": true,
+      "robustness_number": 10,
+      "number": 11,
+      "lines": [
+        "11: stock y precios verificados"
+      ],
+      "y": 1199,
+      "label_h": 23,
+      "label_w": 660
+    },
+    {
+      "type": "message",
+      "a": "control",
+      "b": "venta",
+      "text": "procesar_venta_pos(datos)",
+      "reply": false,
+      "robustness_number": 11,
+      "number": 12,
+      "lines": [
+        "12: procesar_venta_pos(datos)"
+      ],
+      "y": 1264,
+      "label_h": 23,
+      "label_w": 660
+    },
+    {
+      "type": "message",
+      "a": "venta",
+      "b": "control",
+      "text": "id_venta",
+      "reply": true,
+      "robustness_number": 12,
+      "number": 13,
+      "lines": [
+        "13: id_venta"
+      ],
+      "y": 1329,
+      "label_h": 23,
+      "label_w": 660
+    },
+    {
+      "type": "message",
+      "a": "control",
+      "b": "detalle",
+      "text": "Guardar detalle de venta",
+      "reply": false,
+      "robustness_number": 13,
+      "number": 14,
+      "lines": [
+        "14: Guardar detalle de venta"
+      ],
+      "y": 1455,
+      "label_h": 23,
+      "label_w": 293
+    },
+    {
+      "type": "message",
+      "a": "control",
+      "b": "movimiento",
+      "text": "Registrar Salida",
+      "reply": false,
+      "robustness_number": 14,
+      "number": 15,
+      "lines": [
+        "15: Registrar Salida"
+      ],
+      "y": 1520,
+      "label_h": 23,
+      "label_w": 628
+    },
+    {
+      "type": "message",
+      "a": "control",
+      "b": "bitacora",
+      "text": "registrar_bitacora(venta POS)",
+      "reply": false,
+      "robustness_number": 15,
+      "number": 16,
+      "lines": [
+        "16: registrar_bitacora(venta POS)"
+      ],
+      "y": 1630,
+      "label_h": 23,
+      "label_w": 660
+    },
+    {
+      "type": "message",
+      "a": "control",
+      "b": "b_pre",
+      "text": "venta, total y vuelto",
+      "reply": true,
+      "robustness_number": 16,
+      "number": 17,
+      "lines": [
+        "17: venta, total y vuelto"
+      ],
+      "y": 1695,
+      "label_h": 23,
+      "label_w": 293
+    },
+    {
+      "type": "message",
+      "a": "control",
+      "b": "b_pre",
+      "text": "Rechazar venta sin confirmar cobro",
+      "reply": true,
+      "number": 18,
+      "lines": [
+        "18: Rechazar venta sin confirmar",
+        "cobro"
+      ],
+      "y": 1848,
+      "label_h": 46,
+      "label_w": 293
+    },
+    {
+      "type": "message",
+      "a": "b_pre",
+      "b": "actor",
+      "text": "Mostrar resultado y opción de comprobante",
+      "reply": true,
+      "robustness_number": 17,
+      "number": 19,
+      "lines": [
+        "19: Mostrar resultado y opción de",
+        "comprobante"
+      ],
+      "y": 1981,
+      "label_h": 46,
+      "label_w": 293
+    },
+    {
+      "type": "message",
+      "a": "actor",
+      "b": "b_pre",
+      "text": "Consultar venta registrada",
+      "reply": false,
+      "robustness_number": 18,
+      "number": 20,
+      "lines": [
+        "20: Consultar venta registrada"
+      ],
+      "y": 2046,
+      "label_h": 23,
+      "label_w": 293
+    },
+    {
+      "type": "message",
+      "a": "b_pre",
+      "b": "control",
+      "text": "obtener_venta(id_venta)",
+      "reply": false,
+      "robustness_number": 19,
+      "number": 21,
+      "lines": [
+        "21: obtener_venta(id_venta)"
+      ],
+      "y": 2111,
+      "label_h": 23,
+      "label_w": 293
+    },
+    {
+      "type": "message",
+      "a": "control",
+      "b": "venta",
+      "text": "obtener_venta_por_id(id_venta)",
+      "reply": false,
+      "robustness_number": 20,
+      "number": 22,
+      "lines": [
+        "22: obtener_venta_por_id(id_venta)"
+      ],
+      "y": 2237,
+      "label_h": 23,
+      "label_w": 660
+    },
+    {
+      "type": "message",
+      "a": "venta",
+      "b": "control",
+      "text": "venta con detalles",
+      "reply": true,
+      "robustness_number": 21,
+      "number": 23,
+      "lines": [
+        "23: venta con detalles"
+      ],
+      "y": 2302,
+      "label_h": 23,
+      "label_w": 660
+    },
+    {
+      "type": "message",
+      "a": "control",
+      "b": "b_pre",
+      "text": "venta registrada",
+      "reply": true,
+      "robustness_number": 22,
+      "number": 24,
+      "lines": [
+        "24: venta registrada"
+      ],
+      "y": 2367,
+      "label_h": 23,
+      "label_w": 293
+    },
+    {
+      "type": "message",
+      "a": "control",
+      "b": "b_pre",
+      "text": "Venta no encontrada",
+      "reply": true,
+      "number": 25,
+      "lines": [
+        "25: Venta no encontrada"
+      ],
+      "y": 2497,
+      "label_h": 23,
+      "label_w": 293
+    }
+  ],
+  "frames": [
+    {
+      "kind": "alt",
+      "y": 523,
+      "h": 279,
+      "depth": 0,
+      "guards": [
+        [
+          523,
+          "hay productos",
+          true
+        ],
+        [
+          664,
+          "sin coincidencias",
+          false
+        ]
+      ],
+      "event_range": [
+        4,
+        6
+      ],
+      "participants": [
+        "b_pre",
+        "control"
+      ],
+      "starts_at": "b_pre",
+      "left": 455,
+      "right": 850,
+      "width": 395
+    },
+    {
+      "kind": "loop",
+      "y": 1363,
+      "h": 214,
+      "depth": 1,
+      "guards": [
+        [
+          1363,
+          "por cada ítem vendido",
+          true
+        ]
+      ],
+      "event_range": [
+        13,
+        15
+      ],
+      "participants": [
+        "control",
+        "detalle",
+        "movimiento"
+      ],
+      "starts_at": "control",
+      "left": 790,
+      "right": 1520,
+      "width": 730
+    },
+    {
+      "kind": "alt",
+      "y": 1042,
+      "h": 863,
+      "depth": 0,
+      "guards": [
+        [
+          1042,
+          "ticket, stock y cobro válidos",
+          true
+        ],
+        [
+          1744,
+          "validación comercial fallida",
+          false
+        ]
+      ],
+      "event_range": [
+        9,
+        18
+      ],
+      "participants": [
+        "b_pre",
+        "bitacora",
+        "control",
+        "detalle",
+        "inventario",
+        "movimiento",
+        "venta"
+      ],
+      "starts_at": "b_pre",
+      "left": 455,
+      "right": 2525,
+      "width": 2070
+    },
+    {
+      "kind": "alt",
+      "y": 2145,
+      "h": 409,
+      "depth": 0,
+      "guards": [
+        [
+          2145,
+          "venta autorizada existente",
+          true
+        ],
+        [
+          2416,
+          "venta no disponible",
+          false
+        ]
+      ],
+      "event_range": [
+        21,
+        25
+      ],
+      "participants": [
+        "b_pre",
+        "control",
+        "venta"
+      ],
+      "starts_at": "b_pre",
+      "left": 455,
+      "right": 2190,
+      "width": 1735
+    }
+  ],
+  "notes": [
+    "Sucursal, cliente mostrador y autorización se validan dentro del control. El código actual no ofrece una entidad de caja/apertura/cierre; no se inventa ese módulo.",
+    "La confirmación de efectivo y la comprobación de precios preceden a la escritura. El trigger aplica el stock por movimiento. El comprobante se intenta en un savepoint opcional: un fallo no revierte la venta; su detalle corresponde a CU14.",
+    "No se atribuye a este endpoint una clave UUID o reintento idempotente que no implementa explícitamente."
+  ],
+  "scope": "Mismos recorridos y participantes de robustez; numeración de secuencia nueva al añadir las alternativas.",
+  "geometry": "alt y opt parten de la interfaz principal; loop parte del control correspondiente. Margen de 30 px. El borde derecho corresponde al último participante afectado. Las líneas intermedias del orden fijo no implican interacciones adicionales.",
+  "presentation": "Los retornos al actor se generalizan cuando deben mostrar éxito o rechazo. Las acciones son escenarios independientes del CU, no un guion obligatorio."
+}

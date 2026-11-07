@@ -1,0 +1,819 @@
+{
+  "robustness_source": "docs\\diagramas_robustez\\CU07_Simplificado\\CU07_Robustez_Simplificada_Modelo.json",
+  "participants": [
+    {
+      "id": "actor",
+      "name": "Administrador de empresa",
+      "kind": "actor"
+    },
+    {
+      "id": "b_pre",
+      "name": "Frontend : Proveedores y compras",
+      "kind": "boundary"
+    },
+    {
+      "id": "control",
+      "name": "Backend : Gestión de abastecimiento",
+      "kind": "control"
+    },
+    {
+      "id": "detalle",
+      "name": "Detalle de compra",
+      "kind": "entity"
+    },
+    {
+      "id": "movimiento",
+      "name": "Movimiento de inventario",
+      "kind": "entity"
+    },
+    {
+      "id": "compra",
+      "name": "Compra",
+      "kind": "entity"
+    },
+    {
+      "id": "proveedor",
+      "name": "Proveedor",
+      "kind": "entity"
+    },
+    {
+      "id": "bitacora",
+      "name": "Bitácora",
+      "kind": "entity"
+    }
+  ],
+  "events": [
+    {
+      "type": "message",
+      "a": "actor",
+      "b": "b_pre",
+      "text": "Consultar proveedores",
+      "reply": false,
+      "robustness_number": 1,
+      "number": 1,
+      "lines": [
+        "1: Consultar proveedores"
+      ],
+      "y": 271,
+      "label_h": 23,
+      "label_w": 293
+    },
+    {
+      "type": "message",
+      "a": "b_pre",
+      "b": "control",
+      "text": "listar_proveedores(búsqueda)",
+      "reply": false,
+      "robustness_number": 2,
+      "number": 2,
+      "lines": [
+        "2: listar_proveedores(búsqueda)"
+      ],
+      "y": 336,
+      "label_h": 23,
+      "label_w": 293
+    },
+    {
+      "type": "message",
+      "a": "control",
+      "b": "proveedor",
+      "text": "listar_proveedores(búsqueda)",
+      "reply": false,
+      "robustness_number": 3,
+      "number": 3,
+      "lines": [
+        "3: listar_proveedores(búsqueda)"
+      ],
+      "y": 401,
+      "label_h": 23,
+      "label_w": 660
+    },
+    {
+      "type": "message",
+      "a": "proveedor",
+      "b": "control",
+      "text": "proveedores",
+      "reply": true,
+      "robustness_number": 4,
+      "number": 4,
+      "lines": [
+        "4: proveedores"
+      ],
+      "y": 466,
+      "label_h": 23,
+      "label_w": 660
+    },
+    {
+      "type": "message",
+      "a": "control",
+      "b": "b_pre",
+      "text": "proveedores",
+      "reply": true,
+      "robustness_number": 5,
+      "number": 5,
+      "lines": [
+        "5: proveedores"
+      ],
+      "y": 592,
+      "label_h": 23,
+      "label_w": 293
+    },
+    {
+      "type": "message",
+      "a": "control",
+      "b": "b_pre",
+      "text": "Lista vacía",
+      "reply": true,
+      "number": 6,
+      "lines": [
+        "6: Lista vacía"
+      ],
+      "y": 722,
+      "label_h": 23,
+      "label_w": 293
+    },
+    {
+      "type": "message",
+      "a": "b_pre",
+      "b": "actor",
+      "text": "Mostrar proveedores",
+      "reply": true,
+      "robustness_number": 6,
+      "number": 7,
+      "lines": [
+        "7: Mostrar proveedores"
+      ],
+      "y": 832,
+      "label_h": 23,
+      "label_w": 293
+    },
+    {
+      "type": "message",
+      "a": "actor",
+      "b": "b_pre",
+      "text": "Registrar proveedor",
+      "reply": false,
+      "robustness_number": 7,
+      "number": 8,
+      "lines": [
+        "8: Registrar proveedor"
+      ],
+      "y": 897,
+      "label_h": 23,
+      "label_w": 293
+    },
+    {
+      "type": "message",
+      "a": "b_pre",
+      "b": "control",
+      "text": "crear_proveedor(datos)",
+      "reply": false,
+      "robustness_number": 8,
+      "number": 9,
+      "lines": [
+        "9: crear_proveedor(datos)"
+      ],
+      "y": 962,
+      "label_h": 23,
+      "label_w": 293
+    },
+    {
+      "type": "message",
+      "a": "control",
+      "b": "proveedor",
+      "text": "crear_proveedor(datos)",
+      "reply": false,
+      "robustness_number": 9,
+      "number": 10,
+      "lines": [
+        "10: crear_proveedor(datos)"
+      ],
+      "y": 1088,
+      "label_h": 23,
+      "label_w": 660
+    },
+    {
+      "type": "message",
+      "a": "proveedor",
+      "b": "control",
+      "text": "proveedor creado",
+      "reply": true,
+      "robustness_number": 10,
+      "number": 11,
+      "lines": [
+        "11: proveedor creado"
+      ],
+      "y": 1153,
+      "label_h": 23,
+      "label_w": 660
+    },
+    {
+      "type": "message",
+      "a": "control",
+      "b": "bitacora",
+      "text": "registrar_bitacora(proveedor, alta)",
+      "reply": false,
+      "robustness_number": 11,
+      "number": 12,
+      "lines": [
+        "12: registrar_bitacora(proveedor, alta)"
+      ],
+      "y": 1218,
+      "label_h": 23,
+      "label_w": 660
+    },
+    {
+      "type": "message",
+      "a": "control",
+      "b": "b_pre",
+      "text": "proveedor registrado",
+      "reply": true,
+      "robustness_number": 12,
+      "number": 13,
+      "lines": [
+        "13: proveedor registrado"
+      ],
+      "y": 1283,
+      "label_h": 23,
+      "label_w": 293
+    },
+    {
+      "type": "message",
+      "a": "control",
+      "b": "b_pre",
+      "text": "Informar validación del proveedor",
+      "reply": true,
+      "number": 14,
+      "lines": [
+        "14: Informar validación del proveedor"
+      ],
+      "y": 1413,
+      "label_h": 23,
+      "label_w": 293
+    },
+    {
+      "type": "message",
+      "a": "actor",
+      "b": "b_pre",
+      "text": "Editar proveedor",
+      "reply": false,
+      "robustness_number": 13,
+      "number": 15,
+      "lines": [
+        "15: Editar proveedor"
+      ],
+      "y": 1523,
+      "label_h": 23,
+      "label_w": 293
+    },
+    {
+      "type": "message",
+      "a": "b_pre",
+      "b": "control",
+      "text": "actualizar_proveedor(id, cambios)",
+      "reply": false,
+      "robustness_number": 14,
+      "number": 16,
+      "lines": [
+        "16: actualizar_proveedor(id, cambios)"
+      ],
+      "y": 1649,
+      "label_h": 23,
+      "label_w": 293
+    },
+    {
+      "type": "message",
+      "a": "control",
+      "b": "proveedor",
+      "text": "actualizar_proveedor(id, cambios)",
+      "reply": false,
+      "robustness_number": 15,
+      "number": 17,
+      "lines": [
+        "17: actualizar_proveedor(id, cambios)"
+      ],
+      "y": 1775,
+      "label_h": 23,
+      "label_w": 660
+    },
+    {
+      "type": "message",
+      "a": "control",
+      "b": "bitacora",
+      "text": "registrar_bitacora(proveedor, modificación)",
+      "reply": false,
+      "robustness_number": 16,
+      "number": 18,
+      "lines": [
+        "18: registrar_bitacora(proveedor, modificación)"
+      ],
+      "y": 1840,
+      "label_h": 23,
+      "label_w": 660
+    },
+    {
+      "type": "message",
+      "a": "control",
+      "b": "b_pre",
+      "text": "proveedor actualizado",
+      "reply": true,
+      "robustness_number": 17,
+      "number": 19,
+      "lines": [
+        "19: proveedor actualizado"
+      ],
+      "y": 1905,
+      "label_h": 23,
+      "label_w": 293
+    },
+    {
+      "type": "message",
+      "a": "control",
+      "b": "b_pre",
+      "text": "Informar validación de cambios",
+      "reply": true,
+      "number": 20,
+      "lines": [
+        "20: Informar validación de cambios"
+      ],
+      "y": 2035,
+      "label_h": 23,
+      "label_w": 293
+    },
+    {
+      "type": "message",
+      "a": "actor",
+      "b": "b_pre",
+      "text": "Confirmar compra y recepción",
+      "reply": false,
+      "robustness_number": 18,
+      "number": 21,
+      "lines": [
+        "21: Confirmar compra y recepción"
+      ],
+      "y": 2190,
+      "label_h": 23,
+      "label_w": 293
+    },
+    {
+      "type": "message",
+      "a": "b_pre",
+      "b": "control",
+      "text": "registrar_compra(datos e ítems)",
+      "reply": false,
+      "robustness_number": 19,
+      "number": 22,
+      "lines": [
+        "22: registrar_compra(datos e ítems)"
+      ],
+      "y": 2255,
+      "label_h": 23,
+      "label_w": 293
+    },
+    {
+      "type": "message",
+      "a": "control",
+      "b": "compra",
+      "text": "registrar_compra(datos)",
+      "reply": false,
+      "robustness_number": 20,
+      "number": 23,
+      "lines": [
+        "23: registrar_compra(datos)"
+      ],
+      "y": 2381,
+      "label_h": 23,
+      "label_w": 660
+    },
+    {
+      "type": "message",
+      "a": "compra",
+      "b": "control",
+      "text": "id_compra",
+      "reply": true,
+      "robustness_number": 21,
+      "number": 24,
+      "lines": [
+        "24: id_compra"
+      ],
+      "y": 2446,
+      "label_h": 23,
+      "label_w": 660
+    },
+    {
+      "type": "message",
+      "a": "control",
+      "b": "detalle",
+      "text": "Guardar detalle",
+      "reply": false,
+      "robustness_number": 22,
+      "number": 25,
+      "lines": [
+        "25: Guardar detalle"
+      ],
+      "y": 2572,
+      "label_h": 23,
+      "label_w": 293
+    },
+    {
+      "type": "message",
+      "a": "control",
+      "b": "movimiento",
+      "text": "Registrar Entrada",
+      "reply": false,
+      "robustness_number": 23,
+      "number": 26,
+      "lines": [
+        "26: Registrar Entrada"
+      ],
+      "y": 2637,
+      "label_h": 23,
+      "label_w": 628
+    },
+    {
+      "type": "message",
+      "a": "control",
+      "b": "bitacora",
+      "text": "registrar_bitacora(compra, recepción)",
+      "reply": false,
+      "robustness_number": 24,
+      "number": 27,
+      "lines": [
+        "27: registrar_bitacora(compra, recepción)"
+      ],
+      "y": 2747,
+      "label_h": 23,
+      "label_w": 660
+    },
+    {
+      "type": "message",
+      "a": "control",
+      "b": "b_pre",
+      "text": "compra y recepción confirmadas",
+      "reply": true,
+      "robustness_number": 25,
+      "number": 28,
+      "lines": [
+        "28: compra y recepción confirmadas"
+      ],
+      "y": 2812,
+      "label_h": 23,
+      "label_w": 293
+    },
+    {
+      "type": "message",
+      "a": "control",
+      "b": "b_pre",
+      "text": "Rechazar compra sin confirmar recepción",
+      "reply": true,
+      "number": 29,
+      "lines": [
+        "29: Rechazar compra sin confirmar",
+        "recepción"
+      ],
+      "y": 2965,
+      "label_h": 46,
+      "label_w": 293
+    },
+    {
+      "type": "message",
+      "a": "b_pre",
+      "b": "actor",
+      "text": "Mostrar resultado de recepción",
+      "reply": true,
+      "robustness_number": 26,
+      "number": 30,
+      "lines": [
+        "30: Mostrar resultado de recepción"
+      ],
+      "y": 3075,
+      "label_h": 23,
+      "label_w": 293
+    },
+    {
+      "type": "message",
+      "a": "actor",
+      "b": "b_pre",
+      "text": "Consultar compra y detalles",
+      "reply": false,
+      "robustness_number": 27,
+      "number": 31,
+      "lines": [
+        "31: Consultar compra y detalles"
+      ],
+      "y": 3140,
+      "label_h": 23,
+      "label_w": 293
+    },
+    {
+      "type": "message",
+      "a": "b_pre",
+      "b": "control",
+      "text": "obtener_compra(id_compra)",
+      "reply": false,
+      "robustness_number": 28,
+      "number": 32,
+      "lines": [
+        "32: obtener_compra(id_compra)"
+      ],
+      "y": 3205,
+      "label_h": 23,
+      "label_w": 293
+    },
+    {
+      "type": "message",
+      "a": "control",
+      "b": "compra",
+      "text": "obtener_compra_por_id(id_compra)",
+      "reply": false,
+      "robustness_number": 29,
+      "number": 33,
+      "lines": [
+        "33: obtener_compra_por_id(id_compra)"
+      ],
+      "y": 3331,
+      "label_h": 23,
+      "label_w": 660
+    },
+    {
+      "type": "message",
+      "a": "compra",
+      "b": "control",
+      "text": "compra con sus detalles",
+      "reply": true,
+      "robustness_number": 30,
+      "number": 34,
+      "lines": [
+        "34: compra con sus detalles"
+      ],
+      "y": 3396,
+      "label_h": 23,
+      "label_w": 660
+    },
+    {
+      "type": "message",
+      "a": "control",
+      "b": "b_pre",
+      "text": "detalle de compra",
+      "reply": true,
+      "robustness_number": 31,
+      "number": 35,
+      "lines": [
+        "35: detalle de compra"
+      ],
+      "y": 3461,
+      "label_h": 23,
+      "label_w": 293
+    },
+    {
+      "type": "message",
+      "a": "control",
+      "b": "b_pre",
+      "text": "Compra no encontrada",
+      "reply": true,
+      "number": 36,
+      "lines": [
+        "36: Compra no encontrada"
+      ],
+      "y": 3591,
+      "label_h": 23,
+      "label_w": 293
+    },
+    {
+      "type": "message",
+      "a": "b_pre",
+      "b": "actor",
+      "text": "Mostrar detalle o aviso",
+      "reply": true,
+      "robustness_number": 32,
+      "number": 37,
+      "lines": [
+        "37: Mostrar detalle o aviso"
+      ],
+      "y": 3701,
+      "label_h": 23,
+      "label_w": 293
+    }
+  ],
+  "frames": [
+    {
+      "kind": "alt",
+      "y": 500,
+      "h": 279,
+      "depth": 0,
+      "guards": [
+        [
+          500,
+          "hay proveedores",
+          true
+        ],
+        [
+          641,
+          "sin coincidencias",
+          false
+        ]
+      ],
+      "event_range": [
+        4,
+        6
+      ],
+      "participants": [
+        "b_pre",
+        "control"
+      ],
+      "starts_at": "b_pre",
+      "left": 455,
+      "right": 850,
+      "width": 395
+    },
+    {
+      "kind": "alt",
+      "y": 996,
+      "h": 474,
+      "depth": 0,
+      "guards": [
+        [
+          996,
+          "datos y NIT válidos",
+          true
+        ],
+        [
+          1332,
+          "datos inválidos",
+          false
+        ]
+      ],
+      "event_range": [
+        9,
+        14
+      ],
+      "participants": [
+        "b_pre",
+        "bitacora",
+        "control",
+        "proveedor"
+      ],
+      "starts_at": "b_pre",
+      "left": 455,
+      "right": 2525,
+      "width": 2070
+    },
+    {
+      "kind": "alt",
+      "y": 1683,
+      "h": 409,
+      "depth": 1,
+      "guards": [
+        [
+          1683,
+          "cambios válidos",
+          true
+        ],
+        [
+          1954,
+          "cambios inválidos",
+          false
+        ]
+      ],
+      "event_range": [
+        16,
+        20
+      ],
+      "participants": [
+        "b_pre",
+        "bitacora",
+        "control",
+        "proveedor"
+      ],
+      "starts_at": "b_pre",
+      "left": 455,
+      "right": 2525,
+      "width": 2070
+    },
+    {
+      "kind": "opt",
+      "y": 1557,
+      "h": 580,
+      "depth": 0,
+      "guards": [
+        [
+          1557,
+          "se confirman cambios",
+          true
+        ]
+      ],
+      "event_range": [
+        15,
+        20
+      ],
+      "participants": [
+        "b_pre",
+        "bitacora",
+        "control",
+        "proveedor"
+      ],
+      "starts_at": "b_pre",
+      "left": 455,
+      "right": 2525,
+      "width": 2070
+    },
+    {
+      "kind": "loop",
+      "y": 2480,
+      "h": 214,
+      "depth": 1,
+      "guards": [
+        [
+          2480,
+          "por cada ítem recibido",
+          true
+        ]
+      ],
+      "event_range": [
+        24,
+        26
+      ],
+      "participants": [
+        "control",
+        "detalle",
+        "movimiento"
+      ],
+      "starts_at": "control",
+      "left": 790,
+      "right": 1520,
+      "width": 730
+    },
+    {
+      "kind": "alt",
+      "y": 2289,
+      "h": 733,
+      "depth": 0,
+      "guards": [
+        [
+          2289,
+          "compra y recepción válidas",
+          true
+        ],
+        [
+          2861,
+          "datos o existencias inválidos",
+          false
+        ]
+      ],
+      "event_range": [
+        22,
+        29
+      ],
+      "participants": [
+        "b_pre",
+        "bitacora",
+        "compra",
+        "control",
+        "detalle",
+        "movimiento"
+      ],
+      "starts_at": "b_pre",
+      "left": 455,
+      "right": 2525,
+      "width": 2070
+    },
+    {
+      "kind": "alt",
+      "y": 3239,
+      "h": 409,
+      "depth": 0,
+      "guards": [
+        [
+          3239,
+          "compra autorizada existente",
+          true
+        ],
+        [
+          3510,
+          "compra no disponible",
+          false
+        ]
+      ],
+      "event_range": [
+        32,
+        36
+      ],
+      "participants": [
+        "b_pre",
+        "compra",
+        "control"
+      ],
+      "starts_at": "b_pre",
+      "left": 455,
+      "right": 1855,
+      "width": 1400
+    }
+  ],
+  "notes": [
+    "La recepción ocurre al registrar_compra; no existe una segunda API de recepción independiente. Los movimientos actualizan el inventario mediante el trigger existente.",
+    "No se inventa una entidad Recepción ni se duplica el descuento/entrada de stock. La consulta móvil se conserva; el registro se representa en la interfaz administrativa."
+  ],
+  "scope": "Mismos recorridos y participantes de robustez; numeración de secuencia nueva al añadir las alternativas.",
+  "geometry": "alt y opt parten de la interfaz principal; loop parte del control correspondiente. Margen de 30 px. El borde derecho corresponde al último participante afectado. Las líneas intermedias del orden fijo no implican interacciones adicionales.",
+  "presentation": "Los retornos al actor se generalizan cuando deben mostrar éxito o rechazo. Las acciones son escenarios independientes del CU, no un guion obligatorio."
+}

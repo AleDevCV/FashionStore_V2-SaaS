@@ -1,0 +1,1195 @@
+{
+  "participants": [
+    {
+      "id": "actor",
+      "name": "Administrador de empresa",
+      "kind": "actor"
+    },
+    {
+      "id": "b_pre",
+      "name": "Frontend : Administración del catálogo",
+      "kind": "boundary"
+    },
+    {
+      "id": "control",
+      "name": "Backend : Gestión del catálogo",
+      "kind": "control"
+    },
+    {
+      "id": "variante",
+      "name": "Variante de prenda",
+      "kind": "entity"
+    },
+    {
+      "id": "prenda",
+      "name": "Prenda",
+      "kind": "entity"
+    },
+    {
+      "id": "categoria",
+      "name": "Categoría",
+      "kind": "entity"
+    },
+    {
+      "id": "temporada",
+      "name": "Temporada / colección",
+      "kind": "entity"
+    },
+    {
+      "id": "bitacora",
+      "name": "Bitácora",
+      "kind": "entity"
+    }
+  ],
+  "robustness_source": "docs\\diagramas_robustez\\CU06_Simplificado\\CU06_Robustez_Simplificada_Modelo.json",
+  "events": [
+    {
+      "type": "message",
+      "a": "actor",
+      "b": "b_pre",
+      "text": "Consultar catálogo",
+      "reply": false,
+      "robustness_number": 1,
+      "number": 1,
+      "lines": [
+        "1: Consultar catálogo"
+      ],
+      "y": 271,
+      "label_h": 23,
+      "label_w": 293
+    },
+    {
+      "type": "message",
+      "a": "b_pre",
+      "b": "control",
+      "text": "listar_prendas(filtros)",
+      "reply": false,
+      "robustness_number": 2,
+      "number": 2,
+      "lines": [
+        "2: listar_prendas(filtros)"
+      ],
+      "y": 336,
+      "label_h": 23,
+      "label_w": 293
+    },
+    {
+      "type": "message",
+      "a": "control",
+      "b": "prenda",
+      "text": "listar_prendas(filtros)",
+      "reply": false,
+      "robustness_number": 3,
+      "number": 3,
+      "lines": [
+        "3: listar_prendas(filtros)"
+      ],
+      "y": 401,
+      "label_h": 23,
+      "label_w": 628
+    },
+    {
+      "type": "message",
+      "a": "prenda",
+      "b": "control",
+      "text": "prendas",
+      "reply": true,
+      "robustness_number": 4,
+      "number": 4,
+      "lines": [
+        "4: prendas"
+      ],
+      "y": 466,
+      "label_h": 23,
+      "label_w": 628
+    },
+    {
+      "type": "message",
+      "a": "control",
+      "b": "b_pre",
+      "text": "catálogo",
+      "reply": true,
+      "robustness_number": 5,
+      "number": 5,
+      "lines": [
+        "5: catálogo"
+      ],
+      "y": 592,
+      "label_h": 23,
+      "label_w": 293
+    },
+    {
+      "type": "message",
+      "a": "control",
+      "b": "b_pre",
+      "text": "Catálogo vacío",
+      "reply": true,
+      "number": 6,
+      "lines": [
+        "6: Catálogo vacío"
+      ],
+      "y": 722,
+      "label_h": 23,
+      "label_w": 293
+    },
+    {
+      "type": "message",
+      "a": "b_pre",
+      "b": "actor",
+      "text": "Mostrar catálogo",
+      "reply": true,
+      "robustness_number": 6,
+      "number": 7,
+      "lines": [
+        "7: Mostrar catálogo"
+      ],
+      "y": 832,
+      "label_h": 23,
+      "label_w": 293
+    },
+    {
+      "type": "message",
+      "a": "actor",
+      "b": "b_pre",
+      "text": "Registrar categoría",
+      "reply": false,
+      "robustness_number": 7,
+      "number": 8,
+      "lines": [
+        "8: Registrar categoría"
+      ],
+      "y": 897,
+      "label_h": 23,
+      "label_w": 293
+    },
+    {
+      "type": "message",
+      "a": "b_pre",
+      "b": "control",
+      "text": "crear_categoria(datos)",
+      "reply": false,
+      "robustness_number": 8,
+      "number": 9,
+      "lines": [
+        "9: crear_categoria(datos)"
+      ],
+      "y": 962,
+      "label_h": 23,
+      "label_w": 293
+    },
+    {
+      "type": "message",
+      "a": "control",
+      "b": "categoria",
+      "text": "crear_categoria(datos)",
+      "reply": false,
+      "robustness_number": 9,
+      "number": 10,
+      "lines": [
+        "10: crear_categoria(datos)"
+      ],
+      "y": 1088,
+      "label_h": 23,
+      "label_w": 660
+    },
+    {
+      "type": "message",
+      "a": "categoria",
+      "b": "control",
+      "text": "id_categoria",
+      "reply": true,
+      "robustness_number": 10,
+      "number": 11,
+      "lines": [
+        "11: id_categoria"
+      ],
+      "y": 1153,
+      "label_h": 23,
+      "label_w": 660
+    },
+    {
+      "type": "message",
+      "a": "control",
+      "b": "bitacora",
+      "text": "registrar_bitacora(categoria, alta)",
+      "reply": false,
+      "robustness_number": 11,
+      "number": 12,
+      "lines": [
+        "12: registrar_bitacora(categoria, alta)"
+      ],
+      "y": 1218,
+      "label_h": 23,
+      "label_w": 660
+    },
+    {
+      "type": "message",
+      "a": "control",
+      "b": "b_pre",
+      "text": "categoría registrada",
+      "reply": true,
+      "robustness_number": 12,
+      "number": 13,
+      "lines": [
+        "13: categoría registrada"
+      ],
+      "y": 1283,
+      "label_h": 23,
+      "label_w": 293
+    },
+    {
+      "type": "message",
+      "a": "control",
+      "b": "b_pre",
+      "text": "Informar validación de categoría",
+      "reply": true,
+      "number": 14,
+      "lines": [
+        "14: Informar validación de categoría"
+      ],
+      "y": 1413,
+      "label_h": 23,
+      "label_w": 293
+    },
+    {
+      "type": "message",
+      "a": "actor",
+      "b": "b_pre",
+      "text": "Registrar temporada o colección",
+      "reply": false,
+      "robustness_number": 13,
+      "number": 15,
+      "lines": [
+        "15: Registrar temporada o colección"
+      ],
+      "y": 1523,
+      "label_h": 23,
+      "label_w": 293
+    },
+    {
+      "type": "message",
+      "a": "b_pre",
+      "b": "control",
+      "text": "crear_temporada(datos)",
+      "reply": false,
+      "robustness_number": 14,
+      "number": 16,
+      "lines": [
+        "16: crear_temporada(datos)"
+      ],
+      "y": 1588,
+      "label_h": 23,
+      "label_w": 293
+    },
+    {
+      "type": "message",
+      "a": "control",
+      "b": "temporada",
+      "text": "crear_temporada(datos)",
+      "reply": false,
+      "robustness_number": 15,
+      "number": 17,
+      "lines": [
+        "17: crear_temporada(datos)"
+      ],
+      "y": 1714,
+      "label_h": 23,
+      "label_w": 660
+    },
+    {
+      "type": "message",
+      "a": "temporada",
+      "b": "control",
+      "text": "temporada creada",
+      "reply": true,
+      "robustness_number": 16,
+      "number": 18,
+      "lines": [
+        "18: temporada creada"
+      ],
+      "y": 1779,
+      "label_h": 23,
+      "label_w": 660
+    },
+    {
+      "type": "message",
+      "a": "control",
+      "b": "bitacora",
+      "text": "registrar_bitacora(temporada, alta)",
+      "reply": false,
+      "robustness_number": 17,
+      "number": 19,
+      "lines": [
+        "19: registrar_bitacora(temporada, alta)"
+      ],
+      "y": 1844,
+      "label_h": 23,
+      "label_w": 660
+    },
+    {
+      "type": "message",
+      "a": "control",
+      "b": "b_pre",
+      "text": "temporada registrada",
+      "reply": true,
+      "robustness_number": 18,
+      "number": 20,
+      "lines": [
+        "20: temporada registrada"
+      ],
+      "y": 1909,
+      "label_h": 23,
+      "label_w": 293
+    },
+    {
+      "type": "message",
+      "a": "control",
+      "b": "b_pre",
+      "text": "Informar validación de temporada",
+      "reply": true,
+      "number": 21,
+      "lines": [
+        "21: Informar validación de temporada"
+      ],
+      "y": 2039,
+      "label_h": 23,
+      "label_w": 293
+    },
+    {
+      "type": "message",
+      "a": "actor",
+      "b": "b_pre",
+      "text": "Registrar prenda y variantes",
+      "reply": false,
+      "robustness_number": 19,
+      "number": 22,
+      "lines": [
+        "22: Registrar prenda y variantes"
+      ],
+      "y": 2149,
+      "label_h": 23,
+      "label_w": 293
+    },
+    {
+      "type": "message",
+      "a": "b_pre",
+      "b": "control",
+      "text": "crear_prenda(datos)",
+      "reply": false,
+      "robustness_number": 20,
+      "number": 23,
+      "lines": [
+        "23: crear_prenda(datos)"
+      ],
+      "y": 2214,
+      "label_h": 23,
+      "label_w": 293
+    },
+    {
+      "type": "message",
+      "a": "control",
+      "b": "prenda",
+      "text": "crear_prenda(datos)",
+      "reply": false,
+      "robustness_number": 21,
+      "number": 24,
+      "lines": [
+        "24: crear_prenda(datos)"
+      ],
+      "y": 2340,
+      "label_h": 23,
+      "label_w": 628
+    },
+    {
+      "type": "message",
+      "a": "prenda",
+      "b": "control",
+      "text": "id_prenda",
+      "reply": true,
+      "robustness_number": 22,
+      "number": 25,
+      "lines": [
+        "25: id_prenda"
+      ],
+      "y": 2405,
+      "label_h": 23,
+      "label_w": 628
+    },
+    {
+      "type": "message",
+      "a": "control",
+      "b": "variante",
+      "text": "_crear_variante(datos)",
+      "reply": false,
+      "robustness_number": 23,
+      "number": 26,
+      "lines": [
+        "26: _crear_variante(datos)"
+      ],
+      "y": 2531,
+      "label_h": 23,
+      "label_w": 293
+    },
+    {
+      "type": "message",
+      "a": "variante",
+      "b": "control",
+      "text": "variante creada",
+      "reply": true,
+      "robustness_number": 24,
+      "number": 27,
+      "lines": [
+        "27: variante creada"
+      ],
+      "y": 2596,
+      "label_h": 23,
+      "label_w": 293
+    },
+    {
+      "type": "message",
+      "a": "control",
+      "b": "bitacora",
+      "text": "registrar_bitacora(prenda, alta)",
+      "reply": false,
+      "robustness_number": 25,
+      "number": 28,
+      "lines": [
+        "28: registrar_bitacora(prenda, alta)"
+      ],
+      "y": 2706,
+      "label_h": 23,
+      "label_w": 660
+    },
+    {
+      "type": "message",
+      "a": "control",
+      "b": "b_pre",
+      "text": "prenda con variantes",
+      "reply": true,
+      "robustness_number": 26,
+      "number": 29,
+      "lines": [
+        "29: prenda con variantes"
+      ],
+      "y": 2771,
+      "label_h": 23,
+      "label_w": 293
+    },
+    {
+      "type": "message",
+      "a": "control",
+      "b": "b_pre",
+      "text": "Informar validación de prenda",
+      "reply": true,
+      "number": 30,
+      "lines": [
+        "30: Informar validación de prenda"
+      ],
+      "y": 2901,
+      "label_h": 23,
+      "label_w": 293
+    },
+    {
+      "type": "message",
+      "a": "b_pre",
+      "b": "actor",
+      "text": "Mostrar resultado del registro",
+      "reply": true,
+      "robustness_number": 27,
+      "number": 31,
+      "lines": [
+        "31: Mostrar resultado del registro"
+      ],
+      "y": 3011,
+      "label_h": 23,
+      "label_w": 293
+    },
+    {
+      "type": "message",
+      "a": "actor",
+      "b": "b_pre",
+      "text": "Editar datos, precios y ofertas",
+      "reply": false,
+      "robustness_number": 28,
+      "number": 32,
+      "lines": [
+        "32: Editar datos, precios y ofertas"
+      ],
+      "y": 3076,
+      "label_h": 23,
+      "label_w": 293
+    },
+    {
+      "type": "message",
+      "a": "b_pre",
+      "b": "control",
+      "text": "actualizar_prenda(id, cambios)",
+      "reply": false,
+      "robustness_number": 29,
+      "number": 33,
+      "lines": [
+        "33: actualizar_prenda(id, cambios)"
+      ],
+      "y": 3202,
+      "label_h": 23,
+      "label_w": 293
+    },
+    {
+      "type": "message",
+      "a": "control",
+      "b": "prenda",
+      "text": "actualizar_prenda(id, cambios)",
+      "reply": false,
+      "robustness_number": 30,
+      "number": 34,
+      "lines": [
+        "34: actualizar_prenda(id, cambios)"
+      ],
+      "y": 3328,
+      "label_h": 23,
+      "label_w": 628
+    },
+    {
+      "type": "message",
+      "a": "control",
+      "b": "bitacora",
+      "text": "registrar_bitacora(prenda, modificación)",
+      "reply": false,
+      "robustness_number": 31,
+      "number": 35,
+      "lines": [
+        "35: registrar_bitacora(prenda, modificación)"
+      ],
+      "y": 3393,
+      "label_h": 23,
+      "label_w": 660
+    },
+    {
+      "type": "message",
+      "a": "control",
+      "b": "b_pre",
+      "text": "prenda actualizada",
+      "reply": true,
+      "robustness_number": 32,
+      "number": 36,
+      "lines": [
+        "36: prenda actualizada"
+      ],
+      "y": 3458,
+      "label_h": 23,
+      "label_w": 293
+    },
+    {
+      "type": "message",
+      "a": "control",
+      "b": "b_pre",
+      "text": "Informar validación de cambios",
+      "reply": true,
+      "number": 37,
+      "lines": [
+        "37: Informar validación de cambios"
+      ],
+      "y": 3588,
+      "label_h": 23,
+      "label_w": 293
+    },
+    {
+      "type": "message",
+      "a": "actor",
+      "b": "b_pre",
+      "text": "Inhabilitar prenda",
+      "reply": false,
+      "robustness_number": 33,
+      "number": 38,
+      "lines": [
+        "38: Inhabilitar prenda"
+      ],
+      "y": 3743,
+      "label_h": 23,
+      "label_w": 293
+    },
+    {
+      "type": "message",
+      "a": "b_pre",
+      "b": "control",
+      "text": "inhabilitar_prenda(id)",
+      "reply": false,
+      "robustness_number": 34,
+      "number": 39,
+      "lines": [
+        "39: inhabilitar_prenda(id)"
+      ],
+      "y": 3808,
+      "label_h": 23,
+      "label_w": 293
+    },
+    {
+      "type": "message",
+      "a": "control",
+      "b": "prenda",
+      "text": "inhabilitar_prenda(id)",
+      "reply": false,
+      "robustness_number": 35,
+      "number": 40,
+      "lines": [
+        "40: inhabilitar_prenda(id)"
+      ],
+      "y": 3934,
+      "label_h": 23,
+      "label_w": 628
+    },
+    {
+      "type": "message",
+      "a": "control",
+      "b": "bitacora",
+      "text": "registrar_bitacora(prenda, baja lógica)",
+      "reply": false,
+      "robustness_number": 36,
+      "number": 41,
+      "lines": [
+        "41: registrar_bitacora(prenda, baja lógica)"
+      ],
+      "y": 3999,
+      "label_h": 23,
+      "label_w": 660
+    },
+    {
+      "type": "message",
+      "a": "control",
+      "b": "b_pre",
+      "text": "prenda inactiva",
+      "reply": true,
+      "robustness_number": 37,
+      "number": 42,
+      "lines": [
+        "42: prenda inactiva"
+      ],
+      "y": 4064,
+      "label_h": 23,
+      "label_w": 293
+    },
+    {
+      "type": "message",
+      "a": "control",
+      "b": "b_pre",
+      "text": "Informar rechazo de inhabilitación",
+      "reply": true,
+      "number": 43,
+      "lines": [
+        "43: Informar rechazo de inhabilitación"
+      ],
+      "y": 4194,
+      "label_h": 23,
+      "label_w": 293
+    }
+  ],
+  "frames": [
+    {
+      "kind": "alt",
+      "y": 500,
+      "h": 279,
+      "depth": 0,
+      "guards": [
+        [
+          500,
+          "hay coincidencias",
+          true
+        ],
+        [
+          641,
+          "sin coincidencias",
+          false
+        ]
+      ],
+      "event_range": [
+        4,
+        6
+      ],
+      "participants": [
+        "b_pre",
+        "control"
+      ],
+      "left": 455,
+      "right": 850,
+      "width": 395,
+      "starts_at": "b_pre"
+    },
+    {
+      "kind": "alt",
+      "y": 996,
+      "h": 474,
+      "depth": 0,
+      "guards": [
+        [
+          996,
+          "datos y nombre válidos",
+          true
+        ],
+        [
+          1332,
+          "datos o nombre inválidos",
+          false
+        ]
+      ],
+      "event_range": [
+        9,
+        14
+      ],
+      "participants": [
+        "b_pre",
+        "bitacora",
+        "categoria",
+        "control"
+      ],
+      "left": 455,
+      "right": 2525,
+      "width": 2070,
+      "starts_at": "b_pre"
+    },
+    {
+      "kind": "alt",
+      "y": 1622,
+      "h": 474,
+      "depth": 0,
+      "guards": [
+        [
+          1622,
+          "nombre y fechas válidos",
+          true
+        ],
+        [
+          1958,
+          "nombre o fechas inválidos",
+          false
+        ]
+      ],
+      "event_range": [
+        16,
+        21
+      ],
+      "participants": [
+        "b_pre",
+        "bitacora",
+        "control",
+        "temporada"
+      ],
+      "left": 455,
+      "right": 2525,
+      "width": 2070,
+      "starts_at": "b_pre"
+    },
+    {
+      "kind": "loop",
+      "y": 2439,
+      "h": 214,
+      "depth": 1,
+      "guards": [
+        [
+          2439,
+          "por cada variante",
+          true
+        ]
+      ],
+      "event_range": [
+        25,
+        27
+      ],
+      "participants": [
+        "control",
+        "variante"
+      ],
+      "left": 790,
+      "right": 1185,
+      "width": 395,
+      "starts_at": "control"
+    },
+    {
+      "kind": "alt",
+      "y": 2248,
+      "h": 710,
+      "depth": 0,
+      "guards": [
+        [
+          2248,
+          "datos válidos y SKU único",
+          true
+        ],
+        [
+          2820,
+          "datos inválidos o SKU repetido",
+          false
+        ]
+      ],
+      "event_range": [
+        23,
+        30
+      ],
+      "participants": [
+        "b_pre",
+        "bitacora",
+        "control",
+        "prenda",
+        "variante"
+      ],
+      "left": 455,
+      "right": 2525,
+      "width": 2070,
+      "starts_at": "b_pre"
+    },
+    {
+      "kind": "alt",
+      "y": 3236,
+      "h": 409,
+      "depth": 1,
+      "guards": [
+        [
+          3236,
+          "cambios válidos",
+          true
+        ],
+        [
+          3507,
+          "cambios inválidos",
+          false
+        ]
+      ],
+      "event_range": [
+        33,
+        37
+      ],
+      "participants": [
+        "b_pre",
+        "bitacora",
+        "control",
+        "prenda"
+      ],
+      "left": 455,
+      "right": 2525,
+      "width": 2070,
+      "starts_at": "b_pre"
+    },
+    {
+      "kind": "opt",
+      "y": 3110,
+      "h": 580,
+      "depth": 0,
+      "guards": [
+        [
+          3110,
+          "se confirman los cambios",
+          true
+        ]
+      ],
+      "event_range": [
+        32,
+        37
+      ],
+      "participants": [
+        "b_pre",
+        "bitacora",
+        "control",
+        "prenda"
+      ],
+      "left": 455,
+      "right": 2525,
+      "width": 2070,
+      "starts_at": "b_pre"
+    },
+    {
+      "kind": "alt",
+      "y": 3842,
+      "h": 409,
+      "depth": 0,
+      "guards": [
+        [
+          3842,
+          "prenda activa y autorizada",
+          true
+        ],
+        [
+          4113,
+          "prenda ausente o ya inactiva",
+          false
+        ]
+      ],
+      "event_range": [
+        39,
+        43
+      ],
+      "participants": [
+        "b_pre",
+        "bitacora",
+        "control",
+        "prenda"
+      ],
+      "left": 455,
+      "right": 2525,
+      "width": 2070,
+      "starts_at": "b_pre"
+    }
+  ],
+  "correspondence": [
+    {
+      "robustness": 1,
+      "source": null,
+      "symbol": null,
+      "line": null,
+      "sequence_text": "Consultar catálogo"
+    },
+    {
+      "robustness": 2,
+      "source": "Parcial2_backend/app/routers/prendas.py",
+      "symbol": "listar_prendas",
+      "line": 101,
+      "sequence_text": "listar_prendas(filtros)"
+    },
+    {
+      "robustness": 3,
+      "source": "Parcial2_backend/app/services/prenda_service.py",
+      "symbol": "listar_prendas",
+      "line": 58,
+      "sequence_text": "listar_prendas(filtros)"
+    },
+    {
+      "robustness": 4,
+      "source": null,
+      "symbol": null,
+      "line": null,
+      "sequence_text": "prendas"
+    },
+    {
+      "robustness": 5,
+      "source": null,
+      "symbol": null,
+      "line": null,
+      "sequence_text": "catálogo"
+    },
+    {
+      "robustness": 6,
+      "source": null,
+      "symbol": null,
+      "line": null,
+      "sequence_text": "Mostrar catálogo"
+    },
+    {
+      "robustness": 7,
+      "source": null,
+      "symbol": null,
+      "line": null,
+      "sequence_text": "Registrar categoría"
+    },
+    {
+      "robustness": 8,
+      "source": "Parcial2_backend/app/routers/categorias.py",
+      "symbol": "crear_categoria",
+      "line": 70,
+      "sequence_text": "crear_categoria(datos)"
+    },
+    {
+      "robustness": 9,
+      "source": "Parcial2_backend/app/services/categoria_service.py",
+      "symbol": "crear_categoria",
+      "line": 114,
+      "sequence_text": "crear_categoria(datos)"
+    },
+    {
+      "robustness": 10,
+      "source": null,
+      "symbol": null,
+      "line": null,
+      "sequence_text": "id_categoria"
+    },
+    {
+      "robustness": 11,
+      "source": "Parcial2_backend/app/services/bitacora_service.py",
+      "symbol": "registrar_bitacora",
+      "line": 65,
+      "sequence_text": "registrar_bitacora(categoria, alta)"
+    },
+    {
+      "robustness": 12,
+      "source": null,
+      "symbol": null,
+      "line": null,
+      "sequence_text": "categoría registrada"
+    },
+    {
+      "robustness": 13,
+      "source": null,
+      "symbol": null,
+      "line": null,
+      "sequence_text": "Registrar temporada o colección"
+    },
+    {
+      "robustness": 14,
+      "source": "Parcial2_backend/app/routers/temporadas.py",
+      "symbol": "crear_temporada",
+      "line": 100,
+      "sequence_text": "crear_temporada(datos)"
+    },
+    {
+      "robustness": 15,
+      "source": "Parcial2_backend/app/services/temporada_service.py",
+      "symbol": "crear_temporada",
+      "line": 131,
+      "sequence_text": "crear_temporada(datos)"
+    },
+    {
+      "robustness": 16,
+      "source": null,
+      "symbol": null,
+      "line": null,
+      "sequence_text": "temporada creada"
+    },
+    {
+      "robustness": 17,
+      "source": "Parcial2_backend/app/services/bitacora_service.py",
+      "symbol": "registrar_bitacora",
+      "line": 65,
+      "sequence_text": "registrar_bitacora(temporada, alta)"
+    },
+    {
+      "robustness": 18,
+      "source": null,
+      "symbol": null,
+      "line": null,
+      "sequence_text": "temporada registrada"
+    },
+    {
+      "robustness": 19,
+      "source": null,
+      "symbol": null,
+      "line": null,
+      "sequence_text": "Registrar prenda y variantes"
+    },
+    {
+      "robustness": 20,
+      "source": "Parcial2_backend/app/routers/prendas.py",
+      "symbol": "crear_prenda",
+      "line": 170,
+      "sequence_text": "crear_prenda(datos)"
+    },
+    {
+      "robustness": 21,
+      "source": "Parcial2_backend/app/services/prenda_service.py",
+      "symbol": "crear_prenda",
+      "line": 217,
+      "sequence_text": "crear_prenda(datos)"
+    },
+    {
+      "robustness": 22,
+      "source": null,
+      "symbol": null,
+      "line": null,
+      "sequence_text": "id_prenda"
+    },
+    {
+      "robustness": 23,
+      "source": "Parcial2_backend/app/services/prenda_service.py",
+      "symbol": "_crear_variante",
+      "line": 288,
+      "sequence_text": "_crear_variante(datos)"
+    },
+    {
+      "robustness": 24,
+      "source": null,
+      "symbol": null,
+      "line": null,
+      "sequence_text": "variante creada"
+    },
+    {
+      "robustness": 25,
+      "source": "Parcial2_backend/app/services/bitacora_service.py",
+      "symbol": "registrar_bitacora",
+      "line": 65,
+      "sequence_text": "registrar_bitacora(prenda, alta)"
+    },
+    {
+      "robustness": 26,
+      "source": null,
+      "symbol": null,
+      "line": null,
+      "sequence_text": "prenda con variantes"
+    },
+    {
+      "robustness": 27,
+      "source": null,
+      "symbol": null,
+      "line": null,
+      "sequence_text": "Mostrar resultado del registro"
+    },
+    {
+      "robustness": 28,
+      "source": null,
+      "symbol": null,
+      "line": null,
+      "sequence_text": "Editar datos, precios y ofertas"
+    },
+    {
+      "robustness": 29,
+      "source": "Parcial2_backend/app/routers/prendas.py",
+      "symbol": "actualizar_prenda",
+      "line": 274,
+      "sequence_text": "actualizar_prenda(id, cambios)"
+    },
+    {
+      "robustness": 30,
+      "source": "Parcial2_backend/app/services/prenda_service.py",
+      "symbol": "actualizar_prenda",
+      "line": 363,
+      "sequence_text": "actualizar_prenda(id, cambios)"
+    },
+    {
+      "robustness": 31,
+      "source": "Parcial2_backend/app/services/bitacora_service.py",
+      "symbol": "registrar_bitacora",
+      "line": 65,
+      "sequence_text": "registrar_bitacora(prenda, modificación)"
+    },
+    {
+      "robustness": 32,
+      "source": null,
+      "symbol": null,
+      "line": null,
+      "sequence_text": "prenda actualizada"
+    },
+    {
+      "robustness": 33,
+      "source": null,
+      "symbol": null,
+      "line": null,
+      "sequence_text": "Inhabilitar prenda"
+    },
+    {
+      "robustness": 34,
+      "source": "Parcial2_backend/app/routers/prendas.py",
+      "symbol": "inhabilitar_prenda",
+      "line": 362,
+      "sequence_text": "inhabilitar_prenda(id)"
+    },
+    {
+      "robustness": 35,
+      "source": "Parcial2_backend/app/services/prenda_service.py",
+      "symbol": "inhabilitar_prenda",
+      "line": 437,
+      "sequence_text": "inhabilitar_prenda(id)"
+    },
+    {
+      "robustness": 36,
+      "source": "Parcial2_backend/app/services/bitacora_service.py",
+      "symbol": "registrar_bitacora",
+      "line": 65,
+      "sequence_text": "registrar_bitacora(prenda, baja lógica)"
+    },
+    {
+      "robustness": 37,
+      "source": null,
+      "symbol": null,
+      "line": null,
+      "sequence_text": "prenda inactiva"
+    }
+  ],
+  "scope": "Mismas seis acciones principales de la robustez; validaciones y alternativas resumidas sin añadir entidades. Los controles son responsabilidades de análisis, no clases Python inventadas.",
+  "geometry": "alt y opt inician en la línea de vida de Interfaz (margen de 30 px); loop inicia en Control. El extremo derecho se limita al último participante afectado. Las líneas intermedias del orden fijo no implican interacción si no reciben mensajes.",
+  "changes": "Se conserva cada uno de los 37 mensajes principales. El retorno 27 se generaliza a resultado para cubrir éxito y rechazo. Los números de secuencia se asignan de nuevo al añadir alternativas."
+}

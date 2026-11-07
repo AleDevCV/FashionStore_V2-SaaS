@@ -1,0 +1,170 @@
+{
+  "checked_at_utc": "2026-11-01T23:52:14.948370+00:00",
+  "database": "fashionstore_p2",
+  "server_version": "17.11 (Debian 17.11-0+deb13u1)",
+  "sql_sha256": "f51685519766df0159952714e4befab14b7f414dbce252ab89ee4fc24123f14e",
+  "summary": {
+    "schemas": 1,
+    "relations": 76,
+    "columns": 343,
+    "constraints": 238,
+    "indexes": 121,
+    "functions": 29,
+    "triggers": 18,
+    "policies": 59,
+    "views": 1,
+    "sequences": 30,
+    "enums": 0,
+    "extensions": 2,
+    "tables": 45,
+    "primary_keys": 45,
+    "foreign_keys": 136,
+    "rls_tables": 41
+  },
+  "comparison": {
+    "schemas": true,
+    "relations": true,
+    "columns": true,
+    "constraints": true,
+    "indexes": true,
+    "functions": true,
+    "triggers": true,
+    "policies": true,
+    "views": true,
+    "sequences": true,
+    "enums": true,
+    "extensions": true
+  },
+  "restore_database": "fashionstore_p2_schema_check_20261101_90a94250",
+  "restore_success": true,
+  "test_database_removed": true,
+  "schema_only": true,
+  "production_data_modified": false,
+  "service_restarts_requested": false,
+  "health_before": {
+    "fashionstore-p2-api": {
+      "NRestarts": "0",
+      "ExecMainStatus": "0",
+      "MemoryCurrent": "201338880",
+      "ActiveState": "active",
+      "SubState": "running"
+    },
+    "fashionstore-p2-tunnel": {
+      "NRestarts": "0",
+      "ExecMainStatus": "0",
+      "MemoryCurrent": "24068096",
+      "ActiveState": "active",
+      "SubState": "running"
+    },
+    "nginx": {
+      "NRestarts": "0",
+      "ExecMainStatus": "0",
+      "MemoryCurrent": "4292608",
+      "ActiveState": "active",
+      "SubState": "running"
+    },
+    "postgresql": {
+      "NRestarts": "0",
+      "ExecMainStatus": "0",
+      "MemoryCurrent": "[not set]",
+      "ActiveState": "active",
+      "SubState": "exited"
+    },
+    "cloudflared": {
+      "NRestarts": "0",
+      "ExecMainStatus": "0",
+      "MemoryCurrent": "34189312",
+      "ActiveState": "active",
+      "SubState": "running"
+    },
+    "tailscaled": {
+      "NRestarts": "0",
+      "ExecMainStatus": "0",
+      "MemoryCurrent": "116809728",
+      "ActiveState": "active",
+      "SubState": "running"
+    },
+    "api": {
+      "status": 200,
+      "body": "{\"estado\":\"ok\"}"
+    },
+    "web_proxy": {
+      "status": 200,
+      "body": "{\"estado\":\"ok\"}"
+    },
+    "login": {
+      "status": 200
+    },
+    "pwa": {
+      "status": 200
+    },
+    "tunnel": {
+      "status": 200
+    },
+    "database": true
+  },
+  "health_after": {
+    "fashionstore-p2-api": {
+      "NRestarts": "0",
+      "ExecMainStatus": "0",
+      "MemoryCurrent": "201338880",
+      "ActiveState": "active",
+      "SubState": "running"
+    },
+    "fashionstore-p2-tunnel": {
+      "NRestarts": "0",
+      "ExecMainStatus": "0",
+      "MemoryCurrent": "24068096",
+      "ActiveState": "active",
+      "SubState": "running"
+    },
+    "nginx": {
+      "NRestarts": "0",
+      "ExecMainStatus": "0",
+      "MemoryCurrent": "4292608",
+      "ActiveState": "active",
+      "SubState": "running"
+    },
+    "postgresql": {
+      "NRestarts": "0",
+      "ExecMainStatus": "0",
+      "MemoryCurrent": "[not set]",
+      "ActiveState": "active",
+      "SubState": "exited"
+    },
+    "cloudflared": {
+      "NRestarts": "0",
+      "ExecMainStatus": "0",
+      "MemoryCurrent": "34189312",
+      "ActiveState": "active",
+      "SubState": "running"
+    },
+    "tailscaled": {
+      "NRestarts": "0",
+      "ExecMainStatus": "0",
+      "MemoryCurrent": "116895744",
+      "ActiveState": "active",
+      "SubState": "running"
+    },
+    "api": {
+      "status": 200,
+      "body": "{\"estado\":\"ok\"}"
+    },
+    "web_proxy": {
+      "status": 200,
+      "body": "{\"estado\":\"ok\"}"
+    },
+    "login": {
+      "status": 200
+    },
+    "pwa": {
+      "status": 200
+    },
+    "tunnel": {
+      "status": 200
+    },
+    "database": true
+  },
+  "check_definitions_reparsed_by_postgresql": 9,
+  "role_authentication": "Los roles ausentes se crean NOLOGIN, sin contraseñas. La autenticación de despliegue se configura por separado."
+}

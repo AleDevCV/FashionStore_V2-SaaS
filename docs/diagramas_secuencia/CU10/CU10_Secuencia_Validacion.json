@@ -1,0 +1,47 @@
+{
+  "cu": "CU10",
+  "archivo": "CU10_Diagrama_Secuencia.drawio",
+  "participantes": 6,
+  "mensajes": 21,
+  "fragmentos": {
+    "alt": 2,
+    "opt": 0,
+    "loop": 0
+  },
+  "ancho": 2005,
+  "alto": 2040,
+  "sha256": "e4bdf59973d4eddffe95838dbbf632db649c9481a697aab5baf9fb1281987600",
+  "fuentes": [
+    {
+      "file": "Parcial2_backend/app/routers/movimientos.py",
+      "sha256": "b2caaf4edc1bf5c7b889c1197d21ca89a8d5a443533b3da230c46ff2bd919e00"
+    },
+    {
+      "file": "Parcial2_backend/app/services/bitacora_service.py",
+      "sha256": "ec5d5294930c1b8e3e1d4628fd0b1f8b183bdab2ba205c19751245c33e5608a0"
+    },
+    {
+      "file": "Parcial2_backend/app/services/movimiento_service.py",
+      "sha256": "61d34960182d30005bd4846a1650fee06be13af51f1434dd7ba949459a935993"
+    },
+    {
+      "file": "Parcial2_frontend-web/src/app/features/inventario-movimientos/movimientos.ts",
+      "sha256": "5dbb6e55a794f48d1b17becab23ace0e60d3d060da10c51dac33ff080918a770"
+    },
+    {
+      "file": "Parcial2_mobile/lib/features/movimientos/movimientos_screen.dart",
+      "sha256": "41faae491afd90d799168b4b0f8d406d54caaa0d79b716747ebe9d6f5bf7e075"
+    }
+  ],
+  "actores": 1,
+  "interfaces": 1,
+  "controles": 1,
+  "entidades": 3,
+  "participantes_identicos_a_robustez": true,
+  "mensajes_principales_cubiertos": 19,
+  "xsd_valido": true,
+  "limites_fragmentos_validados": true,
+  "bucles_solo_participantes_involucrados": true,
+  "sin_actores_dentro_de_fragmentos": true,
+  "sin_comunicacion_entre_entidades": true
+}

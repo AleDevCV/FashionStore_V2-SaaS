@@ -1,0 +1,965 @@
+{
+  "case": "CU09",
+  "title": "CU09 - Explorar catálogo y asistencia de compra",
+  "nodes": {
+    "actor": {
+      "kind": "actor",
+      "name": "Visitante / Cliente"
+    },
+    "b_pre": {
+      "kind": "boundary",
+      "name": "Frontend : Catálogo y asistencia"
+    },
+    "control": {
+      "kind": "control",
+      "name": "Backend : Catálogo y asistencia",
+      "note": "Control de análisis que agrupa los módulos indicados en las referencias del caso de uso."
+    },
+    "prenda": {
+      "kind": "entity",
+      "name": "Prenda",
+      "table": "prenda"
+    },
+    "inventario": {
+      "kind": "entity",
+      "name": "Disponibilidad",
+      "table": "inventario_catalogo"
+    },
+    "bitacora": {
+      "kind": "entity",
+      "name": "Bitácora",
+      "table": "bitacora"
+    },
+    "b_ia": {
+      "kind": "boundary",
+      "name": "Integración : Servicios de IA"
+    }
+  },
+  "messages": [
+    {
+      "n": 1,
+      "action": 1,
+      "a": "actor",
+      "b": "b_pre",
+      "text": "Buscar prendas y aplicar filtros",
+      "kind": "ui",
+      "color": "#28343E",
+      "source": null,
+      "symbol": null
+    },
+    {
+      "n": 2,
+      "action": 1,
+      "a": "b_pre",
+      "b": "control",
+      "text": "consultar_catalogo(filtros)",
+      "kind": "read",
+      "color": "#28343E",
+      "source": "Parcial2_backend/app/routers/catalogo.py",
+      "symbol": "consultar_catalogo",
+      "line": 69
+    },
+    {
+      "n": 3,
+      "action": 1,
+      "a": "control",
+      "b": "prenda",
+      "text": "consultar_catalogo(filtros)",
+      "kind": "read",
+      "color": "#28343E",
+      "source": "Parcial2_backend/app/services/catalogo_service.py",
+      "symbol": "consultar_catalogo",
+      "line": 95
+    },
+    {
+      "n": 4,
+      "action": 1,
+      "a": "prenda",
+      "b": "control",
+      "text": "prendas publicadas",
+      "kind": "reply",
+      "color": "#287947",
+      "source": null,
+      "symbol": null
+    },
+    {
+      "n": 5,
+      "action": 1,
+      "a": "control",
+      "b": "b_pre",
+      "text": "catálogo filtrado",
+      "kind": "reply",
+      "color": "#287947",
+      "source": null,
+      "symbol": null
+    },
+    {
+      "n": 6,
+      "action": 1,
+      "a": "b_pre",
+      "b": "actor",
+      "text": "Mostrar catálogo",
+      "kind": "reply",
+      "color": "#287947",
+      "source": null,
+      "symbol": null
+    },
+    {
+      "n": 7,
+      "action": 2,
+      "a": "actor",
+      "b": "b_pre",
+      "text": "Consultar ficha y variantes",
+      "kind": "ui",
+      "color": "#28343E",
+      "source": null,
+      "symbol": null
+    },
+    {
+      "n": 8,
+      "action": 2,
+      "a": "b_pre",
+      "b": "control",
+      "text": "obtener_ficha(id_prenda)",
+      "kind": "read",
+      "color": "#28343E",
+      "source": "Parcial2_backend/app/routers/catalogo.py",
+      "symbol": "obtener_ficha",
+      "line": 135
+    },
+    {
+      "n": 9,
+      "action": 2,
+      "a": "control",
+      "b": "prenda",
+      "text": "obtener_ficha_publica(id_prenda)",
+      "kind": "read",
+      "color": "#28343E",
+      "source": "Parcial2_backend/app/services/catalogo_service.py",
+      "symbol": "obtener_ficha_publica",
+      "line": 300
+    },
+    {
+      "n": 10,
+      "action": 2,
+      "a": "prenda",
+      "b": "control",
+      "text": "ficha con variantes y precios",
+      "kind": "reply",
+      "color": "#287947",
+      "source": null,
+      "symbol": null
+    },
+    {
+      "n": 11,
+      "action": 2,
+      "a": "control",
+      "b": "b_pre",
+      "text": "ficha de prenda",
+      "kind": "reply",
+      "color": "#287947",
+      "source": null,
+      "symbol": null
+    },
+    {
+      "n": 12,
+      "action": 2,
+      "a": "b_pre",
+      "b": "actor",
+      "text": "Mostrar ficha",
+      "kind": "reply",
+      "color": "#287947",
+      "source": null,
+      "symbol": null
+    },
+    {
+      "n": 13,
+      "action": 3,
+      "a": "actor",
+      "b": "b_pre",
+      "text": "Consultar disponibilidad",
+      "kind": "ui",
+      "color": "#28343E",
+      "source": null,
+      "symbol": null
+    },
+    {
+      "n": 14,
+      "action": 3,
+      "a": "b_pre",
+      "b": "control",
+      "text": "consultar_disponibilidad(id_variante)",
+      "kind": "read",
+      "color": "#28343E",
+      "source": "Parcial2_backend/app/routers/catalogo.py",
+      "symbol": "consultar_disponibilidad",
+      "line": 169
+    },
+    {
+      "n": 15,
+      "action": 3,
+      "a": "control",
+      "b": "inventario",
+      "text": "consultar_disponibilidad(id_variante)",
+      "kind": "read",
+      "color": "#28343E",
+      "source": "Parcial2_backend/app/services/catalogo_service.py",
+      "symbol": "consultar_disponibilidad",
+      "line": 266
+    },
+    {
+      "n": 16,
+      "action": 3,
+      "a": "inventario",
+      "b": "control",
+      "text": "sucursales con disponible",
+      "kind": "reply",
+      "color": "#287947",
+      "source": null,
+      "symbol": null
+    },
+    {
+      "n": 17,
+      "action": 3,
+      "a": "control",
+      "b": "b_pre",
+      "text": "disponibilidad",
+      "kind": "reply",
+      "color": "#287947",
+      "source": null,
+      "symbol": null
+    },
+    {
+      "n": 18,
+      "action": 4,
+      "a": "actor",
+      "b": "b_pre",
+      "text": "Solicitar recomendaciones [cliente]",
+      "kind": "ui",
+      "color": "#28343E",
+      "source": null,
+      "symbol": null
+    },
+    {
+      "n": 19,
+      "action": 4,
+      "a": "b_pre",
+      "b": "control",
+      "text": "recomendar_outfit(preferencias)",
+      "kind": "invoke",
+      "color": "#215D9C",
+      "source": "Parcial2_backend/app/routers/ia.py",
+      "symbol": "recomendar_outfit",
+      "line": 75
+    },
+    {
+      "n": 20,
+      "action": 4,
+      "a": "control",
+      "b": "prenda",
+      "text": "_obtener_catalogo_activo_con_stock()",
+      "kind": "read",
+      "color": "#28343E",
+      "source": "Parcial2_backend/app/services/ia_service.py",
+      "symbol": "_obtener_catalogo_activo_con_stock",
+      "line": 98
+    },
+    {
+      "n": 21,
+      "action": 4,
+      "a": "prenda",
+      "b": "control",
+      "text": "catálogo autorizado",
+      "kind": "reply",
+      "color": "#287947",
+      "source": null,
+      "symbol": null
+    },
+    {
+      "n": 22,
+      "action": 4,
+      "a": "control",
+      "b": "b_ia",
+      "text": "Generar recomendaciones [si proveedor disponible]",
+      "kind": "invoke",
+      "color": "#215D9C",
+      "source": "Parcial2_backend/app/services/ia_service.py",
+      "symbol": "recomendar_outfit",
+      "line": 165
+    },
+    {
+      "n": 23,
+      "action": 4,
+      "a": "b_ia",
+      "b": "control",
+      "text": "sugerencias para validar / fallo de proveedor",
+      "kind": "reply",
+      "color": "#287947",
+      "source": null,
+      "symbol": null
+    },
+    {
+      "n": 24,
+      "action": 4,
+      "a": "control",
+      "b": "bitacora",
+      "text": "registrar_bitacora(recomendación IA)",
+      "kind": "write",
+      "color": "#AC3636",
+      "source": "Parcial2_backend/app/services/bitacora_service.py",
+      "symbol": "registrar_bitacora",
+      "line": 65
+    },
+    {
+      "n": 25,
+      "action": 4,
+      "a": "control",
+      "b": "b_pre",
+      "text": "recomendaciones validadas o alternativa local",
+      "kind": "reply",
+      "color": "#287947",
+      "source": null,
+      "symbol": null
+    },
+    {
+      "n": 26,
+      "action": 4,
+      "a": "b_pre",
+      "b": "actor",
+      "text": "Mostrar recomendaciones",
+      "kind": "reply",
+      "color": "#287947",
+      "source": null,
+      "symbol": null
+    },
+    {
+      "n": 27,
+      "action": 5,
+      "a": "actor",
+      "b": "b_pre",
+      "text": "Abrir vestidor [opcional]",
+      "kind": "ui",
+      "color": "#28343E",
+      "source": null,
+      "symbol": null
+    },
+    {
+      "n": 28,
+      "action": 5,
+      "a": "b_pre",
+      "b": "control",
+      "text": "obtener_realtime_token()",
+      "kind": "invoke",
+      "color": "#215D9C",
+      "source": "Parcial2_backend/app/routers/ia.py",
+      "symbol": "obtener_realtime_token",
+      "line": 181
+    },
+    {
+      "n": 29,
+      "action": 5,
+      "a": "control",
+      "b": "bitacora",
+      "text": "registrar_bitacora(inicio de vestidor)",
+      "kind": "write",
+      "color": "#AC3636",
+      "source": "Parcial2_backend/app/services/bitacora_service.py",
+      "symbol": "registrar_bitacora",
+      "line": 65
+    },
+    {
+      "n": 30,
+      "action": 5,
+      "a": "control",
+      "b": "b_ia",
+      "text": "create_realtime_token()",
+      "kind": "invoke",
+      "color": "#215D9C",
+      "source": "Parcial2_backend/app/services/tryon_service.py",
+      "symbol": "create_realtime_token",
+      "line": 789
+    },
+    {
+      "n": 31,
+      "action": 5,
+      "a": "b_ia",
+      "b": "control",
+      "text": "token efímero y configuración",
+      "kind": "reply",
+      "color": "#287947",
+      "source": null,
+      "symbol": null
+    },
+    {
+      "n": 32,
+      "action": 5,
+      "a": "control",
+      "b": "b_pre",
+      "text": "acceso al vestidor",
+      "kind": "reply",
+      "color": "#287947",
+      "source": null,
+      "symbol": null
+    },
+    {
+      "n": 33,
+      "action": 5,
+      "a": "b_pre",
+      "b": "actor",
+      "text": "Abrir cámara y vestidor",
+      "kind": "reply",
+      "color": "#287947",
+      "source": null,
+      "symbol": null
+    }
+  ],
+  "actions": [
+    {
+      "id": 1,
+      "name": "Buscar prendas y aplicar filtros",
+      "first": 1,
+      "actor": "actor",
+      "ui": "b_pre",
+      "last": 6
+    },
+    {
+      "id": 2,
+      "name": "Consultar ficha y variantes",
+      "first": 7,
+      "actor": "actor",
+      "ui": "b_pre",
+      "last": 12
+    },
+    {
+      "id": 3,
+      "name": "Consultar disponibilidad",
+      "first": 13,
+      "actor": "actor",
+      "ui": "b_pre",
+      "last": 17
+    },
+    {
+      "id": 4,
+      "name": "Solicitar recomendaciones [cliente]",
+      "first": 18,
+      "actor": "actor",
+      "ui": "b_pre",
+      "last": 26
+    },
+    {
+      "id": 5,
+      "name": "Abrir vestidor [opcional]",
+      "first": 27,
+      "actor": "actor",
+      "ui": "b_pre",
+      "last": 33
+    }
+  ],
+  "views": [
+    {
+      "name": "CU09 - Robustez simplificada",
+      "title": "CU09 - Explorar catálogo y asistencia de compra - Diagrama de robustez",
+      "width": 4600,
+      "height": 2100,
+      "nodes": {
+        "actor": {
+          "x": 180,
+          "y": 1050.0
+        },
+        "b_pre": {
+          "x": 1100,
+          "y": 1050.0
+        },
+        "control": {
+          "x": 2400,
+          "y": 1050.0
+        },
+        "prenda": {
+          "x": 4300,
+          "y": 377
+        },
+        "inventario": {
+          "x": 4300,
+          "y": 793
+        },
+        "bitacora": {
+          "x": 4300,
+          "y": 1192
+        },
+        "b_ia": {
+          "x": 4300,
+          "y": 1547
+        }
+      },
+      "groups": [
+        {
+          "pair": [
+            "actor",
+            "b_pre"
+          ],
+          "points": [
+            [
+              215,
+              1050.0
+            ],
+            [
+              1035,
+              1050.0
+            ]
+          ],
+          "rows": [
+            {
+              "n": 1,
+              "x": 650,
+              "y": 814.0,
+              "width": 600,
+              "height": 44,
+              "forward": true,
+              "rightward": true
+            },
+            {
+              "n": 7,
+              "x": 650,
+              "y": 858.0,
+              "width": 600,
+              "height": 44,
+              "forward": true,
+              "rightward": true
+            },
+            {
+              "n": 13,
+              "x": 650,
+              "y": 902.0,
+              "width": 600,
+              "height": 44,
+              "forward": true,
+              "rightward": true
+            },
+            {
+              "n": 18,
+              "x": 650,
+              "y": 946.0,
+              "width": 600,
+              "height": 44,
+              "forward": true,
+              "rightward": true
+            },
+            {
+              "n": 27,
+              "x": 650,
+              "y": 990.0,
+              "width": 600,
+              "height": 44,
+              "forward": true,
+              "rightward": true
+            },
+            {
+              "n": 6,
+              "x": 650,
+              "y": 1110.0,
+              "width": 600,
+              "height": 44,
+              "forward": false,
+              "rightward": false
+            },
+            {
+              "n": 12,
+              "x": 650,
+              "y": 1154.0,
+              "width": 600,
+              "height": 44,
+              "forward": false,
+              "rightward": false
+            },
+            {
+              "n": 26,
+              "x": 650,
+              "y": 1198.0,
+              "width": 600,
+              "height": 44,
+              "forward": false,
+              "rightward": false
+            },
+            {
+              "n": 33,
+              "x": 650,
+              "y": 1242.0,
+              "width": 600,
+              "height": 44,
+              "forward": false,
+              "rightward": false
+            }
+          ]
+        },
+        {
+          "pair": [
+            "b_pre",
+            "control"
+          ],
+          "points": [
+            [
+              1165,
+              1050.0
+            ],
+            [
+              2335,
+              1050.0
+            ]
+          ],
+          "rows": [
+            {
+              "n": 2,
+              "x": 1650,
+              "y": 814.0,
+              "width": 550,
+              "height": 44,
+              "forward": true,
+              "rightward": true
+            },
+            {
+              "n": 8,
+              "x": 1650,
+              "y": 858.0,
+              "width": 550,
+              "height": 44,
+              "forward": true,
+              "rightward": true
+            },
+            {
+              "n": 14,
+              "x": 1650,
+              "y": 902.0,
+              "width": 550,
+              "height": 44,
+              "forward": true,
+              "rightward": true
+            },
+            {
+              "n": 19,
+              "x": 1650,
+              "y": 946.0,
+              "width": 550,
+              "height": 44,
+              "forward": true,
+              "rightward": true
+            },
+            {
+              "n": 28,
+              "x": 1650,
+              "y": 990.0,
+              "width": 550,
+              "height": 44,
+              "forward": true,
+              "rightward": true
+            },
+            {
+              "n": 5,
+              "x": 1650,
+              "y": 1110.0,
+              "width": 550,
+              "height": 44,
+              "forward": false,
+              "rightward": false
+            },
+            {
+              "n": 11,
+              "x": 1650,
+              "y": 1154.0,
+              "width": 550,
+              "height": 44,
+              "forward": false,
+              "rightward": false
+            },
+            {
+              "n": 17,
+              "x": 1650,
+              "y": 1198.0,
+              "width": 550,
+              "height": 44,
+              "forward": false,
+              "rightward": false
+            },
+            {
+              "n": 25,
+              "x": 1650,
+              "y": 1258.0,
+              "width": 550,
+              "height": 76,
+              "forward": false,
+              "rightward": false
+            },
+            {
+              "n": 32,
+              "x": 1650,
+              "y": 1318.0,
+              "width": 550,
+              "height": 44,
+              "forward": false,
+              "rightward": false
+            }
+          ]
+        },
+        {
+          "pair": [
+            "control",
+            "prenda"
+          ],
+          "points": [
+            [
+              2465,
+              1050.0
+            ],
+            [
+              2720,
+              377
+            ],
+            [
+              4235,
+              377
+            ]
+          ],
+          "rows": [
+            {
+              "n": 3,
+              "x": 3300,
+              "y": 229.0,
+              "width": 1050,
+              "height": 44,
+              "forward": true,
+              "rightward": true
+            },
+            {
+              "n": 9,
+              "x": 3300,
+              "y": 273.0,
+              "width": 1050,
+              "height": 44,
+              "forward": true,
+              "rightward": true
+            },
+            {
+              "n": 20,
+              "x": 3300,
+              "y": 317.0,
+              "width": 1050,
+              "height": 44,
+              "forward": true,
+              "rightward": true
+            },
+            {
+              "n": 4,
+              "x": 3300,
+              "y": 437.0,
+              "width": 1050,
+              "height": 44,
+              "forward": false,
+              "rightward": false
+            },
+            {
+              "n": 10,
+              "x": 3300,
+              "y": 481.0,
+              "width": 1050,
+              "height": 44,
+              "forward": false,
+              "rightward": false
+            },
+            {
+              "n": 21,
+              "x": 3300,
+              "y": 525.0,
+              "width": 1050,
+              "height": 44,
+              "forward": false,
+              "rightward": false
+            }
+          ]
+        },
+        {
+          "pair": [
+            "control",
+            "inventario"
+          ],
+          "points": [
+            [
+              2465,
+              1050.0
+            ],
+            [
+              2720,
+              793
+            ],
+            [
+              4235,
+              793
+            ]
+          ],
+          "rows": [
+            {
+              "n": 15,
+              "x": 3300,
+              "y": 733.0,
+              "width": 1050,
+              "height": 44,
+              "forward": true,
+              "rightward": true
+            },
+            {
+              "n": 16,
+              "x": 3300,
+              "y": 853.0,
+              "width": 1050,
+              "height": 44,
+              "forward": false,
+              "rightward": false
+            }
+          ]
+        },
+        {
+          "pair": [
+            "b_ia",
+            "control"
+          ],
+          "points": [
+            [
+              4235,
+              1547
+            ],
+            [
+              2720,
+              1547
+            ],
+            [
+              2465,
+              1050.0
+            ]
+          ],
+          "rows": [
+            {
+              "n": 23,
+              "x": 3300,
+              "y": 1443.0,
+              "width": 1050,
+              "height": 44,
+              "forward": true,
+              "rightward": false
+            },
+            {
+              "n": 31,
+              "x": 3300,
+              "y": 1487.0,
+              "width": 1050,
+              "height": 44,
+              "forward": true,
+              "rightward": false
+            },
+            {
+              "n": 22,
+              "x": 3300,
+              "y": 1607.0,
+              "width": 1050,
+              "height": 44,
+              "forward": false,
+              "rightward": true
+            },
+            {
+              "n": 30,
+              "x": 3300,
+              "y": 1651.0,
+              "width": 1050,
+              "height": 44,
+              "forward": false,
+              "rightward": true
+            }
+          ]
+        },
+        {
+          "pair": [
+            "control",
+            "bitacora"
+          ],
+          "points": [
+            [
+              2465,
+              1050.0
+            ],
+            [
+              2720,
+              1192
+            ],
+            [
+              4235,
+              1192
+            ]
+          ],
+          "rows": [
+            {
+              "n": 24,
+              "x": 3300,
+              "y": 1088.0,
+              "width": 1050,
+              "height": 44,
+              "forward": true,
+              "rightward": true
+            },
+            {
+              "n": 29,
+              "x": 3300,
+              "y": 1132.0,
+              "width": 1050,
+              "height": 44,
+              "forward": true,
+              "rightward": true
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "exports": [
+    "General"
+  ],
+  "notes": [
+    "La tienda ya fue elegida; su selección pertenece al acceso y contexto comercial. Las variantes se incluyen en la ficha para no repetir entidades auxiliares.",
+    "Las recomendaciones requieren cliente autenticado y disponen de fallback local. La solicitud al proveedor es condicional. Se representa el acceso al vestidor Decart existente mediante token, sin inventar una implementación nueva.",
+    "La integración IA es una interfaz externa. La cámara, permisos y procesamiento audiovisual permanecen dentro del subflujo opcional de la interfaz."
+  ],
+  "sources": [
+    {
+      "file": "Parcial2_backend/app/routers/catalogo.py",
+      "sha256": "a05748ee7d167f5313501c9c05cef9decc152593eea9afc9f24940927e887856"
+    },
+    {
+      "file": "Parcial2_backend/app/routers/ia.py",
+      "sha256": "e7a20c370647e9aff8fed2885a2b9ba763504a4ccf865ddc7422d8ca335d5c94"
+    },
+    {
+      "file": "Parcial2_backend/app/services/bitacora_service.py",
+      "sha256": "ec5d5294930c1b8e3e1d4628fd0b1f8b183bdab2ba205c19751245c33e5608a0"
+    },
+    {
+      "file": "Parcial2_backend/app/services/catalogo_service.py",
+      "sha256": "ebb601822e558f04bbffb61b277c7667d979b78edc08debabff723369f1515b7"
+    },
+    {
+      "file": "Parcial2_backend/app/services/ia_service.py",
+      "sha256": "331b7a456aef2092046c9d38935222a5be21f2496d522d3496654b9a8d29e9c7"
+    },
+    {
+      "file": "Parcial2_backend/app/services/tryon_service.py",
+      "sha256": "aab687549972e9d53af922a68e44c70a87973d8dfec602aae5e3438645fdee23"
+    },
+    {
+      "file": "Parcial2_frontend-web/src/app/features/catalogo/catalogo.ts",
+      "sha256": "e6ef1512b1003aed2767cbcbc94ddf67e8caf285bce5bc1852e12534c2b386f7"
+    },
+    {
+      "file": "Parcial2_frontend-web/src/app/features/catalogo/probador-ia/probador-ia.ts",
+      "sha256": "db53cf5250138f90b3beab4b289a499fa6ab293fa0cfe5b79806b2fd8bac78d5"
+    },
+    {
+      "file": "Parcial2_mobile/lib/features/catalogo/catalogo_screen.dart",
+      "sha256": "f09885a4d6a5b82756eb80047cbec549a88959174aaefe9512f4e5416e54d1a3"
+    }
+  ]
+}

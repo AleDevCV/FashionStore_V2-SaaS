@@ -1,0 +1,20 @@
+﻿numero,origen,destino,mensaje,archivo,linea
+1,actor,b_pre,Consultar stock de la variante,,
+2,b_pre,control,"consultar_stock(sucursal, variante)",Parcial2_backend/app/routers/movimientos.py,43
+3,control,inventario,"obtener_stock_actual(sucursal, variante)",Parcial2_backend/app/services/movimiento_service.py,27
+4,inventario,control,stock físico,,
+5,control,b_pre,stock actual,,
+6,b_pre,actor,Mostrar stock,,
+7,actor,b_pre,Registrar movimiento y motivo,,
+8,b_pre,control,registrar_movimiento(datos),Parcial2_backend/app/routers/movimientos.py,85
+9,control,movimiento,registrar_movimiento(datos),Parcial2_backend/app/services/movimiento_service.py,102
+10,movimiento,control,movimiento y stock resultante,,
+11,control,bitacora,registrar_bitacora(movimiento),Parcial2_backend/app/services/bitacora_service.py,65
+12,control,b_pre,movimiento confirmado,,
+13,b_pre,actor,Mostrar movimiento registrado,,
+14,actor,b_pre,Consultar historial de movimientos,,
+15,b_pre,control,listar_movimientos(filtros),Parcial2_backend/app/routers/movimientos.py,130
+16,control,movimiento,listar_movimientos(filtros),Parcial2_backend/app/services/movimiento_service.py,201
+17,movimiento,control,movimientos autorizados,,
+18,control,b_pre,historial,,
+19,b_pre,actor,Mostrar historial,,

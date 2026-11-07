@@ -1,0 +1,32 @@
+﻿numero,origen,destino,mensaje,archivo,linea
+1,actor,b_pre,Registrar reserva de prendas,,
+2,b_pre,control,"crear_reserva(cliente, sucursal, ítems)",Parcial2_backend/app/routers/ventas.py,70
+3,control,inventario,"quote(ítems, sucursal)",Parcial2_backend/app/services/commerce.py,26
+4,inventario,control,disponibilidad y precios válidos,,
+5,control,reserva,"reserve(cliente, sucursal, ítems)",Parcial2_backend/app/services/commerce.py,49
+6,reserva,control,id_reserva,,
+7,control,retencion,Retener unidades durante 24 horas,Parcial2_backend/app/services/commerce.py,49
+8,control,bitacora,Auditar reserva,Parcial2_backend/app/services/commerce.py,49
+9,control,b_pre,reserva pendiente,,
+10,b_pre,actor,Mostrar reserva,,
+11,actor,b_pre,Consultar reserva propia,,
+12,b_pre,control,obtener_reserva(id_reserva),Parcial2_backend/app/routers/ventas.py,91
+13,control,reserva,obtener_reserva_por_id(id_reserva),Parcial2_backend/app/services/venta_service.py,88
+14,reserva,control,reserva y detalles,,
+15,control,b_pre,reserva,,
+16,b_pre,actor,Mostrar seguimiento,,
+17,staff,b_pre,Preparar prendas,,
+18,b_pre,control,"actualizar_estado_reserva_endpoint(id, 'Preparado')",Parcial2_backend/app/routers/ventas.py,283
+19,control,reserva,"transition_reservation(id, 'Preparado')",Parcial2_backend/app/services/commerce.py,64
+20,control,b_pre,reserva preparada,,
+21,staff,b_pre,Entregar reserva ya pagada,,
+22,b_pre,control,deliver(id_venta),Parcial2_backend/app/routers/order_lifecycle.py,30
+23,control,venta,Registrar entrega [venta pagada existente],Parcial2_backend/app/routers/order_lifecycle.py,30
+24,control,reserva,Marcar reserva 'Atendido',Parcial2_backend/app/routers/order_lifecycle.py,30
+25,control,b_pre,entrega confirmada,,
+26,b_pre,staff,Mostrar entrega registrada,,
+27,actor,b_pre,Cancelar reserva sin pago,,
+28,b_pre,control,cancel(id_reserva),Parcial2_backend/app/routers/order_lifecycle.py,20
+29,control,retencion,Liberar retenciones,Parcial2_backend/app/routers/order_lifecycle.py,20
+30,control,reserva,Marcar reserva 'Cancelado',Parcial2_backend/app/routers/order_lifecycle.py,20
+31,control,b_pre,reserva cancelada,,

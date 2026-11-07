@@ -1,0 +1,34 @@
+﻿numero,origen,destino,mensaje,archivo,linea
+1,actor,b_pre,Buscar prendas y aplicar filtros,,
+2,b_pre,control,consultar_catalogo(filtros),Parcial2_backend/app/routers/catalogo.py,69
+3,control,prenda,consultar_catalogo(filtros),Parcial2_backend/app/services/catalogo_service.py,95
+4,prenda,control,prendas publicadas,,
+5,control,b_pre,catálogo filtrado,,
+6,b_pre,actor,Mostrar catálogo,,
+7,actor,b_pre,Consultar ficha y variantes,,
+8,b_pre,control,obtener_ficha(id_prenda),Parcial2_backend/app/routers/catalogo.py,135
+9,control,prenda,obtener_ficha_publica(id_prenda),Parcial2_backend/app/services/catalogo_service.py,300
+10,prenda,control,ficha con variantes y precios,,
+11,control,b_pre,ficha de prenda,,
+12,b_pre,actor,Mostrar ficha,,
+13,actor,b_pre,Consultar disponibilidad,,
+14,b_pre,control,consultar_disponibilidad(id_variante),Parcial2_backend/app/routers/catalogo.py,169
+15,control,inventario,consultar_disponibilidad(id_variante),Parcial2_backend/app/services/catalogo_service.py,266
+16,inventario,control,sucursales con disponible,,
+17,control,b_pre,disponibilidad,,
+18,actor,b_pre,Solicitar recomendaciones [cliente],,
+19,b_pre,control,recomendar_outfit(preferencias),Parcial2_backend/app/routers/ia.py,75
+20,control,prenda,_obtener_catalogo_activo_con_stock(),Parcial2_backend/app/services/ia_service.py,98
+21,prenda,control,catálogo autorizado,,
+22,control,b_ia,Generar recomendaciones [si proveedor disponible],Parcial2_backend/app/services/ia_service.py,165
+23,b_ia,control,sugerencias para validar / fallo de proveedor,,
+24,control,bitacora,registrar_bitacora(recomendación IA),Parcial2_backend/app/services/bitacora_service.py,65
+25,control,b_pre,recomendaciones validadas o alternativa local,,
+26,b_pre,actor,Mostrar recomendaciones,,
+27,actor,b_pre,Abrir vestidor [opcional],,
+28,b_pre,control,obtener_realtime_token(),Parcial2_backend/app/routers/ia.py,181
+29,control,bitacora,registrar_bitacora(inicio de vestidor),Parcial2_backend/app/services/bitacora_service.py,65
+30,control,b_ia,create_realtime_token(),Parcial2_backend/app/services/tryon_service.py,789
+31,b_ia,control,token efímero y configuración,,
+32,control,b_pre,acceso al vestidor,,
+33,b_pre,actor,Abrir cámara y vestidor,,

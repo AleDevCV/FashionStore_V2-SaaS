@@ -1,0 +1,20 @@
+[
+  {
+    "Url": "https://fashionstore.aledevcv.me/health",
+    "Status": 200,
+    "Bytes": 15,
+    "CheckedAtUtc": "2026-11-01T23:53:48.9163787Z"
+  },
+  {
+    "Url": "https://fashionstore.aledevcv.me/login",
+    "Status": 200,
+    "Bytes": 8211,
+    "CheckedAtUtc": "2026-11-01T23:53:49.8569924Z"
+  },
+  {
+    "Url": "https://fashionstore.aledevcv.me/ngsw.json",
+    "Status": 200,
+    "Bytes": 12677,
+    "CheckedAtUtc": "2026-11-01T23:53:50.4037796Z"
+  }
+]

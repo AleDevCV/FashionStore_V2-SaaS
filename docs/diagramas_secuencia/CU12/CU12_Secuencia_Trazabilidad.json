@@ -1,0 +1,785 @@
+{
+  "robustness_source": "docs\\diagramas_robustez\\CU12_Simplificado\\CU12_Robustez_Simplificada_Modelo.json",
+  "participants": [
+    {
+      "id": "actor",
+      "name": "Cliente",
+      "kind": "actor"
+    },
+    {
+      "id": "staff",
+      "name": "Personal autorizado",
+      "kind": "actor"
+    },
+    {
+      "id": "b_pre",
+      "name": "Frontend : Reservas y atención",
+      "kind": "boundary"
+    },
+    {
+      "id": "control",
+      "name": "Backend : Gestión de reservas",
+      "kind": "control"
+    },
+    {
+      "id": "retencion",
+      "name": "Retención",
+      "kind": "entity"
+    },
+    {
+      "id": "inventario",
+      "name": "Inventario",
+      "kind": "entity"
+    },
+    {
+      "id": "reserva",
+      "name": "Reserva",
+      "kind": "entity"
+    },
+    {
+      "id": "venta",
+      "name": "Venta pagada",
+      "kind": "entity"
+    },
+    {
+      "id": "bitacora",
+      "name": "Bitácora",
+      "kind": "entity"
+    }
+  ],
+  "events": [
+    {
+      "type": "message",
+      "a": "actor",
+      "b": "b_pre",
+      "text": "Registrar reserva de prendas",
+      "reply": false,
+      "robustness_number": 1,
+      "number": 1,
+      "lines": [
+        "1: Registrar reserva de prendas"
+      ],
+      "y": 271,
+      "label_h": 23,
+      "label_w": 628
+    },
+    {
+      "type": "message",
+      "a": "b_pre",
+      "b": "control",
+      "text": "crear_reserva(cliente, sucursal, ítems)",
+      "reply": false,
+      "robustness_number": 2,
+      "number": 2,
+      "lines": [
+        "2: crear_reserva(cliente, sucursal,",
+        "ítems)"
+      ],
+      "y": 359,
+      "label_h": 46,
+      "label_w": 293
+    },
+    {
+      "type": "message",
+      "a": "control",
+      "b": "inventario",
+      "text": "quote(ítems, sucursal)",
+      "reply": false,
+      "robustness_number": 3,
+      "number": 3,
+      "lines": [
+        "3: quote(ítems, sucursal)"
+      ],
+      "y": 485,
+      "label_h": 23,
+      "label_w": 628
+    },
+    {
+      "type": "message",
+      "a": "inventario",
+      "b": "control",
+      "text": "disponibilidad y precios válidos",
+      "reply": true,
+      "robustness_number": 4,
+      "number": 4,
+      "lines": [
+        "4: disponibilidad y precios válidos"
+      ],
+      "y": 550,
+      "label_h": 23,
+      "label_w": 628
+    },
+    {
+      "type": "message",
+      "a": "control",
+      "b": "reserva",
+      "text": "reserve(cliente, sucursal, ítems)",
+      "reply": false,
+      "robustness_number": 5,
+      "number": 5,
+      "lines": [
+        "5: reserve(cliente, sucursal, ítems)"
+      ],
+      "y": 615,
+      "label_h": 23,
+      "label_w": 660
+    },
+    {
+      "type": "message",
+      "a": "reserva",
+      "b": "control",
+      "text": "id_reserva",
+      "reply": true,
+      "robustness_number": 6,
+      "number": 6,
+      "lines": [
+        "6: id_reserva"
+      ],
+      "y": 680,
+      "label_h": 23,
+      "label_w": 660
+    },
+    {
+      "type": "message",
+      "a": "control",
+      "b": "retencion",
+      "text": "Retener unidades durante 24 horas",
+      "reply": false,
+      "robustness_number": 7,
+      "number": 7,
+      "lines": [
+        "7: Retener unidades durante 24 horas"
+      ],
+      "y": 806,
+      "label_h": 23,
+      "label_w": 293
+    },
+    {
+      "type": "message",
+      "a": "control",
+      "b": "bitacora",
+      "text": "Auditar reserva",
+      "reply": false,
+      "robustness_number": 8,
+      "number": 8,
+      "lines": [
+        "8: Auditar reserva"
+      ],
+      "y": 916,
+      "label_h": 23,
+      "label_w": 660
+    },
+    {
+      "type": "message",
+      "a": "control",
+      "b": "b_pre",
+      "text": "reserva pendiente",
+      "reply": true,
+      "robustness_number": 9,
+      "number": 9,
+      "lines": [
+        "9: reserva pendiente"
+      ],
+      "y": 981,
+      "label_h": 23,
+      "label_w": 293
+    },
+    {
+      "type": "message",
+      "a": "control",
+      "b": "b_pre",
+      "text": "Rechazar reserva sin retención",
+      "reply": true,
+      "number": 10,
+      "lines": [
+        "10: Rechazar reserva sin retención"
+      ],
+      "y": 1111,
+      "label_h": 23,
+      "label_w": 293
+    },
+    {
+      "type": "message",
+      "a": "b_pre",
+      "b": "actor",
+      "text": "Mostrar resultado de reserva",
+      "reply": true,
+      "robustness_number": 10,
+      "number": 11,
+      "lines": [
+        "11: Mostrar resultado de reserva"
+      ],
+      "y": 1221,
+      "label_h": 23,
+      "label_w": 628
+    },
+    {
+      "type": "message",
+      "a": "actor",
+      "b": "b_pre",
+      "text": "Consultar reserva propia",
+      "reply": false,
+      "robustness_number": 11,
+      "number": 12,
+      "lines": [
+        "12: Consultar reserva propia"
+      ],
+      "y": 1286,
+      "label_h": 23,
+      "label_w": 628
+    },
+    {
+      "type": "message",
+      "a": "b_pre",
+      "b": "control",
+      "text": "obtener_reserva(id_reserva)",
+      "reply": false,
+      "robustness_number": 12,
+      "number": 13,
+      "lines": [
+        "13: obtener_reserva(id_reserva)"
+      ],
+      "y": 1351,
+      "label_h": 23,
+      "label_w": 293
+    },
+    {
+      "type": "message",
+      "a": "control",
+      "b": "reserva",
+      "text": "obtener_reserva_por_id(id_reserva)",
+      "reply": false,
+      "robustness_number": 13,
+      "number": 14,
+      "lines": [
+        "14: obtener_reserva_por_id(id_reserva)"
+      ],
+      "y": 1477,
+      "label_h": 23,
+      "label_w": 660
+    },
+    {
+      "type": "message",
+      "a": "reserva",
+      "b": "control",
+      "text": "reserva y detalles",
+      "reply": true,
+      "robustness_number": 14,
+      "number": 15,
+      "lines": [
+        "15: reserva y detalles"
+      ],
+      "y": 1542,
+      "label_h": 23,
+      "label_w": 660
+    },
+    {
+      "type": "message",
+      "a": "control",
+      "b": "b_pre",
+      "text": "reserva",
+      "reply": true,
+      "robustness_number": 15,
+      "number": 16,
+      "lines": [
+        "16: reserva"
+      ],
+      "y": 1607,
+      "label_h": 23,
+      "label_w": 293
+    },
+    {
+      "type": "message",
+      "a": "control",
+      "b": "b_pre",
+      "text": "Reserva no disponible",
+      "reply": true,
+      "number": 17,
+      "lines": [
+        "17: Reserva no disponible"
+      ],
+      "y": 1737,
+      "label_h": 23,
+      "label_w": 293
+    },
+    {
+      "type": "message",
+      "a": "b_pre",
+      "b": "actor",
+      "text": "Mostrar seguimiento o aviso",
+      "reply": true,
+      "robustness_number": 16,
+      "number": 18,
+      "lines": [
+        "18: Mostrar seguimiento o aviso"
+      ],
+      "y": 1847,
+      "label_h": 23,
+      "label_w": 628
+    },
+    {
+      "type": "message",
+      "a": "staff",
+      "b": "b_pre",
+      "text": "Preparar prendas",
+      "reply": false,
+      "robustness_number": 17,
+      "number": 19,
+      "lines": [
+        "19: Preparar prendas"
+      ],
+      "y": 1912,
+      "label_h": 23,
+      "label_w": 293
+    },
+    {
+      "type": "message",
+      "a": "b_pre",
+      "b": "control",
+      "text": "actualizar_estado_reserva_endpoint(id, 'Preparado')",
+      "reply": false,
+      "robustness_number": 18,
+      "number": 20,
+      "lines": [
+        "20: actualizar_estado_reserva_",
+        "endpoint(id, 'Preparado')"
+      ],
+      "y": 2000,
+      "label_h": 46,
+      "label_w": 293
+    },
+    {
+      "type": "message",
+      "a": "control",
+      "b": "reserva",
+      "text": "transition_reservation(id, 'Preparado')",
+      "reply": false,
+      "robustness_number": 19,
+      "number": 21,
+      "lines": [
+        "21: transition_reservation(id, 'Preparado')"
+      ],
+      "y": 2126,
+      "label_h": 23,
+      "label_w": 660
+    },
+    {
+      "type": "message",
+      "a": "control",
+      "b": "b_pre",
+      "text": "reserva preparada",
+      "reply": true,
+      "robustness_number": 20,
+      "number": 22,
+      "lines": [
+        "22: reserva preparada"
+      ],
+      "y": 2191,
+      "label_h": 23,
+      "label_w": 293
+    },
+    {
+      "type": "message",
+      "a": "control",
+      "b": "b_pre",
+      "text": "Preparación no permitida",
+      "reply": true,
+      "number": 23,
+      "lines": [
+        "23: Preparación no permitida"
+      ],
+      "y": 2321,
+      "label_h": 23,
+      "label_w": 293
+    },
+    {
+      "type": "message",
+      "a": "staff",
+      "b": "b_pre",
+      "text": "Entregar reserva ya pagada",
+      "reply": false,
+      "robustness_number": 21,
+      "number": 24,
+      "lines": [
+        "24: Entregar reserva ya pagada"
+      ],
+      "y": 2431,
+      "label_h": 23,
+      "label_w": 293
+    },
+    {
+      "type": "message",
+      "a": "b_pre",
+      "b": "control",
+      "text": "deliver(id_venta)",
+      "reply": false,
+      "robustness_number": 22,
+      "number": 25,
+      "lines": [
+        "25: deliver(id_venta)"
+      ],
+      "y": 2496,
+      "label_h": 23,
+      "label_w": 293
+    },
+    {
+      "type": "message",
+      "a": "control",
+      "b": "venta",
+      "text": "Registrar entrega [venta pagada existente]",
+      "reply": false,
+      "robustness_number": 23,
+      "number": 26,
+      "lines": [
+        "26: Registrar entrega [venta pagada existente]"
+      ],
+      "y": 2622,
+      "label_h": 23,
+      "label_w": 660
+    },
+    {
+      "type": "message",
+      "a": "control",
+      "b": "reserva",
+      "text": "Marcar reserva 'Atendido'",
+      "reply": false,
+      "robustness_number": 24,
+      "number": 27,
+      "lines": [
+        "27: Marcar reserva 'Atendido'"
+      ],
+      "y": 2687,
+      "label_h": 23,
+      "label_w": 660
+    },
+    {
+      "type": "message",
+      "a": "control",
+      "b": "b_pre",
+      "text": "entrega confirmada",
+      "reply": true,
+      "robustness_number": 25,
+      "number": 28,
+      "lines": [
+        "28: entrega confirmada"
+      ],
+      "y": 2752,
+      "label_h": 23,
+      "label_w": 293
+    },
+    {
+      "type": "message",
+      "a": "control",
+      "b": "b_pre",
+      "text": "Impedir entrega",
+      "reply": true,
+      "number": 29,
+      "lines": [
+        "29: Impedir entrega"
+      ],
+      "y": 2882,
+      "label_h": 23,
+      "label_w": 293
+    },
+    {
+      "type": "message",
+      "a": "b_pre",
+      "b": "staff",
+      "text": "Mostrar resultado de entrega",
+      "reply": true,
+      "robustness_number": 26,
+      "number": 30,
+      "lines": [
+        "30: Mostrar resultado de entrega"
+      ],
+      "y": 2992,
+      "label_h": 23,
+      "label_w": 293
+    },
+    {
+      "type": "message",
+      "a": "actor",
+      "b": "b_pre",
+      "text": "Cancelar reserva sin pago",
+      "reply": false,
+      "robustness_number": 27,
+      "number": 31,
+      "lines": [
+        "31: Cancelar reserva sin pago"
+      ],
+      "y": 3057,
+      "label_h": 23,
+      "label_w": 628
+    },
+    {
+      "type": "message",
+      "a": "b_pre",
+      "b": "control",
+      "text": "cancel(id_reserva)",
+      "reply": false,
+      "robustness_number": 28,
+      "number": 32,
+      "lines": [
+        "32: cancel(id_reserva)"
+      ],
+      "y": 3122,
+      "label_h": 23,
+      "label_w": 293
+    },
+    {
+      "type": "message",
+      "a": "control",
+      "b": "retencion",
+      "text": "Liberar retenciones",
+      "reply": false,
+      "robustness_number": 29,
+      "number": 33,
+      "lines": [
+        "33: Liberar retenciones"
+      ],
+      "y": 3248,
+      "label_h": 23,
+      "label_w": 293
+    },
+    {
+      "type": "message",
+      "a": "control",
+      "b": "reserva",
+      "text": "Marcar reserva 'Cancelado'",
+      "reply": false,
+      "robustness_number": 30,
+      "number": 34,
+      "lines": [
+        "34: Marcar reserva 'Cancelado'"
+      ],
+      "y": 3313,
+      "label_h": 23,
+      "label_w": 660
+    },
+    {
+      "type": "message",
+      "a": "control",
+      "b": "b_pre",
+      "text": "reserva cancelada",
+      "reply": true,
+      "robustness_number": 31,
+      "number": 35,
+      "lines": [
+        "35: reserva cancelada"
+      ],
+      "y": 3378,
+      "label_h": 23,
+      "label_w": 293
+    },
+    {
+      "type": "message",
+      "a": "control",
+      "b": "b_pre",
+      "text": "Gestionar devolución por atención al cliente",
+      "reply": true,
+      "number": 36,
+      "lines": [
+        "36: Gestionar devolución por atención",
+        "al cliente"
+      ],
+      "y": 3531,
+      "label_h": 46,
+      "label_w": 293
+    }
+  ],
+  "frames": [
+    {
+      "kind": "loop",
+      "y": 714,
+      "h": 149,
+      "depth": 1,
+      "guards": [
+        [
+          714,
+          "por cada detalle reservado",
+          true
+        ]
+      ],
+      "event_range": [
+        6,
+        7
+      ],
+      "participants": [
+        "control",
+        "retencion"
+      ],
+      "starts_at": "control",
+      "left": 1125,
+      "right": 1520,
+      "width": 395
+    },
+    {
+      "kind": "alt",
+      "y": 393,
+      "h": 775,
+      "depth": 0,
+      "guards": [
+        [
+          393,
+          "datos y disponible válidos",
+          true
+        ],
+        [
+          1030,
+          "reserva no disponible",
+          false
+        ]
+      ],
+      "event_range": [
+        2,
+        10
+      ],
+      "participants": [
+        "b_pre",
+        "bitacora",
+        "control",
+        "inventario",
+        "reserva",
+        "retencion"
+      ],
+      "starts_at": "b_pre",
+      "left": 790,
+      "right": 2860,
+      "width": 2070
+    },
+    {
+      "kind": "alt",
+      "y": 1385,
+      "h": 409,
+      "depth": 0,
+      "guards": [
+        [
+          1385,
+          "reserva propia existente",
+          true
+        ],
+        [
+          1656,
+          "reserva no autorizada",
+          false
+        ]
+      ],
+      "event_range": [
+        13,
+        17
+      ],
+      "participants": [
+        "b_pre",
+        "control",
+        "reserva"
+      ],
+      "starts_at": "b_pre",
+      "left": 790,
+      "right": 2190,
+      "width": 1400
+    },
+    {
+      "kind": "alt",
+      "y": 2034,
+      "h": 344,
+      "depth": 0,
+      "guards": [
+        [
+          2034,
+          "transición permitida",
+          true
+        ],
+        [
+          2240,
+          "reserva finalizada o cobrada",
+          false
+        ]
+      ],
+      "event_range": [
+        20,
+        23
+      ],
+      "participants": [
+        "b_pre",
+        "control",
+        "reserva"
+      ],
+      "starts_at": "b_pre",
+      "left": 790,
+      "right": 2190,
+      "width": 1400
+    },
+    {
+      "kind": "alt",
+      "y": 2530,
+      "h": 409,
+      "depth": 0,
+      "guards": [
+        [
+          2530,
+          "venta pagada y autorizada",
+          true
+        ],
+        [
+          2801,
+          "venta no disponible",
+          false
+        ]
+      ],
+      "event_range": [
+        25,
+        29
+      ],
+      "participants": [
+        "b_pre",
+        "control",
+        "reserva",
+        "venta"
+      ],
+      "starts_at": "b_pre",
+      "left": 790,
+      "right": 2525,
+      "width": 1735
+    },
+    {
+      "kind": "alt",
+      "y": 3156,
+      "h": 432,
+      "depth": 0,
+      "guards": [
+        [
+          3156,
+          "reserva sin venta pagada",
+          true
+        ],
+        [
+          3427,
+          "reserva ya pagada",
+          false
+        ]
+      ],
+      "event_range": [
+        32,
+        36
+      ],
+      "participants": [
+        "b_pre",
+        "control",
+        "reserva",
+        "retencion"
+      ],
+      "starts_at": "b_pre",
+      "left": 790,
+      "right": 2190,
+      "width": 1400
+    }
+  ],
+  "notes": [
+    "Crear reserva retiene disponibilidad; preparar no crea una venta. El cobro pertenece a CU11 o CU13. deliver exige una venta existente y registra la entrega física por separado.",
+    "La caducidad de disponibilidad se deriva de la vigencia de retencion; no se inventa una tarea programada que actualice estados. Los detalles se incluyen en Reserva como agregado.",
+    "El código audita la creación; no se añaden escrituras de bitácora a preparar, cancelar o entregar si esas rutas no las realizan actualmente."
+  ],
+  "scope": "Mismos recorridos y participantes de robustez; numeración de secuencia nueva al añadir las alternativas.",
+  "geometry": "alt y opt parten de la interfaz principal; loop parte del control correspondiente. Margen de 30 px. El borde derecho corresponde al último participante afectado. Las líneas intermedias del orden fijo no implican interacciones adicionales.",
+  "presentation": "Los retornos al actor se generalizan cuando deben mostrar éxito o rechazo. Las acciones son escenarios independientes del CU, no un guion obligatorio."
+}

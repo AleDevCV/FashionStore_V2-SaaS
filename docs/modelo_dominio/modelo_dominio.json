@@ -1,0 +1,2169 @@
+{
+  "tipo": "modelo conceptual de dominio",
+  "vista": "general única",
+  "clases": [
+    {
+      "id": "empresa",
+      "nombre": "Empresa",
+      "grupo": "organizacion",
+      "atributos": [
+        "nombre",
+        "identificador público",
+        "estado"
+      ]
+    },
+    {
+      "id": "plan",
+      "nombre": "Plan",
+      "grupo": "organizacion",
+      "atributos": [
+        "nombre",
+        "límite de sucursales",
+        "reportes generativos habilitados"
+      ]
+    },
+    {
+      "id": "suscripcion",
+      "nombre": "Suscripción",
+      "grupo": "organizacion",
+      "atributos": [
+        "fecha de inicio",
+        "fecha de vencimiento",
+        "estado"
+      ]
+    },
+    {
+      "id": "ciudad",
+      "nombre": "Ciudad",
+      "grupo": "organizacion",
+      "atributos": [
+        "nombre"
+      ]
+    },
+    {
+      "id": "sucursal",
+      "nombre": "Sucursal",
+      "grupo": "organizacion",
+      "atributos": [
+        "nombre",
+        "dirección",
+        "estado"
+      ]
+    },
+    {
+      "id": "caja",
+      "nombre": "Caja",
+      "grupo": "organizacion",
+      "atributos": [
+        "denominación",
+        "estado"
+      ]
+    },
+    {
+      "id": "cuenta",
+      "nombre": "Cuenta global",
+      "grupo": "identidad",
+      "atributos": [
+        "correo",
+        "nombre",
+        "tipo de cuenta",
+        "estado"
+      ]
+    },
+    {
+      "id": "perfil",
+      "nombre": "Perfil empresarial",
+      "grupo": "identidad",
+      "atributos": [
+        "fecha de vinculación",
+        "estado"
+      ]
+    },
+    {
+      "id": "rol",
+      "nombre": "Rol",
+      "grupo": "identidad",
+      "atributos": [
+        "nombre",
+        "descripción"
+      ]
+    },
+    {
+      "id": "permiso",
+      "nombre": "Permiso",
+      "grupo": "identidad",
+      "atributos": [
+        "recurso",
+        "acción autorizada"
+      ]
+    },
+    {
+      "id": "sesion",
+      "nombre": "Sesión",
+      "grupo": "identidad",
+      "atributos": [
+        "inicio",
+        "vencimiento",
+        "estado"
+      ]
+    },
+    {
+      "id": "recuperacion",
+      "nombre": "Solicitud de recuperación",
+      "grupo": "identidad",
+      "atributos": [
+        "fecha de solicitud",
+        "vencimiento",
+        "utilizada"
+      ]
+    },
+    {
+      "id": "cliente",
+      "nombre": "Ficha de cliente",
+      "grupo": "identidad",
+      "atributos": [
+        "identificación",
+        "nombre completo",
+        "teléfono",
+        "dirección de entrega"
+      ]
+    },
+    {
+      "id": "categoria",
+      "nombre": "Categoría",
+      "grupo": "catalogo",
+      "atributos": [
+        "nombre",
+        "descripción"
+      ]
+    },
+    {
+      "id": "temporada",
+      "nombre": "Temporada",
+      "grupo": "catalogo",
+      "atributos": [
+        "nombre",
+        "inicio",
+        "fin"
+      ]
+    },
+    {
+      "id": "coleccion",
+      "nombre": "Colección",
+      "grupo": "catalogo",
+      "atributos": [
+        "nombre",
+        "descripción"
+      ]
+    },
+    {
+      "id": "prenda",
+      "nombre": "Prenda",
+      "grupo": "catalogo",
+      "atributos": [
+        "SKU",
+        "nombre",
+        "material y medidas",
+        "precio minorista",
+        "precio mayorista",
+        "umbral mayorista",
+        "estado"
+      ]
+    },
+    {
+      "id": "variante",
+      "nombre": "Variante de prenda",
+      "grupo": "catalogo",
+      "atributos": [
+        "SKU de variante",
+        "estado"
+      ]
+    },
+    {
+      "id": "talla",
+      "nombre": "Talla",
+      "grupo": "catalogo",
+      "atributos": [
+        "denominación"
+      ]
+    },
+    {
+      "id": "color",
+      "nombre": "Color",
+      "grupo": "catalogo",
+      "atributos": [
+        "nombre",
+        "código de color"
+      ]
+    },
+    {
+      "id": "oferta",
+      "nombre": "Oferta",
+      "grupo": "catalogo",
+      "atributos": [
+        "precio promocional",
+        "inicio",
+        "fin"
+      ]
+    },
+    {
+      "id": "recomendacion",
+      "nombre": "Recomendación de prenda",
+      "grupo": "asistencia",
+      "atributos": [
+        "fecha",
+        "criterio",
+        "puntuación"
+      ]
+    },
+    {
+      "id": "prueba",
+      "nombre": "Prueba virtual",
+      "grupo": "asistencia",
+      "atributos": [
+        "fecha",
+        "modalidad",
+        "estado"
+      ]
+    },
+    {
+      "id": "inventario",
+      "nombre": "Inventario",
+      "grupo": "inventario",
+      "atributos": [
+        "existencia física",
+        "/cantidad retenida",
+        "/cantidad disponible",
+        "fecha de actualización"
+      ]
+    },
+    {
+      "id": "movimiento",
+      "nombre": "Movimiento de inventario",
+      "grupo": "inventario",
+      "atributos": [
+        "tipo",
+        "cantidad",
+        "fecha",
+        "motivo"
+      ]
+    },
+    {
+      "id": "transferencia",
+      "nombre": "Transferencia de inventario",
+      "grupo": "inventario",
+      "atributos": [
+        "fecha",
+        "motivo",
+        "estado"
+      ]
+    },
+    {
+      "id": "retencion",
+      "nombre": "Retención de inventario",
+      "grupo": "inventario",
+      "atributos": [
+        "cantidad",
+        "vencimiento",
+        "estado"
+      ]
+    },
+    {
+      "id": "proveedor",
+      "nombre": "Proveedor",
+      "grupo": "abastecimiento",
+      "atributos": [
+        "NIT",
+        "razón social",
+        "contacto",
+        "estado"
+      ]
+    },
+    {
+      "id": "compra",
+      "nombre": "Compra de abastecimiento",
+      "grupo": "abastecimiento",
+      "atributos": [
+        "fecha",
+        "estado",
+        "importe total"
+      ]
+    },
+    {
+      "id": "detalle_compra",
+      "nombre": "Detalle de compra",
+      "grupo": "abastecimiento",
+      "atributos": [
+        "cantidad",
+        "costo unitario",
+        "subtotal"
+      ]
+    },
+    {
+      "id": "recepcion_compra",
+      "nombre": "Recepción de compra",
+      "grupo": "abastecimiento",
+      "atributos": [
+        "fecha de recepción",
+        "estado"
+      ]
+    },
+    {
+      "id": "carrito",
+      "nombre": "Carrito",
+      "grupo": "compra_digital",
+      "atributos": [
+        "fecha de creación",
+        "estado"
+      ]
+    },
+    {
+      "id": "item_carrito",
+      "nombre": "Ítem de carrito",
+      "grupo": "compra_digital",
+      "atributos": [
+        "cantidad",
+        "precio conocido"
+      ]
+    },
+    {
+      "id": "pedido",
+      "nombre": "Pedido de compra",
+      "grupo": "compra_digital",
+      "atributos": [
+        "fecha",
+        "estado",
+        "modalidad de entrega",
+        "importe calculado"
+      ]
+    },
+    {
+      "id": "detalle_pedido",
+      "nombre": "Detalle de pedido",
+      "grupo": "compra_digital",
+      "atributos": [
+        "cantidad",
+        "precio acordado",
+        "subtotal"
+      ]
+    },
+    {
+      "id": "pago",
+      "nombre": "Pago",
+      "grupo": "pagos",
+      "atributos": [
+        "fecha",
+        "medio",
+        "importe",
+        "estado",
+        "referencia del proveedor"
+      ]
+    },
+    {
+      "id": "venta",
+      "nombre": "Venta",
+      "grupo": "ventas",
+      "atributos": [
+        "fecha",
+        "canal",
+        "importe total",
+        "efectivo recibido",
+        "vuelto"
+      ]
+    },
+    {
+      "id": "detalle_venta",
+      "nombre": "Detalle de venta",
+      "grupo": "ventas",
+      "atributos": [
+        "cantidad",
+        "precio efectivamente pagado",
+        "subtotal"
+      ]
+    },
+    {
+      "id": "comprobante",
+      "nombre": "Comprobante",
+      "grupo": "ventas",
+      "atributos": [
+        "número",
+        "fecha de emisión",
+        "importe"
+      ]
+    },
+    {
+      "id": "entrega",
+      "nombre": "Entrega de compra",
+      "grupo": "ventas",
+      "atributos": [
+        "fecha",
+        "modalidad",
+        "estado"
+      ]
+    },
+    {
+      "id": "reserva",
+      "nombre": "Reserva",
+      "grupo": "reservas",
+      "atributos": [
+        "fecha",
+        "vencimiento",
+        "estado",
+        "importe conocido"
+      ]
+    },
+    {
+      "id": "detalle_reserva",
+      "nombre": "Detalle de reserva",
+      "grupo": "reservas",
+      "atributos": [
+        "cantidad",
+        "precio conocido"
+      ]
+    },
+    {
+      "id": "solicitud_cambio",
+      "nombre": "Solicitud de cambio",
+      "grupo": "cambios",
+      "atributos": [
+        "fecha",
+        "motivo",
+        "estado"
+      ]
+    },
+    {
+      "id": "detalle_cambio",
+      "nombre": "Detalle de cambio",
+      "grupo": "cambios",
+      "atributos": [
+        "cantidad solicitada",
+        "crédito reconocido",
+        "diferencia de precio",
+        "estado"
+      ]
+    },
+    {
+      "id": "recepcion_prenda",
+      "nombre": "Recepción de prenda",
+      "grupo": "cambios",
+      "atributos": [
+        "fecha",
+        "condición observada",
+        "aceptada"
+      ]
+    },
+    {
+      "id": "entrega_reemplazo",
+      "nombre": "Entrega de reemplazo",
+      "grupo": "cambios",
+      "atributos": [
+        "fecha",
+        "estado"
+      ]
+    },
+    {
+      "id": "reembolso",
+      "nombre": "Reembolso",
+      "grupo": "pagos",
+      "atributos": [
+        "fecha",
+        "importe",
+        "motivo",
+        "estado"
+      ]
+    },
+    {
+      "id": "dispositivo",
+      "nombre": "Dispositivo",
+      "grupo": "offline",
+      "atributos": [
+        "denominación",
+        "tipo de aplicación"
+      ]
+    },
+    {
+      "id": "contexto_offline",
+      "nombre": "Habilitación offline",
+      "grupo": "offline",
+      "atributos": [
+        "inicio",
+        "vencimiento",
+        "estado"
+      ]
+    },
+    {
+      "id": "catalogo_local",
+      "nombre": "Catálogo descargado",
+      "grupo": "offline",
+      "atributos": [
+        "versión",
+        "fecha de descarga"
+      ]
+    },
+    {
+      "id": "item_local",
+      "nombre": "Dato de variante descargada",
+      "grupo": "offline",
+      "atributos": [
+        "precio conocido",
+        "existencia conocida",
+        "fecha de actualización"
+      ]
+    },
+    {
+      "id": "operacion_local",
+      "nombre": "Operación local",
+      "grupo": "sincronizacion",
+      "atributos": [
+        "UUID",
+        "tipo",
+        "fecha",
+        "estado",
+        "total provisional",
+        "efectivo recibido"
+      ]
+    },
+    {
+      "id": "detalle_local",
+      "nombre": "Detalle de operación local",
+      "grupo": "sincronizacion",
+      "atributos": [
+        "cantidad",
+        "precio conocido",
+        "subtotal"
+      ]
+    },
+    {
+      "id": "lote",
+      "nombre": "Lote de sincronización",
+      "grupo": "sincronizacion",
+      "atributos": [
+        "fecha de envío",
+        "estado"
+      ]
+    },
+    {
+      "id": "intento",
+      "nombre": "Intento de sincronización",
+      "grupo": "sincronizacion",
+      "atributos": [
+        "fecha",
+        "número de intento",
+        "resultado de comunicación"
+      ]
+    },
+    {
+      "id": "resultado",
+      "nombre": "Resultado de sincronización",
+      "grupo": "sincronizacion",
+      "atributos": [
+        "fecha",
+        "estado",
+        "motivo"
+      ]
+    },
+    {
+      "id": "conflicto",
+      "nombre": "Conflicto",
+      "grupo": "sincronizacion",
+      "atributos": [
+        "tipo",
+        "motivo",
+        "estado"
+      ]
+    },
+    {
+      "id": "resolucion",
+      "nombre": "Resolución de conflicto",
+      "grupo": "sincronizacion",
+      "atributos": [
+        "fecha",
+        "decisión",
+        "compensación registrada"
+      ]
+    },
+    {
+      "id": "solicitud_reporte",
+      "nombre": "Solicitud de reporte",
+      "grupo": "reportes",
+      "atributos": [
+        "fecha",
+        "modalidad",
+        "solicitud del usuario",
+        "tipo de reporte"
+      ]
+    },
+    {
+      "id": "filtro",
+      "nombre": "Filtro de reporte",
+      "grupo": "reportes",
+      "atributos": [
+        "criterio",
+        "valor solicitado"
+      ]
+    },
+    {
+      "id": "reporte",
+      "nombre": "Reporte comercial",
+      "grupo": "reportes",
+      "atributos": [
+        "tipo",
+        "fecha de generación",
+        "fecha de corte",
+        "representación"
+      ]
+    },
+    {
+      "id": "exportacion",
+      "nombre": "Exportación de reporte",
+      "grupo": "reportes",
+      "atributos": [
+        "formato",
+        "fecha",
+        "estado"
+      ]
+    },
+    {
+      "id": "datos",
+      "nombre": "Conjunto de datos",
+      "grupo": "analitica",
+      "atributos": [
+        "procedencia",
+        "fecha de preparación",
+        "semilla de generación",
+        "variables utilizadas"
+      ]
+    },
+    {
+      "id": "entrenamiento",
+      "nombre": "Entrenamiento",
+      "grupo": "analitica",
+      "atributos": [
+        "fecha",
+        "configuración",
+        "estado"
+      ]
+    },
+    {
+      "id": "modelo",
+      "nombre": "Modelo analítico",
+      "grupo": "analitica",
+      "atributos": [
+        "nombre",
+        "tipo de aprendizaje",
+        "versión",
+        "estado"
+      ]
+    },
+    {
+      "id": "evaluacion",
+      "nombre": "Evaluación de modelo",
+      "grupo": "analitica",
+      "atributos": [
+        "métrica",
+        "valor",
+        "partición evaluada",
+        "fecha"
+      ]
+    },
+    {
+      "id": "prediccion",
+      "nombre": "Predicción de demanda",
+      "grupo": "analitica",
+      "atributos": [
+        "período",
+        "horizonte",
+        "valor estimado",
+        "fecha de cálculo"
+      ]
+    },
+    {
+      "id": "segmento",
+      "nombre": "Segmento de clientes",
+      "grupo": "analitica",
+      "atributos": [
+        "nombre",
+        "características",
+        "fecha de cálculo"
+      ]
+    },
+    {
+      "id": "indicador",
+      "nombre": "Indicador comercial",
+      "grupo": "analitica",
+      "atributos": [
+        "nombre",
+        "período",
+        "valor",
+        "fecha de cálculo"
+      ]
+    },
+    {
+      "id": "notificacion",
+      "nombre": "Notificación",
+      "grupo": "trazabilidad",
+      "atributos": [
+        "fecha",
+        "asunto",
+        "canal",
+        "estado de lectura"
+      ]
+    },
+    {
+      "id": "evento",
+      "nombre": "Evento de auditoría",
+      "grupo": "trazabilidad",
+      "atributos": [
+        "fecha",
+        "acción",
+        "resultado",
+        "referencia de operación"
+      ]
+    }
+  ],
+  "relaciones": [
+    {
+      "id": "r001",
+      "origen": "empresa",
+      "destino": "suscripcion",
+      "multiplicidad_origen": "1",
+      "multiplicidad_destino": "0..*",
+      "nombre": "contrata",
+      "composicion": false,
+      "ordenar": true
+    },
+    {
+      "id": "r002",
+      "origen": "plan",
+      "destino": "suscripcion",
+      "multiplicidad_origen": "1",
+      "multiplicidad_destino": "0..*",
+      "nombre": "establece condiciones",
+      "composicion": false,
+      "ordenar": true
+    },
+    {
+      "id": "r003",
+      "origen": "empresa",
+      "destino": "sucursal",
+      "multiplicidad_origen": "1",
+      "multiplicidad_destino": "0..*",
+      "nombre": "dispone de",
+      "composicion": false,
+      "ordenar": true
+    },
+    {
+      "id": "r004",
+      "origen": "ciudad",
+      "destino": "sucursal",
+      "multiplicidad_origen": "1",
+      "multiplicidad_destino": "0..*",
+      "nombre": "ubica",
+      "composicion": false,
+      "ordenar": true
+    },
+    {
+      "id": "r005",
+      "origen": "sucursal",
+      "destino": "caja",
+      "multiplicidad_origen": "1",
+      "multiplicidad_destino": "0..*",
+      "nombre": "habilita",
+      "composicion": false,
+      "ordenar": true
+    },
+    {
+      "id": "r006",
+      "origen": "cuenta",
+      "destino": "perfil",
+      "multiplicidad_origen": "1",
+      "multiplicidad_destino": "0..*",
+      "nombre": "mantiene",
+      "composicion": false,
+      "ordenar": true
+    },
+    {
+      "id": "r007",
+      "origen": "empresa",
+      "destino": "perfil",
+      "multiplicidad_origen": "1",
+      "multiplicidad_destino": "0..*",
+      "nombre": "vincula personal y clientes",
+      "composicion": false,
+      "ordenar": false
+    },
+    {
+      "id": "r008",
+      "origen": "empresa",
+      "destino": "rol",
+      "multiplicidad_origen": "1",
+      "multiplicidad_destino": "0..*",
+      "nombre": "define roles",
+      "composicion": false,
+      "ordenar": false
+    },
+    {
+      "id": "r009",
+      "origen": "rol",
+      "destino": "perfil",
+      "multiplicidad_origen": "1",
+      "multiplicidad_destino": "0..*",
+      "nombre": "determina facultades",
+      "composicion": false,
+      "ordenar": true
+    },
+    {
+      "id": "r010",
+      "origen": "rol",
+      "destino": "permiso",
+      "multiplicidad_origen": "0..*",
+      "multiplicidad_destino": "0..*",
+      "nombre": "autoriza",
+      "composicion": false,
+      "ordenar": true
+    },
+    {
+      "id": "r011",
+      "origen": "perfil",
+      "destino": "sucursal",
+      "multiplicidad_origen": "0..*",
+      "multiplicidad_destino": "0..*",
+      "nombre": "tiene acceso asignado",
+      "composicion": false,
+      "ordenar": false
+    },
+    {
+      "id": "r012",
+      "origen": "cuenta",
+      "destino": "sesion",
+      "multiplicidad_origen": "1",
+      "multiplicidad_destino": "0..*",
+      "nombre": "inicia",
+      "composicion": false,
+      "ordenar": true
+    },
+    {
+      "id": "r013",
+      "origen": "perfil",
+      "destino": "sesion",
+      "multiplicidad_origen": "0..1",
+      "multiplicidad_destino": "0..*",
+      "nombre": "delimita contexto",
+      "composicion": false,
+      "ordenar": false
+    },
+    {
+      "id": "r014",
+      "origen": "cuenta",
+      "destino": "recuperacion",
+      "multiplicidad_origen": "1",
+      "multiplicidad_destino": "0..*",
+      "nombre": "solicita",
+      "composicion": false,
+      "ordenar": true
+    },
+    {
+      "id": "r015",
+      "origen": "empresa",
+      "destino": "cliente",
+      "multiplicidad_origen": "1",
+      "multiplicidad_destino": "0..*",
+      "nombre": "mantiene ficha comercial",
+      "composicion": false,
+      "ordenar": false
+    },
+    {
+      "id": "r016",
+      "origen": "cuenta",
+      "destino": "cliente",
+      "multiplicidad_origen": "0..1",
+      "multiplicidad_destino": "0..*",
+      "nombre": "identifica al titular",
+      "composicion": false,
+      "ordenar": true
+    },
+    {
+      "id": "r017",
+      "origen": "empresa",
+      "destino": "categoria",
+      "multiplicidad_origen": "1",
+      "multiplicidad_destino": "0..*",
+      "nombre": "organiza categorías",
+      "composicion": false,
+      "ordenar": false
+    },
+    {
+      "id": "r018",
+      "origen": "empresa",
+      "destino": "temporada",
+      "multiplicidad_origen": "1",
+      "multiplicidad_destino": "0..*",
+      "nombre": "define temporadas",
+      "composicion": false,
+      "ordenar": false
+    },
+    {
+      "id": "r019",
+      "origen": "empresa",
+      "destino": "coleccion",
+      "multiplicidad_origen": "1",
+      "multiplicidad_destino": "0..*",
+      "nombre": "organiza colecciones",
+      "composicion": false,
+      "ordenar": false
+    },
+    {
+      "id": "r020",
+      "origen": "empresa",
+      "destino": "prenda",
+      "multiplicidad_origen": "1",
+      "multiplicidad_destino": "0..*",
+      "nombre": "comercializa",
+      "composicion": false,
+      "ordenar": false
+    },
+    {
+      "id": "r021",
+      "origen": "categoria",
+      "destino": "prenda",
+      "multiplicidad_origen": "1",
+      "multiplicidad_destino": "0..*",
+      "nombre": "clasifica",
+      "composicion": false,
+      "ordenar": true
+    },
+    {
+      "id": "r022",
+      "origen": "categoria",
+      "destino": "categoria",
+      "multiplicidad_origen": "0..1",
+      "multiplicidad_destino": "0..*",
+      "nombre": "agrupa subcategorías",
+      "composicion": false,
+      "ordenar": false
+    },
+    {
+      "id": "r023",
+      "origen": "temporada",
+      "destino": "coleccion",
+      "multiplicidad_origen": "0..1",
+      "multiplicidad_destino": "0..*",
+      "nombre": "enmarca",
+      "composicion": false,
+      "ordenar": true
+    },
+    {
+      "id": "r024",
+      "origen": "temporada",
+      "destino": "prenda",
+      "multiplicidad_origen": "0..1",
+      "multiplicidad_destino": "0..*",
+      "nombre": "sitúa comercialmente",
+      "composicion": false,
+      "ordenar": false
+    },
+    {
+      "id": "r025",
+      "origen": "coleccion",
+      "destino": "prenda",
+      "multiplicidad_origen": "0..1",
+      "multiplicidad_destino": "0..*",
+      "nombre": "agrupa",
+      "composicion": false,
+      "ordenar": true
+    },
+    {
+      "id": "r026",
+      "origen": "prenda",
+      "destino": "variante",
+      "multiplicidad_origen": "1",
+      "multiplicidad_destino": "0..*",
+      "nombre": "se ofrece como",
+      "composicion": false,
+      "ordenar": true
+    },
+    {
+      "id": "r027",
+      "origen": "talla",
+      "destino": "variante",
+      "multiplicidad_origen": "1",
+      "multiplicidad_destino": "0..*",
+      "nombre": "define talla",
+      "composicion": false,
+      "ordenar": true
+    },
+    {
+      "id": "r028",
+      "origen": "color",
+      "destino": "variante",
+      "multiplicidad_origen": "1..*",
+      "multiplicidad_destino": "0..*",
+      "nombre": "integra colores",
+      "composicion": false,
+      "ordenar": true
+    },
+    {
+      "id": "r029",
+      "origen": "prenda",
+      "destino": "oferta",
+      "multiplicidad_origen": "1",
+      "multiplicidad_destino": "0..1",
+      "nombre": "tiene oferta configurada",
+      "composicion": false,
+      "ordenar": true
+    },
+    {
+      "id": "r030",
+      "origen": "prenda",
+      "destino": "recomendacion",
+      "multiplicidad_origen": "1",
+      "multiplicidad_destino": "0..*",
+      "nombre": "es sugerida mediante",
+      "composicion": false,
+      "ordenar": false
+    },
+    {
+      "id": "r031",
+      "origen": "cliente",
+      "destino": "recomendacion",
+      "multiplicidad_origen": "0..1",
+      "multiplicidad_destino": "0..*",
+      "nombre": "personaliza",
+      "composicion": false,
+      "ordenar": false
+    },
+    {
+      "id": "r032",
+      "origen": "prenda",
+      "destino": "prueba",
+      "multiplicidad_origen": "1",
+      "multiplicidad_destino": "0..*",
+      "nombre": "se visualiza en",
+      "composicion": false,
+      "ordenar": false
+    },
+    {
+      "id": "r033",
+      "origen": "cuenta",
+      "destino": "prueba",
+      "multiplicidad_origen": "0..1",
+      "multiplicidad_destino": "0..*",
+      "nombre": "realiza",
+      "composicion": false,
+      "ordenar": false
+    },
+    {
+      "id": "r034",
+      "origen": "sucursal",
+      "destino": "inventario",
+      "multiplicidad_origen": "1",
+      "multiplicidad_destino": "0..*",
+      "nombre": "mantiene existencias",
+      "composicion": false,
+      "ordenar": false
+    },
+    {
+      "id": "r035",
+      "origen": "variante",
+      "destino": "inventario",
+      "multiplicidad_origen": "1",
+      "multiplicidad_destino": "0..*",
+      "nombre": "tiene existencias",
+      "composicion": false,
+      "ordenar": true
+    },
+    {
+      "id": "r036",
+      "origen": "inventario",
+      "destino": "movimiento",
+      "multiplicidad_origen": "1",
+      "multiplicidad_destino": "0..*",
+      "nombre": "registra variaciones",
+      "composicion": false,
+      "ordenar": true
+    },
+    {
+      "id": "r037",
+      "origen": "perfil",
+      "destino": "movimiento",
+      "multiplicidad_origen": "0..1",
+      "multiplicidad_destino": "0..*",
+      "nombre": "responsabiliza",
+      "composicion": false,
+      "ordenar": false
+    },
+    {
+      "id": "r038",
+      "origen": "sucursal",
+      "destino": "transferencia",
+      "multiplicidad_origen": "1",
+      "multiplicidad_destino": "0..*",
+      "nombre": "es origen de",
+      "composicion": false,
+      "ordenar": false
+    },
+    {
+      "id": "r039",
+      "origen": "sucursal",
+      "destino": "transferencia",
+      "multiplicidad_origen": "1",
+      "multiplicidad_destino": "0..*",
+      "nombre": "es destino de",
+      "composicion": false,
+      "ordenar": false
+    },
+    {
+      "id": "r040",
+      "origen": "transferencia",
+      "destino": "movimiento",
+      "multiplicidad_origen": "0..1",
+      "multiplicidad_destino": "2..*",
+      "nombre": "se concreta mediante",
+      "composicion": false,
+      "ordenar": true
+    },
+    {
+      "id": "r041",
+      "origen": "inventario",
+      "destino": "retencion",
+      "multiplicidad_origen": "1",
+      "multiplicidad_destino": "0..*",
+      "nombre": "reserva disponibilidad",
+      "composicion": false,
+      "ordenar": true
+    },
+    {
+      "id": "r042",
+      "origen": "empresa",
+      "destino": "proveedor",
+      "multiplicidad_origen": "1",
+      "multiplicidad_destino": "0..*",
+      "nombre": "registra proveedores",
+      "composicion": false,
+      "ordenar": false
+    },
+    {
+      "id": "r043",
+      "origen": "proveedor",
+      "destino": "compra",
+      "multiplicidad_origen": "1",
+      "multiplicidad_destino": "0..*",
+      "nombre": "abastece",
+      "composicion": false,
+      "ordenar": true
+    },
+    {
+      "id": "r044",
+      "origen": "sucursal",
+      "destino": "compra",
+      "multiplicidad_origen": "1",
+      "multiplicidad_destino": "0..*",
+      "nombre": "recibe abastecimiento",
+      "composicion": false,
+      "ordenar": false
+    },
+    {
+      "id": "r045",
+      "origen": "compra",
+      "destino": "detalle_compra",
+      "multiplicidad_origen": "1",
+      "multiplicidad_destino": "1..*",
+      "nombre": "contiene",
+      "composicion": true,
+      "ordenar": true
+    },
+    {
+      "id": "r046",
+      "origen": "variante",
+      "destino": "detalle_compra",
+      "multiplicidad_origen": "1",
+      "multiplicidad_destino": "0..*",
+      "nombre": "se adquiere en",
+      "composicion": false,
+      "ordenar": false
+    },
+    {
+      "id": "r047",
+      "origen": "compra",
+      "destino": "recepcion_compra",
+      "multiplicidad_origen": "1",
+      "multiplicidad_destino": "0..1",
+      "nombre": "se recibe mediante",
+      "composicion": false,
+      "ordenar": true
+    },
+    {
+      "id": "r048",
+      "origen": "recepcion_compra",
+      "destino": "movimiento",
+      "multiplicidad_origen": "0..1",
+      "multiplicidad_destino": "1..*",
+      "nombre": "origina entradas",
+      "composicion": false,
+      "ordenar": false
+    },
+    {
+      "id": "r049",
+      "origen": "empresa",
+      "destino": "carrito",
+      "multiplicidad_origen": "1",
+      "multiplicidad_destino": "0..*",
+      "nombre": "delimita tienda",
+      "composicion": false,
+      "ordenar": false
+    },
+    {
+      "id": "r050",
+      "origen": "cuenta",
+      "destino": "carrito",
+      "multiplicidad_origen": "0..1",
+      "multiplicidad_destino": "0..*",
+      "nombre": "mantiene carrito",
+      "composicion": false,
+      "ordenar": false
+    },
+    {
+      "id": "r051",
+      "origen": "carrito",
+      "destino": "item_carrito",
+      "multiplicidad_origen": "1",
+      "multiplicidad_destino": "0..*",
+      "nombre": "contiene",
+      "composicion": true,
+      "ordenar": true
+    },
+    {
+      "id": "r052",
+      "origen": "variante",
+      "destino": "item_carrito",
+      "multiplicidad_origen": "1",
+      "multiplicidad_destino": "0..*",
+      "nombre": "se selecciona en",
+      "composicion": false,
+      "ordenar": false
+    },
+    {
+      "id": "r053",
+      "origen": "carrito",
+      "destino": "pedido",
+      "multiplicidad_origen": "1",
+      "multiplicidad_destino": "0..*",
+      "nombre": "origina intentos de compra",
+      "composicion": false,
+      "ordenar": true
+    },
+    {
+      "id": "r054",
+      "origen": "cliente",
+      "destino": "pedido",
+      "multiplicidad_origen": "1",
+      "multiplicidad_destino": "0..*",
+      "nombre": "solicita compra",
+      "composicion": false,
+      "ordenar": false
+    },
+    {
+      "id": "r055",
+      "origen": "sucursal",
+      "destino": "pedido",
+      "multiplicidad_origen": "1",
+      "multiplicidad_destino": "0..*",
+      "nombre": "atiende pedido",
+      "composicion": false,
+      "ordenar": false
+    },
+    {
+      "id": "r056",
+      "origen": "pedido",
+      "destino": "detalle_pedido",
+      "multiplicidad_origen": "1",
+      "multiplicidad_destino": "1..*",
+      "nombre": "contiene",
+      "composicion": true,
+      "ordenar": true
+    },
+    {
+      "id": "r057",
+      "origen": "variante",
+      "destino": "detalle_pedido",
+      "multiplicidad_origen": "1",
+      "multiplicidad_destino": "0..*",
+      "nombre": "se solicita en",
+      "composicion": false,
+      "ordenar": false
+    },
+    {
+      "id": "r058",
+      "origen": "pedido",
+      "destino": "pago",
+      "multiplicidad_origen": "0..1",
+      "multiplicidad_destino": "0..*",
+      "nombre": "origina pagos",
+      "composicion": false,
+      "ordenar": true
+    },
+    {
+      "id": "r059",
+      "origen": "pedido",
+      "destino": "venta",
+      "multiplicidad_origen": "0..1",
+      "multiplicidad_destino": "0..1",
+      "nombre": "se confirma como",
+      "composicion": false,
+      "ordenar": false
+    },
+    {
+      "id": "r060",
+      "origen": "sucursal",
+      "destino": "venta",
+      "multiplicidad_origen": "1",
+      "multiplicidad_destino": "0..*",
+      "nombre": "registra venta",
+      "composicion": false,
+      "ordenar": false
+    },
+    {
+      "id": "r061",
+      "origen": "caja",
+      "destino": "venta",
+      "multiplicidad_origen": "0..1",
+      "multiplicidad_destino": "0..*",
+      "nombre": "procesa venta presencial",
+      "composicion": false,
+      "ordenar": false
+    },
+    {
+      "id": "r062",
+      "origen": "cliente",
+      "destino": "venta",
+      "multiplicidad_origen": "0..1",
+      "multiplicidad_destino": "0..*",
+      "nombre": "realiza compra",
+      "composicion": false,
+      "ordenar": false
+    },
+    {
+      "id": "r063",
+      "origen": "perfil",
+      "destino": "venta",
+      "multiplicidad_origen": "0..1",
+      "multiplicidad_destino": "0..*",
+      "nombre": "atiende venta",
+      "composicion": false,
+      "ordenar": false
+    },
+    {
+      "id": "r064",
+      "origen": "venta",
+      "destino": "detalle_venta",
+      "multiplicidad_origen": "1",
+      "multiplicidad_destino": "1..*",
+      "nombre": "contiene",
+      "composicion": true,
+      "ordenar": true
+    },
+    {
+      "id": "r065",
+      "origen": "variante",
+      "destino": "detalle_venta",
+      "multiplicidad_origen": "1",
+      "multiplicidad_destino": "0..*",
+      "nombre": "se vende en",
+      "composicion": false,
+      "ordenar": false
+    },
+    {
+      "id": "r066",
+      "origen": "venta",
+      "destino": "pago",
+      "multiplicidad_origen": "0..1",
+      "multiplicidad_destino": "1..*",
+      "nombre": "recibe cobros",
+      "composicion": false,
+      "ordenar": true
+    },
+    {
+      "id": "r067",
+      "origen": "venta",
+      "destino": "comprobante",
+      "multiplicidad_origen": "1",
+      "multiplicidad_destino": "0..1",
+      "nombre": "documenta",
+      "composicion": false,
+      "ordenar": true
+    },
+    {
+      "id": "r068",
+      "origen": "venta",
+      "destino": "entrega",
+      "multiplicidad_origen": "1",
+      "multiplicidad_destino": "0..1",
+      "nombre": "se entrega mediante",
+      "composicion": false,
+      "ordenar": true
+    },
+    {
+      "id": "r069",
+      "origen": "detalle_venta",
+      "destino": "movimiento",
+      "multiplicidad_origen": "0..1",
+      "multiplicidad_destino": "1..*",
+      "nombre": "origina salidas",
+      "composicion": false,
+      "ordenar": false
+    },
+    {
+      "id": "r070",
+      "origen": "cliente",
+      "destino": "reserva",
+      "multiplicidad_origen": "1",
+      "multiplicidad_destino": "0..*",
+      "nombre": "solicita reserva",
+      "composicion": false,
+      "ordenar": false
+    },
+    {
+      "id": "r071",
+      "origen": "sucursal",
+      "destino": "reserva",
+      "multiplicidad_origen": "1",
+      "multiplicidad_destino": "0..*",
+      "nombre": "atiende reserva",
+      "composicion": false,
+      "ordenar": false
+    },
+    {
+      "id": "r072",
+      "origen": "reserva",
+      "destino": "detalle_reserva",
+      "multiplicidad_origen": "1",
+      "multiplicidad_destino": "1..*",
+      "nombre": "contiene",
+      "composicion": true,
+      "ordenar": true
+    },
+    {
+      "id": "r073",
+      "origen": "variante",
+      "destino": "detalle_reserva",
+      "multiplicidad_origen": "1",
+      "multiplicidad_destino": "0..*",
+      "nombre": "se aparta en",
+      "composicion": false,
+      "ordenar": false
+    },
+    {
+      "id": "r074",
+      "origen": "detalle_reserva",
+      "destino": "retencion",
+      "multiplicidad_origen": "1",
+      "multiplicidad_destino": "0..1",
+      "nombre": "genera retención",
+      "composicion": false,
+      "ordenar": true
+    },
+    {
+      "id": "r075",
+      "origen": "reserva",
+      "destino": "venta",
+      "multiplicidad_origen": "0..1",
+      "multiplicidad_destino": "0..1",
+      "nombre": "se convierte en",
+      "composicion": false,
+      "ordenar": false
+    },
+    {
+      "id": "r076",
+      "origen": "venta",
+      "destino": "solicitud_cambio",
+      "multiplicidad_origen": "1",
+      "multiplicidad_destino": "0..*",
+      "nombre": "da origen a",
+      "composicion": false,
+      "ordenar": true
+    },
+    {
+      "id": "r077",
+      "origen": "cliente",
+      "destino": "solicitud_cambio",
+      "multiplicidad_origen": "1",
+      "multiplicidad_destino": "0..*",
+      "nombre": "solicita cambio",
+      "composicion": false,
+      "ordenar": false
+    },
+    {
+      "id": "r078",
+      "origen": "solicitud_cambio",
+      "destino": "detalle_cambio",
+      "multiplicidad_origen": "1",
+      "multiplicidad_destino": "1..*",
+      "nombre": "contiene",
+      "composicion": true,
+      "ordenar": true
+    },
+    {
+      "id": "r079",
+      "origen": "detalle_venta",
+      "destino": "detalle_cambio",
+      "multiplicidad_origen": "1",
+      "multiplicidad_destino": "0..*",
+      "nombre": "acredita unidad adquirida",
+      "composicion": false,
+      "ordenar": false
+    },
+    {
+      "id": "r080",
+      "origen": "variante",
+      "destino": "detalle_cambio",
+      "multiplicidad_origen": "0..1",
+      "multiplicidad_destino": "0..*",
+      "nombre": "es reemplazo seleccionado",
+      "composicion": false,
+      "ordenar": false
+    },
+    {
+      "id": "r081",
+      "origen": "detalle_cambio",
+      "destino": "recepcion_prenda",
+      "multiplicidad_origen": "1",
+      "multiplicidad_destino": "0..1",
+      "nombre": "se inspecciona mediante",
+      "composicion": false,
+      "ordenar": true
+    },
+    {
+      "id": "r082",
+      "origen": "recepcion_prenda",
+      "destino": "movimiento",
+      "multiplicidad_origen": "0..1",
+      "multiplicidad_destino": "0..1",
+      "nombre": "puede reponer existencias",
+      "composicion": false,
+      "ordenar": false
+    },
+    {
+      "id": "r083",
+      "origen": "solicitud_cambio",
+      "destino": "entrega_reemplazo",
+      "multiplicidad_origen": "1",
+      "multiplicidad_destino": "0..1",
+      "nombre": "finaliza mediante",
+      "composicion": false,
+      "ordenar": true
+    },
+    {
+      "id": "r084",
+      "origen": "entrega_reemplazo",
+      "destino": "movimiento",
+      "multiplicidad_origen": "0..1",
+      "multiplicidad_destino": "1..*",
+      "nombre": "origina salida de reemplazos",
+      "composicion": false,
+      "ordenar": false
+    },
+    {
+      "id": "r085",
+      "origen": "solicitud_cambio",
+      "destino": "pago",
+      "multiplicidad_origen": "0..1",
+      "multiplicidad_destino": "0..*",
+      "nombre": "cobra diferencias",
+      "composicion": false,
+      "ordenar": false
+    },
+    {
+      "id": "r086",
+      "origen": "solicitud_cambio",
+      "destino": "reembolso",
+      "multiplicidad_origen": "0..1",
+      "multiplicidad_destino": "0..*",
+      "nombre": "devuelve crédito",
+      "composicion": false,
+      "ordenar": false
+    },
+    {
+      "id": "r087",
+      "origen": "pago",
+      "destino": "reembolso",
+      "multiplicidad_origen": "1",
+      "multiplicidad_destino": "0..*",
+      "nombre": "es medio original de",
+      "composicion": false,
+      "ordenar": true
+    },
+    {
+      "id": "r088",
+      "origen": "perfil",
+      "destino": "contexto_offline",
+      "multiplicidad_origen": "1",
+      "multiplicidad_destino": "0..*",
+      "nombre": "habilita operación local",
+      "composicion": false,
+      "ordenar": false
+    },
+    {
+      "id": "r089",
+      "origen": "dispositivo",
+      "destino": "contexto_offline",
+      "multiplicidad_origen": "1",
+      "multiplicidad_destino": "0..*",
+      "nombre": "conserva contexto",
+      "composicion": false,
+      "ordenar": true
+    },
+    {
+      "id": "r090",
+      "origen": "contexto_offline",
+      "destino": "catalogo_local",
+      "multiplicidad_origen": "1",
+      "multiplicidad_destino": "0..*",
+      "nombre": "dispone de copias",
+      "composicion": false,
+      "ordenar": true
+    },
+    {
+      "id": "r091",
+      "origen": "sucursal",
+      "destino": "catalogo_local",
+      "multiplicidad_origen": "1",
+      "multiplicidad_destino": "0..*",
+      "nombre": "sitúa disponibilidad conocida",
+      "composicion": false,
+      "ordenar": false
+    },
+    {
+      "id": "r092",
+      "origen": "catalogo_local",
+      "destino": "item_local",
+      "multiplicidad_origen": "1",
+      "multiplicidad_destino": "0..*",
+      "nombre": "contiene",
+      "composicion": true,
+      "ordenar": true
+    },
+    {
+      "id": "r093",
+      "origen": "variante",
+      "destino": "item_local",
+      "multiplicidad_origen": "1",
+      "multiplicidad_destino": "0..*",
+      "nombre": "es conocida mediante",
+      "composicion": false,
+      "ordenar": false
+    },
+    {
+      "id": "r094",
+      "origen": "contexto_offline",
+      "destino": "operacion_local",
+      "multiplicidad_origen": "1",
+      "multiplicidad_destino": "0..*",
+      "nombre": "registra pendientes",
+      "composicion": false,
+      "ordenar": true
+    },
+    {
+      "id": "r095",
+      "origen": "sucursal",
+      "destino": "operacion_local",
+      "multiplicidad_origen": "1",
+      "multiplicidad_destino": "0..*",
+      "nombre": "recibe operación provisional",
+      "composicion": false,
+      "ordenar": false
+    },
+    {
+      "id": "r096",
+      "origen": "cliente",
+      "destino": "operacion_local",
+      "multiplicidad_origen": "0..1",
+      "multiplicidad_destino": "0..*",
+      "nombre": "figura en operación",
+      "composicion": false,
+      "ordenar": false
+    },
+    {
+      "id": "r097",
+      "origen": "operacion_local",
+      "destino": "detalle_local",
+      "multiplicidad_origen": "1",
+      "multiplicidad_destino": "1..*",
+      "nombre": "contiene",
+      "composicion": true,
+      "ordenar": true
+    },
+    {
+      "id": "r098",
+      "origen": "variante",
+      "destino": "detalle_local",
+      "multiplicidad_origen": "1",
+      "multiplicidad_destino": "0..*",
+      "nombre": "se registra localmente en",
+      "composicion": false,
+      "ordenar": false
+    },
+    {
+      "id": "r099",
+      "origen": "operacion_local",
+      "destino": "intento",
+      "multiplicidad_origen": "1",
+      "multiplicidad_destino": "0..*",
+      "nombre": "se envía mediante",
+      "composicion": false,
+      "ordenar": true
+    },
+    {
+      "id": "r100",
+      "origen": "lote",
+      "destino": "intento",
+      "multiplicidad_origen": "1",
+      "multiplicidad_destino": "1..*",
+      "nombre": "agrupa envíos",
+      "composicion": false,
+      "ordenar": true
+    },
+    {
+      "id": "r101",
+      "origen": "operacion_local",
+      "destino": "resultado",
+      "multiplicidad_origen": "1",
+      "multiplicidad_destino": "0..1",
+      "nombre": "obtiene resultado central",
+      "composicion": false,
+      "ordenar": true
+    },
+    {
+      "id": "r102",
+      "origen": "intento",
+      "destino": "resultado",
+      "multiplicidad_origen": "0..*",
+      "multiplicidad_destino": "0..1",
+      "nombre": "recupera resultado",
+      "composicion": false,
+      "ordenar": false
+    },
+    {
+      "id": "r103",
+      "origen": "resultado",
+      "destino": "venta",
+      "multiplicidad_origen": "0..1",
+      "multiplicidad_destino": "0..1",
+      "nombre": "confirma venta",
+      "composicion": false,
+      "ordenar": false
+    },
+    {
+      "id": "r104",
+      "origen": "resultado",
+      "destino": "reserva",
+      "multiplicidad_origen": "0..1",
+      "multiplicidad_destino": "0..1",
+      "nombre": "confirma reserva",
+      "composicion": false,
+      "ordenar": false
+    },
+    {
+      "id": "r105",
+      "origen": "resultado",
+      "destino": "conflicto",
+      "multiplicidad_origen": "1",
+      "multiplicidad_destino": "0..1",
+      "nombre": "puede identificar",
+      "composicion": false,
+      "ordenar": true
+    },
+    {
+      "id": "r106",
+      "origen": "conflicto",
+      "destino": "resolucion",
+      "multiplicidad_origen": "1",
+      "multiplicidad_destino": "0..1",
+      "nombre": "se resuelve mediante",
+      "composicion": false,
+      "ordenar": true
+    },
+    {
+      "id": "r107",
+      "origen": "perfil",
+      "destino": "resolucion",
+      "multiplicidad_origen": "1",
+      "multiplicidad_destino": "0..*",
+      "nombre": "decide con autorización",
+      "composicion": false,
+      "ordenar": false
+    },
+    {
+      "id": "r108",
+      "origen": "operacion_local",
+      "destino": "operacion_local",
+      "multiplicidad_origen": "0..1",
+      "multiplicidad_destino": "0..*",
+      "nombre": "es revisada por",
+      "composicion": false,
+      "ordenar": false
+    },
+    {
+      "id": "r109",
+      "origen": "resolucion",
+      "destino": "operacion_local",
+      "multiplicidad_origen": "0..1",
+      "multiplicidad_destino": "0..1",
+      "nombre": "puede originar corrección",
+      "composicion": false,
+      "ordenar": false
+    },
+    {
+      "id": "r110",
+      "origen": "empresa",
+      "destino": "solicitud_reporte",
+      "multiplicidad_origen": "1",
+      "multiplicidad_destino": "0..*",
+      "nombre": "delimita información",
+      "composicion": false,
+      "ordenar": false
+    },
+    {
+      "id": "r111",
+      "origen": "perfil",
+      "destino": "solicitud_reporte",
+      "multiplicidad_origen": "1",
+      "multiplicidad_destino": "0..*",
+      "nombre": "solicita reporte",
+      "composicion": false,
+      "ordenar": false
+    },
+    {
+      "id": "r112",
+      "origen": "solicitud_reporte",
+      "destino": "filtro",
+      "multiplicidad_origen": "1",
+      "multiplicidad_destino": "0..*",
+      "nombre": "establece filtros",
+      "composicion": true,
+      "ordenar": true
+    },
+    {
+      "id": "r113",
+      "origen": "solicitud_reporte",
+      "destino": "reporte",
+      "multiplicidad_origen": "1",
+      "multiplicidad_destino": "0..1",
+      "nombre": "produce",
+      "composicion": false,
+      "ordenar": true
+    },
+    {
+      "id": "r114",
+      "origen": "reporte",
+      "destino": "exportacion",
+      "multiplicidad_origen": "1",
+      "multiplicidad_destino": "0..*",
+      "nombre": "se exporta mediante",
+      "composicion": false,
+      "ordenar": true
+    },
+    {
+      "id": "r115",
+      "origen": "datos",
+      "destino": "entrenamiento",
+      "multiplicidad_origen": "1",
+      "multiplicidad_destino": "0..*",
+      "nombre": "alimenta",
+      "composicion": false,
+      "ordenar": true
+    },
+    {
+      "id": "r116",
+      "origen": "entrenamiento",
+      "destino": "modelo",
+      "multiplicidad_origen": "1",
+      "multiplicidad_destino": "0..1",
+      "nombre": "produce versión",
+      "composicion": false,
+      "ordenar": true
+    },
+    {
+      "id": "r117",
+      "origen": "entrenamiento",
+      "destino": "evaluacion",
+      "multiplicidad_origen": "1",
+      "multiplicidad_destino": "0..*",
+      "nombre": "se valida mediante",
+      "composicion": false,
+      "ordenar": true
+    },
+    {
+      "id": "r118",
+      "origen": "modelo",
+      "destino": "prediccion",
+      "multiplicidad_origen": "1",
+      "multiplicidad_destino": "0..*",
+      "nombre": "estima demanda",
+      "composicion": false,
+      "ordenar": true
+    },
+    {
+      "id": "r119",
+      "origen": "modelo",
+      "destino": "segmento",
+      "multiplicidad_origen": "1",
+      "multiplicidad_destino": "0..*",
+      "nombre": "identifica segmentos",
+      "composicion": false,
+      "ordenar": true
+    },
+    {
+      "id": "r120",
+      "origen": "prenda",
+      "destino": "prediccion",
+      "multiplicidad_origen": "1",
+      "multiplicidad_destino": "0..*",
+      "nombre": "es objetivo de estimación",
+      "composicion": false,
+      "ordenar": false
+    },
+    {
+      "id": "r121",
+      "origen": "sucursal",
+      "destino": "prediccion",
+      "multiplicidad_origen": "1",
+      "multiplicidad_destino": "0..*",
+      "nombre": "sitúa demanda",
+      "composicion": false,
+      "ordenar": false
+    },
+    {
+      "id": "r122",
+      "origen": "empresa",
+      "destino": "segmento",
+      "multiplicidad_origen": "1",
+      "multiplicidad_destino": "0..*",
+      "nombre": "delimita segmentación",
+      "composicion": false,
+      "ordenar": false
+    },
+    {
+      "id": "r123",
+      "origen": "segmento",
+      "destino": "cliente",
+      "multiplicidad_origen": "0..1",
+      "multiplicidad_destino": "0..*",
+      "nombre": "clasifica clientes",
+      "composicion": false,
+      "ordenar": false
+    },
+    {
+      "id": "r124",
+      "origen": "empresa",
+      "destino": "indicador",
+      "multiplicidad_origen": "1",
+      "multiplicidad_destino": "0..*",
+      "nombre": "resume actividad",
+      "composicion": false,
+      "ordenar": false
+    },
+    {
+      "id": "r125",
+      "origen": "sucursal",
+      "destino": "indicador",
+      "multiplicidad_origen": "0..1",
+      "multiplicidad_destino": "0..*",
+      "nombre": "delimita indicador",
+      "composicion": false,
+      "ordenar": false
+    },
+    {
+      "id": "r126",
+      "origen": "cuenta",
+      "destino": "notificacion",
+      "multiplicidad_origen": "1",
+      "multiplicidad_destino": "0..*",
+      "nombre": "recibe avisos",
+      "composicion": false,
+      "ordenar": false
+    },
+    {
+      "id": "r127",
+      "origen": "empresa",
+      "destino": "notificacion",
+      "multiplicidad_origen": "1",
+      "multiplicidad_destino": "0..*",
+      "nombre": "emite aviso comercial",
+      "composicion": false,
+      "ordenar": false
+    },
+    {
+      "id": "r128",
+      "origen": "solicitud_cambio",
+      "destino": "notificacion",
+      "multiplicidad_origen": "0..1",
+      "multiplicidad_destino": "0..*",
+      "nombre": "origina aviso",
+      "composicion": false,
+      "ordenar": false
+    },
+    {
+      "id": "r129",
+      "origen": "cuenta",
+      "destino": "evento",
+      "multiplicidad_origen": "0..1",
+      "multiplicidad_destino": "0..*",
+      "nombre": "actúa en",
+      "composicion": false,
+      "ordenar": false
+    },
+    {
+      "id": "r130",
+      "origen": "empresa",
+      "destino": "evento",
+      "multiplicidad_origen": "0..1",
+      "multiplicidad_destino": "0..*",
+      "nombre": "delimita ámbito de auditoría",
+      "composicion": false,
+      "ordenar": false
+    },
+    {
+      "id": "r131",
+      "origen": "operacion_local",
+      "destino": "evento",
+      "multiplicidad_origen": "0..1",
+      "multiplicidad_destino": "0..*",
+      "nombre": "correlaciona trazabilidad",
+      "composicion": false,
+      "ordenar": false
+    }
+  ],
+  "cobertura_casos": {
+    "CU01": [
+      "cuenta",
+      "perfil",
+      "sesion",
+      "recuperacion"
+    ],
+    "CU02": [
+      "empresa",
+      "plan",
+      "suscripcion"
+    ],
+    "CU03": [
+      "cuenta",
+      "perfil",
+      "rol",
+      "permiso"
+    ],
+    "CU04": [
+      "ciudad",
+      "sucursal",
+      "caja"
+    ],
+    "CU05": [
+      "cuenta",
+      "cliente"
+    ],
+    "CU06": [
+      "categoria",
+      "temporada",
+      "coleccion",
+      "prenda",
+      "variante",
+      "talla",
+      "color",
+      "oferta"
+    ],
+    "CU07": [
+      "proveedor",
+      "compra",
+      "detalle_compra",
+      "recepcion_compra"
+    ],
+    "CU08": [
+      "inventario",
+      "retencion",
+      "variante"
+    ],
+    "CU09": [
+      "prenda",
+      "variante",
+      "recomendacion",
+      "prueba"
+    ],
+    "CU10": [
+      "inventario",
+      "movimiento",
+      "transferencia"
+    ],
+    "CU11": [
+      "carrito",
+      "item_carrito",
+      "pedido",
+      "detalle_pedido",
+      "pago",
+      "venta"
+    ],
+    "CU12": [
+      "reserva",
+      "detalle_reserva",
+      "retencion",
+      "venta"
+    ],
+    "CU13": [
+      "caja",
+      "venta",
+      "detalle_venta",
+      "pago",
+      "movimiento"
+    ],
+    "CU14": [
+      "venta",
+      "comprobante"
+    ],
+    "CU15": [
+      "solicitud_cambio",
+      "detalle_cambio",
+      "recepcion_prenda",
+      "entrega_reemplazo",
+      "reembolso",
+      "notificacion"
+    ],
+    "CU16": [
+      "dispositivo",
+      "contexto_offline",
+      "catalogo_local",
+      "item_local",
+      "operacion_local",
+      "detalle_local"
+    ],
+    "CU17": [
+      "lote",
+      "intento",
+      "resultado",
+      "conflicto",
+      "resolucion",
+      "operacion_local"
+    ],
+    "CU18": [
+      "solicitud_reporte",
+      "filtro",
+      "reporte",
+      "exportacion"
+    ],
+    "CU19": [
+      "datos",
+      "entrenamiento",
+      "modelo",
+      "evaluacion",
+      "prediccion",
+      "segmento",
+      "indicador"
+    ],
+    "CU20": [
+      "evento",
+      "cuenta",
+      "empresa"
+    ]
+  },
+  "fuentes": {
+    "docs\\DOCUMENTACION PARCIAL 2\\SEGUNDO_EXAMEN_PARCIAL-FASHIONSTORE.docx": "6d78aacd99c302687e4c8169e173fcd8d43047bcf43d8b669000101e9c4020ab",
+    "docs\\DOCUMENTACION PARCIAL 2\\2.6_ESPECIFICACION_CASOS_DE_USO.md": "aebfa52e1bf1dd4d2b4534fd9657a18c082d62df51cf0fbc53f221039c7fad58"
+  }
+}

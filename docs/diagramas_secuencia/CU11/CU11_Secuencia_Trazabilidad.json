@@ -1,0 +1,755 @@
+{
+  "robustness_source": "docs\\diagramas_robustez\\CU11_Simplificado\\CU11_Robustez_Simplificada_Modelo.json",
+  "participants": [
+    {
+      "id": "actor",
+      "name": "Cliente",
+      "kind": "actor"
+    },
+    {
+      "id": "b_pre",
+      "name": "Frontend : Carrito y checkout",
+      "kind": "boundary"
+    },
+    {
+      "id": "control",
+      "name": "Backend : Compra y pago",
+      "kind": "control"
+    },
+    {
+      "id": "movimiento",
+      "name": "Movimiento de inventario",
+      "kind": "entity"
+    },
+    {
+      "id": "reserva",
+      "name": "Reserva",
+      "kind": "entity"
+    },
+    {
+      "id": "pago",
+      "name": "Pago",
+      "kind": "entity"
+    },
+    {
+      "id": "venta",
+      "name": "Venta",
+      "kind": "entity"
+    },
+    {
+      "id": "bitacora",
+      "name": "Bitácora",
+      "kind": "entity"
+    },
+    {
+      "id": "b_stripe",
+      "name": "Pasarela : Stripe",
+      "kind": "boundary"
+    }
+  ],
+  "events": [
+    {
+      "type": "message",
+      "a": "actor",
+      "b": "b_pre",
+      "text": "Preparar compra y confirmar resumen",
+      "reply": false,
+      "robustness_number": 1,
+      "number": 1,
+      "lines": [
+        "1: Preparar compra y confirmar",
+        "resumen"
+      ],
+      "y": 294,
+      "label_h": 46,
+      "label_w": 293
+    },
+    {
+      "type": "message",
+      "a": "b_pre",
+      "b": "control",
+      "text": "crear_reserva(carrito, sucursal)",
+      "reply": false,
+      "robustness_number": 2,
+      "number": 2,
+      "lines": [
+        "2: crear_reserva(carrito, sucursal)"
+      ],
+      "y": 359,
+      "label_h": 23,
+      "label_w": 293
+    },
+    {
+      "type": "message",
+      "a": "control",
+      "b": "reserva",
+      "text": "reserve(cliente, sucursal, ítems)",
+      "reply": false,
+      "robustness_number": 3,
+      "number": 3,
+      "lines": [
+        "3: reserve(cliente, sucursal, ítems)"
+      ],
+      "y": 485,
+      "label_h": 23,
+      "label_w": 628
+    },
+    {
+      "type": "message",
+      "a": "reserva",
+      "b": "control",
+      "text": "reserva y total autorizado",
+      "reply": true,
+      "robustness_number": 4,
+      "number": 4,
+      "lines": [
+        "4: reserva y total autorizado"
+      ],
+      "y": 550,
+      "label_h": 23,
+      "label_w": 628
+    },
+    {
+      "type": "message",
+      "a": "control",
+      "b": "bitacora",
+      "text": "Auditar reserva de checkout",
+      "reply": false,
+      "robustness_number": 5,
+      "number": 5,
+      "lines": [
+        "5: Auditar reserva de checkout"
+      ],
+      "y": 615,
+      "label_h": 23,
+      "label_w": 660
+    },
+    {
+      "type": "message",
+      "a": "control",
+      "b": "b_pre",
+      "text": "reserva pendiente de pago",
+      "reply": true,
+      "robustness_number": 6,
+      "number": 6,
+      "lines": [
+        "6: reserva pendiente de pago"
+      ],
+      "y": 680,
+      "label_h": 23,
+      "label_w": 293
+    },
+    {
+      "type": "message",
+      "a": "control",
+      "b": "b_pre",
+      "text": "Informar validación de checkout",
+      "reply": true,
+      "number": 7,
+      "lines": [
+        "7: Informar validación de checkout"
+      ],
+      "y": 810,
+      "label_h": 23,
+      "label_w": 293
+    },
+    {
+      "type": "message",
+      "a": "b_pre",
+      "b": "actor",
+      "text": "Mostrar resumen o validación",
+      "reply": true,
+      "robustness_number": 7,
+      "number": 8,
+      "lines": [
+        "8: Mostrar resumen o validación"
+      ],
+      "y": 920,
+      "label_h": 23,
+      "label_w": 293
+    },
+    {
+      "type": "message",
+      "a": "actor",
+      "b": "b_pre",
+      "text": "Iniciar pago de prueba",
+      "reply": false,
+      "robustness_number": 8,
+      "number": 9,
+      "lines": [
+        "9: Iniciar pago de prueba"
+      ],
+      "y": 985,
+      "label_h": 23,
+      "label_w": 293
+    },
+    {
+      "type": "message",
+      "a": "b_pre",
+      "b": "control",
+      "text": "crear_sesion_stripe(id_reserva)",
+      "reply": false,
+      "robustness_number": 9,
+      "number": 10,
+      "lines": [
+        "10: crear_sesion_stripe(id_reserva)"
+      ],
+      "y": 1111,
+      "label_h": 23,
+      "label_w": 293
+    },
+    {
+      "type": "message",
+      "a": "control",
+      "b": "b_stripe",
+      "text": "Crear sesión de pago Stripe",
+      "reply": false,
+      "robustness_number": 10,
+      "number": 11,
+      "lines": [
+        "11: Crear sesión de pago Stripe"
+      ],
+      "y": 1237,
+      "label_h": 23,
+      "label_w": 660
+    },
+    {
+      "type": "message",
+      "a": "b_stripe",
+      "b": "control",
+      "text": "sesión y URL de pago",
+      "reply": true,
+      "robustness_number": 11,
+      "number": 12,
+      "lines": [
+        "12: sesión y URL de pago"
+      ],
+      "y": 1302,
+      "label_h": 23,
+      "label_w": 660
+    },
+    {
+      "type": "message",
+      "a": "control",
+      "b": "pago",
+      "text": "Guardar intento Pendiente",
+      "reply": false,
+      "robustness_number": 12,
+      "number": 13,
+      "lines": [
+        "13: Guardar intento Pendiente"
+      ],
+      "y": 1367,
+      "label_h": 23,
+      "label_w": 660
+    },
+    {
+      "type": "message",
+      "a": "control",
+      "b": "b_pre",
+      "text": "URL de pago",
+      "reply": true,
+      "robustness_number": 13,
+      "number": 14,
+      "lines": [
+        "14: URL de pago"
+      ],
+      "y": 1432,
+      "label_h": 23,
+      "label_w": 293
+    },
+    {
+      "type": "message",
+      "a": "control",
+      "b": "b_pre",
+      "text": "Conservar reserva y permitir reintento",
+      "reply": true,
+      "number": 15,
+      "lines": [
+        "15: Conservar reserva y permitir",
+        "reintento"
+      ],
+      "y": 1585,
+      "label_h": 46,
+      "label_w": 293
+    },
+    {
+      "type": "message",
+      "a": "b_pre",
+      "b": "actor",
+      "text": "Abrir portal si existe sesión",
+      "reply": true,
+      "robustness_number": 14,
+      "number": 16,
+      "lines": [
+        "16: Abrir portal si existe sesión"
+      ],
+      "y": 1740,
+      "label_h": 23,
+      "label_w": 293
+    },
+    {
+      "type": "message",
+      "a": "actor",
+      "b": "b_stripe",
+      "text": "Completar pago de prueba",
+      "reply": false,
+      "robustness_number": 15,
+      "number": 17,
+      "lines": [
+        "17: Completar pago de prueba"
+      ],
+      "y": 1805,
+      "label_h": 23,
+      "label_w": 660
+    },
+    {
+      "type": "message",
+      "a": "b_stripe",
+      "b": "control",
+      "text": "stripe_webhook(evento, firma)",
+      "reply": false,
+      "robustness_number": 16,
+      "number": 18,
+      "lines": [
+        "18: stripe_webhook(evento, firma)"
+      ],
+      "y": 1870,
+      "label_h": 23,
+      "label_w": 660
+    },
+    {
+      "type": "message",
+      "a": "control",
+      "b": "reserva",
+      "text": "Validar reserva e importe del evento",
+      "reply": false,
+      "robustness_number": 17,
+      "number": 19,
+      "lines": [
+        "19: Validar reserva e importe del evento"
+      ],
+      "y": 1996,
+      "label_h": 23,
+      "label_w": 628
+    },
+    {
+      "type": "message",
+      "a": "reserva",
+      "b": "control",
+      "text": "reserva e importe esperado",
+      "reply": true,
+      "robustness_number": 18,
+      "number": 20,
+      "lines": [
+        "20: reserva e importe esperado"
+      ],
+      "y": 2061,
+      "label_h": 23,
+      "label_w": 628
+    },
+    {
+      "type": "message",
+      "a": "control",
+      "b": "venta",
+      "text": "confirm_reservation(pago verificado)",
+      "reply": false,
+      "robustness_number": 19,
+      "number": 21,
+      "lines": [
+        "21: confirm_reservation(pago verificado)"
+      ],
+      "y": 2126,
+      "label_h": 23,
+      "label_w": 660
+    },
+    {
+      "type": "message",
+      "a": "venta",
+      "b": "control",
+      "text": "id_venta",
+      "reply": true,
+      "robustness_number": 20,
+      "number": 22,
+      "lines": [
+        "22: id_venta"
+      ],
+      "y": 2191,
+      "label_h": 23,
+      "label_w": 660
+    },
+    {
+      "type": "message",
+      "a": "control",
+      "b": "movimiento",
+      "text": "Registrar Salida",
+      "reply": false,
+      "robustness_number": 21,
+      "number": 23,
+      "lines": [
+        "23: Registrar Salida"
+      ],
+      "y": 2317,
+      "label_h": 23,
+      "label_w": 293
+    },
+    {
+      "type": "message",
+      "a": "control",
+      "b": "pago",
+      "text": "Aprobar pago y enlazar venta",
+      "reply": false,
+      "robustness_number": 22,
+      "number": 24,
+      "lines": [
+        "24: Aprobar pago y enlazar venta"
+      ],
+      "y": 2427,
+      "label_h": 23,
+      "label_w": 660
+    },
+    {
+      "type": "message",
+      "a": "control",
+      "b": "b_stripe",
+      "text": "evento procesado de forma idempotente",
+      "reply": true,
+      "robustness_number": 23,
+      "number": 25,
+      "lines": [
+        "25: evento procesado de forma idempotente"
+      ],
+      "y": 2492,
+      "label_h": 23,
+      "label_w": 660
+    },
+    {
+      "type": "message",
+      "a": "control",
+      "b": "b_stripe",
+      "text": "Devolver resultado anterior sin duplicar venta",
+      "reply": true,
+      "number": 26,
+      "lines": [
+        "26: Devolver resultado anterior sin duplicar venta"
+      ],
+      "y": 2622,
+      "label_h": 23,
+      "label_w": 660
+    },
+    {
+      "type": "message",
+      "a": "control",
+      "b": "b_stripe",
+      "text": "Rechazar evento sin confirmar venta",
+      "reply": true,
+      "number": 27,
+      "lines": [
+        "27: Rechazar evento sin confirmar venta"
+      ],
+      "y": 2752,
+      "label_h": 23,
+      "label_w": 660
+    },
+    {
+      "type": "message",
+      "a": "actor",
+      "b": "b_pre",
+      "text": "Consultar resultado del pago",
+      "reply": false,
+      "robustness_number": 24,
+      "number": 28,
+      "lines": [
+        "28: Consultar resultado del pago"
+      ],
+      "y": 2862,
+      "label_h": 23,
+      "label_w": 293
+    },
+    {
+      "type": "message",
+      "a": "b_pre",
+      "b": "control",
+      "text": "payment_status(id_reserva)",
+      "reply": false,
+      "robustness_number": 25,
+      "number": 29,
+      "lines": [
+        "29: payment_status(id_reserva)"
+      ],
+      "y": 2927,
+      "label_h": 23,
+      "label_w": 293
+    },
+    {
+      "type": "message",
+      "a": "control",
+      "b": "venta",
+      "text": "obtener_venta_por_id(id_venta [si pagada])",
+      "reply": false,
+      "robustness_number": 26,
+      "number": 30,
+      "lines": [
+        "30: obtener_venta_por_id(id_venta [si pagada])"
+      ],
+      "y": 3053,
+      "label_h": 23,
+      "label_w": 660
+    },
+    {
+      "type": "message",
+      "a": "venta",
+      "b": "control",
+      "text": "venta confirmada",
+      "reply": true,
+      "robustness_number": 27,
+      "number": 31,
+      "lines": [
+        "31: venta confirmada"
+      ],
+      "y": 3118,
+      "label_h": 23,
+      "label_w": 660
+    },
+    {
+      "type": "message",
+      "a": "control",
+      "b": "b_pre",
+      "text": "estado pagado y venta",
+      "reply": true,
+      "robustness_number": 28,
+      "number": 32,
+      "lines": [
+        "32: estado pagado y venta"
+      ],
+      "y": 3183,
+      "label_h": 23,
+      "label_w": 293
+    },
+    {
+      "type": "message",
+      "a": "control",
+      "b": "b_pre",
+      "text": "Mostrar estado pendiente o fallido",
+      "reply": true,
+      "number": 33,
+      "lines": [
+        "33: Mostrar estado pendiente o fallido"
+      ],
+      "y": 3313,
+      "label_h": 23,
+      "label_w": 293
+    },
+    {
+      "type": "message",
+      "a": "b_pre",
+      "b": "actor",
+      "text": "Mostrar estado de la compra",
+      "reply": true,
+      "robustness_number": 29,
+      "number": 34,
+      "lines": [
+        "34: Mostrar estado de la compra"
+      ],
+      "y": 3423,
+      "label_h": 23,
+      "label_w": 293
+    }
+  ],
+  "frames": [
+    {
+      "kind": "alt",
+      "y": 393,
+      "h": 474,
+      "depth": 0,
+      "guards": [
+        [
+          393,
+          "carrito y stock válidos",
+          true
+        ],
+        [
+          729,
+          "compra no disponible",
+          false
+        ]
+      ],
+      "event_range": [
+        2,
+        7
+      ],
+      "participants": [
+        "b_pre",
+        "bitacora",
+        "control",
+        "reserva"
+      ],
+      "starts_at": "b_pre",
+      "left": 455,
+      "right": 2525,
+      "width": 2070
+    },
+    {
+      "kind": "alt",
+      "y": 1145,
+      "h": 497,
+      "depth": 1,
+      "guards": [
+        [
+          1145,
+          "Stripe disponible",
+          true
+        ],
+        [
+          1481,
+          "no se puede iniciar pago",
+          false
+        ]
+      ],
+      "event_range": [
+        10,
+        15
+      ],
+      "participants": [
+        "b_pre",
+        "b_stripe",
+        "control",
+        "pago"
+      ],
+      "starts_at": "b_pre",
+      "left": 455,
+      "right": 2860,
+      "width": 2405
+    },
+    {
+      "kind": "opt",
+      "y": 1019,
+      "h": 668,
+      "depth": 0,
+      "guards": [
+        [
+          1019,
+          "se elige pagar con Stripe",
+          true
+        ]
+      ],
+      "event_range": [
+        9,
+        15
+      ],
+      "participants": [
+        "b_pre",
+        "b_stripe",
+        "control",
+        "pago"
+      ],
+      "starts_at": "b_pre",
+      "left": 455,
+      "right": 2860,
+      "width": 2405
+    },
+    {
+      "kind": "loop",
+      "y": 2225,
+      "h": 149,
+      "depth": 1,
+      "guards": [
+        [
+          2225,
+          "por cada detalle vendido",
+          true
+        ]
+      ],
+      "event_range": [
+        22,
+        23
+      ],
+      "participants": [
+        "control",
+        "movimiento"
+      ],
+      "starts_at": "control",
+      "left": 790,
+      "right": 1185,
+      "width": 395
+    },
+    {
+      "kind": "alt",
+      "y": 1904,
+      "h": 905,
+      "depth": 0,
+      "guards": [
+        [
+          1904,
+          "evento válido y nuevo",
+          true
+        ],
+        [
+          2541,
+          "evento ya procesado",
+          false
+        ],
+        [
+          2671,
+          "firma o datos inválidos",
+          false
+        ]
+      ],
+      "event_range": [
+        18,
+        27
+      ],
+      "participants": [
+        "b_stripe",
+        "control",
+        "movimiento",
+        "pago",
+        "reserva",
+        "venta"
+      ],
+      "starts_at": "b_pre",
+      "left": 455,
+      "right": 2860,
+      "width": 2405
+    },
+    {
+      "kind": "alt",
+      "y": 2961,
+      "h": 409,
+      "depth": 0,
+      "guards": [
+        [
+          2961,
+          "existe venta pagada",
+          true
+        ],
+        [
+          3232,
+          "pago aún pendiente",
+          false
+        ]
+      ],
+      "event_range": [
+        29,
+        33
+      ],
+      "participants": [
+        "b_pre",
+        "control",
+        "venta"
+      ],
+      "starts_at": "b_pre",
+      "left": 455,
+      "right": 2190,
+      "width": 1735
+    }
+  ],
+  "notes": [
+    "Se resume la modalidad Stripe de prueba. Firma, tenant, importe, moneda y duplicados se validan dentro del control; la redirección del navegador no confirma la venta.",
+    "Los detalles y retenciones permanecen dentro de reserve y confirm_reservation. El descuento ocurre únicamente mediante movimientos. La creación de reserva sí inserta bitácora; no se inventan auditorías adicionales en el webhook actual.",
+    "La consulta final representa el caso exitoso; el endpoint devuelve estado pendiente si aún no existe venta. El comprobante se detalla en CU14."
+  ],
+  "scope": "Mismos recorridos y participantes de robustez; numeración de secuencia nueva al añadir las alternativas.",
+  "geometry": "alt y opt parten de la interfaz principal; loop parte del control correspondiente. Margen de 30 px. El borde derecho corresponde al último participante afectado. Las líneas intermedias del orden fijo no implican interacciones adicionales.",
+  "presentation": "Los retornos al actor se generalizan cuando deben mostrar éxito o rechazo. Las acciones son escenarios independientes del CU, no un guion obligatorio."
+}

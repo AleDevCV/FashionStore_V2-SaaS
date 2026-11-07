@@ -1,0 +1,848 @@
+{
+  "robustness_source": "docs\\diagramas_robustez\\CU16_Simplificado\\CU16_Robustez_Simplificada_Modelo.json",
+  "participants": [
+    {
+      "id": "actor",
+      "name": "Usuario autorizado",
+      "kind": "actor"
+    },
+    {
+      "id": "b_pre",
+      "name": "Frontend : Operación offline web / móvil",
+      "kind": "boundary"
+    },
+    {
+      "id": "control",
+      "name": "Dispositivo : Gestión offline",
+      "kind": "control"
+    },
+    {
+      "id": "detalle",
+      "name": "Detalle de operación",
+      "kind": "entity"
+    },
+    {
+      "id": "operacion",
+      "name": "Operación local",
+      "kind": "entity"
+    },
+    {
+      "id": "snapshot",
+      "name": "Catálogo local y permiso",
+      "kind": "entity"
+    },
+    {
+      "id": "backend",
+      "name": "Backend : Catálogo offline",
+      "kind": "control"
+    },
+    {
+      "id": "central",
+      "name": "Catálogo autorizado",
+      "kind": "entity"
+    }
+  ],
+  "events": [
+    {
+      "type": "message",
+      "a": "actor",
+      "b": "b_pre",
+      "text": "Preparar dispositivo con conexión",
+      "reply": false,
+      "robustness_number": 1,
+      "number": 1,
+      "lines": [
+        "1: Preparar dispositivo con conexión"
+      ],
+      "y": 271,
+      "label_h": 23,
+      "label_w": 293
+    },
+    {
+      "type": "message",
+      "a": "b_pre",
+      "b": "control",
+      "text": "download(sucursal)",
+      "reply": false,
+      "robustness_number": 2,
+      "number": 2,
+      "lines": [
+        "2: download(sucursal)"
+      ],
+      "y": 336,
+      "label_h": 23,
+      "label_w": 293
+    },
+    {
+      "type": "message",
+      "a": "control",
+      "b": "backend",
+      "text": "snapshot(sucursal)",
+      "reply": false,
+      "robustness_number": 3,
+      "number": 3,
+      "lines": [
+        "3: snapshot(sucursal)"
+      ],
+      "y": 462,
+      "label_h": 23,
+      "label_w": 660
+    },
+    {
+      "type": "message",
+      "a": "backend",
+      "b": "central",
+      "text": "snapshot(sucursal)",
+      "reply": false,
+      "robustness_number": 4,
+      "number": 4,
+      "lines": [
+        "4: snapshot(sucursal)"
+      ],
+      "y": 527,
+      "label_h": 23,
+      "label_w": 293
+    },
+    {
+      "type": "message",
+      "a": "central",
+      "b": "backend",
+      "text": "catálogo y autorización",
+      "reply": true,
+      "robustness_number": 5,
+      "number": 5,
+      "lines": [
+        "5: catálogo y autorización"
+      ],
+      "y": 592,
+      "label_h": 23,
+      "label_w": 293
+    },
+    {
+      "type": "message",
+      "a": "backend",
+      "b": "control",
+      "text": "snapshot autorizado",
+      "reply": true,
+      "robustness_number": 6,
+      "number": 6,
+      "lines": [
+        "6: snapshot autorizado"
+      ],
+      "y": 657,
+      "label_h": 23,
+      "label_w": 660
+    },
+    {
+      "type": "message",
+      "a": "control",
+      "b": "snapshot",
+      "text": "saveSnapshot(datos)",
+      "reply": false,
+      "robustness_number": 7,
+      "number": 7,
+      "lines": [
+        "7: saveSnapshot(datos)"
+      ],
+      "y": 722,
+      "label_h": 23,
+      "label_w": 660
+    },
+    {
+      "type": "message",
+      "a": "control",
+      "b": "b_pre",
+      "text": "catálogo guardado",
+      "reply": true,
+      "robustness_number": 8,
+      "number": 8,
+      "lines": [
+        "8: catálogo guardado"
+      ],
+      "y": 787,
+      "label_h": 23,
+      "label_w": 293
+    },
+    {
+      "type": "message",
+      "a": "control",
+      "b": "b_pre",
+      "text": "Conservar copia y pendientes anteriores",
+      "reply": true,
+      "number": 9,
+      "lines": [
+        "9: Conservar copia y pendientes",
+        "anteriores"
+      ],
+      "y": 940,
+      "label_h": 46,
+      "label_w": 293
+    },
+    {
+      "type": "message",
+      "a": "b_pre",
+      "b": "actor",
+      "text": "Mostrar estado de preparación",
+      "reply": true,
+      "robustness_number": 9,
+      "number": 10,
+      "lines": [
+        "10: Mostrar estado de preparación"
+      ],
+      "y": 1050,
+      "label_h": 23,
+      "label_w": 293
+    },
+    {
+      "type": "message",
+      "a": "actor",
+      "b": "b_pre",
+      "text": "Consultar catálogo sin conexión",
+      "reply": false,
+      "robustness_number": 10,
+      "number": 11,
+      "lines": [
+        "11: Consultar catálogo sin conexión"
+      ],
+      "y": 1115,
+      "label_h": 23,
+      "label_w": 293
+    },
+    {
+      "type": "message",
+      "a": "b_pre",
+      "b": "control",
+      "text": "refresh()",
+      "reply": false,
+      "robustness_number": 11,
+      "number": 12,
+      "lines": [
+        "12: refresh()"
+      ],
+      "y": 1180,
+      "label_h": 23,
+      "label_w": 293
+    },
+    {
+      "type": "message",
+      "a": "control",
+      "b": "snapshot",
+      "text": "catalog(sucursal)",
+      "reply": false,
+      "robustness_number": 12,
+      "number": 13,
+      "lines": [
+        "13: catalog(sucursal)"
+      ],
+      "y": 1306,
+      "label_h": 23,
+      "label_w": 660
+    },
+    {
+      "type": "message",
+      "a": "snapshot",
+      "b": "control",
+      "text": "catálogo y disponible local",
+      "reply": true,
+      "robustness_number": 13,
+      "number": 14,
+      "lines": [
+        "14: catálogo y disponible local"
+      ],
+      "y": 1371,
+      "label_h": 23,
+      "label_w": 660
+    },
+    {
+      "type": "message",
+      "a": "control",
+      "b": "b_pre",
+      "text": "catálogo local",
+      "reply": true,
+      "robustness_number": 14,
+      "number": 15,
+      "lines": [
+        "15: catálogo local"
+      ],
+      "y": 1436,
+      "label_h": 23,
+      "label_w": 293
+    },
+    {
+      "type": "message",
+      "a": "control",
+      "b": "b_pre",
+      "text": "Preparar dispositivo cuando exista red",
+      "reply": true,
+      "number": 16,
+      "lines": [
+        "16: Preparar dispositivo cuando exista",
+        "red"
+      ],
+      "y": 1589,
+      "label_h": 46,
+      "label_w": 293
+    },
+    {
+      "type": "message",
+      "a": "b_pre",
+      "b": "actor",
+      "text": "Mostrar catálogo local o aviso",
+      "reply": true,
+      "robustness_number": 15,
+      "number": 17,
+      "lines": [
+        "17: Mostrar catálogo local o aviso"
+      ],
+      "y": 1699,
+      "label_h": 23,
+      "label_w": 293
+    },
+    {
+      "type": "message",
+      "a": "actor",
+      "b": "b_pre",
+      "text": "Registrar reserva offline",
+      "reply": false,
+      "robustness_number": 16,
+      "number": 18,
+      "lines": [
+        "18: Registrar reserva offline"
+      ],
+      "y": 1764,
+      "label_h": 23,
+      "label_w": 293
+    },
+    {
+      "type": "message",
+      "a": "b_pre",
+      "b": "control",
+      "text": "capture(reserva, ítems)",
+      "reply": false,
+      "robustness_number": 17,
+      "number": 19,
+      "lines": [
+        "19: capture(reserva, ítems)"
+      ],
+      "y": 1829,
+      "label_h": 23,
+      "label_w": 293
+    },
+    {
+      "type": "message",
+      "a": "control",
+      "b": "operacion",
+      "text": "Guardar UUID y estado PENDIENTE",
+      "reply": false,
+      "robustness_number": 18,
+      "number": 20,
+      "lines": [
+        "20: Guardar UUID y estado PENDIENTE"
+      ],
+      "y": 1955,
+      "label_h": 23,
+      "label_w": 628
+    },
+    {
+      "type": "message",
+      "a": "control",
+      "b": "detalle",
+      "text": "Guardar detalle en la misma transacción",
+      "reply": false,
+      "robustness_number": 19,
+      "number": 21,
+      "lines": [
+        "21: Guardar detalle en la misma",
+        "transacción"
+      ],
+      "y": 2104,
+      "label_h": 46,
+      "label_w": 293
+    },
+    {
+      "type": "message",
+      "a": "control",
+      "b": "b_pre",
+      "text": "reserva provisional",
+      "reply": true,
+      "robustness_number": 20,
+      "number": 22,
+      "lines": [
+        "22: reserva provisional"
+      ],
+      "y": 2214,
+      "label_h": 23,
+      "label_w": 293
+    },
+    {
+      "type": "message",
+      "a": "control",
+      "b": "b_pre",
+      "text": "Revertir guardado sin declarar éxito",
+      "reply": true,
+      "number": 23,
+      "lines": [
+        "23: Revertir guardado sin declarar",
+        "éxito"
+      ],
+      "y": 2367,
+      "label_h": 46,
+      "label_w": 293
+    },
+    {
+      "type": "message",
+      "a": "b_pre",
+      "b": "actor",
+      "text": "Mostrar resultado provisional",
+      "reply": true,
+      "robustness_number": 21,
+      "number": 24,
+      "lines": [
+        "24: Mostrar resultado provisional"
+      ],
+      "y": 2477,
+      "label_h": 23,
+      "label_w": 293
+    },
+    {
+      "type": "message",
+      "a": "actor",
+      "b": "b_pre",
+      "text": "Registrar venta de contado offline",
+      "reply": false,
+      "robustness_number": 22,
+      "number": 25,
+      "lines": [
+        "25: Registrar venta de contado offline"
+      ],
+      "y": 2542,
+      "label_h": 23,
+      "label_w": 293
+    },
+    {
+      "type": "message",
+      "a": "b_pre",
+      "b": "control",
+      "text": "capture(venta, ítems)",
+      "reply": false,
+      "robustness_number": 23,
+      "number": 26,
+      "lines": [
+        "26: capture(venta, ítems)"
+      ],
+      "y": 2607,
+      "label_h": 23,
+      "label_w": 293
+    },
+    {
+      "type": "message",
+      "a": "control",
+      "b": "operacion",
+      "text": "Guardar UUID y estado PENDIENTE",
+      "reply": false,
+      "robustness_number": 24,
+      "number": 27,
+      "lines": [
+        "27: Guardar UUID y estado PENDIENTE"
+      ],
+      "y": 2733,
+      "label_h": 23,
+      "label_w": 628
+    },
+    {
+      "type": "message",
+      "a": "control",
+      "b": "detalle",
+      "text": "Guardar detalle en la misma transacción",
+      "reply": false,
+      "robustness_number": 25,
+      "number": 28,
+      "lines": [
+        "28: Guardar detalle en la misma",
+        "transacción"
+      ],
+      "y": 2882,
+      "label_h": 46,
+      "label_w": 293
+    },
+    {
+      "type": "message",
+      "a": "control",
+      "b": "b_pre",
+      "text": "venta provisional",
+      "reply": true,
+      "robustness_number": 26,
+      "number": 29,
+      "lines": [
+        "29: venta provisional"
+      ],
+      "y": 2992,
+      "label_h": 23,
+      "label_w": 293
+    },
+    {
+      "type": "message",
+      "a": "control",
+      "b": "b_pre",
+      "text": "Revertir guardado sin declarar éxito",
+      "reply": true,
+      "number": 30,
+      "lines": [
+        "30: Revertir guardado sin declarar",
+        "éxito"
+      ],
+      "y": 3145,
+      "label_h": 46,
+      "label_w": 293
+    },
+    {
+      "type": "message",
+      "a": "b_pre",
+      "b": "actor",
+      "text": "Mostrar resultado provisional",
+      "reply": true,
+      "robustness_number": 27,
+      "number": 31,
+      "lines": [
+        "31: Mostrar resultado provisional"
+      ],
+      "y": 3255,
+      "label_h": 23,
+      "label_w": 293
+    },
+    {
+      "type": "message",
+      "a": "actor",
+      "b": "b_pre",
+      "text": "Reabrir y consultar pendientes",
+      "reply": false,
+      "robustness_number": 28,
+      "number": 32,
+      "lines": [
+        "32: Reabrir y consultar pendientes"
+      ],
+      "y": 3320,
+      "label_h": 23,
+      "label_w": 293
+    },
+    {
+      "type": "message",
+      "a": "b_pre",
+      "b": "control",
+      "text": "open()",
+      "reply": false,
+      "robustness_number": 29,
+      "number": 33,
+      "lines": [
+        "33: open()"
+      ],
+      "y": 3385,
+      "label_h": 23,
+      "label_w": 293
+    },
+    {
+      "type": "message",
+      "a": "control",
+      "b": "operacion",
+      "text": "operations()",
+      "reply": false,
+      "robustness_number": 30,
+      "number": 34,
+      "lines": [
+        "34: operations()"
+      ],
+      "y": 3450,
+      "label_h": 23,
+      "label_w": 628
+    },
+    {
+      "type": "message",
+      "a": "operacion",
+      "b": "control",
+      "text": "pendientes y estados guardados",
+      "reply": true,
+      "robustness_number": 31,
+      "number": 35,
+      "lines": [
+        "35: pendientes y estados guardados"
+      ],
+      "y": 3515,
+      "label_h": 23,
+      "label_w": 628
+    },
+    {
+      "type": "message",
+      "a": "control",
+      "b": "detalle",
+      "text": "details(UUID)",
+      "reply": false,
+      "robustness_number": 32,
+      "number": 36,
+      "lines": [
+        "36: details(UUID)"
+      ],
+      "y": 3641,
+      "label_h": 23,
+      "label_w": 293
+    },
+    {
+      "type": "message",
+      "a": "detalle",
+      "b": "control",
+      "text": "detalles guardados",
+      "reply": true,
+      "robustness_number": 33,
+      "number": 37,
+      "lines": [
+        "37: detalles guardados"
+      ],
+      "y": 3706,
+      "label_h": 23,
+      "label_w": 293
+    },
+    {
+      "type": "message",
+      "a": "control",
+      "b": "b_pre",
+      "text": "operaciones recuperadas",
+      "reply": true,
+      "robustness_number": 34,
+      "number": 38,
+      "lines": [
+        "38: operaciones recuperadas"
+      ],
+      "y": 3816,
+      "label_h": 23,
+      "label_w": 293
+    },
+    {
+      "type": "message",
+      "a": "b_pre",
+      "b": "actor",
+      "text": "Mostrar operaciones tras reinicio",
+      "reply": true,
+      "robustness_number": 35,
+      "number": 39,
+      "lines": [
+        "39: Mostrar operaciones tras reinicio"
+      ],
+      "y": 3881,
+      "label_h": 23,
+      "label_w": 293
+    }
+  ],
+  "frames": [
+    {
+      "kind": "alt",
+      "y": 370,
+      "h": 627,
+      "depth": 0,
+      "guards": [
+        [
+          370,
+          "descarga autorizada con red",
+          true
+        ],
+        [
+          836,
+          "fallo de conexión o autorización",
+          false
+        ]
+      ],
+      "event_range": [
+        2,
+        9
+      ],
+      "participants": [
+        "b_pre",
+        "backend",
+        "central",
+        "control",
+        "snapshot"
+      ],
+      "starts_at": "b_pre",
+      "left": 455,
+      "right": 2525,
+      "width": 2070
+    },
+    {
+      "kind": "alt",
+      "y": 1214,
+      "h": 432,
+      "depth": 0,
+      "guards": [
+        [
+          1214,
+          "existe copia local",
+          true
+        ],
+        [
+          1485,
+          "sin copia descargada",
+          false
+        ]
+      ],
+      "event_range": [
+        12,
+        16
+      ],
+      "participants": [
+        "b_pre",
+        "control",
+        "snapshot"
+      ],
+      "starts_at": "b_pre",
+      "left": 455,
+      "right": 1855,
+      "width": 1400
+    },
+    {
+      "kind": "loop",
+      "y": 1989,
+      "h": 172,
+      "depth": 1,
+      "guards": [
+        [
+          1989,
+          "por cada ítem reservado",
+          true
+        ]
+      ],
+      "event_range": [
+        20,
+        21
+      ],
+      "participants": [
+        "control",
+        "detalle"
+      ],
+      "starts_at": "control",
+      "left": 790,
+      "right": 1185,
+      "width": 395
+    },
+    {
+      "kind": "alt",
+      "y": 1863,
+      "h": 561,
+      "depth": 0,
+      "guards": [
+        [
+          1863,
+          "permiso local y datos válidos",
+          true
+        ],
+        [
+          2263,
+          "validación o guardado fallidos",
+          false
+        ]
+      ],
+      "event_range": [
+        19,
+        23
+      ],
+      "participants": [
+        "b_pre",
+        "control",
+        "detalle",
+        "operacion"
+      ],
+      "starts_at": "b_pre",
+      "left": 455,
+      "right": 1520,
+      "width": 1065
+    },
+    {
+      "kind": "loop",
+      "y": 2767,
+      "h": 172,
+      "depth": 1,
+      "guards": [
+        [
+          2767,
+          "por cada ítem vendido",
+          true
+        ]
+      ],
+      "event_range": [
+        27,
+        28
+      ],
+      "participants": [
+        "control",
+        "detalle"
+      ],
+      "starts_at": "control",
+      "left": 790,
+      "right": 1185,
+      "width": 395
+    },
+    {
+      "kind": "alt",
+      "y": 2641,
+      "h": 561,
+      "depth": 0,
+      "guards": [
+        [
+          2641,
+          "permiso, stock y efectivo válidos",
+          true
+        ],
+        [
+          3041,
+          "validación o guardado fallidos",
+          false
+        ]
+      ],
+      "event_range": [
+        26,
+        30
+      ],
+      "participants": [
+        "b_pre",
+        "control",
+        "detalle",
+        "operacion"
+      ],
+      "starts_at": "b_pre",
+      "left": 455,
+      "right": 1520,
+      "width": 1065
+    },
+    {
+      "kind": "loop",
+      "y": 3549,
+      "h": 214,
+      "depth": 0,
+      "guards": [
+        [
+          3549,
+          "por cada operación consultada",
+          true
+        ]
+      ],
+      "event_range": [
+        35,
+        37
+      ],
+      "participants": [
+        "control",
+        "detalle"
+      ],
+      "starts_at": "control",
+      "left": 790,
+      "right": 1185,
+      "width": 395
+    }
+  ],
+  "notes": [
+    "El backend solo interviene en la descarga inicial con conexión. Consultar y registrar usan IndexedDB o SQLite. No se dibuja sincronización: corresponde a CU17.",
+    "Catálogo local y permiso agrupa snapshot, productos, variantes y disponibilidad conocida. Operación y detalles se conservan separados y se guardan en la misma transacción.",
+    "No existe una bitácora local separada: la operación conserva UUID, autor, fecha, estado e intentos. La auditoría central de sincronización se escribe posteriormente en CU17; no se inventa acceso a PostgreSQL durante una venta sin red.",
+    "Las ventas requieren rol autorizado, efectivo suficiente y permiso offline vigente. Las reservas requieren cliente descargado. Son operaciones provisionales, no ventas confirmadas por el servidor."
+  ],
+  "scope": "Mismos recorridos y participantes de robustez; numeración de secuencia nueva al añadir las alternativas.",
+  "geometry": "alt y opt parten de la interfaz principal; loop parte del control correspondiente. Margen de 30 px. El borde derecho corresponde al último participante afectado. Las líneas intermedias del orden fijo no implican interacciones adicionales.",
+  "presentation": "Los retornos al actor se generalizan cuando deben mostrar éxito o rechazo. Las acciones son escenarios independientes del CU, no un guion obligatorio."
+}

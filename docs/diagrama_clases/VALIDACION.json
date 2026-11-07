@@ -1,0 +1,18 @@
+{
+  "fuentes_sin_modificaciones": true,
+  "todos_los_clasificadores_extraidos_representados": true,
+  "clasificadores": 563,
+  "operaciones": 1402,
+  "atributos": 2835,
+  "relaciones": 1070,
+  "conectores_vinculados_a_clases": 1070,
+  "paginas": 123,
+  "ancho_uniforme": 1200,
+  "sin_huecos_ni_solapamientos_entre_laminas": true,
+  "textos_reconstruidos_sin_perdidas": true,
+  "longitud_de_conectores_reconstruida": true,
+  "fondos_reconstruidos_sin_perdidas": true,
+  "texto_sin_recortes": true,
+  "esquema_drawio_valido": true,
+  "sha256_general": "39010d1102c645f16bec749c0c973ab284086e1e96235ebfee78c9ebf3c39a14"
+}

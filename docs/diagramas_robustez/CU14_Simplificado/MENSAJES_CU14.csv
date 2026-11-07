@@ -1,0 +1,24 @@
+﻿numero,origen,destino,mensaje,archivo,linea
+1,actor,b_pre,Consultar comprobante de una venta,,
+2,b_pre,control,comprobante_por_venta(id_venta),Parcial2_backend/app/routers/comprobantes.py,59
+3,control,comprobante,obtener_comprobante_por_venta(id_venta),Parcial2_backend/app/services/comprobante_service.py,411
+4,comprobante,control,comprobante existente,,
+5,control,b_pre,datos del comprobante,,
+6,b_pre,actor,Mostrar comprobante,,
+7,actor,b_pre,Generar comprobante [si no existe],,
+8,b_pre,control,generar_comprobante(venta y datos),Parcial2_backend/app/routers/comprobantes.py,32
+9,control,venta,generar_comprobante(id_venta),Parcial2_backend/app/services/comprobante_service.py,227
+10,venta,control,venta autorizada y detalles,,
+11,control,pdf,Construir y guardar PDF,Parcial2_backend/app/services/comprobante_service.py,227
+12,control,comprobante,Registrar comprobante único y URL,Parcial2_backend/app/services/comprobante_service.py,227
+13,comprobante,control,comprobante registrado,,
+14,control,bitacora,registrar_bitacora(comprobante),Parcial2_backend/app/services/bitacora_service.py,65
+15,control,b_pre,comprobante generado,,
+16,actor,b_pre,Descargar PDF autorizado,,
+17,b_pre,control,descargar_pdf_autorizado(número),Parcial2_backend/app/routers/comprobantes.py,105
+18,control,comprobante,descargar_pdf_autorizado(número),Parcial2_backend/app/routers/comprobantes.py,105
+19,comprobante,control,comprobante autorizado,,
+20,control,pdf,Leer PDF del tenant,Parcial2_backend/app/routers/comprobantes.py,105
+21,pdf,control,archivo PDF,,
+22,control,b_pre,descarga PDF,,
+23,b_pre,actor,Abrir o guardar comprobante,,

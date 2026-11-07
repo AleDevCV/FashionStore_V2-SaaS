@@ -1,0 +1,799 @@
+{
+  "robustness_source": "docs\\diagramas_robustez\\CU09_Simplificado\\CU09_Robustez_Simplificada_Modelo.json",
+  "participants": [
+    {
+      "id": "actor",
+      "name": "Visitante / Cliente",
+      "kind": "actor"
+    },
+    {
+      "id": "b_pre",
+      "name": "Frontend : Catálogo y asistencia",
+      "kind": "boundary"
+    },
+    {
+      "id": "control",
+      "name": "Backend : Catálogo y asistencia",
+      "kind": "control"
+    },
+    {
+      "id": "prenda",
+      "name": "Prenda",
+      "kind": "entity"
+    },
+    {
+      "id": "inventario",
+      "name": "Disponibilidad",
+      "kind": "entity"
+    },
+    {
+      "id": "bitacora",
+      "name": "Bitácora",
+      "kind": "entity"
+    },
+    {
+      "id": "b_ia",
+      "name": "Integración : Servicios de IA",
+      "kind": "boundary"
+    }
+  ],
+  "events": [
+    {
+      "type": "message",
+      "a": "actor",
+      "b": "b_pre",
+      "text": "Buscar prendas y aplicar filtros",
+      "reply": false,
+      "robustness_number": 1,
+      "number": 1,
+      "lines": [
+        "1: Buscar prendas y aplicar filtros"
+      ],
+      "y": 271,
+      "label_h": 23,
+      "label_w": 293
+    },
+    {
+      "type": "message",
+      "a": "b_pre",
+      "b": "control",
+      "text": "consultar_catalogo(filtros)",
+      "reply": false,
+      "robustness_number": 2,
+      "number": 2,
+      "lines": [
+        "2: consultar_catalogo(filtros)"
+      ],
+      "y": 336,
+      "label_h": 23,
+      "label_w": 293
+    },
+    {
+      "type": "message",
+      "a": "control",
+      "b": "prenda",
+      "text": "consultar_catalogo(filtros)",
+      "reply": false,
+      "robustness_number": 3,
+      "number": 3,
+      "lines": [
+        "3: consultar_catalogo(filtros)"
+      ],
+      "y": 401,
+      "label_h": 23,
+      "label_w": 293
+    },
+    {
+      "type": "message",
+      "a": "prenda",
+      "b": "control",
+      "text": "prendas publicadas",
+      "reply": true,
+      "robustness_number": 4,
+      "number": 4,
+      "lines": [
+        "4: prendas publicadas"
+      ],
+      "y": 466,
+      "label_h": 23,
+      "label_w": 293
+    },
+    {
+      "type": "message",
+      "a": "control",
+      "b": "b_pre",
+      "text": "catálogo filtrado",
+      "reply": true,
+      "robustness_number": 5,
+      "number": 5,
+      "lines": [
+        "5: catálogo filtrado"
+      ],
+      "y": 592,
+      "label_h": 23,
+      "label_w": 293
+    },
+    {
+      "type": "message",
+      "a": "control",
+      "b": "b_pre",
+      "text": "Catálogo vacío",
+      "reply": true,
+      "number": 6,
+      "lines": [
+        "6: Catálogo vacío"
+      ],
+      "y": 722,
+      "label_h": 23,
+      "label_w": 293
+    },
+    {
+      "type": "message",
+      "a": "b_pre",
+      "b": "actor",
+      "text": "Mostrar catálogo",
+      "reply": true,
+      "robustness_number": 6,
+      "number": 7,
+      "lines": [
+        "7: Mostrar catálogo"
+      ],
+      "y": 832,
+      "label_h": 23,
+      "label_w": 293
+    },
+    {
+      "type": "message",
+      "a": "actor",
+      "b": "b_pre",
+      "text": "Consultar ficha y variantes",
+      "reply": false,
+      "robustness_number": 7,
+      "number": 8,
+      "lines": [
+        "8: Consultar ficha y variantes"
+      ],
+      "y": 897,
+      "label_h": 23,
+      "label_w": 293
+    },
+    {
+      "type": "message",
+      "a": "b_pre",
+      "b": "control",
+      "text": "obtener_ficha(id_prenda)",
+      "reply": false,
+      "robustness_number": 8,
+      "number": 9,
+      "lines": [
+        "9: obtener_ficha(id_prenda)"
+      ],
+      "y": 962,
+      "label_h": 23,
+      "label_w": 293
+    },
+    {
+      "type": "message",
+      "a": "control",
+      "b": "prenda",
+      "text": "obtener_ficha_publica(id_prenda)",
+      "reply": false,
+      "robustness_number": 9,
+      "number": 10,
+      "lines": [
+        "10: obtener_ficha_publica(id_prenda)"
+      ],
+      "y": 1088,
+      "label_h": 23,
+      "label_w": 293
+    },
+    {
+      "type": "message",
+      "a": "prenda",
+      "b": "control",
+      "text": "ficha con variantes y precios",
+      "reply": true,
+      "robustness_number": 10,
+      "number": 11,
+      "lines": [
+        "11: ficha con variantes y precios"
+      ],
+      "y": 1153,
+      "label_h": 23,
+      "label_w": 293
+    },
+    {
+      "type": "message",
+      "a": "control",
+      "b": "b_pre",
+      "text": "ficha de prenda",
+      "reply": true,
+      "robustness_number": 11,
+      "number": 12,
+      "lines": [
+        "12: ficha de prenda"
+      ],
+      "y": 1218,
+      "label_h": 23,
+      "label_w": 293
+    },
+    {
+      "type": "message",
+      "a": "control",
+      "b": "b_pre",
+      "text": "Prenda no encontrada",
+      "reply": true,
+      "number": 13,
+      "lines": [
+        "13: Prenda no encontrada"
+      ],
+      "y": 1348,
+      "label_h": 23,
+      "label_w": 293
+    },
+    {
+      "type": "message",
+      "a": "b_pre",
+      "b": "actor",
+      "text": "Mostrar ficha o aviso",
+      "reply": true,
+      "robustness_number": 12,
+      "number": 14,
+      "lines": [
+        "14: Mostrar ficha o aviso"
+      ],
+      "y": 1458,
+      "label_h": 23,
+      "label_w": 293
+    },
+    {
+      "type": "message",
+      "a": "actor",
+      "b": "b_pre",
+      "text": "Consultar disponibilidad",
+      "reply": false,
+      "robustness_number": 13,
+      "number": 15,
+      "lines": [
+        "15: Consultar disponibilidad"
+      ],
+      "y": 1523,
+      "label_h": 23,
+      "label_w": 293
+    },
+    {
+      "type": "message",
+      "a": "b_pre",
+      "b": "control",
+      "text": "consultar_disponibilidad(id_variante)",
+      "reply": false,
+      "robustness_number": 14,
+      "number": 16,
+      "lines": [
+        "16: consultar_disponibilidad(id_",
+        "variante)"
+      ],
+      "y": 1611,
+      "label_h": 46,
+      "label_w": 293
+    },
+    {
+      "type": "message",
+      "a": "control",
+      "b": "inventario",
+      "text": "consultar_disponibilidad(id_variante)",
+      "reply": false,
+      "robustness_number": 15,
+      "number": 17,
+      "lines": [
+        "17: consultar_disponibilidad(id_variante)"
+      ],
+      "y": 1676,
+      "label_h": 23,
+      "label_w": 628
+    },
+    {
+      "type": "message",
+      "a": "inventario",
+      "b": "control",
+      "text": "sucursales con disponible",
+      "reply": true,
+      "robustness_number": 16,
+      "number": 18,
+      "lines": [
+        "18: sucursales con disponible"
+      ],
+      "y": 1741,
+      "label_h": 23,
+      "label_w": 628
+    },
+    {
+      "type": "message",
+      "a": "control",
+      "b": "b_pre",
+      "text": "disponibilidad",
+      "reply": true,
+      "robustness_number": 17,
+      "number": 19,
+      "lines": [
+        "19: disponibilidad"
+      ],
+      "y": 1806,
+      "label_h": 23,
+      "label_w": 293
+    },
+    {
+      "type": "message",
+      "a": "actor",
+      "b": "b_pre",
+      "text": "Solicitar recomendaciones [cliente]",
+      "reply": false,
+      "robustness_number": 18,
+      "number": 20,
+      "lines": [
+        "20: Solicitar recomendaciones [cliente]"
+      ],
+      "y": 1871,
+      "label_h": 23,
+      "label_w": 293
+    },
+    {
+      "type": "message",
+      "a": "b_pre",
+      "b": "control",
+      "text": "recomendar_outfit(preferencias)",
+      "reply": false,
+      "robustness_number": 19,
+      "number": 21,
+      "lines": [
+        "21: recomendar_outfit(preferencias)"
+      ],
+      "y": 1997,
+      "label_h": 23,
+      "label_w": 293
+    },
+    {
+      "type": "message",
+      "a": "control",
+      "b": "prenda",
+      "text": "_obtener_catalogo_activo_con_stock()",
+      "reply": false,
+      "robustness_number": 20,
+      "number": 22,
+      "lines": [
+        "22: _obtener_catalogo_activo_con_",
+        "stock()"
+      ],
+      "y": 2085,
+      "label_h": 46,
+      "label_w": 293
+    },
+    {
+      "type": "message",
+      "a": "prenda",
+      "b": "control",
+      "text": "catálogo autorizado",
+      "reply": true,
+      "robustness_number": 21,
+      "number": 23,
+      "lines": [
+        "23: catálogo autorizado"
+      ],
+      "y": 2150,
+      "label_h": 23,
+      "label_w": 293
+    },
+    {
+      "type": "message",
+      "a": "control",
+      "b": "b_ia",
+      "text": "Generar recomendaciones [si proveedor disponible]",
+      "reply": false,
+      "robustness_number": 22,
+      "number": 24,
+      "lines": [
+        "24: Generar recomendaciones [si proveedor disponible]"
+      ],
+      "y": 2276,
+      "label_h": 23,
+      "label_w": 660
+    },
+    {
+      "type": "message",
+      "a": "b_ia",
+      "b": "control",
+      "text": "sugerencias para validar / fallo de proveedor",
+      "reply": true,
+      "robustness_number": 23,
+      "number": 25,
+      "lines": [
+        "25: sugerencias para validar / fallo de proveedor"
+      ],
+      "y": 2341,
+      "label_h": 23,
+      "label_w": 660
+    },
+    {
+      "type": "message",
+      "a": "control",
+      "b": "control",
+      "text": "_ejecutar_fallback_recomendacion()",
+      "reply": false,
+      "number": 26,
+      "lines": [
+        "26: _ejecutar_fallback_",
+        "recomendacion()"
+      ],
+      "y": 2494,
+      "label_h": 46,
+      "label_w": 290
+    },
+    {
+      "type": "message",
+      "a": "control",
+      "b": "bitacora",
+      "text": "registrar_bitacora(recomendación IA)",
+      "reply": false,
+      "robustness_number": 24,
+      "number": 27,
+      "lines": [
+        "27: registrar_bitacora(recomendación IA)"
+      ],
+      "y": 2628,
+      "label_h": 23,
+      "label_w": 660
+    },
+    {
+      "type": "message",
+      "a": "control",
+      "b": "b_pre",
+      "text": "recomendaciones validadas o alternativa local",
+      "reply": true,
+      "robustness_number": 25,
+      "number": 28,
+      "lines": [
+        "28: recomendaciones validadas o",
+        "alternativa local"
+      ],
+      "y": 2716,
+      "label_h": 46,
+      "label_w": 293
+    },
+    {
+      "type": "message",
+      "a": "b_pre",
+      "b": "actor",
+      "text": "Mostrar asistencia si fue solicitada",
+      "reply": true,
+      "robustness_number": 26,
+      "number": 29,
+      "lines": [
+        "29: Mostrar asistencia si fue solicitada"
+      ],
+      "y": 2826,
+      "label_h": 23,
+      "label_w": 293
+    },
+    {
+      "type": "message",
+      "a": "actor",
+      "b": "b_pre",
+      "text": "Abrir vestidor [opcional]",
+      "reply": false,
+      "robustness_number": 27,
+      "number": 30,
+      "lines": [
+        "30: Abrir vestidor [opcional]"
+      ],
+      "y": 2891,
+      "label_h": 23,
+      "label_w": 293
+    },
+    {
+      "type": "message",
+      "a": "b_pre",
+      "b": "control",
+      "text": "obtener_realtime_token()",
+      "reply": false,
+      "robustness_number": 28,
+      "number": 31,
+      "lines": [
+        "31: obtener_realtime_token()"
+      ],
+      "y": 3017,
+      "label_h": 23,
+      "label_w": 293
+    },
+    {
+      "type": "message",
+      "a": "control",
+      "b": "bitacora",
+      "text": "registrar_bitacora(inicio de vestidor)",
+      "reply": false,
+      "robustness_number": 29,
+      "number": 32,
+      "lines": [
+        "32: registrar_bitacora(inicio de vestidor)"
+      ],
+      "y": 3082,
+      "label_h": 23,
+      "label_w": 660
+    },
+    {
+      "type": "message",
+      "a": "control",
+      "b": "b_ia",
+      "text": "create_realtime_token()",
+      "reply": false,
+      "robustness_number": 30,
+      "number": 33,
+      "lines": [
+        "33: create_realtime_token()"
+      ],
+      "y": 3147,
+      "label_h": 23,
+      "label_w": 660
+    },
+    {
+      "type": "message",
+      "a": "b_ia",
+      "b": "control",
+      "text": "token efímero y configuración",
+      "reply": true,
+      "robustness_number": 31,
+      "number": 34,
+      "lines": [
+        "34: token efímero y configuración"
+      ],
+      "y": 3273,
+      "label_h": 23,
+      "label_w": 660
+    },
+    {
+      "type": "message",
+      "a": "control",
+      "b": "b_pre",
+      "text": "acceso al vestidor",
+      "reply": true,
+      "robustness_number": 32,
+      "number": 35,
+      "lines": [
+        "35: acceso al vestidor"
+      ],
+      "y": 3338,
+      "label_h": 23,
+      "label_w": 293
+    },
+    {
+      "type": "message",
+      "a": "b_ia",
+      "b": "control",
+      "text": "Fallo del proveedor",
+      "reply": true,
+      "number": 36,
+      "lines": [
+        "36: Fallo del proveedor"
+      ],
+      "y": 3468,
+      "label_h": 23,
+      "label_w": 660
+    },
+    {
+      "type": "message",
+      "a": "control",
+      "b": "b_pre",
+      "text": "Continuar sin vestidor",
+      "reply": true,
+      "number": 37,
+      "lines": [
+        "37: Continuar sin vestidor"
+      ],
+      "y": 3533,
+      "label_h": 23,
+      "label_w": 293
+    },
+    {
+      "type": "message",
+      "a": "b_pre",
+      "b": "actor",
+      "text": "Mostrar vestidor o aviso de disponibilidad",
+      "reply": true,
+      "robustness_number": 33,
+      "number": 38,
+      "lines": [
+        "38: Mostrar vestidor o aviso de",
+        "disponibilidad"
+      ],
+      "y": 3711,
+      "label_h": 46,
+      "label_w": 293
+    }
+  ],
+  "frames": [
+    {
+      "kind": "alt",
+      "y": 500,
+      "h": 279,
+      "depth": 0,
+      "guards": [
+        [
+          500,
+          "hay prendas",
+          true
+        ],
+        [
+          641,
+          "sin coincidencias",
+          false
+        ]
+      ],
+      "event_range": [
+        4,
+        6
+      ],
+      "participants": [
+        "b_pre",
+        "control"
+      ],
+      "starts_at": "b_pre",
+      "left": 455,
+      "right": 850,
+      "width": 395
+    },
+    {
+      "kind": "alt",
+      "y": 996,
+      "h": 409,
+      "depth": 0,
+      "guards": [
+        [
+          996,
+          "prenda publicada",
+          true
+        ],
+        [
+          1267,
+          "prenda no disponible",
+          false
+        ]
+      ],
+      "event_range": [
+        9,
+        13
+      ],
+      "participants": [
+        "b_pre",
+        "control",
+        "prenda"
+      ],
+      "starts_at": "b_pre",
+      "left": 455,
+      "right": 1185,
+      "width": 730
+    },
+    {
+      "kind": "alt",
+      "y": 2184,
+      "h": 391,
+      "depth": 1,
+      "guards": [
+        [
+          2184,
+          "proveedor disponible",
+          true
+        ],
+        [
+          2390,
+          "usar alternativa local",
+          false
+        ]
+      ],
+      "event_range": [
+        23,
+        26
+      ],
+      "participants": [
+        "b_ia",
+        "control"
+      ],
+      "starts_at": "b_pre",
+      "left": 455,
+      "right": 2190,
+      "width": 1735
+    },
+    {
+      "kind": "opt",
+      "y": 1905,
+      "h": 868,
+      "depth": 0,
+      "guards": [
+        [
+          1905,
+          "se confirma consulta IA",
+          true
+        ]
+      ],
+      "event_range": [
+        20,
+        28
+      ],
+      "participants": [
+        "b_ia",
+        "b_pre",
+        "bitacora",
+        "control",
+        "prenda"
+      ],
+      "starts_at": "b_pre",
+      "left": 455,
+      "right": 2190,
+      "width": 1735
+    },
+    {
+      "kind": "alt",
+      "y": 3181,
+      "h": 409,
+      "depth": 1,
+      "guards": [
+        [
+          3181,
+          "token disponible",
+          true
+        ],
+        [
+          3387,
+          "servicio no disponible",
+          false
+        ]
+      ],
+      "event_range": [
+        33,
+        37
+      ],
+      "participants": [
+        "b_ia",
+        "b_pre",
+        "control"
+      ],
+      "starts_at": "b_pre",
+      "left": 455,
+      "right": 2190,
+      "width": 1735
+    },
+    {
+      "kind": "opt",
+      "y": 2925,
+      "h": 710,
+      "depth": 0,
+      "guards": [
+        [
+          2925,
+          "cámara autorizada",
+          true
+        ]
+      ],
+      "event_range": [
+        30,
+        37
+      ],
+      "participants": [
+        "b_ia",
+        "b_pre",
+        "bitacora",
+        "control"
+      ],
+      "starts_at": "b_pre",
+      "left": 455,
+      "right": 2190,
+      "width": 1735
+    }
+  ],
+  "notes": [
+    "La tienda ya fue elegida; su selección pertenece al acceso y contexto comercial. Las variantes se incluyen en la ficha para no repetir entidades auxiliares.",
+    "Las recomendaciones requieren cliente autenticado y disponen de fallback local. La solicitud al proveedor es condicional. Se representa el acceso al vestidor Decart existente mediante token, sin inventar una implementación nueva.",
+    "La integración IA es una interfaz externa. La cámara, permisos y procesamiento audiovisual permanecen dentro del subflujo opcional de la interfaz."
+  ],
+  "scope": "Mismos recorridos y participantes de robustez; numeración de secuencia nueva al añadir las alternativas.",
+  "geometry": "alt y opt parten de la interfaz principal; loop parte del control correspondiente. Margen de 30 px. El borde derecho corresponde al último participante afectado. Las líneas intermedias del orden fijo no implican interacciones adicionales.",
+  "presentation": "Los retornos al actor se generalizan cuando deben mostrar éxito o rechazo. Las acciones son escenarios independientes del CU, no un guion obligatorio."
+}

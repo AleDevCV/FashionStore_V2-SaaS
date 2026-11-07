@@ -1,5 +1,7 @@
 # CAPÍTULO II ANÁLISIS DE REQUISITOS
 
+**Modelo consolidado de 20 CU:** consultar `modelo_20_cu/CAPITULO_II_20_CU.md` y su archivo draw.io. El contenido siguiente conserva el inventario histórico de 38 CU para relacionar referencias existentes; no representa la nueva numeración documental.
+
 ## 2.1 Descripción del sistema propuesto
 
 FashionStore SaaS presta servicios a empresas independientes. Cada empresa dispone de sucursales, personal, clientes, catálogo e inventario propios. La plataforma controla el plan contratado y autoriza la operación comercial. Angular y Flutter acceden al mismo backend REST; el almacenamiento local permite registrar operaciones provisionales que después se validan contra PostgreSQL.

@@ -1,0 +1,965 @@
+{
+  "case": "CU11",
+  "title": "CU11 - Realizar compra y pago en línea",
+  "nodes": {
+    "actor": {
+      "kind": "actor",
+      "name": "Cliente"
+    },
+    "b_pre": {
+      "kind": "boundary",
+      "name": "Frontend : Carrito y checkout"
+    },
+    "control": {
+      "kind": "control",
+      "name": "Backend : Compra y pago",
+      "note": "Control de análisis que agrupa los módulos indicados en las referencias del caso de uso."
+    },
+    "reserva": {
+      "kind": "entity",
+      "name": "Reserva",
+      "table": "reserva"
+    },
+    "pago": {
+      "kind": "entity",
+      "name": "Pago",
+      "table": "pago_transaccion"
+    },
+    "venta": {
+      "kind": "entity",
+      "name": "Venta",
+      "table": "venta"
+    },
+    "movimiento": {
+      "kind": "entity",
+      "name": "Movimiento de inventario",
+      "table": "movimiento_inventario"
+    },
+    "bitacora": {
+      "kind": "entity",
+      "name": "Bitácora",
+      "table": "bitacora"
+    },
+    "b_stripe": {
+      "kind": "boundary",
+      "name": "Pasarela : Stripe"
+    }
+  },
+  "messages": [
+    {
+      "n": 1,
+      "action": 1,
+      "a": "actor",
+      "b": "b_pre",
+      "text": "Preparar compra y confirmar resumen",
+      "kind": "ui",
+      "color": "#28343E",
+      "source": null,
+      "symbol": null
+    },
+    {
+      "n": 2,
+      "action": 1,
+      "a": "b_pre",
+      "b": "control",
+      "text": "crear_reserva(carrito, sucursal)",
+      "kind": "invoke",
+      "color": "#215D9C",
+      "source": "Parcial2_backend/app/routers/ventas.py",
+      "symbol": "crear_reserva",
+      "line": 70
+    },
+    {
+      "n": 3,
+      "action": 1,
+      "a": "control",
+      "b": "reserva",
+      "text": "reserve(cliente, sucursal, ítems)",
+      "kind": "write",
+      "color": "#AC3636",
+      "source": "Parcial2_backend/app/services/commerce.py",
+      "symbol": "reserve",
+      "line": 49
+    },
+    {
+      "n": 4,
+      "action": 1,
+      "a": "reserva",
+      "b": "control",
+      "text": "reserva y total autorizado",
+      "kind": "reply",
+      "color": "#287947",
+      "source": null,
+      "symbol": null
+    },
+    {
+      "n": 5,
+      "action": 1,
+      "a": "control",
+      "b": "bitacora",
+      "text": "Auditar reserva de checkout",
+      "kind": "write",
+      "color": "#AC3636",
+      "source": "Parcial2_backend/app/services/commerce.py",
+      "symbol": "reserve",
+      "line": 49
+    },
+    {
+      "n": 6,
+      "action": 1,
+      "a": "control",
+      "b": "b_pre",
+      "text": "reserva pendiente de pago",
+      "kind": "reply",
+      "color": "#287947",
+      "source": null,
+      "symbol": null
+    },
+    {
+      "n": 7,
+      "action": 1,
+      "a": "b_pre",
+      "b": "actor",
+      "text": "Mostrar total y medios de pago",
+      "kind": "reply",
+      "color": "#287947",
+      "source": null,
+      "symbol": null
+    },
+    {
+      "n": 8,
+      "action": 2,
+      "a": "actor",
+      "b": "b_pre",
+      "text": "Iniciar pago de prueba",
+      "kind": "ui",
+      "color": "#28343E",
+      "source": null,
+      "symbol": null
+    },
+    {
+      "n": 9,
+      "action": 2,
+      "a": "b_pre",
+      "b": "control",
+      "text": "crear_sesion_stripe(id_reserva)",
+      "kind": "invoke",
+      "color": "#215D9C",
+      "source": "Parcial2_backend/app/routers/pagos.py",
+      "symbol": "crear_sesion_stripe",
+      "line": 43
+    },
+    {
+      "n": 10,
+      "action": 2,
+      "a": "control",
+      "b": "b_stripe",
+      "text": "Crear sesión de pago Stripe",
+      "kind": "invoke",
+      "color": "#215D9C",
+      "source": "Parcial2_backend/app/services/payments.py",
+      "symbol": "checkout",
+      "line": 25
+    },
+    {
+      "n": 11,
+      "action": 2,
+      "a": "b_stripe",
+      "b": "control",
+      "text": "sesión y URL de pago",
+      "kind": "reply",
+      "color": "#287947",
+      "source": null,
+      "symbol": null
+    },
+    {
+      "n": 12,
+      "action": 2,
+      "a": "control",
+      "b": "pago",
+      "text": "Guardar intento Pendiente",
+      "kind": "write",
+      "color": "#AC3636",
+      "source": "Parcial2_backend/app/services/payments.py",
+      "symbol": "checkout",
+      "line": 25
+    },
+    {
+      "n": 13,
+      "action": 2,
+      "a": "control",
+      "b": "b_pre",
+      "text": "URL de pago",
+      "kind": "reply",
+      "color": "#287947",
+      "source": null,
+      "symbol": null
+    },
+    {
+      "n": 14,
+      "action": 2,
+      "a": "b_pre",
+      "b": "actor",
+      "text": "Abrir portal Stripe",
+      "kind": "reply",
+      "color": "#287947",
+      "source": null,
+      "symbol": null
+    },
+    {
+      "n": 15,
+      "action": 3,
+      "a": "actor",
+      "b": "b_stripe",
+      "text": "Completar pago de prueba",
+      "kind": "ui",
+      "color": "#28343E",
+      "source": null,
+      "symbol": null
+    },
+    {
+      "n": 16,
+      "action": 3,
+      "a": "b_stripe",
+      "b": "control",
+      "text": "stripe_webhook(evento, firma)",
+      "kind": "invoke",
+      "color": "#215D9C",
+      "source": "Parcial2_backend/app/routers/pagos.py",
+      "symbol": "stripe_webhook",
+      "line": 64
+    },
+    {
+      "n": 17,
+      "action": 3,
+      "a": "control",
+      "b": "reserva",
+      "text": "Validar reserva e importe del evento",
+      "kind": "read",
+      "color": "#28343E",
+      "source": "Parcial2_backend/app/services/payments.py",
+      "symbol": "webhook",
+      "line": 65
+    },
+    {
+      "n": 18,
+      "action": 3,
+      "a": "reserva",
+      "b": "control",
+      "text": "reserva e importe esperado",
+      "kind": "reply",
+      "color": "#287947",
+      "source": null,
+      "symbol": null
+    },
+    {
+      "n": 19,
+      "action": 3,
+      "a": "control",
+      "b": "venta",
+      "text": "confirm_reservation(pago verificado)",
+      "kind": "write",
+      "color": "#AC3636",
+      "source": "Parcial2_backend/app/services/commerce.py",
+      "symbol": "confirm_reservation",
+      "line": 77
+    },
+    {
+      "n": 20,
+      "action": 3,
+      "a": "venta",
+      "b": "control",
+      "text": "id_venta",
+      "kind": "reply",
+      "color": "#287947",
+      "source": null,
+      "symbol": null
+    },
+    {
+      "n": 21,
+      "action": 3,
+      "a": "control",
+      "b": "movimiento",
+      "text": "Registrar Salida [por detalle]",
+      "kind": "write",
+      "color": "#AC3636",
+      "source": "Parcial2_backend/app/services/commerce.py",
+      "symbol": "confirm_reservation",
+      "line": 77
+    },
+    {
+      "n": 22,
+      "action": 3,
+      "a": "control",
+      "b": "pago",
+      "text": "Aprobar pago y enlazar venta",
+      "kind": "write",
+      "color": "#AC3636",
+      "source": "Parcial2_backend/app/services/payments.py",
+      "symbol": "webhook",
+      "line": 65
+    },
+    {
+      "n": 23,
+      "action": 3,
+      "a": "control",
+      "b": "b_stripe",
+      "text": "evento procesado de forma idempotente",
+      "kind": "reply",
+      "color": "#287947",
+      "source": null,
+      "symbol": null
+    },
+    {
+      "n": 24,
+      "action": 4,
+      "a": "actor",
+      "b": "b_pre",
+      "text": "Consultar resultado del pago",
+      "kind": "ui",
+      "color": "#28343E",
+      "source": null,
+      "symbol": null
+    },
+    {
+      "n": 25,
+      "action": 4,
+      "a": "b_pre",
+      "b": "control",
+      "text": "payment_status(id_reserva)",
+      "kind": "read",
+      "color": "#28343E",
+      "source": "Parcial2_backend/app/routers/order_lifecycle.py",
+      "symbol": "payment_status",
+      "line": 9
+    },
+    {
+      "n": 26,
+      "action": 4,
+      "a": "control",
+      "b": "venta",
+      "text": "obtener_venta_por_id(id_venta [si pagada])",
+      "kind": "read",
+      "color": "#28343E",
+      "source": "Parcial2_backend/app/services/venta_service.py",
+      "symbol": "obtener_venta_por_id",
+      "line": 145
+    },
+    {
+      "n": 27,
+      "action": 4,
+      "a": "venta",
+      "b": "control",
+      "text": "venta confirmada",
+      "kind": "reply",
+      "color": "#287947",
+      "source": null,
+      "symbol": null
+    },
+    {
+      "n": 28,
+      "action": 4,
+      "a": "control",
+      "b": "b_pre",
+      "text": "estado pagado y venta",
+      "kind": "reply",
+      "color": "#287947",
+      "source": null,
+      "symbol": null
+    },
+    {
+      "n": 29,
+      "action": 4,
+      "a": "b_pre",
+      "b": "actor",
+      "text": "Mostrar compra confirmada",
+      "kind": "reply",
+      "color": "#287947",
+      "source": null,
+      "symbol": null
+    }
+  ],
+  "actions": [
+    {
+      "id": 1,
+      "name": "Preparar compra y confirmar resumen",
+      "first": 1,
+      "actor": "actor",
+      "ui": "b_pre",
+      "last": 7
+    },
+    {
+      "id": 2,
+      "name": "Iniciar pago de prueba",
+      "first": 8,
+      "actor": "actor",
+      "ui": "b_pre",
+      "last": 14
+    },
+    {
+      "id": 3,
+      "name": "Completar pago de prueba",
+      "first": 15,
+      "actor": "actor",
+      "ui": "b_stripe",
+      "last": 23
+    },
+    {
+      "id": 4,
+      "name": "Consultar resultado del pago",
+      "first": 24,
+      "actor": "actor",
+      "ui": "b_pre",
+      "last": 29
+    }
+  ],
+  "views": [
+    {
+      "name": "CU11 - Robustez simplificada",
+      "title": "CU11 - Realizar compra y pago en línea - Diagrama de robustez",
+      "width": 4600,
+      "height": 2913,
+      "nodes": {
+        "actor": {
+          "x": 180,
+          "y": 1306.5
+        },
+        "b_pre": {
+          "x": 1100,
+          "y": 1306.5
+        },
+        "control": {
+          "x": 2400,
+          "y": 1306.5
+        },
+        "reserva": {
+          "x": 4300,
+          "y": 333
+        },
+        "pago": {
+          "x": 4300,
+          "y": 749
+        },
+        "venta": {
+          "x": 4300,
+          "y": 1104
+        },
+        "movimiento": {
+          "x": 4300,
+          "y": 1476
+        },
+        "bitacora": {
+          "x": 4300,
+          "y": 1831
+        },
+        "b_stripe": {
+          "x": 4300,
+          "y": 2230
+        }
+      },
+      "groups": [
+        {
+          "pair": [
+            "actor",
+            "b_pre"
+          ],
+          "points": [
+            [
+              215,
+              1306.5
+            ],
+            [
+              1035,
+              1306.5
+            ]
+          ],
+          "rows": [
+            {
+              "n": 1,
+              "x": 650,
+              "y": 1158.5,
+              "width": 600,
+              "height": 44,
+              "forward": true,
+              "rightward": true
+            },
+            {
+              "n": 8,
+              "x": 650,
+              "y": 1202.5,
+              "width": 600,
+              "height": 44,
+              "forward": true,
+              "rightward": true
+            },
+            {
+              "n": 24,
+              "x": 650,
+              "y": 1246.5,
+              "width": 600,
+              "height": 44,
+              "forward": true,
+              "rightward": true
+            },
+            {
+              "n": 7,
+              "x": 650,
+              "y": 1366.5,
+              "width": 600,
+              "height": 44,
+              "forward": false,
+              "rightward": false
+            },
+            {
+              "n": 14,
+              "x": 650,
+              "y": 1410.5,
+              "width": 600,
+              "height": 44,
+              "forward": false,
+              "rightward": false
+            },
+            {
+              "n": 29,
+              "x": 650,
+              "y": 1454.5,
+              "width": 600,
+              "height": 44,
+              "forward": false,
+              "rightward": false
+            }
+          ]
+        },
+        {
+          "pair": [
+            "b_pre",
+            "control"
+          ],
+          "points": [
+            [
+              1165,
+              1306.5
+            ],
+            [
+              2335,
+              1306.5
+            ]
+          ],
+          "rows": [
+            {
+              "n": 2,
+              "x": 1650,
+              "y": 1158.5,
+              "width": 550,
+              "height": 44,
+              "forward": true,
+              "rightward": true
+            },
+            {
+              "n": 9,
+              "x": 1650,
+              "y": 1202.5,
+              "width": 550,
+              "height": 44,
+              "forward": true,
+              "rightward": true
+            },
+            {
+              "n": 25,
+              "x": 1650,
+              "y": 1246.5,
+              "width": 550,
+              "height": 44,
+              "forward": true,
+              "rightward": true
+            },
+            {
+              "n": 6,
+              "x": 1650,
+              "y": 1366.5,
+              "width": 550,
+              "height": 44,
+              "forward": false,
+              "rightward": false
+            },
+            {
+              "n": 13,
+              "x": 1650,
+              "y": 1410.5,
+              "width": 550,
+              "height": 44,
+              "forward": false,
+              "rightward": false
+            },
+            {
+              "n": 28,
+              "x": 1650,
+              "y": 1454.5,
+              "width": 550,
+              "height": 44,
+              "forward": false,
+              "rightward": false
+            }
+          ]
+        },
+        {
+          "pair": [
+            "control",
+            "reserva"
+          ],
+          "points": [
+            [
+              2465,
+              1306.5
+            ],
+            [
+              2720,
+              333
+            ],
+            [
+              4235,
+              333
+            ]
+          ],
+          "rows": [
+            {
+              "n": 3,
+              "x": 3300,
+              "y": 229.0,
+              "width": 1050,
+              "height": 44,
+              "forward": true,
+              "rightward": true
+            },
+            {
+              "n": 17,
+              "x": 3300,
+              "y": 273.0,
+              "width": 1050,
+              "height": 44,
+              "forward": true,
+              "rightward": true
+            },
+            {
+              "n": 4,
+              "x": 3300,
+              "y": 393.0,
+              "width": 1050,
+              "height": 44,
+              "forward": false,
+              "rightward": false
+            },
+            {
+              "n": 18,
+              "x": 3300,
+              "y": 437.0,
+              "width": 1050,
+              "height": 44,
+              "forward": false,
+              "rightward": false
+            }
+          ]
+        },
+        {
+          "pair": [
+            "control",
+            "bitacora"
+          ],
+          "points": [
+            [
+              2465,
+              1306.5
+            ],
+            [
+              2720,
+              1831
+            ],
+            [
+              4235,
+              1831
+            ]
+          ],
+          "rows": [
+            {
+              "n": 5,
+              "x": 3300,
+              "y": 1771.0,
+              "width": 1050,
+              "height": 44,
+              "forward": true,
+              "rightward": true
+            }
+          ]
+        },
+        {
+          "pair": [
+            "b_stripe",
+            "control"
+          ],
+          "points": [
+            [
+              4235,
+              2230
+            ],
+            [
+              2720,
+              2230
+            ],
+            [
+              2465,
+              1306.5
+            ]
+          ],
+          "rows": [
+            {
+              "n": 11,
+              "x": 3300,
+              "y": 2126.0,
+              "width": 1050,
+              "height": 44,
+              "forward": true,
+              "rightward": false
+            },
+            {
+              "n": 16,
+              "x": 3300,
+              "y": 2170.0,
+              "width": 1050,
+              "height": 44,
+              "forward": true,
+              "rightward": false
+            },
+            {
+              "n": 10,
+              "x": 3300,
+              "y": 2290.0,
+              "width": 1050,
+              "height": 44,
+              "forward": false,
+              "rightward": true
+            },
+            {
+              "n": 23,
+              "x": 3300,
+              "y": 2334.0,
+              "width": 1050,
+              "height": 44,
+              "forward": false,
+              "rightward": true
+            }
+          ]
+        },
+        {
+          "pair": [
+            "control",
+            "pago"
+          ],
+          "points": [
+            [
+              2465,
+              1306.5
+            ],
+            [
+              2720,
+              749
+            ],
+            [
+              4235,
+              749
+            ]
+          ],
+          "rows": [
+            {
+              "n": 12,
+              "x": 3300,
+              "y": 645.0,
+              "width": 1050,
+              "height": 44,
+              "forward": true,
+              "rightward": true
+            },
+            {
+              "n": 22,
+              "x": 3300,
+              "y": 689.0,
+              "width": 1050,
+              "height": 44,
+              "forward": true,
+              "rightward": true
+            }
+          ]
+        },
+        {
+          "pair": [
+            "actor",
+            "b_stripe"
+          ],
+          "points": [
+            [
+              215,
+              1306.5
+            ],
+            [
+              340,
+              2763
+            ],
+            [
+              4300,
+              2763
+            ],
+            [
+              4300,
+              2295
+            ]
+          ],
+          "rows": [
+            {
+              "n": 15,
+              "x": 1500,
+              "y": 2703.0,
+              "width": 800,
+              "height": 44,
+              "forward": true,
+              "rightward": true
+            }
+          ]
+        },
+        {
+          "pair": [
+            "control",
+            "venta"
+          ],
+          "points": [
+            [
+              2465,
+              1306.5
+            ],
+            [
+              2720,
+              1104
+            ],
+            [
+              4235,
+              1104
+            ]
+          ],
+          "rows": [
+            {
+              "n": 19,
+              "x": 3300,
+              "y": 1000.0,
+              "width": 1050,
+              "height": 44,
+              "forward": true,
+              "rightward": true
+            },
+            {
+              "n": 26,
+              "x": 3300,
+              "y": 1044.0,
+              "width": 1050,
+              "height": 44,
+              "forward": true,
+              "rightward": true
+            },
+            {
+              "n": 20,
+              "x": 3300,
+              "y": 1164.0,
+              "width": 1050,
+              "height": 44,
+              "forward": false,
+              "rightward": false
+            },
+            {
+              "n": 27,
+              "x": 3300,
+              "y": 1208.0,
+              "width": 1050,
+              "height": 44,
+              "forward": false,
+              "rightward": false
+            }
+          ]
+        },
+        {
+          "pair": [
+            "control",
+            "movimiento"
+          ],
+          "points": [
+            [
+              2465,
+              1306.5
+            ],
+            [
+              2720,
+              1476
+            ],
+            [
+              4235,
+              1476
+            ]
+          ],
+          "rows": [
+            {
+              "n": 21,
+              "x": 3300,
+              "y": 1416.0,
+              "width": 1050,
+              "height": 44,
+              "forward": true,
+              "rightward": true
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "exports": [
+    "General"
+  ],
+  "notes": [
+    "Se resume la modalidad Stripe de prueba. Firma, tenant, importe, moneda y duplicados se validan dentro del control; la redirección del navegador no confirma la venta.",
+    "Los detalles y retenciones permanecen dentro de reserve y confirm_reservation. El descuento ocurre únicamente mediante movimientos. La creación de reserva sí inserta bitácora; no se inventan auditorías adicionales en el webhook actual.",
+    "La consulta final representa el caso exitoso; el endpoint devuelve estado pendiente si aún no existe venta. El comprobante se detalla en CU14."
+  ],
+  "sources": [
+    {
+      "file": "Parcial2_backend/app/routers/order_lifecycle.py",
+      "sha256": "118ad09756dab1f4e0bf6fe3511b207cf48416580a9c63281970f68be12b2732"
+    },
+    {
+      "file": "Parcial2_backend/app/routers/pagos.py",
+      "sha256": "d4db9ce48893e6b7d7957460947d1df05337d1fba777a97cfc6fc26613a0a5f9"
+    },
+    {
+      "file": "Parcial2_backend/app/routers/ventas.py",
+      "sha256": "4d7d8fc4ce4c07a7207030c7e6ef353b9d051a39a9e9e64e35de412ab750375a"
+    },
+    {
+      "file": "Parcial2_backend/app/services/commerce.py",
+      "sha256": "2e7b943a63d3cd6b0fbd3c1f6759681d62b67cfe22bd28d1caac0b907688a4b6"
+    },
+    {
+      "file": "Parcial2_backend/app/services/payments.py",
+      "sha256": "2cde4218e1d92fb362b4786ea118c27ed42990df9b221c9a90e299a676a3ce43"
+    },
+    {
+      "file": "Parcial2_backend/app/services/venta_service.py",
+      "sha256": "56ce9922c3c3a65c1c396550017251d9d84dc61db9f7b6d66d2e2a19742eed8a"
+    },
+    {
+      "file": "Parcial2_frontend-web/src/app/features/checkout/checkout.ts",
+      "sha256": "095be0b9ffc84c77a86ce72ba2141d4da026cc99ddb0f723052f4702be3cb3ff"
+    },
+    {
+      "file": "Parcial2_frontend-web/src/app/features/pago/pago-exitoso/pago-exitoso.ts",
+      "sha256": "9835a12c4da7c2ef4052111662913b83db8552d47a3f4f5ccdd9ad2550a6b558"
+    },
+    {
+      "file": "Parcial2_mobile/lib/features/checkout/checkout_screen.dart",
+      "sha256": "ea311de9395a925cdc09401a7e2195c8b08acedf96255a13b78ffc8c9e836306"
+    }
+  ]
+}

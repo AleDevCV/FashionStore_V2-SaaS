@@ -1,0 +1,1123 @@
+{
+  "title": "CU06 - Administrar catálogo de prendas",
+  "nodes": {
+    "actor": {
+      "kind": "actor",
+      "name": "Administrador de empresa"
+    },
+    "b_pre": {
+      "kind": "boundary",
+      "name": "Frontend : Administración del catálogo",
+      "sources": [
+        "Parcial2_frontend-web/src/app/features/categorias/categorias.ts",
+        "Parcial2_frontend-web/src/app/features/temporadas/temporadas.ts",
+        "Parcial2_frontend-web/src/app/features/prendas/prendas.ts"
+      ]
+    },
+    "control": {
+      "kind": "control",
+      "name": "Backend : Gestión del catálogo"
+    },
+    "categoria": {
+      "kind": "entity",
+      "name": "Categoría",
+      "table": "categoria"
+    },
+    "temporada": {
+      "kind": "entity",
+      "name": "Temporada / colección",
+      "table": "temporada"
+    },
+    "prenda": {
+      "kind": "entity",
+      "name": "Prenda",
+      "table": "prenda"
+    },
+    "variante": {
+      "kind": "entity",
+      "name": "Variante de prenda",
+      "table": "variante_prenda"
+    },
+    "bitacora": {
+      "kind": "entity",
+      "name": "Bitácora",
+      "table": "bitacora"
+    }
+  },
+  "messages": [
+    {
+      "n": 1,
+      "action": 1,
+      "area": "catalogo",
+      "a": "actor",
+      "b": "b_pre",
+      "text": "Consultar catálogo",
+      "kind": "ui",
+      "color": "#28343E",
+      "source": null,
+      "symbol": null
+    },
+    {
+      "n": 2,
+      "action": 1,
+      "area": "catalogo",
+      "a": "b_pre",
+      "b": "control",
+      "text": "listar_prendas(filtros)",
+      "kind": "read",
+      "color": "#28343E",
+      "source": "Parcial2_backend/app/routers/prendas.py",
+      "symbol": "listar_prendas",
+      "line": 101
+    },
+    {
+      "n": 3,
+      "action": 1,
+      "area": "catalogo",
+      "a": "control",
+      "b": "prenda",
+      "text": "listar_prendas(filtros)",
+      "kind": "read",
+      "color": "#28343E",
+      "source": "Parcial2_backend/app/services/prenda_service.py",
+      "symbol": "listar_prendas",
+      "line": 58
+    },
+    {
+      "n": 4,
+      "action": 1,
+      "area": "catalogo",
+      "a": "prenda",
+      "b": "control",
+      "text": "prendas",
+      "kind": "reply",
+      "color": "#287947",
+      "source": null,
+      "symbol": null
+    },
+    {
+      "n": 5,
+      "action": 1,
+      "area": "catalogo",
+      "a": "control",
+      "b": "b_pre",
+      "text": "catálogo",
+      "kind": "reply",
+      "color": "#287947",
+      "source": null,
+      "symbol": null
+    },
+    {
+      "n": 6,
+      "action": 1,
+      "area": "catalogo",
+      "a": "b_pre",
+      "b": "actor",
+      "text": "Mostrar catálogo",
+      "kind": "reply",
+      "color": "#287947",
+      "source": null,
+      "symbol": null
+    },
+    {
+      "n": 7,
+      "action": 2,
+      "area": "catalogo",
+      "a": "actor",
+      "b": "b_pre",
+      "text": "Registrar categoría",
+      "kind": "ui",
+      "color": "#28343E",
+      "source": null,
+      "symbol": null
+    },
+    {
+      "n": 8,
+      "action": 2,
+      "area": "catalogo",
+      "a": "b_pre",
+      "b": "control",
+      "text": "crear_categoria(datos)",
+      "kind": "invoke",
+      "color": "#215D9C",
+      "source": "Parcial2_backend/app/routers/categorias.py",
+      "symbol": "crear_categoria",
+      "line": 70
+    },
+    {
+      "n": 9,
+      "action": 2,
+      "area": "catalogo",
+      "a": "control",
+      "b": "categoria",
+      "text": "crear_categoria(datos)",
+      "kind": "write",
+      "color": "#AC3636",
+      "source": "Parcial2_backend/app/services/categoria_service.py",
+      "symbol": "crear_categoria",
+      "line": 114
+    },
+    {
+      "n": 10,
+      "action": 2,
+      "area": "catalogo",
+      "a": "categoria",
+      "b": "control",
+      "text": "id_categoria",
+      "kind": "reply",
+      "color": "#287947",
+      "source": null,
+      "symbol": null
+    },
+    {
+      "n": 11,
+      "action": 2,
+      "area": "catalogo",
+      "a": "control",
+      "b": "bitacora",
+      "text": "registrar_bitacora(categoria, alta)",
+      "kind": "write",
+      "color": "#AC3636",
+      "source": "Parcial2_backend/app/services/bitacora_service.py",
+      "symbol": "registrar_bitacora",
+      "line": 65
+    },
+    {
+      "n": 12,
+      "action": 2,
+      "area": "catalogo",
+      "a": "control",
+      "b": "b_pre",
+      "text": "categoría registrada",
+      "kind": "reply",
+      "color": "#287947",
+      "source": null,
+      "symbol": null
+    },
+    {
+      "n": 13,
+      "action": 3,
+      "area": "catalogo",
+      "a": "actor",
+      "b": "b_pre",
+      "text": "Registrar temporada o colección",
+      "kind": "ui",
+      "color": "#28343E",
+      "source": null,
+      "symbol": null
+    },
+    {
+      "n": 14,
+      "action": 3,
+      "area": "catalogo",
+      "a": "b_pre",
+      "b": "control",
+      "text": "crear_temporada(datos)",
+      "kind": "invoke",
+      "color": "#215D9C",
+      "source": "Parcial2_backend/app/routers/temporadas.py",
+      "symbol": "crear_temporada",
+      "line": 100
+    },
+    {
+      "n": 15,
+      "action": 3,
+      "area": "catalogo",
+      "a": "control",
+      "b": "temporada",
+      "text": "crear_temporada(datos)",
+      "kind": "write",
+      "color": "#AC3636",
+      "source": "Parcial2_backend/app/services/temporada_service.py",
+      "symbol": "crear_temporada",
+      "line": 131
+    },
+    {
+      "n": 16,
+      "action": 3,
+      "area": "catalogo",
+      "a": "temporada",
+      "b": "control",
+      "text": "temporada creada",
+      "kind": "reply",
+      "color": "#287947",
+      "source": null,
+      "symbol": null
+    },
+    {
+      "n": 17,
+      "action": 3,
+      "area": "catalogo",
+      "a": "control",
+      "b": "bitacora",
+      "text": "registrar_bitacora(temporada, alta)",
+      "kind": "write",
+      "color": "#AC3636",
+      "source": "Parcial2_backend/app/services/bitacora_service.py",
+      "symbol": "registrar_bitacora",
+      "line": 65
+    },
+    {
+      "n": 18,
+      "action": 3,
+      "area": "catalogo",
+      "a": "control",
+      "b": "b_pre",
+      "text": "temporada registrada",
+      "kind": "reply",
+      "color": "#287947",
+      "source": null,
+      "symbol": null
+    },
+    {
+      "n": 19,
+      "action": 4,
+      "area": "catalogo",
+      "a": "actor",
+      "b": "b_pre",
+      "text": "Registrar prenda y variantes",
+      "kind": "ui",
+      "color": "#28343E",
+      "source": null,
+      "symbol": null
+    },
+    {
+      "n": 20,
+      "action": 4,
+      "area": "catalogo",
+      "a": "b_pre",
+      "b": "control",
+      "text": "crear_prenda(datos)",
+      "kind": "invoke",
+      "color": "#215D9C",
+      "source": "Parcial2_backend/app/routers/prendas.py",
+      "symbol": "crear_prenda",
+      "line": 170
+    },
+    {
+      "n": 21,
+      "action": 4,
+      "area": "catalogo",
+      "a": "control",
+      "b": "prenda",
+      "text": "crear_prenda(datos)",
+      "kind": "write",
+      "color": "#AC3636",
+      "source": "Parcial2_backend/app/services/prenda_service.py",
+      "symbol": "crear_prenda",
+      "line": 217
+    },
+    {
+      "n": 22,
+      "action": 4,
+      "area": "catalogo",
+      "a": "prenda",
+      "b": "control",
+      "text": "id_prenda",
+      "kind": "reply",
+      "color": "#287947",
+      "source": null,
+      "symbol": null
+    },
+    {
+      "n": 23,
+      "action": 4,
+      "area": "catalogo",
+      "a": "control",
+      "b": "variante",
+      "text": "_crear_variante(datos) [por variante]",
+      "kind": "write",
+      "color": "#AC3636",
+      "source": "Parcial2_backend/app/services/prenda_service.py",
+      "symbol": "_crear_variante",
+      "line": 288
+    },
+    {
+      "n": 24,
+      "action": 4,
+      "area": "catalogo",
+      "a": "variante",
+      "b": "control",
+      "text": "variante creada",
+      "kind": "reply",
+      "color": "#287947",
+      "source": null,
+      "symbol": null
+    },
+    {
+      "n": 25,
+      "action": 4,
+      "area": "catalogo",
+      "a": "control",
+      "b": "bitacora",
+      "text": "registrar_bitacora(prenda, alta)",
+      "kind": "write",
+      "color": "#AC3636",
+      "source": "Parcial2_backend/app/services/bitacora_service.py",
+      "symbol": "registrar_bitacora",
+      "line": 65
+    },
+    {
+      "n": 26,
+      "action": 4,
+      "area": "catalogo",
+      "a": "control",
+      "b": "b_pre",
+      "text": "prenda con variantes",
+      "kind": "reply",
+      "color": "#287947",
+      "source": null,
+      "symbol": null
+    },
+    {
+      "n": 27,
+      "action": 4,
+      "area": "catalogo",
+      "a": "b_pre",
+      "b": "actor",
+      "text": "Mostrar prenda registrada",
+      "kind": "reply",
+      "color": "#287947",
+      "source": null,
+      "symbol": null
+    },
+    {
+      "n": 28,
+      "action": 5,
+      "area": "catalogo",
+      "a": "actor",
+      "b": "b_pre",
+      "text": "Editar datos, precios y ofertas",
+      "kind": "ui",
+      "color": "#28343E",
+      "source": null,
+      "symbol": null
+    },
+    {
+      "n": 29,
+      "action": 5,
+      "area": "catalogo",
+      "a": "b_pre",
+      "b": "control",
+      "text": "actualizar_prenda(id, cambios)",
+      "kind": "invoke",
+      "color": "#215D9C",
+      "source": "Parcial2_backend/app/routers/prendas.py",
+      "symbol": "actualizar_prenda",
+      "line": 274
+    },
+    {
+      "n": 30,
+      "action": 5,
+      "area": "catalogo",
+      "a": "control",
+      "b": "prenda",
+      "text": "actualizar_prenda(id, cambios)",
+      "kind": "write",
+      "color": "#AC3636",
+      "source": "Parcial2_backend/app/services/prenda_service.py",
+      "symbol": "actualizar_prenda",
+      "line": 363
+    },
+    {
+      "n": 31,
+      "action": 5,
+      "area": "catalogo",
+      "a": "control",
+      "b": "bitacora",
+      "text": "registrar_bitacora(prenda, modificación)",
+      "kind": "write",
+      "color": "#AC3636",
+      "source": "Parcial2_backend/app/services/bitacora_service.py",
+      "symbol": "registrar_bitacora",
+      "line": 65
+    },
+    {
+      "n": 32,
+      "action": 5,
+      "area": "catalogo",
+      "a": "control",
+      "b": "b_pre",
+      "text": "prenda actualizada",
+      "kind": "reply",
+      "color": "#287947",
+      "source": null,
+      "symbol": null
+    },
+    {
+      "n": 33,
+      "action": 6,
+      "area": "catalogo",
+      "a": "actor",
+      "b": "b_pre",
+      "text": "Inhabilitar prenda",
+      "kind": "ui",
+      "color": "#28343E",
+      "source": null,
+      "symbol": null
+    },
+    {
+      "n": 34,
+      "action": 6,
+      "area": "catalogo",
+      "a": "b_pre",
+      "b": "control",
+      "text": "inhabilitar_prenda(id)",
+      "kind": "invoke",
+      "color": "#215D9C",
+      "source": "Parcial2_backend/app/routers/prendas.py",
+      "symbol": "inhabilitar_prenda",
+      "line": 362
+    },
+    {
+      "n": 35,
+      "action": 6,
+      "area": "catalogo",
+      "a": "control",
+      "b": "prenda",
+      "text": "inhabilitar_prenda(id)",
+      "kind": "write",
+      "color": "#AC3636",
+      "source": "Parcial2_backend/app/services/prenda_service.py",
+      "symbol": "inhabilitar_prenda",
+      "line": 437
+    },
+    {
+      "n": 36,
+      "action": 6,
+      "area": "catalogo",
+      "a": "control",
+      "b": "bitacora",
+      "text": "registrar_bitacora(prenda, baja lógica)",
+      "kind": "write",
+      "color": "#AC3636",
+      "source": "Parcial2_backend/app/services/bitacora_service.py",
+      "symbol": "registrar_bitacora",
+      "line": 65
+    },
+    {
+      "n": 37,
+      "action": 6,
+      "area": "catalogo",
+      "a": "control",
+      "b": "b_pre",
+      "text": "prenda inactiva",
+      "kind": "reply",
+      "color": "#287947",
+      "source": null,
+      "symbol": null
+    }
+  ],
+  "actions": [
+    {
+      "id": 1,
+      "name": "Consultar catálogo",
+      "area": "catalogo",
+      "boundary": "b_pre",
+      "first": 1,
+      "kind": "read",
+      "last": 6
+    },
+    {
+      "id": 2,
+      "name": "Registrar categoría",
+      "area": "catalogo",
+      "boundary": "b_pre",
+      "first": 7,
+      "kind": "invoke",
+      "last": 12
+    },
+    {
+      "id": 3,
+      "name": "Registrar temporada o colección",
+      "area": "catalogo",
+      "boundary": "b_pre",
+      "first": 13,
+      "kind": "invoke",
+      "last": 18
+    },
+    {
+      "id": 4,
+      "name": "Registrar prenda y variantes",
+      "area": "catalogo",
+      "boundary": "b_pre",
+      "first": 19,
+      "kind": "invoke",
+      "last": 27
+    },
+    {
+      "id": 5,
+      "name": "Editar datos, precios y ofertas",
+      "area": "catalogo",
+      "boundary": "b_pre",
+      "first": 28,
+      "kind": "invoke",
+      "last": 32
+    },
+    {
+      "id": 6,
+      "name": "Inhabilitar prenda",
+      "area": "catalogo",
+      "boundary": "b_pre",
+      "first": 33,
+      "kind": "invoke",
+      "last": 37
+    }
+  ],
+  "views": [
+    {
+      "name": "CU06 - Robustez simplificada",
+      "title": "CU06 - Administrar catálogo de prendas - Diagrama de robustez",
+      "width": 4600,
+      "height": 2350,
+      "nodes": {
+        "actor": {
+          "x": 180,
+          "y": 1050
+        },
+        "b_pre": {
+          "x": 1100,
+          "y": 1050
+        },
+        "control": {
+          "x": 2400,
+          "y": 1050
+        },
+        "categoria": {
+          "x": 4300,
+          "y": 260
+        },
+        "temporada": {
+          "x": 4300,
+          "y": 650
+        },
+        "prenda": {
+          "x": 4300,
+          "y": 1050
+        },
+        "variante": {
+          "x": 4300,
+          "y": 1490
+        },
+        "bitacora": {
+          "x": 4300,
+          "y": 2050
+        }
+      },
+      "groups": [
+        {
+          "pair": [
+            "actor",
+            "b_pre"
+          ],
+          "points": [
+            [
+              215,
+              1050
+            ],
+            [
+              1035,
+              1050
+            ]
+          ],
+          "rows": [
+            {
+              "n": 1,
+              "x": 650,
+              "y": 770.0,
+              "width": 600,
+              "height": 44,
+              "forward": true
+            },
+            {
+              "n": 7,
+              "x": 650,
+              "y": 814.0,
+              "width": 600,
+              "height": 44,
+              "forward": true
+            },
+            {
+              "n": 13,
+              "x": 650,
+              "y": 858.0,
+              "width": 600,
+              "height": 44,
+              "forward": true
+            },
+            {
+              "n": 19,
+              "x": 650,
+              "y": 902.0,
+              "width": 600,
+              "height": 44,
+              "forward": true
+            },
+            {
+              "n": 28,
+              "x": 650,
+              "y": 946.0,
+              "width": 600,
+              "height": 44,
+              "forward": true
+            },
+            {
+              "n": 33,
+              "x": 650,
+              "y": 990.0,
+              "width": 600,
+              "height": 44,
+              "forward": true
+            },
+            {
+              "n": 6,
+              "x": 650,
+              "y": 1110.0,
+              "width": 600,
+              "height": 44,
+              "forward": false
+            },
+            {
+              "n": 27,
+              "x": 650,
+              "y": 1154.0,
+              "width": 600,
+              "height": 44,
+              "forward": false
+            }
+          ]
+        },
+        {
+          "pair": [
+            "b_pre",
+            "control"
+          ],
+          "points": [
+            [
+              1165,
+              1050
+            ],
+            [
+              2335,
+              1050
+            ]
+          ],
+          "rows": [
+            {
+              "n": 2,
+              "x": 1650,
+              "y": 770.0,
+              "width": 550,
+              "height": 44,
+              "forward": true
+            },
+            {
+              "n": 8,
+              "x": 1650,
+              "y": 814.0,
+              "width": 550,
+              "height": 44,
+              "forward": true
+            },
+            {
+              "n": 14,
+              "x": 1650,
+              "y": 858.0,
+              "width": 550,
+              "height": 44,
+              "forward": true
+            },
+            {
+              "n": 20,
+              "x": 1650,
+              "y": 902.0,
+              "width": 550,
+              "height": 44,
+              "forward": true
+            },
+            {
+              "n": 29,
+              "x": 1650,
+              "y": 946.0,
+              "width": 550,
+              "height": 44,
+              "forward": true
+            },
+            {
+              "n": 34,
+              "x": 1650,
+              "y": 990.0,
+              "width": 550,
+              "height": 44,
+              "forward": true
+            },
+            {
+              "n": 5,
+              "x": 1650,
+              "y": 1110.0,
+              "width": 550,
+              "height": 44,
+              "forward": false
+            },
+            {
+              "n": 12,
+              "x": 1650,
+              "y": 1154.0,
+              "width": 550,
+              "height": 44,
+              "forward": false
+            },
+            {
+              "n": 18,
+              "x": 1650,
+              "y": 1198.0,
+              "width": 550,
+              "height": 44,
+              "forward": false
+            },
+            {
+              "n": 26,
+              "x": 1650,
+              "y": 1242.0,
+              "width": 550,
+              "height": 44,
+              "forward": false
+            },
+            {
+              "n": 32,
+              "x": 1650,
+              "y": 1286.0,
+              "width": 550,
+              "height": 44,
+              "forward": false
+            },
+            {
+              "n": 37,
+              "x": 1650,
+              "y": 1330.0,
+              "width": 550,
+              "height": 44,
+              "forward": false
+            }
+          ]
+        },
+        {
+          "pair": [
+            "control",
+            "prenda"
+          ],
+          "points": [
+            [
+              2465,
+              1050
+            ],
+            [
+              2720,
+              1050
+            ],
+            [
+              4235,
+              1050
+            ]
+          ],
+          "rows": [
+            {
+              "n": 3,
+              "x": 3300,
+              "y": 858.0,
+              "width": 1050,
+              "height": 44,
+              "forward": true
+            },
+            {
+              "n": 21,
+              "x": 3300,
+              "y": 902.0,
+              "width": 1050,
+              "height": 44,
+              "forward": true
+            },
+            {
+              "n": 30,
+              "x": 3300,
+              "y": 946.0,
+              "width": 1050,
+              "height": 44,
+              "forward": true
+            },
+            {
+              "n": 35,
+              "x": 3300,
+              "y": 990.0,
+              "width": 1050,
+              "height": 44,
+              "forward": true
+            },
+            {
+              "n": 4,
+              "x": 3300,
+              "y": 1110.0,
+              "width": 1050,
+              "height": 44,
+              "forward": false
+            },
+            {
+              "n": 22,
+              "x": 3300,
+              "y": 1154.0,
+              "width": 1050,
+              "height": 44,
+              "forward": false
+            }
+          ]
+        },
+        {
+          "pair": [
+            "control",
+            "categoria"
+          ],
+          "points": [
+            [
+              2465,
+              1050
+            ],
+            [
+              2720,
+              260
+            ],
+            [
+              4235,
+              260
+            ]
+          ],
+          "rows": [
+            {
+              "n": 9,
+              "x": 3300,
+              "y": 200.0,
+              "width": 1050,
+              "height": 44,
+              "forward": true
+            },
+            {
+              "n": 10,
+              "x": 3300,
+              "y": 320.0,
+              "width": 1050,
+              "height": 44,
+              "forward": false
+            }
+          ]
+        },
+        {
+          "pair": [
+            "control",
+            "bitacora"
+          ],
+          "points": [
+            [
+              2465,
+              1050
+            ],
+            [
+              2720,
+              2050
+            ],
+            [
+              4235,
+              2050
+            ]
+          ],
+          "rows": [
+            {
+              "n": 11,
+              "x": 3300,
+              "y": 1814.0,
+              "width": 1050,
+              "height": 44,
+              "forward": true
+            },
+            {
+              "n": 17,
+              "x": 3300,
+              "y": 1858.0,
+              "width": 1050,
+              "height": 44,
+              "forward": true
+            },
+            {
+              "n": 25,
+              "x": 3300,
+              "y": 1902.0,
+              "width": 1050,
+              "height": 44,
+              "forward": true
+            },
+            {
+              "n": 31,
+              "x": 3300,
+              "y": 1946.0,
+              "width": 1050,
+              "height": 44,
+              "forward": true
+            },
+            {
+              "n": 36,
+              "x": 3300,
+              "y": 1990.0,
+              "width": 1050,
+              "height": 44,
+              "forward": true
+            }
+          ]
+        },
+        {
+          "pair": [
+            "control",
+            "temporada"
+          ],
+          "points": [
+            [
+              2465,
+              1050
+            ],
+            [
+              2720,
+              650
+            ],
+            [
+              4235,
+              650
+            ]
+          ],
+          "rows": [
+            {
+              "n": 15,
+              "x": 3300,
+              "y": 590.0,
+              "width": 1050,
+              "height": 44,
+              "forward": true
+            },
+            {
+              "n": 16,
+              "x": 3300,
+              "y": 710.0,
+              "width": 1050,
+              "height": 44,
+              "forward": false
+            }
+          ]
+        },
+        {
+          "pair": [
+            "control",
+            "variante"
+          ],
+          "points": [
+            [
+              2465,
+              1050
+            ],
+            [
+              2720,
+              1490
+            ],
+            [
+              4235,
+              1490
+            ]
+          ],
+          "rows": [
+            {
+              "n": 23,
+              "x": 3300,
+              "y": 1430.0,
+              "width": 1050,
+              "height": 44,
+              "forward": true
+            },
+            {
+              "n": 24,
+              "x": 3300,
+              "y": 1550.0,
+              "width": 1050,
+              "height": 44,
+              "forward": false
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "exports": [
+    "General"
+  ],
+  "scope": {
+    "nivel": "Vista resumida de los recorridos principales. No es un inventario de todas las tablas o funciones del CU.",
+    "interfaz": "Agrupa las pantallas actuales de categorías, temporadas y prendas; no introduce una pantalla nueva en la aplicación.",
+    "control": "Responsabilidad de análisis que agrupa los routers y servicios existentes; no es una clase Python nueva.",
+    "conservado": [
+      "Categoría",
+      "Temporada / colección",
+      "Prenda",
+      "Variante de prenda",
+      "Bitácora"
+    ],
+    "omitido_del_dibujo": [
+      "Talla",
+      "Color",
+      "Imagen de prenda",
+      "Sucursal",
+      "Inventario",
+      "Movimiento de inventario"
+    ],
+    "resumen": "Las validaciones, consultas auxiliares, relecturas y efectos internos de stock permanecen dentro de las operaciones del control. No se eliminan ni cambian en el programa.",
+    "variantes": "Talla y colores se expresan como datos de las variantes; sus catálogos auxiliares se omiten de esta vista.",
+    "respuestas": "Las escrituras sin datos devueltos y la bitácora no reciben retornos ficticios.",
+    "alternativas": "La edición y reactivación de categorías/temporadas y otras alternativas siguen implementadas; no se despliegan todos sus mensajes en este resumen.",
+    "alcance": "Recorrido principal del administrador; no se añaden permisos nuevos al responsable de inventario."
+  },
+  "sources": [
+    {
+      "file": "Parcial2_backend/app/routers/categorias.py",
+      "sha256": "52a063a25532341c3c7351f9ba5b94d6c62cb39a841d202b16c14c8c4349f317"
+    },
+    {
+      "file": "Parcial2_backend/app/routers/prendas.py",
+      "sha256": "12335fadc66cb3465cf28b1a18f7b1aef5e5a17654e970e04f03448a56df8e27"
+    },
+    {
+      "file": "Parcial2_backend/app/routers/temporadas.py",
+      "sha256": "2c3433b1726315557656c43c98a0ccfd81ec17699a2d22022961ad748096c2d8"
+    },
+    {
+      "file": "Parcial2_backend/app/services/bitacora_service.py",
+      "sha256": "ec5d5294930c1b8e3e1d4628fd0b1f8b183bdab2ba205c19751245c33e5608a0"
+    },
+    {
+      "file": "Parcial2_backend/app/services/categoria_service.py",
+      "sha256": "4d759b566cf92ffb8cb88d283ced48be9b5595197c5fffa92da1e8ce49adee72"
+    },
+    {
+      "file": "Parcial2_backend/app/services/prenda_service.py",
+      "sha256": "e71d3f7fbd9f8ae4667e40b8e5118aa5f0aa2b16a29784f7ed67a75bb4d14a6a"
+    },
+    {
+      "file": "Parcial2_backend/app/services/temporada_service.py",
+      "sha256": "64a77ec137dfa66b37b743b81a568f36175fb99a9171a703a235a3d7a5ce7dc3"
+    },
+    {
+      "file": "Parcial2_frontend-web/src/app/features/categorias/categorias.ts",
+      "sha256": "309dddaff4117bffe9538b1714561c5c32b1928deadfa7649c2a0ddc26f3d2c0"
+    },
+    {
+      "file": "Parcial2_frontend-web/src/app/features/prendas/prendas.ts",
+      "sha256": "6939f5e47dd81b031cd8dd4fa5793dfdc56889450f44b763f2c106fe781978c8"
+    },
+    {
+      "file": "Parcial2_frontend-web/src/app/features/temporadas/temporadas.ts",
+      "sha256": "b64062cd979424064075d43e1681092ee5028e53314e1f8f04cb5afaa9b796ae"
+    }
+  ]
+}

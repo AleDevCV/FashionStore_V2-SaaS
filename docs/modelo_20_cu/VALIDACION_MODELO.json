@@ -1,0 +1,53 @@
+{
+  "xml_parseable": true,
+  "cu_principales": 20,
+  "cu_anteriores_cubiertos": 38,
+  "cu_anteriores_omitidos": [],
+  "relaciones_include": 4,
+  "relaciones_extend": 2,
+  "actores_fuera_del_limite": true,
+  "vistas": [
+    {
+      "pagina": "01 General circular — 20 CU",
+      "casos": 20,
+      "actores": 13,
+      "relaciones": 69
+    },
+    {
+      "pagina": "02 Acceso, SaaS y organización",
+      "casos": 5,
+      "actores": 6,
+      "relaciones": 11
+    },
+    {
+      "pagina": "03 Catálogo y abastecimiento",
+      "casos": 5,
+      "actores": 6,
+      "relaciones": 13
+    },
+    {
+      "pagina": "04 Ventas, reservas y comprobantes",
+      "casos": 7,
+      "actores": 6,
+      "relaciones": 26
+    },
+    {
+      "pagina": "05 Operación offline y sincronización",
+      "casos": 2,
+      "actores": 4,
+      "relaciones": 8
+    },
+    {
+      "pagina": "06 Reportes, analítica y auditoría",
+      "casos": 3,
+      "actores": 5,
+      "relaciones": 9
+    }
+  ],
+  "nota": "Validación estructural; se complementa con apertura y revisión visual.",
+  "esquema_oficial_xsd": true,
+  "revision_visual_svg_png": "Seis vistas revisadas",
+  "apertura_editor_web": "No realizada: auto-review impidió transmitir el documento",
+  "sha256_drawio": "2f503cebcfc51db391ae0e4d690be9a8a38260aa7c7f87ec08b0aea92e366057",
+  "equivalencias_p1_diferenciadas": true
+}

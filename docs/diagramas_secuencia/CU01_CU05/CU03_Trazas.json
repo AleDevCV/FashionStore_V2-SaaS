@@ -1,0 +1,559 @@
+[
+  {
+    "mensaje": 1,
+    "texto": "Abrir administración de personal y permisos",
+    "fuentes": []
+  },
+  {
+    "mensaje": 2,
+    "texto": "GET /api/usuarios/ y GET /api/roles",
+    "fuentes": []
+  },
+  {
+    "mensaje": 3,
+    "texto": "requiere_rol([Administrador]) / requiere_permiso(roles.ver)",
+    "fuentes": [
+      {
+        "simbolo": "requiere_permiso",
+        "archivo": "Parcial2_backend/app/services/auth_service.py",
+        "linea": 347
+      },
+      {
+        "simbolo": "requiere_rol",
+        "archivo": "Parcial2_backend/app/services/auth_service.py",
+        "linea": 298
+      }
+    ]
+  },
+  {
+    "mensaje": 4,
+    "texto": "listar_usuarios(): SELECT usuario JOIN rol bajo RLS",
+    "fuentes": [
+      {
+        "simbolo": "listar_usuarios",
+        "archivo": "Parcial2_backend/app/routers/usuarios.py",
+        "linea": 56
+      }
+    ]
+  },
+  {
+    "mensaje": 5,
+    "texto": "usuarios de la empresa",
+    "fuentes": []
+  },
+  {
+    "mensaje": 6,
+    "texto": "listar_roles(): SELECT roles",
+    "fuentes": [
+      {
+        "simbolo": "listar_roles",
+        "archivo": "Parcial2_backend/app/routers/usuarios.py",
+        "linea": 100
+      },
+      {
+        "simbolo": "listar_roles",
+        "archivo": "Parcial2_backend/app/routers/roles.py",
+        "linea": 60
+      }
+    ]
+  },
+  {
+    "mensaje": 7,
+    "texto": "roles de la empresa",
+    "fuentes": []
+  },
+  {
+    "mensaje": 8,
+    "texto": "200: datos de administración",
+    "fuentes": []
+  },
+  {
+    "mensaje": 9,
+    "texto": "POST /api/usuarios/ → crear_usuario(datos)",
+    "fuentes": [
+      {
+        "simbolo": "crear_usuario",
+        "archivo": "Parcial2_backend/app/routers/usuarios.py",
+        "linea": 169
+      }
+    ]
+  },
+  {
+    "mensaje": 10,
+    "texto": "SELECT rol por id_role",
+    "fuentes": []
+  },
+  {
+    "mensaje": 11,
+    "texto": "rol de la empresa o ausencia",
+    "fuentes": []
+  },
+  {
+    "mensaje": 12,
+    "texto": "SELECT usuario por correo",
+    "fuentes": []
+  },
+  {
+    "mensaje": 13,
+    "texto": "correo libre o duplicado",
+    "fuentes": []
+  },
+  {
+    "mensaje": 14,
+    "texto": "400: rol o correo inválido",
+    "fuentes": []
+  },
+  {
+    "mensaje": 15,
+    "texto": "generar_hash_password(password)",
+    "fuentes": [
+      {
+        "simbolo": "generar_hash_password",
+        "archivo": "Parcial2_backend/app/services/auth_service.py",
+        "linea": 92
+      }
+    ]
+  },
+  {
+    "mensaje": 16,
+    "texto": "INSERT usuario con rol y hash RETURNING id_usuario",
+    "fuentes": []
+  },
+  {
+    "mensaje": 17,
+    "texto": "id_usuario",
+    "fuentes": []
+  },
+  {
+    "mensaje": 18,
+    "texto": "index_user(cur, id_usuario)",
+    "fuentes": [
+      {
+        "simbolo": "index_user",
+        "archivo": "Parcial2_backend/app/services/identity.py",
+        "linea": 51
+      }
+    ]
+  },
+  {
+    "mensaje": 19,
+    "texto": "SQL identity_index_user(id_usuario)",
+    "fuentes": [
+      {
+        "simbolo": "identity_index_user",
+        "archivo": "Parcial2_backend/database/migrations/017_global_identity.sql",
+        "linea": 50
+      }
+    ]
+  },
+  {
+    "mensaje": 20,
+    "texto": "id de cuenta global",
+    "fuentes": []
+  },
+  {
+    "mensaje": 21,
+    "texto": "identidad vinculada o conflicto",
+    "fuentes": []
+  },
+  {
+    "mensaje": 22,
+    "texto": "409 / 403: ROLLBACK del alta",
+    "fuentes": []
+  },
+  {
+    "mensaje": 23,
+    "texto": "registrar_bitacora(INSERT, usuario)",
+    "fuentes": []
+  },
+  {
+    "mensaje": 24,
+    "texto": "_buscar_usuario(id_usuario)",
+    "fuentes": [
+      {
+        "simbolo": "_buscar_usuario",
+        "archivo": "Parcial2_backend/app/routers/usuarios.py",
+        "linea": 474
+      }
+    ]
+  },
+  {
+    "mensaje": 25,
+    "texto": "personal y rol",
+    "fuentes": []
+  },
+  {
+    "mensaje": 26,
+    "texto": "201: personal creado; COMMIT",
+    "fuentes": []
+  },
+  {
+    "mensaje": 27,
+    "texto": "PUT /api/usuarios/{id} → actualizar_usuario()",
+    "fuentes": [
+      {
+        "simbolo": "actualizar_usuario",
+        "archivo": "Parcial2_backend/app/routers/usuarios.py",
+        "linea": 278
+      }
+    ]
+  },
+  {
+    "mensaje": 28,
+    "texto": "_buscar_usuario(id_usuario)",
+    "fuentes": [
+      {
+        "simbolo": "_buscar_usuario",
+        "archivo": "Parcial2_backend/app/routers/usuarios.py",
+        "linea": 474
+      }
+    ]
+  },
+  {
+    "mensaje": 29,
+    "texto": "usuario actual o ausencia",
+    "fuentes": []
+  },
+  {
+    "mensaje": 30,
+    "texto": "SELECT rol del nuevo id_role",
+    "fuentes": []
+  },
+  {
+    "mensaje": 31,
+    "texto": "rol de empresa o ausencia",
+    "fuentes": []
+  },
+  {
+    "mensaje": 32,
+    "texto": "404 / 400: operación rechazada",
+    "fuentes": []
+  },
+  {
+    "mensaje": 33,
+    "texto": "UPDATE campos; token_version + 1\nsi cambia rol o estado",
+    "fuentes": []
+  },
+  {
+    "mensaje": 34,
+    "texto": "usuario actualizado",
+    "fuentes": []
+  },
+  {
+    "mensaje": 35,
+    "texto": "index_user(cur, id_usuario)",
+    "fuentes": [
+      {
+        "simbolo": "index_user",
+        "archivo": "Parcial2_backend/app/services/identity.py",
+        "linea": 51
+      }
+    ]
+  },
+  {
+    "mensaje": 36,
+    "texto": "SQL identity_index_user(id_usuario)\nproteger identidad global del cliente",
+    "fuentes": [
+      {
+        "simbolo": "identity_index_user",
+        "archivo": "Parcial2_backend/database/migrations/017_global_identity.sql",
+        "linea": 50
+      }
+    ]
+  },
+  {
+    "mensaje": 37,
+    "texto": "cuenta sincronizada o 403 / 409",
+    "fuentes": []
+  },
+  {
+    "mensaje": 38,
+    "texto": "sincronización de identidad o error",
+    "fuentes": []
+  },
+  {
+    "mensaje": 39,
+    "texto": "403 / 409; ROLLBACK de la actualización",
+    "fuentes": []
+  },
+  {
+    "mensaje": 40,
+    "texto": "registrar_bitacora(UPDATE, usuario)",
+    "fuentes": []
+  },
+  {
+    "mensaje": 41,
+    "texto": "200: usuario actualizado; COMMIT",
+    "fuentes": []
+  },
+  {
+    "mensaje": 42,
+    "texto": "DELETE /api/usuarios/{id} → inhabilitar_usuario()",
+    "fuentes": [
+      {
+        "simbolo": "inhabilitar_usuario",
+        "archivo": "Parcial2_backend/app/routers/usuarios.py",
+        "linea": 392
+      }
+    ]
+  },
+  {
+    "mensaje": 43,
+    "texto": "_buscar_usuario(id_usuario)",
+    "fuentes": [
+      {
+        "simbolo": "_buscar_usuario",
+        "archivo": "Parcial2_backend/app/routers/usuarios.py",
+        "linea": 474
+      }
+    ]
+  },
+  {
+    "mensaje": 44,
+    "texto": "usuario actual o ausencia",
+    "fuentes": []
+  },
+  {
+    "mensaje": 45,
+    "texto": "404 / 400 / 409",
+    "fuentes": []
+  },
+  {
+    "mensaje": 46,
+    "texto": "UPDATE estado='Inactivo' (baja lógica)",
+    "fuentes": []
+  },
+  {
+    "mensaje": 47,
+    "texto": "usuario inactivo",
+    "fuentes": []
+  },
+  {
+    "mensaje": 48,
+    "texto": "registrar_bitacora(INACTIVAR, usuario)",
+    "fuentes": []
+  },
+  {
+    "mensaje": 49,
+    "texto": "200: baja lógica confirmada; COMMIT",
+    "fuentes": []
+  },
+  {
+    "mensaje": 50,
+    "texto": "POST /api/roles → create_role(datos)",
+    "fuentes": [
+      {
+        "simbolo": "create_role",
+        "archivo": "Parcial2_backend/app/routers/administracion_ext.py",
+        "linea": 18
+      }
+    ]
+  },
+  {
+    "mensaje": 51,
+    "texto": "SELECT rol por nombre",
+    "fuentes": []
+  },
+  {
+    "mensaje": 52,
+    "texto": "nombre disponible o duplicado",
+    "fuentes": []
+  },
+  {
+    "mensaje": 53,
+    "texto": "409: El rol ya existe en esta empresa",
+    "fuentes": []
+  },
+  {
+    "mensaje": 54,
+    "texto": "INSERT rol(nombre, descripcion)",
+    "fuentes": []
+  },
+  {
+    "mensaje": 55,
+    "texto": "audit_business_row(): INSERT rol",
+    "fuentes": []
+  },
+  {
+    "mensaje": 56,
+    "texto": "rol creado",
+    "fuentes": []
+  },
+  {
+    "mensaje": 57,
+    "texto": "201: rol creado; COMMIT",
+    "fuentes": []
+  },
+  {
+    "mensaje": 58,
+    "texto": "GET /api/permisos y GET /api/roles/{id}/permisos",
+    "fuentes": []
+  },
+  {
+    "mensaje": 59,
+    "texto": "SELECT catálogo de permisos",
+    "fuentes": []
+  },
+  {
+    "mensaje": 60,
+    "texto": "permisos disponibles",
+    "fuentes": []
+  },
+  {
+    "mensaje": 61,
+    "texto": "SELECT permisos WHERE id_rol",
+    "fuentes": []
+  },
+  {
+    "mensaje": 62,
+    "texto": "asignaciones actuales",
+    "fuentes": []
+  },
+  {
+    "mensaje": 63,
+    "texto": "200: rol y permisos / 404: rol ausente",
+    "fuentes": []
+  },
+  {
+    "mensaje": 64,
+    "texto": "PUT /api/roles/{id}/permisos\nactualizar_permisos_de_rol(permisos_ids)",
+    "fuentes": [
+      {
+        "simbolo": "actualizar_permisos_de_rol",
+        "archivo": "Parcial2_backend/app/routers/roles.py",
+        "linea": 121
+      }
+    ]
+  },
+  {
+    "mensaje": 65,
+    "texto": "SELECT rol bajo RLS",
+    "fuentes": []
+  },
+  {
+    "mensaje": 66,
+    "texto": "rol o ausencia",
+    "fuentes": []
+  },
+  {
+    "mensaje": 67,
+    "texto": "Eliminar duplicados y SELECT permisos WHERE id=ANY(ids)",
+    "fuentes": []
+  },
+  {
+    "mensaje": 68,
+    "texto": "permisos encontrados",
+    "fuentes": []
+  },
+  {
+    "mensaje": 69,
+    "texto": "404 / 400; sin reemplazar la matriz",
+    "fuentes": []
+  },
+  {
+    "mensaje": 70,
+    "texto": "DELETE rol_permiso WHERE id_rol",
+    "fuentes": []
+  },
+  {
+    "mensaje": 71,
+    "texto": "asignaciones anteriores retiradas",
+    "fuentes": []
+  },
+  {
+    "mensaje": 72,
+    "texto": "INSERT rol_permiso(id_rol, id_permiso)",
+    "fuentes": []
+  },
+  {
+    "mensaje": 73,
+    "texto": "permiso asignado",
+    "fuentes": []
+  },
+  {
+    "mensaje": 74,
+    "texto": "registrar_bitacora(UPDATE, rol_permiso)",
+    "fuentes": []
+  },
+  {
+    "mensaje": 75,
+    "texto": "200: total de permisos; COMMIT",
+    "fuentes": []
+  },
+  {
+    "mensaje": 76,
+    "texto": "PUT /api/usuarios/{id}/sucursales → assign_branches()",
+    "fuentes": [
+      {
+        "simbolo": "assign_branches",
+        "archivo": "Parcial2_backend/app/routers/administracion_ext.py",
+        "linea": 24
+      }
+    ]
+  },
+  {
+    "mensaje": 77,
+    "texto": "422: selección inválida",
+    "fuentes": []
+  },
+  {
+    "mensaje": 78,
+    "texto": "SELECT usuario FOR UPDATE",
+    "fuentes": []
+  },
+  {
+    "mensaje": 79,
+    "texto": "usuario de la empresa o ausencia",
+    "fuentes": []
+  },
+  {
+    "mensaje": 80,
+    "texto": "404: Usuario no encontrado",
+    "fuentes": []
+  },
+  {
+    "mensaje": 81,
+    "texto": "SELECT sucursales por ids, activas y bajo RLS",
+    "fuentes": []
+  },
+  {
+    "mensaje": 82,
+    "texto": "sucursales encontradas",
+    "fuentes": []
+  },
+  {
+    "mensaje": 83,
+    "texto": "404; conservar asignación anterior",
+    "fuentes": []
+  },
+  {
+    "mensaje": 84,
+    "texto": "DELETE usuario_sucursal WHERE id_usuario",
+    "fuentes": []
+  },
+  {
+    "mensaje": 85,
+    "texto": "asignaciones anteriores retiradas",
+    "fuentes": []
+  },
+  {
+    "mensaje": 86,
+    "texto": "INSERT usuario_sucursal(id_usuario, id_sucursal)",
+    "fuentes": []
+  },
+  {
+    "mensaje": 87,
+    "texto": "sucursal asignada",
+    "fuentes": []
+  },
+  {
+    "mensaje": 88,
+    "texto": "200: sucursales asignadas; COMMIT",
+    "fuentes": []
+  },
+  {
+    "mensaje": 89,
+    "texto": "Mostrar resultado y recargar personal, roles o asignaciones",
+    "fuentes": []
+  }
+]

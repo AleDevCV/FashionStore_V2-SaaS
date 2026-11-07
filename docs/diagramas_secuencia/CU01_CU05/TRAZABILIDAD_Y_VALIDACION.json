@@ -1,0 +1,178 @@
+[
+  {
+    "cu": "CU01",
+    "archivo": "CU01_Diagrama_Secuencia.drawio",
+    "participantes": 10,
+    "mensajes": 99,
+    "fragmentos": {
+      "alt": 9,
+      "opt": 6,
+      "loop": 0
+    },
+    "ancho": 3315,
+    "alto": 10203,
+    "sha256": "0615af969406cea37b9f73267ad393a7ab85c2c9cde86dc0b519e21b9ab40259",
+    "fuentes": [
+      "Parcial2_backend/app/routers/auth.py",
+      "Parcial2_backend/app/routers/saas.py",
+      "Parcial2_backend/app/services/identity.py",
+      "Parcial2_backend/app/services/auth_service.py",
+      "Parcial2_backend/app/services/email_service.py",
+      "Parcial2_backend/app/tenant_middleware.py",
+      "Parcial2_backend/database/migrations/017_global_identity.sql",
+      "Parcial2_frontend-web/src/app/core/services/auth.service.ts",
+      "Parcial2_mobile/lib/services/auth_service.dart"
+    ],
+    "fuentes_sha256": {
+      "Parcial2_backend/app/routers/auth.py": "88d90013b999f9a2633e100fe420c2a88c702d94b8ab90be95aee11eaadd7d14",
+      "Parcial2_backend/app/routers/saas.py": "fe6669ecbf49bce27835b93a8c244e06401e0072f1dce19f7a8be2475a452cc5",
+      "Parcial2_backend/app/services/identity.py": "f4579d26d265a53016d50b78bb3ea2d64d264b39836f7696cfd6557814c3b8c5",
+      "Parcial2_backend/app/services/auth_service.py": "e343452a9168edab73a7a17d248449353b3c248571400c0e0d248394d6afca75",
+      "Parcial2_backend/app/services/email_service.py": "e5551331db8bce1172898133fcfad32fd3a5408ccd64738fb40bbaa77a3f89cb",
+      "Parcial2_backend/app/tenant_middleware.py": "d7724cb01c5f28df7e7156452b0c9f17616dc39622d4190bc5539c0eafc553a6",
+      "Parcial2_backend/database/migrations/017_global_identity.sql": "f5f05429ed8902e4a3bd9385f7c07a8df87ca03294cf1162eca876a09bd142a0",
+      "Parcial2_frontend-web/src/app/core/services/auth.service.ts": "64a03563b30f3ff58686d76d6accc1d4a73f36c2c14d273be5ff5cdb1303d056",
+      "Parcial2_mobile/lib/services/auth_service.dart": "c13cc7cd4730ea0a74edee51f3cef23216b6f988331faa760a04f06521cf39ea"
+    }
+  },
+  {
+    "cu": "CU02",
+    "archivo": "CU02_Diagrama_Secuencia.drawio",
+    "participantes": 14,
+    "mensajes": 82,
+    "fragmentos": {
+      "alt": 10,
+      "opt": 2,
+      "loop": 3
+    },
+    "ancho": 4655,
+    "alto": 9004,
+    "sha256": "7b7a4538422689a1e86135a046dec79f489a577918147ebe610b7de81b63732e",
+    "fuentes": [
+      "Parcial2_backend/app/routers/saas.py",
+      "Parcial2_backend/app/permissions.py",
+      "Parcial2_backend/app/services/identity.py",
+      "Parcial2_backend/app/database.py",
+      "Parcial2_backend/database/migrations/002_saas.sql",
+      "Parcial2_backend/database/migrations/007_transactional_audit.sql",
+      "Parcial2_backend/database/migrations/017_global_identity.sql",
+      "Parcial2_frontend-web/src/app/features/saas/saas.ts"
+    ],
+    "fuentes_sha256": {
+      "Parcial2_backend/app/routers/saas.py": "fe6669ecbf49bce27835b93a8c244e06401e0072f1dce19f7a8be2475a452cc5",
+      "Parcial2_backend/app/permissions.py": "b188822c0b2bd12e8eb696e09897e4430926f134d969ca10c8a474d924967d89",
+      "Parcial2_backend/app/services/identity.py": "f4579d26d265a53016d50b78bb3ea2d64d264b39836f7696cfd6557814c3b8c5",
+      "Parcial2_backend/app/database.py": "e5e5094db916855dc7fbdfd1deeb232305695c98c71f94818c60948c4dba27c4",
+      "Parcial2_backend/database/migrations/002_saas.sql": "9ba63e3801b47d5a9c5b699d87f93a08c418f274e7a43746d22e9db7478d9dc2",
+      "Parcial2_backend/database/migrations/007_transactional_audit.sql": "daa89127f20759edbf9ea715bb06508161c309eea12383b3642ad254920db7e4",
+      "Parcial2_backend/database/migrations/017_global_identity.sql": "f5f05429ed8902e4a3bd9385f7c07a8df87ca03294cf1162eca876a09bd142a0",
+      "Parcial2_frontend-web/src/app/features/saas/saas.ts": "24dbee16c8d560596fba600f0eea38c6d9cf5eaff335be6688547ecf879a2182"
+    }
+  },
+  {
+    "cu": "CU03",
+    "archivo": "CU03_Diagrama_Secuencia.drawio",
+    "participantes": 12,
+    "mensajes": 89,
+    "fragmentos": {
+      "alt": 11,
+      "opt": 3,
+      "loop": 2
+    },
+    "ancho": 3985,
+    "alto": 9251,
+    "sha256": "9ff60e27a24ac2ea9f032bfd50ca22864c049e23ce55a8f0769e4af136d01f2b",
+    "fuentes": [
+      "Parcial2_backend/app/routers/usuarios.py",
+      "Parcial2_backend/app/routers/roles.py",
+      "Parcial2_backend/app/routers/administracion_ext.py",
+      "Parcial2_backend/app/services/identity.py",
+      "Parcial2_backend/app/services/auth_service.py",
+      "Parcial2_backend/app/tenant_middleware.py",
+      "Parcial2_backend/database/migrations/017_global_identity.sql",
+      "Parcial2_frontend-web/src/app/features/usuarios/usuarios.ts",
+      "Parcial2_frontend-web/src/app/features/admin/roles-permisos/roles-permisos.ts"
+    ],
+    "fuentes_sha256": {
+      "Parcial2_backend/app/routers/usuarios.py": "9a76ddccf820a1c40b0b48b286999549f3e122e4cb46bb128f21434ea209e219",
+      "Parcial2_backend/app/routers/roles.py": "4092095b5cd8e5bad507d3fbe5c24b3ef2bfd2e7d804b047f6e9316f37d93710",
+      "Parcial2_backend/app/routers/administracion_ext.py": "703f2193878a2db5226f21268170fbbadebd2244f8f0662b5d2e7630c81597b1",
+      "Parcial2_backend/app/services/identity.py": "f4579d26d265a53016d50b78bb3ea2d64d264b39836f7696cfd6557814c3b8c5",
+      "Parcial2_backend/app/services/auth_service.py": "e343452a9168edab73a7a17d248449353b3c248571400c0e0d248394d6afca75",
+      "Parcial2_backend/app/tenant_middleware.py": "d7724cb01c5f28df7e7156452b0c9f17616dc39622d4190bc5539c0eafc553a6",
+      "Parcial2_backend/database/migrations/017_global_identity.sql": "f5f05429ed8902e4a3bd9385f7c07a8df87ca03294cf1162eca876a09bd142a0",
+      "Parcial2_frontend-web/src/app/features/usuarios/usuarios.ts": "d661229e3f7db4718e91688e4f341b9d8c0de51cc2b188ba3a959b8d6cc8ef96",
+      "Parcial2_frontend-web/src/app/features/admin/roles-permisos/roles-permisos.ts": "382f033056ec2e0f1fac3b9ff34488127bbc3b49d339372da1afb755b8cec501"
+    }
+  },
+  {
+    "cu": "CU04",
+    "archivo": "CU04_Diagrama_Secuencia.drawio",
+    "participantes": 11,
+    "mensajes": 103,
+    "fragmentos": {
+      "alt": 10,
+      "opt": 7,
+      "loop": 0
+    },
+    "ancho": 3650,
+    "alto": 10451,
+    "sha256": "60008b07fa19bb222adc64cb1c6ef6ff329a8e88a86c713ee708c7304ccf88f2",
+    "fuentes": [
+      "Parcial2_backend/app/routers/geografia.py",
+      "Parcial2_backend/app/services/geografia_service.py",
+      "Parcial2_backend/app/routers/administracion_ext.py",
+      "Parcial2_backend/app/main.py",
+      "Parcial2_backend/database/migrations/001_baseline.sql",
+      "Parcial2_backend/database/migrations/002_saas.sql",
+      "Parcial2_backend/database/migrations/007_transactional_audit.sql",
+      "Parcial2_frontend-web/src/app/core/services/geografia.service.ts",
+      "Parcial2_frontend-web/src/app/features/sucursales/sucursales.ts"
+    ],
+    "fuentes_sha256": {
+      "Parcial2_backend/app/routers/geografia.py": "678fb6feab2f92428179c011ce5354cd0cd46706ab402669f649e25bb4884ab3",
+      "Parcial2_backend/app/services/geografia_service.py": "d3dc34addaf66d8b447aa4aceea17d45500dfb49949dca5eb843b4906022a176",
+      "Parcial2_backend/app/routers/administracion_ext.py": "703f2193878a2db5226f21268170fbbadebd2244f8f0662b5d2e7630c81597b1",
+      "Parcial2_backend/app/main.py": "387ab607a6484dda8cb8a6c3cddae4337c3793b824cbf408dc1c61d5fff459fb",
+      "Parcial2_backend/database/migrations/001_baseline.sql": "81c898d88f463138a2f15248a0603fc367e166cea7037e4c8bc0422afb2e9567",
+      "Parcial2_backend/database/migrations/002_saas.sql": "9ba63e3801b47d5a9c5b699d87f93a08c418f274e7a43746d22e9db7478d9dc2",
+      "Parcial2_backend/database/migrations/007_transactional_audit.sql": "daa89127f20759edbf9ea715bb06508161c309eea12383b3642ad254920db7e4",
+      "Parcial2_frontend-web/src/app/core/services/geografia.service.ts": "cc43d7fcc5bb6c80b6c1799cc917126d764dea82e4ebb9d0f96a4515c8b993b6",
+      "Parcial2_frontend-web/src/app/features/sucursales/sucursales.ts": "bdab5aad37e797d98efa6e076806c77b9b3f130ed6a586ae8ec65841e6488fa2"
+    }
+  },
+  {
+    "cu": "CU05",
+    "archivo": "CU05_Diagrama_Secuencia.drawio",
+    "participantes": 9,
+    "mensajes": 84,
+    "fragmentos": {
+      "alt": 8,
+      "opt": 4,
+      "loop": 1
+    },
+    "ancho": 2980,
+    "alto": 8952,
+    "sha256": "95e65a374d30b9799d706183da266de7d6291a016a23baf397366615c42d225b",
+    "fuentes": [
+      "Parcial2_backend/app/routers/clientes.py",
+      "Parcial2_backend/app/services/cliente_service.py",
+      "Parcial2_backend/app/routers/auth.py",
+      "Parcial2_backend/app/services/identity.py",
+      "Parcial2_backend/app/services/auth_service.py",
+      "Parcial2_backend/database/migrations/003_customer_ownership.sql",
+      "Parcial2_frontend-web/src/app/features/clientes/clientes.ts",
+      "Parcial2_frontend-web/src/app/core/services/cliente.service.ts"
+    ],
+    "fuentes_sha256": {
+      "Parcial2_backend/app/routers/clientes.py": "5835d95e3afd3d56403de7eb668b6c89e812cbbfaa4404af12292395e9fd52ba",
+      "Parcial2_backend/app/services/cliente_service.py": "57b3495bb766cf79cb647261581b16c3909a48cd9bf2aa269c1615291fa586da",
+      "Parcial2_backend/app/routers/auth.py": "88d90013b999f9a2633e100fe420c2a88c702d94b8ab90be95aee11eaadd7d14",
+      "Parcial2_backend/app/services/identity.py": "f4579d26d265a53016d50b78bb3ea2d64d264b39836f7696cfd6557814c3b8c5",
+      "Parcial2_backend/app/services/auth_service.py": "e343452a9168edab73a7a17d248449353b3c248571400c0e0d248394d6afca75",
+      "Parcial2_backend/database/migrations/003_customer_ownership.sql": "247712698ba21bd379b2c0be4e3f09a5c1f06d19b42913628bf0463ada8edc7e",
+      "Parcial2_frontend-web/src/app/features/clientes/clientes.ts": "83f9f0a016d57ee13aed3c83c34179503359fe3048ef56237a6f8cbf53a39851",
+      "Parcial2_frontend-web/src/app/core/services/cliente.service.ts": "904e854a19548c7cc7fe8bf7734113382ea7b1a648d1932fc1478ccb77fb75d5"
+    }
+  }
+]

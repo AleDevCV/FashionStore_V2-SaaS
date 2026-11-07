@@ -1,0 +1,616 @@
+{
+  "case": "CU10",
+  "title": "CU10 - Registrar movimientos de inventario",
+  "nodes": {
+    "actor": {
+      "kind": "actor",
+      "name": "Personal autorizado"
+    },
+    "b_pre": {
+      "kind": "boundary",
+      "name": "Frontend : Movimientos de inventario"
+    },
+    "control": {
+      "kind": "control",
+      "name": "Backend : Gestión de movimientos",
+      "note": "Control de análisis que agrupa los módulos indicados en las referencias del caso de uso."
+    },
+    "inventario": {
+      "kind": "entity",
+      "name": "Inventario",
+      "table": "inventario"
+    },
+    "movimiento": {
+      "kind": "entity",
+      "name": "Movimiento de inventario",
+      "table": "movimiento_inventario"
+    },
+    "bitacora": {
+      "kind": "entity",
+      "name": "Bitácora",
+      "table": "bitacora"
+    }
+  },
+  "messages": [
+    {
+      "n": 1,
+      "action": 1,
+      "a": "actor",
+      "b": "b_pre",
+      "text": "Consultar stock de la variante",
+      "kind": "ui",
+      "color": "#28343E",
+      "source": null,
+      "symbol": null
+    },
+    {
+      "n": 2,
+      "action": 1,
+      "a": "b_pre",
+      "b": "control",
+      "text": "consultar_stock(sucursal, variante)",
+      "kind": "read",
+      "color": "#28343E",
+      "source": "Parcial2_backend/app/routers/movimientos.py",
+      "symbol": "consultar_stock",
+      "line": 43
+    },
+    {
+      "n": 3,
+      "action": 1,
+      "a": "control",
+      "b": "inventario",
+      "text": "obtener_stock_actual(sucursal, variante)",
+      "kind": "read",
+      "color": "#28343E",
+      "source": "Parcial2_backend/app/services/movimiento_service.py",
+      "symbol": "obtener_stock_actual",
+      "line": 27
+    },
+    {
+      "n": 4,
+      "action": 1,
+      "a": "inventario",
+      "b": "control",
+      "text": "stock físico",
+      "kind": "reply",
+      "color": "#287947",
+      "source": null,
+      "symbol": null
+    },
+    {
+      "n": 5,
+      "action": 1,
+      "a": "control",
+      "b": "b_pre",
+      "text": "stock actual",
+      "kind": "reply",
+      "color": "#287947",
+      "source": null,
+      "symbol": null
+    },
+    {
+      "n": 6,
+      "action": 1,
+      "a": "b_pre",
+      "b": "actor",
+      "text": "Mostrar stock",
+      "kind": "reply",
+      "color": "#287947",
+      "source": null,
+      "symbol": null
+    },
+    {
+      "n": 7,
+      "action": 2,
+      "a": "actor",
+      "b": "b_pre",
+      "text": "Registrar movimiento y motivo",
+      "kind": "ui",
+      "color": "#28343E",
+      "source": null,
+      "symbol": null
+    },
+    {
+      "n": 8,
+      "action": 2,
+      "a": "b_pre",
+      "b": "control",
+      "text": "registrar_movimiento(datos)",
+      "kind": "invoke",
+      "color": "#215D9C",
+      "source": "Parcial2_backend/app/routers/movimientos.py",
+      "symbol": "registrar_movimiento",
+      "line": 85
+    },
+    {
+      "n": 9,
+      "action": 2,
+      "a": "control",
+      "b": "movimiento",
+      "text": "registrar_movimiento(datos)",
+      "kind": "write",
+      "color": "#AC3636",
+      "source": "Parcial2_backend/app/services/movimiento_service.py",
+      "symbol": "registrar_movimiento",
+      "line": 102
+    },
+    {
+      "n": 10,
+      "action": 2,
+      "a": "movimiento",
+      "b": "control",
+      "text": "movimiento y stock resultante",
+      "kind": "reply",
+      "color": "#287947",
+      "source": null,
+      "symbol": null
+    },
+    {
+      "n": 11,
+      "action": 2,
+      "a": "control",
+      "b": "bitacora",
+      "text": "registrar_bitacora(movimiento)",
+      "kind": "write",
+      "color": "#AC3636",
+      "source": "Parcial2_backend/app/services/bitacora_service.py",
+      "symbol": "registrar_bitacora",
+      "line": 65
+    },
+    {
+      "n": 12,
+      "action": 2,
+      "a": "control",
+      "b": "b_pre",
+      "text": "movimiento confirmado",
+      "kind": "reply",
+      "color": "#287947",
+      "source": null,
+      "symbol": null
+    },
+    {
+      "n": 13,
+      "action": 2,
+      "a": "b_pre",
+      "b": "actor",
+      "text": "Mostrar movimiento registrado",
+      "kind": "reply",
+      "color": "#287947",
+      "source": null,
+      "symbol": null
+    },
+    {
+      "n": 14,
+      "action": 3,
+      "a": "actor",
+      "b": "b_pre",
+      "text": "Consultar historial de movimientos",
+      "kind": "ui",
+      "color": "#28343E",
+      "source": null,
+      "symbol": null
+    },
+    {
+      "n": 15,
+      "action": 3,
+      "a": "b_pre",
+      "b": "control",
+      "text": "listar_movimientos(filtros)",
+      "kind": "read",
+      "color": "#28343E",
+      "source": "Parcial2_backend/app/routers/movimientos.py",
+      "symbol": "listar_movimientos",
+      "line": 130
+    },
+    {
+      "n": 16,
+      "action": 3,
+      "a": "control",
+      "b": "movimiento",
+      "text": "listar_movimientos(filtros)",
+      "kind": "read",
+      "color": "#28343E",
+      "source": "Parcial2_backend/app/services/movimiento_service.py",
+      "symbol": "listar_movimientos",
+      "line": 201
+    },
+    {
+      "n": 17,
+      "action": 3,
+      "a": "movimiento",
+      "b": "control",
+      "text": "movimientos autorizados",
+      "kind": "reply",
+      "color": "#287947",
+      "source": null,
+      "symbol": null
+    },
+    {
+      "n": 18,
+      "action": 3,
+      "a": "control",
+      "b": "b_pre",
+      "text": "historial",
+      "kind": "reply",
+      "color": "#287947",
+      "source": null,
+      "symbol": null
+    },
+    {
+      "n": 19,
+      "action": 3,
+      "a": "b_pre",
+      "b": "actor",
+      "text": "Mostrar historial",
+      "kind": "reply",
+      "color": "#287947",
+      "source": null,
+      "symbol": null
+    }
+  ],
+  "actions": [
+    {
+      "id": 1,
+      "name": "Consultar stock de la variante",
+      "first": 1,
+      "actor": "actor",
+      "ui": "b_pre",
+      "last": 6
+    },
+    {
+      "id": 2,
+      "name": "Registrar movimiento y motivo",
+      "first": 7,
+      "actor": "actor",
+      "ui": "b_pre",
+      "last": 13
+    },
+    {
+      "id": 3,
+      "name": "Consultar historial de movimientos",
+      "first": 14,
+      "actor": "actor",
+      "ui": "b_pre",
+      "last": 19
+    }
+  ],
+  "views": [
+    {
+      "name": "CU10 - Robustez simplificada",
+      "title": "CU10 - Registrar movimientos de inventario - Diagrama de robustez",
+      "width": 4600,
+      "height": 2100,
+      "nodes": {
+        "actor": {
+          "x": 180,
+          "y": 1050.0
+        },
+        "b_pre": {
+          "x": 1100,
+          "y": 1050.0
+        },
+        "control": {
+          "x": 2400,
+          "y": 1050.0
+        },
+        "inventario": {
+          "x": 4300,
+          "y": 289
+        },
+        "movimiento": {
+          "x": 4300,
+          "y": 688
+        },
+        "bitacora": {
+          "x": 4300,
+          "y": 1060
+        }
+      },
+      "groups": [
+        {
+          "pair": [
+            "actor",
+            "b_pre"
+          ],
+          "points": [
+            [
+              215,
+              1050.0
+            ],
+            [
+              1035,
+              1050.0
+            ]
+          ],
+          "rows": [
+            {
+              "n": 1,
+              "x": 650,
+              "y": 902.0,
+              "width": 600,
+              "height": 44,
+              "forward": true,
+              "rightward": true
+            },
+            {
+              "n": 7,
+              "x": 650,
+              "y": 946.0,
+              "width": 600,
+              "height": 44,
+              "forward": true,
+              "rightward": true
+            },
+            {
+              "n": 14,
+              "x": 650,
+              "y": 990.0,
+              "width": 600,
+              "height": 44,
+              "forward": true,
+              "rightward": true
+            },
+            {
+              "n": 6,
+              "x": 650,
+              "y": 1110.0,
+              "width": 600,
+              "height": 44,
+              "forward": false,
+              "rightward": false
+            },
+            {
+              "n": 13,
+              "x": 650,
+              "y": 1154.0,
+              "width": 600,
+              "height": 44,
+              "forward": false,
+              "rightward": false
+            },
+            {
+              "n": 19,
+              "x": 650,
+              "y": 1198.0,
+              "width": 600,
+              "height": 44,
+              "forward": false,
+              "rightward": false
+            }
+          ]
+        },
+        {
+          "pair": [
+            "b_pre",
+            "control"
+          ],
+          "points": [
+            [
+              1165,
+              1050.0
+            ],
+            [
+              2335,
+              1050.0
+            ]
+          ],
+          "rows": [
+            {
+              "n": 2,
+              "x": 1650,
+              "y": 902.0,
+              "width": 550,
+              "height": 44,
+              "forward": true,
+              "rightward": true
+            },
+            {
+              "n": 8,
+              "x": 1650,
+              "y": 946.0,
+              "width": 550,
+              "height": 44,
+              "forward": true,
+              "rightward": true
+            },
+            {
+              "n": 15,
+              "x": 1650,
+              "y": 990.0,
+              "width": 550,
+              "height": 44,
+              "forward": true,
+              "rightward": true
+            },
+            {
+              "n": 5,
+              "x": 1650,
+              "y": 1110.0,
+              "width": 550,
+              "height": 44,
+              "forward": false,
+              "rightward": false
+            },
+            {
+              "n": 12,
+              "x": 1650,
+              "y": 1154.0,
+              "width": 550,
+              "height": 44,
+              "forward": false,
+              "rightward": false
+            },
+            {
+              "n": 18,
+              "x": 1650,
+              "y": 1198.0,
+              "width": 550,
+              "height": 44,
+              "forward": false,
+              "rightward": false
+            }
+          ]
+        },
+        {
+          "pair": [
+            "control",
+            "inventario"
+          ],
+          "points": [
+            [
+              2465,
+              1050.0
+            ],
+            [
+              2720,
+              289
+            ],
+            [
+              4235,
+              289
+            ]
+          ],
+          "rows": [
+            {
+              "n": 3,
+              "x": 3300,
+              "y": 229.0,
+              "width": 1050,
+              "height": 44,
+              "forward": true,
+              "rightward": true
+            },
+            {
+              "n": 4,
+              "x": 3300,
+              "y": 349.0,
+              "width": 1050,
+              "height": 44,
+              "forward": false,
+              "rightward": false
+            }
+          ]
+        },
+        {
+          "pair": [
+            "control",
+            "movimiento"
+          ],
+          "points": [
+            [
+              2465,
+              1050.0
+            ],
+            [
+              2720,
+              688
+            ],
+            [
+              4235,
+              688
+            ]
+          ],
+          "rows": [
+            {
+              "n": 9,
+              "x": 3300,
+              "y": 584.0,
+              "width": 1050,
+              "height": 44,
+              "forward": true,
+              "rightward": true
+            },
+            {
+              "n": 16,
+              "x": 3300,
+              "y": 628.0,
+              "width": 1050,
+              "height": 44,
+              "forward": true,
+              "rightward": true
+            },
+            {
+              "n": 10,
+              "x": 3300,
+              "y": 748.0,
+              "width": 1050,
+              "height": 44,
+              "forward": false,
+              "rightward": false
+            },
+            {
+              "n": 17,
+              "x": 3300,
+              "y": 792.0,
+              "width": 1050,
+              "height": 44,
+              "forward": false,
+              "rightward": false
+            }
+          ]
+        },
+        {
+          "pair": [
+            "control",
+            "bitacora"
+          ],
+          "points": [
+            [
+              2465,
+              1050.0
+            ],
+            [
+              2720,
+              1060
+            ],
+            [
+              4235,
+              1060
+            ]
+          ],
+          "rows": [
+            {
+              "n": 11,
+              "x": 3300,
+              "y": 1000.0,
+              "width": 1050,
+              "height": 44,
+              "forward": true,
+              "rightward": true
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "exports": [
+    "General"
+  ],
+  "notes": [
+    "Las sucursales y variantes se validan dentro del control, sin desplegar todos los catálogos auxiliares. El stock se actualiza por trigger al insertar el movimiento.",
+    "El esquema actual recibe una sucursal y no una sucursal de destino: no se inventa un traslado completo de dos sucursales ni una API de idempotencia inexistente para este endpoint."
+  ],
+  "sources": [
+    {
+      "file": "Parcial2_backend/app/routers/movimientos.py",
+      "sha256": "b2caaf4edc1bf5c7b889c1197d21ca89a8d5a443533b3da230c46ff2bd919e00"
+    },
+    {
+      "file": "Parcial2_backend/app/services/bitacora_service.py",
+      "sha256": "ec5d5294930c1b8e3e1d4628fd0b1f8b183bdab2ba205c19751245c33e5608a0"
+    },
+    {
+      "file": "Parcial2_backend/app/services/movimiento_service.py",
+      "sha256": "61d34960182d30005bd4846a1650fee06be13af51f1434dd7ba949459a935993"
+    },
+    {
+      "file": "Parcial2_frontend-web/src/app/features/inventario-movimientos/movimientos.ts",
+      "sha256": "5dbb6e55a794f48d1b17becab23ace0e60d3d060da10c51dac33ff080918a770"
+    },
+    {
+      "file": "Parcial2_mobile/lib/features/movimientos/movimientos_screen.dart",
+      "sha256": "41faae491afd90d799168b4b0f8d406d54caaa0d79b716747ebe9d6f5bf7e075"
+    }
+  ]
+}

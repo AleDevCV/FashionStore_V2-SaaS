@@ -1,5 +1,7 @@
 # Matriz de trazabilidad
 
+Esta matriz conserva los 38 identificadores históricos y sus evidencias. El modelo documental consolidado tiene 20 casos principales; su correspondencia está en `modelo_20_cu/equivalencias_38_a_20.csv`. Una agrupación documental no cambia ni certifica el estado de prueba de sus subflujos.
+
 | CU | Antecedente P1 | Fuente | Componente esperado | Prueba de aceptación | Estado | Evidencia |
 |---|---|---|---|---|---|---|
 | CU-01 | 01 | Examen P2 y reglas capítulo II | Backend y Web y Flutter | CP-01: principal y alternativas de la ficha | probado | ACCESO_GLOBAL.md; backend XML, Angular 30, Flutter 11; aceptación Android físico pendiente |

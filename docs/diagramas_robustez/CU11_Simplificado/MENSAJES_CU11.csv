@@ -1,0 +1,30 @@
+﻿numero,origen,destino,mensaje,archivo,linea
+1,actor,b_pre,Preparar compra y confirmar resumen,,
+2,b_pre,control,"crear_reserva(carrito, sucursal)",Parcial2_backend/app/routers/ventas.py,70
+3,control,reserva,"reserve(cliente, sucursal, ítems)",Parcial2_backend/app/services/commerce.py,49
+4,reserva,control,reserva y total autorizado,,
+5,control,bitacora,Auditar reserva de checkout,Parcial2_backend/app/services/commerce.py,49
+6,control,b_pre,reserva pendiente de pago,,
+7,b_pre,actor,Mostrar total y medios de pago,,
+8,actor,b_pre,Iniciar pago de prueba,,
+9,b_pre,control,crear_sesion_stripe(id_reserva),Parcial2_backend/app/routers/pagos.py,43
+10,control,b_stripe,Crear sesión de pago Stripe,Parcial2_backend/app/services/payments.py,25
+11,b_stripe,control,sesión y URL de pago,,
+12,control,pago,Guardar intento Pendiente,Parcial2_backend/app/services/payments.py,25
+13,control,b_pre,URL de pago,,
+14,b_pre,actor,Abrir portal Stripe,,
+15,actor,b_stripe,Completar pago de prueba,,
+16,b_stripe,control,"stripe_webhook(evento, firma)",Parcial2_backend/app/routers/pagos.py,64
+17,control,reserva,Validar reserva e importe del evento,Parcial2_backend/app/services/payments.py,65
+18,reserva,control,reserva e importe esperado,,
+19,control,venta,confirm_reservation(pago verificado),Parcial2_backend/app/services/commerce.py,77
+20,venta,control,id_venta,,
+21,control,movimiento,Registrar Salida [por detalle],Parcial2_backend/app/services/commerce.py,77
+22,control,pago,Aprobar pago y enlazar venta,Parcial2_backend/app/services/payments.py,65
+23,control,b_stripe,evento procesado de forma idempotente,,
+24,actor,b_pre,Consultar resultado del pago,,
+25,b_pre,control,payment_status(id_reserva),Parcial2_backend/app/routers/order_lifecycle.py,9
+26,control,venta,obtener_venta_por_id(id_venta [si pagada]),Parcial2_backend/app/services/venta_service.py,145
+27,venta,control,venta confirmada,,
+28,control,b_pre,estado pagado y venta,,
+29,b_pre,actor,Mostrar compra confirmada,,

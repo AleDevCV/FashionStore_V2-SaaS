@@ -1,0 +1,39 @@
+﻿CU_P2_plan_38,Antecedente_P1,CU_P2_modelo_20,Nombre_nuevo
+CU-01,P1-CU-01,CU-01,Gestionar acceso y cuenta
+CU-02,P1-CU-04,CU-01,Gestionar acceso y cuenta
+CU-03,nuevo en P2,CU-02,"Administrar empresas, planes y suscripciones"
+CU-04,nuevo en P2,CU-02,"Administrar empresas, planes y suscripciones"
+CU-05,nuevo en P2,CU-02,"Administrar empresas, planes y suscripciones"
+CU-06,P1-CU-03,CU-03,"Administrar personal, roles y permisos"
+CU-07,P1-CU-02,CU-03,"Administrar personal, roles y permisos"
+CU-08,P1-CU-06,CU-04,Gestionar ciudades y sucursales
+CU-09,P1-CU-05,CU-05,Gestionar fichas de clientes
+CU-10,P1-CU-07,CU-06,Administrar catálogo de prendas
+CU-11,P1-CU-09,CU-06,Administrar catálogo de prendas
+CU-12,P1-CU-08,CU-06,Administrar catálogo de prendas
+CU-13,P1-CU-12,CU-07,"Gestionar proveedores, compras y recepciones"
+CU-14,P1-CU-13,CU-07,"Gestionar proveedores, compras y recepciones"
+CU-15,P1-CU-10,CU-08,Consultar inventario y disponibilidad
+CU-16,P1-CU-11,CU-10,Registrar movimientos de inventario
+CU-17,P1-CU-14,CU-09,Explorar catálogo y asistencia de compra
+CU-18,P1-CU-15,CU-11,Realizar compra y pago en línea
+CU-19,P1-CU-16,CU-12,Gestionar reservas de prendas
+CU-20,P1-CU-17,CU-12,Gestionar reservas de prendas
+CU-21,P1-CU-19,CU-13,Registrar venta presencial
+CU-22,P1-CU-20,CU-11,Realizar compra y pago en línea
+CU-23,P1-CU-21,CU-14,Obtener comprobantes de compra
+CU-24,nuevo en P2,CU-15,Gestionar cambios y reembolsos
+CU-25,nuevo en P2,CU-15,Gestionar cambios y reembolsos
+CU-26,P1-CU-18,CU-09,Explorar catálogo y asistencia de compra
+CU-27,P1-CU-22,CU-09,Explorar catálogo y asistencia de compra
+CU-28,nuevo en P2,CU-16,Registrar y consultar operaciones offline
+CU-29,nuevo en P2,CU-16,Registrar y consultar operaciones offline
+CU-30,nuevo en P2,CU-16,Registrar y consultar operaciones offline
+CU-31,nuevo en P2,CU-16,Registrar y consultar operaciones offline
+CU-32,nuevo en P2,CU-17,Sincronizar operaciones y resolver conflictos
+CU-33,nuevo en P2,CU-17,Sincronizar operaciones y resolver conflictos
+CU-34,P1-CU-23,CU-18,Obtener reportes comerciales
+CU-35,P1-CU-23,CU-18,Obtener reportes comerciales
+CU-36,nuevo en P2,CU-19,Preparar y consultar analítica inteligente
+CU-37,P1-CU-24,CU-19,Preparar y consultar analítica inteligente
+CU-38,P1-CU-25,CU-20,Consultar auditoría y trazabilidad

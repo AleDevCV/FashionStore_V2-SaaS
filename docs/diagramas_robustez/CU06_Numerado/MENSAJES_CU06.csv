@@ -1,0 +1,174 @@
+﻿numero,accion,origen,destino,mensaje,tipo,archivo,linea,funcion
+1,1,actor,b_cat,Consultar categorías,ui,,,
+2,1,b_cat,control,listar_categorias(estado),read,Parcial2_backend/app/routers/categorias.py,46,listar_categorias
+3,1,control,categoria,listar_categorias(estado),read,Parcial2_backend/app/services/categoria_service.py,30,listar_categorias
+4,1,categoria,control,lista de categorías,reply,,,
+5,1,control,b_cat,categorías,reply,,,
+6,1,b_cat,actor,Mostrar árbol de categorías,reply,,,
+7,2,actor,b_cat,Registrar categoría,ui,,,
+8,2,b_cat,control,crear_categoria(datos),invoke,Parcial2_backend/app/routers/categorias.py,70,crear_categoria
+9,2,control,categoria,existe_nombre(nombre),read,Parcial2_backend/app/services/categoria_service.py,72,existe_nombre
+10,2,categoria,control,nombre disponible,reply,,,
+11,2,control,categoria,existe_categoria(id_padre) [si se indicó padre],read,Parcial2_backend/app/services/categoria_service.py,98,existe_categoria
+12,2,categoria,control,categoría padre válida,reply,,,
+13,2,control,categoria,crear_categoria(datos),write,Parcial2_backend/app/services/categoria_service.py,114,crear_categoria
+14,2,categoria,control,id_categoria,reply,,,
+15,2,control,bitacora,"registrar_bitacora(categoria, alta)",write,Parcial2_backend/app/services/bitacora_service.py,65,registrar_bitacora
+16,2,control,categoria,obtener_categoria(id_categoria),read,Parcial2_backend/app/services/categoria_service.py,57,obtener_categoria
+17,2,categoria,control,categoría creada,reply,,,
+18,2,control,b_cat,categoría creada,reply,,,
+19,2,b_cat,actor,Mostrar categoría registrada,reply,,,
+20,3,actor,b_cat,Editar categoría,ui,,,
+21,3,b_cat,control,"actualizar_categoria(id_categoria, cambios)",invoke,Parcial2_backend/app/routers/categorias.py,135,actualizar_categoria
+22,3,control,categoria,obtener_categoria(id_categoria),read,Parcial2_backend/app/services/categoria_service.py,57,obtener_categoria
+23,3,categoria,control,categoría actual,reply,,,
+24,3,control,categoria,"existe_nombre(nombre, excluir_id) [si cambia nombre]",read,Parcial2_backend/app/services/categoria_service.py,72,existe_nombre
+25,3,categoria,control,nombre válido,reply,,,
+26,3,control,categoria,existe_categoria(id_padre) [si cambia padre],read,Parcial2_backend/app/services/categoria_service.py,98,existe_categoria
+27,3,categoria,control,padre válido,reply,,,
+28,3,control,categoria,"actualizar_categoria(id_categoria, cambios)",write,Parcial2_backend/app/services/categoria_service.py,135,actualizar_categoria
+29,3,control,bitacora,"registrar_bitacora(categoria, modificación)",write,Parcial2_backend/app/services/bitacora_service.py,65,registrar_bitacora
+30,3,control,categoria,obtener_categoria(id_categoria),read,Parcial2_backend/app/services/categoria_service.py,57,obtener_categoria
+31,3,categoria,control,categoría actualizada,reply,,,
+32,3,control,b_cat,categoría actualizada,reply,,,
+33,3,b_cat,actor,Mostrar cambios guardados,reply,,,
+34,4,actor,b_cat,Inhabilitar categoría,ui,,,
+35,4,b_cat,control,inhabilitar_categoria(id_categoria),invoke,Parcial2_backend/app/routers/categorias.py,217,inhabilitar_categoria
+36,4,control,categoria,obtener_categoria(id_categoria),read,Parcial2_backend/app/services/categoria_service.py,57,obtener_categoria
+37,4,categoria,control,categoría activa,reply,,,
+38,4,control,categoria,tiene_subcategorias(id_categoria),read,Parcial2_backend/app/services/categoria_service.py,176,tiene_subcategorias
+39,4,categoria,control,sin subcategorías activas,reply,,,
+40,4,control,categoria,inhabilitar_categoria(id_categoria),write,Parcial2_backend/app/services/categoria_service.py,156,inhabilitar_categoria
+41,4,control,bitacora,"registrar_bitacora(categoria, baja lógica)",write,Parcial2_backend/app/services/bitacora_service.py,65,registrar_bitacora
+42,4,control,b_cat,inhabilitación confirmada,reply,,,
+43,4,b_cat,actor,Mostrar categoría inactiva,reply,,,
+44,5,actor,b_cat,Reactivar categoría,ui,,,
+45,5,b_cat,control,"actualizar_categoria(id_categoria, estado='Activo')",invoke,Parcial2_backend/app/routers/categorias.py,135,actualizar_categoria
+46,5,control,categoria,obtener_categoria(id_categoria),read,Parcial2_backend/app/services/categoria_service.py,57,obtener_categoria
+47,5,categoria,control,categoría actual,reply,,,
+48,5,control,categoria,"actualizar_categoria(id_categoria, estado='Activo')",write,Parcial2_backend/app/services/categoria_service.py,135,actualizar_categoria
+49,5,control,bitacora,"registrar_bitacora(categoria, modificación)",write,Parcial2_backend/app/services/bitacora_service.py,65,registrar_bitacora
+50,5,control,categoria,obtener_categoria(id_categoria),read,Parcial2_backend/app/services/categoria_service.py,57,obtener_categoria
+51,5,categoria,control,categoría activa,reply,,,
+52,5,control,b_cat,reactivación confirmada,reply,,,
+53,5,b_cat,actor,Mostrar categoría reactivada,reply,,,
+54,6,actor,b_temp,Consultar temporadas y colecciones,ui,,,
+55,6,b_temp,control,"listar_temporadas(búsqueda, estado, vigencia)",read,Parcial2_backend/app/routers/temporadas.py,39,listar_temporadas
+56,6,control,temporada,listar_temporadas(filtros),read,Parcial2_backend/app/services/temporada_service.py,46,listar_temporadas
+57,6,temporada,control,temporadas y vigencias,reply,,,
+58,6,control,b_temp,temporadas,reply,,,
+59,6,b_temp,actor,Mostrar temporadas y colecciones,reply,,,
+60,7,actor,b_temp,Registrar temporada o colección,ui,,,
+61,7,b_temp,control,crear_temporada(datos),invoke,Parcial2_backend/app/routers/temporadas.py,100,crear_temporada
+62,7,control,temporada,existe_nombre_temporada(nombre),read,Parcial2_backend/app/services/temporada_service.py,24,existe_nombre_temporada
+63,7,temporada,control,nombre disponible,reply,,,
+64,7,control,temporada,crear_temporada(datos) [fechas válidas],write,Parcial2_backend/app/services/temporada_service.py,131,crear_temporada
+65,7,temporada,control,temporada creada,reply,,,
+66,7,control,bitacora,"registrar_bitacora(temporada, alta)",write,Parcial2_backend/app/services/bitacora_service.py,65,registrar_bitacora
+67,7,control,b_temp,temporada creada,reply,,,
+68,7,b_temp,actor,Mostrar temporada registrada,reply,,,
+69,8,actor,b_temp,Editar temporada o colección,ui,,,
+70,8,b_temp,control,"actualizar_temporada(id_temporada, cambios)",invoke,Parcial2_backend/app/routers/temporadas.py,122,actualizar_temporada
+71,8,control,temporada,obtener_temporada_por_id(id_temporada),read,Parcial2_backend/app/services/temporada_service.py,107,obtener_temporada_por_id
+72,8,temporada,control,temporada actual,reply,,,
+73,8,control,temporada,"existe_nombre_temporada(nombre, excluir_id) [si cambia nombre]",read,Parcial2_backend/app/services/temporada_service.py,24,existe_nombre_temporada
+74,8,temporada,control,nombre disponible,reply,,,
+75,8,control,temporada,"actualizar_temporada(id_temporada, cambios) [fechas válidas]",write,Parcial2_backend/app/services/temporada_service.py,186,actualizar_temporada
+76,8,control,bitacora,"registrar_bitacora(temporada, modificación)",write,Parcial2_backend/app/services/bitacora_service.py,65,registrar_bitacora
+77,8,control,temporada,obtener_temporada_por_id(id_temporada),read,Parcial2_backend/app/services/temporada_service.py,107,obtener_temporada_por_id
+78,8,temporada,control,temporada actualizada,reply,,,
+79,8,control,b_temp,temporada actualizada,reply,,,
+80,8,b_temp,actor,Mostrar cambios guardados,reply,,,
+81,9,actor,b_temp,Eliminar temporada o colección,ui,,,
+82,9,b_temp,control,eliminar_temporada(id_temporada),invoke,Parcial2_backend/app/routers/temporadas.py,146,eliminar_temporada
+83,9,control,temporada,obtener_temporada_por_id(id_temporada),read,Parcial2_backend/app/services/temporada_service.py,107,obtener_temporada_por_id
+84,9,temporada,control,temporada existente,reply,,,
+85,9,control,temporada,eliminar_temporada(id_temporada),write,Parcial2_backend/app/services/temporada_service.py,254,eliminar_temporada
+86,9,control,bitacora,"registrar_bitacora(temporada, eliminación)",write,Parcial2_backend/app/services/bitacora_service.py,65,registrar_bitacora
+87,9,control,b_temp,eliminación confirmada,reply,,,
+88,9,b_temp,actor,Mostrar temporada eliminada,reply,,,
+89,10,actor,b_pre,Consultar prendas y preparar formulario,ui,,,
+90,10,b_pre,control,"listar_prendas(búsqueda, categoría, género, estado)",read,Parcial2_backend/app/routers/prendas.py,101,listar_prendas
+91,10,control,prenda,listar_prendas(filtros),read,Parcial2_backend/app/services/prenda_service.py,58,listar_prendas
+92,10,prenda,control,lista de prendas,reply,,,
+93,10,control,b_pre,prendas,reply,,,
+94,10,b_pre,control,listar_categorias(estado),read,Parcial2_backend/app/routers/categorias.py,46,listar_categorias
+95,10,control,categoria,listar_categorias(estado),read,Parcial2_backend/app/services/categoria_service.py,30,listar_categorias
+96,10,categoria,control,categorías disponibles,reply,,,
+97,10,control,b_pre,categorías,reply,,,
+98,10,b_pre,control,listar_tallas(),read,Parcial2_backend/app/routers/prendas.py,50,listar_tallas
+99,10,control,talla,listar_tallas(),read,Parcial2_backend/app/services/prenda_service.py,462,listar_tallas
+100,10,talla,control,tallas disponibles,reply,,,
+101,10,control,b_pre,tallas,reply,,,
+102,10,b_pre,control,listar_colores(),read,Parcial2_backend/app/routers/prendas.py,64,listar_colores
+103,10,control,color,listar_colores(),read,Parcial2_backend/app/services/prenda_service.py,477,listar_colores
+104,10,color,control,colores disponibles,reply,,,
+105,10,control,b_pre,colores,reply,,,
+106,10,b_pre,actor,Mostrar prendas y opciones del formulario,reply,,,
+107,11,actor,b_pre,Registrar prenda y variantes,ui,,,
+108,11,b_pre,control,"crear_prenda(datos, variantes, precios, ofertas)",invoke,Parcial2_backend/app/routers/prendas.py,170,crear_prenda
+109,11,control,prenda,existe_sku(sku),read,Parcial2_backend/app/services/prenda_service.py,178,existe_sku
+110,11,prenda,control,SKU disponible,reply,,,
+111,11,control,categoria,existe_categoria(id_categoria),read,Parcial2_backend/app/services/categoria_service.py,98,existe_categoria
+112,11,categoria,control,categoría válida,reply,,,
+113,11,control,prenda,crear_prenda(datos maestros y comerciales),write,Parcial2_backend/app/services/prenda_service.py,217,crear_prenda
+114,11,prenda,control,id_prenda,reply,,,
+115,11,control,imagen,Guardar imagen principal [si se indicó URL],write,Parcial2_backend/app/services/prenda_service.py,217,crear_prenda
+116,11,control,sucursal,_listar_ids_sucursales(),read,Parcial2_backend/app/services/prenda_service.py,350,_listar_ids_sucursales
+117,11,sucursal,control,sucursales activas autorizadas,reply,,,
+118,11,control,variante,"_crear_variante(talla, color_ids, SKU) [por variante]",write,Parcial2_backend/app/services/prenda_service.py,288,_crear_variante
+119,11,variante,control,id_variante,reply,,,
+120,11,control,inventario,Inicializar fila con stock=0 [por variante y sucursal],write,Parcial2_backend/app/services/prenda_service.py,288,_crear_variante
+121,11,control,movimiento,Registrar Entrada inicial [stock inicial > 0],write,Parcial2_backend/app/services/prenda_service.py,288,_crear_variante
+122,11,control,bitacora,"registrar_bitacora(prenda, alta)",write,Parcial2_backend/app/services/bitacora_service.py,65,registrar_bitacora
+123,11,control,prenda,obtener_prenda(id_prenda),read,Parcial2_backend/app/services/prenda_service.py,114,obtener_prenda
+124,11,prenda,control,datos maestros creados,reply,,,
+125,11,control,variante,listar_variantes(id_prenda),read,Parcial2_backend/app/services/prenda_service.py,136,listar_variantes
+126,11,variante,control,variantes y existencias,reply,,,
+127,11,control,b_pre,prenda creada con variantes,reply,,,
+128,11,b_pre,actor,Mostrar prenda registrada,reply,,,
+129,12,actor,b_pre,"Editar prenda, precios y ofertas",ui,,,
+130,12,b_pre,control,"actualizar_prenda(id_prenda, cambios)",invoke,Parcial2_backend/app/routers/prendas.py,274,actualizar_prenda
+131,12,control,prenda,"obtener_prenda(id_prenda, con_variantes=False)",read,Parcial2_backend/app/services/prenda_service.py,114,obtener_prenda
+132,12,prenda,control,prenda actual,reply,,,
+133,12,control,prenda,"existe_sku(sku, excluir_id) [si cambia SKU]",read,Parcial2_backend/app/services/prenda_service.py,178,existe_sku
+134,12,prenda,control,SKU disponible,reply,,,
+135,12,control,categoria,existe_categoria(id_categoria) [si cambia categoría],read,Parcial2_backend/app/services/categoria_service.py,98,existe_categoria
+136,12,categoria,control,categoría válida,reply,,,
+137,12,control,prenda,"actualizar_prenda(id_prenda, atributos, precios, ofertas)",write,Parcial2_backend/app/services/prenda_service.py,363,actualizar_prenda
+138,12,control,imagen,"_reemplazar_imagen_principal(id_prenda, url_imagen) [si cambia URL]",read,Parcial2_backend/app/services/prenda_service.py,396,_reemplazar_imagen_principal
+139,12,imagen,control,referencia actual comprobada,reply,,,
+140,12,control,imagen,Conservar anterior como secundaria y guardar principal [si difiere],write,Parcial2_backend/app/services/prenda_service.py,396,_reemplazar_imagen_principal
+141,12,control,bitacora,"registrar_bitacora(prenda, modificación)",write,Parcial2_backend/app/services/bitacora_service.py,65,registrar_bitacora
+142,12,control,prenda,obtener_prenda(id_prenda),read,Parcial2_backend/app/services/prenda_service.py,114,obtener_prenda
+143,12,prenda,control,prenda actualizada,reply,,,
+144,12,control,variante,listar_variantes(id_prenda),read,Parcial2_backend/app/services/prenda_service.py,136,listar_variantes
+145,12,variante,control,variantes conservadas,reply,,,
+146,12,control,b_pre,prenda actualizada,reply,,,
+147,12,b_pre,actor,Mostrar cambios guardados,reply,,,
+148,13,actor,b_pre,Inhabilitar prenda,ui,,,
+149,13,b_pre,control,inhabilitar_prenda(id_prenda),invoke,Parcial2_backend/app/routers/prendas.py,362,inhabilitar_prenda
+150,13,control,prenda,"obtener_prenda(id_prenda, con_variantes=False)",read,Parcial2_backend/app/services/prenda_service.py,114,obtener_prenda
+151,13,prenda,control,prenda activa,reply,,,
+152,13,control,prenda,inhabilitar_prenda(id_prenda),write,Parcial2_backend/app/services/prenda_service.py,437,inhabilitar_prenda
+153,13,control,bitacora,"registrar_bitacora(prenda, baja lógica)",write,Parcial2_backend/app/services/bitacora_service.py,65,registrar_bitacora
+154,13,control,b_pre,inhabilitación confirmada,reply,,,
+155,13,b_pre,actor,Mostrar prenda inactiva,reply,,,
+156,14,actor,b_pre,Reactivar prenda,ui,,,
+157,14,b_pre,control,"actualizar_prenda(id_prenda, estado='Activo')",invoke,Parcial2_backend/app/routers/prendas.py,274,actualizar_prenda
+158,14,control,prenda,"obtener_prenda(id_prenda, con_variantes=False)",read,Parcial2_backend/app/services/prenda_service.py,114,obtener_prenda
+159,14,prenda,control,prenda actual,reply,,,
+160,14,control,prenda,"actualizar_prenda(id_prenda, estado='Activo')",write,Parcial2_backend/app/services/prenda_service.py,363,actualizar_prenda
+161,14,control,bitacora,"registrar_bitacora(prenda, modificación)",write,Parcial2_backend/app/services/bitacora_service.py,65,registrar_bitacora
+162,14,control,prenda,obtener_prenda(id_prenda),read,Parcial2_backend/app/services/prenda_service.py,114,obtener_prenda
+163,14,prenda,control,prenda activa,reply,,,
+164,14,control,variante,listar_variantes(id_prenda),read,Parcial2_backend/app/services/prenda_service.py,136,listar_variantes
+165,14,variante,control,variantes conservadas,reply,,,
+166,14,control,b_pre,reactivación confirmada,reply,,,
+167,14,b_pre,actor,Mostrar prenda reactivada,reply,,,
+168,15,actor,b_pre,Intentar registrar un SKU existente,ui,,,
+169,15,b_pre,control,crear_prenda(datos con SKU repetido),invoke,Parcial2_backend/app/routers/prendas.py,170,crear_prenda
+170,15,control,prenda,existe_sku(sku),read,Parcial2_backend/app/services/prenda_service.py,178,existe_sku
+171,15,prenda,control,SKU ya registrado,reply,,,
+172,15,control,b_pre,rechazo: SKU duplicado,reply,,,
+173,15,b_pre,actor,Mostrar validación sin registrar la prenda,reply,,,

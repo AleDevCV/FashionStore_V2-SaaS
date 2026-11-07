@@ -1,0 +1,17 @@
+{
+  "caso_uso": "CU06 - Administrar catálogo de prendas",
+  "metodologia": "ICONIX Robustness Analysis",
+  "cumplimiento_estricto_4_reglas": true,
+  "regla_1_actores_solo_frontera": true,
+  "regla_2_fronteras_solo_actores_y_controles": true,
+  "regla_3_entidades_solo_controles": true,
+  "regla_4_controles_interconectables": true,
+  "total_actores": 2,
+  "total_fronteras": 5,
+  "total_controles": 8,
+  "total_entidades": 11,
+  "total_conexiones": 42,
+  "infracciones": 0,
+  "archivo_drawio": "CU06_Diagrama_Robustez.drawio",
+  "archivo_svg": "CU06_Diagrama_Robustez.svg"
+}

@@ -1,0 +1,448 @@
+{
+  "robustness_source": "docs\\diagramas_robustez\\CU08_Simplificado\\CU08_Robustez_Simplificada_Modelo.json",
+  "participants": [
+    {
+      "id": "actor",
+      "name": "Personal autorizado",
+      "kind": "actor"
+    },
+    {
+      "id": "b_pre",
+      "name": "Frontend : Inventario y disponibilidad",
+      "kind": "boundary"
+    },
+    {
+      "id": "control",
+      "name": "Backend : Consulta de inventario",
+      "kind": "control"
+    },
+    {
+      "id": "inventario",
+      "name": "Inventario y disponibilidad",
+      "kind": "entity"
+    },
+    {
+      "id": "sucursal",
+      "name": "Sucursal",
+      "kind": "entity"
+    }
+  ],
+  "events": [
+    {
+      "type": "message",
+      "a": "actor",
+      "b": "b_pre",
+      "text": "Seleccionar sucursal autorizada",
+      "reply": false,
+      "robustness_number": 1,
+      "number": 1,
+      "lines": [
+        "1: Seleccionar sucursal autorizada"
+      ],
+      "y": 271,
+      "label_h": 23,
+      "label_w": 293
+    },
+    {
+      "type": "message",
+      "a": "b_pre",
+      "b": "control",
+      "text": "listar_sucursales(filtros)",
+      "reply": false,
+      "robustness_number": 2,
+      "number": 2,
+      "lines": [
+        "2: listar_sucursales(filtros)"
+      ],
+      "y": 336,
+      "label_h": 23,
+      "label_w": 293
+    },
+    {
+      "type": "message",
+      "a": "control",
+      "b": "sucursal",
+      "text": "listar_sucursales(filtros)",
+      "reply": false,
+      "robustness_number": 3,
+      "number": 3,
+      "lines": [
+        "3: listar_sucursales(filtros)"
+      ],
+      "y": 401,
+      "label_h": 23,
+      "label_w": 628
+    },
+    {
+      "type": "message",
+      "a": "sucursal",
+      "b": "control",
+      "text": "sucursales autorizadas",
+      "reply": true,
+      "robustness_number": 4,
+      "number": 4,
+      "lines": [
+        "4: sucursales autorizadas"
+      ],
+      "y": 466,
+      "label_h": 23,
+      "label_w": 628
+    },
+    {
+      "type": "message",
+      "a": "control",
+      "b": "b_pre",
+      "text": "sucursales",
+      "reply": true,
+      "robustness_number": 5,
+      "number": 5,
+      "lines": [
+        "5: sucursales"
+      ],
+      "y": 592,
+      "label_h": 23,
+      "label_w": 293
+    },
+    {
+      "type": "message",
+      "a": "control",
+      "b": "b_pre",
+      "text": "Sin sucursales disponibles",
+      "reply": true,
+      "number": 6,
+      "lines": [
+        "6: Sin sucursales disponibles"
+      ],
+      "y": 722,
+      "label_h": 23,
+      "label_w": 293
+    },
+    {
+      "type": "message",
+      "a": "b_pre",
+      "b": "actor",
+      "text": "Mostrar sucursales",
+      "reply": true,
+      "robustness_number": 6,
+      "number": 7,
+      "lines": [
+        "7: Mostrar sucursales"
+      ],
+      "y": 832,
+      "label_h": 23,
+      "label_w": 293
+    },
+    {
+      "type": "message",
+      "a": "actor",
+      "b": "b_pre",
+      "text": "Consultar existencias físicas",
+      "reply": false,
+      "robustness_number": 7,
+      "number": 8,
+      "lines": [
+        "8: Consultar existencias físicas"
+      ],
+      "y": 897,
+      "label_h": 23,
+      "label_w": 293
+    },
+    {
+      "type": "message",
+      "a": "b_pre",
+      "b": "control",
+      "text": "obtener_monitoreo_inventario(sucursal, filtros)",
+      "reply": false,
+      "robustness_number": 8,
+      "number": 9,
+      "lines": [
+        "9: obtener_monitoreo_",
+        "inventario(sucursal, filtros)"
+      ],
+      "y": 985,
+      "label_h": 46,
+      "label_w": 293
+    },
+    {
+      "type": "message",
+      "a": "control",
+      "b": "inventario",
+      "text": "obtener_monitoreo_inventario(filtros)",
+      "reply": false,
+      "robustness_number": 9,
+      "number": 10,
+      "lines": [
+        "10: obtener_monitoreo_",
+        "inventario(filtros)"
+      ],
+      "y": 1073,
+      "label_h": 46,
+      "label_w": 293
+    },
+    {
+      "type": "message",
+      "a": "inventario",
+      "b": "control",
+      "text": "stock físico por variante",
+      "reply": true,
+      "robustness_number": 10,
+      "number": 11,
+      "lines": [
+        "11: stock físico por variante"
+      ],
+      "y": 1138,
+      "label_h": 23,
+      "label_w": 293
+    },
+    {
+      "type": "message",
+      "a": "control",
+      "b": "b_pre",
+      "text": "existencias",
+      "reply": true,
+      "robustness_number": 11,
+      "number": 12,
+      "lines": [
+        "12: existencias"
+      ],
+      "y": 1264,
+      "label_h": 23,
+      "label_w": 293
+    },
+    {
+      "type": "message",
+      "a": "control",
+      "b": "b_pre",
+      "text": "Resultado vacío",
+      "reply": true,
+      "number": 13,
+      "lines": [
+        "13: Resultado vacío"
+      ],
+      "y": 1394,
+      "label_h": 23,
+      "label_w": 293
+    },
+    {
+      "type": "message",
+      "a": "b_pre",
+      "b": "actor",
+      "text": "Mostrar existencias",
+      "reply": true,
+      "robustness_number": 12,
+      "number": 14,
+      "lines": [
+        "14: Mostrar existencias"
+      ],
+      "y": 1504,
+      "label_h": 23,
+      "label_w": 293
+    },
+    {
+      "type": "message",
+      "a": "actor",
+      "b": "b_pre",
+      "text": "Consultar disponibilidad de variante",
+      "reply": false,
+      "robustness_number": 13,
+      "number": 15,
+      "lines": [
+        "15: Consultar disponibilidad de",
+        "variante"
+      ],
+      "y": 1592,
+      "label_h": 46,
+      "label_w": 293
+    },
+    {
+      "type": "message",
+      "a": "b_pre",
+      "b": "control",
+      "text": "consultar_disponibilidad(id_variante)",
+      "reply": false,
+      "robustness_number": 14,
+      "number": 16,
+      "lines": [
+        "16: consultar_disponibilidad(id_",
+        "variante)"
+      ],
+      "y": 1680,
+      "label_h": 46,
+      "label_w": 293
+    },
+    {
+      "type": "message",
+      "a": "control",
+      "b": "inventario",
+      "text": "consultar_disponibilidad(id_variante)",
+      "reply": false,
+      "robustness_number": 15,
+      "number": 17,
+      "lines": [
+        "17: consultar_disponibilidad(id_",
+        "variante)"
+      ],
+      "y": 1768,
+      "label_h": 46,
+      "label_w": 293
+    },
+    {
+      "type": "message",
+      "a": "inventario",
+      "b": "control",
+      "text": "disponible por sucursal",
+      "reply": true,
+      "robustness_number": 16,
+      "number": 18,
+      "lines": [
+        "18: disponible por sucursal"
+      ],
+      "y": 1833,
+      "label_h": 23,
+      "label_w": 293
+    },
+    {
+      "type": "message",
+      "a": "control",
+      "b": "b_pre",
+      "text": "disponibilidad",
+      "reply": true,
+      "robustness_number": 17,
+      "number": 19,
+      "lines": [
+        "19: disponibilidad"
+      ],
+      "y": 1959,
+      "label_h": 23,
+      "label_w": 293
+    },
+    {
+      "type": "message",
+      "a": "control",
+      "b": "b_pre",
+      "text": "Sin disponibilidad para la variante",
+      "reply": true,
+      "number": 20,
+      "lines": [
+        "20: Sin disponibilidad para la variante"
+      ],
+      "y": 2089,
+      "label_h": 23,
+      "label_w": 293
+    },
+    {
+      "type": "message",
+      "a": "b_pre",
+      "b": "actor",
+      "text": "Mostrar disponibilidad conocida",
+      "reply": true,
+      "robustness_number": 18,
+      "number": 21,
+      "lines": [
+        "21: Mostrar disponibilidad conocida"
+      ],
+      "y": 2199,
+      "label_h": 23,
+      "label_w": 293
+    }
+  ],
+  "frames": [
+    {
+      "kind": "alt",
+      "y": 500,
+      "h": 279,
+      "depth": 0,
+      "guards": [
+        [
+          500,
+          "hay sucursales autorizadas",
+          true
+        ],
+        [
+          641,
+          "sin sucursales",
+          false
+        ]
+      ],
+      "event_range": [
+        4,
+        6
+      ],
+      "participants": [
+        "b_pre",
+        "control"
+      ],
+      "starts_at": "b_pre",
+      "left": 455,
+      "right": 850,
+      "width": 395
+    },
+    {
+      "kind": "alt",
+      "y": 1172,
+      "h": 279,
+      "depth": 0,
+      "guards": [
+        [
+          1172,
+          "hay registros",
+          true
+        ],
+        [
+          1313,
+          "sin existencias registradas",
+          false
+        ]
+      ],
+      "event_range": [
+        11,
+        13
+      ],
+      "participants": [
+        "b_pre",
+        "control"
+      ],
+      "starts_at": "b_pre",
+      "left": 455,
+      "right": 850,
+      "width": 395
+    },
+    {
+      "kind": "alt",
+      "y": 1867,
+      "h": 279,
+      "depth": 0,
+      "guards": [
+        [
+          1867,
+          "hay disponibilidad",
+          true
+        ],
+        [
+          2008,
+          "sin unidades disponibles",
+          false
+        ]
+      ],
+      "event_range": [
+        18,
+        20
+      ],
+      "participants": [
+        "b_pre",
+        "control"
+      ],
+      "starts_at": "b_pre",
+      "left": 455,
+      "right": 850,
+      "width": 395
+    }
+  ],
+  "notes": [
+    "El monitoreo consulta inventario físico; consultar_disponibilidad utiliza la vista inventario_catalogo. No se atribuye a obtener_monitoreo_inventario una resta de reservas que no realiza.",
+    "La vista de disponibilidad integra las retenciones. Sus tablas auxiliares se omiten del dibujo. No se modifica stock ni se inventan eventos de bitácora para consultas."
+  ],
+  "scope": "Mismos recorridos y participantes de robustez; numeración de secuencia nueva al añadir las alternativas.",
+  "geometry": "alt y opt parten de la interfaz principal; loop parte del control correspondiente. Margen de 30 px. El borde derecho corresponde al último participante afectado. Las líneas intermedias del orden fijo no implican interacciones adicionales.",
+  "presentation": "Los retornos al actor se generalizan cuando deben mostrar éxito o rechazo. Las acciones son escenarios independientes del CU, no un guion obligatorio."
+}

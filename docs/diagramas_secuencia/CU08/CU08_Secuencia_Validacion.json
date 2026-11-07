@@ -1,0 +1,63 @@
+{
+  "cu": "CU08",
+  "archivo": "CU08_Diagrama_Secuencia.drawio",
+  "participantes": 5,
+  "mensajes": 21,
+  "fragmentos": {
+    "alt": 3,
+    "opt": 0,
+    "loop": 0
+  },
+  "ancho": 1670,
+  "alto": 2303,
+  "sha256": "b3ff676cddf65fcc186b5fc1a8ef80a62e7cc2876f571fa24eb368cfe1080ded",
+  "fuentes": [
+    {
+      "file": "Parcial2_backend/app/routers/catalogo.py",
+      "sha256": "a05748ee7d167f5313501c9c05cef9decc152593eea9afc9f24940927e887856"
+    },
+    {
+      "file": "Parcial2_backend/app/routers/geografia.py",
+      "sha256": "678fb6feab2f92428179c011ce5354cd0cd46706ab402669f649e25bb4884ab3"
+    },
+    {
+      "file": "Parcial2_backend/app/routers/inventario.py",
+      "sha256": "d62751dbe81d9451f2b3b0a2a91e6e09ce365f6157d9eaac037b29eba966490b"
+    },
+    {
+      "file": "Parcial2_backend/app/services/catalogo_service.py",
+      "sha256": "ebb601822e558f04bbffb61b277c7667d979b78edc08debabff723369f1515b7"
+    },
+    {
+      "file": "Parcial2_backend/app/services/geografia_service.py",
+      "sha256": "d3dc34addaf66d8b447aa4aceea17d45500dfb49949dca5eb843b4906022a176"
+    },
+    {
+      "file": "Parcial2_backend/app/services/inventario_service.py",
+      "sha256": "dc671f5d47a6639708258652c345a28733825d55260f7988c6807fe85b34ecf1"
+    },
+    {
+      "file": "Parcial2_frontend-web/src/app/features/catalogo/prenda-detalle/prenda-detalle.ts",
+      "sha256": "0d055dccdeff214d6273faa7a0666ef55bd6e0f89ac29ce78ea7de572efe302b"
+    },
+    {
+      "file": "Parcial2_frontend-web/src/app/features/inventario-monitoreo/inventario-monitoreo.ts",
+      "sha256": "171574ccafc4a711f4882a95687dee996b91d52d7f02057097fe1d3f91298a80"
+    },
+    {
+      "file": "Parcial2_mobile/lib/features/inventario_monitoreo/estado_inventario_screen.dart",
+      "sha256": "42b5e04d70ad9ba957ccb8c9c37c4a476334e60b2b495dc7f46e7e851be7cb72"
+    }
+  ],
+  "actores": 1,
+  "interfaces": 1,
+  "controles": 1,
+  "entidades": 2,
+  "participantes_identicos_a_robustez": true,
+  "mensajes_principales_cubiertos": 18,
+  "xsd_valido": true,
+  "limites_fragmentos_validados": true,
+  "bucles_solo_participantes_involucrados": true,
+  "sin_actores_dentro_de_fragmentos": true,
+  "sin_comunicacion_entre_entidades": true
+}

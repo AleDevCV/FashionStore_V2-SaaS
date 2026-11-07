@@ -1,0 +1,37 @@
+{
+  "mensajes": 173,
+  "acciones": 15,
+  "vistas": 4,
+  "numeracion_unica_consecutiva": true,
+  "mensajes_separados": true,
+  "sin_etiquetas_HTTP": true,
+  "entidades_solo_con_control": true,
+  "un_control_por_entidad": true,
+  "actores_solo_con_interfaces": true,
+  "xsd_valido": true,
+  "funciones_referenciadas_comprobadas_por_AST": true,
+  "filas_sin_solapamiento": true,
+  "operaciones_futuras_inventadas": 0,
+  "dimensiones": [
+    {
+      "vista": "CU06 - General numerado",
+      "ancho": 6000,
+      "alto": 7728
+    },
+    {
+      "vista": "CU06 - Categorías",
+      "ancho": 6000,
+      "alto": 2312
+    },
+    {
+      "vista": "CU06 - Temporadas y colecciones",
+      "ancho": 6000,
+      "alto": 1696
+    },
+    {
+      "vista": "CU06 - Prendas y variantes",
+      "ancho": 6000,
+      "alto": 5200
+    }
+  ]
+}

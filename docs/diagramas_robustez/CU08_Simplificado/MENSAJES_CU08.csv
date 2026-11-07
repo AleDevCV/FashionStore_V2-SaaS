@@ -1,0 +1,19 @@
+﻿numero,origen,destino,mensaje,archivo,linea
+1,actor,b_pre,Seleccionar sucursal autorizada,,
+2,b_pre,control,listar_sucursales(filtros),Parcial2_backend/app/routers/geografia.py,130
+3,control,sucursal,listar_sucursales(filtros),Parcial2_backend/app/services/geografia_service.py,122
+4,sucursal,control,sucursales autorizadas,,
+5,control,b_pre,sucursales,,
+6,b_pre,actor,Mostrar sucursales,,
+7,actor,b_pre,Consultar existencias físicas,,
+8,b_pre,control,"obtener_monitoreo_inventario(sucursal, filtros)",Parcial2_backend/app/routers/inventario.py,79
+9,control,inventario,obtener_monitoreo_inventario(filtros),Parcial2_backend/app/services/inventario_service.py,132
+10,inventario,control,stock físico por variante,,
+11,control,b_pre,existencias,,
+12,b_pre,actor,Mostrar existencias,,
+13,actor,b_pre,Consultar disponibilidad de variante,,
+14,b_pre,control,consultar_disponibilidad(id_variante),Parcial2_backend/app/routers/catalogo.py,169
+15,control,inventario,consultar_disponibilidad(id_variante),Parcial2_backend/app/services/catalogo_service.py,266
+16,inventario,control,disponible por sucursal,,
+17,control,b_pre,disponibilidad,,
+18,b_pre,actor,Mostrar disponibilidad conocida,,

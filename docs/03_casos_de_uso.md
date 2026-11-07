@@ -1,5 +1,7 @@
 # Especificaciones de casos de uso
 
+**Inventario histórico de 38 CU.** La organización documental consolidada utiliza 20 casos principales definidos en `modelo_20_cu/FICHAS_RESUMIDAS_20_CU.md`. La equivalencia de identificadores está en `modelo_20_cu/equivalencias_38_a_20.csv`. Se conservan estas fichas para mantener trazabilidad con implementación y evidencias previas.
+
 Autor: Equipo FashionStore. Fecha de especificación: 22 de octubre de 2026.
 
 Las fichas expresan comportamiento requerido. El estado de implementación y de prueba se registra en la matriz, sin inferirlo del prototipo P1.

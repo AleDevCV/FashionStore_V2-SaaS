@@ -1,0 +1,1020 @@
+{
+  "case": "CU16",
+  "title": "CU16 - Registrar y consultar operaciones offline",
+  "nodes": {
+    "actor": {
+      "kind": "actor",
+      "name": "Usuario autorizado"
+    },
+    "b_pre": {
+      "kind": "boundary",
+      "name": "Frontend : Operación offline web / móvil"
+    },
+    "control": {
+      "kind": "control",
+      "name": "Dispositivo : Gestión offline",
+      "note": "Servicio local OfflineService en Angular y OfflineController/LocalDatabase en Flutter. No necesita servidor para registrar pendientes."
+    },
+    "backend": {
+      "kind": "control",
+      "name": "Backend : Catálogo offline",
+      "note": "Router offline.snapshot: se utiliza solo al descargar con conexión."
+    },
+    "central": {
+      "kind": "entity",
+      "name": "Catálogo autorizado",
+      "table": "agregado PostgreSQL"
+    },
+    "snapshot": {
+      "kind": "entity",
+      "name": "Catálogo local y permiso",
+      "table": "IndexedDB / SQLite"
+    },
+    "operacion": {
+      "kind": "entity",
+      "name": "Operación local",
+      "table": "operations / operation"
+    },
+    "detalle": {
+      "kind": "entity",
+      "name": "Detalle de operación",
+      "table": "details / detail"
+    }
+  },
+  "messages": [
+    {
+      "n": 1,
+      "action": 1,
+      "a": "actor",
+      "b": "b_pre",
+      "text": "Preparar dispositivo con conexión",
+      "kind": "ui",
+      "color": "#28343E",
+      "source": null,
+      "symbol": null
+    },
+    {
+      "n": 2,
+      "action": 1,
+      "a": "b_pre",
+      "b": "control",
+      "text": "download(sucursal)",
+      "kind": "invoke",
+      "color": "#215D9C",
+      "source": "Parcial2_frontend-web/src/app/core/services/offline.service.ts",
+      "symbol": "download",
+      "line": 39
+    },
+    {
+      "n": 3,
+      "action": 1,
+      "a": "control",
+      "b": "backend",
+      "text": "snapshot(sucursal)",
+      "kind": "invoke",
+      "color": "#215D9C",
+      "source": "Parcial2_backend/app/routers/offline.py",
+      "symbol": "snapshot",
+      "line": 15
+    },
+    {
+      "n": 4,
+      "action": 1,
+      "a": "backend",
+      "b": "central",
+      "text": "snapshot(sucursal)",
+      "kind": "read",
+      "color": "#28343E",
+      "source": "Parcial2_backend/app/routers/offline.py",
+      "symbol": "snapshot",
+      "line": 15
+    },
+    {
+      "n": 5,
+      "action": 1,
+      "a": "central",
+      "b": "backend",
+      "text": "catálogo y autorización",
+      "kind": "reply",
+      "color": "#287947",
+      "source": null,
+      "symbol": null
+    },
+    {
+      "n": 6,
+      "action": 1,
+      "a": "backend",
+      "b": "control",
+      "text": "snapshot autorizado",
+      "kind": "reply",
+      "color": "#287947",
+      "source": null,
+      "symbol": null
+    },
+    {
+      "n": 7,
+      "action": 1,
+      "a": "control",
+      "b": "snapshot",
+      "text": "saveSnapshot(datos)",
+      "kind": "write",
+      "color": "#AC3636",
+      "source": "Parcial2_mobile/lib/features/offline/local_database.dart",
+      "symbol": "saveSnapshot",
+      "line": 72
+    },
+    {
+      "n": 8,
+      "action": 1,
+      "a": "control",
+      "b": "b_pre",
+      "text": "catálogo guardado",
+      "kind": "reply",
+      "color": "#287947",
+      "source": null,
+      "symbol": null
+    },
+    {
+      "n": 9,
+      "action": 1,
+      "a": "b_pre",
+      "b": "actor",
+      "text": "Dispositivo preparado",
+      "kind": "reply",
+      "color": "#287947",
+      "source": null,
+      "symbol": null
+    },
+    {
+      "n": 10,
+      "action": 2,
+      "a": "actor",
+      "b": "b_pre",
+      "text": "Consultar catálogo sin conexión",
+      "kind": "ui",
+      "color": "#28343E",
+      "source": null,
+      "symbol": null
+    },
+    {
+      "n": 11,
+      "action": 2,
+      "a": "b_pre",
+      "b": "control",
+      "text": "refresh()",
+      "kind": "read",
+      "color": "#28343E",
+      "source": "Parcial2_frontend-web/src/app/core/services/offline.service.ts",
+      "symbol": "refresh",
+      "line": 24
+    },
+    {
+      "n": 12,
+      "action": 2,
+      "a": "control",
+      "b": "snapshot",
+      "text": "catalog(sucursal)",
+      "kind": "read",
+      "color": "#28343E",
+      "source": "Parcial2_mobile/lib/features/offline/local_database.dart",
+      "symbol": "catalog",
+      "line": 68
+    },
+    {
+      "n": 13,
+      "action": 2,
+      "a": "snapshot",
+      "b": "control",
+      "text": "catálogo y disponible local",
+      "kind": "reply",
+      "color": "#287947",
+      "source": null,
+      "symbol": null
+    },
+    {
+      "n": 14,
+      "action": 2,
+      "a": "control",
+      "b": "b_pre",
+      "text": "catálogo local",
+      "kind": "reply",
+      "color": "#287947",
+      "source": null,
+      "symbol": null
+    },
+    {
+      "n": 15,
+      "action": 2,
+      "a": "b_pre",
+      "b": "actor",
+      "text": "Mostrar copia descargada",
+      "kind": "reply",
+      "color": "#287947",
+      "source": null,
+      "symbol": null
+    },
+    {
+      "n": 16,
+      "action": 3,
+      "a": "actor",
+      "b": "b_pre",
+      "text": "Registrar reserva offline",
+      "kind": "ui",
+      "color": "#28343E",
+      "source": null,
+      "symbol": null
+    },
+    {
+      "n": 17,
+      "action": 3,
+      "a": "b_pre",
+      "b": "control",
+      "text": "capture(reserva, ítems)",
+      "kind": "invoke",
+      "color": "#215D9C",
+      "source": "Parcial2_frontend-web/src/app/core/services/offline.service.ts",
+      "symbol": "capture",
+      "line": 56
+    },
+    {
+      "n": 18,
+      "action": 3,
+      "a": "control",
+      "b": "operacion",
+      "text": "Guardar UUID y estado PENDIENTE",
+      "kind": "write",
+      "color": "#AC3636",
+      "source": "Parcial2_mobile/lib/features/offline/local_database.dart",
+      "symbol": "capture",
+      "line": 99
+    },
+    {
+      "n": 19,
+      "action": 3,
+      "a": "control",
+      "b": "detalle",
+      "text": "Guardar detalles [misma transacción]",
+      "kind": "write",
+      "color": "#AC3636",
+      "source": "Parcial2_mobile/lib/features/offline/local_database.dart",
+      "symbol": "capture",
+      "line": 99
+    },
+    {
+      "n": 20,
+      "action": 3,
+      "a": "control",
+      "b": "b_pre",
+      "text": "reserva provisional",
+      "kind": "reply",
+      "color": "#287947",
+      "source": null,
+      "symbol": null
+    },
+    {
+      "n": 21,
+      "action": 3,
+      "a": "b_pre",
+      "b": "actor",
+      "text": "Mostrar operación pendiente",
+      "kind": "reply",
+      "color": "#287947",
+      "source": null,
+      "symbol": null
+    },
+    {
+      "n": 22,
+      "action": 4,
+      "a": "actor",
+      "b": "b_pre",
+      "text": "Registrar venta de contado offline",
+      "kind": "ui",
+      "color": "#28343E",
+      "source": null,
+      "symbol": null
+    },
+    {
+      "n": 23,
+      "action": 4,
+      "a": "b_pre",
+      "b": "control",
+      "text": "capture(venta, ítems)",
+      "kind": "invoke",
+      "color": "#215D9C",
+      "source": "Parcial2_frontend-web/src/app/core/services/offline.service.ts",
+      "symbol": "capture",
+      "line": 56
+    },
+    {
+      "n": 24,
+      "action": 4,
+      "a": "control",
+      "b": "operacion",
+      "text": "Guardar UUID y estado PENDIENTE",
+      "kind": "write",
+      "color": "#AC3636",
+      "source": "Parcial2_mobile/lib/features/offline/local_database.dart",
+      "symbol": "capture",
+      "line": 99
+    },
+    {
+      "n": 25,
+      "action": 4,
+      "a": "control",
+      "b": "detalle",
+      "text": "Guardar detalles [misma transacción]",
+      "kind": "write",
+      "color": "#AC3636",
+      "source": "Parcial2_mobile/lib/features/offline/local_database.dart",
+      "symbol": "capture",
+      "line": 99
+    },
+    {
+      "n": 26,
+      "action": 4,
+      "a": "control",
+      "b": "b_pre",
+      "text": "venta provisional",
+      "kind": "reply",
+      "color": "#287947",
+      "source": null,
+      "symbol": null
+    },
+    {
+      "n": 27,
+      "action": 4,
+      "a": "b_pre",
+      "b": "actor",
+      "text": "Mostrar operación pendiente",
+      "kind": "reply",
+      "color": "#287947",
+      "source": null,
+      "symbol": null
+    },
+    {
+      "n": 28,
+      "action": 5,
+      "a": "actor",
+      "b": "b_pre",
+      "text": "Reabrir y consultar pendientes",
+      "kind": "ui",
+      "color": "#28343E",
+      "source": null,
+      "symbol": null
+    },
+    {
+      "n": 29,
+      "action": 5,
+      "a": "b_pre",
+      "b": "control",
+      "text": "open()",
+      "kind": "read",
+      "color": "#28343E",
+      "source": "Parcial2_frontend-web/src/app/core/services/offline.service.ts",
+      "symbol": "open",
+      "line": 13
+    },
+    {
+      "n": 30,
+      "action": 5,
+      "a": "control",
+      "b": "operacion",
+      "text": "operations()",
+      "kind": "read",
+      "color": "#28343E",
+      "source": "Parcial2_mobile/lib/features/offline/local_database.dart",
+      "symbol": "operations",
+      "line": 66
+    },
+    {
+      "n": 31,
+      "action": 5,
+      "a": "operacion",
+      "b": "control",
+      "text": "pendientes y estados guardados",
+      "kind": "reply",
+      "color": "#287947",
+      "source": null,
+      "symbol": null
+    },
+    {
+      "n": 32,
+      "action": 5,
+      "a": "control",
+      "b": "detalle",
+      "text": "details(UUID)",
+      "kind": "read",
+      "color": "#28343E",
+      "source": "Parcial2_frontend-web/src/app/core/services/offline.service.ts",
+      "symbol": "details",
+      "line": 71
+    },
+    {
+      "n": 33,
+      "action": 5,
+      "a": "detalle",
+      "b": "control",
+      "text": "detalles guardados",
+      "kind": "reply",
+      "color": "#287947",
+      "source": null,
+      "symbol": null
+    },
+    {
+      "n": 34,
+      "action": 5,
+      "a": "control",
+      "b": "b_pre",
+      "text": "operaciones recuperadas",
+      "kind": "reply",
+      "color": "#287947",
+      "source": null,
+      "symbol": null
+    },
+    {
+      "n": 35,
+      "action": 5,
+      "a": "b_pre",
+      "b": "actor",
+      "text": "Mostrar operaciones tras reinicio",
+      "kind": "reply",
+      "color": "#287947",
+      "source": null,
+      "symbol": null
+    }
+  ],
+  "actions": [
+    {
+      "id": 1,
+      "name": "Preparar dispositivo con conexión",
+      "first": 1,
+      "actor": "actor",
+      "ui": "b_pre",
+      "last": 9
+    },
+    {
+      "id": 2,
+      "name": "Consultar catálogo sin conexión",
+      "first": 10,
+      "actor": "actor",
+      "ui": "b_pre",
+      "last": 15
+    },
+    {
+      "id": 3,
+      "name": "Registrar reserva offline",
+      "first": 16,
+      "actor": "actor",
+      "ui": "b_pre",
+      "last": 21
+    },
+    {
+      "id": 4,
+      "name": "Registrar venta de contado offline",
+      "first": 22,
+      "actor": "actor",
+      "ui": "b_pre",
+      "last": 27
+    },
+    {
+      "id": 5,
+      "name": "Reabrir y consultar pendientes",
+      "first": 28,
+      "actor": "actor",
+      "ui": "b_pre",
+      "last": 35
+    }
+  ],
+  "views": [
+    {
+      "name": "CU16 - Robustez simplificada",
+      "title": "CU16 - Registrar y consultar operaciones offline - Diagrama de robustez",
+      "width": 4600,
+      "height": 2400,
+      "nodes": {
+        "actor": {
+          "x": 180,
+          "y": 1200.0
+        },
+        "b_pre": {
+          "x": 1100,
+          "y": 1200.0
+        },
+        "control": {
+          "x": 2400,
+          "y": 1200.0
+        },
+        "snapshot": {
+          "x": 4300,
+          "y": 800
+        },
+        "operacion": {
+          "x": 4300,
+          "y": 1370
+        },
+        "detalle": {
+          "x": 4300,
+          "y": 1940
+        },
+        "backend": {
+          "x": 3300,
+          "y": 290
+        },
+        "central": {
+          "x": 4300,
+          "y": 290
+        }
+      },
+      "groups": [
+        {
+          "pair": [
+            "actor",
+            "b_pre"
+          ],
+          "points": [
+            [
+              215,
+              1200.0
+            ],
+            [
+              1035,
+              1200.0
+            ]
+          ],
+          "rows": [
+            {
+              "n": 1,
+              "x": 650,
+              "y": 964.0,
+              "width": 600,
+              "height": 44,
+              "forward": true,
+              "rightward": true
+            },
+            {
+              "n": 10,
+              "x": 650,
+              "y": 1008.0,
+              "width": 600,
+              "height": 44,
+              "forward": true,
+              "rightward": true
+            },
+            {
+              "n": 16,
+              "x": 650,
+              "y": 1052.0,
+              "width": 600,
+              "height": 44,
+              "forward": true,
+              "rightward": true
+            },
+            {
+              "n": 22,
+              "x": 650,
+              "y": 1096.0,
+              "width": 600,
+              "height": 44,
+              "forward": true,
+              "rightward": true
+            },
+            {
+              "n": 28,
+              "x": 650,
+              "y": 1140.0,
+              "width": 600,
+              "height": 44,
+              "forward": true,
+              "rightward": true
+            },
+            {
+              "n": 9,
+              "x": 650,
+              "y": 1260.0,
+              "width": 600,
+              "height": 44,
+              "forward": false,
+              "rightward": false
+            },
+            {
+              "n": 15,
+              "x": 650,
+              "y": 1304.0,
+              "width": 600,
+              "height": 44,
+              "forward": false,
+              "rightward": false
+            },
+            {
+              "n": 21,
+              "x": 650,
+              "y": 1348.0,
+              "width": 600,
+              "height": 44,
+              "forward": false,
+              "rightward": false
+            },
+            {
+              "n": 27,
+              "x": 650,
+              "y": 1392.0,
+              "width": 600,
+              "height": 44,
+              "forward": false,
+              "rightward": false
+            },
+            {
+              "n": 35,
+              "x": 650,
+              "y": 1436.0,
+              "width": 600,
+              "height": 44,
+              "forward": false,
+              "rightward": false
+            }
+          ]
+        },
+        {
+          "pair": [
+            "b_pre",
+            "control"
+          ],
+          "points": [
+            [
+              1165,
+              1200.0
+            ],
+            [
+              2335,
+              1200.0
+            ]
+          ],
+          "rows": [
+            {
+              "n": 2,
+              "x": 1650,
+              "y": 964.0,
+              "width": 550,
+              "height": 44,
+              "forward": true,
+              "rightward": true
+            },
+            {
+              "n": 11,
+              "x": 1650,
+              "y": 1008.0,
+              "width": 550,
+              "height": 44,
+              "forward": true,
+              "rightward": true
+            },
+            {
+              "n": 17,
+              "x": 1650,
+              "y": 1052.0,
+              "width": 550,
+              "height": 44,
+              "forward": true,
+              "rightward": true
+            },
+            {
+              "n": 23,
+              "x": 1650,
+              "y": 1096.0,
+              "width": 550,
+              "height": 44,
+              "forward": true,
+              "rightward": true
+            },
+            {
+              "n": 29,
+              "x": 1650,
+              "y": 1140.0,
+              "width": 550,
+              "height": 44,
+              "forward": true,
+              "rightward": true
+            },
+            {
+              "n": 8,
+              "x": 1650,
+              "y": 1260.0,
+              "width": 550,
+              "height": 44,
+              "forward": false,
+              "rightward": false
+            },
+            {
+              "n": 14,
+              "x": 1650,
+              "y": 1304.0,
+              "width": 550,
+              "height": 44,
+              "forward": false,
+              "rightward": false
+            },
+            {
+              "n": 20,
+              "x": 1650,
+              "y": 1348.0,
+              "width": 550,
+              "height": 44,
+              "forward": false,
+              "rightward": false
+            },
+            {
+              "n": 26,
+              "x": 1650,
+              "y": 1392.0,
+              "width": 550,
+              "height": 44,
+              "forward": false,
+              "rightward": false
+            },
+            {
+              "n": 34,
+              "x": 1650,
+              "y": 1436.0,
+              "width": 550,
+              "height": 44,
+              "forward": false,
+              "rightward": false
+            }
+          ]
+        },
+        {
+          "pair": [
+            "control",
+            "backend"
+          ],
+          "points": [
+            [
+              2465,
+              1200.0
+            ],
+            [
+              2700,
+              290
+            ],
+            [
+              3235,
+              290
+            ]
+          ],
+          "rows": [
+            {
+              "n": 3,
+              "x": 2800,
+              "y": 230.0,
+              "width": 500,
+              "height": 44,
+              "forward": true,
+              "rightward": true
+            },
+            {
+              "n": 6,
+              "x": 2800,
+              "y": 350.0,
+              "width": 500,
+              "height": 44,
+              "forward": false,
+              "rightward": false
+            }
+          ]
+        },
+        {
+          "pair": [
+            "backend",
+            "central"
+          ],
+          "points": [
+            [
+              3365,
+              290
+            ],
+            [
+              4235,
+              290
+            ]
+          ],
+          "rows": [
+            {
+              "n": 4,
+              "x": 3800,
+              "y": 230.0,
+              "width": 550,
+              "height": 44,
+              "forward": true,
+              "rightward": true
+            },
+            {
+              "n": 5,
+              "x": 3800,
+              "y": 350.0,
+              "width": 550,
+              "height": 44,
+              "forward": false,
+              "rightward": false
+            }
+          ]
+        },
+        {
+          "pair": [
+            "control",
+            "snapshot"
+          ],
+          "points": [
+            [
+              2465,
+              1200.0
+            ],
+            [
+              2720,
+              800
+            ],
+            [
+              4235,
+              800
+            ]
+          ],
+          "rows": [
+            {
+              "n": 7,
+              "x": 3300,
+              "y": 696.0,
+              "width": 1050,
+              "height": 44,
+              "forward": true,
+              "rightward": true
+            },
+            {
+              "n": 12,
+              "x": 3300,
+              "y": 740.0,
+              "width": 1050,
+              "height": 44,
+              "forward": true,
+              "rightward": true
+            },
+            {
+              "n": 13,
+              "x": 3300,
+              "y": 860.0,
+              "width": 1050,
+              "height": 44,
+              "forward": false,
+              "rightward": false
+            }
+          ]
+        },
+        {
+          "pair": [
+            "control",
+            "operacion"
+          ],
+          "points": [
+            [
+              2465,
+              1200.0
+            ],
+            [
+              2720,
+              1370
+            ],
+            [
+              4235,
+              1370
+            ]
+          ],
+          "rows": [
+            {
+              "n": 18,
+              "x": 3300,
+              "y": 1222.0,
+              "width": 1050,
+              "height": 44,
+              "forward": true,
+              "rightward": true
+            },
+            {
+              "n": 24,
+              "x": 3300,
+              "y": 1266.0,
+              "width": 1050,
+              "height": 44,
+              "forward": true,
+              "rightward": true
+            },
+            {
+              "n": 30,
+              "x": 3300,
+              "y": 1310.0,
+              "width": 1050,
+              "height": 44,
+              "forward": true,
+              "rightward": true
+            },
+            {
+              "n": 31,
+              "x": 3300,
+              "y": 1430.0,
+              "width": 1050,
+              "height": 44,
+              "forward": false,
+              "rightward": false
+            }
+          ]
+        },
+        {
+          "pair": [
+            "control",
+            "detalle"
+          ],
+          "points": [
+            [
+              2465,
+              1200.0
+            ],
+            [
+              2720,
+              1940
+            ],
+            [
+              4235,
+              1940
+            ]
+          ],
+          "rows": [
+            {
+              "n": 19,
+              "x": 3300,
+              "y": 1792.0,
+              "width": 1050,
+              "height": 44,
+              "forward": true,
+              "rightward": true
+            },
+            {
+              "n": 25,
+              "x": 3300,
+              "y": 1836.0,
+              "width": 1050,
+              "height": 44,
+              "forward": true,
+              "rightward": true
+            },
+            {
+              "n": 32,
+              "x": 3300,
+              "y": 1880.0,
+              "width": 1050,
+              "height": 44,
+              "forward": true,
+              "rightward": true
+            },
+            {
+              "n": 33,
+              "x": 3300,
+              "y": 2000.0,
+              "width": 1050,
+              "height": 44,
+              "forward": false,
+              "rightward": false
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "exports": [
+    "General"
+  ],
+  "notes": [
+    "El backend solo interviene en la descarga inicial con conexión. Consultar y registrar usan IndexedDB o SQLite. No se dibuja sincronización: corresponde a CU17.",
+    "Catálogo local y permiso agrupa snapshot, productos, variantes y disponibilidad conocida. Operación y detalles se conservan separados y se guardan en la misma transacción.",
+    "No existe una bitácora local separada: la operación conserva UUID, autor, fecha, estado e intentos. La auditoría central de sincronización se escribe posteriormente en CU17; no se inventa acceso a PostgreSQL durante una venta sin red.",
+    "Las ventas requieren rol autorizado, efectivo suficiente y permiso offline vigente. Las reservas requieren cliente descargado. Son operaciones provisionales, no ventas confirmadas por el servidor."
+  ],
+  "sources": [
+    {
+      "file": "Parcial2_backend/app/routers/offline.py",
+      "sha256": "1ab8e79883eff1070df624320eb27474f190b8527e35d804e5c6cc44e4f297b8"
+    },
+    {
+      "file": "Parcial2_frontend-web/src/app/core/services/offline.service.ts",
+      "sha256": "c6d3e069eba58375894c1def8607f35b3da204dcb1af90df0242d9471f38111d"
+    },
+    {
+      "file": "Parcial2_frontend-web/src/app/features/offline/offline.ts",
+      "sha256": "88afbf6e4d033fbc4b0847ba12eda8c0eb04562da9649d1784c342fa2d2bc454"
+    },
+    {
+      "file": "Parcial2_mobile/lib/features/offline/local_database.dart",
+      "sha256": "e56edb4e7b70b68689767b52ca096d62519128e13fd1343f333d97f024379a43"
+    },
+    {
+      "file": "Parcial2_mobile/lib/features/offline/offline_controller.dart",
+      "sha256": "1e036ed4c15f247d722f4993531d97f7bf146d5d7fa76aabdb522a237c550bdc"
+    }
+  ]
+}

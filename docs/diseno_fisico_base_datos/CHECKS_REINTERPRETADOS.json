@@ -1,0 +1,74 @@
+[
+  {
+    "schema": "public",
+    "table": "categoria",
+    "constraint": "categoria_estado_check",
+    "source_definition": "CHECK (estado::text = ANY (ARRAY['Activo'::character varying, 'Inactivo'::character varying]::text[]))",
+    "restored_definition": "CHECK (estado::text = ANY (ARRAY['Activo'::character varying::text, 'Inactivo'::character varying::text]))",
+    "postgresql_reparse_matches": true
+  },
+  {
+    "schema": "public",
+    "table": "cliente",
+    "constraint": "cliente_estado_check",
+    "source_definition": "CHECK (estado::text = ANY (ARRAY['Activo'::character varying, 'Inactivo'::character varying]::text[]))",
+    "restored_definition": "CHECK (estado::text = ANY (ARRAY['Activo'::character varying::text, 'Inactivo'::character varying::text]))",
+    "postgresql_reparse_matches": true
+  },
+  {
+    "schema": "public",
+    "table": "movimiento_inventario",
+    "constraint": "movimiento_inventario_tipo_check",
+    "source_definition": "CHECK (tipo::text = ANY (ARRAY['Entrada'::character varying, 'Salida'::character varying, 'Traspaso'::character varying]::text[]))",
+    "restored_definition": "CHECK (tipo::text = ANY (ARRAY['Entrada'::character varying::text, 'Salida'::character varying::text, 'Traspaso'::character varying::text]))",
+    "postgresql_reparse_matches": true
+  },
+  {
+    "schema": "public",
+    "table": "prenda",
+    "constraint": "prenda_estado_check",
+    "source_definition": "CHECK (estado::text = ANY (ARRAY['Activo'::character varying, 'Inactivo'::character varying, 'Borrador'::character varying]::text[]))",
+    "restored_definition": "CHECK (estado::text = ANY (ARRAY['Activo'::character varying::text, 'Inactivo'::character varying::text, 'Borrador'::character varying::text]))",
+    "postgresql_reparse_matches": true
+  },
+  {
+    "schema": "public",
+    "table": "prenda",
+    "constraint": "prenda_genero_check",
+    "source_definition": "CHECK (genero::text = ANY (ARRAY['Dama'::character varying, 'Caballero'::character varying, 'Unisex'::character varying, 'Nino'::character varying]::text[]))",
+    "restored_definition": "CHECK (genero::text = ANY (ARRAY['Dama'::character varying::text, 'Caballero'::character varying::text, 'Unisex'::character varying::text, 'Nino'::character varying::text]))",
+    "postgresql_reparse_matches": true
+  },
+  {
+    "schema": "public",
+    "table": "reserva",
+    "constraint": "reserva_estado_check",
+    "source_definition": "CHECK (estado::text = ANY (ARRAY['Pendiente'::character varying, 'Preparado'::character varying, 'Atendido'::character varying, 'Cancelado'::character varying]::text[]))",
+    "restored_definition": "CHECK (estado::text = ANY (ARRAY['Pendiente'::character varying::text, 'Preparado'::character varying::text, 'Atendido'::character varying::text, 'Cancelado'::character varying::text]))",
+    "postgresql_reparse_matches": true
+  },
+  {
+    "schema": "public",
+    "table": "usuario",
+    "constraint": "usuario_estado_check",
+    "source_definition": "CHECK (estado::text = ANY (ARRAY['Activo'::character varying, 'Inactivo'::character varying]::text[]))",
+    "restored_definition": "CHECK (estado::text = ANY (ARRAY['Activo'::character varying::text, 'Inactivo'::character varying::text]))",
+    "postgresql_reparse_matches": true
+  },
+  {
+    "schema": "public",
+    "table": "venta",
+    "constraint": "venta_metodo_pago_check",
+    "source_definition": "CHECK (metodo_pago::text = ANY (ARRAY['Efectivo'::character varying, 'Tarjeta'::character varying, 'QR'::character varying, 'Transferencia'::character varying]::text[]))",
+    "restored_definition": "CHECK (metodo_pago::text = ANY (ARRAY['Efectivo'::character varying::text, 'Tarjeta'::character varying::text, 'QR'::character varying::text, 'Transferencia'::character varying::text]))",
+    "postgresql_reparse_matches": true
+  },
+  {
+    "schema": "public",
+    "table": "venta",
+    "constraint": "venta_tipo_venta_check",
+    "source_definition": "CHECK (tipo_venta::text = ANY (ARRAY['Presencial'::character varying, 'Online'::character varying]::text[]))",
+    "restored_definition": "CHECK (tipo_venta::text = ANY (ARRAY['Presencial'::character varying::text, 'Online'::character varying::text]))",
+    "postgresql_reparse_matches": true
+  }
+]

@@ -1,0 +1,55 @@
+{
+  "cu": "CU12",
+  "archivo": "CU12_Diagrama_Secuencia.drawio",
+  "participantes": 9,
+  "mensajes": 36,
+  "fragmentos": {
+    "alt": 5,
+    "opt": 0,
+    "loop": 1
+  },
+  "ancho": 3010,
+  "alto": 3680,
+  "sha256": "dd84ca88518c8395fe7869582823db4ff733b2dd7dabe9b746c619597d7b926a",
+  "fuentes": [
+    {
+      "file": "Parcial2_backend/app/routers/order_lifecycle.py",
+      "sha256": "118ad09756dab1f4e0bf6fe3511b207cf48416580a9c63281970f68be12b2732"
+    },
+    {
+      "file": "Parcial2_backend/app/routers/ventas.py",
+      "sha256": "4d7d8fc4ce4c07a7207030c7e6ef353b9d051a39a9e9e64e35de412ab750375a"
+    },
+    {
+      "file": "Parcial2_backend/app/services/commerce.py",
+      "sha256": "2e7b943a63d3cd6b0fbd3c1f6759681d62b67cfe22bd28d1caac0b907688a4b6"
+    },
+    {
+      "file": "Parcial2_backend/app/services/venta_service.py",
+      "sha256": "56ce9922c3c3a65c1c396550017251d9d84dc61db9f7b6d66d2e2a19742eed8a"
+    },
+    {
+      "file": "Parcial2_frontend-web/src/app/features/checkout/checkout.ts",
+      "sha256": "095be0b9ffc84c77a86ce72ba2141d4da026cc99ddb0f723052f4702be3cb3ff"
+    },
+    {
+      "file": "Parcial2_frontend-web/src/app/features/reservas-atencion/reservas-atencion.ts",
+      "sha256": "36d1f7e63dab8bd9b16fa969c64e48759155920cb4afc71332c587c70e6e6231"
+    },
+    {
+      "file": "Parcial2_mobile/lib/features/reservas/ticket_reserva_screen.dart",
+      "sha256": "9a2afa75faee94bbdb71e57f6ea46c8e3e34b77112821fb2d1ac6cde2e6f25ac"
+    }
+  ],
+  "actores": 2,
+  "interfaces": 1,
+  "controles": 1,
+  "entidades": 5,
+  "participantes_identicos_a_robustez": true,
+  "mensajes_principales_cubiertos": 31,
+  "xsd_valido": true,
+  "limites_fragmentos_validados": true,
+  "bucles_solo_participantes_involucrados": true,
+  "sin_actores_dentro_de_fragmentos": true,
+  "sin_comunicacion_entre_entidades": true
+}

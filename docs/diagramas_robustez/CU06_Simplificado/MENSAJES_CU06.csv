@@ -1,0 +1,38 @@
+﻿numero,origen,destino,mensaje,archivo,linea
+1,actor,b_pre,Consultar catálogo,,
+2,b_pre,control,listar_prendas(filtros),Parcial2_backend/app/routers/prendas.py,101
+3,control,prenda,listar_prendas(filtros),Parcial2_backend/app/services/prenda_service.py,58
+4,prenda,control,prendas,,
+5,control,b_pre,catálogo,,
+6,b_pre,actor,Mostrar catálogo,,
+7,actor,b_pre,Registrar categoría,,
+8,b_pre,control,crear_categoria(datos),Parcial2_backend/app/routers/categorias.py,70
+9,control,categoria,crear_categoria(datos),Parcial2_backend/app/services/categoria_service.py,114
+10,categoria,control,id_categoria,,
+11,control,bitacora,"registrar_bitacora(categoria, alta)",Parcial2_backend/app/services/bitacora_service.py,65
+12,control,b_pre,categoría registrada,,
+13,actor,b_pre,Registrar temporada o colección,,
+14,b_pre,control,crear_temporada(datos),Parcial2_backend/app/routers/temporadas.py,100
+15,control,temporada,crear_temporada(datos),Parcial2_backend/app/services/temporada_service.py,131
+16,temporada,control,temporada creada,,
+17,control,bitacora,"registrar_bitacora(temporada, alta)",Parcial2_backend/app/services/bitacora_service.py,65
+18,control,b_pre,temporada registrada,,
+19,actor,b_pre,Registrar prenda y variantes,,
+20,b_pre,control,crear_prenda(datos),Parcial2_backend/app/routers/prendas.py,170
+21,control,prenda,crear_prenda(datos),Parcial2_backend/app/services/prenda_service.py,217
+22,prenda,control,id_prenda,,
+23,control,variante,_crear_variante(datos) [por variante],Parcial2_backend/app/services/prenda_service.py,288
+24,variante,control,variante creada,,
+25,control,bitacora,"registrar_bitacora(prenda, alta)",Parcial2_backend/app/services/bitacora_service.py,65
+26,control,b_pre,prenda con variantes,,
+27,b_pre,actor,Mostrar prenda registrada,,
+28,actor,b_pre,"Editar datos, precios y ofertas",,
+29,b_pre,control,"actualizar_prenda(id, cambios)",Parcial2_backend/app/routers/prendas.py,274
+30,control,prenda,"actualizar_prenda(id, cambios)",Parcial2_backend/app/services/prenda_service.py,363
+31,control,bitacora,"registrar_bitacora(prenda, modificación)",Parcial2_backend/app/services/bitacora_service.py,65
+32,control,b_pre,prenda actualizada,,
+33,actor,b_pre,Inhabilitar prenda,,
+34,b_pre,control,inhabilitar_prenda(id),Parcial2_backend/app/routers/prendas.py,362
+35,control,prenda,inhabilitar_prenda(id),Parcial2_backend/app/services/prenda_service.py,437
+36,control,bitacora,"registrar_bitacora(prenda, baja lógica)",Parcial2_backend/app/services/bitacora_service.py,65
+37,control,b_pre,prenda inactiva,,

@@ -1,0 +1,59 @@
+{
+  "cu": "CU07",
+  "archivo": "CU07_Diagrama_Secuencia.drawio",
+  "participantes": 8,
+  "mensajes": 37,
+  "fragmentos": {
+    "alt": 5,
+    "opt": 1,
+    "loop": 1
+  },
+  "ancho": 2675,
+  "alto": 3805,
+  "sha256": "a6e629ae8fa3963eb8eaadb103e4999f7117beb4ba2e3633f8defee44ad8b5b7",
+  "fuentes": [
+    {
+      "file": "Parcial2_backend/app/routers/compras.py",
+      "sha256": "48b2dad21128d252c657acff0cb63f91a550f2442b8bad98e779a06e7e56ec7e"
+    },
+    {
+      "file": "Parcial2_backend/app/routers/proveedores.py",
+      "sha256": "67001665a6e323b51b32427c94a378a69c541e9743a32cb31b7a6e9cde51c303"
+    },
+    {
+      "file": "Parcial2_backend/app/services/bitacora_service.py",
+      "sha256": "ec5d5294930c1b8e3e1d4628fd0b1f8b183bdab2ba205c19751245c33e5608a0"
+    },
+    {
+      "file": "Parcial2_backend/app/services/compra_service.py",
+      "sha256": "db7d658566a7cc4a1c8de8a35071ff8159d92af75d75aacea8c56f861c04e846"
+    },
+    {
+      "file": "Parcial2_backend/app/services/proveedor_service.py",
+      "sha256": "9dc662d1d7bfe087ebd2055de348c860bbe99c1da64fcadb6473a9ddbda56c9e"
+    },
+    {
+      "file": "Parcial2_frontend-web/src/app/features/compras/compras.ts",
+      "sha256": "06b6f3d55f277d4417eb1e070623ca0d9f7af7581cdd8ca2d3049cc1278a24cc"
+    },
+    {
+      "file": "Parcial2_frontend-web/src/app/features/proveedores/proveedores.ts",
+      "sha256": "f03ec68cd738d0ec55c88e930ef1798eed16db7460a6a2ad32a008fc7b9d8e48"
+    },
+    {
+      "file": "Parcial2_mobile/lib/features/compras/compras_screen.dart",
+      "sha256": "fc5bad381dfa5ea35918ca01b5272066919038cf28acd269f2b69e209a254f1f"
+    }
+  ],
+  "actores": 1,
+  "interfaces": 1,
+  "controles": 1,
+  "entidades": 5,
+  "participantes_identicos_a_robustez": true,
+  "mensajes_principales_cubiertos": 32,
+  "xsd_valido": true,
+  "limites_fragmentos_validados": true,
+  "bucles_solo_participantes_involucrados": true,
+  "sin_actores_dentro_de_fragmentos": true,
+  "sin_comunicacion_entre_entidades": true
+}

@@ -1,0 +1,104 @@
+[
+  {
+    "File": "001_baseline.sql",
+    "LocalSha256": "81c898d88f463138a2f15248a0603fc367e166cea7037e4c8bc0422afb2e9567",
+    "DeployedSha256": "81c898d88f463138a2f15248a0603fc367e166cea7037e4c8bc0422afb2e9567",
+    "Equal": true
+  },
+  {
+    "File": "002_saas.sql",
+    "LocalSha256": "9ba63e3801b47d5a9c5b699d87f93a08c418f274e7a43746d22e9db7478d9dc2",
+    "DeployedSha256": "9ba63e3801b47d5a9c5b699d87f93a08c418f274e7a43746d22e9db7478d9dc2",
+    "Equal": true
+  },
+  {
+    "File": "003_customer_ownership.sql",
+    "LocalSha256": "247712698ba21bd379b2c0be4e3f09a5c1f06d19b42913628bf0463ada8edc7e",
+    "DeployedSha256": "247712698ba21bd379b2c0be4e3f09a5c1f06d19b42913628bf0463ada8edc7e",
+    "Equal": true
+  },
+  {
+    "File": "004_commercial_constraints.sql",
+    "LocalSha256": "791c4cabe21494be425a96c69116d2273f8e8c833275af99d96e50d6ab74b7e5",
+    "DeployedSha256": "791c4cabe21494be425a96c69116d2273f8e8c833275af99d96e50d6ab74b7e5",
+    "Equal": true
+  },
+  {
+    "File": "005_reservation_holds.sql",
+    "LocalSha256": "1b51d89107d4c58357edd18a5a57650f250d0b882280a17d3d76d483827533a1",
+    "DeployedSha256": "1b51d89107d4c58357edd18a5a57650f250d0b882280a17d3d76d483827533a1",
+    "Equal": true
+  },
+  {
+    "File": "006_changes_and_notifications.sql",
+    "LocalSha256": "8385a94b75b987b23ca820e0982fac3515f8cf4e1f4451593481a4e4b9771995",
+    "DeployedSha256": "8385a94b75b987b23ca820e0982fac3515f8cf4e1f4451593481a4e4b9771995",
+    "Equal": true
+  },
+  {
+    "File": "007_transactional_audit.sql",
+    "LocalSha256": "daa89127f20759edbf9ea715bb06508161c309eea12383b3642ad254920db7e4",
+    "DeployedSha256": "daa89127f20759edbf9ea715bb06508161c309eea12383b3642ad254920db7e4",
+    "Equal": true
+  },
+  {
+    "File": "008_permissions.sql",
+    "LocalSha256": "ac39e5994e245d94f23db1d72edb2b02c34a1419a1bab3ac0862f633fcf5d7c8",
+    "DeployedSha256": "ac39e5994e245d94f23db1d72edb2b02c34a1419a1bab3ac0862f633fcf5d7c8",
+    "Equal": true
+  },
+  {
+    "File": "009_offline_operations.sql",
+    "LocalSha256": "b6625f9498fe0caae46603a593f332f4d6419c920b5c9e134fd4ccbd54343ed7",
+    "DeployedSha256": "b6625f9498fe0caae46603a593f332f4d6419c920b5c9e134fd4ccbd54343ed7",
+    "Equal": true
+  },
+  {
+    "File": "010_report_results.sql",
+    "LocalSha256": "5744346aec047f90bfa5fa25ba2b1ce2fa591203e520a802706062c96d0fb9d2",
+    "DeployedSha256": "5744346aec047f90bfa5fa25ba2b1ce2fa591203e520a802706062c96d0fb9d2",
+    "Equal": true
+  },
+  {
+    "File": "011_demo_origin.sql",
+    "LocalSha256": "bed703d93526d3b52ac77517e57643d0cb6ece5558fcdd5c90170eddc984fd8e",
+    "DeployedSha256": "bed703d93526d3b52ac77517e57643d0cb6ece5558fcdd5c90170eddc984fd8e",
+    "Equal": true
+  },
+  {
+    "File": "012_push_delivery.sql",
+    "LocalSha256": "6322bbd44e7bc921c28298e1500c1d02be939bab21e5c2c77dba582ecbf2f27c",
+    "DeployedSha256": "6322bbd44e7bc921c28298e1500c1d02be939bab21e5c2c77dba582ecbf2f27c",
+    "Equal": true
+  },
+  {
+    "File": "013_push_binding.sql",
+    "LocalSha256": "854c01d699f6246c48b07b329234b6943ea72fb49fe7b7f3abd6305c2562f7f8",
+    "DeployedSha256": "854c01d699f6246c48b07b329234b6943ea72fb49fe7b7f3abd6305c2562f7f8",
+    "Equal": true
+  },
+  {
+    "File": "014_branch_scope.sql",
+    "LocalSha256": "d9bf9985ab4c6f11927c750d2fc99672f371da72025b9b5da3f4cb9a8f037842",
+    "DeployedSha256": "d9bf9985ab4c6f11927c750d2fc99672f371da72025b9b5da3f4cb9a8f037842",
+    "Equal": true
+  },
+  {
+    "File": "015_payment_lifecycle.sql",
+    "LocalSha256": "b2ad8ae6e3b6b5bdf28d033f5d15492daf8afbe0f16d8cec6997d434fb5017e3",
+    "DeployedSha256": "b2ad8ae6e3b6b5bdf28d033f5d15492daf8afbe0f16d8cec6997d434fb5017e3",
+    "Equal": true
+  },
+  {
+    "File": "016_multicolor_variants.sql",
+    "LocalSha256": "ec303be00bbf9e4481071c04f8afbc235f6bf1461546b5b0286e20d9d3d3f977",
+    "DeployedSha256": "ec303be00bbf9e4481071c04f8afbc235f6bf1461546b5b0286e20d9d3d3f977",
+    "Equal": true
+  },
+  {
+    "File": "017_global_identity.sql",
+    "LocalSha256": "f5f05429ed8902e4a3bd9385f7c07a8df87ca03294cf1162eca876a09bd142a0",
+    "DeployedSha256": "f5f05429ed8902e4a3bd9385f7c07a8df87ca03294cf1162eca876a09bd142a0",
+    "Equal": true
+  }
+]

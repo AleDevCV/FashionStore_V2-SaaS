@@ -1,0 +1,23 @@
+﻿numero,origen,destino,mensaje,archivo,linea
+1,actor,b_pre,Buscar productos para el ticket,,
+2,b_pre,control,"listar_productos_pos_endpoint(sucursal, búsqueda)",Parcial2_backend/app/routers/pos.py,39
+3,control,inventario,"listar_productos_pos(sucursal, búsqueda)",Parcial2_backend/app/services/pos_service.py,26
+4,inventario,control,productos y stock,,
+5,control,b_pre,productos disponibles,,
+6,b_pre,actor,Mostrar productos,,
+7,actor,b_pre,Confirmar venta y efectivo recibido,,
+8,b_pre,control,procesar_venta_pos_endpoint(ticket y cobro),Parcial2_backend/app/routers/pos.py,83
+9,control,inventario,"quote(ítems, sucursal)",Parcial2_backend/app/services/commerce.py,26
+10,inventario,control,stock y precios verificados,,
+11,control,venta,procesar_venta_pos(datos),Parcial2_backend/app/services/pos_service.py,188
+12,venta,control,id_venta,,
+13,control,detalle,Guardar detalle [por ítem],Parcial2_backend/app/services/pos_service.py,188
+14,control,movimiento,Registrar Salida [por ítem],Parcial2_backend/app/services/pos_service.py,188
+15,control,bitacora,registrar_bitacora(venta POS),Parcial2_backend/app/services/bitacora_service.py,65
+16,control,b_pre,"venta, total y vuelto",,
+17,b_pre,actor,Mostrar venta y opción de comprobante,,
+18,actor,b_pre,Consultar venta registrada,,
+19,b_pre,control,obtener_venta(id_venta),Parcial2_backend/app/routers/ventas.py,170
+20,control,venta,obtener_venta_por_id(id_venta),Parcial2_backend/app/services/venta_service.py,145
+21,venta,control,venta con detalles,,
+22,control,b_pre,venta registrada,,

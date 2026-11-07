@@ -1,0 +1,750 @@
+{
+  "case": "CU13",
+  "title": "CU13 - Registrar venta presencial",
+  "nodes": {
+    "actor": {
+      "kind": "actor",
+      "name": "Cajero / Personal autorizado"
+    },
+    "b_pre": {
+      "kind": "boundary",
+      "name": "Frontend : Terminal de venta POS"
+    },
+    "control": {
+      "kind": "control",
+      "name": "Backend : Venta presencial",
+      "note": "Control de análisis que agrupa los módulos indicados en las referencias del caso de uso."
+    },
+    "inventario": {
+      "kind": "entity",
+      "name": "Inventario",
+      "table": "inventario"
+    },
+    "venta": {
+      "kind": "entity",
+      "name": "Venta",
+      "table": "venta"
+    },
+    "detalle": {
+      "kind": "entity",
+      "name": "Detalle de venta",
+      "table": "detalle_venta"
+    },
+    "movimiento": {
+      "kind": "entity",
+      "name": "Movimiento de inventario",
+      "table": "movimiento_inventario"
+    },
+    "bitacora": {
+      "kind": "entity",
+      "name": "Bitácora",
+      "table": "bitacora"
+    }
+  },
+  "messages": [
+    {
+      "n": 1,
+      "action": 1,
+      "a": "actor",
+      "b": "b_pre",
+      "text": "Buscar productos para el ticket",
+      "kind": "ui",
+      "color": "#28343E",
+      "source": null,
+      "symbol": null
+    },
+    {
+      "n": 2,
+      "action": 1,
+      "a": "b_pre",
+      "b": "control",
+      "text": "listar_productos_pos_endpoint(sucursal, búsqueda)",
+      "kind": "read",
+      "color": "#28343E",
+      "source": "Parcial2_backend/app/routers/pos.py",
+      "symbol": "listar_productos_pos_endpoint",
+      "line": 39
+    },
+    {
+      "n": 3,
+      "action": 1,
+      "a": "control",
+      "b": "inventario",
+      "text": "listar_productos_pos(sucursal, búsqueda)",
+      "kind": "read",
+      "color": "#28343E",
+      "source": "Parcial2_backend/app/services/pos_service.py",
+      "symbol": "listar_productos_pos",
+      "line": 26
+    },
+    {
+      "n": 4,
+      "action": 1,
+      "a": "inventario",
+      "b": "control",
+      "text": "productos y stock",
+      "kind": "reply",
+      "color": "#287947",
+      "source": null,
+      "symbol": null
+    },
+    {
+      "n": 5,
+      "action": 1,
+      "a": "control",
+      "b": "b_pre",
+      "text": "productos disponibles",
+      "kind": "reply",
+      "color": "#287947",
+      "source": null,
+      "symbol": null
+    },
+    {
+      "n": 6,
+      "action": 1,
+      "a": "b_pre",
+      "b": "actor",
+      "text": "Mostrar productos",
+      "kind": "reply",
+      "color": "#287947",
+      "source": null,
+      "symbol": null
+    },
+    {
+      "n": 7,
+      "action": 2,
+      "a": "actor",
+      "b": "b_pre",
+      "text": "Confirmar venta y efectivo recibido",
+      "kind": "ui",
+      "color": "#28343E",
+      "source": null,
+      "symbol": null
+    },
+    {
+      "n": 8,
+      "action": 2,
+      "a": "b_pre",
+      "b": "control",
+      "text": "procesar_venta_pos_endpoint(ticket y cobro)",
+      "kind": "invoke",
+      "color": "#215D9C",
+      "source": "Parcial2_backend/app/routers/pos.py",
+      "symbol": "procesar_venta_pos_endpoint",
+      "line": 83
+    },
+    {
+      "n": 9,
+      "action": 2,
+      "a": "control",
+      "b": "inventario",
+      "text": "quote(ítems, sucursal)",
+      "kind": "read",
+      "color": "#28343E",
+      "source": "Parcial2_backend/app/services/commerce.py",
+      "symbol": "quote",
+      "line": 26
+    },
+    {
+      "n": 10,
+      "action": 2,
+      "a": "inventario",
+      "b": "control",
+      "text": "stock y precios verificados",
+      "kind": "reply",
+      "color": "#287947",
+      "source": null,
+      "symbol": null
+    },
+    {
+      "n": 11,
+      "action": 2,
+      "a": "control",
+      "b": "venta",
+      "text": "procesar_venta_pos(datos)",
+      "kind": "write",
+      "color": "#AC3636",
+      "source": "Parcial2_backend/app/services/pos_service.py",
+      "symbol": "procesar_venta_pos",
+      "line": 188
+    },
+    {
+      "n": 12,
+      "action": 2,
+      "a": "venta",
+      "b": "control",
+      "text": "id_venta",
+      "kind": "reply",
+      "color": "#287947",
+      "source": null,
+      "symbol": null
+    },
+    {
+      "n": 13,
+      "action": 2,
+      "a": "control",
+      "b": "detalle",
+      "text": "Guardar detalle [por ítem]",
+      "kind": "write",
+      "color": "#AC3636",
+      "source": "Parcial2_backend/app/services/pos_service.py",
+      "symbol": "procesar_venta_pos",
+      "line": 188
+    },
+    {
+      "n": 14,
+      "action": 2,
+      "a": "control",
+      "b": "movimiento",
+      "text": "Registrar Salida [por ítem]",
+      "kind": "write",
+      "color": "#AC3636",
+      "source": "Parcial2_backend/app/services/pos_service.py",
+      "symbol": "procesar_venta_pos",
+      "line": 188
+    },
+    {
+      "n": 15,
+      "action": 2,
+      "a": "control",
+      "b": "bitacora",
+      "text": "registrar_bitacora(venta POS)",
+      "kind": "write",
+      "color": "#AC3636",
+      "source": "Parcial2_backend/app/services/bitacora_service.py",
+      "symbol": "registrar_bitacora",
+      "line": 65
+    },
+    {
+      "n": 16,
+      "action": 2,
+      "a": "control",
+      "b": "b_pre",
+      "text": "venta, total y vuelto",
+      "kind": "reply",
+      "color": "#287947",
+      "source": null,
+      "symbol": null
+    },
+    {
+      "n": 17,
+      "action": 2,
+      "a": "b_pre",
+      "b": "actor",
+      "text": "Mostrar venta y opción de comprobante",
+      "kind": "reply",
+      "color": "#287947",
+      "source": null,
+      "symbol": null
+    },
+    {
+      "n": 18,
+      "action": 3,
+      "a": "actor",
+      "b": "b_pre",
+      "text": "Consultar venta registrada",
+      "kind": "ui",
+      "color": "#28343E",
+      "source": null,
+      "symbol": null
+    },
+    {
+      "n": 19,
+      "action": 3,
+      "a": "b_pre",
+      "b": "control",
+      "text": "obtener_venta(id_venta)",
+      "kind": "read",
+      "color": "#28343E",
+      "source": "Parcial2_backend/app/routers/ventas.py",
+      "symbol": "obtener_venta",
+      "line": 170
+    },
+    {
+      "n": 20,
+      "action": 3,
+      "a": "control",
+      "b": "venta",
+      "text": "obtener_venta_por_id(id_venta)",
+      "kind": "read",
+      "color": "#28343E",
+      "source": "Parcial2_backend/app/services/venta_service.py",
+      "symbol": "obtener_venta_por_id",
+      "line": 145
+    },
+    {
+      "n": 21,
+      "action": 3,
+      "a": "venta",
+      "b": "control",
+      "text": "venta con detalles",
+      "kind": "reply",
+      "color": "#287947",
+      "source": null,
+      "symbol": null
+    },
+    {
+      "n": 22,
+      "action": 3,
+      "a": "control",
+      "b": "b_pre",
+      "text": "venta registrada",
+      "kind": "reply",
+      "color": "#287947",
+      "source": null,
+      "symbol": null
+    }
+  ],
+  "actions": [
+    {
+      "id": 1,
+      "name": "Buscar productos para el ticket",
+      "first": 1,
+      "actor": "actor",
+      "ui": "b_pre",
+      "last": 6
+    },
+    {
+      "id": 2,
+      "name": "Confirmar venta y efectivo recibido",
+      "first": 7,
+      "actor": "actor",
+      "ui": "b_pre",
+      "last": 17
+    },
+    {
+      "id": 3,
+      "name": "Consultar venta registrada",
+      "first": 18,
+      "actor": "actor",
+      "ui": "b_pre",
+      "last": 22
+    }
+  ],
+  "views": [
+    {
+      "name": "CU13 - Robustez simplificada",
+      "title": "CU13 - Registrar venta presencial - Diagrama de robustez",
+      "width": 4600,
+      "height": 2197,
+      "nodes": {
+        "actor": {
+          "x": 180,
+          "y": 1098.5
+        },
+        "b_pre": {
+          "x": 1100,
+          "y": 1098.5
+        },
+        "control": {
+          "x": 2400,
+          "y": 1098.5
+        },
+        "inventario": {
+          "x": 4300,
+          "y": 333
+        },
+        "venta": {
+          "x": 4300,
+          "y": 749
+        },
+        "detalle": {
+          "x": 4300,
+          "y": 1121
+        },
+        "movimiento": {
+          "x": 4300,
+          "y": 1476
+        },
+        "bitacora": {
+          "x": 4300,
+          "y": 1831
+        }
+      },
+      "groups": [
+        {
+          "pair": [
+            "actor",
+            "b_pre"
+          ],
+          "points": [
+            [
+              215,
+              1098.5
+            ],
+            [
+              1035,
+              1098.5
+            ]
+          ],
+          "rows": [
+            {
+              "n": 1,
+              "x": 650,
+              "y": 950.5,
+              "width": 600,
+              "height": 44,
+              "forward": true,
+              "rightward": true
+            },
+            {
+              "n": 7,
+              "x": 650,
+              "y": 994.5,
+              "width": 600,
+              "height": 44,
+              "forward": true,
+              "rightward": true
+            },
+            {
+              "n": 18,
+              "x": 650,
+              "y": 1038.5,
+              "width": 600,
+              "height": 44,
+              "forward": true,
+              "rightward": true
+            },
+            {
+              "n": 6,
+              "x": 650,
+              "y": 1158.5,
+              "width": 600,
+              "height": 44,
+              "forward": false,
+              "rightward": false
+            },
+            {
+              "n": 17,
+              "x": 650,
+              "y": 1202.5,
+              "width": 600,
+              "height": 44,
+              "forward": false,
+              "rightward": false
+            }
+          ]
+        },
+        {
+          "pair": [
+            "b_pre",
+            "control"
+          ],
+          "points": [
+            [
+              1165,
+              1098.5
+            ],
+            [
+              2335,
+              1098.5
+            ]
+          ],
+          "rows": [
+            {
+              "n": 2,
+              "x": 1650,
+              "y": 902.5,
+              "width": 550,
+              "height": 76,
+              "forward": true,
+              "rightward": true
+            },
+            {
+              "n": 8,
+              "x": 1650,
+              "y": 978.5,
+              "width": 550,
+              "height": 76,
+              "forward": true,
+              "rightward": true
+            },
+            {
+              "n": 19,
+              "x": 1650,
+              "y": 1038.5,
+              "width": 550,
+              "height": 44,
+              "forward": true,
+              "rightward": true
+            },
+            {
+              "n": 5,
+              "x": 1650,
+              "y": 1158.5,
+              "width": 550,
+              "height": 44,
+              "forward": false,
+              "rightward": false
+            },
+            {
+              "n": 16,
+              "x": 1650,
+              "y": 1202.5,
+              "width": 550,
+              "height": 44,
+              "forward": false,
+              "rightward": false
+            },
+            {
+              "n": 22,
+              "x": 1650,
+              "y": 1246.5,
+              "width": 550,
+              "height": 44,
+              "forward": false,
+              "rightward": false
+            }
+          ]
+        },
+        {
+          "pair": [
+            "control",
+            "inventario"
+          ],
+          "points": [
+            [
+              2465,
+              1098.5
+            ],
+            [
+              2720,
+              333
+            ],
+            [
+              4235,
+              333
+            ]
+          ],
+          "rows": [
+            {
+              "n": 3,
+              "x": 3300,
+              "y": 229.0,
+              "width": 1050,
+              "height": 44,
+              "forward": true,
+              "rightward": true
+            },
+            {
+              "n": 9,
+              "x": 3300,
+              "y": 273.0,
+              "width": 1050,
+              "height": 44,
+              "forward": true,
+              "rightward": true
+            },
+            {
+              "n": 4,
+              "x": 3300,
+              "y": 393.0,
+              "width": 1050,
+              "height": 44,
+              "forward": false,
+              "rightward": false
+            },
+            {
+              "n": 10,
+              "x": 3300,
+              "y": 437.0,
+              "width": 1050,
+              "height": 44,
+              "forward": false,
+              "rightward": false
+            }
+          ]
+        },
+        {
+          "pair": [
+            "control",
+            "venta"
+          ],
+          "points": [
+            [
+              2465,
+              1098.5
+            ],
+            [
+              2720,
+              749
+            ],
+            [
+              4235,
+              749
+            ]
+          ],
+          "rows": [
+            {
+              "n": 11,
+              "x": 3300,
+              "y": 645.0,
+              "width": 1050,
+              "height": 44,
+              "forward": true,
+              "rightward": true
+            },
+            {
+              "n": 20,
+              "x": 3300,
+              "y": 689.0,
+              "width": 1050,
+              "height": 44,
+              "forward": true,
+              "rightward": true
+            },
+            {
+              "n": 12,
+              "x": 3300,
+              "y": 809.0,
+              "width": 1050,
+              "height": 44,
+              "forward": false,
+              "rightward": false
+            },
+            {
+              "n": 21,
+              "x": 3300,
+              "y": 853.0,
+              "width": 1050,
+              "height": 44,
+              "forward": false,
+              "rightward": false
+            }
+          ]
+        },
+        {
+          "pair": [
+            "control",
+            "detalle"
+          ],
+          "points": [
+            [
+              2465,
+              1098.5
+            ],
+            [
+              2720,
+              1121
+            ],
+            [
+              4235,
+              1121
+            ]
+          ],
+          "rows": [
+            {
+              "n": 13,
+              "x": 3300,
+              "y": 1061.0,
+              "width": 1050,
+              "height": 44,
+              "forward": true,
+              "rightward": true
+            }
+          ]
+        },
+        {
+          "pair": [
+            "control",
+            "movimiento"
+          ],
+          "points": [
+            [
+              2465,
+              1098.5
+            ],
+            [
+              2720,
+              1476
+            ],
+            [
+              4235,
+              1476
+            ]
+          ],
+          "rows": [
+            {
+              "n": 14,
+              "x": 3300,
+              "y": 1416.0,
+              "width": 1050,
+              "height": 44,
+              "forward": true,
+              "rightward": true
+            }
+          ]
+        },
+        {
+          "pair": [
+            "control",
+            "bitacora"
+          ],
+          "points": [
+            [
+              2465,
+              1098.5
+            ],
+            [
+              2720,
+              1831
+            ],
+            [
+              4235,
+              1831
+            ]
+          ],
+          "rows": [
+            {
+              "n": 15,
+              "x": 3300,
+              "y": 1771.0,
+              "width": 1050,
+              "height": 44,
+              "forward": true,
+              "rightward": true
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "exports": [
+    "General"
+  ],
+  "notes": [
+    "Sucursal, cliente mostrador y autorización se validan dentro del control. El código actual no ofrece una entidad de caja/apertura/cierre; no se inventa ese módulo.",
+    "La confirmación de efectivo y la comprobación de precios preceden a la escritura. El trigger aplica el stock por movimiento. El comprobante se intenta en un savepoint opcional: un fallo no revierte la venta; su detalle corresponde a CU14.",
+    "No se atribuye a este endpoint una clave UUID o reintento idempotente que no implementa explícitamente."
+  ],
+  "sources": [
+    {
+      "file": "Parcial2_backend/app/routers/pos.py",
+      "sha256": "750ec2ddf7f52c88f2140cb8dfb4efe8210241cc2acc8b4c6101f68f4dbae6d4"
+    },
+    {
+      "file": "Parcial2_backend/app/routers/ventas.py",
+      "sha256": "4d7d8fc4ce4c07a7207030c7e6ef353b9d051a39a9e9e64e35de412ab750375a"
+    },
+    {
+      "file": "Parcial2_backend/app/services/bitacora_service.py",
+      "sha256": "ec5d5294930c1b8e3e1d4628fd0b1f8b183bdab2ba205c19751245c33e5608a0"
+    },
+    {
+      "file": "Parcial2_backend/app/services/commerce.py",
+      "sha256": "2e7b943a63d3cd6b0fbd3c1f6759681d62b67cfe22bd28d1caac0b907688a4b6"
+    },
+    {
+      "file": "Parcial2_backend/app/services/pos_service.py",
+      "sha256": "dd8a87a909d66f256cd13368fe77e787e36c5cb86b376133f6a47c31ea7779e3"
+    },
+    {
+      "file": "Parcial2_backend/app/services/venta_service.py",
+      "sha256": "56ce9922c3c3a65c1c396550017251d9d84dc61db9f7b6d66d2e2a19742eed8a"
+    },
+    {
+      "file": "Parcial2_frontend-web/src/app/features/pos/pos.ts",
+      "sha256": "ebfe108ff0ea16af9dfa78881a53f502bc250a16e7f484971e18b40d80694951"
+    }
+  ]
+}

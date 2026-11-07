@@ -1,0 +1,47 @@
+{
+  "cu": "CU16",
+  "archivo": "CU16_Diagrama_Secuencia.drawio",
+  "participantes": 8,
+  "mensajes": 39,
+  "fragmentos": {
+    "alt": 4,
+    "opt": 0,
+    "loop": 3
+  },
+  "ancho": 2675,
+  "alto": 3985,
+  "sha256": "4ef45f12093a25d78f709902f42e63a2877231e1adc780679766ad1d9b243883",
+  "fuentes": [
+    {
+      "file": "Parcial2_backend/app/routers/offline.py",
+      "sha256": "1ab8e79883eff1070df624320eb27474f190b8527e35d804e5c6cc44e4f297b8"
+    },
+    {
+      "file": "Parcial2_frontend-web/src/app/core/services/offline.service.ts",
+      "sha256": "c6d3e069eba58375894c1def8607f35b3da204dcb1af90df0242d9471f38111d"
+    },
+    {
+      "file": "Parcial2_frontend-web/src/app/features/offline/offline.ts",
+      "sha256": "88afbf6e4d033fbc4b0847ba12eda8c0eb04562da9649d1784c342fa2d2bc454"
+    },
+    {
+      "file": "Parcial2_mobile/lib/features/offline/local_database.dart",
+      "sha256": "e56edb4e7b70b68689767b52ca096d62519128e13fd1343f333d97f024379a43"
+    },
+    {
+      "file": "Parcial2_mobile/lib/features/offline/offline_controller.dart",
+      "sha256": "1e036ed4c15f247d722f4993531d97f7bf146d5d7fa76aabdb522a237c550bdc"
+    }
+  ],
+  "actores": 1,
+  "interfaces": 1,
+  "controles": 2,
+  "entidades": 4,
+  "participantes_identicos_a_robustez": true,
+  "mensajes_principales_cubiertos": 35,
+  "xsd_valido": true,
+  "limites_fragmentos_validados": true,
+  "bucles_solo_participantes_involucrados": true,
+  "sin_actores_dentro_de_fragmentos": true,
+  "sin_comunicacion_entre_entidades": true
+}

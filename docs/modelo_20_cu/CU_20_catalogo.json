@@ -1,0 +1,559 @@
+{
+  "version": "modelo-20-cu-v1",
+  "tipo": "modelo de requisitos; no certifica pruebas nuevas",
+  "casos": [
+    {
+      "id": "CU-01",
+      "nombre": "Gestionar acceso y cuenta",
+      "cu_anteriores": [
+        "CU-01",
+        "CU-02"
+      ],
+      "cu_p1_antecedentes": [
+        "P1-CU-01",
+        "P1-CU-04"
+      ],
+      "actores": [
+        "usuario"
+      ],
+      "alcance": "Registrar clientes globales, iniciar y cerrar sesión, recuperar contraseña y elegir tienda después del acceso del cliente. El personal mantiene su empresa asignada.",
+      "flujo_principal": [
+        "Solicitar acceso o registro con correo y contraseña",
+        "Validar identidad y obtener del servidor rol y ámbito",
+        "Abrir el espacio de plataforma, empresa o tiendas del cliente",
+        "Recuperar acceso mediante enlace de un solo uso cuando se solicite",
+        "Cerrar y revocar sesión conservando pendientes locales"
+      ],
+      "tipo_modelo": "Caso de uso principal con subflujos explícitos",
+      "estado_implementacion": "No reevaluado por la consolidación documental"
+    },
+    {
+      "id": "CU-02",
+      "nombre": "Administrar empresas, planes y suscripciones",
+      "cu_anteriores": [
+        "CU-03",
+        "CU-04",
+        "CU-05"
+      ],
+      "cu_p1_antecedentes": [],
+      "actores": [
+        "super",
+        "admin"
+      ],
+      "alcance": "Aprovisionar empresas y su administrador, configurar planes y administrar vigencias, renovaciones y cambios. El administrador empresarial consulta únicamente su contrato.",
+      "flujo_principal": [
+        "Validar facultades de plataforma o consulta de contrato propio",
+        "Registrar empresa y administrador inicial cuando corresponda",
+        "Configurar capacidades y límites del plan",
+        "Asignar, renovar o cambiar suscripción validando cupos",
+        "Consultar el estado efectivo del servicio y auditar cambios"
+      ],
+      "tipo_modelo": "Caso de uso principal con subflujos explícitos",
+      "estado_implementacion": "No reevaluado por la consolidación documental"
+    },
+    {
+      "id": "CU-03",
+      "nombre": "Administrar personal, roles y permisos",
+      "cu_anteriores": [
+        "CU-06",
+        "CU-07"
+      ],
+      "cu_p1_antecedentes": [
+        "P1-CU-02",
+        "P1-CU-03"
+      ],
+      "actores": [
+        "admin"
+      ],
+      "alcance": "Mantener empleados, roles, permisos y asignaciones de sucursal de la empresa. Impedir privilegios de plataforma y cambios en la identidad global de clientes.",
+      "flujo_principal": [
+        "Consultar personal y roles de la empresa",
+        "Crear o actualizar empleado con correo global único",
+        "Asignar rol y sucursales permitidos",
+        "Activar, suspender o revocar autorizaciones",
+        "Comprobar que los permisos efectivos correspondan a la asignación"
+      ],
+      "tipo_modelo": "Caso de uso principal con subflujos explícitos",
+      "estado_implementacion": "No reevaluado por la consolidación documental"
+    },
+    {
+      "id": "CU-04",
+      "nombre": "Gestionar ciudades y sucursales",
+      "cu_anteriores": [
+        "CU-08"
+      ],
+      "cu_p1_antecedentes": [
+        "P1-CU-06"
+      ],
+      "actores": [
+        "admin"
+      ],
+      "alcance": "Mantener ciudades y sucursales, su estado y responsables, respetando el cupo de sucursales activas de la suscripción.",
+      "flujo_principal": [
+        "Consultar ciudades y sucursales propias",
+        "Registrar o modificar dirección y responsables",
+        "Validar pertenencia y límite del plan",
+        "Guardar alta, actualización o reactivación",
+        "Mostrar la estructura operativa actualizada"
+      ],
+      "tipo_modelo": "Caso de uso principal con subflujos explícitos",
+      "estado_implementacion": "No reevaluado por la consolidación documental"
+    },
+    {
+      "id": "CU-05",
+      "nombre": "Gestionar fichas de clientes",
+      "cu_anteriores": [
+        "CU-09"
+      ],
+      "cu_p1_antecedentes": [
+        "P1-CU-05"
+      ],
+      "actores": [
+        "admin",
+        "encargado",
+        "cajero",
+        "cliente"
+      ],
+      "alcance": "Crear y mantener fichas comerciales por empresa. El cliente consulta su propia información e historial entre tiendas; la tienda accede solo al perfil y operaciones de su ámbito.",
+      "flujo_principal": [
+        "Buscar ficha comercial autorizada",
+        "Crear o actualizar datos de contacto permitidos",
+        "Evitar duplicaciones dentro de la empresa",
+        "Consultar las operaciones del cliente según propiedad y rol",
+        "Conservar separada la identidad global y el historial comercial de cada tienda"
+      ],
+      "tipo_modelo": "Caso de uso principal con subflujos explícitos",
+      "estado_implementacion": "No reevaluado por la consolidación documental"
+    },
+    {
+      "id": "CU-06",
+      "nombre": "Administrar catálogo de prendas",
+      "cu_anteriores": [
+        "CU-10",
+        "CU-11",
+        "CU-12"
+      ],
+      "cu_p1_antecedentes": [
+        "P1-CU-07",
+        "P1-CU-08",
+        "P1-CU-09"
+      ],
+      "actores": [
+        "admin",
+        "inventario"
+      ],
+      "alcance": "Mantener categorías, temporadas, colecciones, prendas, tallas, combinaciones de colores, material, medidas, precios y ofertas.",
+      "flujo_principal": [
+        "Organizar categorías y temporadas",
+        "Registrar o actualizar prenda y sus atributos",
+        "Definir variantes y combinaciones de colores",
+        "Configurar precios, umbral mayorista y ofertas vigentes",
+        "Publicar o desactivar elementos conservando relaciones comerciales"
+      ],
+      "tipo_modelo": "Caso de uso principal con subflujos explícitos",
+      "estado_implementacion": "No reevaluado por la consolidación documental"
+    },
+    {
+      "id": "CU-07",
+      "nombre": "Gestionar proveedores, compras y recepciones",
+      "cu_anteriores": [
+        "CU-13",
+        "CU-14"
+      ],
+      "cu_p1_antecedentes": [
+        "P1-CU-12",
+        "P1-CU-13"
+      ],
+      "actores": [
+        "admin",
+        "inventario"
+      ],
+      "alcance": "Administrar proveedores y compras; confirmar recepciones físicas con sus detalles y entradas de inventario. Mantener separados los subflujos de proveedor, pedido y recepción.",
+      "flujo_principal": [
+        "Mantener ficha del proveedor propio",
+        "Preparar compra con variantes, cantidades y costos",
+        "Seleccionar sucursal de recepción autorizada",
+        "Confirmar recepción y sus entradas de stock en una transacción",
+        "Consultar el documento y sus detalles sin duplicar recepciones"
+      ],
+      "tipo_modelo": "Caso de uso principal con subflujos explícitos",
+      "estado_implementacion": "No reevaluado por la consolidación documental"
+    },
+    {
+      "id": "CU-08",
+      "nombre": "Consultar inventario y disponibilidad",
+      "cu_anteriores": [
+        "CU-15"
+      ],
+      "cu_p1_antecedentes": [
+        "P1-CU-10"
+      ],
+      "actores": [
+        "personal"
+      ],
+      "alcance": "Obtener existencias físicas, unidades retenidas y disponibilidad por sucursal y variante. El mismo comportamiento de consulta se reutiliza al confirmar una venta.",
+      "flujo_principal": [
+        "Determinar empresa, sucursal y variantes autorizadas",
+        "Consultar existencias físicas",
+        "Obtener retenciones centrales vigentes",
+        "Calcular disponibilidad para las variantes solicitadas",
+        "Devolver cantidades y fecha de información; si es copia local identificar su antigüedad"
+      ],
+      "tipo_modelo": "Caso de uso principal con subflujos explícitos",
+      "estado_implementacion": "No reevaluado por la consolidación documental"
+    },
+    {
+      "id": "CU-09",
+      "nombre": "Explorar catálogo y asistencia de compra",
+      "cu_anteriores": [
+        "CU-17",
+        "CU-26",
+        "CU-27"
+      ],
+      "cu_p1_antecedentes": [
+        "P1-CU-14",
+        "P1-CU-18",
+        "P1-CU-22"
+      ],
+      "actores": [
+        "visitante",
+        "cliente",
+        "personal",
+        "ia"
+      ],
+      "alcance": "Consultar catálogo y filtros, variantes y disponibilidad; utilizar opcionalmente el vestidor existente y las recomendaciones sobre prendas de la tienda elegida.",
+      "flujo_principal": [
+        "Elegir tienda pública o usar el contexto empresarial autorizado",
+        "Buscar prendas mediante filtros",
+        "Consultar variantes y precios aplicables",
+        "Solicitar vestidor o recomendaciones si el usuario lo desea",
+        "Seleccionar prendas para una compra o reserva independiente"
+      ],
+      "tipo_modelo": "Caso de uso principal con subflujos explícitos",
+      "estado_implementacion": "No reevaluado por la consolidación documental"
+    },
+    {
+      "id": "CU-10",
+      "nombre": "Registrar movimientos de inventario",
+      "cu_anteriores": [
+        "CU-16"
+      ],
+      "cu_p1_antecedentes": [
+        "P1-CU-11"
+      ],
+      "actores": [
+        "admin",
+        "inventario",
+        "encargado"
+      ],
+      "alcance": "Registrar entradas, salidas, ajustes y transferencias autorizadas. Reutilizar el registro de salida en ventas confirmadas sin descontar stock por un segundo mecanismo.",
+      "flujo_principal": [
+        "Identificar sucursales, variantes y motivo del movimiento",
+        "Validar cantidades, pertenencia y autorización",
+        "Bloquear o controlar las existencias afectadas",
+        "Registrar el movimiento y su efecto único sobre stock",
+        "Confirmar trazabilidad; revertir todo ante un fallo"
+      ],
+      "tipo_modelo": "Caso de uso principal con subflujos explícitos",
+      "estado_implementacion": "No reevaluado por la consolidación documental"
+    },
+    {
+      "id": "CU-11",
+      "nombre": "Realizar compra y pago en línea",
+      "cu_anteriores": [
+        "CU-18",
+        "CU-22"
+      ],
+      "cu_p1_antecedentes": [
+        "P1-CU-15",
+        "P1-CU-20"
+      ],
+      "actores": [
+        "cliente",
+        "pasarela"
+      ],
+      "alcance": "Administrar carrito y checkout hasta la confirmación de una compra pagada. La pasarela informa el resultado firmado; un pedido o pago pendiente no confirma una venta.",
+      "flujo_principal": [
+        "Preparar carrito, sucursal y forma de entrega",
+        "Recalcular precios y consultar disponibilidad mediante CU-08",
+        "Iniciar pago electrónico y mantener estado pendiente",
+        "Validar confirmación firmada, importe e identidad de operación",
+        "Confirmar venta y salida de inventario mediante CU-10 una sola vez"
+      ],
+      "tipo_modelo": "Caso de uso principal con subflujos explícitos",
+      "estado_implementacion": "No reevaluado por la consolidación documental"
+    },
+    {
+      "id": "CU-12",
+      "nombre": "Gestionar reservas de prendas",
+      "cu_anteriores": [
+        "CU-19",
+        "CU-20"
+      ],
+      "cu_p1_antecedentes": [
+        "P1-CU-16",
+        "P1-CU-17"
+      ],
+      "actores": [
+        "cliente",
+        "encargado",
+        "cajero",
+        "admin"
+      ],
+      "alcance": "Registrar y consultar reservas centrales, preparar prendas, cancelar, vencer y entregar según sus transiciones. El cliente opera solo sobre sus reservas.",
+      "flujo_principal": [
+        "Solicitar reserva con cliente, sucursal y detalles",
+        "Comprobar disponibilidad y establecer retención central",
+        "Consultar o preparar prendas según permisos",
+        "Confirmar pago cuando corresponda antes de entregar",
+        "Entregar o cancelar; liberar retenciones al vencer sin crear una venta ficticia"
+      ],
+      "tipo_modelo": "Caso de uso principal con subflujos explícitos",
+      "estado_implementacion": "No reevaluado por la consolidación documental"
+    },
+    {
+      "id": "CU-13",
+      "nombre": "Registrar venta presencial",
+      "cu_anteriores": [
+        "CU-21"
+      ],
+      "cu_p1_antecedentes": [
+        "P1-CU-19"
+      ],
+      "actores": [
+        "cajero",
+        "encargado",
+        "admin"
+      ],
+      "alcance": "Consolidar una venta presencial autorizada con importes calculados por el servidor, efectivo y vuelto, registro comercial, salida única de stock y auditoría.",
+      "flujo_principal": [
+        "Seleccionar sucursal y productos del ticket",
+        "Consultar inventario mediante CU-08 y validar disponibilidad",
+        "Calcular precios y registrar efectivo recibido",
+        "Confirmar venta y registrar salidas mediante CU-10 en una transacción",
+        "Presentar resultado; ofrecer consulta o descarga de comprobante como acción adicional"
+      ],
+      "tipo_modelo": "Caso de uso principal con subflujos explícitos",
+      "estado_implementacion": "No reevaluado por la consolidación documental"
+    },
+    {
+      "id": "CU-14",
+      "nombre": "Obtener comprobantes de compra",
+      "cu_anteriores": [
+        "CU-23"
+      ],
+      "cu_p1_antecedentes": [
+        "P1-CU-21"
+      ],
+      "actores": [
+        "cliente",
+        "cajero",
+        "encargado",
+        "admin"
+      ],
+      "alcance": "Emitir o recuperar la representación del comprobante de una venta confirmada, consultarla y descargarla con autorización. La consulta/descarga es opcional respecto al cierre de compra.",
+      "flujo_principal": [
+        "Solicitar comprobante de una venta confirmada",
+        "Verificar empresa, rol y propiedad de la compra",
+        "Recuperar documento existente o generar su representación autorizada",
+        "Presentar datos de venta y verificación",
+        "Descargar PDF sin duplicar el documento comercial"
+      ],
+      "tipo_modelo": "Caso de uso principal con subflujos explícitos",
+      "estado_implementacion": "No reevaluado por la consolidación documental"
+    },
+    {
+      "id": "CU-15",
+      "nombre": "Gestionar cambios y reembolsos",
+      "cu_anteriores": [
+        "CU-24",
+        "CU-25"
+      ],
+      "cu_p1_antecedentes": [],
+      "actores": [
+        "cliente",
+        "encargado",
+        "admin",
+        "pasarela",
+        "notificaciones"
+      ],
+      "alcance": "Solicitar, consultar y atender cambios: elegibilidad, recepción física, reemplazo, diferencias de precio, devolución de importes, notificaciones y entrega.",
+      "flujo_principal": [
+        "Registrar solicitud vinculada a unidades de una compra comprobable",
+        "Validar plazo, estado y elegibilidad de las prendas",
+        "Aceptar recepción física y determinar reposición de stock",
+        "Asignar reemplazo y cobrar o devolver diferencias por el medio definido",
+        "Notificar resultado y registrar entrega, reembolso o solicitud pendiente"
+      ],
+      "tipo_modelo": "Caso de uso principal con subflujos explícitos",
+      "estado_implementacion": "No reevaluado por la consolidación documental"
+    },
+    {
+      "id": "CU-16",
+      "nombre": "Registrar y consultar operaciones offline",
+      "cu_anteriores": [
+        "CU-28",
+        "CU-29",
+        "CU-30",
+        "CU-31"
+      ],
+      "cu_p1_antecedentes": [],
+      "actores": [
+        "cliente",
+        "cajero",
+        "encargado",
+        "admin"
+      ],
+      "alcance": "Preparar catálogo persistente, consultar datos descargados, registrar reservas o ventas de contado según rol y revisar operaciones locales tras reiniciar. Las ventas permanecen provisionales.",
+      "flujo_principal": [
+        "Autenticar y preparar datos locales mientras exista conexión",
+        "Identificar cuenta, empresa, sucursal y vigencia offline",
+        "Consultar catálogo o preparar reserva/venta local según permisos",
+        "Guardar UUID, cabecera, detalles y pendiente atómicamente",
+        "Consultar operaciones y resultados después de cerrar y volver a abrir"
+      ],
+      "tipo_modelo": "Caso de uso principal con subflujos explícitos",
+      "estado_implementacion": "No reevaluado por la consolidación documental"
+    },
+    {
+      "id": "CU-17",
+      "nombre": "Sincronizar operaciones y resolver conflictos",
+      "cu_anteriores": [
+        "CU-32",
+        "CU-33"
+      ],
+      "cu_p1_antecedentes": [],
+      "actores": [
+        "cliente",
+        "cajero",
+        "encargado",
+        "admin"
+      ],
+      "alcance": "Enviar pendientes manual o automáticamente, recuperar resultados y tratar conflictos. El autor consulta sus operaciones; una resolución comercial requiere el permiso correspondiente.",
+      "flujo_principal": [
+        "Detectar conexión o recibir solicitud manual",
+        "Enviar operaciones preservando UUID y contenido",
+        "Validar identidad, suscripción y reglas por operación",
+        "Guardar confirmación, rechazo o conflicto; conservar pendientes ante error temporal",
+        "Resolver conflictos autorizados con nueva operación enlazada o compensación explícita"
+      ],
+      "tipo_modelo": "Caso de uso principal con subflujos explícitos",
+      "estado_implementacion": "No reevaluado por la consolidación documental"
+    },
+    {
+      "id": "CU-18",
+      "nombre": "Obtener reportes comerciales",
+      "cu_anteriores": [
+        "CU-34",
+        "CU-35"
+      ],
+      "cu_p1_antecedentes": [
+        "P1-CU-23"
+      ],
+      "actores": [
+        "admin",
+        "encargado",
+        "ia"
+      ],
+      "alcance": "Consultar reportes convencionales o solicitarlos por texto/voz mediante IA, con filtros variables y datos reales autorizados; representar y exportar resultados a PDF/XLSX.",
+      "flujo_principal": [
+        "Seleccionar reporte convencional o solicitud generativa",
+        "Validar permisos y acceso Profesional cuando utilice IA",
+        "Interpretar y confirmar filtros o solicitar aclaración",
+        "Consultar datos empresariales con operaciones permitidas",
+        "Mostrar tabla/gráfico y exportar los mismos resultados autorizados"
+      ],
+      "tipo_modelo": "Caso de uso principal con subflujos explícitos",
+      "estado_implementacion": "No reevaluado por la consolidación documental"
+    },
+    {
+      "id": "CU-19",
+      "nombre": "Preparar y consultar analítica inteligente",
+      "cu_anteriores": [
+        "CU-36",
+        "CU-37"
+      ],
+      "cu_p1_antecedentes": [
+        "P1-CU-24"
+      ],
+      "actores": [
+        "admin",
+        "encargado",
+        "tecnico"
+      ],
+      "alcance": "Agrupar dos subflujos diferenciados: preparación, entrenamiento y evaluación técnica; consulta empresarial de KPI, predicciones y segmentos. Abrir el dashboard no ejecuta entrenamiento.",
+      "flujo_principal": [
+        "Preparar datos sintéticos reproducibles y variables en el subflujo técnico",
+        "Entrenar y evaluar modelos supervisados y no supervisados",
+        "Versionar artefactos, métricas y procedencia",
+        "En el subflujo empresarial obtener datos e inferencias del tenant autorizado",
+        "Visualizar indicadores, predicciones y segmentos con sus limitaciones"
+      ],
+      "tipo_modelo": "Caso de uso principal con subflujos explícitos",
+      "estado_implementacion": "No reevaluado por la consolidación documental"
+    },
+    {
+      "id": "CU-20",
+      "nombre": "Consultar auditoría y trazabilidad",
+      "cu_anteriores": [
+        "CU-38"
+      ],
+      "cu_p1_antecedentes": [
+        "P1-CU-25"
+      ],
+      "actores": [
+        "super",
+        "admin",
+        "encargado"
+      ],
+      "alcance": "Consultar eventos autorizados de acceso y operaciones, pagos, cambios y sincronización. La plataforma consulta su ámbito técnico y SaaS sin acceso comercial irrestricto a empresas.",
+      "flujo_principal": [
+        "Validar permiso y ámbito de auditoría",
+        "Aplicar filtros de fecha, usuario, acción o UUID",
+        "Consultar eventos paginados",
+        "Relacionar acción, operación y resultado",
+        "Presentar evidencia sin contraseñas, tokens ni credenciales externas"
+      ],
+      "tipo_modelo": "Caso de uso principal con subflujos explícitos",
+      "estado_implementacion": "No reevaluado por la consolidación documental"
+    }
+  ],
+  "relaciones": [
+    {
+      "tipo": "include",
+      "origen": "CU-11",
+      "destino": "CU-08",
+      "condicion": "Consulta obligatoria de existencias para validar la compra central."
+    },
+    {
+      "tipo": "include",
+      "origen": "CU-11",
+      "destino": "CU-10",
+      "condicion": "Salida obligatoria al confirmar una compra pagada; el checkout abandonado o pendiente no alcanza este punto."
+    },
+    {
+      "tipo": "include",
+      "origen": "CU-13",
+      "destino": "CU-08",
+      "condicion": "Consulta obligatoria de existencias antes de confirmar una venta presencial."
+    },
+    {
+      "tipo": "include",
+      "origen": "CU-13",
+      "destino": "CU-10",
+      "condicion": "Una venta presencial confirmada registra su salida en la misma transacción."
+    },
+    {
+      "tipo": "extend",
+      "origen": "CU-14",
+      "destino": "CU-11",
+      "condicion": "Punto: compra confirmada. Condición: el usuario solicita visualizar o descargar su comprobante."
+    },
+    {
+      "tipo": "extend",
+      "origen": "CU-14",
+      "destino": "CU-13",
+      "condicion": "Punto: venta registrada. Condición: el usuario solicita visualizar o descargar su comprobante."
+    }
+  ]
+}

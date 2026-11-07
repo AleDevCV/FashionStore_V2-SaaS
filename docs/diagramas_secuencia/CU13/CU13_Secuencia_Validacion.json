@@ -1,0 +1,55 @@
+{
+  "cu": "CU13",
+  "archivo": "CU13_Diagrama_Secuencia.drawio",
+  "participantes": 8,
+  "mensajes": 25,
+  "fragmentos": {
+    "alt": 3,
+    "opt": 0,
+    "loop": 1
+  },
+  "ancho": 2675,
+  "alto": 2646,
+  "sha256": "3a69975701f957105413c2e4aa1d891dd5675b80da5302a0a560e53bf3b7d835",
+  "fuentes": [
+    {
+      "file": "Parcial2_backend/app/routers/pos.py",
+      "sha256": "750ec2ddf7f52c88f2140cb8dfb4efe8210241cc2acc8b4c6101f68f4dbae6d4"
+    },
+    {
+      "file": "Parcial2_backend/app/routers/ventas.py",
+      "sha256": "4d7d8fc4ce4c07a7207030c7e6ef353b9d051a39a9e9e64e35de412ab750375a"
+    },
+    {
+      "file": "Parcial2_backend/app/services/bitacora_service.py",
+      "sha256": "ec5d5294930c1b8e3e1d4628fd0b1f8b183bdab2ba205c19751245c33e5608a0"
+    },
+    {
+      "file": "Parcial2_backend/app/services/commerce.py",
+      "sha256": "2e7b943a63d3cd6b0fbd3c1f6759681d62b67cfe22bd28d1caac0b907688a4b6"
+    },
+    {
+      "file": "Parcial2_backend/app/services/pos_service.py",
+      "sha256": "dd8a87a909d66f256cd13368fe77e787e36c5cb86b376133f6a47c31ea7779e3"
+    },
+    {
+      "file": "Parcial2_backend/app/services/venta_service.py",
+      "sha256": "56ce9922c3c3a65c1c396550017251d9d84dc61db9f7b6d66d2e2a19742eed8a"
+    },
+    {
+      "file": "Parcial2_frontend-web/src/app/features/pos/pos.ts",
+      "sha256": "ebfe108ff0ea16af9dfa78881a53f502bc250a16e7f484971e18b40d80694951"
+    }
+  ],
+  "actores": 1,
+  "interfaces": 1,
+  "controles": 1,
+  "entidades": 5,
+  "participantes_identicos_a_robustez": true,
+  "mensajes_principales_cubiertos": 22,
+  "xsd_valido": true,
+  "limites_fragmentos_validados": true,
+  "bucles_solo_participantes_involucrados": true,
+  "sin_actores_dentro_de_fragmentos": true,
+  "sin_comunicacion_entre_entidades": true
+}

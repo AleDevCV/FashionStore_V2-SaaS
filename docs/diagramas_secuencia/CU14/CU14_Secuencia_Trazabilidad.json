@@ -1,0 +1,570 @@
+{
+  "robustness_source": "docs\\diagramas_robustez\\CU14_Simplificado\\CU14_Robustez_Simplificada_Modelo.json",
+  "participants": [
+    {
+      "id": "actor",
+      "name": "Cliente / Personal autorizado",
+      "kind": "actor"
+    },
+    {
+      "id": "b_pre",
+      "name": "Frontend : Comprobantes de compra",
+      "kind": "boundary"
+    },
+    {
+      "id": "control",
+      "name": "Backend : Gestión de comprobantes",
+      "kind": "control"
+    },
+    {
+      "id": "comprobante",
+      "name": "Comprobante",
+      "kind": "entity"
+    },
+    {
+      "id": "venta",
+      "name": "Venta y detalles",
+      "kind": "entity"
+    },
+    {
+      "id": "pdf",
+      "name": "Archivo PDF",
+      "kind": "entity"
+    },
+    {
+      "id": "bitacora",
+      "name": "Bitácora",
+      "kind": "entity"
+    }
+  ],
+  "events": [
+    {
+      "type": "message",
+      "a": "actor",
+      "b": "b_pre",
+      "text": "Consultar comprobante de una venta",
+      "reply": false,
+      "robustness_number": 1,
+      "number": 1,
+      "lines": [
+        "1: Consultar comprobante de una",
+        "venta"
+      ],
+      "y": 294,
+      "label_h": 46,
+      "label_w": 293
+    },
+    {
+      "type": "message",
+      "a": "b_pre",
+      "b": "control",
+      "text": "comprobante_por_venta(id_venta)",
+      "reply": false,
+      "robustness_number": 2,
+      "number": 2,
+      "lines": [
+        "2: comprobante_por_venta(id_venta)"
+      ],
+      "y": 359,
+      "label_h": 23,
+      "label_w": 293
+    },
+    {
+      "type": "message",
+      "a": "control",
+      "b": "comprobante",
+      "text": "obtener_comprobante_por_venta(id_venta)",
+      "reply": false,
+      "robustness_number": 3,
+      "number": 3,
+      "lines": [
+        "3: obtener_comprobante_por_venta(id_",
+        "venta)"
+      ],
+      "y": 508,
+      "label_h": 46,
+      "label_w": 293
+    },
+    {
+      "type": "message",
+      "a": "comprobante",
+      "b": "control",
+      "text": "comprobante existente",
+      "reply": true,
+      "robustness_number": 4,
+      "number": 4,
+      "lines": [
+        "4: comprobante existente"
+      ],
+      "y": 573,
+      "label_h": 23,
+      "label_w": 293
+    },
+    {
+      "type": "message",
+      "a": "control",
+      "b": "b_pre",
+      "text": "datos del comprobante",
+      "reply": true,
+      "robustness_number": 5,
+      "number": 5,
+      "lines": [
+        "5: datos del comprobante"
+      ],
+      "y": 638,
+      "label_h": 23,
+      "label_w": 293
+    },
+    {
+      "type": "message",
+      "a": "control",
+      "b": "b_pre",
+      "text": "Permitir solicitud de generación",
+      "reply": true,
+      "number": 6,
+      "lines": [
+        "6: Permitir solicitud de generación"
+      ],
+      "y": 768,
+      "label_h": 23,
+      "label_w": 293
+    },
+    {
+      "type": "message",
+      "a": "b_pre",
+      "b": "actor",
+      "text": "Mostrar comprobante o aviso",
+      "reply": true,
+      "robustness_number": 6,
+      "number": 7,
+      "lines": [
+        "7: Mostrar comprobante o aviso"
+      ],
+      "y": 878,
+      "label_h": 23,
+      "label_w": 293
+    },
+    {
+      "type": "message",
+      "a": "actor",
+      "b": "b_pre",
+      "text": "Generar comprobante [si no existe]",
+      "reply": false,
+      "robustness_number": 7,
+      "number": 8,
+      "lines": [
+        "8: Generar comprobante [si no existe]"
+      ],
+      "y": 943,
+      "label_h": 23,
+      "label_w": 293
+    },
+    {
+      "type": "message",
+      "a": "b_pre",
+      "b": "control",
+      "text": "generar_comprobante(venta y datos)",
+      "reply": false,
+      "robustness_number": 8,
+      "number": 9,
+      "lines": [
+        "9: generar_comprobante(venta y",
+        "datos)"
+      ],
+      "y": 1092,
+      "label_h": 46,
+      "label_w": 293
+    },
+    {
+      "type": "message",
+      "a": "control",
+      "b": "venta",
+      "text": "generar_comprobante(id_venta)",
+      "reply": false,
+      "robustness_number": 9,
+      "number": 10,
+      "lines": [
+        "10: generar_comprobante(id_venta)"
+      ],
+      "y": 1218,
+      "label_h": 23,
+      "label_w": 628
+    },
+    {
+      "type": "message",
+      "a": "venta",
+      "b": "control",
+      "text": "venta autorizada y detalles",
+      "reply": true,
+      "robustness_number": 10,
+      "number": 11,
+      "lines": [
+        "11: venta autorizada y detalles"
+      ],
+      "y": 1283,
+      "label_h": 23,
+      "label_w": 628
+    },
+    {
+      "type": "message",
+      "a": "control",
+      "b": "pdf",
+      "text": "Construir y guardar PDF",
+      "reply": false,
+      "robustness_number": 11,
+      "number": 12,
+      "lines": [
+        "12: Construir y guardar PDF"
+      ],
+      "y": 1348,
+      "label_h": 23,
+      "label_w": 660
+    },
+    {
+      "type": "message",
+      "a": "control",
+      "b": "comprobante",
+      "text": "Registrar comprobante único y URL",
+      "reply": false,
+      "robustness_number": 12,
+      "number": 13,
+      "lines": [
+        "13: Registrar comprobante único y",
+        "URL"
+      ],
+      "y": 1436,
+      "label_h": 46,
+      "label_w": 293
+    },
+    {
+      "type": "message",
+      "a": "comprobante",
+      "b": "control",
+      "text": "comprobante registrado",
+      "reply": true,
+      "robustness_number": 13,
+      "number": 14,
+      "lines": [
+        "14: comprobante registrado"
+      ],
+      "y": 1501,
+      "label_h": 23,
+      "label_w": 293
+    },
+    {
+      "type": "message",
+      "a": "control",
+      "b": "bitacora",
+      "text": "registrar_bitacora(comprobante)",
+      "reply": false,
+      "robustness_number": 14,
+      "number": 15,
+      "lines": [
+        "15: registrar_bitacora(comprobante)"
+      ],
+      "y": 1566,
+      "label_h": 23,
+      "label_w": 660
+    },
+    {
+      "type": "message",
+      "a": "control",
+      "b": "b_pre",
+      "text": "comprobante generado",
+      "reply": true,
+      "robustness_number": 15,
+      "number": 16,
+      "lines": [
+        "16: comprobante generado"
+      ],
+      "y": 1631,
+      "label_h": 23,
+      "label_w": 293
+    },
+    {
+      "type": "message",
+      "a": "control",
+      "b": "b_pre",
+      "text": "Rechazar generación sin duplicar documento",
+      "reply": true,
+      "number": 17,
+      "lines": [
+        "17: Rechazar generación sin duplicar",
+        "documento"
+      ],
+      "y": 1784,
+      "label_h": 46,
+      "label_w": 293
+    },
+    {
+      "type": "message",
+      "a": "actor",
+      "b": "b_pre",
+      "text": "Descargar PDF autorizado",
+      "reply": false,
+      "robustness_number": 16,
+      "number": 18,
+      "lines": [
+        "18: Descargar PDF autorizado"
+      ],
+      "y": 1939,
+      "label_h": 23,
+      "label_w": 293
+    },
+    {
+      "type": "message",
+      "a": "b_pre",
+      "b": "control",
+      "text": "descargar_pdf_autorizado(número)",
+      "reply": false,
+      "robustness_number": 17,
+      "number": 19,
+      "lines": [
+        "19: descargar_pdf_autorizado(número)"
+      ],
+      "y": 2004,
+      "label_h": 23,
+      "label_w": 293
+    },
+    {
+      "type": "message",
+      "a": "control",
+      "b": "comprobante",
+      "text": "descargar_pdf_autorizado(número)",
+      "reply": false,
+      "robustness_number": 18,
+      "number": 20,
+      "lines": [
+        "20: descargar_pdf_autorizado(número)"
+      ],
+      "y": 2069,
+      "label_h": 23,
+      "label_w": 293
+    },
+    {
+      "type": "message",
+      "a": "comprobante",
+      "b": "control",
+      "text": "comprobante autorizado",
+      "reply": true,
+      "robustness_number": 19,
+      "number": 21,
+      "lines": [
+        "21: comprobante autorizado"
+      ],
+      "y": 2134,
+      "label_h": 23,
+      "label_w": 293
+    },
+    {
+      "type": "message",
+      "a": "control",
+      "b": "pdf",
+      "text": "Leer PDF del tenant",
+      "reply": false,
+      "robustness_number": 20,
+      "number": 22,
+      "lines": [
+        "22: Leer PDF del tenant"
+      ],
+      "y": 2260,
+      "label_h": 23,
+      "label_w": 660
+    },
+    {
+      "type": "message",
+      "a": "pdf",
+      "b": "control",
+      "text": "archivo PDF",
+      "reply": true,
+      "robustness_number": 21,
+      "number": 23,
+      "lines": [
+        "23: archivo PDF"
+      ],
+      "y": 2325,
+      "label_h": 23,
+      "label_w": 660
+    },
+    {
+      "type": "message",
+      "a": "control",
+      "b": "b_pre",
+      "text": "descarga PDF",
+      "reply": true,
+      "robustness_number": 22,
+      "number": 24,
+      "lines": [
+        "24: descarga PDF"
+      ],
+      "y": 2390,
+      "label_h": 23,
+      "label_w": 293
+    },
+    {
+      "type": "message",
+      "a": "control",
+      "b": "b_pre",
+      "text": "Informar archivo ausente o acceso denegado",
+      "reply": true,
+      "number": 25,
+      "lines": [
+        "25: Informar archivo ausente o acceso",
+        "denegado"
+      ],
+      "y": 2543,
+      "label_h": 46,
+      "label_w": 293
+    },
+    {
+      "type": "message",
+      "a": "b_pre",
+      "b": "actor",
+      "text": "Mostrar descarga o aviso",
+      "reply": true,
+      "robustness_number": 23,
+      "number": 26,
+      "lines": [
+        "26: Mostrar descarga o aviso"
+      ],
+      "y": 2653,
+      "label_h": 23,
+      "label_w": 293
+    }
+  ],
+  "frames": [
+    {
+      "kind": "alt",
+      "y": 393,
+      "h": 432,
+      "depth": 0,
+      "guards": [
+        [
+          393,
+          "comprobante existente",
+          true
+        ],
+        [
+          687,
+          "no existe comprobante",
+          false
+        ]
+      ],
+      "event_range": [
+        2,
+        6
+      ],
+      "participants": [
+        "b_pre",
+        "comprobante",
+        "control"
+      ],
+      "starts_at": "b_pre",
+      "left": 455,
+      "right": 1185,
+      "width": 730
+    },
+    {
+      "kind": "alt",
+      "y": 1126,
+      "h": 715,
+      "depth": 1,
+      "guards": [
+        [
+          1126,
+          "venta válida sin comprobante",
+          true
+        ],
+        [
+          1680,
+          "venta ajena o comprobante duplicado",
+          false
+        ]
+      ],
+      "event_range": [
+        9,
+        17
+      ],
+      "participants": [
+        "b_pre",
+        "bitacora",
+        "comprobante",
+        "control",
+        "pdf",
+        "venta"
+      ],
+      "starts_at": "b_pre",
+      "left": 455,
+      "right": 2190,
+      "width": 1735
+    },
+    {
+      "kind": "opt",
+      "y": 977,
+      "h": 909,
+      "depth": 0,
+      "guards": [
+        [
+          977,
+          "se solicita generar",
+          true
+        ]
+      ],
+      "event_range": [
+        8,
+        17
+      ],
+      "participants": [
+        "b_pre",
+        "bitacora",
+        "comprobante",
+        "control",
+        "pdf",
+        "venta"
+      ],
+      "starts_at": "b_pre",
+      "left": 455,
+      "right": 2190,
+      "width": 1735
+    },
+    {
+      "kind": "alt",
+      "y": 2168,
+      "h": 432,
+      "depth": 0,
+      "guards": [
+        [
+          2168,
+          "archivo autorizado disponible",
+          true
+        ],
+        [
+          2439,
+          "archivo no disponible",
+          false
+        ]
+      ],
+      "event_range": [
+        21,
+        25
+      ],
+      "participants": [
+        "b_pre",
+        "control",
+        "pdf"
+      ],
+      "starts_at": "b_pre",
+      "left": 455,
+      "right": 1855,
+      "width": 1400
+    }
+  ],
+  "notes": [
+    "Consultar o descargar no crea otro comprobante ni cambia la venta. Generar es una acción condicional separada; el servicio rechaza duplicados.",
+    "Se incluye Archivo PDF como entidad persistente de archivos, no como una tabla. Los permisos y propiedad se validan mediante el contexto y RLS.",
+    "Si falta el archivo, descargar_pdf_autorizado informa error. No se dibuja una regeneración automática que no existe. El envío de correo es un subflujo opcional omitido."
+  ],
+  "scope": "Mismos recorridos y participantes de robustez; numeración de secuencia nueva al añadir las alternativas.",
+  "geometry": "alt y opt parten de la interfaz principal; loop parte del control correspondiente. Margen de 30 px. El borde derecho corresponde al último participante afectado. Las líneas intermedias del orden fijo no implican interacciones adicionales.",
+  "presentation": "Los retornos al actor se generalizan cuando deben mostrar éxito o rechazo. Las acciones son escenarios independientes del CU, no un guion obligatorio."
+}

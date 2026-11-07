@@ -1,0 +1,17 @@
+{
+  "caso": "CU10",
+  "mensajes": 19,
+  "acciones": 3,
+  "entidades": 3,
+  "interfaces": 1,
+  "controles": 1,
+  "paginas": 1,
+  "xsd_valido": true,
+  "numeracion_consecutiva": true,
+  "entidades_solo_con_un_control": true,
+  "actores_solo_con_interfaces": true,
+  "sin_interfaces_interconectadas": true,
+  "sin_etiquetas_HTTP": true,
+  "simbolos_en_fuentes_comprobados": true,
+  "filas_sin_solapamiento": true
+}

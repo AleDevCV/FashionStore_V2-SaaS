@@ -1,0 +1,630 @@
+{
+  "caso_uso": "CU06 - Administrar catálogo de prendas",
+  "subcasos_consolidados": [
+    {
+      "id": "CU-10",
+      "nombre": "Gestionar categorías",
+      "responsable": "Administrador"
+    },
+    {
+      "id": "CU-11",
+      "nombre": "Gestionar temporadas y colecciones",
+      "responsable": "Administrador"
+    },
+    {
+      "id": "CU-12",
+      "nombre": "Gestionar prendas y variantes",
+      "responsable": "Administrador y Encargado de Inventario"
+    }
+  ],
+  "nodos": [
+    {
+      "id": "act_admin",
+      "kind": "actor",
+      "title": "Administrador de Empresa",
+      "sub": "«actor»\nGestión integral del catálogo,\nprecios, ofertas y clasificación",
+      "x": 160,
+      "y": 660,
+      "w": 60,
+      "h": 90,
+      "fill": "#F3E5F5",
+      "stroke": "#7B1FA2"
+    },
+    {
+      "id": "act_inventario",
+      "kind": "actor",
+      "title": "Encargado de Inventario",
+      "sub": "«actor»\nGestión de prendas, variantes,\nmedidas y stock por sucursal",
+      "x": 160,
+      "y": 1360,
+      "w": 60,
+      "h": 90,
+      "fill": "#F3E5F5",
+      "stroke": "#7B1FA2"
+    },
+    {
+      "id": "bnd_notificaciones",
+      "kind": "boundary",
+      "title": "UI_Notificaciones",
+      "sub": "«boundary»\nPanel de Retroalimentación\n(Toast / Alertas Éxito y Error)",
+      "x": 640,
+      "y": 240,
+      "w": 80,
+      "h": 80,
+      "fill": "#E1F5FE",
+      "stroke": "#0288D1"
+    },
+    {
+      "id": "bnd_panel_catalogo",
+      "kind": "boundary",
+      "title": "UI_PanelCatalogo",
+      "sub": "«boundary»\nPanel Catálogo de Prendas\n(Prendas / Tabla Maestra)",
+      "x": 640,
+      "y": 600,
+      "w": 80,
+      "h": 80,
+      "fill": "#E1F5FE",
+      "stroke": "#0288D1"
+    },
+    {
+      "id": "bnd_modal_prenda",
+      "kind": "boundary",
+      "title": "UI_ModalPrenda",
+      "sub": "«boundary»\nFormulario Prenda y Variantes\n(PrendaModal / Matriz Talla-Color)",
+      "x": 640,
+      "y": 1020,
+      "w": 80,
+      "h": 80,
+      "fill": "#E1F5FE",
+      "stroke": "#0288D1"
+    },
+    {
+      "id": "bnd_modal_categoria",
+      "kind": "boundary",
+      "title": "UI_ModalCategoria",
+      "sub": "«boundary»\nGestor de Categorías\n(CategoriaModal / Jerarquía)",
+      "x": 640,
+      "y": 1480,
+      "w": 80,
+      "h": 80,
+      "fill": "#E1F5FE",
+      "stroke": "#0288D1"
+    },
+    {
+      "id": "bnd_modal_temporada",
+      "kind": "boundary",
+      "title": "UI_ModalTemporada",
+      "sub": "«boundary»\nGestor de Temporadas\n(TemporadaModal / Vigencias)",
+      "x": 640,
+      "y": 1840,
+      "w": 80,
+      "h": 80,
+      "fill": "#E1F5FE",
+      "stroke": "#0288D1"
+    },
+    {
+      "id": "ctrl_consultar_catalogo",
+      "kind": "control",
+      "title": "Ctrl_ConsultarCatalogo",
+      "sub": "«control»\nConsultar Catálogo y Filtros\n(catalogo.py / svc.listar_prendas)",
+      "x": 1240,
+      "y": 500,
+      "w": 80,
+      "h": 80,
+      "fill": "#E8F5E9",
+      "stroke": "#2E7D32"
+    },
+    {
+      "id": "ctrl_gestionar_prenda",
+      "kind": "control",
+      "title": "Ctrl_GestionarPrenda",
+      "sub": "«control»\nGestionar Prenda Maestra\n(prendas.py / svc.crear_prenda)",
+      "x": 1240,
+      "y": 1020,
+      "w": 80,
+      "h": 80,
+      "fill": "#E8F5E9",
+      "stroke": "#2E7D32"
+    },
+    {
+      "id": "ctrl_gestionar_clasificacion",
+      "kind": "control",
+      "title": "Ctrl_GestionarClasificacion",
+      "sub": "«control»\nGestionar Categorías y Períodos\n(categorias.py / temporadas.py)",
+      "x": 1240,
+      "y": 1660,
+      "w": 80,
+      "h": 80,
+      "fill": "#E8F5E9",
+      "stroke": "#2E7D32"
+    },
+    {
+      "id": "ctrl_validar_reglas",
+      "kind": "control",
+      "title": "Ctrl_ValidarReglasNegocio",
+      "sub": "«control»\nValidar Reglas y Unicidad SKU\n(svc.existe_sku / validaciones)",
+      "x": 1850,
+      "y": 740,
+      "w": 80,
+      "h": 80,
+      "fill": "#E8F5E9",
+      "stroke": "#2E7D32"
+    },
+    {
+      "id": "ctrl_procesar_imagen",
+      "kind": "control",
+      "title": "Ctrl_ProcesarImagen",
+      "sub": "«control»\nProcesar Fotografía Principal\n(image_storage_service)",
+      "x": 1850,
+      "y": 940,
+      "w": 80,
+      "h": 80,
+      "fill": "#E8F5E9",
+      "stroke": "#2E7D32"
+    },
+    {
+      "id": "ctrl_generar_variantes",
+      "kind": "control",
+      "title": "Ctrl_GenerarVariantesSKU",
+      "sub": "«control»\nGenerar Variantes y Multicolores\n(svc._crear_variante / SKU derivado)",
+      "x": 1850,
+      "y": 1140,
+      "w": 80,
+      "h": 80,
+      "fill": "#E8F5E9",
+      "stroke": "#2E7D32"
+    },
+    {
+      "id": "ctrl_inicializar_stock",
+      "kind": "control",
+      "title": "Ctrl_InicializarInventario",
+      "sub": "«control»\nInicializar Stock en Sucursales\n(inventario / stock_inicial)",
+      "x": 1850,
+      "y": 1340,
+      "w": 80,
+      "h": 80,
+      "fill": "#E8F5E9",
+      "stroke": "#2E7D32"
+    },
+    {
+      "id": "ctrl_registrar_auditoria",
+      "kind": "control",
+      "title": "Ctrl_RegistrarAuditoria",
+      "sub": "«control»\nRegistrar Bitácora Forense\n(bitacora_service / IP y Acción)",
+      "x": 1850,
+      "y": 1800,
+      "w": 80,
+      "h": 80,
+      "fill": "#E8F5E9",
+      "stroke": "#2E7D32"
+    },
+    {
+      "id": "ent_categoria",
+      "kind": "entity",
+      "title": "Categoría",
+      "sub": "«entity»\nCategoría de Prenda\n(categoria)",
+      "x": 2700,
+      "y": 280,
+      "w": 80,
+      "h": 80,
+      "fill": "#FFF3E0",
+      "stroke": "#E65100"
+    },
+    {
+      "id": "ent_temporada",
+      "kind": "entity",
+      "title": "Temporada / Colección",
+      "sub": "«entity»\nTemporada y Colección\n(temporada)",
+      "x": 2700,
+      "y": 440,
+      "w": 80,
+      "h": 80,
+      "fill": "#FFF3E0",
+      "stroke": "#E65100"
+    },
+    {
+      "id": "ent_prenda",
+      "kind": "entity",
+      "title": "Prenda",
+      "sub": "«entity»\nPrenda Maestra del Catálogo\n(prenda)",
+      "x": 2700,
+      "y": 640,
+      "w": 80,
+      "h": 80,
+      "fill": "#FFF3E0",
+      "stroke": "#E65100"
+    },
+    {
+      "id": "ent_imagen",
+      "kind": "entity",
+      "title": "Imagen de Prenda",
+      "sub": "«entity»\nFotografía Principal / Galería\n(imagen_prenda)",
+      "x": 2700,
+      "y": 820,
+      "w": 80,
+      "h": 80,
+      "fill": "#FFF3E0",
+      "stroke": "#E65100"
+    },
+    {
+      "id": "ent_talla",
+      "kind": "entity",
+      "title": "Talla",
+      "sub": "«entity»\nTalla Comercial\n(talla)",
+      "x": 2700,
+      "y": 980,
+      "w": 80,
+      "h": 80,
+      "fill": "#FFF3E0",
+      "stroke": "#E65100"
+    },
+    {
+      "id": "ent_color",
+      "kind": "entity",
+      "title": "Color",
+      "sub": "«entity»\nColor y Código HEX\n(color)",
+      "x": 2700,
+      "y": 1120,
+      "w": 80,
+      "h": 80,
+      "fill": "#FFF3E0",
+      "stroke": "#E65100"
+    },
+    {
+      "id": "ent_variante",
+      "kind": "entity",
+      "title": "Variante de Prenda",
+      "sub": "«entity»\nVariante Física Talla-Color\n(variante_prenda)",
+      "x": 2700,
+      "y": 1280,
+      "w": 80,
+      "h": 80,
+      "fill": "#FFF3E0",
+      "stroke": "#E65100"
+    },
+    {
+      "id": "ent_sucursal",
+      "kind": "entity",
+      "title": "Sucursal",
+      "sub": "«entity»\nSucursales Activas\n(sucursal)",
+      "x": 2700,
+      "y": 1440,
+      "w": 80,
+      "h": 80,
+      "fill": "#FFF3E0",
+      "stroke": "#E65100"
+    },
+    {
+      "id": "ent_inventario",
+      "kind": "entity",
+      "title": "Inventario",
+      "sub": "«entity»\nStock por Sucursal y Variante\n(inventario)",
+      "x": 2700,
+      "y": 1600,
+      "w": 80,
+      "h": 80,
+      "fill": "#FFF3E0",
+      "stroke": "#E65100"
+    },
+    {
+      "id": "ent_movimiento",
+      "kind": "entity",
+      "title": "Movimiento de Inventario",
+      "sub": "«entity»\nKardex y Entrada Inicial\n(movimiento_inventario)",
+      "x": 2700,
+      "y": 1760,
+      "w": 80,
+      "h": 80,
+      "fill": "#FFF3E0",
+      "stroke": "#E65100"
+    },
+    {
+      "id": "ent_bitacora",
+      "kind": "entity",
+      "title": "Bitácora",
+      "sub": "«entity»\nRegistro Forense de Auditoría\n(bitacora)",
+      "x": 2700,
+      "y": 1940,
+      "w": 80,
+      "h": 80,
+      "fill": "#FFF3E0",
+      "stroke": "#E65100"
+    }
+  ],
+  "conexiones": [
+    {
+      "id": "e_01",
+      "source": "act_admin",
+      "target": "bnd_panel_catalogo",
+      "label": "1: Solicitar gestión de catálogo",
+      "color": "#546E7A"
+    },
+    {
+      "id": "e_02",
+      "source": "act_admin",
+      "target": "bnd_modal_prenda",
+      "label": "2: Abrir formulario alta / edición de prenda",
+      "color": "#546E7A"
+    },
+    {
+      "id": "e_03",
+      "source": "act_admin",
+      "target": "bnd_modal_categoria",
+      "label": "Gestionar árbol de categorías",
+      "color": "#546E7A"
+    },
+    {
+      "id": "e_04",
+      "source": "act_admin",
+      "target": "bnd_modal_temporada",
+      "label": "Gestionar temporadas y colecciones",
+      "color": "#546E7A"
+    },
+    {
+      "id": "e_05",
+      "source": "act_inventario",
+      "target": "bnd_panel_catalogo",
+      "label": "Consultar catálogo y existencias",
+      "color": "#546E7A"
+    },
+    {
+      "id": "e_06",
+      "source": "act_inventario",
+      "target": "bnd_modal_prenda",
+      "label": "Registrar variantes, medidas y stock inicial",
+      "color": "#546E7A"
+    },
+    {
+      "id": "e_07",
+      "source": "bnd_notificaciones",
+      "target": "act_admin",
+      "label": "Visualizar confirmaciones y alertas",
+      "color": "#00838F"
+    },
+    {
+      "id": "e_08",
+      "source": "bnd_notificaciones",
+      "target": "act_inventario",
+      "label": "Visualizar confirmaciones y alertas",
+      "color": "#00838F"
+    },
+    {
+      "id": "e_09",
+      "source": "bnd_panel_catalogo",
+      "target": "ctrl_consultar_catalogo",
+      "label": "3: Enviar parámetros de búsqueda y filtros",
+      "color": "#546E7A"
+    },
+    {
+      "id": "e_10",
+      "source": "ctrl_consultar_catalogo",
+      "target": "bnd_panel_catalogo",
+      "label": "4: Devolver lista de prendas con stock consolidado",
+      "color": "#00838F"
+    },
+    {
+      "id": "e_11",
+      "source": "bnd_modal_prenda",
+      "target": "ctrl_gestionar_prenda",
+      "label": "5: Enviar formulario de prenda, variantes y foto",
+      "color": "#546E7A"
+    },
+    {
+      "id": "e_12",
+      "source": "ctrl_gestionar_prenda",
+      "target": "bnd_modal_prenda",
+      "label": "Cargar selectores de tallas y colores",
+      "color": "#00838F"
+    },
+    {
+      "id": "e_13",
+      "source": "bnd_modal_categoria",
+      "target": "ctrl_gestionar_clasificacion",
+      "label": "Enviar datos de categoría y categoría padre",
+      "color": "#546E7A"
+    },
+    {
+      "id": "e_14",
+      "source": "bnd_modal_temporada",
+      "target": "ctrl_gestionar_clasificacion",
+      "label": "Enviar temporada, descripción y fechas de vigencia",
+      "color": "#546E7A"
+    },
+    {
+      "id": "e_15",
+      "source": "ctrl_validar_reglas",
+      "target": "bnd_notificaciones",
+      "label": "[Alt: Error]: Alerta SKU duplicado / precio negativo",
+      "color": "#C62828"
+    },
+    {
+      "id": "e_16",
+      "source": "ctrl_gestionar_prenda",
+      "target": "bnd_notificaciones",
+      "label": "12: [Éxito]: Notificar confirmación de guardado",
+      "color": "#00838F"
+    },
+    {
+      "id": "e_17",
+      "source": "ctrl_gestionar_prenda",
+      "target": "bnd_panel_catalogo",
+      "label": "13: Refrescar catálogo maestro actualizado",
+      "color": "#00838F"
+    },
+    {
+      "id": "e_18",
+      "source": "ctrl_gestionar_clasificacion",
+      "target": "bnd_notificaciones",
+      "label": "Notificar resultado de clasificación",
+      "color": "#00838F"
+    },
+    {
+      "id": "e_19",
+      "source": "ctrl_gestionar_prenda",
+      "target": "ctrl_validar_reglas",
+      "label": "6: Validar unicidad SKU, categoría y precios",
+      "color": "#1565C0"
+    },
+    {
+      "id": "e_20",
+      "source": "ctrl_gestionar_prenda",
+      "target": "ctrl_procesar_imagen",
+      "label": "8: Procesar y almacenar fotografía principal",
+      "color": "#1565C0"
+    },
+    {
+      "id": "e_21",
+      "source": "ctrl_gestionar_prenda",
+      "target": "ctrl_generar_variantes",
+      "label": "9: Generar matriz de variantes y multicolores",
+      "color": "#1565C0"
+    },
+    {
+      "id": "e_22",
+      "source": "ctrl_gestionar_prenda",
+      "target": "ctrl_inicializar_stock",
+      "label": "10: Inicializar inventario en sucursales activas",
+      "color": "#1565C0"
+    },
+    {
+      "id": "e_23",
+      "source": "ctrl_gestionar_prenda",
+      "target": "ctrl_registrar_auditoria",
+      "label": "11: Auditar alta/edición (INSERT/UPDATE)",
+      "color": "#1565C0"
+    },
+    {
+      "id": "e_24",
+      "source": "ctrl_gestionar_clasificacion",
+      "target": "ctrl_registrar_auditoria",
+      "label": "Auditar cambios en categorías / temporadas",
+      "color": "#1565C0"
+    },
+    {
+      "id": "e_25",
+      "source": "ctrl_consultar_catalogo",
+      "target": "ent_prenda",
+      "label": "SELECT * FROM prenda WHERE filtros",
+      "color": "#E65100"
+    },
+    {
+      "id": "e_26",
+      "source": "ctrl_consultar_catalogo",
+      "target": "ent_categoria",
+      "label": "Resolver nombre de categorías",
+      "color": "#E65100"
+    },
+    {
+      "id": "e_27",
+      "source": "ctrl_consultar_catalogo",
+      "target": "ent_temporada",
+      "label": "Resolver temporadas comerciales activas",
+      "color": "#E65100"
+    },
+    {
+      "id": "e_28",
+      "source": "ctrl_consultar_catalogo",
+      "target": "ent_inventario",
+      "label": "SUM(stock) consolidado por variante",
+      "color": "#E65100"
+    },
+    {
+      "id": "e_29",
+      "source": "ctrl_validar_reglas",
+      "target": "ent_prenda",
+      "label": "SELECT 1 WHERE sku = %s (existe_sku)",
+      "color": "#E65100"
+    },
+    {
+      "id": "e_30",
+      "source": "ctrl_validar_reglas",
+      "target": "ent_categoria",
+      "label": "Verificar categoría activa del tenant",
+      "color": "#E65100"
+    },
+    {
+      "id": "e_31",
+      "source": "ctrl_validar_reglas",
+      "target": "ent_temporada",
+      "label": "Verificar temporada comercial existente",
+      "color": "#E65100"
+    },
+    {
+      "id": "e_32",
+      "source": "ctrl_gestionar_prenda",
+      "target": "ent_prenda",
+      "label": "7: INSERT / UPDATE datos maestros y precios",
+      "color": "#E65100"
+    },
+    {
+      "id": "e_33",
+      "source": "ctrl_gestionar_prenda",
+      "target": "ent_talla",
+      "label": "SELECT tallas disponibles (listar_tallas)",
+      "color": "#E65100"
+    },
+    {
+      "id": "e_34",
+      "source": "ctrl_gestionar_prenda",
+      "target": "ent_color",
+      "label": "SELECT colores disponibles (listar_colores)",
+      "color": "#E65100"
+    },
+    {
+      "id": "e_35",
+      "source": "ctrl_procesar_imagen",
+      "target": "ent_imagen",
+      "label": "INSERT imagen_prenda (url, es_principal)",
+      "color": "#E65100"
+    },
+    {
+      "id": "e_36",
+      "source": "ctrl_generar_variantes",
+      "target": "ent_variante",
+      "label": "INSERT variante_prenda (sku_variante, color_ids)",
+      "color": "#E65100"
+    },
+    {
+      "id": "e_37",
+      "source": "ctrl_inicializar_stock",
+      "target": "ent_sucursal",
+      "label": "SELECT sucursales activas autorizadas",
+      "color": "#E65100"
+    },
+    {
+      "id": "e_38",
+      "source": "ctrl_inicializar_stock",
+      "target": "ent_inventario",
+      "label": "INSERT inventario (sucursal, variante, stock)",
+      "color": "#E65100"
+    },
+    {
+      "id": "e_39",
+      "source": "ctrl_inicializar_stock",
+      "target": "ent_movimiento",
+      "label": "INSERT movimiento_inventario (Entrada inicial)",
+      "color": "#E65100"
+    },
+    {
+      "id": "e_40",
+      "source": "ctrl_gestionar_clasificacion",
+      "target": "ent_categoria",
+      "label": "INSERT / UPDATE categoria (validar sin ciclos)",
+      "color": "#E65100"
+    },
+    {
+      "id": "e_41",
+      "source": "ctrl_gestionar_clasificacion",
+      "target": "ent_temporada",
+      "label": "INSERT / UPDATE temporada (validar inicio <= fin)",
+      "color": "#E65100"
+    },
+    {
+      "id": "e_42",
+      "source": "ctrl_registrar_auditoria",
+      "target": "ent_bitacora",
+      "label": "INSERT bitacora (usuario, ip, accion, detalle)",
+      "color": "#E65100"
+    }
+  ]
+}

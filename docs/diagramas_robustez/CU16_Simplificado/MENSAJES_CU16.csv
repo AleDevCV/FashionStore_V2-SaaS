@@ -1,0 +1,36 @@
+﻿numero,origen,destino,mensaje,archivo,linea
+1,actor,b_pre,Preparar dispositivo con conexión,,
+2,b_pre,control,download(sucursal),Parcial2_frontend-web/src/app/core/services/offline.service.ts,39
+3,control,backend,snapshot(sucursal),Parcial2_backend/app/routers/offline.py,15
+4,backend,central,snapshot(sucursal),Parcial2_backend/app/routers/offline.py,15
+5,central,backend,catálogo y autorización,,
+6,backend,control,snapshot autorizado,,
+7,control,snapshot,saveSnapshot(datos),Parcial2_mobile/lib/features/offline/local_database.dart,72
+8,control,b_pre,catálogo guardado,,
+9,b_pre,actor,Dispositivo preparado,,
+10,actor,b_pre,Consultar catálogo sin conexión,,
+11,b_pre,control,refresh(),Parcial2_frontend-web/src/app/core/services/offline.service.ts,24
+12,control,snapshot,catalog(sucursal),Parcial2_mobile/lib/features/offline/local_database.dart,68
+13,snapshot,control,catálogo y disponible local,,
+14,control,b_pre,catálogo local,,
+15,b_pre,actor,Mostrar copia descargada,,
+16,actor,b_pre,Registrar reserva offline,,
+17,b_pre,control,"capture(reserva, ítems)",Parcial2_frontend-web/src/app/core/services/offline.service.ts,56
+18,control,operacion,Guardar UUID y estado PENDIENTE,Parcial2_mobile/lib/features/offline/local_database.dart,99
+19,control,detalle,Guardar detalles [misma transacción],Parcial2_mobile/lib/features/offline/local_database.dart,99
+20,control,b_pre,reserva provisional,,
+21,b_pre,actor,Mostrar operación pendiente,,
+22,actor,b_pre,Registrar venta de contado offline,,
+23,b_pre,control,"capture(venta, ítems)",Parcial2_frontend-web/src/app/core/services/offline.service.ts,56
+24,control,operacion,Guardar UUID y estado PENDIENTE,Parcial2_mobile/lib/features/offline/local_database.dart,99
+25,control,detalle,Guardar detalles [misma transacción],Parcial2_mobile/lib/features/offline/local_database.dart,99
+26,control,b_pre,venta provisional,,
+27,b_pre,actor,Mostrar operación pendiente,,
+28,actor,b_pre,Reabrir y consultar pendientes,,
+29,b_pre,control,open(),Parcial2_frontend-web/src/app/core/services/offline.service.ts,13
+30,control,operacion,operations(),Parcial2_mobile/lib/features/offline/local_database.dart,66
+31,operacion,control,pendientes y estados guardados,,
+32,control,detalle,details(UUID),Parcial2_frontend-web/src/app/core/services/offline.service.ts,71
+33,detalle,control,detalles guardados,,
+34,control,b_pre,operaciones recuperadas,,
+35,b_pre,actor,Mostrar operaciones tras reinicio,,

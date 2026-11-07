@@ -1,0 +1,1791 @@
+{
+  "tables": 38,
+  "relationships": 65,
+  "domains": 9,
+  "width": 4756,
+  "height": 4477,
+  "drawio_xsd_valid": true,
+  "entities_do_not_overlap": true,
+  "routes_do_not_cross_unrelated_tables": true,
+  "only_verified_foreign_keys": true,
+  "cardinality_from_nullability_and_unique_keys": true,
+  "source": "docs\\diseno_fisico_base_datos\\INVENTARIO_ORIGEN.json",
+  "source_sha256": "fd44bb3d1edc913ea3979b93cdbb82e84dd772e91348bbb3b234a7b49e45dc83",
+  "drawio_sha256": "fbbaf87135046a658ce4a6f6a45b800d76f1dc25a4b828cccb711edebaf161f9",
+  "relationships_detail": [
+    {
+      "id": "relation_1",
+      "parent": "plan",
+      "child": "suscripcion",
+      "parent_cardinality": "1",
+      "child_cardinality": "0..*",
+      "constraint": "suscripcion_id_plan_fkey",
+      "points": [
+        [
+          504.0,
+          1214.0
+        ],
+        [
+          605.0,
+          1214.0
+        ]
+      ]
+    },
+    {
+      "id": "relation_2",
+      "parent": "empresa",
+      "child": "suscripcion",
+      "parent_cardinality": "1",
+      "child_cardinality": "0..1",
+      "constraint": "suscripcion_tenant_id_fkey",
+      "points": [
+        [
+          294.0,
+          1327.0
+        ],
+        [
+          294.0,
+          1292.0
+        ],
+        [
+          605.0,
+          1292.0
+        ]
+      ]
+    },
+    {
+      "id": "relation_3",
+      "parent": "empresa",
+      "child": "rol",
+      "parent_cardinality": "1",
+      "child_cardinality": "0..*",
+      "constraint": "rol_tenant_id_fkey",
+      "points": [
+        [
+          434.0,
+          1459.0
+        ],
+        [
+          434.0,
+          1798.0
+        ],
+        [
+          605.0,
+          1798.0
+        ]
+      ]
+    },
+    {
+      "id": "relation_4",
+      "parent": "rol",
+      "child": "usuario",
+      "parent_cardinality": "0..1",
+      "child_cardinality": "0..*",
+      "constraint": "tenant_usuario_id_role_fkey",
+      "points": [
+        [
+          815.0,
+          1852.0
+        ],
+        [
+          815.0,
+          1875.5
+        ],
+        [
+          1126.0,
+          1875.5
+        ]
+      ]
+    },
+    {
+      "id": "relation_5",
+      "parent": "cuenta_global",
+      "child": "usuario",
+      "parent_cardinality": "0..1",
+      "child_cardinality": "0..*",
+      "constraint": "usuario_account_id_fkey",
+      "points": [
+        [
+          1025.0,
+          1965.0
+        ],
+        [
+          1126.0,
+          1965.0
+        ]
+      ]
+    },
+    {
+      "id": "relation_6",
+      "parent": "permiso",
+      "child": "rol_permiso",
+      "parent_cardinality": "1",
+      "child_cardinality": "0..*",
+      "constraint": "rol_permiso_id_permiso_fkey",
+      "points": [
+        [
+          1025.0,
+          1670.0
+        ],
+        [
+          1126.0,
+          1670.0
+        ]
+      ]
+    },
+    {
+      "id": "relation_7",
+      "parent": "rol",
+      "child": "rol_permiso",
+      "parent_cardinality": "1",
+      "child_cardinality": "0..*",
+      "constraint": "tenant_rol_permiso_id_rol_fkey",
+      "points": [
+        [
+          1025.0,
+          1747.5
+        ],
+        [
+          1126.0,
+          1747.5
+        ]
+      ]
+    },
+    {
+      "id": "relation_8",
+      "parent": "sucursal",
+      "child": "usuario_sucursal",
+      "parent_cardinality": "1",
+      "child_cardinality": "0..*",
+      "constraint": "usuario_sucursal_tenant_id_id_sucursal_fkey",
+      "points": [
+        [
+          2067.0,
+          2450.17
+        ],
+        [
+          2252.0,
+          2450.17
+        ],
+        [
+          2252.0,
+          2031.0
+        ]
+      ]
+    },
+    {
+      "id": "relation_9",
+      "parent": "usuario",
+      "child": "usuario_sucursal",
+      "parent_cardinality": "1",
+      "child_cardinality": "0..*",
+      "constraint": "usuario_sucursal_tenant_id_id_usuario_fkey",
+      "points": [
+        [
+          1546.0,
+          1938.43
+        ],
+        [
+          2168.0,
+          1938.43
+        ]
+      ]
+    },
+    {
+      "id": "relation_10",
+      "parent": "empresa",
+      "child": "sucursal",
+      "parent_cardinality": "1",
+      "child_cardinality": "0..*",
+      "constraint": "sucursal_tenant_id_fkey",
+      "points": [
+        [
+          364.0,
+          1459.0
+        ],
+        [
+          364.0,
+          2465.0
+        ],
+        [
+          1647.0,
+          2465.0
+        ]
+      ]
+    },
+    {
+      "id": "relation_11",
+      "parent": "ciudad",
+      "child": "sucursal",
+      "parent_cardinality": "0..1",
+      "child_cardinality": "0..*",
+      "constraint": "tenant_sucursal_id_ciudad_fkey",
+      "points": [
+        [
+          1546.0,
+          2531.0
+        ],
+        [
+          1647.0,
+          2531.0
+        ]
+      ]
+    },
+    {
+      "id": "relation_12",
+      "parent": "usuario",
+      "child": "sucursal",
+      "parent_cardinality": "0..1",
+      "child_cardinality": "0..*",
+      "constraint": "tenant_sucursal_id_encargado_fkey",
+      "points": [
+        [
+          1336.0,
+          2031.0
+        ],
+        [
+          1336.0,
+          2453.0
+        ],
+        [
+          1647.0,
+          2453.0
+        ]
+      ]
+    },
+    {
+      "id": "relation_13",
+      "parent": "empresa",
+      "child": "cliente",
+      "parent_cardinality": "1",
+      "child_cardinality": "0..*",
+      "constraint": "cliente_tenant_id_fkey",
+      "points": [
+        [
+          294.0,
+          1459.0
+        ],
+        [
+          294.0,
+          2746.0
+        ],
+        [
+          1647.0,
+          2746.0
+        ]
+      ]
+    },
+    {
+      "id": "relation_14",
+      "parent": "categoria",
+      "child": "categoria",
+      "parent_cardinality": "0..1",
+      "child_cardinality": "0..*",
+      "constraint": "tenant_categoria_id_categoria_padre_fkey",
+      "points": [
+        [
+          1126.0,
+          683.0
+        ],
+        [
+          1075.0,
+          683.0
+        ],
+        [
+          1075.0,
+          771.0
+        ],
+        [
+          1622.0,
+          771.0
+        ],
+        [
+          1622.0,
+          709.0
+        ],
+        [
+          1546.0,
+          709.0
+        ]
+      ]
+    },
+    {
+      "id": "relation_15",
+      "parent": "empresa",
+      "child": "prenda",
+      "parent_cardinality": "1",
+      "child_cardinality": "0..*",
+      "constraint": "prenda_tenant_id_fkey",
+      "points": [
+        [
+          504.0,
+          1415.0
+        ],
+        [
+          554.0,
+          1415.0
+        ],
+        [
+          554.0,
+          781.0
+        ],
+        [
+          1647.0,
+          781.0
+        ]
+      ]
+    },
+    {
+      "id": "relation_16",
+      "parent": "categoria",
+      "child": "prenda",
+      "parent_cardinality": "0..1",
+      "child_cardinality": "0..*",
+      "constraint": "tenant_prenda_id_categoria_fkey",
+      "points": [
+        [
+          1546.0,
+          657.0
+        ],
+        [
+          1647.0,
+          657.0
+        ]
+      ]
+    },
+    {
+      "id": "relation_17",
+      "parent": "temporada",
+      "child": "prenda",
+      "parent_cardinality": "0..1",
+      "child_cardinality": "0..*",
+      "constraint": "tenant_prenda_id_temporada_fkey",
+      "points": [
+        [
+          1546.0,
+          527.5
+        ],
+        [
+          1647.0,
+          527.5
+        ]
+      ]
+    },
+    {
+      "id": "relation_18",
+      "parent": "prenda",
+      "child": "imagen_prenda",
+      "parent_cardinality": "0..1",
+      "child_cardinality": "0..*",
+      "constraint": "tenant_imagen_prenda_id_prenda_fkey",
+      "points": [
+        [
+          2067.0,
+          713.0
+        ],
+        [
+          2168.0,
+          713.0
+        ]
+      ]
+    },
+    {
+      "id": "relation_19",
+      "parent": "color",
+      "child": "variante_prenda",
+      "parent_cardinality": "0..1",
+      "child_cardinality": "0..*",
+      "constraint": "tenant_variante_prenda_id_color_fkey",
+      "points": [
+        [
+          2067.0,
+          269.0
+        ],
+        [
+          2378.0,
+          269.0
+        ],
+        [
+          2378.0,
+          384.0
+        ]
+      ]
+    },
+    {
+      "id": "relation_20",
+      "parent": "prenda",
+      "child": "variante_prenda",
+      "parent_cardinality": "0..1",
+      "child_cardinality": "0..*",
+      "constraint": "tenant_variante_prenda_id_prenda_fkey",
+      "points": [
+        [
+          2067.0,
+          551.5
+        ],
+        [
+          2168.0,
+          551.5
+        ]
+      ]
+    },
+    {
+      "id": "relation_21",
+      "parent": "talla",
+      "child": "variante_prenda",
+      "parent_cardinality": "0..1",
+      "child_cardinality": "0..*",
+      "constraint": "tenant_variante_prenda_id_talla_fkey",
+      "points": [
+        [
+          2067.0,
+          426.0
+        ],
+        [
+          2168.0,
+          426.0
+        ]
+      ]
+    },
+    {
+      "id": "relation_22",
+      "parent": "color",
+      "child": "variante_color",
+      "parent_cardinality": "1",
+      "child_cardinality": "0..*",
+      "constraint": "variante_color_tenant_id_id_color_fkey",
+      "points": [
+        [
+          2067.0,
+          225.0
+        ],
+        [
+          2899.0,
+          225.0
+        ],
+        [
+          2899.0,
+          495.0
+        ]
+      ]
+    },
+    {
+      "id": "relation_23",
+      "parent": "variante_prenda",
+      "child": "variante_color",
+      "parent_cardinality": "1",
+      "child_cardinality": "0..*",
+      "constraint": "variante_color_tenant_id_id_variante_prenda_fkey",
+      "points": [
+        [
+          2588.0,
+          508.29
+        ],
+        [
+          2689.0,
+          508.29
+        ]
+      ]
+    },
+    {
+      "id": "relation_24",
+      "parent": "empresa",
+      "child": "proveedor",
+      "parent_cardinality": "1",
+      "child_cardinality": "0..*",
+      "constraint": "proveedor_tenant_id_fkey",
+      "points": [
+        [
+          504.0,
+          1371.0
+        ],
+        [
+          1647.0,
+          1371.0
+        ]
+      ]
+    },
+    {
+      "id": "relation_25",
+      "parent": "proveedor",
+      "child": "compra",
+      "parent_cardinality": "0..1",
+      "child_cardinality": "0..*",
+      "constraint": "tenant_compra_id_proveedor_fkey",
+      "points": [
+        [
+          2067.0,
+          1393.0
+        ],
+        [
+          2168.0,
+          1393.0
+        ]
+      ]
+    },
+    {
+      "id": "relation_26",
+      "parent": "sucursal",
+      "child": "compra",
+      "parent_cardinality": "0..1",
+      "child_cardinality": "0..*",
+      "constraint": "tenant_compra_id_sucursal_fkey",
+      "points": [
+        [
+          1857.0,
+          2441.0
+        ],
+        [
+          1857.0,
+          1477.0
+        ],
+        [
+          2168.0,
+          1477.0
+        ]
+      ]
+    },
+    {
+      "id": "relation_27",
+      "parent": "usuario",
+      "child": "compra",
+      "parent_cardinality": "0..1",
+      "child_cardinality": "0..*",
+      "constraint": "tenant_compra_id_usuario_fkey",
+      "points": [
+        [
+          1546.0,
+          1875.0
+        ],
+        [
+          2378.0,
+          1875.0
+        ],
+        [
+          2378.0,
+          1495.0
+        ]
+      ]
+    },
+    {
+      "id": "relation_28",
+      "parent": "compra",
+      "child": "detalle_compra",
+      "parent_cardinality": "1",
+      "child_cardinality": "0..*",
+      "constraint": "tenant_detalle_compra_id_compra_fkey",
+      "points": [
+        [
+          2378.0,
+          1291.0
+        ],
+        [
+          2378.0,
+          989.0
+        ],
+        [
+          2689.0,
+          989.0
+        ]
+      ]
+    },
+    {
+      "id": "relation_29",
+      "parent": "variante_prenda",
+      "child": "detalle_compra",
+      "parent_cardinality": "1",
+      "child_cardinality": "0..*",
+      "constraint": "tenant_detalle_compra_id_variante_prenda_fkey",
+      "points": [
+        [
+          2588.0,
+          521.57
+        ],
+        [
+          2669.0,
+          521.57
+        ],
+        [
+          2669.0,
+          937.0
+        ],
+        [
+          2689.0,
+          937.0
+        ]
+      ]
+    },
+    {
+      "id": "relation_30",
+      "parent": "sucursal",
+      "child": "inventario",
+      "parent_cardinality": "1",
+      "child_cardinality": "0..*",
+      "constraint": "tenant_inventario_id_sucursal_fkey",
+      "points": [
+        [
+          2067.0,
+          2468.5
+        ],
+        [
+          2638.0,
+          2468.5
+        ],
+        [
+          2638.0,
+          1451.0
+        ],
+        [
+          2689.0,
+          1451.0
+        ]
+      ]
+    },
+    {
+      "id": "relation_31",
+      "parent": "variante_prenda",
+      "child": "inventario",
+      "parent_cardinality": "1",
+      "child_cardinality": "0..*",
+      "constraint": "tenant_inventario_id_variante_prenda_fkey",
+      "points": [
+        [
+          2588.0,
+          548.14
+        ],
+        [
+          2649.0,
+          548.14
+        ],
+        [
+          2649.0,
+          1407.0
+        ],
+        [
+          2689.0,
+          1407.0
+        ]
+      ]
+    },
+    {
+      "id": "relation_32",
+      "parent": "sucursal",
+      "child": "movimiento_inventario",
+      "parent_cardinality": "0..1",
+      "child_cardinality": "0..*",
+      "constraint": "tenant_movimiento_inventario_id_sucursal_fkey",
+      "points": [
+        [
+          2067.0,
+          2459.33
+        ],
+        [
+          2628.0,
+          2459.33
+        ],
+        [
+          2628.0,
+          1307.67
+        ],
+        [
+          2689.0,
+          1307.67
+        ]
+      ]
+    },
+    {
+      "id": "relation_33",
+      "parent": "usuario",
+      "child": "movimiento_inventario",
+      "parent_cardinality": "0..1",
+      "child_cardinality": "0..*",
+      "constraint": "tenant_movimiento_inventario_id_usuario_fkey",
+      "points": [
+        [
+          1546.0,
+          1899.0
+        ],
+        [
+          2618.0,
+          1899.0
+        ],
+        [
+          2618.0,
+          1299.33
+        ],
+        [
+          2689.0,
+          1299.33
+        ]
+      ]
+    },
+    {
+      "id": "relation_34",
+      "parent": "variante_prenda",
+      "child": "movimiento_inventario",
+      "parent_cardinality": "0..1",
+      "child_cardinality": "0..*",
+      "constraint": "tenant_movimiento_inventario_id_variante_prenda_fkey",
+      "points": [
+        [
+          2588.0,
+          534.86
+        ],
+        [
+          2659.0,
+          534.86
+        ],
+        [
+          2659.0,
+          1118.0
+        ],
+        [
+          2689.0,
+          1118.0
+        ]
+      ]
+    },
+    {
+      "id": "relation_35",
+      "parent": "cliente",
+      "child": "reserva",
+      "parent_cardinality": "0..1",
+      "child_cardinality": "0..*",
+      "constraint": "tenant_reserva_id_cliente_fkey",
+      "points": [
+        [
+          2067.0,
+          2797.0
+        ],
+        [
+          2168.0,
+          2797.0
+        ]
+      ]
+    },
+    {
+      "id": "relation_36",
+      "parent": "sucursal",
+      "child": "reserva",
+      "parent_cardinality": "0..1",
+      "child_cardinality": "0..*",
+      "constraint": "tenant_reserva_id_sucursal_fkey",
+      "points": [
+        [
+          2067.0,
+          2558.6
+        ],
+        [
+          2336.0,
+          2558.6
+        ],
+        [
+          2336.0,
+          2770.0
+        ]
+      ]
+    },
+    {
+      "id": "relation_37",
+      "parent": "reserva",
+      "child": "detalle_reserva",
+      "parent_cardinality": "1",
+      "child_cardinality": "0..*",
+      "constraint": "tenant_detalle_reserva_id_reserva_fkey",
+      "points": [
+        [
+          2504.0,
+          2770.0
+        ],
+        [
+          2504.0,
+          2683.5
+        ],
+        [
+          2689.0,
+          2683.5
+        ]
+      ]
+    },
+    {
+      "id": "relation_38",
+      "parent": "variante_prenda",
+      "child": "detalle_reserva",
+      "parent_cardinality": "1",
+      "child_cardinality": "0..*",
+      "constraint": "tenant_detalle_reserva_id_variante_prenda_fkey",
+      "points": [
+        [
+          2588.0,
+          574.71
+        ],
+        [
+          2598.0,
+          574.71
+        ],
+        [
+          2598.0,
+          2605.4
+        ],
+        [
+          2689.0,
+          2605.4
+        ]
+      ]
+    },
+    {
+      "id": "relation_39",
+      "parent": "reserva",
+      "child": "retencion",
+      "parent_cardinality": "1",
+      "child_cardinality": "0..*",
+      "constraint": "retencion_tenant_id_id_reserva_fkey",
+      "points": [
+        [
+          2420.0,
+          2770.0
+        ],
+        [
+          2420.0,
+          2486.83
+        ],
+        [
+          2689.0,
+          2486.83
+        ]
+      ]
+    },
+    {
+      "id": "relation_40",
+      "parent": "sucursal",
+      "child": "retencion",
+      "parent_cardinality": "1",
+      "child_cardinality": "0..*",
+      "constraint": "retencion_tenant_id_id_sucursal_fkey",
+      "points": [
+        [
+          2067.0,
+          2477.67
+        ],
+        [
+          2689.0,
+          2477.67
+        ]
+      ]
+    },
+    {
+      "id": "relation_41",
+      "parent": "variante_prenda",
+      "child": "retencion",
+      "parent_cardinality": "1",
+      "child_cardinality": "0..*",
+      "constraint": "retencion_tenant_id_id_variante_prenda_fkey",
+      "points": [
+        [
+          2588.0,
+          561.43
+        ],
+        [
+          2608.0,
+          561.43
+        ],
+        [
+          2608.0,
+          2378.5
+        ],
+        [
+          2689.0,
+          2378.5
+        ]
+      ]
+    },
+    {
+      "id": "relation_42",
+      "parent": "usuario",
+      "child": "venta",
+      "parent_cardinality": "0..1",
+      "child_cardinality": "0..*",
+      "constraint": "tenant_venta_id_cajero_fkey",
+      "points": [
+        [
+          1546.0,
+          1953.86
+        ],
+        [
+          2139.0,
+          1953.86
+        ],
+        [
+          2139.0,
+          2752.0
+        ],
+        [
+          2689.0,
+          2752.0
+        ]
+      ]
+    },
+    {
+      "id": "relation_43",
+      "parent": "cliente",
+      "child": "venta",
+      "parent_cardinality": "0..1",
+      "child_cardinality": "0..*",
+      "constraint": "tenant_venta_id_cliente_fkey",
+      "points": [
+        [
+          2067.0,
+          2764.0
+        ],
+        [
+          2689.0,
+          2764.0
+        ]
+      ]
+    },
+    {
+      "id": "relation_44",
+      "parent": "reserva",
+      "child": "venta",
+      "parent_cardinality": "0..1",
+      "child_cardinality": "0..1",
+      "constraint": "tenant_venta_id_reserva_fkey",
+      "points": [
+        [
+          2588.0,
+          2872.0
+        ],
+        [
+          2689.0,
+          2872.0
+        ]
+      ]
+    },
+    {
+      "id": "relation_45",
+      "parent": "sucursal",
+      "child": "venta",
+      "parent_cardinality": "0..1",
+      "child_cardinality": "0..*",
+      "constraint": "tenant_venta_id_sucursal_fkey",
+      "points": [
+        [
+          2067.0,
+          2574.2
+        ],
+        [
+          2125.0,
+          2574.2
+        ],
+        [
+          2125.0,
+          2758.0
+        ],
+        [
+          2689.0,
+          2758.0
+        ]
+      ]
+    },
+    {
+      "id": "relation_46",
+      "parent": "variante_prenda",
+      "child": "detalle_venta",
+      "parent_cardinality": "1",
+      "child_cardinality": "0..*",
+      "constraint": "tenant_detalle_venta_id_variante_prenda_fkey",
+      "points": [
+        [
+          2588.0,
+          439.5
+        ],
+        [
+          3420.0,
+          439.5
+        ],
+        [
+          3420.0,
+          2782.0
+        ]
+      ]
+    },
+    {
+      "id": "relation_47",
+      "parent": "venta",
+      "child": "detalle_venta",
+      "parent_cardinality": "1",
+      "child_cardinality": "0..*",
+      "constraint": "tenant_detalle_venta_id_venta_fkey",
+      "points": [
+        [
+          3109.0,
+          2872.0
+        ],
+        [
+          3210.0,
+          2872.0
+        ]
+      ]
+    },
+    {
+      "id": "relation_48",
+      "parent": "reserva",
+      "child": "pago_transaccion",
+      "parent_cardinality": "0..1",
+      "child_cardinality": "0..*",
+      "constraint": "payment_reservation_tenant",
+      "points": [
+        [
+          2448.0,
+          2974.0
+        ],
+        [
+          2448.0,
+          3431.0
+        ],
+        [
+          3210.0,
+          3431.0
+        ]
+      ]
+    },
+    {
+      "id": "relation_49",
+      "parent": "venta",
+      "child": "pago_transaccion",
+      "parent_cardinality": "0..1",
+      "child_cardinality": "0..*",
+      "constraint": "tenant_pago_transaccion_id_venta_fkey",
+      "points": [
+        [
+          2899.0,
+          2998.0
+        ],
+        [
+          2899.0,
+          3363.0
+        ],
+        [
+          3210.0,
+          3363.0
+        ]
+      ]
+    },
+    {
+      "id": "relation_50",
+      "parent": "venta",
+      "child": "comprobante",
+      "parent_cardinality": "0..1",
+      "child_cardinality": "0..*",
+      "constraint": "tenant_comprobante_id_venta_fkey",
+      "points": [
+        [
+          3109.0,
+          2980.0
+        ],
+        [
+          3420.0,
+          2980.0
+        ],
+        [
+          3420.0,
+          3092.0
+        ]
+      ]
+    },
+    {
+      "id": "relation_51",
+      "parent": "cliente",
+      "child": "cambio",
+      "parent_cardinality": "1",
+      "child_cardinality": "0..*",
+      "constraint": "cambio_tenant_id_id_cliente_fkey",
+      "points": [
+        [
+          2067.0,
+          2722.5
+        ],
+        [
+          3941.0,
+          2722.5
+        ],
+        [
+          3941.0,
+          3493.0
+        ]
+      ]
+    },
+    {
+      "id": "relation_52",
+      "parent": "reserva",
+      "child": "cambio",
+      "parent_cardinality": "0..1",
+      "child_cardinality": "0..*",
+      "constraint": "cambio_tenant_id_id_reserva_reemplazo_fkey",
+      "points": [
+        [
+          2308.0,
+          2974.0
+        ],
+        [
+          2308.0,
+          3646.0
+        ],
+        [
+          3731.0,
+          3646.0
+        ]
+      ]
+    },
+    {
+      "id": "relation_53",
+      "parent": "sucursal",
+      "child": "cambio",
+      "parent_cardinality": "1",
+      "child_cardinality": "0..*",
+      "constraint": "cambio_tenant_id_id_sucursal_fkey",
+      "points": [
+        [
+          2067.0,
+          2519.5
+        ],
+        [
+          4046.0,
+          2519.5
+        ],
+        [
+          4046.0,
+          3493.0
+        ]
+      ]
+    },
+    {
+      "id": "relation_54",
+      "parent": "detalle_venta",
+      "child": "cambio",
+      "parent_cardinality": "1",
+      "child_cardinality": "0..*",
+      "constraint": "cambio_tenant_id_id_venta_id_variante_original_fkey",
+      "points": [
+        [
+          3630.0,
+          2872.0
+        ],
+        [
+          3836.0,
+          2872.0
+        ],
+        [
+          3836.0,
+          3493.0
+        ]
+      ]
+    },
+    {
+      "id": "relation_55",
+      "parent": "cambio",
+      "child": "ajuste_monetario",
+      "parent_cardinality": "1",
+      "child_cardinality": "0..*",
+      "constraint": "ajuste_monetario_tenant_id_id_cambio_fkey",
+      "points": [
+        [
+          4151.0,
+          3583.0
+        ],
+        [
+          4252.0,
+          3583.0
+        ]
+      ]
+    },
+    {
+      "id": "relation_56",
+      "parent": "cambio",
+      "child": "notificacion",
+      "parent_cardinality": "0..1",
+      "child_cardinality": "0..*",
+      "constraint": "notificacion_tenant_id_id_cambio_fkey",
+      "points": [
+        [
+          4151.0,
+          3756.5
+        ],
+        [
+          4252.0,
+          3756.5
+        ]
+      ]
+    },
+    {
+      "id": "relation_57",
+      "parent": "cliente",
+      "child": "notificacion",
+      "parent_cardinality": "1",
+      "child_cardinality": "0..*",
+      "constraint": "notificacion_tenant_id_id_cliente_fkey",
+      "points": [
+        [
+          1857.0,
+          2824.0
+        ],
+        [
+          1857.0,
+          3846.5
+        ],
+        [
+          4252.0,
+          3846.5
+        ]
+      ]
+    },
+    {
+      "id": "relation_58",
+      "parent": "usuario",
+      "child": "operacion_sync",
+      "parent_cardinality": "1",
+      "child_cardinality": "0..*",
+      "constraint": "operacion_sync_tenant_id_author_id_fkey",
+      "points": [
+        [
+          1546.0,
+          1984.71
+        ],
+        [
+          2096.0,
+          1984.71
+        ],
+        [
+          2096.0,
+          4089.2
+        ],
+        [
+          2168.0,
+          4089.2
+        ]
+      ]
+    },
+    {
+      "id": "relation_59",
+      "parent": "sucursal",
+      "child": "operacion_sync",
+      "parent_cardinality": "0..1",
+      "child_cardinality": "0..*",
+      "constraint": "operacion_sync_tenant_id_branch_id_fkey",
+      "points": [
+        [
+          2067.0,
+          2589.8
+        ],
+        [
+          2081.0,
+          2589.8
+        ],
+        [
+          2081.0,
+          4121.6
+        ],
+        [
+          2168.0,
+          4121.6
+        ]
+      ]
+    },
+    {
+      "id": "relation_60",
+      "parent": "empresa",
+      "child": "operacion_sync",
+      "parent_cardinality": "1",
+      "child_cardinality": "0..*",
+      "constraint": "operacion_sync_tenant_id_fkey",
+      "points": [
+        [
+          224.0,
+          1459.0
+        ],
+        [
+          224.0,
+          4177.5
+        ],
+        [
+          2168.0,
+          4177.5
+        ]
+      ]
+    },
+    {
+      "id": "relation_61",
+      "parent": "operacion_sync",
+      "child": "operacion_sync",
+      "parent_cardinality": "0..1",
+      "child_cardinality": "0..*",
+      "constraint": "operacion_sync_tenant_id_original_operation_fkey",
+      "points": [
+        [
+          2168.0,
+          4024.4
+        ],
+        [
+          2154.0,
+          4024.4
+        ],
+        [
+          2154.0,
+          3983.0
+        ],
+        [
+          2679.0,
+          3983.0
+        ],
+        [
+          2679.0,
+          4118.0
+        ],
+        [
+          2588.0,
+          4118.0
+        ]
+      ]
+    },
+    {
+      "id": "relation_62",
+      "parent": "usuario",
+      "child": "operacion_sync",
+      "parent_cardinality": "0..1",
+      "child_cardinality": "0..*",
+      "constraint": "operacion_sync_tenant_id_resolved_by_fkey",
+      "points": [
+        [
+          1546.0,
+          1969.29
+        ],
+        [
+          2110.0,
+          1969.29
+        ],
+        [
+          2110.0,
+          4056.8
+        ],
+        [
+          2168.0,
+          4056.8
+        ]
+      ]
+    },
+    {
+      "id": "relation_63",
+      "parent": "usuario",
+      "child": "reporte_resultado",
+      "parent_cardinality": "1",
+      "child_cardinality": "0..*",
+      "constraint": "reporte_resultado_tenant_id_author_id_fkey",
+      "points": [
+        [
+          1546.0,
+          2000.14
+        ],
+        [
+          1596.0,
+          2000.14
+        ],
+        [
+          1596.0,
+          4064.0
+        ],
+        [
+          1647.0,
+          4064.0
+        ]
+      ]
+    },
+    {
+      "id": "relation_64",
+      "parent": "empresa",
+      "child": "bitacora",
+      "parent_cardinality": "1",
+      "child_cardinality": "0..*",
+      "constraint": "bitacora_tenant_id_fkey",
+      "points": [
+        [
+          154.0,
+          1459.0
+        ],
+        [
+          154.0,
+          4321.0
+        ],
+        [
+          1647.0,
+          4321.0
+        ]
+      ]
+    },
+    {
+      "id": "relation_65",
+      "parent": "usuario",
+      "child": "bitacora",
+      "parent_cardinality": "0..1",
+      "child_cardinality": "0..*",
+      "constraint": "tenant_bitacora_id_usuario_fkey",
+      "points": [
+        [
+          1546.0,
+          2015.57
+        ],
+        [
+          1571.0,
+          2015.57
+        ],
+        [
+          1571.0,
+          4261.0
+        ],
+        [
+          1647.0,
+          4261.0
+        ]
+      ]
+    }
+  ],
+  "omitted_relationships": [
+    {
+      "child": "usuario",
+      "columns": [
+        "tenant_id"
+      ],
+      "parent": "empresa",
+      "ref_columns": [
+        "id_empresa"
+      ],
+      "constraint": "usuario_tenant_id_fkey",
+      "definition": "FOREIGN KEY (tenant_id) REFERENCES empresa(id_empresa)",
+      "reason": "Pertenencia empresarial indicada por tenant_id FK; enlace repetitivo omitido."
+    },
+    {
+      "child": "rol_permiso",
+      "columns": [
+        "tenant_id"
+      ],
+      "parent": "empresa",
+      "ref_columns": [
+        "id_empresa"
+      ],
+      "constraint": "rol_permiso_tenant_id_fkey",
+      "definition": "FOREIGN KEY (tenant_id) REFERENCES empresa(id_empresa)",
+      "reason": "Pertenencia empresarial indicada por tenant_id FK; enlace repetitivo omitido."
+    },
+    {
+      "child": "usuario_sucursal",
+      "columns": [
+        "tenant_id"
+      ],
+      "parent": "empresa",
+      "ref_columns": [
+        "id_empresa"
+      ],
+      "constraint": "usuario_sucursal_tenant_id_fkey",
+      "definition": "FOREIGN KEY (tenant_id) REFERENCES empresa(id_empresa)",
+      "reason": "Pertenencia empresarial indicada por tenant_id FK; enlace repetitivo omitido."
+    },
+    {
+      "child": "ciudad",
+      "columns": [
+        "tenant_id"
+      ],
+      "parent": "empresa",
+      "ref_columns": [
+        "id_empresa"
+      ],
+      "constraint": "ciudad_tenant_id_fkey",
+      "definition": "FOREIGN KEY (tenant_id) REFERENCES empresa(id_empresa)",
+      "reason": "Pertenencia empresarial indicada por tenant_id FK; enlace repetitivo omitido."
+    },
+    {
+      "child": "categoria",
+      "columns": [
+        "tenant_id"
+      ],
+      "parent": "empresa",
+      "ref_columns": [
+        "id_empresa"
+      ],
+      "constraint": "categoria_tenant_id_fkey",
+      "definition": "FOREIGN KEY (tenant_id) REFERENCES empresa(id_empresa)",
+      "reason": "Pertenencia empresarial indicada por tenant_id FK; enlace repetitivo omitido."
+    },
+    {
+      "child": "temporada",
+      "columns": [
+        "tenant_id"
+      ],
+      "parent": "empresa",
+      "ref_columns": [
+        "id_empresa"
+      ],
+      "constraint": "temporada_tenant_id_fkey",
+      "definition": "FOREIGN KEY (tenant_id) REFERENCES empresa(id_empresa)",
+      "reason": "Pertenencia empresarial indicada por tenant_id FK; enlace repetitivo omitido."
+    },
+    {
+      "child": "imagen_prenda",
+      "columns": [
+        "tenant_id"
+      ],
+      "parent": "empresa",
+      "ref_columns": [
+        "id_empresa"
+      ],
+      "constraint": "imagen_prenda_tenant_id_fkey",
+      "definition": "FOREIGN KEY (tenant_id) REFERENCES empresa(id_empresa)",
+      "reason": "Pertenencia empresarial indicada por tenant_id FK; enlace repetitivo omitido."
+    },
+    {
+      "child": "talla",
+      "columns": [
+        "tenant_id"
+      ],
+      "parent": "empresa",
+      "ref_columns": [
+        "id_empresa"
+      ],
+      "constraint": "talla_tenant_id_fkey",
+      "definition": "FOREIGN KEY (tenant_id) REFERENCES empresa(id_empresa)",
+      "reason": "Pertenencia empresarial indicada por tenant_id FK; enlace repetitivo omitido."
+    },
+    {
+      "child": "color",
+      "columns": [
+        "tenant_id"
+      ],
+      "parent": "empresa",
+      "ref_columns": [
+        "id_empresa"
+      ],
+      "constraint": "color_tenant_id_fkey",
+      "definition": "FOREIGN KEY (tenant_id) REFERENCES empresa(id_empresa)",
+      "reason": "Pertenencia empresarial indicada por tenant_id FK; enlace repetitivo omitido."
+    },
+    {
+      "child": "variante_prenda",
+      "columns": [
+        "tenant_id"
+      ],
+      "parent": "empresa",
+      "ref_columns": [
+        "id_empresa"
+      ],
+      "constraint": "variante_prenda_tenant_id_fkey",
+      "definition": "FOREIGN KEY (tenant_id) REFERENCES empresa(id_empresa)",
+      "reason": "Pertenencia empresarial indicada por tenant_id FK; enlace repetitivo omitido."
+    },
+    {
+      "child": "variante_color",
+      "columns": [
+        "tenant_id"
+      ],
+      "parent": "empresa",
+      "ref_columns": [
+        "id_empresa"
+      ],
+      "constraint": "variante_color_tenant_id_fkey",
+      "definition": "FOREIGN KEY (tenant_id) REFERENCES empresa(id_empresa)",
+      "reason": "Pertenencia empresarial indicada por tenant_id FK; enlace repetitivo omitido."
+    },
+    {
+      "child": "compra",
+      "columns": [
+        "tenant_id"
+      ],
+      "parent": "empresa",
+      "ref_columns": [
+        "id_empresa"
+      ],
+      "constraint": "compra_tenant_id_fkey",
+      "definition": "FOREIGN KEY (tenant_id) REFERENCES empresa(id_empresa)",
+      "reason": "Pertenencia empresarial indicada por tenant_id FK; enlace repetitivo omitido."
+    },
+    {
+      "child": "detalle_compra",
+      "columns": [
+        "tenant_id"
+      ],
+      "parent": "empresa",
+      "ref_columns": [
+        "id_empresa"
+      ],
+      "constraint": "detalle_compra_tenant_id_fkey",
+      "definition": "FOREIGN KEY (tenant_id) REFERENCES empresa(id_empresa)",
+      "reason": "Pertenencia empresarial indicada por tenant_id FK; enlace repetitivo omitido."
+    },
+    {
+      "child": "inventario",
+      "columns": [
+        "tenant_id"
+      ],
+      "parent": "empresa",
+      "ref_columns": [
+        "id_empresa"
+      ],
+      "constraint": "inventario_tenant_id_fkey",
+      "definition": "FOREIGN KEY (tenant_id) REFERENCES empresa(id_empresa)",
+      "reason": "Pertenencia empresarial indicada por tenant_id FK; enlace repetitivo omitido."
+    },
+    {
+      "child": "movimiento_inventario",
+      "columns": [
+        "tenant_id"
+      ],
+      "parent": "empresa",
+      "ref_columns": [
+        "id_empresa"
+      ],
+      "constraint": "movimiento_inventario_tenant_id_fkey",
+      "definition": "FOREIGN KEY (tenant_id) REFERENCES empresa(id_empresa)",
+      "reason": "Pertenencia empresarial indicada por tenant_id FK; enlace repetitivo omitido."
+    },
+    {
+      "child": "reserva",
+      "columns": [
+        "tenant_id"
+      ],
+      "parent": "empresa",
+      "ref_columns": [
+        "id_empresa"
+      ],
+      "constraint": "reserva_tenant_id_fkey",
+      "definition": "FOREIGN KEY (tenant_id) REFERENCES empresa(id_empresa)",
+      "reason": "Pertenencia empresarial indicada por tenant_id FK; enlace repetitivo omitido."
+    },
+    {
+      "child": "detalle_reserva",
+      "columns": [
+        "tenant_id"
+      ],
+      "parent": "empresa",
+      "ref_columns": [
+        "id_empresa"
+      ],
+      "constraint": "detalle_reserva_tenant_id_fkey",
+      "definition": "FOREIGN KEY (tenant_id) REFERENCES empresa(id_empresa)",
+      "reason": "Pertenencia empresarial indicada por tenant_id FK; enlace repetitivo omitido."
+    },
+    {
+      "child": "retencion",
+      "columns": [
+        "tenant_id"
+      ],
+      "parent": "empresa",
+      "ref_columns": [
+        "id_empresa"
+      ],
+      "constraint": "retencion_tenant_id_fkey",
+      "definition": "FOREIGN KEY (tenant_id) REFERENCES empresa(id_empresa)",
+      "reason": "Pertenencia empresarial indicada por tenant_id FK; enlace repetitivo omitido."
+    },
+    {
+      "child": "venta",
+      "columns": [
+        "tenant_id"
+      ],
+      "parent": "empresa",
+      "ref_columns": [
+        "id_empresa"
+      ],
+      "constraint": "venta_tenant_id_fkey",
+      "definition": "FOREIGN KEY (tenant_id) REFERENCES empresa(id_empresa)",
+      "reason": "Pertenencia empresarial indicada por tenant_id FK; enlace repetitivo omitido."
+    },
+    {
+      "child": "detalle_venta",
+      "columns": [
+        "tenant_id"
+      ],
+      "parent": "empresa",
+      "ref_columns": [
+        "id_empresa"
+      ],
+      "constraint": "detalle_venta_tenant_id_fkey",
+      "definition": "FOREIGN KEY (tenant_id) REFERENCES empresa(id_empresa)",
+      "reason": "Pertenencia empresarial indicada por tenant_id FK; enlace repetitivo omitido."
+    },
+    {
+      "child": "pago_transaccion",
+      "columns": [
+        "tenant_id"
+      ],
+      "parent": "empresa",
+      "ref_columns": [
+        "id_empresa"
+      ],
+      "constraint": "pago_transaccion_tenant_id_fkey",
+      "definition": "FOREIGN KEY (tenant_id) REFERENCES empresa(id_empresa)",
+      "reason": "Pertenencia empresarial indicada por tenant_id FK; enlace repetitivo omitido."
+    },
+    {
+      "child": "comprobante",
+      "columns": [
+        "tenant_id"
+      ],
+      "parent": "empresa",
+      "ref_columns": [
+        "id_empresa"
+      ],
+      "constraint": "comprobante_tenant_id_fkey",
+      "definition": "FOREIGN KEY (tenant_id) REFERENCES empresa(id_empresa)",
+      "reason": "Pertenencia empresarial indicada por tenant_id FK; enlace repetitivo omitido."
+    },
+    {
+      "child": "cambio",
+      "columns": [
+        "tenant_id"
+      ],
+      "parent": "empresa",
+      "ref_columns": [
+        "id_empresa"
+      ],
+      "constraint": "cambio_tenant_id_fkey",
+      "definition": "FOREIGN KEY (tenant_id) REFERENCES empresa(id_empresa)",
+      "reason": "Pertenencia empresarial indicada por tenant_id FK; enlace repetitivo omitido."
+    },
+    {
+      "child": "ajuste_monetario",
+      "columns": [
+        "tenant_id"
+      ],
+      "parent": "empresa",
+      "ref_columns": [
+        "id_empresa"
+      ],
+      "constraint": "ajuste_monetario_tenant_id_fkey",
+      "definition": "FOREIGN KEY (tenant_id) REFERENCES empresa(id_empresa)",
+      "reason": "Pertenencia empresarial indicada por tenant_id FK; enlace repetitivo omitido."
+    },
+    {
+      "child": "notificacion",
+      "columns": [
+        "tenant_id"
+      ],
+      "parent": "empresa",
+      "ref_columns": [
+        "id_empresa"
+      ],
+      "constraint": "notificacion_tenant_id_fkey",
+      "definition": "FOREIGN KEY (tenant_id) REFERENCES empresa(id_empresa)",
+      "reason": "Pertenencia empresarial indicada por tenant_id FK; enlace repetitivo omitido."
+    },
+    {
+      "child": "reporte_resultado",
+      "columns": [
+        "tenant_id"
+      ],
+      "parent": "empresa",
+      "ref_columns": [
+        "id_empresa"
+      ],
+      "constraint": "reporte_resultado_tenant_id_fkey",
+      "definition": "FOREIGN KEY (tenant_id) REFERENCES empresa(id_empresa)",
+      "reason": "Pertenencia empresarial indicada por tenant_id FK; enlace repetitivo omitido."
+    }
+  ]
+}
