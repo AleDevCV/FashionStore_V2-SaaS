@@ -8,7 +8,7 @@ import { environment } from '../../../environments/environment';
   standalone: true, selector: 'app-saas', imports: [CommonModule, FormsModule],
   template: `
     <main class="atelier">
-      <p class="eyebrow">FASHIONSTORE / ADMINISTRACIÓN</p>
+      <p class="eyebrow">FASHIONSTORE / ADMINISTRACIÓN · CU02</p>
       <h1>Tu empresa, en contexto.</h1>
       <p class="intro">Gestiona el servicio y consulta los límites de tu espacio de trabajo.</p>
       @if (message()) { <p role="status" class="notice">{{message()}}</p> }

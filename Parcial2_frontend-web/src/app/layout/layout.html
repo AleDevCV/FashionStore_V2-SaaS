@@ -9,53 +9,98 @@
 <div class="admin">
   <!-- ========================= SIDEBAR ========================= -->
   <aside class="admin__sidebar">
-    <!-- Logotipo de marca -->
+    <!-- Logotipo de marca y ámbito del espacio de trabajo -->
     <div class="admin__brand">
       <span class="fs-wordmark admin__brand-name">Fashion<em>Store</em></span>
-      <span class="admin__brand-tag">Panel administrativo</span>
+      <span class="admin__brand-tag">{{ etiquetaSubtituloSidebar() }}</span>
     </div>
 
-    <!-- Navegación principal -->
-    <nav class="admin__nav">
-      <span class="admin__nav-title">Navegación</span>
+    <!-- Navegación principal agrupada por responsabilidades del actor -->
+    <nav class="admin__nav" aria-label="Navegación del espacio de trabajo">
+      @for (seccion of seccionesMenu(); track seccion.titulo) {
+        <div class="admin__nav-section">
+          <span class="admin__nav-title">{{ seccion.titulo }}</span>
 
-      <ul class="admin__nav-list">
-        <li><a class="admin__link" routerLink="/panel/pagos-control">Pagos y entregas</a></li>
-        <li><a class="admin__link" routerLink="/panel/analitica">Analítica y ML</a></li>
-        <li><a class="admin__link" routerLink="/panel/reportes">Reportes</a></li>
-        <li><a class="admin__link" routerLink="/offline">Operación sin conexión</a></li>
-        <li><a class="admin__link" routerLink="/panel/cambios">Cambios y devoluciones</a></li>
-        <li><a class="admin__link" routerLink="/panel/saas">Empresa y suscripción</a></li>
-        @for (item of menu(); track item.etiqueta) {
-          <li>
-            @if (item.ruta) {
-              <!-- Sección disponible: enlace real del enrutador -->
-              <a
-                class="admin__link"
-                [routerLink]="item.ruta"
-                routerLinkActive="admin__link--activo"
-              >
-                <span class="admin__link-texto">{{ item.etiqueta }}</span>
-                @if (item.caso) {
-                  <span class="admin__link-caso">{{ item.caso }}</span>
+          <ul class="admin__nav-list">
+            @for (item of seccion.items; track item.etiqueta) {
+              <li class="admin__nav-item">
+                @if (item.hijos && item.hijos.length > 0) {
+                  <!-- Grupo desplegable para pantallas que comparten un mismo CU -->
+                  <div
+                    class="admin__group"
+                    [class.admin__group--abierto]="estaGrupoAbierto(item)"
+                    [class.admin__group--activo]="tieneHijoActivo(item)"
+                  >
+                    <button
+                      type="button"
+                      class="admin__link admin__group-toggle"
+                      [class.admin__link--activo]="tieneHijoActivo(item)"
+                      [class.admin__group-toggle--activo]="tieneHijoActivo(item)"
+                      [attr.aria-expanded]="estaGrupoAbierto(item)"
+                      (click)="alternarGrupo(item)"
+                    >
+                      <span class="admin__group-label">
+                        <span
+                          class="admin__group-chevron"
+                          [class.admin__group-chevron--abierto]="estaGrupoAbierto(item)"
+                          aria-hidden="true"
+                        >{{ estaGrupoAbierto(item) ? '▼' : '▶' }}</span>
+                        <span class="admin__link-texto">{{ item.etiqueta }}</span>
+                      </span>
+                      @if (item.caso) {
+                        <span class="admin__link-caso">{{ item.caso }}</span>
+                      }
+                    </button>
+
+                    @if (estaGrupoAbierto(item)) {
+                      <ul
+                        class="admin__subnav-list"
+                        role="group"
+                        [attr.aria-label]="item.etiqueta"
+                      >
+                        @for (subitem of item.hijos; track subitem.ruta) {
+                          <li>
+                            <a
+                              class="admin__sublink"
+                              [routerLink]="subitem.ruta"
+                              routerLinkActive="admin__sublink--activo"
+                            >
+                              <span class="admin__sublink-texto">{{ subitem.etiqueta }}</span>
+                            </a>
+                          </li>
+                        }
+                      </ul>
+                    }
+                  </div>
+                } @else if (item.ruta) {
+                  <!-- Sección disponible: enlace directo del enrutador -->
+                  <a
+                    class="admin__link"
+                    [routerLink]="item.ruta"
+                    routerLinkActive="admin__link--activo"
+                  >
+                    <span class="admin__link-texto">{{ item.etiqueta }}</span>
+                    @if (item.caso) {
+                      <span class="admin__link-caso">{{ item.caso }}</span>
+                    }
+                  </a>
+                } @else {
+                  <!-- Sección pendiente de construir -->
+                  <span class="admin__link admin__link--pendiente" title="Próximamente">
+                    <span class="admin__link-texto">{{ item.etiqueta }}</span>
+                    <span class="admin__link-caso">{{ item.caso }}</span>
+                  </span>
                 }
-              </a>
-            } @else {
-              <!-- Sección pendiente de construir: se muestra deshabilitada
-                   en lugar de enlazar a una pantalla inexistente. -->
-              <span class="admin__link admin__link--pendiente" title="Próximamente">
-                <span class="admin__link-texto">{{ item.etiqueta }}</span>
-                <span class="admin__link-caso">{{ item.caso }}</span>
-              </span>
+              </li>
             }
-          </li>
-        }
-      </ul>
+          </ul>
+        </div>
+      }
     </nav>
 
     <!-- Pie del sidebar -->
     <div class="admin__sidebar-foot">
-      <span class="admin__version">FashionStore · v0.2.0</span>
+      <span class="admin__version">FashionStore SaaS · CU01–CU20</span>
     </div>
   </aside>
 
@@ -64,7 +109,10 @@
     <!-- Cabecera superior -->
     <header class="admin__header">
       <div class="admin__header-left">
-        <span class="fs-eyebrow">Sistema de gestión</span>
+        <span class="fs-eyebrow">{{ etiquetaEspacioTrabajo() }}</span>
+        @if (empresaActivaSlug(); as slug) {
+          <span class="admin__tenant-badge">Empresa: {{ slug }}</span>
+        }
       </div>
 
       <div class="admin__header-right">
@@ -74,7 +122,7 @@
 
           <span class="admin__perfil">
             <span class="admin__perfil-nombre">{{ u.nombre }}</span>
-            <span class="admin__perfil-rol">{{ u.rol }}</span>
+            <span class="admin__perfil-rol">{{ etiquetaRolVisible() }}</span>
           </span>
         }
 

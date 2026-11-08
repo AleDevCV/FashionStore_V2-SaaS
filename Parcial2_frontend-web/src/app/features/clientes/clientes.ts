@@ -49,7 +49,7 @@ export class Clientes implements OnInit, OnDestroy {
 
   /** Capacidades de la interfaz, alineadas con la matriz RBAC existente. */
   readonly puedeCrear = computed(() =>
-    this.authService.tieneRol(ROLES.ADMINISTRADOR, ROLES.CAJERO),
+    this.authService.tieneRol(ROLES.ADMINISTRADOR, ROLES.ENCARGADO, ROLES.CAJERO),
   );
   readonly puedeEditar = computed(() => this.authService.tieneRol(ROLES.ADMINISTRADOR));
   readonly puedeInactivar = computed(() => this.authService.tieneRol(ROLES.ADMINISTRADOR));

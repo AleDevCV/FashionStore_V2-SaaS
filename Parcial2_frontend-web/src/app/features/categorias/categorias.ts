@@ -14,10 +14,12 @@
  * =============================================================================
  */
 
-import { Component, OnInit, inject, signal } from '@angular/core';
+import { Component, OnInit, computed, inject, signal } from '@angular/core';
 
 import { CategoriaService } from '../../core/services/categoria.service';
 import { NotificacionService } from '../../core/services/notificacion.service';
+import { AuthService } from '../../core/services/auth.service';
+import { ROLES } from '../../core/models/auth.model';
 import { Categoria } from '../../core/models/catalogo.model';
 import { CategoriaModal } from './categoria-modal/categoria-modal';
 
@@ -30,6 +32,12 @@ import { CategoriaModal } from './categoria-modal/categoria-modal';
 export class Categorias implements OnInit {
   private readonly categoriaService = inject(CategoriaService);
   private readonly notificacion = inject(NotificacionService);
+  private readonly authService = inject(AuthService);
+
+  /** Las mutaciones sobre el árbol de categorías exigen rol Administrador. */
+  readonly puedeGestionar = computed(
+    () => this.authService.rolActual() === ROLES.ADMINISTRADOR,
+  );
 
   // ---------------------------------------------------------------------------
   // ESTADO

@@ -501,7 +501,7 @@ class _PrendaDetalleScreenState extends State<PrendaDetalleScreen> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       const Text(
-                        'Reserva para Probador (CU16)',
+                        'Reserva para Probador (CU12)',
                         style: TextStyle(fontSize: 16, fontWeight: FontWeight.w700),
                       ),
                       IconButton(
@@ -1126,7 +1126,7 @@ class _TryOnVisorModalState extends State<TryOnVisorModal> {
                       child: FilledButton.icon(
                         key: const Key('btn_reservar_desde_tryon'),
                         icon: const Icon(Icons.event_seat_outlined, size: 18),
-                        label: const Text('Reservar en Tienda (CU16)'),
+                        label: const Text('Reservar en Tienda (CU12)'),
                         style: FilledButton.styleFrom(
                           backgroundColor: fsGold,
                           foregroundColor: fsInk,

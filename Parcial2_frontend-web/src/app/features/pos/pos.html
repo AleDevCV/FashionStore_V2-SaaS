@@ -3,7 +3,7 @@
   <header class="pos-header">
     <div class="pos-header-left">
       <div class="pos-title">
-        <span class="pos-badge">CU19</span>
+        <span class="pos-badge">CU13</span>
         <h1>Terminal de Caja POS</h1>
       </div>
       <div class="sucursal-selector">
@@ -23,7 +23,7 @@
 
     <div class="pos-header-right">
       <button class="btn btn-outline-reserva" (click)="abrirModalReserva()">
-        <span class="btn-icon">👗</span> Cargar Reserva Probador (CU17)
+        <span class="btn-icon">👗</span> Cargar Reserva Probador (CU12)
       </button>
 
       <div class="cajero-info">
@@ -406,9 +406,9 @@
             </div>
           }
 
-          <!-- Datos de Facturación Fiscal (CU21) -->
+          <!-- Datos de Facturación Fiscal (CU14) -->
           <div class="factura-datos-box">
-            <h4>Datos del Comprobante Fiscal (CU21)</h4>
+            <h4>Datos del Comprobante Fiscal (CU14)</h4>
             <div class="form-row-2">
               <div class="form-group">
                 <label>NIT / CI:</label>
@@ -551,7 +551,7 @@
           }
           @if (ventaCompletada()?.numero_comprobante) {
             <div class="detail-row comprobante-row">
-              <span>Comprobante Digital (CU21):</span>
+              <span>Comprobante Digital (CU14):</span>
               <span class="comp-badge">{{ ventaCompletada()?.numero_comprobante }}</span>
             </div>
           }
@@ -563,7 +563,7 @@
               class="btn btn-pdf-recibo"
               (click)="verComprobantePDF(ventaCompletada()?.url_pdf)"
             >
-              📄 Ver / Imprimir Comprobante PDF (CU21)
+              📄 Ver / Imprimir Comprobante PDF (CU14)
             </button>
           }
           <button class="btn btn-nueva-venta" (click)="cerrarModalExito()">

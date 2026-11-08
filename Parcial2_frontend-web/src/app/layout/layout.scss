@@ -59,18 +59,24 @@
 /* --- Navegación --- */
 .admin__nav {
   flex: 1;
-  padding: var(--fs-space-5) 0;
+  padding: var(--fs-space-4) 0;
+}
+
+.admin__nav-section + .admin__nav-section {
+  margin-top: var(--fs-space-3);
+  padding-top: var(--fs-space-3);
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .admin__nav-title {
   display: block;
   padding: 0 var(--fs-space-5);
-  margin-bottom: var(--fs-space-3);
-  font-size: 10px;
-  font-weight: 500;
-  letter-spacing: 0.18em;
+  margin-bottom: var(--fs-space-2);
+  font-size: 9.5px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.32);
+  color: rgba(255, 255, 255, 0.36);
 }
 
 .admin__nav-list {
@@ -85,10 +91,16 @@
   align-items: baseline;
   justify-content: space-between;
   gap: var(--fs-space-3);
+  width: 100%;
   padding: 9px var(--fs-space-5);
+  background: transparent;
+  border: none;
   border-left: 2px solid transparent;
+  font-family: inherit;
   font-size: 13px;
+  text-align: left;
   color: rgba(255, 255, 255, 0.62);
+  cursor: pointer;
   transition: color var(--fs-transition), background-color var(--fs-transition),
     border-color var(--fs-transition);
 }
@@ -112,6 +124,7 @@
 
 /* Referencia académica al caso de uso, en versalitas muy discretas */
 .admin__link-caso {
+  flex-shrink: 0;
   font-size: 9.5px;
   letter-spacing: 0.1em;
   color: rgba(255, 255, 255, 0.3);
@@ -119,6 +132,64 @@
 
 .admin__link--activo .admin__link-caso {
   color: var(--fs-gold);
+}
+
+/* --- Grupos desplegables por Caso de Uso (submenús) --- */
+.admin__group-toggle {
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.78);
+}
+
+.admin__group-label {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 7px;
+  min-width: 0;
+}
+
+.admin__group-chevron {
+  display: inline-block;
+  font-size: 9px;
+  line-height: 1;
+  color: rgba(255, 255, 255, 0.38);
+  transition: color var(--fs-transition);
+}
+
+.admin__group-chevron--abierto {
+  color: var(--fs-gold);
+}
+
+.admin__subnav-list {
+  list-style: none;
+  margin: 0 0 var(--fs-space-1) 0;
+  padding: 2px 0 4px 0;
+  background-color: rgba(0, 0, 0, 0.16);
+  border-left: 1px solid rgba(255, 255, 255, 0.1);
+  margin-left: var(--fs-space-5);
+}
+
+.admin__sublink {
+  display: flex;
+  align-items: center;
+  padding: 6.5px var(--fs-space-4) 6.5px var(--fs-space-4);
+  border-left: 2px solid transparent;
+  font-size: 12.25px;
+  color: rgba(255, 255, 255, 0.56);
+  text-decoration: none;
+  transition: color var(--fs-transition), background-color var(--fs-transition),
+    border-color var(--fs-transition);
+}
+
+.admin__sublink:hover {
+  color: #FFFFFF;
+  background-color: rgba(255, 255, 255, 0.04);
+}
+
+.admin__sublink--activo {
+  color: #FFFFFF;
+  font-weight: 500;
+  background-color: rgba(197, 168, 128, 0.11);
+  border-left-color: var(--fs-gold);
 }
 
 /* --- Pie del sidebar --- */
@@ -154,6 +225,25 @@
   padding: 0 var(--fs-space-6);
   background-color: var(--fs-surface);
   border-bottom: 1px solid var(--fs-border);
+}
+
+.admin__header-left {
+  display: flex;
+  align-items: center;
+  gap: var(--fs-space-3);
+}
+
+.admin__tenant-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 8px;
+  border: 1px solid var(--fs-border);
+  border-radius: var(--fs-radius);
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--fs-ink-muted);
+  background-color: var(--fs-bg);
 }
 
 .admin__header-right {
@@ -282,7 +372,7 @@
 /* Tablet: el sidebar se estrecha y oculta las etiquetas de caso de uso */
 @media (max-width: 1024px) {
   .admin {
-    grid-template-columns: 190px 1fr;
+    grid-template-columns: 200px 1fr;
   }
 
   .admin__link-caso {
@@ -321,22 +411,51 @@
   }
 
   .admin__nav {
+    display: flex;
+    gap: var(--fs-space-1);
     padding: 0;
+  }
+
+  .admin__nav-section + .admin__nav-section {
+    margin-top: 0;
+    padding-top: 0;
+    border-top: none;
   }
 
   .admin__nav-list {
     display: flex;
+    align-items: center;
     gap: var(--fs-space-1);
   }
 
-  .admin__link {
+  .admin__group {
+    display: flex;
+    align-items: center;
+    gap: var(--fs-space-1);
+  }
+
+  .admin__subnav-list {
+    display: flex;
+    align-items: center;
+    gap: var(--fs-space-1);
+    margin: 0;
+    padding: 0;
+    background: transparent;
+    border-left: 1px solid rgba(255, 255, 255, 0.14);
+    padding-left: var(--fs-space-1);
+  }
+
+  .admin__link,
+  .admin__sublink {
+    width: auto;
     padding: 14px var(--fs-space-3);
     white-space: nowrap;
     border-left: none;
     border-bottom: 2px solid transparent;
   }
 
-  .admin__link--activo {
+  .admin__link--activo,
+  .admin__sublink--activo {
     border-left-color: transparent;
     border-bottom-color: var(--fs-gold);
   }

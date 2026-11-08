@@ -6,7 +6,7 @@ import { firstValueFrom } from 'rxjs';
 import { environment } from '../../../environments/environment';
 
 @Component({standalone:true,selector:'app-cambios',imports:[CommonModule,FormsModule],template:`
-<main class="changes"><p class="eyebrow">FASHIONSTORE / ATENCIÓN</p><h1>Cambios y devoluciones</h1>
+<main class="changes"><p class="eyebrow">FASHIONSTORE / ATENCIÓN · CU15</p><h1>Cambios y devoluciones</h1>
 <p>Solicita un cambio dentro de siete días de la entrega. Conserva la prenda sin uso para su inspección.</p>
 @if(message()){<p role="status" class="notice">{{message()}}</p>}
 <section><h2>Nueva solicitud</h2><form (ngSubmit)="request()">
@@ -33,7 +33,7 @@ export class Cambios {
  private http=inject(HttpClient);private base=environment.apiUrl+'/api';
  changes=signal<any[]>([]);eligible=signal<any[]>([]);notifications=signal<any[]>([]);options=signal<any[]>([]);message=signal('');busy=signal(false);staff=signal(false);
  selected:any=null;quantity=1;reason='';replacementItem:any=null;replacementVariant=0;refundItem:any=null;refundConfirmed=false;refundReference='';
- constructor(){this.load();this.http.get<any>(this.base+'/contexto').subscribe({next:x=>this.staff.set(['Administrador','Encargado de Sucursal','Cajero (POS)'].includes(x.usuario.rol)),error:e=>this.fail(e)});}
+ constructor(){this.load();this.http.get<any>(this.base+'/contexto').subscribe({next:x=>this.staff.set(!x.empresa?.plataforma&&['Administrador','Encargado de Sucursal','Cajero (POS)'].includes(x.usuario.rol)),error:e=>this.fail(e)});}
  private fail(e:any){this.message.set(typeof e.error?.detail==='string'?e.error.detail:'No fue posible completar la operación.');this.busy.set(false);}
  load(){this.http.get<any[]>(this.base+'/cambios').subscribe({next:x=>this.changes.set(x),error:e=>this.fail(e)});this.http.get<any[]>(this.base+'/cambios/elegibles').subscribe({next:x=>this.eligible.set(x),error:e=>this.fail(e)});this.http.get<any[]>(this.base+'/notificaciones').subscribe({next:x=>this.notifications.set(x),error:e=>this.fail(e)});}
  async request(){if(!this.selected)return;this.busy.set(true);try{await firstValueFrom(this.http.post(this.base+'/cambios',{id_venta:this.selected.id_venta,id_variante_prenda:this.selected.id_variante_prenda,cantidad:this.quantity,motivo:this.reason}));this.reason='';this.message.set('Solicitud registrada para inspección.');this.load();}catch(e){this.fail(e);}finally{this.busy.set(false);}}

@@ -75,15 +75,23 @@ export class ReservasAtencion implements OnInit {
     this.cargando.set(true);
     this.error.set(null);
 
-    const estadoParam =
-      this.filtroEstado() === 'Todos' ? undefined : this.filtroEstado();
-    const sucursalParam = this.idSucursalSeleccionada() ?? undefined;
+    const estadoActual = this.filtroEstado().trim();
+    const sucursalActual = this.idSucursalSeleccionada();
+    const filtros: { id_sucursal?: number; estado?: string } = {};
+
+    if (
+      sucursalActual !== null &&
+      sucursalActual !== undefined &&
+      !Number.isNaN(sucursalActual)
+    ) {
+      filtros.id_sucursal = sucursalActual;
+    }
+    if (estadoActual.length > 0 && estadoActual !== 'Todos') {
+      filtros.estado = estadoActual;
+    }
 
     this.ventaService
-      .listarReservasSucursal({
-        id_sucursal: sucursalParam,
-        estado: estadoParam,
-      })
+      .listarReservasSucursal(filtros)
       .subscribe({
         next: (res) => {
           this.reservas.set(res);

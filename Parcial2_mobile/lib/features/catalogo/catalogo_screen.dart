@@ -636,10 +636,7 @@ class _CatalogoScreenState extends State<CatalogoScreen> {
                   overflow: TextOverflow.ellipsis,
                 ),
                 const SizedBox(height: 6),
-                ListTile(leading:const Icon(Icons.offline_bolt_outlined),title:const Text('Operación sin conexión'),onTap:()=>Navigator.of(context).push(MaterialPageRoute(builder:(_)=>const OfflineScreen()))),
-          if(autenticado)ListTile(leading:const Icon(Icons.swap_horiz),title:const Text('Cambios y notificaciones'),onTap:()=>Navigator.of(context).push(MaterialPageRoute(builder:(_)=>const CambiosScreen()))),
-          if(_auth.esPersonalAlmacen)ListTile(leading:const Icon(Icons.analytics_outlined),title:const Text('Reportes de la empresa'),onTap:()=>Navigator.of(context).push(MaterialPageRoute(builder:(_)=>const ReportesScreen()))),
-          if (autenticado) ...[
+                if (autenticado) ...[
                   Container(
                     padding:
                         const EdgeInsets.symmetric(horizontal: 8, vertical: 2),
@@ -666,12 +663,44 @@ class _CatalogoScreenState extends State<CatalogoScreen> {
               ],
             ),
           ),
-          if (!autenticado || rol == 'Cliente') ListTile(leading:const Icon(Icons.storefront_outlined),title:const Text('Todas las tiendas y mis compras'),onTap:()=>Navigator.of(context).pushReplacement(MaterialPageRoute(builder:(_)=>const TiendasScreen()))),
+          if (!autenticado || rol == 'Cliente')
+            ListTile(
+              leading: const Icon(Icons.storefront_outlined, color: fsInk),
+              title: const Text('Todas las tiendas y mis compras'),
+              subtitle: const Text('Selección de tienda y pedidos (CU01 / CU14)'),
+              onTap: () => Navigator.of(context).pushReplacement(
+                MaterialPageRoute(builder: (_) => const TiendasScreen()),
+              ),
+            ),
           ListTile(
             leading: const Icon(Icons.checkroom_outlined, color: fsInk),
             title: const Text('Catálogo de Prendas'),
+            subtitle: const Text('Vitrina y disponibilidad (CU09)'),
             onTap: () => Navigator.of(context).pop(),
           ),
+          ListTile(
+            leading: const Icon(Icons.offline_bolt_outlined, color: fsInk),
+            title: const Text('Operación sin conexión'),
+            subtitle: const Text('Captura local y sincronización (CU16 / CU17)'),
+            onTap: () {
+              Navigator.of(context).pop();
+              Navigator.of(context).push(
+                MaterialPageRoute(builder: (_) => const OfflineScreen()),
+              );
+            },
+          ),
+          if (autenticado)
+            ListTile(
+              leading: const Icon(Icons.swap_horiz, color: fsInk),
+              title: const Text('Cambios y notificaciones'),
+              subtitle: const Text('Postventa y avisos (CU15)'),
+              onTap: () {
+                Navigator.of(context).pop();
+                Navigator.of(context).push(
+                  MaterialPageRoute(builder: (_) => const CambiosScreen()),
+                );
+              },
+            ),
           if (autenticado) ...[
             const Padding(
               padding: EdgeInsets.fromLTRB(16, 16, 16, 8),
@@ -688,7 +717,7 @@ class _CatalogoScreenState extends State<CatalogoScreen> {
             ListTile(
               leading: const Icon(Icons.auto_awesome, color: fsInk),
               title: const Text('Asistente de Moda IA'),
-              subtitle: const Text('Recomendador de outfits con Gemini (CU22)'),
+              subtitle: const Text('Recomendador de outfits con Gemini (CU09)'),
               onTap: () {
                 Navigator.of(context).pop();
                 Navigator.of(context).push(
@@ -696,10 +725,12 @@ class _CatalogoScreenState extends State<CatalogoScreen> {
                 );
               },
             ),
+          ],
+          if (_auth.esPersonalAlmacen) ...[
             const Padding(
               padding: EdgeInsets.fromLTRB(16, 16, 16, 8),
               child: Text(
-                'GESTIÓN DE ALMACÉN',
+                'GESTIÓN DE ALMACÉN Y REPORTES',
                 style: TextStyle(
                   fontSize: 11,
                   fontWeight: FontWeight.w700,
@@ -709,42 +740,9 @@ class _CatalogoScreenState extends State<CatalogoScreen> {
               ),
             ),
             ListTile(
-              leading: const Icon(Icons.inventory_2_outlined, color: fsInk),
-              title: const Text('Movimientos de Inventario'),
-              subtitle: const Text('Registro táctil y kardex físico (CU11)'),
-              onTap: () {
-                Navigator.of(context).pop();
-                Navigator.of(context).push(
-                  MaterialPageRoute(builder: (_) => const MovimientosScreen()),
-                );
-              },
-            ),
-            ListTile(
-              leading: const Icon(Icons.business_outlined, color: fsInk),
-              title: const Text('Directorio de Proveedores'),
-              subtitle: const Text('Búsqueda y consulta comercial (CU12)'),
-              onTap: () {
-                Navigator.of(context).pop();
-                Navigator.of(context).push(
-                  MaterialPageRoute(builder: (_) => const ProveedoresScreen()),
-                );
-              },
-            ),
-            ListTile(
-              leading: const Icon(Icons.receipt_long_outlined, color: fsInk),
-              title: const Text('Recepción de Compras'),
-              subtitle: const Text('Historial de lotes con 13% IVA (CU13)'),
-              onTap: () {
-                Navigator.of(context).pop();
-                Navigator.of(context).push(
-                  MaterialPageRoute(builder: (_) => const ComprasScreen()),
-                );
-              },
-            ),
-            ListTile(
               leading: const Icon(Icons.analytics_outlined, color: fsInk),
               title: const Text('Estado de Inventario'),
-              subtitle: const Text('Monitoreo multisucursal y existencias (CU10)'),
+              subtitle: const Text('Monitoreo multisucursal y existencias (CU08)'),
               onTap: () {
                 Navigator.of(context).pop();
                 Navigator.of(context).push(
@@ -752,6 +750,52 @@ class _CatalogoScreenState extends State<CatalogoScreen> {
                 );
               },
             ),
+            if (rol == 'Administrador' || rol == 'Encargado de Sucursal') ...[
+              ListTile(
+                leading: const Icon(Icons.inventory_2_outlined, color: fsInk),
+                title: const Text('Movimientos de Inventario'),
+                subtitle: const Text('Registro táctil y kardex físico (CU10)'),
+                onTap: () {
+                  Navigator.of(context).pop();
+                  Navigator.of(context).push(
+                    MaterialPageRoute(builder: (_) => const MovimientosScreen()),
+                  );
+                },
+              ),
+              ListTile(
+                leading: const Icon(Icons.business_outlined, color: fsInk),
+                title: const Text('Directorio de Proveedores'),
+                subtitle: const Text('Búsqueda y consulta comercial (CU07)'),
+                onTap: () {
+                  Navigator.of(context).pop();
+                  Navigator.of(context).push(
+                    MaterialPageRoute(builder: (_) => const ProveedoresScreen()),
+                  );
+                },
+              ),
+              ListTile(
+                leading: const Icon(Icons.receipt_long_outlined, color: fsInk),
+                title: const Text('Recepción de Compras'),
+                subtitle: const Text('Historial de lotes con 13% IVA (CU07)'),
+                onTap: () {
+                  Navigator.of(context).pop();
+                  Navigator.of(context).push(
+                    MaterialPageRoute(builder: (_) => const ComprasScreen()),
+                  );
+                },
+              ),
+              ListTile(
+                leading: const Icon(Icons.summarize_outlined, color: fsInk),
+                title: const Text('Reportes de la empresa'),
+                subtitle: const Text('Reportes comerciales e IA (CU18)'),
+                onTap: () {
+                  Navigator.of(context).pop();
+                  Navigator.of(context).push(
+                    MaterialPageRoute(builder: (_) => const ReportesScreen()),
+                  );
+                },
+              ),
+            ],
           ],
           const Divider(color: fsBorder),
           if (autenticado)

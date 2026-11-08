@@ -10,7 +10,7 @@
   <!-- ========================= CABECERA ========================= -->
   <header class="prendas__head">
     <div>
-      <span class="fs-eyebrow">Módulo de inventarios · CU08</span>
+      <span class="fs-eyebrow">Catálogo comercial · CU06</span>
       <h1 class="prendas__titulo">Prendas del Catálogo</h1>
       <p class="prendas__lead">
         Administre el catálogo maestro: diseños, precios, categorías y la matriz
@@ -18,9 +18,11 @@
       </p>
     </div>
 
-    <button type="button" class="fs-btn fs-btn--primary" (click)="abrirAlta()">
-      + Nueva prenda
-    </button>
+    @if (puedeGestionar()) {
+      <button type="button" class="fs-btn fs-btn--primary" (click)="abrirAlta()">
+        + Nueva prenda
+      </button>
+    }
   </header>
 
   <!-- ================= BUSCADOR ================= -->
@@ -99,43 +101,47 @@
                 </span>
               </td>
               <td>
-                <div class="prendas__acciones">
-                  <button
-                    type="button"
-                    class="fs-accion"
-                    (click)="abrirEdicion(prenda)"
-                  >
-                    Editar
-                  </button>
-
-                  @if (prenda.estado === 'Activo' || prenda.estado === 'Borrador') {
-                    <button
-                      type="button"
-                      class="fs-accion fs-accion--peligro"
-                      (click)="inhabilitar(prenda)"
-                      [disabled]="inhabilitandoId() === prenda.id_prenda"
-                    >
-                      {{
-                        inhabilitandoId() === prenda.id_prenda
-                          ? 'Procesando…'
-                          : 'Inactivar'
-                      }}
-                    </button>
-                  } @else {
+                @if (puedeGestionar()) {
+                  <div class="prendas__acciones">
                     <button
                       type="button"
                       class="fs-accion"
-                      (click)="reactivar(prenda)"
-                      [disabled]="inhabilitandoId() === prenda.id_prenda"
+                      (click)="abrirEdicion(prenda)"
                     >
-                      {{
-                        inhabilitandoId() === prenda.id_prenda
-                          ? 'Procesando…'
-                          : 'Reactivar'
-                      }}
+                      Editar
                     </button>
-                  }
-                </div>
+
+                    @if (prenda.estado === 'Activo' || prenda.estado === 'Borrador') {
+                      <button
+                        type="button"
+                        class="fs-accion fs-accion--peligro"
+                        (click)="inhabilitar(prenda)"
+                        [disabled]="inhabilitandoId() === prenda.id_prenda"
+                      >
+                        {{
+                          inhabilitandoId() === prenda.id_prenda
+                            ? 'Procesando…'
+                            : 'Inactivar'
+                        }}
+                      </button>
+                    } @else {
+                      <button
+                        type="button"
+                        class="fs-accion"
+                        (click)="reactivar(prenda)"
+                        [disabled]="inhabilitandoId() === prenda.id_prenda"
+                      >
+                        {{
+                          inhabilitandoId() === prenda.id_prenda
+                            ? 'Procesando…'
+                            : 'Reactivar'
+                        }}
+                      </button>
+                    }
+                  </div>
+                } @else {
+                  <span class="fs-eyebrow">Solo consulta</span>
+                }
               </td>
             </tr>
           } @empty {

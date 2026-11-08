@@ -13,12 +13,14 @@
  * =============================================================================
  */
 
-import { Component, OnDestroy, OnInit, inject, signal } from '@angular/core';
+import { Component, OnDestroy, OnInit, computed, inject, signal } from '@angular/core';
 import { Subject, debounceTime, distinctUntilChanged, takeUntil } from 'rxjs';
 
 import { PrendaService } from '../../core/services/prenda.service';
 import { CategoriaService } from '../../core/services/categoria.service';
 import { NotificacionService } from '../../core/services/notificacion.service';
+import { AuthService } from '../../core/services/auth.service';
+import { ROLES } from '../../core/models/auth.model';
 import {
   Categoria,
   Color,
@@ -37,6 +39,12 @@ export class Prendas implements OnInit, OnDestroy {
   private readonly prendaService = inject(PrendaService);
   private readonly categoriaService = inject(CategoriaService);
   private readonly notificacion = inject(NotificacionService);
+  private readonly authService = inject(AuthService);
+
+  /** La edición del catálogo maestro de prendas está restringida al Administrador. */
+  readonly puedeGestionar = computed(
+    () => this.authService.rolActual() === ROLES.ADMINISTRADOR,
+  );
 
   // ---------------------------------------------------------------------------
   // ESTADO

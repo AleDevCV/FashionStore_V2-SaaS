@@ -1,5 +1,5 @@
 <main class="workspace">
- <header><div><a routerLink="/panel">Fashion<em>Store</em></a><p class="eyebrow">Operación local</p><h1>Tu sucursal, aun sin conexión.</h1></div><span class="connection" [class.disconnected]="!online()">{{online()?'Con conexión':'Sin conexión'}}</span></header>
+ <header><div><a routerLink="/panel">Fashion<em>Store</em></a><p class="eyebrow">Operación local · CU16 / CU17</p><h1>Tu sucursal, aun sin conexión.</h1></div><span class="connection" [class.disconnected]="!online()">{{online()?'Con conexión':'Sin conexión'}}</span></header>
  <p class="notice">Las ventas de contado y reservas guardadas aquí son provisionales hasta su aceptación central. La disponibilidad descargada puede haber cambiado.</p>
  @if(error()){<p role="alert" class="error">{{error()}}</p>}
  @if(store.message()){<p role="status" class="status">{{store.message()}}</p>}

@@ -9,7 +9,7 @@
   <!-- ========================= CABECERA ========================= -->
   <header class="categorias__head">
     <div>
-      <span class="fs-eyebrow">Módulo de inventarios · CU07</span>
+      <span class="fs-eyebrow">Catálogo comercial · CU06</span>
       <h1 class="categorias__titulo">Categorías de Prendas</h1>
       <p class="categorias__lead">
         Organice la clasificación jerárquica del catálogo. Las categorías pueden
@@ -17,9 +17,11 @@
       </p>
     </div>
 
-    <button type="button" class="fs-btn fs-btn--primary" (click)="abrirAlta()">
-      + Nueva categoría
-    </button>
+    @if (puedeGestionar()) {
+      <button type="button" class="fs-btn fs-btn--primary" (click)="abrirAlta()">
+        + Nueva categoría
+      </button>
+    }
   </header>
 
   <!-- ========================= CONTENIDO ========================= -->
@@ -84,43 +86,47 @@
               </td>
 
               <td>
-                <div class="categorias__acciones">
-                  <button
-                    type="button"
-                    class="fs-accion"
-                    (click)="abrirEdicion(categoria)"
-                  >
-                    Editar
-                  </button>
-
-                  @if (categoria.estado === 'Activo') {
-                    <button
-                      type="button"
-                      class="fs-accion fs-accion--peligro"
-                      (click)="inhabilitar(categoria)"
-                      [disabled]="inhabilitandoId() === categoria.id_categoria"
-                    >
-                      {{
-                        inhabilitandoId() === categoria.id_categoria
-                          ? 'Procesando…'
-                          : 'Inactivar'
-                      }}
-                    </button>
-                  } @else {
+                @if (puedeGestionar()) {
+                  <div class="categorias__acciones">
                     <button
                       type="button"
                       class="fs-accion"
-                      (click)="reactivar(categoria)"
-                      [disabled]="inhabilitandoId() === categoria.id_categoria"
+                      (click)="abrirEdicion(categoria)"
                     >
-                      {{
-                        inhabilitandoId() === categoria.id_categoria
-                          ? 'Procesando…'
-                          : 'Reactivar'
-                      }}
+                      Editar
                     </button>
-                  }
-                </div>
+
+                    @if (categoria.estado === 'Activo') {
+                      <button
+                        type="button"
+                        class="fs-accion fs-accion--peligro"
+                        (click)="inhabilitar(categoria)"
+                        [disabled]="inhabilitandoId() === categoria.id_categoria"
+                      >
+                        {{
+                          inhabilitandoId() === categoria.id_categoria
+                            ? 'Procesando…'
+                            : 'Inactivar'
+                        }}
+                      </button>
+                    } @else {
+                      <button
+                        type="button"
+                        class="fs-accion"
+                        (click)="reactivar(categoria)"
+                        [disabled]="inhabilitandoId() === categoria.id_categoria"
+                      >
+                        {{
+                          inhabilitandoId() === categoria.id_categoria
+                            ? 'Procesando…'
+                            : 'Reactivar'
+                        }}
+                      </button>
+                    }
+                  </div>
+                } @else {
+                  <span class="fs-eyebrow">Solo consulta</span>
+                }
               </td>
             </tr>
           } @empty {

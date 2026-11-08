@@ -93,26 +93,84 @@ export const routes: Routes = [
     canActivate: [authGuard],
     loadComponent: () => import('./layout/layout').then((m) => m.Layout),
     children: [
-      {path:'pagos-control',title:'Pagos y entregas · FashionStore',loadComponent:()=>import('./features/pagos-control/pagos-control').then(m=>m.PagosControl)},
-      {path:'analitica',title:'Analítica y Machine Learning · FashionStore',loadComponent:()=>import('./features/analitica/analitica').then(m=>m.Analitica)},
-      {path:'reportes',title:'Reportes · FashionStore',loadComponent:()=>import('./features/reportes/reportes').then(m=>m.Reportes)},
-      {path: 'cambios', title: 'Cambios y devoluciones', loadComponent: () => import('./features/cambios/cambios').then(m => m.Cambios)},
-      {path: 'saas', title: 'Empresa y suscripción', loadComponent: () => import('./features/saas/saas').then(m => m.Saas)},
+      {
+        // CU11 / CU12 / CU14 - Conciliación de pagos y entregas pendientes (exclusivo personal de tienda)
+        path: 'pagos-control',
+        canActivate: [
+          rolGuard(
+            [ROLES.ADMINISTRADOR, ROLES.ENCARGADO, ROLES.CAJERO],
+            'Pagos y entregas',
+          ),
+        ],
+        title: 'Pagos y entregas · FashionStore',
+        loadComponent: () =>
+          import('./features/pagos-control/pagos-control').then((m) => m.PagosControl),
+      },
+      {
+        // CU19 - Analítica avanzada y modelos de Machine Learning (empresa comercial)
+        path: 'analitica',
+        canActivate: [
+          rolGuard(
+            [ROLES.ADMINISTRADOR, ROLES.ENCARGADO],
+            'Analítica y Machine Learning',
+          ),
+        ],
+        title: 'Analítica y Machine Learning · FashionStore',
+        loadComponent: () => import('./features/analitica/analitica').then((m) => m.Analitica),
+      },
+      {
+        // CU18 - Reportes comerciales convencionales y generativos con IA
+        path: 'reportes',
+        canActivate: [
+          rolGuard(
+            [ROLES.ADMINISTRADOR, ROLES.ENCARGADO],
+            'Reportes Comerciales',
+          ),
+        ],
+        title: 'Reportes Comerciales · FashionStore',
+        loadComponent: () => import('./features/reportes/reportes').then((m) => m.Reportes),
+      },
+      {
+        // CU15 - Gestión de cambios, devoluciones y notificaciones
+        path: 'cambios',
+        canActivate: [
+          rolGuard(
+            [ROLES.ADMINISTRADOR, ROLES.ENCARGADO, ROLES.CAJERO, ROLES.CLIENTE],
+            'Cambios y devoluciones',
+          ),
+        ],
+        title: 'Cambios y devoluciones · FashionStore',
+        loadComponent: () => import('./features/cambios/cambios').then((m) => m.Cambios),
+      },
+      {
+        // CU02 - Administración de empresas, planes y suscripciones (SuperAdmin SaaS y Admin de Empresa)
+        path: 'saas',
+        canActivate: [
+          rolGuard(
+            [ROLES.ADMINISTRADOR],
+            'Empresas, Planes y Suscripciones',
+            { permitirPlataforma: true },
+          ),
+        ],
+        title: 'Empresas y suscripción · FashionStore',
+        loadComponent: () => import('./features/saas/saas').then((m) => m.Saas),
+      },
       {
         path: '',
         pathMatch: 'full',
         redirectTo: 'dashboard',
       },
       {
+        // CU01 - Resumen de sesión verificada y contexto de cuenta
         path: 'inicio',
-        title: 'Panel Â· FashionStore',
+        title: 'Sesión y Cuenta · FashionStore',
         loadComponent: () => import('./features/panel/panel').then((m) => m.Panel),
       },
       {
-        // CU24 - Dashboard de Indicadores y KPIs Gerenciales
+        // CU19 - Dashboard de Indicadores y KPIs Gerenciales
         path: 'dashboard',
-        canActivate: [rolGuard(['Administrador', 'Encargado de Sucursal'], 'Dashboard Gerencial')],
-        title: 'Dashboard de Indicadores y KPIs Â· FashionStore',
+        canActivate: [rolGuard([ROLES.ADMINISTRADOR, ROLES.ENCARGADO], 'Dashboard Gerencial')],
+        title: 'Dashboard de Indicadores y KPIs · FashionStore',
         loadComponent: () => import('./features/dashboard/dashboard').then((m) => m.Dashboard),
       },
       {
@@ -120,35 +178,33 @@ export const routes: Routes = [
         redirectTo: 'dashboard',
       },
       {
-        // CU25 - BitÃ¡cora de AuditorÃ­a del Sistema (Trazabilidad Forense)
+        // CU20 - Bitácora de Auditoría del Sistema (Trazabilidad Forense)
         path: 'bitacora',
-        canActivate: [rolGuard(['Administrador'], 'BitÃ¡cora de AuditorÃ­a')],
-        title: 'BitÃ¡cora de AuditorÃ­a Â· FashionStore',
+        canActivate: [
+          rolGuard([ROLES.ADMINISTRADOR], 'Bitácora de Auditoría', {
+            permitirPlataforma: true,
+          }),
+        ],
+        title: 'Bitácora de Auditoría · FashionStore',
         loadComponent: () => import('./features/bitacora/bitacora').then((m) => m.Bitacora),
       },
       {
-        // CU02 - Administrar usuarios y asignar roles.
-        // Doble barrera: authGuard (heredado del padre) exige sesiÃ³n, y
-        // rolGuard restringe la secciÃ³n al rol "Administrador". El backend
-        // aplica la misma regla con `requiere_rol`, que es la que realmente
-        // protege los datos.
+        // CU03 - Administrar usuarios y asignar roles (exclusivo Administrador de Empresa)
         path: 'usuarios',
-        canActivate: [rolGuard(['Administrador'], 'Usuarios y Roles')],
-        title: 'Usuarios y Roles Â· FashionStore',
+        canActivate: [rolGuard([ROLES.ADMINISTRADOR], 'Usuarios y Roles')],
+        title: 'Usuarios y Roles · FashionStore',
         loadComponent: () => import('./features/usuarios/usuarios').then((m) => m.Usuarios),
       },
       {
-        // CU03 - Matriz de Roles y Permisos (RBAC granular).
-        // Restringido exclusivamente al Administrador.
+        // CU03 - Matriz de Roles y Permisos (RBAC granular, exclusivo Administrador de Empresa)
         path: 'roles-permisos',
-        canActivate: [rolGuard(['Administrador'], 'Roles y Permisos')],
-        title: 'Roles y Permisos Â· FashionStore',
+        canActivate: [rolGuard([ROLES.ADMINISTRADOR], 'Roles y Permisos')],
+        title: 'Roles y Permisos · FashionStore',
         loadComponent: () =>
           import('./features/admin/roles-permisos/roles-permisos').then((m) => m.RolesPermisos),
       },
       {
-        // CU05 - El personal autorizado usa la gestiÃ³n administrativa y el
-        // Cliente accede a la misma ruta en modo de autogestiÃ³n de su ficha.
+        // CU05 - Gestión administrativa de clientes y autogestión de ficha propia
         path: 'clientes',
         canActivate: [
           rolGuard(
@@ -156,122 +212,133 @@ export const routes: Routes = [
             'Fichas de Clientes',
           ),
         ],
-        title: 'Clientes Â· FashionStore',
+        title: 'Clientes · FashionStore',
         loadComponent: () => import('./features/clientes/clientes').then((m) => m.Clientes),
       },
       {
-        // CU06 - Ciudades y sucursales. Solo el Administrador ve la secciÃ³n:
-        // las altas y ediciones exigen ese rol en el backend.
+        // CU04 - Ciudades y sucursales (exclusivo Administrador de Empresa)
         path: 'sucursales',
-        canActivate: [rolGuard(['Administrador'], 'Sucursales')],
-        title: 'Sucursales Â· FashionStore',
+        canActivate: [rolGuard([ROLES.ADMINISTRADOR], 'Ciudades y Sucursales')],
+        title: 'Ciudades y Sucursales · FashionStore',
         loadComponent: () => import('./features/sucursales/sucursales').then((m) => m.Sucursales),
       },
       {
-        // CU07 - GestiÃ³n administrativa de categorÃ­as, exclusiva del Administrador.
-        // El catÃ¡logo pÃºblico obtiene sus filtros desde /api/catalogo/filtros.
+        // CU06 - Categorías del catálogo comercial
         path: 'categorias',
-        canActivate: [rolGuard([ROLES.ADMINISTRADOR], 'CategorÃ­as de Prendas')],
-        title: 'CategorÃ­as Â· FashionStore',
+        canActivate: [
+          rolGuard([ROLES.ADMINISTRADOR, ROLES.ENCARGADO], 'Categorías de Prendas'),
+        ],
+        title: 'Categorías · FashionStore',
         loadComponent: () => import('./features/categorias/categorias').then((m) => m.Categorias),
       },
       {
-        // CU08 - Prendas del catÃ¡logo. Solo el Administrador edita el catÃ¡logo
-        // maestro y su matriz de variantes.
+        // CU06 - Prendas, variantes y precios del catálogo comercial
         path: 'prendas',
-        canActivate: [rolGuard(['Administrador'], 'Prendas')],
-        title: 'Prendas Â· FashionStore',
+        canActivate: [rolGuard([ROLES.ADMINISTRADOR, ROLES.ENCARGADO], 'Prendas del Catálogo')],
+        title: 'Prendas · FashionStore',
         loadComponent: () => import('./features/prendas/prendas').then((m) => m.Prendas),
       },
       {
-        // CU09 - GestiÃ³n de Temporadas y Colecciones
+        // CU06 - Gestión de Temporadas y Colecciones
         path: 'temporadas',
-        canActivate: [rolGuard(['Administrador', 'Encargado de Sucursal'], 'Temporadas')],
-        title: 'Temporadas y Colecciones Â· FashionStore',
+        canActivate: [rolGuard([ROLES.ADMINISTRADOR, ROLES.ENCARGADO], 'Temporadas')],
+        title: 'Temporadas y Colecciones · FashionStore',
         loadComponent: () => import('./features/temporadas/temporadas').then((m) => m.Temporadas),
       },
       {
-        // CU10 - Monitoreo de Inventario Multisucursal
+        // CU08 - Consultar inventario y disponibilidad por sucursal
         path: 'inventario/monitoreo',
         canActivate: [
-          rolGuard(['Administrador', 'Encargado de Sucursal'], 'Monitoreo de Inventario'),
+          rolGuard(
+            [ROLES.ADMINISTRADOR, ROLES.ENCARGADO, ROLES.CAJERO],
+            'Inventario y Disponibilidad',
+          ),
         ],
-        title: 'Monitoreo de Inventario Â· FashionStore',
+        title: 'Inventario y Disponibilidad · FashionStore',
         loadComponent: () =>
           import('./features/inventario-monitoreo/inventario-monitoreo').then(
             (m) => m.InventarioMonitoreo,
           ),
       },
       {
-        // CU10 - Alias alternativo
+        // CU08 - Alias alternativo
         path: 'monitoreo-inventario',
         redirectTo: 'inventario/monitoreo',
       },
       {
-        // CU12 - Directorio de Proveedores
+        // CU07 - Directorio de Proveedores
         path: 'proveedores',
-        canActivate: [rolGuard(['Administrador', 'Encargado de Sucursal'], 'Proveedores')],
-        title: 'Proveedores Â· FashionStore',
+        canActivate: [rolGuard([ROLES.ADMINISTRADOR, ROLES.ENCARGADO], 'Proveedores')],
+        title: 'Proveedores · FashionStore',
         loadComponent: () =>
           import('./features/proveedores/proveedores').then((m) => m.Proveedores),
       },
       {
-        // CU11 - Movimientos de Inventario
+        // CU10 - Registrar movimientos y traspasos de inventario
         path: 'movimientos-inventario',
         canActivate: [
-          rolGuard(['Administrador', 'Encargado de Sucursal'], 'Movimientos de Inventario'),
+          rolGuard([ROLES.ADMINISTRADOR, ROLES.ENCARGADO], 'Movimientos de Inventario'),
         ],
-        title: 'Movimientos de Inventario Â· FashionStore',
+        title: 'Movimientos de Inventario · FashionStore',
         loadComponent: () =>
           import('./features/inventario-movimientos/movimientos').then((m) => m.Movimientos),
       },
       {
-        // CU11 - Alias alternativo para concordancia exacta de URLs
+        // CU10 - Alias alternativo para concordancia exacta de URLs
         path: 'inventario/movimientos',
         redirectTo: 'movimientos-inventario',
       },
       {
-        // CU13 - Historial de Compras
+        // CU07 - Historial de Compras
         path: 'compras',
-        canActivate: [rolGuard(['Administrador', 'Encargado de Sucursal'], 'Compras')],
-        title: 'Compras Â· FashionStore',
+        canActivate: [rolGuard([ROLES.ADMINISTRADOR, ROLES.ENCARGADO], 'Compras')],
+        title: 'Compras · FashionStore',
         loadComponent: () => import('./features/compras/compras').then((m) => m.Compras),
       },
       {
-        // CU13 - Formulario de AdquisiciÃ³n Transaccional
+        // CU07 - Formulario de Adquisición Transaccional
         path: 'compras/nueva',
-        canActivate: [rolGuard(['Administrador', 'Encargado de Sucursal'], 'Registro de Compras')],
-        title: 'Nueva Compra Â· FashionStore',
+        canActivate: [rolGuard([ROLES.ADMINISTRADOR, ROLES.ENCARGADO], 'Registro de Compras')],
+        title: 'Nueva Compra · FashionStore',
         loadComponent: () =>
           import('./features/compras/compra-nueva/compra-nueva').then((m) => m.CompraNueva),
       },
       {
-        // CU22 - Asistente y Recomendador Virtual de Moda con IA (Gemini)
+        // CU09 - Asistente y Recomendador Virtual de Moda con IA (Gemini)
         path: 'ia/asistente-moda',
-        title: 'Asistente de Moda IA Â· FashionStore',
+        canActivate: [
+          rolGuard(
+            [ROLES.ADMINISTRADOR, ROLES.ENCARGADO, ROLES.CAJERO, ROLES.CLIENTE],
+            'Asistente de Moda IA',
+          ),
+        ],
+        title: 'Asistente de Moda IA · FashionStore',
         loadComponent: () =>
           import('./features/ia/asistente-moda/asistente-moda').then((m) => m.AsistenteModa),
       },
       {
-        // CU22 - Alias de ruta
+        // CU09 - Alias de ruta
         path: 'ia/recomendador',
         redirectTo: 'ia/asistente-moda',
       },
       {
-        // CU23 - Consultas AnalÃ­ticas Ejecutivas por Voz con IA
+        // CU18 - Consultas Analíticas Ejecutivas por Voz con IA
         path: 'ia/analitica-voz',
-        canActivate: [rolGuard(['Administrador', 'Encargado de Sucursal'], 'AnalÃ­tica por Voz')],
-        title: 'AnalÃ­tica por Voz Â· FashionStore',
+        canActivate: [rolGuard([ROLES.ADMINISTRADOR, ROLES.ENCARGADO], 'Analítica por Voz')],
+        title: 'Analítica por Voz · FashionStore',
         loadComponent: () =>
           import('./features/ia/analitica-voz/analitica-voz').then((m) => m.AnaliticaVoz),
       },
       {
-        // CU17 - AtenciÃ³n de Reservas en Sucursal y Probadores FÃ­sicos
+        // CU12 - Atención de Reservas en Sucursal y Probadores Físicos
         path: 'reservas-atencion',
         canActivate: [
-          rolGuard(['Administrador', 'Encargado de Sucursal', 'Cajero (POS)'], 'AtenciÃ³n de Reservas'),
+          rolGuard(
+            [ROLES.ADMINISTRADOR, ROLES.ENCARGADO, ROLES.CAJERO],
+            'Atención de Reservas',
+          ),
         ],
-        title: 'AtenciÃ³n de Reservas Â· FashionStore',
+        title: 'Atención de Reservas · FashionStore',
         loadComponent: () =>
           import('./features/reservas-atencion/reservas-atencion').then((m) => m.ReservasAtencion),
       },
@@ -280,12 +347,12 @@ export const routes: Routes = [
         redirectTo: 'reservas-atencion',
       },
       {
-        // CU19 - Terminal POS de Ventas Presenciales y Caja
+        // CU13 - Terminal POS de Ventas Presenciales y Caja
         path: 'pos',
         canActivate: [
-          rolGuard(['Administrador', 'Encargado de Sucursal', 'Cajero (POS)'], 'Terminal POS'),
+          rolGuard([ROLES.ADMINISTRADOR, ROLES.ENCARGADO, ROLES.CAJERO], 'Terminal POS'),
         ],
-        title: 'Terminal POS Â· FashionStore',
+        title: 'Terminal POS · FashionStore',
         loadComponent: () => import('./features/pos/pos').then((m) => m.Pos),
       },
       {

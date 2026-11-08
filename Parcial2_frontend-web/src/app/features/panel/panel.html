@@ -3,18 +3,18 @@
   decodificó correctamente tras completar el CU01.
 -->
 <section class="panel">
-  <span class="fs-eyebrow">Sesión verificada</span>
-  <h1 class="panel__title">Bienvenido al panel</h1>
+  <span class="fs-eyebrow">Sesión verificada · CU01</span>
+  <h1 class="panel__title">Bienvenido al espacio de trabajo</h1>
   <p class="panel__lead">
     El token JWT se almacenó correctamente y su contenido fue decodificado por
-    el servicio de autenticación. Use el menú lateral para acceder a los módulos
-    de la Iteración 1.
+    el servicio de autenticación. Utilice el menú lateral para acceder a los
+    módulos habilitados según el ámbito de su cuenta y su rol.
   </p>
 
   @if (usuario(); as u) {
     <!-- Ficha con los datos extraídos del token -->
     <div class="panel__card">
-      <h2 class="panel__card-title">Carga útil del token</h2>
+      <h2 class="panel__card-title">Contexto de la sesión activa</h2>
       <dl class="panel__data">
         <div class="panel__row">
           <dt class="fs-eyebrow">ID de usuario</dt>
@@ -29,9 +29,19 @@
           <dd>{{ u.correo }}</dd>
         </div>
         <div class="panel__row">
-          <dt class="fs-eyebrow">Rol jerárquico</dt>
-          <dd>{{ u.rol }}</dd>
+          <dt class="fs-eyebrow">Ámbito de cuenta</dt>
+          <dd>{{ u.tipo_cuenta || 'PERSONAL' }}</dd>
         </div>
+        <div class="panel__row">
+          <dt class="fs-eyebrow">Rol jerárquico</dt>
+          <dd>{{ u.tipo_cuenta === 'PLATAFORMA' ? 'SuperAdministrador SaaS' : u.rol }}</dd>
+        </div>
+        @if (u.empresa_slug && u.tipo_cuenta !== 'PLATAFORMA') {
+          <div class="panel__row">
+            <dt class="fs-eyebrow">Empresa activa</dt>
+            <dd>{{ u.empresa_slug }}</dd>
+          </div>
+        }
         <div class="panel__row">
           <dt class="fs-eyebrow">Expira</dt>
           <dd>{{ formatearExpiracion(u.exp) }}</dd>
@@ -39,18 +49,32 @@
       </dl>
     </div>
 
-    <!-- Accesos rápidos para el Administrador -->
-    @if (u.rol === 'Administrador') {
+    <!-- Accesos rápidos según el ámbito de cuenta -->
+    @if (u.tipo_cuenta === 'PLATAFORMA') {
       <div class="panel__quick-actions">
-        <h3 class="fs-eyebrow">Acciones Rápidas del Administrador</h3>
+        <h3 class="fs-eyebrow">Acciones Rápidas de Plataforma SaaS</h3>
+        <div class="panel__buttons-group">
+          <a routerLink="/panel/saas" class="btn btn--primary btn-action">
+            <span class="material-symbols-outlined">domain</span>
+            Empresas, Planes y Suscripciones (CU02)
+          </a>
+          <a routerLink="/panel/bitacora" class="btn btn--outline btn-action">
+            <span class="material-symbols-outlined">security</span>
+            Bitácora de Auditoría de Plataforma (CU20)
+          </a>
+        </div>
+      </div>
+    } @else if (u.rol === 'Administrador') {
+      <div class="panel__quick-actions">
+        <h3 class="fs-eyebrow">Acciones Rápidas del Administrador de Empresa</h3>
         <div class="panel__buttons-group">
           <a routerLink="/panel/bitacora" class="btn btn--primary btn-action">
             <span class="material-symbols-outlined">security</span>
-            Ver Bitácora de Auditoría del Sistema (CU25)
+            Ver Bitácora de Auditoría del Sistema (CU20)
           </a>
           <a routerLink="/panel/dashboard" class="btn btn--outline btn-action">
             <span class="material-symbols-outlined">analytics</span>
-            Ver Dashboard de KPIs (CU24)
+            Ver Dashboard de Indicadores (CU19)
           </a>
         </div>
       </div>

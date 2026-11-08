@@ -4,7 +4,7 @@
  * =============================================================================
  */
 
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
 import { Observable,switchMap,tap } from 'rxjs';
 import {CarritoService} from './carrito.service';
@@ -52,8 +52,10 @@ export class VentaService {
     return this.http.get<VentaDetalladaRespuesta>(`${this.base}/${id}`);
   }
 
-  listarVentas(params?: { id_cliente?: number; id_sucursal?: number; skip?: number; limit?: number }): Observable<VentaRespuesta[]> {
-    return this.http.get<VentaRespuesta[]>(`${this.base}/`, { params: params as any });
+  listarVentas(params?: { id_cliente?: number | null; id_sucursal?: number | null; skip?: number | null; limit?: number | null }): Observable<VentaRespuesta[]> {
+    return this.http.get<VentaRespuesta[]>(`${this.base}/`, {
+      params: this.construirParametros(params),
+    });
   }
 
   // ── RESERVAS DE PROBADOR Y ATENCIÓN EN SUCURSAL (CU16, CU17) ────────────────
@@ -66,12 +68,39 @@ export class VentaService {
     return this.http.get<TicketReservaRespuesta>(`${this.base}/reservas-probador/${codigoOId}`);
   }
 
-  listarReservasSucursal(params?: { id_sucursal?: number; estado?: string; skip?: number; limit?: number }): Observable<ReservaSucursalItem[]> {
-    return this.http.get<ReservaSucursalItem[]>(`${this.base}/reservas-probador`, { params: params as any });
+  listarReservasSucursal(params?: { id_sucursal?: number | null; estado?: string | null; skip?: number | null; limit?: number | null }): Observable<ReservaSucursalItem[]> {
+    return this.http.get<ReservaSucursalItem[]>(`${this.base}/reservas-probador/`, {
+      params: this.construirParametros(params),
+    });
   }
 
   actualizarEstadoReservaProbador(idReserva: number, datos: ReservaProbadorEstadoActualizar): Observable<TicketReservaRespuesta> {
     return this.http.patch<TicketReservaRespuesta>(`${this.base}/reservas-probador/${idReserva}/estado`, datos);
+  }
+
+  private construirParametros(
+    params?: Record<string, string | number | null | undefined>,
+  ): HttpParams {
+    let httpParams = new HttpParams();
+    if (!params) {
+      return httpParams;
+    }
+    for (const [clave, valor] of Object.entries(params)) {
+      if (valor === undefined || valor === null) {
+        continue;
+      }
+      if (typeof valor === 'number') {
+        if (!Number.isNaN(valor)) {
+          httpParams = httpParams.set(clave, valor.toString());
+        }
+        continue;
+      }
+      const texto = valor.trim();
+      if (texto.length > 0 && texto !== 'Todos') {
+        httpParams = httpParams.set(clave, texto);
+      }
+    }
+    return httpParams;
   }
 }
 
