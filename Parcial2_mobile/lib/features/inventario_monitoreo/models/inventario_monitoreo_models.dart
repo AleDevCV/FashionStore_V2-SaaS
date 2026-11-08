@@ -144,6 +144,9 @@ class MonitoreoItem {
   final String? codigoHex;
   final double precio;
   final int stock;
+  final int stockFisico;
+  final int stockRetenido;
+  final int stockDisponible;
   final String estadoStock; // 'Optimo', 'Bajo', 'Agotado'
   final String colorBadge; // 'verde', 'amarillo', 'rojo'
 
@@ -166,19 +169,24 @@ class MonitoreoItem {
     this.codigoHex,
     required this.precio,
     required this.stock,
+    int? stockFisico,
+    this.stockRetenido = 0,
+    int? stockDisponible,
     required this.estadoStock,
     required this.colorBadge,
-  });
+  }) : stockFisico = stockFisico ?? stock,
+       stockDisponible = stockDisponible ?? stock;
 
   factory MonitoreoItem.fromJson(Map<String, dynamic> json) {
     final stockVal = _toInt(json['stock']);
+    final disponible = _toInt(json['stock_disponible'] ?? json['stock']);
 
     // Clasificación de respaldo si el backend no envía el estado explícito
     String estado = (json['estado_stock'] ?? '').toString();
     if (estado.isEmpty) {
-      if (stockVal >= 5) {
+      if (disponible >= 5) {
         estado = 'Optimo';
-      } else if (stockVal > 0) {
+      } else if (disponible > 0) {
         estado = 'Bajo';
       } else {
         estado = 'Agotado';
@@ -187,9 +195,9 @@ class MonitoreoItem {
 
     String badge = (json['color_badge'] ?? '').toString();
     if (badge.isEmpty) {
-      if (stockVal >= 5) {
+      if (disponible >= 5) {
         badge = 'verde';
-      } else if (stockVal > 0) {
+      } else if (disponible > 0) {
         badge = 'amarillo';
       } else {
         badge = 'rojo';
@@ -221,6 +229,9 @@ class MonitoreoItem {
       codigoHex: json['codigo_hex']?.toString(),
       precio: precioFinal,
       stock: stockVal,
+      stockFisico: _toInt(json['stock_fisico'] ?? json['stock']),
+      stockRetenido: _toInt(json['stock_retenido']),
+      stockDisponible: disponible,
       estadoStock: estado,
       colorBadge: badge,
     );
@@ -251,6 +262,9 @@ class MonitoreoItem {
         'codigo_hex': codigoHex,
         'precio': precio,
         'stock': stock,
+        'stock_fisico': stockFisico,
+        'stock_retenido': stockRetenido,
+        'stock_disponible': stockDisponible,
         'estado_stock': estadoStock,
         'color_badge': colorBadge,
       };
@@ -262,6 +276,8 @@ class DesgloseSucursal {
   final String nombreSucursal;
   final String ciudad;
   final int stock;
+  final int stockFisico;
+  final int stockRetenido;
   final String estadoStock;
 
   const DesgloseSucursal({
@@ -269,15 +285,19 @@ class DesgloseSucursal {
     required this.nombreSucursal,
     required this.ciudad,
     required this.stock,
+    int? stockFisico,
+    this.stockRetenido = 0,
     required this.estadoStock,
-  });
+  }) : stockFisico = stockFisico ?? stock;
 
   factory DesgloseSucursal.fromItem(MonitoreoItem item) {
     return DesgloseSucursal(
       idSucursal: item.idSucursal,
       nombreSucursal: item.sucursal,
       ciudad: item.ciudad,
-      stock: item.stock,
+      stock: item.stockDisponible,
+      stockFisico: item.stockFisico,
+      stockRetenido: item.stockRetenido,
       estadoStock: item.estadoStock,
     );
   }
@@ -328,7 +348,7 @@ class VarianteAgrupadaInventario {
     for (final entry in mapa.entries) {
       final subItems = entry.value;
       final primerItem = subItems.first;
-      final sumaStock = subItems.fold<int>(0, (sum, it) => sum + it.stock);
+      final sumaStock = subItems.fold<int>(0, (sum, it) => sum + it.stockDisponible);
 
       String estado;
       if (sumaStock >= 5) {

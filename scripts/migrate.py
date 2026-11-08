@@ -37,6 +37,7 @@ def grant_application_access(cur, app_user, password):
         'REVOKE ALL ON schema_migrations FROM {}',
         'REVOKE UPDATE,DELETE ON bitacora FROM {}',
         'GRANT EXECUTE ON FUNCTION bind_push_device(TEXT) TO {}',
+        'GRANT EXECUTE ON FUNCTION audit_identity_events() TO {}',
     ):
         cur.execute(sql.SQL(statement).format(sql.Identifier(app_user)))
     for signature in ('identity_lookup(TEXT,BIGINT)', 'identity_index_user(INTEGER)', 'identity_register(JSONB)',

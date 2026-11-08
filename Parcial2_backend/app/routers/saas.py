@@ -94,9 +94,22 @@ def plans(_=Depends(get_current_user),cur=Depends(get_db)):
 
 @router.patch('/planes/{plan_id}')
 def edit_plan(plan_id:int,data:PlanEdit,_=Depends(platform_user),cur=Depends(get_db)):
-    # SERIALIZABLE por bloqueo del plan y empresas al modificar límites.
-    cur.execute('SELECT id_plan FROM plan WHERE id_plan=%s FOR UPDATE',(plan_id,))
-    if not cur.fetchone():raise HTTPException(404,'Plan no encontrado.')
+    cur.execute('SELECT max_sucursales FROM plan WHERE id_plan=%s FOR UPDATE',(plan_id,))
+    plan=cur.fetchone()
+    if not plan:raise HTTPException(404,'Plan no encontrado.')
+    if data.max_sucursales < plan['max_sucursales']:
+        cur.execute('SELECT id_empresa FROM empresa WHERE NOT plataforma ORDER BY id_empresa')
+        companies=cur.fetchall()
+        original=require_context().tenant_id
+        try:
+            for company in companies:
+                cur.execute("SELECT set_config('app.tenant_id',%s,true)",(str(company['id_empresa']),))
+                cur.execute('''SELECT count(*) AS total FROM sucursal WHERE activa
+                               AND EXISTS(SELECT 1 FROM suscripcion WHERE id_plan=%s)''',(plan_id,))
+                if cur.fetchone()['total'] > data.max_sucursales:
+                    raise HTTPException(400,'El cupo propuesto es menor al número de sucursales activas de una empresa suscrita.')
+        finally:
+            cur.execute("SELECT set_config('app.tenant_id',%s,true)",(str(original),))
     cur.execute('UPDATE plan SET max_sucursales=%s,reportes_ia=%s WHERE id_plan=%s RETURNING *',(data.max_sucursales,data.reportes_ia,plan_id));return cur.fetchone()
 
 @router.get('/suscripciones/{tenant_id}')

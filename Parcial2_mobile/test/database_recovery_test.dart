@@ -120,6 +120,38 @@ void main() {
     final back = await open(origin: oldOrigin);
     expect(await wires(back), before);
   });
+  test('SQLite v1 a v2 conserva intentos y solo resuelve al confirmar una revisión', () async {
+    const origin = 'http://offline-audit.invalid:8002';
+    final legacy = await old(origin);
+    final catalog = recoverySnapshot(101);
+    await legacy.saveSnapshot(catalog);
+    final root = await legacy.capture(snapshot: catalog, kind: 'venta',
+        quantities: {1: 1}, cash: '50');
+    await legacy.applyResults([{'operation_id': root, 'state': 'EN_CONFLICTO'}]);
+    final failed = await legacy.capture(snapshot: catalog, kind: 'venta',
+        quantities: {1: 1}, cash: '50', original: root);
+    await legacy.applyResults([{'operation_id': failed, 'state': 'RECHAZADA'}]);
+    await legacy.db.update('operation', {'resolved': 1}, where: 'id=?', whereArgs: [root]);
+    final before = await wires(legacy);
+    await legacy.db.close();
+
+    final db = await open(origin: origin);
+    Future<Object?> resolved() async => (await db.operations()).firstWhere((row) => row['id'] == root)['resolved'];
+    expect(await db.db.getVersion(), 2);
+    expect(await wires(db), before);
+    expect(await db.db.rawQuery('PRAGMA foreign_key_check'), isEmpty);
+    expect(await resolved(), 0);
+    Future<String> revise() => db.capture(snapshot: catalog, kind: 'venta',
+        quantities: {1: 1}, cash: '50', original: root);
+    final next = await revise();
+    expect(await resolved(), 0);
+    await expectLater(revise(), throwsStateError);
+    expect((await db.catalog(101)).single['available'], 9);
+    await db.applyResults([{'operation_id': next, 'state': 'CONFIRMADA'}]);
+    expect(await resolved(), 1);
+    expect((await db.catalog(101)).single['available'], 9);
+    expect((await db.operations()).length, 3);
+  });
   test(
       'A4: recupera v1, mantiene sucursales UUID device y detalles; fuente idéntica',
       () async {

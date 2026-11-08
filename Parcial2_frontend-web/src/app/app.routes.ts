@@ -54,7 +54,6 @@ export const routes: Routes = [
   {
     // CU04 - Restablecimiento de contraseÃ±a mediante token temporal
     path: 'restablecer-password',
-    canActivate: [invitadoGuard],
     title: 'Restablecer contraseÃ±a Â· FashionStore',
     loadComponent: () =>
       import('./features/auth/restablecer-password/restablecer-password').then(
@@ -101,6 +100,7 @@ export const routes: Routes = [
       {
         path: 'recuperar-acceso',
         canActivate: [plataformaGuard],
+        data: { volver: '/panel/casos/CU01' },
         title: 'Recuperar acceso · FashionStore',
         loadComponent: () => import('./features/auth/recuperar-password/recuperar-password').then(m => m.RecuperarPassword),
       },
@@ -210,7 +210,7 @@ export const routes: Routes = [
         // CU20 - Bitácora de Auditoría del Sistema (Trazabilidad Forense)
         path: 'bitacora',
         canActivate: [
-          rolGuard([ROLES.ADMINISTRADOR], 'Bitácora de Auditoría', {
+          rolGuard([ROLES.ADMINISTRADOR, ROLES.ENCARGADO], 'Bitácora de Auditoría', {
             permitirPlataforma: true,
           }),
         ],

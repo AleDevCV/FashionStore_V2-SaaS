@@ -64,10 +64,12 @@ def compensate(operation_id:UUID,data:Resolution,_=Depends(get_current_user),cur
     sync.require_operation_access(cur,row)
     if row['branch_id'] is not None:authorized_branch(cur,row['branch_id'])
     if row['state']=='CONFIRMADA':raise HTTPException(409,'Una operación confirmada se corrige mediante cambio o devolución.')
+    if row['original_operation'] or row['envelope'].get('original_operation'):
+        raise HTTPException(409,'Registre la compensación en la operación original.')
     if row['resolved_at'] is not None:raise HTTPException(409,'El conflicto ya fue resuelto.')
     from decimal import Decimal
     required=Decimal(str(row['envelope'].get('cash_received') or 0)) if row['kind']=='venta' else Decimal(0)
     if data.compensacion!=required:raise HTTPException(422,'La compensación debe restituir íntegramente el efectivo registrado; una reserva no tiene efectivo recibido.')
     cur.execute('UPDATE operacion_sync SET resolved_by=%s,resolution=%s,compensation=%s,resolved_at=now() WHERE operation_id=%s',(require_context().user_id,data.motivo,data.compensacion,str(operation_id)))
-    cur.execute("INSERT INTO bitacora(id_usuario,accion,tabla_afectada,detalle) VALUES(%s,'COMPENSAR','operacion_sync',%s)",(require_context().user_id,str(operation_id)))
+    cur.execute("INSERT INTO bitacora(id_usuario,accion,tabla_afectada,detalle,id_sucursal,operation_id) VALUES(%s,'COMPENSAR','operacion_sync',%s,%s,%s)",(require_context().user_id,str(operation_id),row['branch_id'],str(operation_id)))
     return {'operation_id':operation_id,'resuelto':True,'compensacion':data.compensacion}

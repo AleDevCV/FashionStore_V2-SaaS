@@ -5,6 +5,7 @@
       <h1><span>{{ actual.id }}</span> {{ actual.title }}</h1>
       <p>{{ resumen() }}</p>
     </header>
+    @if (necesitaEmpresa()) {
     <div class="company">
       <label for="empresa-cu">Empresa de trabajo</label>
       <select id="empresa-cu" [value]="empresa()" (change)="elegirEmpresa($any($event.target).value)">
@@ -15,6 +16,13 @@
       </select>
       <p>La selección se aplica al abrir una interfaz de tienda. Tu cuenta sigue siendo SuperAdministrador SaaS.</p>
     </div>
+    } @else if (actual.id === 'CU01') {
+      <div class="company">
+        <strong>Cuenta de acceso</strong>
+        <p>{{ sesion()?.correo }} · SuperAdministrador SaaS</p>
+        <p>La recuperación se solicita con el correo de la cuenta y se completa desde el enlace recibido.</p>
+      </div>
+    }
     @if (error()) { <p role="alert" class="error">{{ error() }}</p> }
     <h2>Interfaces</h2>
     <ul>

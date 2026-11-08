@@ -41,11 +41,14 @@ def execute(cur,filters:ReportFilters):
     if filters.categoria:
         cur.execute('SELECT 1 FROM categoria WHERE id_categoria=%s',(filters.categoria,))
         if not cur.fetchone():raise HTTPException(404,'Categoría no disponible.')
+    if filters.id_prenda:
+        cur.execute('SELECT 1 FROM prenda WHERE id_prenda=%s',(filters.id_prenda,))
+        if not cur.fetchone():raise HTTPException(404,'Prenda no disponible.')
     # SET LOCAL limita también los reportes convencionales y se restablece al devolver la conexión.
     cur.execute("SET LOCAL statement_timeout='8000ms'")
-    params={'branches':scope,'start':filters.desde,'end':filters.hasta+timedelta(days=1),'category':filters.categoria,'limit':filters.limite,'threshold':filters.umbral}
+    params={'branches':scope,'start':filters.desde,'end':filters.hasta+timedelta(days=1),'category':filters.categoria,'product':filters.id_prenda,'limit':filters.limite,'threshold':filters.umbral}
     where='v.id_sucursal=ANY(%(branches)s) AND v.fecha_venta>=%(start)s AND v.fecha_venta<%(end)s'
-    category='(%(category)s IS NULL OR p.id_categoria=%(category)s)'
+    category='(%(category)s IS NULL OR p.id_categoria=%(category)s) AND (%(product)s IS NULL OR p.id_prenda=%(product)s)'
     sales="FROM venta v JOIN detalle_venta d USING(id_venta) JOIN variante_prenda vp USING(id_variante_prenda) JOIN prenda p USING(id_prenda)"
     kind=filters.tipo
     if kind=='ventas_sucursal':
@@ -65,7 +68,7 @@ def execute(cur,filters:ReportFilters):
     cur.execute(query,params);rows=serial([dict(r) for r in cur.fetchall()]);identifier=str(uuid4())
     result={'id':identifier,'titulo':TITLES[kind],'filtros':filters.model_dump(mode='json'),'columnas':list(rows[0]) if rows else [],'filas':rows,'generado':datetime.now(timezone.utc).isoformat(),'moneda':'BOB','nota':'Ingresos brutos de ventas confirmadas; los ajustes por cambios y reembolsos se consultan por separado. Stock es disponibilidad actual, no histórica.','limite':filters.limite}
     result['sucursales_autorizadas']=scope
-    cur.execute("SELECT count(*)::int AS n FROM venta WHERE id_sucursal=ANY(%s) AND origen_datos='demostracion' AND fecha_venta>=%s AND fecha_venta<%s",(scope,filters.desde,filters.hasta+timedelta(days=1)))
+    cur.execute(f"SELECT count(DISTINCT v.id_venta)::int AS n {sales} WHERE {where} AND {category} AND v.origen_datos='demostracion'",params)
     result['ventas_demostracion']=cur.fetchone()['n']
     cur.execute('INSERT INTO reporte_resultado(id,author_id,filters,result) VALUES(%s,%s,%s,%s)',(identifier,require_context().user_id,Json(filters.model_dump(mode='json')),Json(result)))
     cur.execute("INSERT INTO bitacora(id_usuario,accion,tabla_afectada,detalle) VALUES(%s,'REPORTE','reporte_resultado',%s)",(require_context().user_id,kind+':'+identifier))

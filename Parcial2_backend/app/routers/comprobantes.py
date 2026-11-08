@@ -119,14 +119,8 @@ def comprobante_por_numero(
 @router.get('/{numero}/pdf', response_class=FileResponse)
 def descargar_pdf_autorizado(numero: str, cursor=Depends(get_db), usuario=Depends(get_current_user)):
     from fastapi import HTTPException
-    from app.tenant import require_context
     import re
     if not re.fullmatch(r'FS-[0-9]{4}-[0-9]+', numero):
         raise HTTPException(404, 'Comprobante no encontrado.')
-    cursor.execute('SELECT id_comprobante FROM comprobante WHERE numero_comprobante=%s', (numero,))
-    if not cursor.fetchone():
-        raise HTTPException(404, 'Comprobante no encontrado.')
-    path = svc.STATIC_DIR / str(require_context().tenant_id) / (numero + '.pdf')
-    if not path.is_file():
-        raise HTTPException(404, 'Archivo no disponible; solicite regeneración autorizada.')
+    path = svc.pdf_autorizado(cursor, numero)
     return FileResponse(path, media_type='application/pdf', filename=numero + '.pdf', headers={'Cache-Control': 'no-store'})

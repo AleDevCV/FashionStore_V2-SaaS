@@ -8,7 +8,7 @@
  * =============================================================================
  */
 
-export type TipoMovimiento = 'Entrada' | 'Salida' | 'Traspaso';
+export type TipoMovimiento = 'Entrada' | 'Salida' | 'Ajuste' | 'Traspaso';
 
 export interface MovimientoInventario {
   id_movimiento: number;

@@ -85,6 +85,27 @@ describe('A5 reconciliación IndexedDB real',()=>{
   await seed(1);await db.operations.update(id(1),{state:'PENDIENTE'});await download();
   const op=(await db.operations.get(id(1)))!;expect(op.state).toBe('CONFIRMADA');expect(op.accounted).toBeTrue();
  });
+ it('una revisión local solo resuelve el original al confirmar en el servidor', async () => {
+  await seed(1);
+  await db.operations.update(id(1), { state: 'EN_CONFLICTO' });
+  await db.branches.put(snapshot(1, 1000).branch);
+  await db.meta.put({ key: 'device', value: id(999) });
+  states.set(id(1), 'EN_CONFLICTO');
+  await service.refresh();
+  const revise = () => service.capture('venta', null, [{ variantId: 1, quantity: 1 }], '50.00', id(1));
+  const first = await revise();
+  expect((await db.operations.get(id(1)))?.result?.resolved).toBeFalsy();
+  await expectAsync(revise()).toBeRejectedWithError('El original no admite otra revisión.');
+  states.set(first, 'EN_CONFLICTO');
+  await download();
+  expect((await db.operations.get(id(1)))?.result?.resolved).toBeFalsy();
+  const next = await revise();
+  states.set(next, 'CONFIRMADA');
+  await download();
+  expect((await db.operations.get(id(1)))?.result?.resolved).toBeTrue();
+  expect((await db.operations.get(id(1)))?.result?.revision).toBe(next);
+  expect(await db.operations.count()).toBe(3);
+ });
  it('sin candidatos renueva catálogo con una petición vacía',async()=>{
   await download();expect(requests).toEqual([[]]);expect((await db.meta.get('snapshot')).value.branch.id_sucursal).toBe(1);
  });

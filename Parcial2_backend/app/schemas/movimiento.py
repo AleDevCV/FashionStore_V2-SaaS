@@ -29,13 +29,14 @@ class MovimientoCrear(BaseModel):
     )
     tipo: str = Field(
         ...,
-        pattern="^(Entrada|Salida|Traspaso)$",
-        description="Tipo de operación física: 'Entrada', 'Salida' o 'Traspaso'",
+        pattern="^(Entrada|Salida|Ajuste|Traspaso)$",
+        description="Tipo de operación física: Entrada, Salida, Ajuste o Traspaso",
     )
     cantidad: int = Field(
         ...,
-        gt=0,
-        description="Cantidad física de unidades (debe ser estrictamente positiva)",
+        ge=0,
+        le=2147483647,
+        description="Unidades del movimiento. En Ajuste indica el stock físico final.",
     )
     motivo: str = Field(
         ...,
@@ -55,6 +56,10 @@ class MovimientoCrear(BaseModel):
 
     @model_validator(mode='after')
     def validar_traspaso(self):
+        if self.tipo != 'Ajuste' and self.cantidad == 0:
+            raise ValueError('La cantidad debe ser positiva excepto en ajustes a cero.')
+        if self.tipo != 'Traspaso' and self.id_sucursal_destino is not None:
+            raise ValueError('Solo un traspaso admite una sucursal de destino.')
         if self.tipo == 'Traspaso':
             if self.id_sucursal_destino is None or self.operation_id is None:
                 raise ValueError('Traspaso requiere sucursal de destino y UUID operation_id.')

@@ -13,6 +13,7 @@ Modelos para la terminal de caja presencial multisucursal:
 
 from datetime import datetime
 from decimal import Decimal
+from uuid import UUID
 from typing import Literal
 
 from pydantic import BaseModel, ConfigDict, Field, model_validator
@@ -91,6 +92,7 @@ class POSItemVenta(BaseModel):
 class POSVentaCrear(BaseModel):
     """Payload enviado por la terminal POS al confirmar el cobro."""
 
+    idempotency_key: UUID | None = None
     id_sucursal: int = Field(..., gt=0, description="Sucursal donde opera la caja")
     id_cliente: int | None = Field(default=None, description="Cliente registrado o None para mostrador")
     id_reserva: int | None = Field(default=None, description="ID de reserva si proviene de probador")

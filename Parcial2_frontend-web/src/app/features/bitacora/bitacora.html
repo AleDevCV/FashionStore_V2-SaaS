@@ -59,6 +59,23 @@
         </select>
       </div>
 
+      <div class="filter-field">
+        <label for="fechaInicio" class="fs-eyebrow">Desde</label>
+        <input id="fechaInicio" type="date" [(ngModel)]="fechaInicio" />
+      </div>
+      <div class="filter-field">
+        <label for="fechaFin" class="fs-eyebrow">Hasta</label>
+        <input id="fechaFin" type="date" [(ngModel)]="fechaFin" />
+      </div>
+      <div class="filter-field">
+        <label for="usuarioId" class="fs-eyebrow">ID de usuario</label>
+        <input id="usuarioId" type="number" min="1" [(ngModel)]="usuarioId" />
+      </div>
+      <div class="filter-field">
+        <label for="operacionUuid" class="fs-eyebrow">UUID de operación</label>
+        <input id="operacionUuid" type="text" maxlength="36" [(ngModel)]="uuid" />
+      </div>
+
       <!-- Botón Filtrar -->
       <div class="filter-field filter-field--btn">
         <button class="btn btn--primary" (click)="paginaActual = 1; cargarBitacora()">
@@ -130,10 +147,16 @@
                   }
                 </td>
                 <td class="col-ip">
-                  <span class="ip-pill">{{ log.ip_address || '127.0.0.1' }}</span>
+                  <span class="ip-pill">{{ log.ip_address || '—' }}</span>
                 </td>
                 <td class="col-desc">
                   <p class="log-detail">{{ log.detalle }}</p>
+                  @if (log.id_sucursal) {
+                    <p>Sucursal #{{ log.id_sucursal }}</p>
+                  }
+                  @if (log.operation_id) {
+                    <code>{{ log.operation_id }}</code>
+                  }
                 </td>
               </tr>
             }

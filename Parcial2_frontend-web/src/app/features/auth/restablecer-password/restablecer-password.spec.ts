@@ -20,6 +20,7 @@ describe('RestablecerPassword (CU04)', () => {
     authSpy = jasmine.createSpyObj<AuthService>('AuthService', [
       'verificarTokenRecuperacion',
       'restablecerPassword',
+      'logout',
     ]);
 
     await TestBed.configureTestingModule({

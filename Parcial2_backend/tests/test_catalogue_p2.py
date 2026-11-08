@@ -20,7 +20,7 @@ def test_color_of_another_tenant_cannot_be_linked(client,companies,headers):
         cur.execute('SELECT id_talla,id_color FROM variante_prenda WHERE id_variante_prenda=%s',(c['variant'],));base=cur.fetchone()
         cur.execute('SELECT id_categoria FROM prenda WHERE id_prenda=%s',(c['product'],));cat=cur.fetchone()['id_categoria']
         cur.execute('SELECT id_color FROM variante_prenda WHERE id_variante_prenda=%s',(companies[1]['variant'],));foreign=cur.fetchone()['id_color']
-    r=client.post('/api/prendas',headers=headers[0],json={'sku':'COLORS','nombre':'No válido','precio_base':50,'id_categoria':cat,'variantes':[{'id_talla':base['id_talla'],'id_color':base['id_color'],'color_ids':[foreign]}]})
+    r=client.post('/api/prendas',headers=headers[0],json={'sku':'COLORS','nombre':'No válido','precio_base':50,'id_categoria':cat,'material':'Algodón','medidas':'M estándar','variantes':[{'id_talla':base['id_talla'],'id_color':base['id_color'],'color_ids':[foreign]}]})
     assert r.status_code in {400,422},r.text
 
 def test_public_catalogue_uses_current_offer_price(client,companies,headers):

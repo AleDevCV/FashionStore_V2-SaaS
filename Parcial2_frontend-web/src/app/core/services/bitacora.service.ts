@@ -15,6 +15,7 @@ export class BitacoraService {
     accion?: string,
     tablaAfectada?: string,
     busqueda?: string,
+    filtros?: { fecha_inicio: string; fecha_fin: string; usuario_id: number | null; uuid: string },
   ): Observable<BitacoraListadoRespuesta> {
     let params = new HttpParams()
       .set('pagina', pagina.toString())
@@ -23,6 +24,9 @@ export class BitacoraService {
     if (accion) params = params.set('accion', accion);
     if (tablaAfectada) params = params.set('tabla_afectada', tablaAfectada);
     if (busqueda) params = params.set('busqueda', busqueda);
+    for (const [clave, valor] of Object.entries(filtros ?? {})) {
+      if (valor) params = params.set(clave, valor);
+    }
 
     return this.http.get<BitacoraListadoRespuesta>(this.base, { params });
   }

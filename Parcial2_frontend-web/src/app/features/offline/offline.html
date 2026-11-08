@@ -3,6 +3,17 @@
  <p class="notice">Las ventas de contado y reservas guardadas aquí son provisionales hasta su aceptación central. La disponibilidad descargada puede haber cambiado.</p>
  @if(error()){<p role="alert" class="error">{{error()}}</p>}
  @if(store.message()){<p role="status" class="status">{{store.message()}}</p>}
+ @if(operacionConstancia();as op){
+  <section class="history" aria-labelledby="constancia-offline">
+   <div class="history-title"><h2 id="constancia-offline">Constancia de {{op.kind==='venta'?'venta de contado':'reserva'}}</h2>
+    <button class="secondary" (click)="constancia.set(null)">Cerrar constancia</button></div>
+   <p class="status"><strong>{{op.state==='PENDIENTE'||op.state==='ENVIANDO'?'PENDIENTE DE SINCRONIZACIÓN':op.state}}</strong></p>
+   <dl><dt>UUID</dt><dd class="uuid">{{op.operation_id}}</dd>
+    <dt>Fecha</dt><dd>{{op.occurred_at|date:'medium'}}</dd>
+    <dt>Sucursal</dt><dd>{{constancia()?.branch}}</dd></dl>
+   <p>Registro generado en este dispositivo. Consulta el estado central en la sección de sincronización.</p>
+  </section>
+ }
  <section class="toolbar" aria-label="Catálogo local">
   <label for="offline-branch">Sucursal</label><select id="offline-branch" [(ngModel)]="branchId"><option [ngValue]="0">Selecciona una sucursal</option>@for(b of branches();track b.id_sucursal){<option [ngValue]="b.id_sucursal">{{b.nombre}}</option>}@if(!branches().length && store.snapshot();as snap){<option [ngValue]="snap.branch.id_sucursal">{{snap.branch.nombre}}</option>}</select>
   <button (click)="download()" [disabled]="!online()||!branchId||store.busy()">Actualizar catálogo</button>
@@ -20,7 +31,7 @@
   }
  }
  <section class="history"><div class="history-title"><h2>Operaciones de este usuario</h2><button class="secondary" (click)="export()" [disabled]="!store.operations().length">Exportar pendientes</button></div>
- @for(op of store.operations();track op.operation_id){<article><div><strong>{{op.kind==='venta'?'Venta de contado':'Reserva'}} · {{op.state}}</strong><p>{{op.occurred_at|date:'short'}} · Sucursal {{op.branch_id}} · Intentos {{op.attempts}}</p><p class="uuid">{{op.operation_id}}</p>@if(op.result?.server_id){<p>Registro central N.º {{op.result.server_id}}</p>}@if(op.reason){<p>{{op.reason}}</p>}@if(op.result?.resolved){<p>Resolución registrada. El historial se conserva.</p>}</div>@if((op.state==='EN_CONFLICTO'||op.state==='RECHAZADA')&&!op.result?.resolved){<div><button class="secondary" (click)="revise(op)">Preparar revisión</button><button class="secondary" [disabled]="!online()" (click)="compensate(op)">Registrar compensación</button></div>}</article>}@empty{<p>No hay operaciones guardadas para esta cuenta.</p>}
+ @for(op of store.operations();track op.operation_id){<article><div><strong>{{op.kind==='venta'?'Venta de contado':'Reserva'}} · {{op.state}}</strong><p>{{op.occurred_at|date:'short'}} · Sucursal {{op.branch_id}} · Intentos {{op.attempts}}</p><p class="uuid">{{op.operation_id}}</p>@if(op.result?.server_id){<p>Registro central N.º {{op.result.server_id}}</p>}@if(op.reason){<p>{{op.reason}}</p>}@if(op.result?.resolved){<p>Resolución registrada. El historial se conserva.</p>}</div><div><button class="secondary" (click)="verConstancia(op)">Ver constancia</button>@if((op.state==='EN_CONFLICTO'||op.state==='RECHAZADA')&&!op.original_operation&&!op.result?.resolved){<button class="secondary" (click)="revise(op)">Preparar revisión</button><button class="secondary" [disabled]="!online()" (click)="compensate(op)">Registrar compensación</button>}</div></article>}@empty{<p>No hay operaciones guardadas para esta cuenta.</p>}
  </section>
  @if(vista==='sincronizacion' && puedeSupervisar){
   <section class="history"><div class="history-title"><h2>Conflictos de la empresa</h2>

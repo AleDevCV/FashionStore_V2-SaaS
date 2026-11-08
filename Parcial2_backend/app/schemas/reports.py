@@ -10,6 +10,7 @@ class ReportFilters(BaseModel):
     hasta:date=Field(default_factory=date.today)
     sucursal:int|None=Field(default=None,gt=0)
     categoria:int|None=Field(default=None,gt=0)
+    id_prenda:int|None=Field(default=None,gt=0)
     agrupacion:Literal['dia','semana','mes']='dia'
     umbral:int=Field(default=5,ge=0,le=10000)
     limite:int=Field(default=100,ge=1,le=500)

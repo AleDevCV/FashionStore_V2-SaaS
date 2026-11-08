@@ -98,18 +98,19 @@
               >
                 <option value="Entrada">Entrada (+)</option>
                 <option value="Salida">Salida (-)</option>
+                <option value="Ajuste">Ajuste de stock físico</option>
                 <option value="Traspaso">Traspaso entre sucursales</option>
               </select>
             </div>
 
             <div class="fs-field">
               <label class="fs-field-label" for="campo-cantidad">
-                Cantidad física <span class="fs-campo-req">*</span>
+                {{ esAjuste ? 'Stock físico resultante' : 'Cantidad física' }} <span class="fs-campo-req">*</span>
               </label>
               <input
                 id="campo-cantidad"
                 type="number"
-                min="1"
+                [min]="esAjuste ? 0 : 1"
                 class="fs-input"
                 [class.is-invalid]="campoInvalido('cantidad') || stockInsuficiente"
                 formControlName="cantidad"

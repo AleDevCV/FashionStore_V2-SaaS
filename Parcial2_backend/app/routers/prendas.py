@@ -312,6 +312,10 @@ def actualizar_prenda(
             detail="Debe enviar al menos un campo para actualizar",
         )
 
+    if (cambios.get('estado', actual['estado']) == 'Activo'
+            and any(not str(cambios.get(campo, actual.get(campo)) or '').strip() for campo in ('material', 'medidas'))):
+        raise HTTPException(422, 'Material y medidas son obligatorios para una prenda activa.')
+
     if "sku" in cambios and svc.existe_sku(cursor, cambios["sku"], excluir_id=id_prenda):
         raise HTTPException(
             status_code=status.HTTP_400_BAD_REQUEST,

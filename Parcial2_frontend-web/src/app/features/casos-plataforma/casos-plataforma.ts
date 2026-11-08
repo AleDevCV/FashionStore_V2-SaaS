@@ -52,6 +52,8 @@ export class CasosPlataforma {
   readonly paquete = computed(() => USE_CASE_PACKAGES.find(p => p.cases.some(c => c.id === this.params().get('id'))));
   readonly caso = computed(() => this.paquete()?.cases.find(c => c.id === this.params().get('id')));
   readonly resumen = computed(() => descripcion[this.caso()?.id ?? '']);
+  readonly necesitaEmpresa = computed(() => this.caso()?.links?.some(accion => this.requiereEmpresa(accion)) ?? false);
+  readonly sesion = this.auth.usuarioActual;
   readonly accionElegida = computed(() => (this.caso()?.links ?? [])[Number(this.query().get('accion')) - 1]);
   readonly tiendas = signal<Tienda[]>([]);
   readonly empresa = signal(this.auth.usuarioActual()?.platform_workspace

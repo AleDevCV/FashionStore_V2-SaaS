@@ -9,7 +9,7 @@ import {environment} from '../../../environments/environment';
 export class Reportes implements OnInit,OnDestroy {
  private http=inject(HttpClient);private base=environment.apiUrl+'/api';private recognition:any;
  types=signal<Record<string,string>>({});branches=signal<any[]>([]);pro=signal(false);busy=signal(false);message=signal('');result=signal<any>(null);listening=signal(false);
- filters={tipo:'ventas_sucursal',desde:new Date(Date.now()-30*86400000).toISOString().slice(0,10),hasta:new Date().toISOString().slice(0,10),sucursal:null as number|null,categoria:null as number|null,agrupacion:'dia',umbral:5,limite:100};text='';
+ filters={tipo:'ventas_sucursal',desde:new Date(Date.now()-30*86400000).toISOString().slice(0,10),hasta:new Date().toISOString().slice(0,10),sucursal:null as number|null,categoria:null as number|null,id_prenda:null as number|null,agrupacion:'dia',umbral:5,limite:100};text='';
  get entries(){return Object.entries(this.types());}
  get voice(){return !!((window as any).SpeechRecognition||(window as any).webkitSpeechRecognition);}
  async ngOnInit(){try{const [types,context]=await Promise.all([firstValueFrom(this.http.get<Record<string,string>>(this.base+'/reportes/tipos')),firstValueFrom(this.http.get<any>(this.base+'/contexto'))]);this.types.set(types);this.branches.set(context.sucursales);this.pro.set(context.suscripcion?.reportes_ia && context.suscripcion?.vigente);}catch(e:any){this.message.set(this.error(e));}}

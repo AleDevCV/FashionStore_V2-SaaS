@@ -19,7 +19,7 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
-import { RouterLink } from '@angular/router';
+import { ActivatedRoute, RouterLink } from '@angular/router';
 
 import { AuthService } from '../../../core/services/auth.service';
 
@@ -32,6 +32,8 @@ import { AuthService } from '../../../core/services/auth.service';
 export class RecuperarPassword {
   private readonly fb = inject(FormBuilder);
   private readonly authService = inject(AuthService);
+  readonly volver = inject(ActivatedRoute).snapshot.data['volver'] ?? '/login';
+  readonly etiquetaVolver = this.volver === '/login' ? 'Volver al inicio de sesión' : 'Volver a acceso y cuenta';
 
   // ---------------------------------------------------------------------------
   // ESTADO REACTIVO DE LA VISTA

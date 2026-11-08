@@ -51,4 +51,12 @@ void main() {
       return http.Response('{"id_sucursal":1,"id_variante_prenda":7,"stock":1}',200);
     }));
   });
+  test('el ajuste directo conserva su UUID sin datos de traspaso', () {
+    const adjustment = MovimientoCrear(idSucursal: 1, idVariantePrenda: 7,
+        tipo: 'Ajuste', cantidad: 0, motivo: 'Conteo físico', operationId: oid);
+    final body = adjustment.toJson();
+    expect(body['operation_id'], oid);
+    expect(body['cantidad'], 0);
+    expect(body.containsKey('id_sucursal_destino'), isFalse);
+  });
 }

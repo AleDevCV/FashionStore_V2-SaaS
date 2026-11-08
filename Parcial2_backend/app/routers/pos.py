@@ -20,12 +20,16 @@ from app.schemas.pos import (
     POSVentaRespuesta,
 )
 from app.services import pos_service as svc
-from app.services.auth_service import get_current_user, requiere_permiso
+from app.services.auth_service import esquema_bearer, get_current_user, requiere_permiso
 from app.services.bitacora_service import obtener_ip_cliente
 
 router = APIRouter(prefix="/pos", tags=["Terminal POS de Caja (CU19)"])
 
 puede_vender = requiere_permiso("pos.vender")
+
+
+def usuario_venta_pos(credenciales=Depends(esquema_bearer), cursor=Depends(get_db, scope="function")):
+    return puede_vender(get_current_user(credenciales, cursor), cursor)
 
 
 @router.get(
@@ -85,8 +89,8 @@ def cargar_reserva_pos_endpoint(
 def procesar_venta_pos_endpoint(
     datos: POSVentaCrear,
     request: Request,
-    cursor=Depends(get_db),
-    usuario=Depends(puede_vender),
+    cursor=Depends(get_db, scope="function"),
+    usuario=Depends(usuario_venta_pos),
 ):
     """Registra la venta presencial en caja:
     - Descuenta stock en la sucursal activa vía disparador PL/pgSQL.

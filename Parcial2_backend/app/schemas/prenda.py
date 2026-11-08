@@ -19,7 +19,7 @@ from datetime import datetime, date
 from decimal import Decimal
 from typing import Literal
 
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, Field, field_validator, model_validator
 
 # Valores admitidos por las restricciones CHECK de la tabla `prenda`.
 GeneroPrenda = Literal["Dama", "Caballero", "Unisex", "Nino"]
@@ -105,6 +105,14 @@ class PrendaCrear(ComercialFields):
     url_imagen: str | None = Field(default=None, max_length=255)
     variantes: list[VarianteCrear] = Field(default_factory=list)
 
+    @model_validator(mode='after')
+    def validar_atributos(self):
+        if not self.material or not self.material.strip() or not self.medidas or not self.medidas.strip():
+            raise ValueError('Material y medidas son obligatorios para una prenda activa.')
+        self.material = self.material.strip()
+        self.medidas = self.medidas.strip()
+        return self
+
 
 class PrendaActualizar(ComercialFields):
     """Datos para modificar una prenda (actualización parcial).
@@ -127,6 +135,11 @@ class PrendaActualizar(ComercialFields):
     )
     url_imagen: str | None = Field(default=None, max_length=255)
     estado: EstadoPrenda | None = Field(default=None)
+
+    @field_validator('material', 'medidas')
+    @classmethod
+    def normalizar_atributo(cls, value):
+        return (value.strip() or None) if value is not None else None
 
 
 class ImagenPrendaRespuesta(BaseModel):

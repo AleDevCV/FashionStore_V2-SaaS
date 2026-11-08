@@ -13,7 +13,7 @@ from app.schemas.auth import (SolicitudLogin, RespuestaToken, SolicitudRecuperar
     SolicitudVerificarToken, SolicitudRestablecerPassword)
 from app.schemas.cliente import RegistroClientePeticion
 from app.services.auth_service import verificar_password, generar_hash_password
-from app.services.email_service import enviar_correo_recuperacion
+from app.services.email_service import destinatario_recuperacion, enviar_correo_recuperacion
 from app.services import identity
 
 router = APIRouter(tags=['Identidad y acceso global'])
@@ -115,7 +115,8 @@ def solicitar_recuperacion_password(data: SolicitudRecuperarPassword):
         raw = secrets.token_urlsafe(32)
         with identity.cursor() as cur:
             cur.execute('SELECT identity_reset_issue(%s,%s)', (account['id'], hashlib.sha256(raw.encode()).hexdigest()))
-        enviar_correo_recuperacion(account.get('correo_recuperacion') or account['correo'], account['nombre'], raw)
+        destinatario = destinatario_recuperacion(account['correo'], account.get('correo_recuperacion'))
+        enviar_correo_recuperacion(destinatario, account['nombre'], raw)
     return {'mensaje': 'Si la cuenta existe, recibirá instrucciones para recuperar su contraseña.'}
 
 @router.post('/auth/verificar-token-recuperacion')

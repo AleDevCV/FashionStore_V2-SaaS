@@ -131,8 +131,10 @@
             <th>Prenda</th>
             <th>Categoría</th>
             <th>Talla / Color</th>
-            <th class="monitoreo__col-stock">Existencias</th>
-            <th>Estado de Stock</th>
+            <th>Físico</th>
+            <th>Retenido</th>
+            <th class="monitoreo__col-stock">Disponible</th>
+            <th>Estado de disponibilidad</th>
             <th class="monitoreo__col-acciones">Acción</th>
           </tr>
         </thead>
@@ -166,11 +168,13 @@
                   {{ item.talla }} · {{ item.color }}
                 </span>
               </td>
+              <td class="fs-col-num">{{ item.stock_fisico ?? item.stock }}</td>
+              <td class="fs-col-num">{{ item.stock_retenido ?? 0 }}</td>
               <td class="monitoreo__col-stock fs-col-num">
-                <span class="monitoreo__stock-num">{{ item.stock }}</span>
+                <span class="monitoreo__stock-num">{{ item.stock_disponible ?? item.stock }}</span>
               </td>
               <td>
-                @let cls = obtenerClasificacion(item.stock);
+                @let cls = obtenerClasificacion(item.stock_disponible ?? item.stock);
                 <span class="fs-badge" [class]="cls.badgeClass">
                   {{ cls.etiqueta }}
                 </span>
@@ -187,7 +191,7 @@
             </tr>
           } @empty {
             <tr>
-              <td colspan="8" class="fs-tabla-vacia">
+              <td colspan="10" class="fs-tabla-vacia">
                 No se encontraron registros de inventario con los filtros seleccionados.
               </td>
             </tr>

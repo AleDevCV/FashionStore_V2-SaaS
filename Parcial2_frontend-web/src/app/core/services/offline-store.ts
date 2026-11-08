@@ -6,7 +6,30 @@ export interface LocalOperation {
 }
 export class OfflineDatabase extends Dexie {
  products!:Table<any,number>;variants!:Table<any,number>;stocks!:Table<any,[number,number]>;customers!:Table<any,number>;branches!:Table<any,number>;operations!:Table<LocalOperation,string>;details!:Table<any,[string,number]>;meta!:Table<any,string>;
- constructor(namespace:string){super('fashionstore-p2-'+namespace);this.version(1).stores({products:'id_prenda',variants:'id_variante_prenda,id_prenda',customers:'id_cliente',branches:'id_sucursal',operations:'operation_id,state,kind,occurred_at,original_operation',details:'[operation_id+id_variante_prenda],operation_id',meta:'key'});this.version(2).stores({stocks:'[branch_id+id_variante_prenda],branch_id'});}
+ constructor(namespace:string){
+  super('fashionstore-p2-'+namespace);
+  this.version(1).stores({products:'id_prenda',variants:'id_variante_prenda,id_prenda',customers:'id_cliente',branches:'id_sucursal',operations:'operation_id,state,kind,occurred_at,original_operation',details:'[operation_id+id_variante_prenda],operation_id',meta:'key'});
+  this.version(2).stores({stocks:'[branch_id+id_variante_prenda],branch_id'});
+  this.version(3).stores({}).upgrade(async transaction => {
+   const table=transaction.table<LocalOperation,string>('operations');
+   const rows=await table.toArray();
+   const parents=new Map(rows.map(row=>[row.operation_id,row.original_operation]));
+   const completed=new Set<string>();
+   for(const row of rows){
+    if(row.state!=='CONFIRMADA' && row.result?.compensation==null)continue;
+    let parent=row.original_operation;
+    while(parent && !completed.has(parent)){
+     completed.add(parent);
+     parent=parents.get(parent) ?? null;
+    }
+   }
+   for(const row of rows){
+    if(row.result?.resolved && row.result.revision && row.result.compensation==null && !completed.has(row.operation_id)){
+     await table.update(row.operation_id,{result:{...row.result,resolved:false}});
+    }
+   }
+  });
+ }
 }
 export function cents(value:any):number {
  const text=String(value??0);if(!/^\d+(\.\d{1,2})?$/.test(text))throw new Error('Importe inválido.');

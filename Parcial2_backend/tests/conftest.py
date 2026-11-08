@@ -34,7 +34,7 @@ def companies():
             cur.execute("INSERT INTO sucursal(nombre,direccion,id_ciudad) VALUES('Central','Dirección prueba',%s) RETURNING id_sucursal",(city,));branch=cur.fetchone()['id_sucursal']
             cur.execute("INSERT INTO cliente(ci,nombre_completo,correo) VALUES('MOSTRADOR','Cliente Mostrador',%s) RETURNING id_cliente",('cliente@example.com',));customer=cur.fetchone()['id_cliente']
             cur.execute("INSERT INTO categoria(nombre) VALUES('Camisas') RETURNING id_categoria");cat=cur.fetchone()['id_categoria']
-            cur.execute("INSERT INTO prenda(sku,nombre,precio_base,id_categoria) VALUES('SKU-COMPARTIDO','Camisa',50,%s) RETURNING id_prenda",(cat,));product=cur.fetchone()['id_prenda']
+            cur.execute("INSERT INTO prenda(sku,nombre,precio_base,id_categoria,material,medidas) VALUES('SKU-COMPARTIDO','Camisa',50,%s,'Algodón','M estándar') RETURNING id_prenda",(cat,));product=cur.fetchone()['id_prenda']
             cur.execute("INSERT INTO talla(nombre) VALUES('M') RETURNING id_talla");size=cur.fetchone()['id_talla']
             cur.execute("INSERT INTO color(nombre) VALUES('Azul') RETURNING id_color");color=cur.fetchone()['id_color']
             cur.execute("INSERT INTO variante_prenda(id_prenda,id_talla,id_color,sku_variante) VALUES(%s,%s,%s,'SKU-VARIANTE') RETURNING id_variante_prenda",(product,size,color));variant=cur.fetchone()['id_variante_prenda']

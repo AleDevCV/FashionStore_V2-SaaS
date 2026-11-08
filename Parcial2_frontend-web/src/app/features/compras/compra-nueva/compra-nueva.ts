@@ -28,6 +28,7 @@ import { DecimalPipe } from '@angular/common';
 import { Subject, takeUntil } from 'rxjs';
 
 import { CompraService } from '../../../core/services/compra.service';
+import { OperationKey } from '../../../core/services/operation-key';
 import { ProveedorService } from '../../../core/services/proveedor.service';
 import { GeografiaService } from '../../../core/services/geografia.service';
 import { PrendaService } from '../../../core/services/prenda.service';
@@ -52,6 +53,7 @@ export interface VarianteOpcionCompra {
   styleUrl: './compra-nueva.scss',
 })
 export class CompraNueva implements OnInit, OnDestroy {
+  private readonly operationKey = new OperationKey();
   private readonly fb = inject(FormBuilder);
   private readonly compraService = inject(CompraService);
   private readonly proveedorService = inject(ProveedorService);
@@ -212,6 +214,7 @@ export class CompraNueva implements OnInit, OnDestroy {
   // ---------------------------------------------------------------------------
 
   guardar(): void {
+    if (this.guardando()) return;
     if (this.formulario.invalid || this.detalles.length === 0) {
       this.formulario.markAllAsTouched();
       return;
@@ -234,11 +237,12 @@ export class CompraNueva implements OnInit, OnDestroy {
       detalles: items,
     };
 
-    this.compraService.crear(payload).subscribe({
+    this.compraService.crear({ ...payload, idempotency_key: this.operationKey.get(payload) }).subscribe({
       next: (compraCreada) => {
+        this.operationKey.clear();
         this.guardando.set(false);
         this.notificacion.exito(
-          `Compra #${compraCreada.id_compra} registrada exitosamente por Bs. ${compraCreada.total.toFixed(2)}. El stock físico de la sucursal fue actualizado.`,
+          `Compra #${compraCreada.id_compra} registrada exitosamente por Bs. ${Number(compraCreada.total).toFixed(2)}. El stock físico de la sucursal fue actualizado.`,
         );
         this.router.navigate(['/panel/compras']);
       },

@@ -25,6 +25,8 @@ class BitacoraItem(BaseModel):
     registro_id: Optional[int] = None
     detalle: str
     ip_address: Optional[str] = None
+    id_sucursal: Optional[int] = None
+    operation_id: Optional[str] = None
     fecha: datetime
 
 

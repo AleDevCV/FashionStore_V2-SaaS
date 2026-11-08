@@ -124,7 +124,7 @@ class MovimientoCrear {
         'cantidad': cantidad,
         'motivo': motivo,
         if (tipo == 'Traspaso') 'id_sucursal_destino': idSucursalDestino,
-        if (tipo == 'Traspaso') 'operation_id': operationId,
+        if (operationId != null) 'operation_id': operationId,
       };
   }
 }

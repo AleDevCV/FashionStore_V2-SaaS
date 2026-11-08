@@ -48,6 +48,7 @@ export interface POSItemVenta {
 }
 
 export interface POSVentaCrear {
+  idempotency_key?: string;
   id_sucursal: number;
   id_cliente?: number | null;
   id_reserva?: number | null;

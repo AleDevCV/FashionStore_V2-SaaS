@@ -119,6 +119,9 @@ class MonitoreoItemRespuesta(BaseModel):
     precio_adicional: Decimal = Decimal("0.00")
     precio: Decimal | None = None
     stock: int
+    stock_fisico: int
+    stock_retenido: int
+    stock_disponible: int
     estado_stock: EstadoStock
     color_badge: ColorBadge
 

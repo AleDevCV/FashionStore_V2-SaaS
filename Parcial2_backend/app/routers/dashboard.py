@@ -14,6 +14,7 @@ from fastapi import APIRouter, Depends
 from app.database import get_db
 from app.schemas.dashboard import DashboardKPIsRespuesta
 from app.services import dashboard_service as svc
+from app.services.analytics import model_status
 from app.services.auth_service import get_current_user
 
 router = APIRouter(
@@ -40,7 +41,7 @@ def obtener_kpis(
 
     distribución de canales/pagos y salud del inventario.
     """
-    return svc.obtener_dashboard_kpis(cursor)
+    return obtener_kpis_alias(cursor, usuario)
 
 
 # Router adicional o alias bajo /kpis para flexibilidad
@@ -65,4 +66,6 @@ def obtener_kpis_alias(
     usuario=Depends(get_current_user),
 ):
     """Alias para consultar los KPIs del sistema."""
-    return svc.obtener_dashboard_kpis(cursor)
+    result = svc.obtener_dashboard_kpis(cursor)
+    available, warning = model_status()
+    return result.model_copy(update={'model_available': available, 'estado_modelo': warning})

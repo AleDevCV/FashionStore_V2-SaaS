@@ -307,8 +307,21 @@
             <span>{{ mensajeError() }}</span>
           </div>
         }
+        <fieldset style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:16px;padding:20px;margin:20px 0;border:1px solid #d8dfd8">
+          <legend>Condiciones comerciales</legend>
+          <label><input type="checkbox" formControlName="admite_cambio">Admite cambio según la política de siete días</label>
+          <label>Material<input class="fs-input" formControlName="material" maxlength="300" [attr.aria-required]="formulario.value.estado === 'Activo'"></label>
+          <label>Medidas<input class="fs-input" formControlName="medidas" maxlength="500" [attr.aria-required]="formulario.value.estado === 'Activo'"></label>
+          @if (formulario.touched && formulario.hasError('fichaIncompleta')) {
+            <p role="alert">Ingresa el material y las medidas para guardar la prenda activa.</p>
+          }
+          <label>Precio mayorista<input class="fs-input" type="number" min="0" step="0.01" formControlName="precio_mayorista"></label>
+          <label>Unidades para mayorista<input class="fs-input" type="number" min="1" formControlName="umbral_mayorista"></label>
+          <label>Precio de oferta<input class="fs-input" type="number" min="0" step="0.01" formControlName="precio_oferta"></label>
+          <label>Inicio de oferta<input class="fs-input" type="date" formControlName="oferta_inicio"></label>
+          <label>Fin de oferta<input class="fs-input" type="date" formControlName="oferta_fin"></label>
+        </fieldset>
       </div>
-
       <!-- ========================= PIE ========================= -->
       <div class="fs-modal__pie">
         <button
@@ -333,15 +346,6 @@
           }
         </button>
       </div>
-    <fieldset style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:16px;padding:20px;margin:20px 0;border:1px solid #d8dfd8">
-<legend>Condiciones comerciales</legend>
-<label><input type="checkbox" formControlName="admite_cambio">Admite cambio según la política de siete días</label><label>Material<input class="fs-input" formControlName="material" maxlength="300"></label>
-<label>Medidas<input class="fs-input" formControlName="medidas" maxlength="500"></label>
-<label>Precio mayorista<input class="fs-input" type="number" min="0" step="0.01" formControlName="precio_mayorista"></label>
-<label>Unidades para mayorista<input class="fs-input" type="number" min="1" formControlName="umbral_mayorista"></label>
-<label>Precio de oferta<input class="fs-input" type="number" min="0" step="0.01" formControlName="precio_oferta"></label>
-<label>Inicio de oferta<input class="fs-input" type="date" formControlName="oferta_inicio"></label>
-<label>Fin de oferta<input class="fs-input" type="date" formControlName="oferta_fin"></label>
-</fieldset></form>
+    </form>
   </div>
 </div>

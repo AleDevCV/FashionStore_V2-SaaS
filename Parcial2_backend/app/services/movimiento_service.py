@@ -22,6 +22,7 @@ from psycopg2 import errors as pg_errors
 from psycopg2.extras import Json
 
 from app.schemas.movimiento import MovimientoCrear, TraspasoRespuesta
+from app.services import idempotency
 from app.services.commerce import authorized_branch
 from app.tenant import require_context
 from app.services.bitacora_service import (
@@ -137,20 +138,18 @@ def registrar_movimiento(
     if datos.tipo == 'Traspaso':
         return registrar_traspaso(cursor, datos, id_usuario, ip_address)
 
-    # 1. Validar existencia de la sucursal
-    cursor.execute(
-        "SELECT 1 FROM sucursal WHERE id_sucursal = %s;",
-        (datos.id_sucursal,),
-    )
-    if not cursor.fetchone():
-        raise HTTPException(
-            status_code=status.HTTP_404_NOT_FOUND,
-            detail="La sucursal especificada no existe",
-        )
+    authorized_branch(cursor, datos.id_sucursal)
+    key = datos.operation_id
+    if key:
+        payload = datos.model_dump(exclude={'operation_id'})
+        payload['motivo'] = datos.motivo.strip()
+        digest, previous = idempotency.replay(cursor, 'movimiento', key, payload)
+        if previous is not None:
+            return previous
 
     # 2. Validar existencia de la variante de prenda
     cursor.execute(
-        "SELECT 1 FROM variante_prenda WHERE id_variante_prenda = %s;",
+        "SELECT 1 FROM variante_prenda WHERE id_variante_prenda = %s FOR UPDATE;",
         (datos.id_variante_prenda,),
     )
     if not cursor.fetchone():
@@ -158,6 +157,18 @@ def registrar_movimiento(
             status_code=status.HTTP_404_NOT_FOUND,
             detail="La variante de prenda especificada no existe",
         )
+
+    if datos.tipo in {'Salida', 'Ajuste'}:
+        cursor.execute('SELECT stock FROM inventario WHERE id_sucursal=%s AND id_variante_prenda=%s FOR UPDATE',
+                       (datos.id_sucursal, datos.id_variante_prenda))
+        row = cursor.fetchone()
+        stock = row['stock'] if row else 0
+        cursor.execute('''SELECT coalesce(sum(cantidad),0) AS held FROM retencion
+                          WHERE id_sucursal=%s AND id_variante_prenda=%s AND vence>now()''',
+                       (datos.id_sucursal, datos.id_variante_prenda))
+        final = datos.cantidad if datos.tipo == 'Ajuste' else stock - datos.cantidad
+        if final < cursor.fetchone()['held']:
+            raise HTTPException(400, 'El movimiento dejaría stock insuficiente para las reservas vigentes.')
 
     # 3. Inserción con disparo de trigger de PostgreSQL
     try:
@@ -204,11 +215,16 @@ def registrar_movimiento(
         ),
         id_usuario=id_usuario,
         ip_address=ip_address,
+        id_sucursal=datos.id_sucursal,
+        operation_id=key,
     )
 
     # 5. Retornar movimiento enriquecido
     enriquecido = obtener_movimiento_por_id(cursor, mov["id_movimiento"])
-    return enriquecido if enriquecido else mov
+    result = enriquecido if enriquecido else mov
+    if key:
+        idempotency.remember(cursor, 'movimiento', key, digest, result)
+    return result
 
 
 def registrar_traspaso(cursor, datos: MovimientoCrear, id_usuario: int | None, ip_address: str) -> dict:
@@ -232,6 +248,10 @@ def registrar_traspaso(cursor, datos: MovimientoCrear, id_usuario: int | None, i
         if len(cursor.fetchall()) != 2:
             raise HTTPException(404, 'Sucursal no disponible.')
         cursor.execute('SELECT pg_advisory_xact_lock(hashtextextended(%s,0))', (f'transfer:{ctx.tenant_id}:{oid}',))
+        cursor.execute("SELECT 1 FROM operacion_idempotente WHERE tenant_id=%s AND tipo='movimiento' AND operation_id=%s",
+                       (ctx.tenant_id, oid))
+        if cursor.fetchone():
+            raise HTTPException(409, 'El UUID pertenece a un movimiento directo.')
         cursor.execute('SELECT payload_hash,result FROM traspaso_inventario WHERE tenant_id=%s AND operation_id=%s', (ctx.tenant_id, oid))
         existing = cursor.fetchone()
         if existing:

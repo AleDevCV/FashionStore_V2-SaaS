@@ -26,10 +26,16 @@ export class Bitacora implements OnInit {
   accionSeleccionada = '';
   tablaSeleccionada = '';
   busqueda = '';
+  fechaInicio = '';
+  fechaFin = '';
+  usuarioId: number | null = null;
+  uuid = '';
 
   readonly accionesDisponibles = [
     'LOGIN_EXITOSO',
     'LOGIN_FALLIDO',
+    'LOGOUT',
+    'REGISTRO',
     'INSERT',
     'UPDATE',
     'DELETE',
@@ -37,10 +43,19 @@ export class Bitacora implements OnInit {
     'IA_RECOMENDACION',
     'IA_ANALITICA_VOZ',
     'SOLICITUD_RECUPERACION_PASSWORD',
+    'SOLICITUD_RECUPERACION',
     'RESTABLECER_PASSWORD_EXITOSO',
+    'PASSWORD_RESTABLECIDA',
+    'SYNC',
+    'SYNC_RECHAZADA',
+    'COMPENSAR',
+    'REPORTE',
   ];
 
   readonly tablasDisponibles = [
+    'auditoria_identidad',
+    'operacion_sync',
+    'reporte_resultado',
     'usuario',
     'cliente',
     'prenda',
@@ -70,6 +85,7 @@ export class Bitacora implements OnInit {
         this.accionSeleccionada || undefined,
         this.tablaSeleccionada || undefined,
         this.busqueda.trim() || undefined,
+        { fecha_inicio: this.fechaInicio, fecha_fin: this.fechaFin, usuario_id: this.usuarioId, uuid: this.uuid.trim() },
       )
       .subscribe({
         next: (resp) => {

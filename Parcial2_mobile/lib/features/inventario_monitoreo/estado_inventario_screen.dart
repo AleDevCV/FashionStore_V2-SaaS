@@ -379,15 +379,11 @@ class _EstadoInventarioScreenState extends State<EstadoInventarioScreen> {
                                   d.ciudad,
                                   style: const TextStyle(fontSize: 11, color: fsInkMuted),
                                 ),
+                              Text(
+                                'Disponible: ${d.stock} · Físico: ${d.stockFisico} · Retenido: ${d.stockRetenido}',
+                                style: const TextStyle(fontSize: 11, color: fsInk),
+                              ),
                             ],
-                          ),
-                        ),
-                        Text(
-                          '${d.stock} u.',
-                          style: const TextStyle(
-                            fontWeight: FontWeight.w700,
-                            fontSize: 14,
-                            color: fsInk,
                           ),
                         ),
                         const SizedBox(width: 8),
@@ -514,7 +510,8 @@ class _EstadoInventarioScreenState extends State<EstadoInventarioScreen> {
 
   Widget _construirKpisHeader() {
     final totalStock = _resumen?.totalStock ??
-        _variantesAgrupadas.fold<int>(0, (sum, v) => sum + v.stockTotal);
+        _variantesAgrupadas.expand((v) => v.desgloseSucursales)
+            .fold<int>(0, (sum, branch) => sum + branch.stockFisico);
     final bajoStock = _resumen?.totalBajo ??
         _variantesAgrupadas.where((v) => v.estadoStock == 'Bajo').length;
     final agotadas = _resumen?.totalAgotado ??
@@ -524,7 +521,7 @@ class _EstadoInventarioScreenState extends State<EstadoInventarioScreen> {
       children: [
         Expanded(
           child: _tarjetaKpi(
-            titulo: 'Total Existencias',
+            titulo: 'Stock físico',
             valor: '$totalStock',
             icono: Icons.inventory_2_outlined,
             colorTexto: fsInk,
@@ -804,19 +801,18 @@ class _EstadoInventarioScreenState extends State<EstadoInventarioScreen> {
                     const Icon(Icons.storefront_outlined, size: 16, color: fsInkSoft),
                     const SizedBox(width: 8),
                     Expanded(
-                      child: Text(
-                        d.ciudad.isNotEmpty
-                            ? '${d.nombreSucursal} (${d.ciudad})'
-                            : d.nombreSucursal,
-                        style: const TextStyle(fontSize: 12, fontWeight: FontWeight.w500),
-                      ),
-                    ),
-                    Text(
-                      '${d.stock} u.',
-                      style: const TextStyle(
-                        fontSize: 13,
-                        fontWeight: FontWeight.w700,
-                        color: fsInk,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            d.ciudad.isNotEmpty ? '${d.nombreSucursal} (${d.ciudad})' : d.nombreSucursal,
+                            style: const TextStyle(fontSize: 12, fontWeight: FontWeight.w500),
+                          ),
+                          Text(
+                            'Disponible: ${d.stock} · Físico: ${d.stockFisico} · Retenido: ${d.stockRetenido}',
+                            style: const TextStyle(fontSize: 11, color: fsInk),
+                          ),
+                        ],
                       ),
                     ),
                     const SizedBox(width: 8),

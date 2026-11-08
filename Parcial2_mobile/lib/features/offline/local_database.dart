@@ -35,6 +35,54 @@ class LocalDatabase {
   final Database db;
   final String? namespace;
   LocalDatabase(this.db, {this.namespace});
+
+  static String _operationTable(String name) =>
+      "CREATE TABLE $name(id TEXT PRIMARY KEY,branch_id INTEGER NOT NULL REFERENCES branch(id),customer_id INTEGER REFERENCES customer(id),kind TEXT NOT NULL CHECK(kind IN ('venta','reserva')),occurred_at TEXT NOT NULL,envelope TEXT NOT NULL,state TEXT NOT NULL CHECK(state IN ('PENDIENTE','ENVIANDO','CONFIRMADA','RECHAZADA','EN_CONFLICTO')),attempts INTEGER NOT NULL DEFAULT 0,result TEXT,reason TEXT NOT NULL DEFAULT '',accounted INTEGER NOT NULL DEFAULT 0,resolved INTEGER NOT NULL DEFAULT 0,original TEXT REFERENCES $name(id))";
+
+  static String _detailTable(String name, String operation) =>
+      'CREATE TABLE $name(operation_id TEXT NOT NULL REFERENCES $operation(id),variant_id INTEGER NOT NULL REFERENCES variant(id),quantity INTEGER NOT NULL CHECK(quantity>0),price INTEGER NOT NULL CHECK(price>=0),PRIMARY KEY(operation_id,variant_id))';
+
+  static Future<void> _operationIndexes(DatabaseExecutor db) async {
+    await db.execute('CREATE INDEX operation_state ON operation(state)');
+    await db.execute('CREATE INDEX operation_original ON operation(original)');
+    await db.execute("CREATE VIEW local_ventas AS SELECT * FROM operation WHERE kind='venta'");
+    await db.execute("CREATE VIEW local_reservas AS SELECT * FROM operation WHERE kind='reserva'");
+  }
+
+  static Future<void> _upgradeOperations(Database db, int oldVersion, int newVersion) async {
+    await db.execute(_operationTable('operation_v2'));
+    await db.execute(_detailTable('detail_v2', 'operation_v2'));
+    await db.execute('INSERT INTO operation_v2 SELECT * FROM operation');
+    await db.execute('INSERT INTO detail_v2 SELECT * FROM detail');
+    await db.execute('DROP VIEW local_ventas');
+    await db.execute('DROP VIEW local_reservas');
+    await db.execute('DROP TABLE detail');
+    await db.execute('DROP TABLE operation');
+    await db.execute('ALTER TABLE operation_v2 RENAME TO operation');
+    await db.execute('ALTER TABLE detail_v2 RENAME TO detail');
+    await _operationIndexes(db);
+  }
+
+  static Future<void> _reopenLegacyRevisions(DatabaseExecutor db) async {
+    final rows = await db.query('operation', columns: ['id','original','state','resolved','result']);
+    final parents = {for (final row in rows) row['id'] as String: row['original'] as String?};
+    final originals = parents.values.whereType<String>().toSet();
+    final completed = <String>{};
+    for (final row in rows) {
+      final raw = row['result'] as String?;
+      final result = raw == null ? null : jsonDecode(raw);
+      if (row['state'] != 'CONFIRMADA' && !(result is Map && result['compensation'] != null)) continue;
+      var id = row['id'] as String?;
+      while (id != null && completed.add(id)) {
+        id = parents[id];
+      }
+    }
+    for (final row in rows) {
+      if (row['resolved'] == 1 && originals.contains(row['id']) && !completed.contains(row['id'])) {
+        await db.update('operation', {'resolved': 0}, where: 'id=?', whereArgs: [row['id']]);
+      }
+    }
+  }
   static Future<LocalDatabase> open(String namespace, {String? directory, DatabaseFactory? factory, String backendUrl=apiBaseUrl}) async {
     if (!RegExp(r'^\d+:\d+$').hasMatch(namespace)) throw StateError('Identidad local inválida.');
     final selectedFactory=factory ?? databaseFactory;
@@ -43,8 +91,9 @@ class LocalDatabase {
     final identity=offlineStorageIdentity(backendUrl);
     final origin=base64Url.encode(utf8.encode(identity)).replaceAll('=','');
     final prefix=knownAlias?'fashionstore_p2_stable':'fashionstore_p2';
-    final database = await selectedFactory.openDatabase(path.join(location, '${prefix}_${origin}_${namespace.replaceAll(':','_')}.db'), options: OpenDatabaseOptions(version:1,
+    final database = await selectedFactory.openDatabase(path.join(location, '${prefix}_${origin}_${namespace.replaceAll(':','_')}.db'), options: OpenDatabaseOptions(version:2,
       onConfigure:(db) async => db.execute('PRAGMA foreign_keys=ON'),
+      onUpgrade:_upgradeOperations,
       onCreate:(db,version) async {
         for (final sql in [
           'CREATE TABLE product(id INTEGER PRIMARY KEY,data TEXT NOT NULL)',
@@ -52,17 +101,22 @@ class LocalDatabase {
           'CREATE TABLE branch(id INTEGER PRIMARY KEY,name TEXT NOT NULL)',
           'CREATE TABLE stock(branch_id INTEGER NOT NULL REFERENCES branch(id),variant_id INTEGER NOT NULL REFERENCES variant(id),quantity INTEGER NOT NULL,PRIMARY KEY(branch_id,variant_id))',
           'CREATE TABLE customer(id INTEGER PRIMARY KEY,data TEXT NOT NULL)',
-          "CREATE TABLE operation(id TEXT PRIMARY KEY,branch_id INTEGER NOT NULL REFERENCES branch(id),customer_id INTEGER REFERENCES customer(id),kind TEXT NOT NULL CHECK(kind IN ('venta','reserva')),occurred_at TEXT NOT NULL,envelope TEXT NOT NULL,state TEXT NOT NULL CHECK(state IN ('PENDIENTE','ENVIANDO','CONFIRMADA','RECHAZADA','EN_CONFLICTO')),attempts INTEGER NOT NULL DEFAULT 0,result TEXT,reason TEXT NOT NULL DEFAULT '',accounted INTEGER NOT NULL DEFAULT 0,resolved INTEGER NOT NULL DEFAULT 0,original TEXT UNIQUE REFERENCES operation(id))",
-          'CREATE TABLE detail(operation_id TEXT NOT NULL REFERENCES operation(id),variant_id INTEGER NOT NULL REFERENCES variant(id),quantity INTEGER NOT NULL CHECK(quantity>0),price INTEGER NOT NULL CHECK(price>=0),PRIMARY KEY(operation_id,variant_id))',
-          'CREATE INDEX operation_state ON operation(state)',
+          _operationTable('operation'),
+          _detailTable('detail', 'operation'),
           'CREATE TABLE meta(key TEXT PRIMARY KEY,value TEXT NOT NULL)',
-          "CREATE VIEW local_ventas AS SELECT * FROM operation WHERE kind='venta'",
-          "CREATE VIEW local_reservas AS SELECT * FROM operation WHERE kind='reserva'",
         ]) { await db.execute(sql); }
+        await _operationIndexes(db);
         await db.insert('meta',{'key':'device','value':const Uuid().v4()});
       }));
     try {
       if(knownAlias)await recoverOfflineDatabases(target:database,factory:selectedFactory,directory:location,namespace:namespace,deployment:identity,legacyOrigins:offlineBackendAliases);
+      if ((await database.query('meta', where:"key='revision_consistency_v2'")).isEmpty) {
+        await database.transaction((tx) async {
+          await _reopenLegacyRevisions(tx);
+          await tx.insert('meta', {'key':'revision_consistency_v2','value':'1'},
+              conflictAlgorithm:ConflictAlgorithm.ignore);
+        });
+      }
     } catch (_) {await database.close();rethrow;}
     final local = LocalDatabase(database,namespace:namespace);
     final lock = await local.meta('sync_lock');
@@ -80,7 +134,17 @@ class LocalDatabase {
   Future<List<Map<String,dynamic>>> operations() => db.query('operation',orderBy:'occurred_at DESC');
   Future<List<Map<String,dynamic>>> customers() async => (await db.query('customer')).map((r)=>Map<String,dynamic>.from(jsonDecode(r['data'] as String))).toList();
   Future<List<Map<String,dynamic>>> catalog(int branchId) async {
-    final rows=await db.rawQuery("SELECT v.id,v.data AS variant,p.data AS product,s.quantity-COALESCE((SELECT SUM(d.quantity) FROM detail d JOIN operation o ON o.id=d.operation_id WHERE d.variant_id=v.id AND o.branch_id=s.branch_id AND o.accounted=0 AND o.resolved=0 AND o.state!='RECHAZADA'),0) AS available FROM stock s JOIN variant v ON v.id=s.variant_id JOIN product p ON p.id=v.product_id WHERE s.branch_id=? ORDER BY v.id",[branchId]);
+    final rows=await db.rawQuery("""
+      SELECT v.id,v.data AS variant,p.data AS product,s.quantity-COALESCE((
+        SELECT SUM(d.quantity) FROM detail d JOIN operation o ON o.id=d.operation_id
+        WHERE d.variant_id=v.id AND o.branch_id=s.branch_id AND o.accounted=0
+          AND o.resolved=0 AND o.state!='RECHAZADA'
+          AND NOT EXISTS(SELECT 1 FROM operation r WHERE r.original=o.id
+                         AND r.state IN ('PENDIENTE','ENVIANDO','CONFIRMADA'))
+          AND NOT (o.state='EN_CONFLICTO' AND o.original IS NOT NULL)
+      ),0) AS available FROM stock s JOIN variant v ON v.id=s.variant_id
+      JOIN product p ON p.id=v.product_id WHERE s.branch_id=? ORDER BY v.id
+    """,[branchId]);
     return rows.map((r)=> <String,dynamic>{...jsonDecode(r['product'] as String),...jsonDecode(r['variant'] as String),'available':(r['available'] as int)<0?0:r['available']}).toList();
   }
   Future<void> saveSnapshot(Map<String,dynamic> snapshot) async {
@@ -106,7 +170,7 @@ class LocalDatabase {
         await tx.update('customer',{'data':jsonEncode(customer)},where:'id=?',whereArgs:[customer['id_cliente']]);
       }
       for(final result in snapshot['operation_results'] ?? []) {
-        await tx.rawUpdate('UPDATE operation SET state=?,result=?,reason=?,accounted=CASE WHEN branch_id=? AND ?=\'CONFIRMADA\' THEN 1 ELSE accounted END WHERE id=?',[result['state'],jsonEncode(result),result['reason']??'',branchId,result['state'],result['operation_id']]);
+        await _applyResult(tx, result, snapshotBranch: branchId);
       }
       await tx.insert('meta',{'key':'snapshot','value':jsonEncode(snapshot)},conflictAlgorithm:ConflictAlgorithm.replace);
       await tx.delete('meta',where:'key=?',whereArgs:['catalog_refresh_required']);
@@ -128,7 +192,15 @@ class LocalDatabase {
     final id=const Uuid().v4();final stamp=DateTime.now().toUtc().toIso8601String();
     final envelope={'operation_id':id,'version':1,'tenant_id':snapshot['tenant_id'],'author_id':snapshot['author_id'],'branch_id':snapshot['branch']['id_sucursal'],'device_id':await meta('device'),'kind':kind,'occurred_at':stamp,'lease':snapshot['lease'],'customer_id':customerId,'cash_received':kind=='venta'?(cents(cash)/100).toStringAsFixed(2):null,'original_operation':original};
     await db.transaction((tx) async {
-      if(original!=null){final old=await tx.query('operation',where:'id=? AND state IN (\'EN_CONFLICTO\',\'RECHAZADA\') AND resolved=0',whereArgs:[original]);if(old.isEmpty)throw StateError('El original no admite revisión.');await tx.update('operation',{'resolved':1},where:'id=?',whereArgs:[original]);}
+      if(original!=null){
+        final old=await tx.rawQuery("""
+          SELECT id FROM operation WHERE id=? AND original IS NULL AND resolved=0
+            AND state IN ('EN_CONFLICTO','RECHAZADA')
+            AND NOT EXISTS(SELECT 1 FROM operation review WHERE review.original=operation.id
+                           AND review.state IN ('PENDIENTE','ENVIANDO'))
+        """,[original]);
+        if(old.isEmpty)throw StateError('El original no admite revisión.');
+      }
       await tx.insert('operation',{'id':id,'branch_id':envelope['branch_id'],'customer_id':customerId,'kind':kind,'occurred_at':stamp,'envelope':jsonEncode(envelope),'state':'PENDIENTE','original':original});
       for(final item in items){await tx.insert('detail',{'operation_id':id,'variant_id':item['id_variante_prenda'],'quantity':item['cantidad'],'price':cents(item['precio_unitario'])});}
     });return id;
@@ -137,5 +209,22 @@ class LocalDatabase {
     final items=await db.query('detail',where:'operation_id=?',whereArgs:[op['id']],orderBy:'variant_id');
     return {...jsonDecode(op['envelope'] as String),'items':items.map((d)=>{'id_variante_prenda':d['variant_id'],'cantidad':d['quantity'],'precio_unitario':((d['price'] as int)/100).toStringAsFixed(2)}).toList()};
   }
-  Future<void> applyResults(List<dynamic> results) async => db.transaction((tx) async {for(final result in results){await tx.update('operation',{'state':result['state'],'result':jsonEncode(result),'reason':result['reason']??''},where:'id=?',whereArgs:[result['operation_id']]);}});
+  Future<void> _applyResult(Transaction tx, Map result, {int? snapshotBranch}) async {
+    final operationId = result['operation_id'];
+    final confirmed = result['state'] == 'CONFIRMADA';
+    if (confirmed) {
+      await tx.rawUpdate('UPDATE operation SET resolved=1 WHERE id=(SELECT original FROM operation WHERE id=?)',[operationId]);
+    }
+    await tx.rawUpdate("""
+      UPDATE operation SET state=?,result=?,reason=?,
+        accounted=CASE WHEN branch_id=? AND ? THEN 1 ELSE accounted END,
+        resolved=CASE WHEN ? THEN 1 ELSE resolved END
+      WHERE id=?
+    """, [result['state'],jsonEncode(result),result['reason']??'',snapshotBranch,
+      confirmed ? 1 : 0,result['resolved']==true ? 1 : 0,operationId]);
+  }
+
+  Future<void> applyResults(List<dynamic> results) => db.transaction((tx) async {
+    for(final result in results){await _applyResult(tx,result);}
+  });
 }

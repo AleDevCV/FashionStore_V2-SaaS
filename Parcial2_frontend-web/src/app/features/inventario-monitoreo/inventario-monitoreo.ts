@@ -92,11 +92,11 @@ export class InventarioMonitoreo implements OnInit, OnDestroy {
 
     // Fallback: cálculo directo desde los items
     const lista = this.items();
-    const total_existencias = lista.reduce((acc, curr) => acc + (curr.stock || 0), 0);
+    const total_existencias = lista.reduce((acc, curr) => acc + (curr.stock_fisico ?? curr.stock), 0);
     const variantes_stock_bajo = lista.filter(
-      (i) => i.stock >= 1 && i.stock <= 4,
+      (i) => clasificarStock(i.stock_disponible ?? i.stock).estado === 'Bajo',
     ).length;
-    const variantes_agotadas = lista.filter((i) => (i.stock || 0) === 0).length;
+    const variantes_agotadas = lista.filter((i) => (i.stock_disponible ?? i.stock) === 0).length;
 
     return {
       total_existencias,

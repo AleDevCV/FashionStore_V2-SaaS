@@ -49,18 +49,19 @@ def obtener_resumen_inventario(
             SELECT 
                 i.id_sucursal,
                 s.nombre AS sucursal,
-                ci.nombre AS ciudad,
+                COALESCE(ci.nombre, '') AS ciudad,
                 v.id_variante_prenda,
                 p.id_prenda,
                 COALESCE(i.stock, 0) AS stock,
                 CASE 
-                    WHEN COALESCE(i.stock, 0) >= 5 THEN 'Optimo'
-                    WHEN COALESCE(i.stock, 0) BETWEEN 1 AND 4 THEN 'Bajo'
+                    WHEN disponibilidad.stock >= 5 THEN 'Optimo'
+                    WHEN disponibilidad.stock BETWEEN 1 AND 4 THEN 'Bajo'
                     ELSE 'Agotado'
                 END AS estado_stock
             FROM inventario i
+            JOIN inventario_catalogo disponibilidad USING (tenant_id,id_sucursal,id_variante_prenda)
             JOIN sucursal s ON i.id_sucursal = s.id_sucursal
-            JOIN ciudad ci ON s.id_ciudad = ci.id_ciudad
+            LEFT JOIN ciudad ci ON s.id_ciudad = ci.id_ciudad
             JOIN variante_prenda v ON i.id_variante_prenda = v.id_variante_prenda
             JOIN prenda p ON v.id_prenda = p.id_prenda
             LEFT JOIN categoria c ON p.id_categoria = c.id_categoria
@@ -93,18 +94,19 @@ def obtener_resumen_inventario(
             SELECT 
                 i.id_sucursal,
                 s.nombre AS sucursal,
-                ci.nombre AS ciudad,
+                COALESCE(ci.nombre, '') AS ciudad,
                 v.id_variante_prenda,
                 p.id_prenda,
                 COALESCE(i.stock, 0) AS stock,
                 CASE 
-                    WHEN COALESCE(i.stock, 0) >= 5 THEN 'Optimo'
-                    WHEN COALESCE(i.stock, 0) BETWEEN 1 AND 4 THEN 'Bajo'
+                    WHEN disponibilidad.stock >= 5 THEN 'Optimo'
+                    WHEN disponibilidad.stock BETWEEN 1 AND 4 THEN 'Bajo'
                     ELSE 'Agotado'
                 END AS estado_stock
             FROM inventario i
+            JOIN inventario_catalogo disponibilidad USING (tenant_id,id_sucursal,id_variante_prenda)
             JOIN sucursal s ON i.id_sucursal = s.id_sucursal
-            JOIN ciudad ci ON s.id_ciudad = ci.id_ciudad
+            LEFT JOIN ciudad ci ON s.id_ciudad = ci.id_ciudad
             JOIN variante_prenda v ON i.id_variante_prenda = v.id_variante_prenda
             JOIN prenda p ON v.id_prenda = p.id_prenda
             LEFT JOIN categoria c ON p.id_categoria = c.id_categoria
@@ -163,11 +165,11 @@ def obtener_monitoreo_inventario(
     if estado_stock:
         st = estado_stock.strip().capitalize()
         if st == "Optimo":
-            condiciones.append("COALESCE(i.stock, 0) >= 5")
+            condiciones.append("disponibilidad.stock >= 5")
         elif st == "Bajo":
-            condiciones.append("COALESCE(i.stock, 0) BETWEEN 1 AND 4")
+            condiciones.append("disponibilidad.stock BETWEEN 1 AND 4")
         elif st == "Agotado":
-            condiciones.append("COALESCE(i.stock, 0) <= 0")
+            condiciones.append("disponibilidad.stock <= 0")
 
     where_clause = ""
     if condiciones:
@@ -177,7 +179,7 @@ def obtener_monitoreo_inventario(
         SELECT 
             i.id_sucursal,
             s.nombre AS sucursal,
-            ci.nombre AS ciudad,
+            COALESCE(ci.nombre, '') AS ciudad,
             p.id_prenda,
             p.sku AS prenda_sku,
             p.nombre AS prenda_nombre,
@@ -193,19 +195,28 @@ def obtener_monitoreo_inventario(
             p.precio_base,
             v.precio_adicional,
             COALESCE(i.stock, 0) AS stock,
+            i.stock AS stock_fisico,
+            retenciones.unidades AS stock_retenido,
+            disponibilidad.stock AS stock_disponible,
             CASE 
-                WHEN COALESCE(i.stock, 0) >= 5 THEN 'Optimo'
-                WHEN COALESCE(i.stock, 0) BETWEEN 1 AND 4 THEN 'Bajo'
+                WHEN disponibilidad.stock >= 5 THEN 'Optimo'
+                WHEN disponibilidad.stock BETWEEN 1 AND 4 THEN 'Bajo'
                 ELSE 'Agotado'
             END AS estado_stock,
             CASE 
-                WHEN COALESCE(i.stock, 0) >= 5 THEN 'verde'
-                WHEN COALESCE(i.stock, 0) BETWEEN 1 AND 4 THEN 'amarillo'
+                WHEN disponibilidad.stock >= 5 THEN 'verde'
+                WHEN disponibilidad.stock BETWEEN 1 AND 4 THEN 'amarillo'
                 ELSE 'rojo'
             END AS color_badge
         FROM inventario i
+        JOIN inventario_catalogo disponibilidad USING (tenant_id,id_sucursal,id_variante_prenda)
+        CROSS JOIN LATERAL (
+            SELECT COALESCE(SUM(r.cantidad),0)::int AS unidades FROM retencion r
+            WHERE r.tenant_id=i.tenant_id AND r.id_sucursal=i.id_sucursal
+                AND r.id_variante_prenda=i.id_variante_prenda AND r.vence>now()
+        ) retenciones
         JOIN sucursal s ON i.id_sucursal = s.id_sucursal
-        JOIN ciudad ci ON s.id_ciudad = ci.id_ciudad
+        LEFT JOIN ciudad ci ON s.id_ciudad = ci.id_ciudad
         JOIN variante_prenda v ON i.id_variante_prenda = v.id_variante_prenda
         JOIN prenda p ON v.id_prenda = p.id_prenda
         LEFT JOIN categoria c ON p.id_categoria = c.id_categoria

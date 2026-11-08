@@ -12,7 +12,9 @@ ventas, inventario) audite con la misma función y el mismo formato.
 =============================================================================
 """
 
+from datetime import date
 from typing import Any
+from uuid import UUID
 
 from fastapi import Request
 
@@ -71,6 +73,8 @@ def registrar_bitacora(
     registro_id: int | None = None,
     ip_address: str | None = None,
     confirmar: bool = False,
+    id_sucursal: int | None = None,
+    operation_id: UUID | None = None,
 ) -> None:
     """Inserta un registro de auditoría en la tabla `bitacora`.
 
@@ -102,10 +106,11 @@ def registrar_bitacora(
     cursor.execute(
         """
         INSERT INTO bitacora
-            (id_usuario, accion, tabla_afectada, registro_id, detalle, ip_address)
-        VALUES (%s, %s, %s, %s, %s, %s);
+            (id_usuario, accion, tabla_afectada, registro_id, detalle, ip_address, id_sucursal, operation_id)
+        VALUES (%s, %s, %s, %s, %s, %s, %s, %s);
         """,
-        (id_usuario, accion, tabla_afectada, registro_id, detalle, ip_address),
+        (id_usuario, accion, tabla_afectada, registro_id, detalle, ip_address,
+         id_sucursal, str(operation_id) if operation_id else None),
     )
 
     if confirmar:
@@ -120,6 +125,10 @@ def listar_bitacora(
     accion: str | None = None,
     tabla_afectada: str | None = None,
     busqueda: str | None = None,
+    fecha_inicio: date | None = None,
+    fecha_fin: date | None = None,
+    usuario_id: int | None = None,
+    operation_id: UUID | None = None,
 ) -> dict:
     """Consulta los eventos registrados en la bitácora de auditoría (CU25)
 
@@ -139,43 +148,67 @@ def listar_bitacora(
 
     if busqueda:
         filtros.append(
-            "(b.detalle ILIKE %s OR b.ip_address ILIKE %s OR u.nombre ILIKE %s OR u.correo ILIKE %s)"
+            "(b.detalle ILIKE %s OR b.ip_address ILIKE %s OR b.nombre_usuario ILIKE %s OR b.correo_usuario ILIKE %s)"
         )
         termino = f"%{busqueda}%"
         params.extend([termino, termino, termino, termino])
+    if fecha_inicio:
+        filtros.append('b.fecha >= %s::date')
+        params.append(fecha_inicio)
+    if fecha_fin:
+        filtros.append('b.fecha < %s::date + 1')
+        params.append(fecha_fin)
+    if usuario_id:
+        filtros.append('b.id_usuario = %s')
+        params.append(usuario_id)
+    if operation_id:
+        filtros.append('b.operation_id = %s::uuid')
+        params.append(str(operation_id))
 
     where_clause = f"WHERE {' AND '.join(filtros)}" if filtros else ""
 
-    # Conteo total
-    query_count = f"""
-        SELECT COUNT(*) AS total
-        FROM bitacora b
-        LEFT JOIN usuario u ON b.id_usuario = u.id_usuario
-        {where_clause};
+    events = """
+        WITH business AS (
+            SELECT b.id_bitacora,b.id_usuario,
+                   NULLIF(TRIM(CONCAT(u.nombre,' ',u.apellido)),'') AS nombre_usuario,
+                   u.correo AS correo_usuario,r.nombre AS rol_usuario,
+                   b.accion,b.tabla_afectada,b.registro_id,COALESCE(b.detalle,'') AS detalle,b.ip_address,
+                   b.fecha AT TIME ZONE current_setting('TimeZone') AS fecha,
+                   COALESCE(b.id_sucursal,CASE b.tabla_afectada
+                       WHEN 'sucursal' THEN b.registro_id
+                       WHEN 'venta' THEN (SELECT v.id_sucursal FROM venta v WHERE v.id_venta=b.registro_id)
+                       WHEN 'compra' THEN (SELECT c.id_sucursal FROM compra c WHERE c.id_compra=b.registro_id)
+                       WHEN 'movimiento_inventario' THEN (SELECT m.id_sucursal FROM movimiento_inventario m WHERE m.id_movimiento=b.registro_id)
+                       WHEN 'cambio' THEN (SELECT c.id_sucursal FROM cambio c WHERE c.id_cambio=b.registro_id)
+                   END) AS id_sucursal,
+                   COALESCE(b.operation_id,CASE WHEN b.tabla_afectada IN ('operacion_sync','traspaso_inventario','reporte_resultado')
+                     THEN substring(b.detalle FROM '(?i)[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}')::uuid
+                   END) AS operation_id
+            FROM bitacora b
+            LEFT JOIN usuario u ON b.id_usuario=u.id_usuario
+            LEFT JOIN rol r ON u.id_role=r.id_rol
+        ), events AS (
+            SELECT * FROM business b WHERE current_setting('app.role',true)='Administrador'
+                OR EXISTS (SELECT 1 FROM usuario_sucursal us WHERE us.id_sucursal=b.id_sucursal
+                           AND us.id_usuario=NULLIF(current_setting('app.user_id',true),'')::integer)
+            UNION ALL
+            SELECT -event_id,local_user,account_name,account_email,account_role,event_action,
+                   'auditoria_identidad',NULL,event_action,NULL,event_date,NULL,NULL
+            FROM audit_identity_events()
+        )
     """
-    cursor.execute(query_count, params)
+    cursor.execute(f"{events} SELECT COUNT(*) AS total FROM events b {where_clause}", params)
     fila_count = cursor.fetchone()
     total = int(fila_count["total"] or 0)
 
-    # Consulta de registros paginados
     query_items = f"""
-        SELECT 
-            b.id_bitacora,
-            b.id_usuario,
-            TRIM(CONCAT(u.nombre, ' ', COALESCE(u.apellido, ''))) AS nombre_usuario,
-            u.correo AS correo_usuario,
-            r.nombre AS rol_usuario,
-            b.accion,
-            b.tabla_afectada,
-            b.registro_id,
-            b.detalle,
-            b.ip_address,
-            b.fecha
-        FROM bitacora b
-        LEFT JOIN usuario u ON b.id_usuario = u.id_usuario
-        LEFT JOIN rol r ON u.id_role = r.id_rol
+        {events}
+        SELECT b.id_bitacora,b.id_usuario,b.nombre_usuario,b.correo_usuario,b.rol_usuario,b.accion,
+               b.tabla_afectada,b.registro_id,b.detalle,b.ip_address,b.fecha,b.id_sucursal,
+               b.operation_id::text AS operation_id
+        FROM events b
         {where_clause}
-        ORDER BY b.id_bitacora DESC
+        ORDER BY b.fecha DESC,b.id_bitacora DESC
         LIMIT %s OFFSET %s;
     """
     params_items = list(params) + [limite, offset]

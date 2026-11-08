@@ -27,7 +27,7 @@ class _MovimientosScreenState extends State<MovimientosScreen> {
   String? _error;
   String _filtroTipo = 'Todos';
 
-  final List<String> _tiposFiltro = ['Todos', 'Entrada', 'Salida', 'Traspaso'];
+  final List<String> _tiposFiltro = ['Todos', 'Entrada', 'Salida', 'Ajuste', 'Traspaso'];
 
   @override
   void initState() {

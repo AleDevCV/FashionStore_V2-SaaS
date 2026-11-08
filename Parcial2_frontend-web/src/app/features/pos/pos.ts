@@ -25,6 +25,7 @@ import { FormsModule } from '@angular/forms';
 import {firstValueFrom} from 'rxjs';
 import {DescargaService} from '../../core/services/descarga.service';
 import { PosService } from '../../core/services/pos.service';
+import { OperationKey } from '../../core/services/operation-key';
 import { GeografiaService } from '../../core/services/geografia.service';
 import { CategoriaService } from '../../core/services/categoria.service';
 import { ClienteService } from '../../core/services/cliente.service';
@@ -47,6 +48,7 @@ import { Categoria, Cliente, Sucursal } from '../../core/models/catalogo.model';
   styleUrls: ['./pos.scss'],
 })
 export class Pos implements OnInit {
+  private readonly operationKey = new OperationKey();
   private readonly descarga=inject(DescargaService);
   private readonly posService = inject(PosService);
   private readonly geografiaService = inject(GeografiaService);
@@ -284,6 +286,7 @@ export class Pos implements OnInit {
   }
 
   limpiarTicket(): void {
+    this.operationKey.clear();
     this.itemsCarrito.set([]);
     this.descuento.set(0);
     this.idReservaVinculada.set(null);
@@ -417,6 +420,7 @@ export class Pos implements OnInit {
   }
 
   async confirmarVenta(): Promise<void> {
+    if (this.procesandoVenta()) return;
     if (this.esMontoInsuficiente()) {
       this.errorCobro.set('El monto recibido no cubre el total de la venta.');
       return;
@@ -442,13 +446,13 @@ export class Pos implements OnInit {
       })),
     };
 
-    if(!payload.id_reserva){
+    if (!payload.id_reserva && !this.operationKey.matches(payload)) {
       try{const quote=await firstValueFrom(this.posService.cotizar(payload));
         const changes=quote.items.some((line:any)=>Number(payload.items.find(x=>x.id_variante_prenda===line.id_variante_prenda)?.precio_unitario)!==Number(line.precio_unitario));
         if(changes){this.itemsCarrito.update(rows=>rows.map(row=>({...row,precio_unitario:Number(quote.items.find((line:any)=>line.id_variante_prenda===row.variante.id_variante_prenda).precio_unitario)})));this.procesandoVenta.set(false);this.errorCobro.set('Los precios se actualizaron por cantidad u oferta. Revise el total y confirme nuevamente el cobro.');return;}
       }catch(e:any){this.procesandoVenta.set(false);this.errorCobro.set(e.error?.detail||'No se pudo cotizar la venta.');return;}
     }
-    this.posService.procesarVenta(payload).subscribe({
+    this.posService.procesarVenta({ ...payload, idempotency_key: this.operationKey.get(payload) }).subscribe({
       next: (res) => {
         this.procesandoVenta.set(false);
         this.ventaCompletada.set(res);

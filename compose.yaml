@@ -38,6 +38,7 @@ services:
       SMTP_PASSWORD: ${SMTP_PASSWORD:-}
       SMTP_FROM: ${SMTP_FROM:-noreply@example.invalid}
       SMTP_USE_TLS: ${SMTP_USE_TLS:-true}
+      RECOVERY_DEMO_MAILBOX: ${RECOVERY_DEMO_MAILBOX:-}
     depends_on:
       db:
         condition: service_healthy

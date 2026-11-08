@@ -70,6 +70,9 @@ export interface MonitoreoItem {
   precio_adicional?: number;
   precio?: number | null;
   stock: number;
+  stock_fisico?: number;
+  stock_retenido?: number;
+  stock_disponible?: number;
   estado_stock: EstadoStock;
   color_badge: ColorBadge;
 }
@@ -85,7 +88,7 @@ export interface FiltrosMonitoreo {
 }
 
 /**
- * Determina el estado de stock y color cromático en base a la cantidad física.
+ * Determina el estado de stock y color cromático según la cantidad disponible.
  * - Óptimo (>= 5): Verde
  * - Bajo Stock (1-4): Amarillo
  * - Agotado (0): Rojo

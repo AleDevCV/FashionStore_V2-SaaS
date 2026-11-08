@@ -129,6 +129,12 @@ export class PrendaModal implements OnInit, OnDestroy {
       url_imagen: [prendaActual?.url_imagen ?? '', [Validators.maxLength(255)]],
       estado: [prendaActual?.estado ?? 'Activo'],
       variantes: this.fb.array([]),
+    }, {
+      validators: (form) => {
+        if (form.get('estado')?.value !== 'Activo') return null;
+        const incompleto = ['material', 'medidas'].some((campo) => !form.get(campo)?.value?.trim());
+        return incompleto ? { fichaIncompleta: true } : null;
+      },
     });
     this.imagenPreview.set(prendaActual?.url_imagen ?? null);
 
@@ -299,7 +305,7 @@ export class PrendaModal implements OnInit, OnDestroy {
     const valores = this.formulario.value;
     const comercial = {
       admite_cambio:valores.admite_cambio,
-      material: valores.material || null, medidas: valores.medidas || null,
+      material: valores.material?.trim() || null, medidas: valores.medidas?.trim() || null,
       precio_mayorista: valores.precio_mayorista === null || valores.precio_mayorista === '' ? null : Number(valores.precio_mayorista),
       umbral_mayorista: Number(valores.umbral_mayorista || 6),
       precio_oferta: valores.precio_oferta === null || valores.precio_oferta === '' ? null : Number(valores.precio_oferta),

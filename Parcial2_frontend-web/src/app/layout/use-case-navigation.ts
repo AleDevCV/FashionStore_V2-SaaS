@@ -113,7 +113,7 @@ export const USE_CASE_PACKAGES: readonly Package[] = [
       { label: 'Analítica y aprendizaje automático', path: '/panel/analitica', audience: 'staff', roles: managers },
     ] },
     { id: 'CU20', title: 'Consultar auditoría y trazabilidad', requires: 'Administración', links: [
-      { label: 'Bitácora de auditoría', path: '/panel/bitacora', roles: admin },
+      { label: 'Bitácora de auditoría', path: '/panel/bitacora', roles: managers },
       { label: 'Auditoría de una empresa', path: '/panel/bitacora', scope: 'empresa', platformOnly: true },
     ] },
   ] },

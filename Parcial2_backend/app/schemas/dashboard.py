@@ -102,6 +102,8 @@ class EstadoInventarioSucursal(BaseModel):
 
 
 class DashboardKPIsRespuesta(BaseModel):
+    model_available: bool = False
+    estado_modelo: str | None = None
     """Carga útil consolidada del Dashboard Gerencial."""
 
     model_config = ConfigDict(from_attributes=True)

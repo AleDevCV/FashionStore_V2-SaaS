@@ -102,6 +102,8 @@ def process(op,supervision_reason=''):
             if op.original_operation:
                 cur.execute('SELECT * FROM operacion_sync WHERE operation_id=%s FOR UPDATE',(str(op.original_operation),));original=cur.fetchone()
                 require_operation_access(cur,original)
+                if original['original_operation'] or original['envelope'].get('original_operation'):
+                    raise HTTPException(409,'Reintente desde la operación original, no desde una revisión anterior.')
                 if original['state']=='CONFIRMADA' or original['resolved_at'] is not None:raise HTTPException(409,'La operación original no admite una nueva revisión.')
                 if original['kind']!=op.kind or original['branch_id']!=op.branch_id:raise HTTPException(409,'La revisión debe conservar el tipo y la sucursal originales.')
                 if op.kind=='venta' and Decimal(original['envelope']['cash_received'])!=op.cash_received:raise HTTPException(409,'Conserve el efectivo realmente recibido; registre por separado su compensación.')
@@ -132,7 +134,7 @@ def process(op,supervision_reason=''):
             result={'operation_id':oid,'state':state,'reason':str(exc.detail)}
         cur.execute('''INSERT INTO operacion_sync(operation_id,author_id,branch_id,device_id,kind,payload_hash,envelope,state,result,original_operation)
         VALUES(%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)''',(oid,author,branch,str(op.device_id),op.kind,digest,Json(envelope),result['state'],Json(result),str(op.original_operation) if revision else None))
-        if revision:
+        if revision and result['state']=='CONFIRMADA':
             cur.execute("UPDATE operacion_sync SET resolved_at=now(),resolved_by=%s,resolution='Revisada mediante nueva operación' WHERE operation_id=%s",(ctx.user_id,str(op.original_operation)))
-        cur.execute("INSERT INTO bitacora(id_usuario,accion,tabla_afectada,detalle) VALUES(%s,'SYNC','operacion_sync',%s)",(ctx.user_id,json.dumps({'uuid':oid,'estado':result['state'],'supervision':bool(supervision_reason),'motivo_supervision':supervision_reason if op.author_id!=ctx.user_id else ''},ensure_ascii=False)))
+        cur.execute("INSERT INTO bitacora(id_usuario,accion,tabla_afectada,detalle,id_sucursal,operation_id) VALUES(%s,'SYNC','operacion_sync',%s,%s,%s)",(ctx.user_id,json.dumps({'uuid':oid,'estado':result['state'],'supervision':bool(supervision_reason),'motivo_supervision':supervision_reason if op.author_id!=ctx.user_id else ''},ensure_ascii=False),branch,oid))
         return result

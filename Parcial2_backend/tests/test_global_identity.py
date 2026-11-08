@@ -172,6 +172,24 @@ def test_global_password_recovery_revokes_all_stores(client,customer_companies,m
     assert client.post('/api/login',json={'correo':email,'password':'changed-global-password'}).status_code==200
 
 
+def test_recovery_routes_demo_mail_without_disclosing_account(client, monkeypatch):
+    from app.services import email_service
+    username = 'recuperacion-' + secrets.token_hex(5)
+    email = username + '@fashionstore.com'
+    register(client, email)
+    sent = []
+    monkeypatch.setattr(email_service, 'RECOVERY_DEMO_MAILBOX', 'buzon@example.com')
+    monkeypatch.setattr('app.routers.auth.enviar_correo_recuperacion',
+                        lambda recipient, _name, _token: sent.append(recipient))
+    endpoint = '/api/auth/recuperar-password'
+    registered = client.post(endpoint, json={'correo': email})
+    unknown = client.post(endpoint, json={'correo': 'desconocido-' + secrets.token_hex(5) + '@fashionstore.com'})
+    assert registered.status_code == unknown.status_code == 200
+    assert registered.json() == unknown.json()
+    assert sent == [f'buzon+{username}@example.com']
+    assert email_service.destinatario_recuperacion('persona@example.com', 'alterno@example.net') == 'alterno@example.net'
+
+
 def test_identity_directory_is_not_readable_as_application(client):
     with app_conn() as conn,conn.cursor() as cur:
         for table in ('cuenta_global','cuenta_recuperacion','auditoria_identidad'):

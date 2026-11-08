@@ -9,6 +9,8 @@ export interface BitacoraItem {
   registro_id?: number;
   detalle: string;
   ip_address?: string;
+  id_sucursal?: number;
+  operation_id?: string;
   fecha: string;
 }
 

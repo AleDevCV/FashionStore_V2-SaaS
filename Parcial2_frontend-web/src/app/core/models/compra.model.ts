@@ -47,6 +47,7 @@ export interface CompraDetallada extends Compra {
 }
 
 export interface CompraCrear {
+  idempotency_key?: string;
   id_proveedor: number;
   id_sucursal: number;
   items?: DetalleCompraCrear[];

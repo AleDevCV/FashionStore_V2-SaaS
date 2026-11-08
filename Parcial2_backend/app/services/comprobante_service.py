@@ -40,6 +40,7 @@ from reportlab.platypus import (
 )
 
 from app.schemas.comprobante import ComprobanteGenerarPeticion
+from app.tenant import require_context
 from app.services.bitacora_service import ACCION_INSERT, registrar_bitacora
 
 # Directorio donde se guardan los PDFs
@@ -224,28 +225,7 @@ def _construir_pdf(
 # FUNCIÓN PRINCIPAL
 # ─────────────────────────────────────────────────────────────────────────────
 
-def generar_comprobante(
-    cursor: Any,
-    datos: ComprobanteGenerarPeticion,
-    id_usuario: int | None,
-    ip_address: str,
-) -> dict:
-    """Genera y almacena el comprobante PDF de una venta.
-
-    Parámetros:
-        cursor: cursor activo de PostgreSQL.
-        datos: id_venta, nit_ci, razon_social, enviar_email.
-        id_usuario: ID del usuario autenticado.
-        ip_address: IP para auditoría.
-
-    Retorna:
-        dict: comprobante completo con url_pdf.
-
-    Errores:
-        HTTP 404: venta inexistente.
-        HTTP 409: ya existe un comprobante para esta venta.
-    """
-    # Verificar que la venta existe
+def _venta_comprobante(cursor, id_venta):
     cursor.execute(
         """
         SELECT v.id_venta, v.id_cliente, v.metodo_pago,
@@ -255,7 +235,7 @@ def generar_comprobante(
         LEFT JOIN cliente c ON v.id_cliente = c.id_cliente
         WHERE v.id_venta = %s;
         """,
-        (datos.id_venta,),
+        (id_venta,),
     )
     venta = cursor.fetchone()
     if not venta:
@@ -264,18 +244,16 @@ def generar_comprobante(
             detail="La venta especificada no existe",
         )
 
-    # Verificar que no haya comprobante previo
-    cursor.execute(
-        "SELECT id_comprobante FROM comprobante WHERE id_venta = %s;",
-        (datos.id_venta,),
-    )
-    if cursor.fetchone():
-        raise HTTPException(
-            status_code=status.HTTP_409_CONFLICT,
-            detail="Ya existe un comprobante para esta venta",
-        )
+    return venta
 
-    # Obtener ítems de la venta
+
+def _bloquear_comprobante(cursor, id_venta):
+    cursor.execute('SELECT pg_advisory_xact_lock(hashtextextended(%s,0))',
+                   (f'receipt:{require_context().tenant_id}:{id_venta}',))
+
+
+def _guardar_pdf(cursor, venta, comprobante):
+    from tempfile import NamedTemporaryFile
     cursor.execute(
         """
         SELECT
@@ -290,19 +268,15 @@ def generar_comprobante(
         WHERE dv.id_venta = %s
         ORDER BY dv.id_variante_prenda;
         """,
-        (datos.id_venta,),
+        (venta['id_venta'],),
     )
     items = cursor.fetchall()
 
-    # Generar número único
-    numero = _numero_comprobante(cursor, datos.id_venta)
-
-    # Construir PDF
     pdf_bytes = _construir_pdf(
-        numero=numero,
-        nit_ci=datos.nit_ci,
-        razon_social=datos.razon_social,
-        fecha_emision=datetime.now(),
+        numero=comprobante['numero_comprobante'],
+        nit_ci=comprobante['nit_ci'],
+        razon_social=comprobante['razon_social'],
+        fecha_emision=comprobante['fecha_emision'],
         items=items,
         subtotal=Decimal(str(venta["subtotal"])),
         descuento=Decimal(str(venta["descuento"])),
@@ -310,11 +284,48 @@ def generar_comprobante(
         metodo_pago=venta["metodo_pago"],
     )
 
-    # Guardar en disco
     directorio = _asegurar_directorio()
-    nombre_archivo = f"{numero}.pdf"
-    ruta_archivo = directorio / nombre_archivo
-    ruta_archivo.write_bytes(pdf_bytes)
+    ruta_archivo = directorio / f"{comprobante['numero_comprobante']}.pdf"
+    with NamedTemporaryFile(dir=directorio, delete=False) as temporal:
+        ruta_temporal = Path(temporal.name)
+        try:
+            temporal.write(pdf_bytes)
+            temporal.close()
+            ruta_temporal.replace(ruta_archivo)
+        finally:
+            ruta_temporal.unlink(missing_ok=True)
+    return pdf_bytes
+
+
+def pdf_autorizado(cursor, numero):
+    comprobante = obtener_comprobante_por_numero(cursor, numero)
+    path = STATIC_DIR / str(require_context().tenant_id) / f'{numero}.pdf'
+    if not path.is_file():
+        _bloquear_comprobante(cursor, comprobante['id_venta'])
+        if not path.is_file():
+            _guardar_pdf(cursor, _venta_comprobante(cursor, comprobante['id_venta']), comprobante)
+    return path
+
+
+def generar_comprobante(
+    cursor: Any,
+    datos: ComprobanteGenerarPeticion,
+    id_usuario: int | None,
+    ip_address: str,
+) -> dict:
+    """Emite una vez por venta y repone el PDF existente con sus datos originales."""
+    venta = _venta_comprobante(cursor, datos.id_venta)
+    _bloquear_comprobante(cursor, datos.id_venta)
+    cursor.execute('SELECT * FROM comprobante WHERE id_venta=%s', (datos.id_venta,))
+    existente = cursor.fetchone()
+    if existente:
+        path = STATIC_DIR / str(require_context().tenant_id) / f"{existente['numero_comprobante']}.pdf"
+        if path.is_file():
+            raise HTTPException(409, 'Ya existe un comprobante para esta venta')
+        _guardar_pdf(cursor, venta, existente)
+        return dict(existente)
+
+    numero = _numero_comprobante(cursor, datos.id_venta)
     url_pdf = f"/api/comprobantes/{numero}/pdf"
 
     # Insertar en BD
@@ -349,6 +360,7 @@ def generar_comprobante(
         "fecha_emision": comp_row["fecha_emision"],
         "url_pdf": url_pdf,
     }
+    pdf_bytes = _guardar_pdf(cursor, venta, resultado)
 
     # Enviar email si el cliente tiene correo
     if datos.enviar_email and venta["cliente_correo"]:

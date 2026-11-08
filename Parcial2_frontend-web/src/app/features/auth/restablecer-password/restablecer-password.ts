@@ -306,6 +306,7 @@ export class RestablecerPassword implements OnInit {
       .restablecerPassword(this.token(), nuevaPassword)
       .subscribe({
         next: () => {
+          this.authService.logout(false);
           this.cargando.set(false);
           this.exito.set(true);
         },

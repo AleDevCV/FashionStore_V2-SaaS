@@ -18,6 +18,7 @@ import {
 } from '@angular/forms';
 
 import { MovimientoInventarioService } from '../../../core/services/movimiento-inventario.service';
+import { OperationKey } from '../../../core/services/operation-key';
 import { GeografiaService } from '../../../core/services/geografia.service';
 import { PrendaService } from '../../../core/services/prenda.service';
 import { Sucursal } from '../../../core/models/catalogo.model';
@@ -68,7 +69,7 @@ export class MovimientoModal implements OnInit {
   readonly consultandoStock = signal(false);
 
   formulario!: FormGroup;
-  private operationId: string | null = null;
+  private readonly operationKey = new OperationKey();
 
   // ---------------------------------------------------------------------------
   // CICLO DE VIDA
@@ -146,6 +147,8 @@ export class MovimientoModal implements OnInit {
 
   get esTraspaso(): boolean { return this.formulario?.value?.tipo === 'Traspaso'; }
 
+  get esAjuste(): boolean { return this.formulario?.value?.tipo === 'Ajuste'; }
+
   get sucursalesDestino(): Sucursal[] {
     return this.sucursales().filter(s => s.id_sucursal !== Number(this.formulario.value.id_sucursal));
   }
@@ -154,6 +157,9 @@ export class MovimientoModal implements OnInit {
     const destino = this.formulario.controls['id_sucursal_destino'];
     destino.setValidators(this.esTraspaso ? [Validators.required, Validators.min(1)] : []);
     destino.updateValueAndValidity();
+    const cantidad = this.formulario.controls['cantidad'];
+    cantidad.setValidators([Validators.required, Validators.min(this.esAjuste ? 0 : 1), Validators.pattern(/^\d+$/)]);
+    cantidad.updateValueAndValidity();
     this.verificarConsultaStock();
   }
 
@@ -197,7 +203,7 @@ export class MovimientoModal implements OnInit {
 
   get bloqueadoPorStock(): boolean {
     // Un reintento puede recuperar un traspaso ya confirmado con saldo actual diferente.
-    return this.stockInsuficiente && (!this.esTraspaso || this.operationId === null);
+    return this.stockInsuficiente && !this.operationKey.matches(this.datosMovimiento());
   }
 
   campoInvalido(nombreCampo: string): boolean {
@@ -232,23 +238,10 @@ export class MovimientoModal implements OnInit {
 
     this.cargando.set(true);
     this.mensajeError.set(null);
-
-    const v = this.formulario.value;
-    const cuerpo: MovimientoInventarioCrear = {
-      id_sucursal: Number(v.id_sucursal),
-      id_variante_prenda: Number(v.id_variante_prenda),
-      tipo: v.tipo as TipoMovimiento,
-      cantidad: Number(v.cantidad),
-      motivo: v.motivo.trim(),
-    };
-    if (this.esTraspaso) {
-      this.operationId ??= crypto.randomUUID();
-      cuerpo.id_sucursal_destino = Number(v.id_sucursal_destino);
-      cuerpo.operation_id = this.operationId;
-    }
-
-    this.movimientoService.crear(cuerpo).subscribe({
+    const cuerpo = this.datosMovimiento();
+    this.movimientoService.crear({ ...cuerpo, operation_id: this.operationKey.get(cuerpo) }).subscribe({
       next: (creado) => {
+        this.operationKey.clear();
         this.cargando.set(false);
         this.guardado.emit('movimiento_salida' in creado
           ? `Traspaso confirmado: ${creado.movimiento_salida.sucursal_nombre || 'Origen'} → ${creado.movimiento_entrada.sucursal_nombre || 'Destino'} (${creado.cantidad} un.).`
@@ -256,9 +249,21 @@ export class MovimientoModal implements OnInit {
       },
       error: (error: Error) => {
         this.cargando.set(false);
-        this.mensajeError.set(error.message + (this.esTraspaso
-          ? ' Reintenta sin cambiar los datos. Antes de iniciar otro traspaso, revisa el historial.' : ''));
+        this.mensajeError.set(error.message + ' Si no recibiste confirmación, reintenta con los mismos datos.');
       },
     });
+  }
+
+  private datosMovimiento(): MovimientoInventarioCrear {
+    const v = this.formulario.value;
+    const cuerpo: MovimientoInventarioCrear = {
+      id_sucursal: Number(v.id_sucursal),
+      id_variante_prenda: Number(v.id_variante_prenda),
+      tipo: v.tipo as TipoMovimiento,
+      cantidad: Number(v.cantidad),
+      motivo: v.motivo.trim(),
+      ...(this.esTraspaso ? { id_sucursal_destino: Number(v.id_sucursal_destino) } : {}),
+    };
+    return cuerpo;
   }
 }

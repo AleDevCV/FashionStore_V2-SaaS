@@ -185,6 +185,10 @@ def crear_sucursal(
 
     try:
         id_sucursal = svc.crear_sucursal(cursor, datos.model_dump())
+    except pg_errors.CheckViolation as error:
+        if error.diag.message_primary in {'Suscripción no vigente', 'Límite de sucursales del plan alcanzado'}:
+            raise HTTPException(status.HTTP_400_BAD_REQUEST, error.diag.message_primary) from error
+        raise
     except pg_errors.ForeignKeyViolation:
         # Cubre un id_encargado que no corresponde a ningún usuario.
         raise HTTPException(

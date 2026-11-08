@@ -12,8 +12,10 @@ logger en consola para entornos de desarrollo local y suites de prueba.
 import logging
 import os
 import smtplib
+import ssl
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
+from html import escape
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -27,6 +29,16 @@ SMTP_PASSWORD = os.getenv("SMTP_PASSWORD", "")
 SMTP_FROM = os.getenv("SMTP_FROM", "no-reply@fashionstore.com")
 SMTP_USE_TLS = os.getenv("SMTP_USE_TLS", "false").lower() in ("true", "1", "yes")
 FRONTEND_URL = os.getenv("FRONTEND_URL", "http://localhost:4200").rstrip("/")
+RECOVERY_DEMO_MAILBOX = os.getenv("RECOVERY_DEMO_MAILBOX", "").strip()
+
+
+def destinatario_recuperacion(correo: str, correo_alternativo: str | None) -> str:
+    """Etiqueta las cuentas FashionStore del entorno de demostración."""
+    usuario, _, dominio = correo.lower().rpartition("@")
+    buzon, _, proveedor = RECOVERY_DEMO_MAILBOX.rpartition("@")
+    if dominio == "fashionstore.com" and buzon and proveedor:
+        return f"{buzon}+{usuario}@{proveedor}"
+    return correo_alternativo or correo
 
 
 def enviar_correo_recuperacion(
@@ -78,7 +90,7 @@ def enviar_correo_recuperacion(
           <body style="font-family: Arial, sans-serif; line-height: 1.6; color: #333;">
             <div style="max-width: 600px; margin: 0 auto; padding: 20px; border: 1px solid #eaeaea; border-radius: 8px;">
               <h2 style="color: #1a1a1a;">Recuperación de Contraseña</h2>
-              <p>Hola <strong>{nombre_usuario}</strong>,</p>
+          <p>Hola <strong>{escape(nombre_usuario)}</strong>,</p>
               <p>Recibimos una solicitud para restablecer la contraseña de acceso a su cuenta en <strong>FashionStore</strong>.</p>
               <div style="text-align: center; margin: 30px 0;">
                 <a href="{enlace_recuperacion}" 
@@ -104,7 +116,7 @@ def enviar_correo_recuperacion(
 
         with smtplib.SMTP(SMTP_HOST, SMTP_PORT, timeout=5) as servidor:
             if SMTP_USE_TLS:
-                servidor.starttls()
+                servidor.starttls(context=ssl.create_default_context())
             if SMTP_USER:
                 servidor.login(SMTP_USER, SMTP_PASSWORD)
             servidor.sendmail(SMTP_FROM, [destinatario], mensaje.as_string())
@@ -112,6 +124,9 @@ def enviar_correo_recuperacion(
         logger.info("Correo de recuperación despachado.")
         return True
 
-    except Exception:
+    except smtplib.SMTPResponseException as error:
+        logger.error("Falló el envío SMTP de recuperación (código %s).", error.smtp_code)
+        return False
+    except (OSError, smtplib.SMTPException):
         logger.error("Falló la entrega de recuperación por SMTP.")
         return False

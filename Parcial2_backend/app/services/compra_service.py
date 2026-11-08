@@ -21,6 +21,8 @@ import psycopg2
 from psycopg2 import errors as pg_errors
 
 from app.schemas.compra import CompraCrear
+from app.services import idempotency
+from app.services.commerce import authorized_branch
 from app.services.bitacora_service import (
     ACCION_INSERT,
     registrar_bitacora,
@@ -49,6 +51,14 @@ def registrar_compra(
         HTTP 404: proveedor, sucursal o variantes inexistentes.
     """
     items = datos.items or datos.detalles
+    key = datos.idempotency_key
+    if key:
+        authorized_branch(cursor, datos.id_sucursal)
+        payload = {'proveedor': datos.id_proveedor, 'sucursal': datos.id_sucursal,
+                   'items': [item.model_dump() for item in items]}
+        digest, previous = idempotency.replay(cursor, 'compra', key, payload)
+        if previous is not None:
+            return previous
     if not items or len(items) == 0:
         raise HTTPException(
             status_code=status.HTTP_400_BAD_REQUEST,
@@ -172,6 +182,8 @@ def registrar_compra(
             ),
             id_usuario=id_usuario,
             ip_address=ip_address,
+            id_sucursal=datos.id_sucursal,
+            operation_id=key,
         )
 
     except (psycopg2.Error, Exception) as exc:
@@ -184,7 +196,10 @@ def registrar_compra(
         )
 
     # 9. Retornar la compra completa detallada
-    return obtener_compra_por_id(cursor, id_compra)
+    result = obtener_compra_por_id(cursor, id_compra)
+    if key:
+        idempotency.remember(cursor, 'compra', key, digest, result)
+    return result
 
 
 def listar_compras(

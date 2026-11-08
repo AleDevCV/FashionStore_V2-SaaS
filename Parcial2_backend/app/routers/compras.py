@@ -18,12 +18,16 @@ from app.schemas.compra import (
     CompraRespuesta,
 )
 from app.services import compra_service as svc
-from app.services.auth_service import get_current_user, requiere_rol
+from app.services.auth_service import esquema_bearer, get_current_user, requiere_rol
 from app.services.bitacora_service import obtener_ip_cliente
 
 router = APIRouter(prefix="/compras", tags=["Compras (CU13)"])
 
 puede_gestionar = requiere_rol(["Administrador", "Encargado de Sucursal"])
+
+
+def usuario_compra(credenciales=Depends(esquema_bearer), cursor=Depends(get_db, scope="function")):
+    return puede_gestionar(get_current_user(credenciales, cursor))
 
 
 @router.post(
@@ -41,8 +45,8 @@ puede_gestionar = requiere_rol(["Administrador", "Encargado de Sucursal"])
 def registrar_compra(
     datos: CompraCrear,
     request: Request,
-    cursor=Depends(get_db),
-    usuario=Depends(puede_gestionar),
+    cursor=Depends(get_db, scope="function"),
+    usuario=Depends(usuario_compra),
 ):
     """Registra una compra completa bajo una estricta transacción atómica.
 

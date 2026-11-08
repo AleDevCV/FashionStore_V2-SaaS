@@ -19,7 +19,7 @@ from fastapi import HTTPException, status
 
 from app.schemas.comprobante import ComprobanteGenerarPeticion
 from app.schemas.pos import POSVentaCrear
-from app.services import comprobante_service
+from app.services import comprobante_service, idempotency
 from app.services.bitacora_service import ACCION_INSERT, registrar_bitacora
 
 
@@ -200,7 +200,13 @@ def procesar_venta_pos(
     6. Emite comprobante fiscal digital PDF (CU21).
     7. Registra auditoría inmutable en bitácora (CU25).
     """
-    from app.services.commerce import prepare_pos
+    from app.services.commerce import authorized_branch, prepare_pos
+    key = datos.idempotency_key
+    if key:
+        authorized_branch(cursor, datos.id_sucursal)
+        digest, previous = idempotency.replay(cursor, 'pos', key, datos.model_dump(exclude={'idempotency_key'}))
+        if previous is not None:
+            return previous
     prepare_pos(cursor, datos)
 
     # 1. Validar o resolver cliente
@@ -428,9 +434,11 @@ def procesar_venta_pos(
         ),
         id_usuario=id_usuario,
         ip_address=ip_address,
+        id_sucursal=datos.id_sucursal,
+        operation_id=key,
     )
 
-    return {
+    result = {
         "id_venta": id_venta,
         "id_sucursal": datos.id_sucursal,
         "sucursal_nombre": sucursal_row["nombre"],
@@ -451,3 +459,6 @@ def procesar_venta_pos(
         "url_pdf": comprobante_res["url_pdf"] if comprobante_res else None,
         "items": items_respuesta,
     }
+    if key:
+        idempotency.remember(cursor, 'pos', key, digest, result)
+    return result

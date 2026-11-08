@@ -260,7 +260,7 @@ describe('Layout y rolGuard — Alineación UI/UX y Submenús sin Duplicados (CU
     expect(rutas).not.toContain('/panel/usuarios');
     expect(rutas).not.toContain('/panel/roles-permisos');
     expect(rutas).not.toContain('/panel/sucursales');
-    expect(rutas).not.toContain('/panel/bitacora');
+    expect(rutas).toContain('/panel/bitacora');
 
     const codigosDom = obtenerCodigosCuVisiblesEnDom();
     expect(new Set(codigosDom).size).toBe(codigosDom.length);

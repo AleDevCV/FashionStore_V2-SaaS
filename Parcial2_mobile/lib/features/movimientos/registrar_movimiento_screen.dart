@@ -34,6 +34,7 @@ class _RegistrarMovimientoScreenState extends State<RegistrarMovimientoScreen> {
   int? _idSucursalSeleccionada;
   int? _idSucursalDestino;
   String? _operationId;
+  (int, int, String, int, String, int?)? _previousMovement;
   int? _idVarianteSeleccionada;
   String _tipoSeleccionado = 'Entrada';
 
@@ -45,7 +46,7 @@ class _RegistrarMovimientoScreenState extends State<RegistrarMovimientoScreen> {
   String? _errorServidor;
   String? _advertenciaStock;
 
-  final List<String> _tiposMovimiento = ['Entrada', 'Salida', 'Traspaso'];
+  final List<String> _tiposMovimiento = ['Entrada', 'Salida', 'Ajuste', 'Traspaso'];
 
   @override
   void initState() {
@@ -157,14 +158,23 @@ class _RegistrarMovimientoScreenState extends State<RegistrarMovimientoScreen> {
     });
 
     try {
+      final cantidad = int.parse(_cantidadCtrl.text.trim());
+      final motivo = _motivoCtrl.text.trim();
+      final destino = _tipoSeleccionado == 'Traspaso' ? _idSucursalDestino : null;
+      final movement = (_idSucursalSeleccionada!, _idVarianteSeleccionada!,
+          _tipoSeleccionado, cantidad, motivo, destino);
+      if (_previousMovement != movement) {
+        _previousMovement = movement;
+        _operationId = const Uuid().v4();
+      }
       final payload = MovimientoCrear(
         idSucursal: _idSucursalSeleccionada!,
         idVariantePrenda: _idVarianteSeleccionada!,
         tipo: _tipoSeleccionado,
-        cantidad: int.parse(_cantidadCtrl.text.trim()),
-        motivo: _motivoCtrl.text.trim(),
-        idSucursalDestino: _tipoSeleccionado == 'Traspaso' ? _idSucursalDestino : null,
-        operationId: _tipoSeleccionado == 'Traspaso' ? (_operationId ??= const Uuid().v4()) : null,
+        cantidad: cantidad,
+        motivo: motivo,
+        idSucursalDestino: destino,
+        operationId: _operationId,
       );
 
       final resultado = await _servicio.registrar(payload);
@@ -412,17 +422,18 @@ class _RegistrarMovimientoScreenState extends State<RegistrarMovimientoScreen> {
                     TextFormField(
                       controller: _cantidadCtrl,
                       keyboardType: TextInputType.number,
-                      decoration: const InputDecoration(
-                        labelText: 'Cantidad de unidades',
+                      decoration: InputDecoration(
+                        labelText: _tipoSeleccionado == 'Ajuste' ? 'Stock físico resultante' : 'Cantidad de unidades',
                         hintText: 'Ej. 25',
-                        prefixIcon: Icon(Icons.numbers_outlined),
+                        prefixIcon: const Icon(Icons.numbers_outlined),
                       ),
                       validator: (v) {
                         final val = v?.trim() ?? '';
                         if (val.isEmpty) return 'Ingrese la cantidad.';
                         final numVal = int.tryParse(val);
-                        if (numVal == null || numVal <= 0) {
-                          return 'La cantidad debe ser un entero positivo mayor a cero.';
+                        final ajuste = _tipoSeleccionado == 'Ajuste';
+                        if (numVal == null || numVal < (ajuste ? 0 : 1)) {
+                          return ajuste ? 'Ingrese un entero igual o mayor a cero.' : 'Ingrese un entero mayor a cero.';
                         }
                         return null;
                       },

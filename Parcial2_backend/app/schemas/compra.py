@@ -10,6 +10,7 @@ con cálculo de 13% IVA y desglose de variantes físicas ingresadas.
 
 from datetime import datetime
 from decimal import Decimal
+from uuid import UUID
 from pydantic import BaseModel, ConfigDict, Field, model_validator
 
 
@@ -39,6 +40,7 @@ DetalleCompraCrear = DetalleCompraItem
 class CompraCrear(BaseModel):
     """Payload para registrar una nueva compra de mercadería."""
 
+    idempotency_key: UUID | None = None
     id_proveedor: int = Field(
         ...,
         gt=0,
