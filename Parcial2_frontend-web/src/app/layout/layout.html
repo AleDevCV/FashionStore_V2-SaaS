@@ -9,93 +9,74 @@
 <div class="admin">
   <!-- ========================= SIDEBAR ========================= -->
   <aside class="admin__sidebar">
-    <!-- Logotipo de marca y ámbito del espacio de trabajo -->
+    <!-- Logotipo de marca -->
     <div class="admin__brand">
       <span class="fs-wordmark admin__brand-name">Fashion<em>Store</em></span>
       <span class="admin__brand-tag">{{ etiquetaSubtituloSidebar() }}</span>
     </div>
 
-    <!-- Navegación principal agrupada por responsabilidades del actor -->
-    <nav class="admin__nav" aria-label="Navegación del espacio de trabajo">
-      @for (seccion of seccionesMenu(); track seccion.titulo) {
-        <div class="admin__nav-section">
-          <span class="admin__nav-title">{{ seccion.titulo }}</span>
-
-          <ul class="admin__nav-list">
-            @for (item of seccion.items; track item.etiqueta) {
-              <li class="admin__nav-item">
-                @if (item.hijos && item.hijos.length > 0) {
-                  <!-- Grupo desplegable para pantallas que comparten un mismo CU -->
-                  <div
-                    class="admin__group"
-                    [class.admin__group--abierto]="estaGrupoAbierto(item)"
-                    [class.admin__group--activo]="tieneHijoActivo(item)"
-                  >
-                    <button
-                      type="button"
-                      class="admin__link admin__group-toggle"
-                      [class.admin__link--activo]="tieneHijoActivo(item)"
-                      [class.admin__group-toggle--activo]="tieneHijoActivo(item)"
-                      [attr.aria-expanded]="estaGrupoAbierto(item)"
-                      (click)="alternarGrupo(item)"
-                    >
-                      <span class="admin__group-label">
-                        <span
-                          class="admin__group-chevron"
-                          [class.admin__group-chevron--abierto]="estaGrupoAbierto(item)"
-                          aria-hidden="true"
-                        >{{ estaGrupoAbierto(item) ? '▼' : '▶' }}</span>
-                        <span class="admin__link-texto">{{ item.etiqueta }}</span>
-                      </span>
-                      @if (item.caso) {
-                        <span class="admin__link-caso">{{ item.caso }}</span>
-                      }
-                    </button>
-
-                    @if (estaGrupoAbierto(item)) {
-                      <ul
-                        class="admin__subnav-list"
-                        role="group"
-                        [attr.aria-label]="item.etiqueta"
-                      >
-                        @for (subitem of item.hijos; track subitem.ruta) {
-                          <li>
-                            <a
-                              class="admin__sublink"
-                              [routerLink]="subitem.ruta"
-                              routerLinkActive="admin__sublink--activo"
-                            >
-                              <span class="admin__sublink-texto">{{ subitem.etiqueta }}</span>
-                            </a>
-                          </li>
+    <!-- Navegación principal -->
+    <nav class="admin__nav" aria-label="Navegación del panel">
+      <a class="admin__link admin__inicio" routerLink="/panel/inicio"
+        routerLinkActive="admin__link--activo" ariaCurrentWhenActive="page">Inicio</a>
+      <span class="admin__nav-title">Paquetes funcionales</span>
+      <ul class="admin__nav-list">
+        @for (paquete of paquetes(); track paquete.id) {
+          <li class="admin__package"
+            (pointerenter)="previsualizarPaquete(paquete.id, $event)"
+            (pointerleave)="retirarPrevisualizacion($event)"
+            (keydown.escape)="cerrarPaquete(packageTrigger, $event)">
+            <button #packageTrigger type="button" class="admin__package-trigger"
+              [id]="'paquete-' + paquete.id"
+              [attr.aria-expanded]="paqueteAbierto() === paquete.id"
+              [attr.aria-controls]="'casos-' + paquete.id"
+              (click)="alternarPaquete(paquete.id, packageTrigger)">
+              <span class="admin__package-code">{{ paquete.id }}</span>
+              <span>{{ paquete.title }}</span>
+              <span class="admin__chevron" aria-hidden="true"></span>
+            </button>
+            <ul class="admin__cases" [id]="'casos-' + paquete.id" [hidden]="paqueteAbierto() !== paquete.id"
+              [style.--fs-package-top]="posicionPaquete().top + 'px'"
+              [style.--fs-package-left]="posicionPaquete().left + 'px'">
+              @for (caso of paquete.cases; track caso.id) {
+                <li class="admin__case">
+                  @if (caso.id === 'CU01' || caso.actions.length > 1) {
+                    <details>
+                      <summary class="admin__case-row">
+                        <span class="admin__link-caso">{{ caso.id }}</span>
+                        <span>{{ caso.title }}</span>
+                        <span class="admin__chevron" aria-hidden="true"></span>
+                      </summary>
+                      <div class="admin__case-actions">
+                        @if (caso.id === 'CU01') {
+                          <span class="admin__account">{{ usuario()?.correo }}</span>
+                          <button type="button" class="admin__case-action" (click)="cerrarSesion()">Cerrar sesión</button>
+                        } @else {
+                          @for (action of caso.actions; track action.path) {
+                            <a class="admin__case-action" [routerLink]="action.path"
+                              routerLinkActive="admin__link--activo" ariaCurrentWhenActive="page">{{ action.label }}</a>
+                          }
                         }
-                      </ul>
-                    }
-                  </div>
-                } @else if (item.ruta) {
-                  <!-- Sección disponible: enlace directo del enrutador -->
-                  <a
-                    class="admin__link"
-                    [routerLink]="item.ruta"
-                    routerLinkActive="admin__link--activo"
-                  >
-                    <span class="admin__link-texto">{{ item.etiqueta }}</span>
-                    @if (item.caso) {
-                      <span class="admin__link-caso">{{ item.caso }}</span>
-                    }
-                  </a>
-                } @else {
-                  <!-- Sección pendiente de construir -->
-                  <span class="admin__link admin__link--pendiente" title="Próximamente">
-                    <span class="admin__link-texto">{{ item.etiqueta }}</span>
-                    <span class="admin__link-caso">{{ item.caso }}</span>
-                  </span>
-                }
-              </li>
-            }
-          </ul>
-        </div>
-      }
+                      </div>
+                    </details>
+                  } @else if (caso.actions[0]; as action) {
+                    <a class="admin__case-row" [routerLink]="action.path" [title]="action.label"
+                      routerLinkActive="admin__link--activo" ariaCurrentWhenActive="page">
+                      <span class="admin__link-caso">{{ caso.id }}</span>
+                      <span>{{ caso.title }}</span>
+                    </a>
+                  } @else {
+                    <div class="admin__case-row admin__case-row--reference">
+                      <span class="admin__link-caso">{{ caso.id }}</span>
+                      <span>{{ caso.title }} <small>{{ caso.requires }}</small></span>
+                    </div>
+                  }
+                </li>
+              }
+            </ul>
+          </li>
+        }
+      </ul>
     </nav>
 
     <!-- Pie del sidebar -->

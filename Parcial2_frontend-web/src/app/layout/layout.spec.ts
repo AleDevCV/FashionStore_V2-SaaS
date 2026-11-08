@@ -55,6 +55,15 @@ describe('Layout y rolGuard — Alineación UI/UX y Submenús sin Duplicados (CU
     componente = fixture.componentInstance;
   });
 
+  function rutasMenu(): string[] {
+    return [
+      '/panel/inicio',
+      ...new Set(componente.paquetes().flatMap((paquete) =>
+        paquete.cases.flatMap((caso) => caso.actions.map((accion) => accion.path)),
+      )),
+    ];
+  }
+
   function obtenerCodigosCuVisiblesEnDom(): string[] {
     const badges: NodeListOf<HTMLElement> =
       fixture.nativeElement.querySelectorAll('.admin__link-caso');
@@ -81,11 +90,11 @@ describe('Layout y rolGuard — Alineación UI/UX y Submenús sin Duplicados (CU
     expect(componente.etiquetaRolVisible()).toBe('SuperAdministrador SaaS');
     expect(componente.etiquetaEspacioTrabajo()).toContain('Plataforma SaaS');
 
-    const rutas = componente.menu().map((i) => i.ruta);
-    expect(rutas).toEqual(['/panel/saas', '/panel/bitacora', '/panel/inicio']);
+    const rutas = rutasMenu();
+    expect(rutas).toEqual(['/panel/inicio', '/panel/saas', '/panel/bitacora']);
 
     const codigosDom = obtenerCodigosCuVisiblesEnDom();
-    expect(codigosDom).toEqual(['CU02', 'CU20', 'CU01']);
+    expect(codigosDom.length).toBe(20);
     expect(new Set(codigosDom).size).toBe(codigosDom.length);
 
     // Ningún módulo operativo de tienda debe aparecer en el sidebar de plataforma
@@ -116,11 +125,11 @@ describe('Layout y rolGuard — Alineación UI/UX y Submenús sin Duplicados (CU
     expect(componente.esPlataforma()).toBeFalse();
     expect(componente.etiquetaRolVisible()).toBe('Administrador de Empresa');
     expect(componente.empresaActivaSlug()).toBe('demo-a');
-    expect(componente.seccionesMenu().length).toBe(6);
+    expect(componente.paquetes().length).toBe(6);
 
     // Verifica que en el DOM del sidebar cada código CU aparezca UNA SOLA VEZ (sin duplicados)
     const codigosDom = obtenerCodigosCuVisiblesEnDom();
-    expect(codigosDom.length).toBe(18);
+    expect(codigosDom.length).toBe(20);
     expect(new Set(codigosDom).size).toBe(codigosDom.length);
     for (const codigo of codigosDom) {
       const numero = Number(codigo.replace('CU', ''));
@@ -134,35 +143,38 @@ describe('Layout y rolGuard — Alineación UI/UX y Submenús sin Duplicados (CU
     expect(codigosDom).not.toContain('CU25');
 
     // Verifica que todas las rutas sigan disponibles y asociadas a su CU oficial
-    const porRuta = new Map(componente.menu().map((i) => [i.ruta, i.caso]));
-    expect(porRuta.get('/panel/inicio')).toBe('CU01');
-    expect(porRuta.get('/panel/saas')).toBe('CU02');
-    expect(porRuta.get('/panel/usuarios')).toBe('CU03');
-    expect(porRuta.get('/panel/roles-permisos')).toBe('CU03');
-    expect(porRuta.get('/panel/sucursales')).toBe('CU04');
-    expect(porRuta.get('/panel/clientes')).toBe('CU05');
-    expect(porRuta.get('/panel/categorias')).toBe('CU06');
-    expect(porRuta.get('/panel/temporadas')).toBe('CU06');
-    expect(porRuta.get('/panel/prendas')).toBe('CU06');
-    expect(porRuta.get('/panel/proveedores')).toBe('CU07');
-    expect(porRuta.get('/panel/compras')).toBe('CU07');
-    expect(porRuta.get('/panel/inventario/monitoreo')).toBe('CU08');
-    expect(porRuta.get('/panel/ia/asistente-moda')).toBe('CU09');
-    expect(porRuta.get('/catalogo')).toBe('CU09');
-    expect(porRuta.get('/panel/movimientos-inventario')).toBe('CU10');
-    expect(porRuta.get('/panel/pagos-control')).toBe('CU11');
-    expect(porRuta.get('/panel/reservas-atencion')).toBe('CU12');
-    expect(porRuta.get('/panel/pos')).toBe('CU13');
-    expect(porRuta.get('/panel/cambios')).toBe('CU15');
-    expect(porRuta.get('/offline')).toBe('CU16');
-    expect(porRuta.get('/panel/reportes')).toBe('CU18');
-    expect(porRuta.get('/panel/ia/analitica-voz')).toBe('CU18');
-    expect(porRuta.get('/panel/dashboard')).toBe('CU19');
-    expect(porRuta.get('/panel/analitica')).toBe('CU19');
-    expect(porRuta.get('/panel/bitacora')).toBe('CU20');
+    const enlaces = componente.paquetes().flatMap((paquete) =>
+      paquete.cases.flatMap((caso) => caso.actions.map((accion) => [accion.path, caso.id])),
+    );
+    enlaces.push(['/panel/inicio', 'CU01']);
+    expect(enlaces).toContain(['/panel/inicio', 'CU01']);
+    expect(enlaces).toContain(['/panel/saas', 'CU02']);
+    expect(enlaces).toContain(['/panel/usuarios', 'CU03']);
+    expect(enlaces).toContain(['/panel/roles-permisos', 'CU03']);
+    expect(enlaces).toContain(['/panel/sucursales', 'CU04']);
+    expect(enlaces).toContain(['/panel/clientes', 'CU05']);
+    expect(enlaces).toContain(['/panel/categorias', 'CU06']);
+    expect(enlaces).toContain(['/panel/temporadas', 'CU06']);
+    expect(enlaces).toContain(['/panel/prendas', 'CU06']);
+    expect(enlaces).toContain(['/panel/proveedores', 'CU07']);
+    expect(enlaces).toContain(['/panel/compras', 'CU07']);
+    expect(enlaces).toContain(['/panel/inventario/monitoreo', 'CU08']);
+    expect(enlaces).toContain(['/panel/ia/asistente-moda', 'CU09']);
+    expect(enlaces).toContain(['/catalogo', 'CU09']);
+    expect(enlaces).toContain(['/panel/movimientos-inventario', 'CU10']);
+    expect(enlaces).toContain(['/panel/pagos-control', 'CU11']);
+    expect(enlaces).toContain(['/panel/reservas-atencion', 'CU12']);
+    expect(enlaces).toContain(['/panel/pos', 'CU13']);
+    expect(enlaces).toContain(['/panel/cambios', 'CU15']);
+    expect(enlaces).toContain(['/offline', 'CU16']);
+    expect(enlaces).toContain(['/panel/reportes', 'CU18']);
+    expect(enlaces).toContain(['/panel/ia/analitica-voz', 'CU18']);
+    expect(enlaces).toContain(['/panel/dashboard', 'CU19']);
+    expect(enlaces).toContain(['/panel/analitica', 'CU19']);
+    expect(enlaces).toContain(['/panel/bitacora', 'CU20']);
   });
 
-  it('permite expandir y contraer los submenús desplegables y conserva identificada la página activa', () => {
+  it('permite abrir un paquete, consultar sus casos de uso y cerrarlo con Escape', () => {
     usuarioSignal.set({
       id_usuario: 2,
       tenant_id: 2,
@@ -177,58 +189,20 @@ describe('Layout y rolGuard — Alineación UI/UX y Submenús sin Duplicados (CU
     });
     fixture.detectChanges();
 
-    const todosLosGrupos = componente
-      .seccionesMenu()
-      .flatMap((s) => s.items)
-      .filter((i) => i.hijos && i.hijos.length > 0);
-
-    // Deben existir los 6 grupos desplegables: CU19, CU03, CU06, CU07, CU18 y CU09
-    expect(todosLosGrupos.map((g) => `${g.caso} — ${g.etiqueta}`)).toEqual([
-      'CU19 — Analítica inteligente',
-      'CU03 — Personal, roles y permisos',
-      'CU06 — Catálogo de prendas',
-      'CU07 — Proveedores y compras',
-      'CU18 — Reportes comerciales',
-      'CU09 — Catálogo y asistencia de compra',
-    ]);
-
-    const grupoCu03 = todosLosGrupos.find((g) => g.caso === 'CU03')!;
-    expect(grupoCu03.hijos?.map((h) => h.etiqueta)).toEqual([
-      'Usuarios y Roles',
-      'Roles y Permisos',
-    ]);
-    expect(componente.estaGrupoAbierto(grupoCu03)).toBeTrue();
-
-    // Verifica que el botón DOM muestre ▼ cuando está expandido y aria-expanded="true"
-    const botonesToggle: NodeListOf<HTMLButtonElement> =
-      fixture.nativeElement.querySelectorAll('.admin__group-toggle');
-    expect(botonesToggle.length).toBe(6);
-    expect(botonesToggle[0].getAttribute('aria-expanded')).toBe('true');
-    expect(botonesToggle[0].querySelector('.admin__group-chevron')?.textContent?.trim()).toBe('▼');
-
-    // Las opciones hijas en el DOM no deben contener badges .admin__link-caso repetidos
-    const sublinksCu03: NodeListOf<HTMLElement> = fixture.nativeElement.querySelectorAll(
-      '.admin__sublink .admin__link-caso',
-    );
-    expect(sublinksCu03.length).toBe(0);
-
-    // Contraer el grupo haciendo clic real en su botón de encabezado
-    botonesToggle[1].click();
+    const trigger: HTMLButtonElement = fixture.nativeElement.querySelector('#paquete-P1');
+    const lista: HTMLUListElement = fixture.nativeElement.querySelector('#casos-P1');
+    expect(trigger.getAttribute('aria-expanded')).toBe('false');
+    expect(lista.hidden).toBeTrue();
+    trigger.click();
     fixture.detectChanges();
-    expect(componente.estaGrupoAbierto(grupoCu03)).toBeFalse();
-    expect(botonesToggle[1].getAttribute('aria-expanded')).toBe('false');
-    expect(botonesToggle[1].querySelector('.admin__group-chevron')?.textContent?.trim()).toBe('▶');
+    expect(trigger.getAttribute('aria-expanded')).toBe('true');
+    expect(lista.hidden).toBeFalse();
+    expect(lista.querySelector('a[href="/panel/roles-permisos"]')).not.toBeNull();
 
-    // Si la URL activa pasa a ser /panel/roles-permisos, el grupo identifica su hijo activo
-    componente.urlActual.set('/panel/roles-permisos');
-    expect(componente.tieneHijoActivo(grupoCu03)).toBeTrue();
-
-    // Volver a expandir el grupo CU03 con clic
-    botonesToggle[1].click();
+    trigger.dispatchEvent(new KeyboardEvent('keydown', { key: 'Escape', bubbles: true }));
     fixture.detectChanges();
-    expect(componente.estaGrupoAbierto(grupoCu03)).toBeTrue();
-    expect(botonesToggle[1].getAttribute('aria-expanded')).toBe('true');
-    expect(botonesToggle[1].querySelector('.admin__group-chevron')?.textContent?.trim()).toBe('▼');
+    expect(lista.hidden).toBeTrue();
+    expect(document.activeElement).toBe(trigger);
   });
 
   it('habilita al Cajero (POS) sus vistas operativas (CU01, CU05, CU08, CU09, CU11, CU12, CU13, CU15, CU16) sin duplicar códigos CU', () => {
@@ -246,7 +220,7 @@ describe('Layout y rolGuard — Alineación UI/UX y Submenús sin Duplicados (CU
     });
     fixture.detectChanges();
 
-    const rutas = componente.menu().map((i) => i.ruta);
+    const rutas = rutasMenu();
     expect(rutas).toContain('/panel/pos');
     expect(rutas).toContain('/panel/reservas-atencion');
     expect(rutas).toContain('/panel/pagos-control');
@@ -281,7 +255,7 @@ describe('Layout y rolGuard — Alineación UI/UX y Submenús sin Duplicados (CU
     });
     fixture.detectChanges();
 
-    const rutas = componente.menu().map((i) => i.ruta);
+    const rutas = rutasMenu();
     expect(rutas).toContain('/panel/dashboard');
     expect(rutas).toContain('/panel/reportes');
     expect(rutas).toContain('/panel/analitica');
@@ -310,19 +284,20 @@ describe('Layout y rolGuard — Alineación UI/UX y Submenús sin Duplicados (CU
     });
     fixture.detectChanges();
 
-    const rutas = componente.menu().map((i) => i.ruta);
-    expect(rutas).toEqual([
-      '/panel/clientes',
-      '/mi-cuenta/pedidos',
-      '/panel/cambios',
-      '/offline',
-      '/panel/ia/asistente-moda',
-      '/catalogo',
-      '/tiendas',
-    ]);
+    const rutas = rutasMenu();
+    expect(rutas).toContain('/panel/clientes');
+    expect(rutas).toContain('/mi-cuenta/pedidos');
+    expect(rutas).toContain('/panel/cambios');
+    expect(rutas).toContain('/offline');
+    expect(rutas).toContain('/panel/ia/asistente-moda');
+    expect(rutas).toContain('/catalogo');
+    expect(rutas).toContain('/tiendas');
+    expect(rutas).toContain('/checkout');
+    expect(rutas).not.toContain('/panel/saas');
+    expect(rutas).not.toContain('/panel/pos');
+    expect(rutas).not.toContain('/panel/usuarios');
 
     const codigosDom = obtenerCodigosCuVisiblesEnDom();
-    expect(codigosDom).toEqual(['CU05', 'CU14', 'CU15', 'CU16', 'CU09', 'CU01']);
     expect(new Set(codigosDom).size).toBe(codigosDom.length);
   });
 

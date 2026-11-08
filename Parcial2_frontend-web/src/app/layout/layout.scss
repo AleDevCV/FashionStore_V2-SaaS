@@ -13,7 +13,7 @@
 
 .admin {
   display: grid;
-  grid-template-columns: 232px 1fr;
+  grid-template-columns: 264px 1fr;
   height: 100%;
 }
 
@@ -59,24 +59,18 @@
 /* --- Navegación --- */
 .admin__nav {
   flex: 1;
-  padding: var(--fs-space-4) 0;
-}
-
-.admin__nav-section + .admin__nav-section {
-  margin-top: var(--fs-space-3);
-  padding-top: var(--fs-space-3);
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  padding: var(--fs-space-5) 0;
 }
 
 .admin__nav-title {
   display: block;
   padding: 0 var(--fs-space-5);
-  margin-bottom: var(--fs-space-2);
-  font-size: 9.5px;
-  font-weight: 600;
-  letter-spacing: 0.16em;
+  margin-bottom: var(--fs-space-3);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.36);
+  color: rgba(255, 255, 255, 0.32);
 }
 
 .admin__nav-list {
@@ -91,21 +85,15 @@
   align-items: baseline;
   justify-content: space-between;
   gap: var(--fs-space-3);
-  width: 100%;
   padding: 9px var(--fs-space-5);
-  background: transparent;
-  border: none;
   border-left: 2px solid transparent;
-  font-family: inherit;
   font-size: 13px;
-  text-align: left;
   color: rgba(255, 255, 255, 0.62);
-  cursor: pointer;
   transition: color var(--fs-transition), background-color var(--fs-transition),
     border-color var(--fs-transition);
 }
 
-.admin__link:hover:not(.admin__link--pendiente) {
+.admin__link:hover {
   color: #FFFFFF;
   background-color: rgba(255, 255, 255, 0.045);
 }
@@ -113,82 +101,6 @@
 .admin__link--activo {
   color: #FFFFFF;
   background-color: rgba(197, 168, 128, 0.09);
-  border-left-color: var(--fs-gold);
-}
-
-/* Sección todavía no implementada: se atenúa y se desactiva el cursor */
-.admin__link--pendiente {
-  color: rgba(255, 255, 255, 0.24);
-  cursor: not-allowed;
-}
-
-/* Referencia académica al caso de uso, en versalitas muy discretas */
-.admin__link-caso {
-  flex-shrink: 0;
-  font-size: 9.5px;
-  letter-spacing: 0.1em;
-  color: rgba(255, 255, 255, 0.3);
-}
-
-.admin__link--activo .admin__link-caso {
-  color: var(--fs-gold);
-}
-
-/* --- Grupos desplegables por Caso de Uso (submenús) --- */
-.admin__group-toggle {
-  font-weight: 500;
-  color: rgba(255, 255, 255, 0.78);
-}
-
-.admin__group-label {
-  display: inline-flex;
-  align-items: baseline;
-  gap: 7px;
-  min-width: 0;
-}
-
-.admin__group-chevron {
-  display: inline-block;
-  font-size: 9px;
-  line-height: 1;
-  color: rgba(255, 255, 255, 0.38);
-  transition: color var(--fs-transition);
-}
-
-.admin__group-chevron--abierto {
-  color: var(--fs-gold);
-}
-
-.admin__subnav-list {
-  list-style: none;
-  margin: 0 0 var(--fs-space-1) 0;
-  padding: 2px 0 4px 0;
-  background-color: rgba(0, 0, 0, 0.16);
-  border-left: 1px solid rgba(255, 255, 255, 0.1);
-  margin-left: var(--fs-space-5);
-}
-
-.admin__sublink {
-  display: flex;
-  align-items: center;
-  padding: 6.5px var(--fs-space-4) 6.5px var(--fs-space-4);
-  border-left: 2px solid transparent;
-  font-size: 12.25px;
-  color: rgba(255, 255, 255, 0.56);
-  text-decoration: none;
-  transition: color var(--fs-transition), background-color var(--fs-transition),
-    border-color var(--fs-transition);
-}
-
-.admin__sublink:hover {
-  color: #FFFFFF;
-  background-color: rgba(255, 255, 255, 0.04);
-}
-
-.admin__sublink--activo {
-  color: #FFFFFF;
-  font-weight: 500;
-  background-color: rgba(197, 168, 128, 0.11);
   border-left-color: var(--fs-gold);
 }
 
@@ -227,6 +139,12 @@
   border-bottom: 1px solid var(--fs-border);
 }
 
+.admin__header-right {
+  display: flex;
+  align-items: center;
+  gap: var(--fs-space-4);
+}
+
 .admin__header-left {
   display: flex;
   align-items: center;
@@ -234,22 +152,11 @@
 }
 
 .admin__tenant-badge {
-  display: inline-flex;
-  align-items: center;
   padding: 2px 8px;
   border: 1px solid var(--fs-border);
   border-radius: var(--fs-radius);
   font-size: 10px;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
   color: var(--fs-ink-muted);
-  background-color: var(--fs-bg);
-}
-
-.admin__header-right {
-  display: flex;
-  align-items: center;
-  gap: var(--fs-space-4);
 }
 
 /* Distintivo cuadrado con las iniciales; el cuadrado lee más editorial que
@@ -372,11 +279,7 @@
 /* Tablet: el sidebar se estrecha y oculta las etiquetas de caso de uso */
 @media (max-width: 1024px) {
   .admin {
-    grid-template-columns: 200px 1fr;
-  }
-
-  .admin__link-caso {
-    display: none;
+    grid-template-columns: 190px 1fr;
   }
 
   .admin__contenido {
@@ -411,51 +314,22 @@
   }
 
   .admin__nav {
-    display: flex;
-    gap: var(--fs-space-1);
     padding: 0;
-  }
-
-  .admin__nav-section + .admin__nav-section {
-    margin-top: 0;
-    padding-top: 0;
-    border-top: none;
   }
 
   .admin__nav-list {
     display: flex;
-    align-items: center;
     gap: var(--fs-space-1);
   }
 
-  .admin__group {
-    display: flex;
-    align-items: center;
-    gap: var(--fs-space-1);
-  }
-
-  .admin__subnav-list {
-    display: flex;
-    align-items: center;
-    gap: var(--fs-space-1);
-    margin: 0;
-    padding: 0;
-    background: transparent;
-    border-left: 1px solid rgba(255, 255, 255, 0.14);
-    padding-left: var(--fs-space-1);
-  }
-
-  .admin__link,
-  .admin__sublink {
-    width: auto;
+  .admin__link {
     padding: 14px var(--fs-space-3);
     white-space: nowrap;
     border-left: none;
     border-bottom: 2px solid transparent;
   }
 
-  .admin__link--activo,
-  .admin__sublink--activo {
+  .admin__link--activo {
     border-left-color: transparent;
     border-bottom-color: var(--fs-gold);
   }
@@ -474,5 +348,167 @@
 
   .admin__contenido {
     padding: var(--fs-space-4);
+  }
+}
+
+/* Paquetes funcionales del panel. */
+.admin__inicio {
+  margin-bottom: var(--fs-space-4);
+}
+
+.admin__package {
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.admin__package-trigger,
+.admin__case-row {
+  display: grid;
+  grid-template-columns: max-content minmax(0, 1fr) 8px;
+  align-items: baseline;
+  gap: 9px;
+  width: 100%;
+  padding: 11px 14px;
+  border: 0;
+  color: #f0eae2;
+  background: transparent;
+  font: inherit;
+  font-size: 12px;
+  line-height: 1.35;
+  text-align: left;
+  cursor: pointer;
+}
+
+.admin__package-trigger {
+  min-height: 44px;
+  font-weight: 600;
+}
+
+.admin__package-trigger:hover,
+.admin__package-trigger[aria-expanded='true'],
+.admin__case-row:hover:not(.admin__case-row--reference) {
+  background: rgba(197, 168, 128, 0.12);
+}
+
+.admin__package-code,
+.admin__link-caso {
+  color: var(--fs-gold);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  font-variant-numeric: tabular-nums;
+}
+
+.admin__chevron {
+  align-self: center;
+  width: 6px;
+  height: 6px;
+  border-right: 1px solid var(--fs-gold);
+  border-bottom: 1px solid var(--fs-gold);
+  transform: rotate(45deg);
+}
+
+.admin__package-trigger[aria-expanded='true'] .admin__chevron,
+details[open] > .admin__case-row .admin__chevron {
+  transform: rotate(225deg);
+}
+
+.admin__cases {
+  margin: 0 10px 8px;
+  padding: 0;
+  list-style: none;
+  border-left: 1px solid rgba(197, 168, 128, 0.32);
+}
+
+.admin__case-row {
+  padding: 8px 9px;
+  color: #e2dacf;
+  text-decoration: none;
+}
+
+.admin__case-row::-webkit-details-marker {
+  display: none;
+}
+
+.admin__case-row--reference {
+  cursor: default;
+  color: #c4bdb3;
+}
+
+.admin__case-row small,
+.admin__account {
+  display: block;
+  margin-top: 3px;
+  color: #b3a798;
+  font-size: 10px;
+  overflow-wrap: anywhere;
+}
+
+.admin__case-actions {
+  padding: 0 9px 6px 14px;
+}
+
+.admin__case-action {
+  display: block;
+  width: 100%;
+  padding: 7px 5px;
+  border: 0;
+  background: transparent;
+  color: #f1dbc0;
+  font: inherit;
+  font-size: 11px;
+  text-align: left;
+  cursor: pointer;
+}
+
+.admin__case-action:hover {
+  text-decoration: underline;
+}
+
+.admin__case-row.admin__link--activo,
+.admin__case-action.admin__link--activo {
+  background: rgba(197, 168, 128, 0.18);
+  color: #fff;
+}
+
+.admin__nav :is(a, button, summary):focus-visible {
+  outline: 2px solid var(--fs-gold);
+  outline-offset: -2px;
+}
+
+@media (max-width: 760px) {
+  .admin__sidebar {
+    display: block;
+    padding: 0;
+  }
+
+  .admin__nav {
+    padding: 8px 12px;
+  }
+
+  .admin__nav-list {
+    display: block;
+  }
+
+  .admin__inicio {
+    margin-bottom: 3px;
+    padding: 8px 14px;
+  }
+}
+
+@media (min-width: 761px) {
+  .admin__cases {
+    position: fixed;
+    z-index: 50;
+    top: max(8px, min(var(--fs-package-top), calc(100dvh - 320px)));
+    left: var(--fs-package-left);
+    width: min(320px, calc(100vw - var(--fs-package-left) - 12px));
+    max-height: min(312px, calc(100dvh - 16px));
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    margin: 0;
+    padding: 5px 0;
+    border: 1px solid #544435;
+    background: #1d1a17;
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.28);
   }
 }

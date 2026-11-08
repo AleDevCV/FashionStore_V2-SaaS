@@ -48,6 +48,7 @@ htmlcov/
 .DS_Store
 Thumbs.db
 Desktop.ini
+~$*.docx
 
 # Paquetes, respaldos y claves privadas; conservar migraciones SQL y modelos ML
 *.apk
