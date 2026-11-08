@@ -1,0 +1,513 @@
+{
+  "cases": [
+    {
+      "name": "A4: solo los dos alias aprobados comparten identidad; otros orígenes quedan separados",
+      "success": true,
+      "skipped": false,
+      "errors": []
+    },
+    {
+      "name": "A5 cola 1: confirmada posterior no queda bloqueada",
+      "success": true,
+      "skipped": false,
+      "errors": []
+    },
+    {
+      "name": "A4: base canónica nueva se comparte en ambas direcciones entre alias",
+      "success": true,
+      "skipped": false,
+      "errors": []
+    },
+    {
+      "name": "A5 cola 49: confirmada posterior no queda bloqueada",
+      "success": true,
+      "skipped": false,
+      "errors": []
+    },
+    {
+      "name": "A4: recupera v1, mantiene sucursales UUID device y detalles; fuente idéntica",
+      "success": true,
+      "skipped": false,
+      "errors": []
+    },
+    {
+      "name": "A5 cola 50: confirmada posterior no queda bloqueada",
+      "success": true,
+      "skipped": false,
+      "errors": []
+    },
+    {
+      "name": "A4: une cuatro UUID antiguos y uno nuevo sin sumar stocks",
+      "success": true,
+      "skipped": false,
+      "errors": []
+    },
+    {
+      "name": "A4: solo el archivo del hostname actual también se recupera",
+      "success": true,
+      "skipped": false,
+      "errors": []
+    },
+    {
+      "name": "A5 cola 51: confirmada posterior no queda bloqueada",
+      "success": true,
+      "skipped": false,
+      "errors": []
+    },
+    {
+      "name": "A4: UUID idénticos en las dos fuentes no duplican cabecera ni detalles",
+      "success": true,
+      "skipped": false,
+      "errors": []
+    },
+    {
+      "name": "A4: UUID con envelope divergente revierte toda la importación",
+      "success": true,
+      "skipped": false,
+      "errors": []
+    },
+    {
+      "name": "A5 cola 125: confirmada posterior no queda bloqueada",
+      "success": true,
+      "skipped": false,
+      "errors": []
+    },
+    {
+      "name": "A4: UUID con detail divergente revierte toda la importación",
+      "success": true,
+      "skipped": false,
+      "errors": []
+    },
+    {
+      "name": "A4: UUID con state divergente revierte toda la importación",
+      "success": true,
+      "skipped": false,
+      "errors": []
+    },
+    {
+      "name": "A5 tres descargas no repiten eternamente el prefijo 50",
+      "success": true,
+      "skipped": false,
+      "errors": []
+    },
+    {
+      "name": "A4: rechaza envelope con tenant_id ajeno sin exponer operaciones",
+      "success": true,
+      "skipped": false,
+      "errors": []
+    },
+    {
+      "name": "A5 sucursal 2 no bloquea reconciliación de sucursal 1",
+      "success": true,
+      "skipped": false,
+      "errors": []
+    },
+    {
+      "name": "A4: rechaza envelope con author_id ajeno sin exponer operaciones",
+      "success": true,
+      "skipped": false,
+      "errors": []
+    },
+    {
+      "name": "A5 sin resultado definitivo conserva PENDIENTE y ENVIANDO",
+      "success": true,
+      "skipped": false,
+      "errors": []
+    },
+    {
+      "name": "A4: rechaza envelope con branch_id ajeno sin exponer operaciones",
+      "success": true,
+      "skipped": false,
+      "errors": []
+    },
+    {
+      "name": "A5 respuesta de otra empresa no cambia catálogo ni operación",
+      "success": true,
+      "skipped": false,
+      "errors": []
+    },
+    {
+      "name": "A4: snapshot de otra cuenta se rechaza aunque el envelope sea propio",
+      "success": true,
+      "skipped": false,
+      "errors": []
+    },
+    {
+      "name": "A4: no recupera bases de otra empresa ni de otro usuario",
+      "success": true,
+      "skipped": false,
+      "errors": []
+    },
+    {
+      "name": "A4: namespace inválido no abre base",
+      "success": true,
+      "skipped": false,
+      "errors": []
+    },
+    {
+      "name": "A5 reinicio de SQLite no perpetúa bloqueo posterior a 50",
+      "success": true,
+      "skipped": false,
+      "errors": []
+    },
+    {
+      "name": "A4: host local mantiene su archivo existente sin importar cola HTTPS",
+      "success": true,
+      "skipped": false,
+      "errors": []
+    },
+    {
+      "name": "A5 respuesta duplicada y descargas repetidas no duplican descuento",
+      "success": true,
+      "skipped": false,
+      "errors": []
+    },
+    {
+      "name": "A4: no migra mientras la fuente tenga un bloqueo vigente",
+      "success": true,
+      "skipped": false,
+      "errors": []
+    },
+    {
+      "name": "A4: ENVIANDO se recupera después de expirar lock sin alterar wire ni intentos",
+      "success": true,
+      "skipped": false,
+      "errors": []
+    },
+    {
+      "name": "A5 conexión interrumpida conserva cola y al reconectar progresa 125",
+      "success": true,
+      "skipped": false,
+      "errors": []
+    },
+    {
+      "name": "login solo envia correo y password y resuelve empresa desde token",
+      "success": true,
+      "skipped": false,
+      "errors": []
+    },
+    {
+      "name": "A5 pendiente solo cambia a confirmada con respuesta explícita",
+      "success": true,
+      "skipped": false,
+      "errors": []
+    },
+    {
+      "name": "un traspaso incompleto no se serializa como operación válida",
+      "success": true,
+      "skipped": false,
+      "errors": []
+    },
+    {
+      "name": "cliente global elige tiendas y conserva una sola identidad",
+      "success": true,
+      "skipped": false,
+      "errors": []
+    },
+    {
+      "name": "A4: reabrir no duplica ni degrada CONFIRMADA a PENDIENTE antigua",
+      "success": true,
+      "skipped": false,
+      "errors": []
+    },
+    {
+      "name": "recuperacion no transmite empresa ni una sesion anterior",
+      "success": true,
+      "skipped": false,
+      "errors": []
+    },
+    {
+      "name": "cambiar al hostname definitivo conserva la referencia de la sesion anterior",
+      "success": true,
+      "skipped": false,
+      "errors": []
+    },
+    {
+      "name": "el contrato envía destino y conserva UUID al reintentar",
+      "success": true,
+      "skipped": false,
+      "errors": []
+    },
+    {
+      "name": "no interpreta el antiguo falso éxito como traspaso confirmado",
+      "success": true,
+      "skipped": false,
+      "errors": []
+    },
+    {
+      "name": "Entrada conserva su payload y respuesta de movimiento",
+      "success": true,
+      "skipped": false,
+      "errors": []
+    },
+    {
+      "name": "A5 sin candidatos renueva catálogo con una petición vacía",
+      "success": true,
+      "skipped": false,
+      "errors": []
+    },
+    {
+      "name": "consulta disponible únicamente cuando el formulario lo solicita",
+      "success": true,
+      "skipped": false,
+      "errors": []
+    },
+    {
+      "name": "A4: cambio tardío de estado en fuente importada no reemplaza resultado canónico",
+      "success": true,
+      "skipped": false,
+      "errors": []
+    },
+    {
+      "name": "A4: referencias y enlace de revisión se conservan",
+      "success": true,
+      "skipped": false,
+      "errors": []
+    },
+    {
+      "name": "A5 125 UUID se recorren exactamente una vez en lotes 50 50 25",
+      "success": true,
+      "skipped": false,
+      "errors": []
+    },
+    {
+      "name": "A4: exige catálogo fresco para capturas y mantiene wire de pendientes",
+      "success": true,
+      "skipped": false,
+      "errors": []
+    },
+    {
+      "name": "venta, detalles y UUID sobreviven a cerrar SQLite y reabrir",
+      "success": true,
+      "skipped": false,
+      "errors": []
+    },
+    {
+      "name": "A4 controlador: recuperación fallida no abre cola ni programa envíos",
+      "success": true,
+      "skipped": false,
+      "errors": []
+    },
+    {
+      "name": "una FK inválida revierte cabecera y detalles completos",
+      "success": true,
+      "skipped": false,
+      "errors": []
+    },
+    {
+      "name": "A5 fallo del segundo lote conserva primer lote y reintenta los 75 restantes",
+      "success": true,
+      "skipped": false,
+      "errors": []
+    },
+    {
+      "name": "A4: error SQL real revierte fuentes completas y conserva base canónica previa",
+      "success": true,
+      "skipped": false,
+      "errors": []
+    },
+    {
+      "name": "descargas de otra sucursal conservan su propio stock y pendientes",
+      "success": true,
+      "skipped": false,
+      "errors": []
+    },
+    {
+      "name": "A4: fuente corrupta provoca rollback de la otra fuente válida",
+      "success": true,
+      "skipped": false,
+      "errors": []
+    },
+    {
+      "name": "confirmación reconciliada no descuenta dos veces la venta local",
+      "success": true,
+      "skipped": false,
+      "errors": []
+    },
+    {
+      "name": "A4 controlador: refresh conserva historial y desactiva captura hasta renovar catálogo",
+      "success": true,
+      "skipped": false,
+      "errors": []
+    },
+    {
+      "name": "cuentas diferentes no comparten operaciones ni catálogo",
+      "success": true,
+      "skipped": false,
+      "errors": []
+    },
+    {
+      "name": "A4: FK huérfana en fuente se conserva y bloquea recuperación",
+      "success": true,
+      "skipped": false,
+      "errors": []
+    },
+    {
+      "name": "A5 fallo del tercer lote conserva 100 y reintenta 25",
+      "success": true,
+      "skipped": false,
+      "errors": []
+    },
+    {
+      "name": "A4: identidad canónica ajena se rechaza",
+      "success": true,
+      "skipped": false,
+      "errors": []
+    },
+    {
+      "name": "dinero local conserva centavos y rechaza fracciones excesivas",
+      "success": true,
+      "skipped": false,
+      "errors": []
+    },
+    {
+      "name": "A4: variante con producto incompatible entre fuentes revierte importación",
+      "success": true,
+      "skipped": false,
+      "errors": []
+    },
+    {
+      "name": "A4: versión de fuente desconocida no se migra silenciosamente",
+      "success": true,
+      "skipped": false,
+      "errors": []
+    },
+    {
+      "name": "A5 rollback SQLite del segundo lote no deja medias confirmaciones",
+      "success": true,
+      "skipped": false,
+      "errors": []
+    },
+    {
+      "name": "A4: falta real de páginas SQLite revierte importación y conserva fuentes",
+      "success": true,
+      "skipped": false,
+      "errors": []
+    },
+    {
+      "name": "formulario compartido solo solicita correo y contraseña",
+      "success": true,
+      "skipped": false,
+      "errors": []
+    },
+    {
+      "name": "A5 UUID ausente al final de 125 conserva estado pendiente",
+      "success": true,
+      "skipped": false,
+      "errors": []
+    },
+    {
+      "name": "A5 sucursal distinta en respuesta revierte su aplicación",
+      "success": true,
+      "skipped": false,
+      "errors": []
+    },
+    {
+      "name": "A4: aperturas concurrentes de ambos alias importan cada UUID una sola vez",
+      "success": true,
+      "skipped": false,
+      "errors": []
+    },
+    {
+      "name": "A5 cambio de sesión durante respuesta no escribe otra cuenta ni retiene bloqueo",
+      "success": true,
+      "skipped": false,
+      "errors": []
+    },
+    {
+      "name": "A5 bloqueo de otro proceso impide HTTP sin borrar la cola",
+      "success": true,
+      "skipped": false,
+      "errors": []
+    }
+  ],
+  "passed": 70,
+  "failed": 0,
+  "skipped": 0,
+  "observations": [
+    {
+      "client": "Flutter SQLite FFI",
+      "queue": 1,
+      "rounds": 1,
+      "other_branch_prefix": false,
+      "requested_unique": 1,
+      "HTTP_requests": 1,
+      "tail_state": "CONFIRMADA",
+      "tail_accounted": 1,
+      "available": 999,
+      "expected": 999
+    },
+    {
+      "client": "Flutter SQLite FFI",
+      "queue": 49,
+      "rounds": 1,
+      "other_branch_prefix": false,
+      "requested_unique": 49,
+      "HTTP_requests": 1,
+      "tail_state": "CONFIRMADA",
+      "tail_accounted": 1,
+      "available": 975,
+      "expected": 975
+    },
+    {
+      "client": "Flutter SQLite FFI",
+      "queue": 50,
+      "rounds": 1,
+      "other_branch_prefix": false,
+      "requested_unique": 50,
+      "HTTP_requests": 1,
+      "tail_state": "CONFIRMADA",
+      "tail_accounted": 1,
+      "available": 975,
+      "expected": 975
+    },
+    {
+      "client": "Flutter SQLite FFI",
+      "queue": 51,
+      "rounds": 1,
+      "other_branch_prefix": false,
+      "requested_unique": 51,
+      "HTTP_requests": 2,
+      "tail_state": "CONFIRMADA",
+      "tail_accounted": 1,
+      "available": 974,
+      "expected": 974
+    },
+    {
+      "client": "Flutter SQLite FFI",
+      "queue": 125,
+      "rounds": 1,
+      "other_branch_prefix": false,
+      "requested_unique": 125,
+      "HTTP_requests": 3,
+      "tail_state": "CONFIRMADA",
+      "tail_accounted": 1,
+      "available": 937,
+      "expected": 937
+    },
+    {
+      "client": "Flutter SQLite FFI",
+      "queue": 51,
+      "rounds": 3,
+      "other_branch_prefix": false,
+      "requested_unique": 51,
+      "HTTP_requests": 4,
+      "tail_state": "CONFIRMADA",
+      "tail_accounted": 1,
+      "available": 974,
+      "expected": 974
+    },
+    {
+      "client": "Flutter SQLite FFI",
+      "queue": 51,
+      "rounds": 1,
+      "other_branch_prefix": true,
+      "requested_unique": 1,
+      "HTTP_requests": 1,
+      "tail_state": "CONFIRMADA",
+      "tail_accounted": 1,
+      "available": 999,
+      "expected": 999
+    }
+  ]
+}

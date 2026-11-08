@@ -20,10 +20,12 @@ from app.schemas.proveedor import (
 )
 from app.schemas.usuario import MensajeRespuesta
 from app.services import proveedor_service as svc
-from app.services.auth_service import get_current_user
+from app.services.auth_service import get_current_user, requiere_rol
 from app.services.bitacora_service import obtener_ip_cliente
 
 router = APIRouter(prefix="/proveedores", tags=["Proveedores (CU12)"])
+
+puede_gestionar = requiere_rol(["Administrador", "Encargado de Sucursal"])
 
 
 @router.get(
@@ -95,7 +97,7 @@ def crear_proveedor(
     datos: ProveedorCrear,
     request: Request,
     cursor=Depends(get_db),
-    usuario=Depends(get_current_user),
+    usuario=Depends(puede_gestionar),
 ):
     """Crea un nuevo proveedor en la plataforma asegurando la unicidad del NIT.
 
@@ -121,7 +123,7 @@ def actualizar_proveedor(
     datos: ProveedorActualizar,
     request: Request,
     cursor=Depends(get_db),
-    usuario=Depends(get_current_user),
+    usuario=Depends(puede_gestionar),
 ):
     """Modifica total o parcialmente los datos de un proveedor existente.
 
@@ -147,7 +149,7 @@ def eliminar_proveedor(
     id_proveedor: int,
     request: Request,
     cursor=Depends(get_db),
-    usuario=Depends(get_current_user),
+    usuario=Depends(puede_gestionar),
 ):
     """Elimina físicamente un proveedor si no tiene historial de compras vinculadas.
 

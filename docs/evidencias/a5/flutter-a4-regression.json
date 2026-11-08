@@ -1,0 +1,26 @@
+{
+  "cases": [
+    {
+      "name": "A4 aceptación posterior: recupera los cinco UUID de los archivos del diagnóstico sin alterar originales",
+      "success": true,
+      "skipped": false,
+      "errors": []
+    },
+    {
+      "name": "A4 HTTP: recupera SQLite real, reenvía respuesta perdida y conserva UUID sin duplicar",
+      "success": true,
+      "skipped": false,
+      "errors": []
+    },
+    {
+      "name": "A4 HTTP: sesión de la segunda empresa abre otra base sin historial ajeno",
+      "success": true,
+      "skipped": false,
+      "errors": []
+    }
+  ],
+  "passed": 3,
+  "failed": 0,
+  "skipped": 0,
+  "observations": []
+}

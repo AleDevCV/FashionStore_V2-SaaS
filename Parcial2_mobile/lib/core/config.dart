@@ -20,3 +20,12 @@ const String webBaseUrl = String.fromEnvironment(
   'WEB_BASE_URL',
   defaultValue: 'https://fashionstore.aledevcv.me',
 );
+
+/// Alias aprobados del mismo despliegue; las instalaciones locales siguen separadas.
+const offlineBackendAliases = [
+  'https://fashionstore-v2.aledevcv.me',
+  'https://fashionstore.aledevcv.me',
+];
+
+String offlineStorageIdentity(String backendUrl) =>
+    offlineBackendAliases.contains(backendUrl) ? 'fashionstore-main' : backendUrl;

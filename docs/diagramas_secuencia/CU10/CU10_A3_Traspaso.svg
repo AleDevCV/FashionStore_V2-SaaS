@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1650" height="1760" viewBox="0 0 1650 1760">
+<defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10z" fill="#244b35"/></marker><marker id="reply" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10" fill="none" stroke="#244b35"/></marker></defs>
+<rect width="1650" height="1760" fill="#fff"/><text x="40" y="45" font-family="Arial" font-size="27" fill="#244b35">CU10 / A3 — Secuencia: UUID nuevo y traspaso válido</text>
+<rect x="15" y="85" width="270" height="65" fill="#f0f5ee" stroke="#244b35"/>
+<text x="150" y="110" text-anchor="middle" font-family="Arial" font-size="15" fill="#203329">Formulario</text>
+<text x="150" y="130" text-anchor="middle" font-family="Arial" font-size="15" fill="#203329">Angular / Flutter</text>
+<line x1="150" y1="150" x2="150" y2="1555" stroke="#8b9c90" stroke-dasharray="7 5"/>
+<rect x="335" y="85" width="270" height="65" fill="#f0f5ee" stroke="#244b35"/>
+<text x="470" y="110" text-anchor="middle" font-family="Arial" font-size="15" fill="#203329">«module» movimientos.py</text>
+<text x="470" y="130" text-anchor="middle" font-family="Arial" font-size="15" fill="#203329">registrar_movimiento</text>
+<line x1="470" y1="150" x2="470" y2="1555" stroke="#8b9c90" stroke-dasharray="7 5"/>
+<rect x="665" y="85" width="270" height="65" fill="#f0f5ee" stroke="#244b35"/>
+<text x="800" y="110" text-anchor="middle" font-family="Arial" font-size="15" fill="#203329">«module» movimiento_service.py</text>
+<text x="800" y="130" text-anchor="middle" font-family="Arial" font-size="15" fill="#203329">registrar_traspaso</text>
+<line x1="800" y1="150" x2="800" y2="1555" stroke="#8b9c90" stroke-dasharray="7 5"/>
+<rect x="985" y="85" width="270" height="65" fill="#f0f5ee" stroke="#244b35"/>
+<text x="1120" y="110" text-anchor="middle" font-family="Arial" font-size="15" fill="#203329">«module» database.py</text>
+<text x="1120" y="130" text-anchor="middle" font-family="Arial" font-size="15" fill="#203329">get_db / get_connection</text>
+<line x1="1120" y1="150" x2="1120" y2="1555" stroke="#8b9c90" stroke-dasharray="7 5"/>
+<rect x="1315" y="85" width="270" height="65" fill="#f0f5ee" stroke="#244b35"/>
+<text x="1450" y="110" text-anchor="middle" font-family="Arial" font-size="15" fill="#203329">PostgreSQL</text>
+<text x="1450" y="130" text-anchor="middle" font-family="Arial" font-size="15" fill="#203329">SQL + triggers</text>
+<line x1="1450" y1="150" x2="1450" y2="1555" stroke="#8b9c90" stroke-dasharray="7 5"/>
+<line x1="150" y1="190" x2="470" y2="190" stroke="#244b35" stroke-width="1.5" marker-end="url(#arrow)"/>
+<text x="310.0" y="180" text-anchor="middle" font-family="Arial" font-size="14" fill="#203329">1. POST: origen, destino, variante, cantidad, motivo, UUID</text>
+<line x1="470" y1="250" x2="1120" y2="250" stroke="#244b35" stroke-width="1.5" marker-end="url(#arrow)"/>
+<text x="795.0" y="240" text-anchor="middle" font-family="Arial" font-size="14" fill="#203329">2. Obtener cursor de negocio (scope=function)</text>
+<line x1="1120" y1="310" x2="1450" y2="310" stroke="#244b35" stroke-width="1.5" marker-end="url(#arrow)"/>
+<text x="1285.0" y="300" text-anchor="middle" font-family="Arial" font-size="14" fill="#203329">3. Iniciar transacción y contexto tenant</text>
+<line x1="470" y1="370" x2="800" y2="370" stroke="#244b35" stroke-width="1.5" marker-end="url(#arrow)"/>
+<text x="635.0" y="360" text-anchor="middle" font-family="Arial" font-size="14" fill="#203329">4. registrar_movimiento → registrar_traspaso</text>
+<line x1="800" y1="430" x2="1450" y2="430" stroke="#244b35" stroke-width="1.5" marker-end="url(#arrow)"/>
+<text x="1125.0" y="420" text-anchor="middle" font-family="Arial" font-size="14" fill="#203329">5. Validar ambas sucursales / permisos / activas; FOR SHARE</text>
+<line x1="800" y1="490" x2="1450" y2="490" stroke="#244b35" stroke-width="1.5" marker-end="url(#arrow)"/>
+<text x="1125.0" y="480" text-anchor="middle" font-family="Arial" font-size="14" fill="#203329">6. pg_advisory_xact_lock(empresa + UUID)</text>
+<line x1="800" y1="550" x2="1450" y2="550" stroke="#244b35" stroke-width="1.5" marker-end="url(#arrow)"/>
+<text x="1125.0" y="540" text-anchor="middle" font-family="Arial" font-size="14" fill="#203329">7. Consultar UUID y payload_hash (escenario: UUID nuevo)</text>
+<line x1="800" y1="610" x2="1450" y2="610" stroke="#244b35" stroke-width="1.5" marker-end="url(#arrow)"/>
+<text x="1125.0" y="600" text-anchor="middle" font-family="Arial" font-size="14" fill="#203329">8. Bloquear variante FOR UPDATE</text>
+<line x1="800" y1="670" x2="1450" y2="670" stroke="#244b35" stroke-width="1.5" marker-end="url(#arrow)"/>
+<text x="1125.0" y="660" text-anchor="middle" font-family="Arial" font-size="14" fill="#203329">9. Bloquear inventarios en orden de sucursal</text>
+<line x1="800" y1="730" x2="1450" y2="730" stroke="#244b35" stroke-width="1.5" marker-end="url(#arrow)"/>
+<text x="1125.0" y="720" text-anchor="middle" font-family="Arial" font-size="14" fill="#203329">10. Consultar retenciones vigentes; validar disponible</text>
+<line x1="800" y1="790" x2="1450" y2="790" stroke="#244b35" stroke-width="1.5" marker-end="url(#arrow)"/>
+<text x="1125.0" y="780" text-anchor="middle" font-family="Arial" font-size="14" fill="#203329">11. INSERT movimiento Salida en origen</text>
+<path d="M1450 850h70v24h-70" fill="none" stroke="#244b35" marker-end="url(#arrow)"/>
+<text x="1440" y="841" text-anchor="end" font-family="Arial" font-size="14" fill="#203329">12. Trigger existente: stock origen − cantidad</text>
+<line x1="800" y1="910" x2="1450" y2="910" stroke="#244b35" stroke-width="1.5" marker-end="url(#arrow)"/>
+<text x="1125.0" y="900" text-anchor="middle" font-family="Arial" font-size="14" fill="#203329">13. INSERT movimiento Entrada en destino</text>
+<path d="M1450 970h70v24h-70" fill="none" stroke="#244b35" marker-end="url(#arrow)"/>
+<text x="1440" y="961" text-anchor="end" font-family="Arial" font-size="14" fill="#203329">14. Trigger existente: stock destino + cantidad</text>
+<line x1="800" y1="1030" x2="1450" y2="1030" stroke="#244b35" stroke-width="1.5" marker-end="url(#arrow)"/>
+<text x="1125.0" y="1020" text-anchor="middle" font-family="Arial" font-size="14" fill="#203329">15. INSERT traspaso_inventario: patas, UUID, hash, resultado</text>
+<path d="M1450 1090h70v24h-70" fill="none" stroke="#244b35" marker-end="url(#arrow)"/>
+<text x="1440" y="1081" text-anchor="end" font-family="Arial" font-size="14" fill="#203329">16. Validar patas, FK/RLS y unicidad por empresa</text>
+<line x1="800" y1="1150" x2="1450" y2="1150" stroke="#244b35" stroke-width="1.5" marker-end="url(#arrow)"/>
+<text x="1125.0" y="1140" text-anchor="middle" font-family="Arial" font-size="14" fill="#203329">17. INSERT auditoría con ambos IDs</text>
+<line x1="800" y1="1210" x2="470" y2="1210" stroke="#244b35" stroke-width="1.5" stroke-dasharray="6 4" marker-end="url(#reply)"/>
+<text x="635.0" y="1200" text-anchor="middle" font-family="Arial" font-size="14" fill="#203329">18. Resultado lógico validado con ambas patas</text>
+<line x1="470" y1="1270" x2="1120" y2="1270" stroke="#244b35" stroke-width="1.5" marker-end="url(#arrow)"/>
+<text x="795.0" y="1260" text-anchor="middle" font-family="Arial" font-size="14" fill="#203329">19. Finalizar dependencia antes de enviar respuesta</text>
+<line x1="1120" y1="1330" x2="1450" y2="1330" stroke="#244b35" stroke-width="1.5" marker-end="url(#arrow)"/>
+<text x="1285.0" y="1320" text-anchor="middle" font-family="Arial" font-size="14" fill="#203329">20. COMMIT único</text>
+<line x1="1450" y1="1390" x2="1120" y2="1390" stroke="#244b35" stroke-width="1.5" stroke-dasharray="6 4" marker-end="url(#reply)"/>
+<text x="1285.0" y="1380" text-anchor="middle" font-family="Arial" font-size="14" fill="#203329">21. Confirmación</text>
+<line x1="470" y1="1450" x2="150" y2="1450" stroke="#244b35" stroke-width="1.5" stroke-dasharray="6 4" marker-end="url(#reply)"/>
+<text x="310.0" y="1440" text-anchor="middle" font-family="Arial" font-size="14" fill="#203329">22. HTTP 201: resultado confirmado</text>
+<text x="40" y="1590" text-anchor="start" font-family="Arial" font-size="16" fill="#203329">Alternativas completas en el PlantUML adjunto: UUID idéntico recupera resultado; UUID distinto en contenido se rechaza.</text>
+<text x="40" y="1625" text-anchor="start" font-family="Arial" font-size="16" fill="#203329">Cualquier fallo antes de la finalización impide HTTP 201 y revierte la transacción. No hay reserva/venta offline de traspasos.</text>
+<text x="40" y="1660" text-anchor="start" font-family="Arial" font-size="16" fill="#203329">Módulos y funciones = implementación real; la tabla nueva solo está aplicada en PostgreSQL efímero durante esta fase.</text>
+</svg>

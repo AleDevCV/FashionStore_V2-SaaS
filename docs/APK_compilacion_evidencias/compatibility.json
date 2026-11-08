@@ -1,0 +1,7 @@
+{
+  "command": "flutter build apk --debug --no-pub",
+  "exit_code": 1,
+  "stage": "compatibility",
+  "log": "compatibility.log",
+  "finished_utc": "2026-11-07T17:29:29.916799+00:00"
+}

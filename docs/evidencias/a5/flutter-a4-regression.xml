@@ -1,0 +1,2 @@
+<?xml version='1.0' encoding='utf-8'?>
+<testsuite name="flutter-a4-regression" tests="3" failures="0" skipped="0"><testcase name="A4 aceptación posterior: recupera los cinco UUID de los archivos del diagnóstico sin alterar originales" /><testcase name="A4 HTTP: recupera SQLite real, reenvía respuesta perdida y conserva UUID sin duplicar" /><testcase name="A4 HTTP: sesión de la segunda empresa abre otra base sin historial ajeno" /></testsuite>

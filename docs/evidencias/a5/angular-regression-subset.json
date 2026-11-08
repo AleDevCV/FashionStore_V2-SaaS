@@ -1,0 +1,709 @@
+{
+  "passed": 99,
+  "failed": 0,
+  "skipped": 0,
+  "cases": [
+    {
+      "name": "AuthService / decodifica el payload del JWT conservando los acentos",
+      "success": true,
+      "skipped": false,
+      "errors": [],
+      "time": 8
+    },
+    {
+      "name": "AuthService / conserva carritos separados al elegir tiendas con una cuenta global",
+      "success": true,
+      "skipped": false,
+      "errors": [],
+      "time": 2
+    },
+    {
+      "name": "AuthService / devuelve null ante un token malformado",
+      "success": true,
+      "skipped": false,
+      "errors": [],
+      "time": 1
+    },
+    {
+      "name": "AuthService / detecta un token vigente como no expirado",
+      "success": true,
+      "skipped": false,
+      "errors": [],
+      "time": 1
+    },
+    {
+      "name": "AuthService / detecta un token vencido como expirado",
+      "success": true,
+      "skipped": false,
+      "errors": [],
+      "time": 1
+    },
+    {
+      "name": "AuthService / descarta al arrancar un token caducado guardado en localStorage",
+      "success": true,
+      "skipped": false,
+      "errors": [],
+      "time": 1
+    },
+    {
+      "name": "AuthService / restaura la sesión si el token guardado sigue vigente",
+      "success": true,
+      "skipped": false,
+      "errors": [],
+      "time": 1
+    },
+    {
+      "name": "AuthService / guarda el token y actualiza la sesión tras un login exitoso",
+      "success": true,
+      "skipped": false,
+      "errors": [],
+      "time": 3
+    },
+    {
+      "name": "AuthService / traduce el error 401 al mensaje definido en el CU01",
+      "success": true,
+      "skipped": false,
+      "errors": [],
+      "time": 2
+    },
+    {
+      "name": "AuthService / traduce el error 403 de cuenta suspendida",
+      "success": true,
+      "skipped": false,
+      "errors": [],
+      "time": 1
+    },
+    {
+      "name": "AuthService / borra el token y limpia la sesión al cerrar sesión",
+      "success": true,
+      "skipped": false,
+      "errors": [],
+      "time": 1
+    },
+    {
+      "name": "AuthService / comprueba correctamente la pertenencia a un rol",
+      "success": true,
+      "skipped": false,
+      "errors": [],
+      "time": 1
+    },
+    {
+      "name": "AuthService / solicita recuperación de contraseña enviando POST a /api/auth/recuperar-password",
+      "success": true,
+      "skipped": false,
+      "errors": [],
+      "time": 1
+    },
+    {
+      "name": "AuthService / verifica token de recuperación enviando POST a /api/auth/verificar-token-recuperacion",
+      "success": true,
+      "skipped": false,
+      "errors": [],
+      "time": 0
+    },
+    {
+      "name": "AuthService / restablece contraseña enviando POST a /api/auth/restablecer-password",
+      "success": true,
+      "skipped": false,
+      "errors": [],
+      "time": 0
+    },
+    {
+      "name": "AuthService / traduce error 400/401 en recuperación al mensaje descriptivo",
+      "success": true,
+      "skipped": false,
+      "errors": [],
+      "time": 1
+    },
+    {
+      "name": "CompraService (CU13) / listar() envía GET /api/compras/ con filtros de proveedor y sucursal",
+      "success": true,
+      "skipped": false,
+      "errors": [],
+      "time": 1
+    },
+    {
+      "name": "CompraService (CU13) / obtener() envía GET /api/compras/{id} y retorna detalle con ítems",
+      "success": true,
+      "skipped": false,
+      "errors": [],
+      "time": 1
+    },
+    {
+      "name": "CompraService (CU13) / crear() envía POST /api/compras/",
+      "success": true,
+      "skipped": false,
+      "errors": [],
+      "time": 1
+    },
+    {
+      "name": "IaService (Bloque 4) / recomendar() envia POST /api/ia/recomendar/ con el payload correcto",
+      "success": true,
+      "skipped": false,
+      "errors": [],
+      "time": 5
+    },
+    {
+      "name": "IaService (Bloque 4) / recomendar() devuelve resultados con es_fallback=true cuando Gemini falla",
+      "success": true,
+      "skipped": false,
+      "errors": [],
+      "time": 1
+    },
+    {
+      "name": "IaService (Bloque 4) / recomendar() propaga error 500 como Error con mensaje legible",
+      "success": true,
+      "skipped": false,
+      "errors": [],
+      "time": 1
+    },
+    {
+      "name": "IaService (Bloque 4) / analiticaVoz() envia POST /api/ia/analitica-voz/ con texto y flag PDF",
+      "success": true,
+      "skipped": false,
+      "errors": [],
+      "time": 1
+    },
+    {
+      "name": "IaService (Bloque 4) / analiticaVoz() retorna pdf_base64 null cuando generar_pdf es false",
+      "success": true,
+      "skipped": false,
+      "errors": [],
+      "time": 0
+    },
+    {
+      "name": "IaService (Bloque 4) / analiticaVoz() propaga error 400 con mensaje del backend",
+      "success": true,
+      "skipped": false,
+      "errors": [],
+      "time": 1
+    },
+    {
+      "name": "IaService (Bloque 4) / generarTryOn() envia POST /api/ia/try-on con payload de imagen y retorna composicion",
+      "success": true,
+      "skipped": false,
+      "errors": [],
+      "time": 1
+    },
+    {
+      "name": "IaService (Bloque 4) / procesarTryOn() funciona como alias de generarTryOn()",
+      "success": true,
+      "skipped": false,
+      "errors": [],
+      "time": 1
+    },
+    {
+      "name": "InventarioService (CU10) / obtenerResumen() envía GET /api/inventario/resumen con parámetros",
+      "success": true,
+      "skipped": false,
+      "errors": [],
+      "time": 1
+    },
+    {
+      "name": "InventarioService (CU10) / monitorear() envía GET /api/inventario/monitoreo con filtros combinados",
+      "success": true,
+      "skipped": false,
+      "errors": [],
+      "time": 1
+    },
+    {
+      "name": "Login (CU01) / arranca con el formulario inválido y vacío",
+      "success": true,
+      "skipped": false,
+      "errors": [],
+      "time": 37
+    },
+    {
+      "name": "Login (CU01) / solo solicita correo y contraseña, sin campo empresa",
+      "success": true,
+      "skipped": false,
+      "errors": [],
+      "time": 5
+    },
+    {
+      "name": "Login (CU01) / dirige Cliente/CLIENTE a su acceso correcto",
+      "success": true,
+      "skipped": false,
+      "errors": [],
+      "time": 34
+    },
+    {
+      "name": "Login (CU01) / dirige Administrador/PLATAFORMA a su acceso correcto",
+      "success": true,
+      "skipped": false,
+      "errors": [],
+      "time": 6
+    },
+    {
+      "name": "Login (CU01) / dirige Administrador/PERSONAL a su acceso correcto",
+      "success": true,
+      "skipped": false,
+      "errors": [],
+      "time": 5
+    },
+    {
+      "name": "Login (CU01) / dirige Cajero (POS)/PERSONAL a su acceso correcto",
+      "success": true,
+      "skipped": false,
+      "errors": [],
+      "time": 5
+    },
+    {
+      "name": "Login (CU01) / rechaza un correo con formato inválido",
+      "success": true,
+      "skipped": false,
+      "errors": [],
+      "time": 5
+    },
+    {
+      "name": "Login (CU01) / no envía la petición si el formulario es inválido",
+      "success": true,
+      "skipped": false,
+      "errors": [],
+      "time": 5
+    },
+    {
+      "name": "Login (CU01) / marca el campo como inválido solo después de tocarlo",
+      "success": true,
+      "skipped": false,
+      "errors": [],
+      "time": 6
+    },
+    {
+      "name": "Login (CU01) / activa el estado de carga y deshabilita el botón durante la petición",
+      "success": true,
+      "skipped": false,
+      "errors": [],
+      "time": 5
+    },
+    {
+      "name": "Login (CU01) / desactiva el estado de carga tras un login exitoso",
+      "success": true,
+      "skipped": false,
+      "errors": [],
+      "time": 4
+    },
+    {
+      "name": "Login (CU01) / muestra en pantalla el mensaje de credenciales inválidas",
+      "success": true,
+      "skipped": false,
+      "errors": [],
+      "time": 5
+    },
+    {
+      "name": "Login (CU01) / limpia la contraseña pero conserva el correo tras un error",
+      "success": true,
+      "skipped": false,
+      "errors": [],
+      "time": 3
+    },
+    {
+      "name": "Login (CU01) / alterna el tipo del campo de contraseña",
+      "success": true,
+      "skipped": false,
+      "errors": [],
+      "time": 3
+    },
+    {
+      "name": "MovimientoInventarioService (CU11) / listar() envía GET /api/movimientos-inventario/ con filtros de sucursal y tipo",
+      "success": true,
+      "skipped": false,
+      "errors": [],
+      "time": 1
+    },
+    {
+      "name": "MovimientoInventarioService (CU11) / crear() envía POST /api/movimientos-inventario/",
+      "success": true,
+      "skipped": false,
+      "errors": [],
+      "time": 1
+    },
+    {
+      "name": "MovimientoInventarioService (CU11) / consultarStock() envía GET /api/movimientos-inventario/stock",
+      "success": true,
+      "skipped": false,
+      "errors": [],
+      "time": 1
+    },
+    {
+      "name": "MovimientoInventarioService (CU11) / solicita disponibilidad descontando reservas sin cambiar la consulta por defecto",
+      "success": true,
+      "skipped": false,
+      "errors": [],
+      "time": 0
+    },
+    {
+      "name": "MovimientoInventarioService (CU11) / no presenta como confirmado un Traspaso antiguo sin ambos movimientos",
+      "success": true,
+      "skipped": false,
+      "errors": [],
+      "time": 1
+    },
+    {
+      "name": "A3 formulario de traspaso online / exige destino explícito y no permite usar el origen como destino",
+      "success": true,
+      "skipped": false,
+      "errors": [],
+      "time": 21
+    },
+    {
+      "name": "A3 formulario de traspaso online / conserva UUID en reintentos aun si el saldo actual ya cambió",
+      "success": true,
+      "skipped": false,
+      "errors": [],
+      "time": 4
+    },
+    {
+      "name": "A3 formulario de traspaso online / no envía doble solicitud mientras espera confirmación",
+      "success": true,
+      "skipped": false,
+      "errors": [],
+      "time": 3
+    },
+    {
+      "name": "A3 formulario de traspaso online / impide encolar o enviar un traspaso sin conexión",
+      "success": true,
+      "skipped": false,
+      "errors": [],
+      "time": 3
+    },
+    {
+      "name": "A5 reconciliación IndexedDB real / cola 1: resultado confirmado posterior",
+      "success": true,
+      "skipped": false,
+      "errors": [],
+      "time": 60
+    },
+    {
+      "name": "A5 reconciliación IndexedDB real / cola 49: resultado confirmado posterior",
+      "success": true,
+      "skipped": false,
+      "errors": [],
+      "time": 95
+    },
+    {
+      "name": "A5 reconciliación IndexedDB real / cola 50: resultado confirmado posterior",
+      "success": true,
+      "skipped": false,
+      "errors": [],
+      "time": 69
+    },
+    {
+      "name": "A5 reconciliación IndexedDB real / cola 51: resultado confirmado posterior",
+      "success": true,
+      "skipped": false,
+      "errors": [],
+      "time": 83
+    },
+    {
+      "name": "A5 reconciliación IndexedDB real / cola 125: resultado confirmado posterior",
+      "success": true,
+      "skipped": false,
+      "errors": [],
+      "time": 206
+    },
+    {
+      "name": "A5 reconciliación IndexedDB real / tres descargas no quedan en el mismo prefijo de 50",
+      "success": true,
+      "skipped": false,
+      "errors": [],
+      "time": 186
+    },
+    {
+      "name": "A5 reconciliación IndexedDB real / otra sucursal no bloquea el lote de la sucursal solicitada",
+      "success": true,
+      "skipped": false,
+      "errors": [],
+      "time": 43
+    },
+    {
+      "name": "A5 reconciliación IndexedDB real / sin resultado conserva PENDIENTE y ENVIANDO",
+      "success": true,
+      "skipped": false,
+      "errors": [],
+      "time": 35
+    },
+    {
+      "name": "A5 reconciliación IndexedDB real / otra empresa en la respuesta no cambia catálogo ni operación",
+      "success": true,
+      "skipped": false,
+      "errors": [],
+      "time": 34
+    },
+    {
+      "name": "A5 reconciliación IndexedDB real / reapertura de IndexedDB no perpetúa bloqueo posterior a 50",
+      "success": true,
+      "skipped": false,
+      "errors": [],
+      "time": 163
+    },
+    {
+      "name": "A5 reconciliación IndexedDB real / respuesta duplicada y descargas repetidas no duplican descuento",
+      "success": true,
+      "skipped": false,
+      "errors": [],
+      "time": 56
+    },
+    {
+      "name": "A5 reconciliación IndexedDB real / conexión interrumpida conserva cola y al reconectar progresa 125",
+      "success": true,
+      "skipped": false,
+      "errors": [],
+      "time": 241
+    },
+    {
+      "name": "A5 reconciliación IndexedDB real / pendiente solo cambia a confirmada con respuesta explícita",
+      "success": true,
+      "skipped": false,
+      "errors": [],
+      "time": 34
+    },
+    {
+      "name": "A5 reconciliación IndexedDB real / sin candidatos renueva catálogo con una petición vacía",
+      "success": true,
+      "skipped": false,
+      "errors": [],
+      "time": 32
+    },
+    {
+      "name": "A5 reconciliación IndexedDB real / 125 UUID se recorren una vez en lotes 50 50 25",
+      "success": true,
+      "skipped": false,
+      "errors": [],
+      "time": 199
+    },
+    {
+      "name": "A5 reconciliación IndexedDB real / fallo del segundo lote conserva 50 y reintenta 75",
+      "success": true,
+      "skipped": false,
+      "errors": [],
+      "time": 166
+    },
+    {
+      "name": "A5 reconciliación IndexedDB real / fallo del tercer lote conserva 100 y reintenta 25",
+      "success": true,
+      "skipped": false,
+      "errors": [],
+      "time": 169
+    },
+    {
+      "name": "A5 reconciliación IndexedDB real / rollback IndexedDB del segundo lote no deja medias confirmaciones",
+      "success": true,
+      "skipped": false,
+      "errors": [],
+      "time": 197
+    },
+    {
+      "name": "A5 reconciliación IndexedDB real / UUID ausente al final de 125 conserva PENDIENTE",
+      "success": true,
+      "skipped": false,
+      "errors": [],
+      "time": 146
+    },
+    {
+      "name": "A5 reconciliación IndexedDB real / sucursal distinta en respuesta no modifica datos",
+      "success": true,
+      "skipped": false,
+      "errors": [],
+      "time": 31
+    },
+    {
+      "name": "A5 reconciliación IndexedDB real / cambio de sesión durante respuesta no mezcla datos ni retiene bloqueo",
+      "success": true,
+      "skipped": false,
+      "errors": [],
+      "time": 39
+    },
+    {
+      "name": "A5 reconciliación IndexedDB real / bloqueo ajeno impide HTTP sin borrar la cola",
+      "success": true,
+      "skipped": false,
+      "errors": [],
+      "time": 20
+    },
+    {
+      "name": "PermisoService (CU03) / listarPermisos() realiza petición GET /api/permisos",
+      "success": true,
+      "skipped": false,
+      "errors": [],
+      "time": 2
+    },
+    {
+      "name": "PermisoService (CU03) / obtenerPermisosRol(idRol) realiza petición GET /api/roles/{idRol}/permisos",
+      "success": true,
+      "skipped": false,
+      "errors": [],
+      "time": 0
+    },
+    {
+      "name": "PermisoService (CU03) / actualizarPermisosRol(idRol, permisosIds) realiza PUT /api/roles/{idRol}/permisos",
+      "success": true,
+      "skipped": false,
+      "errors": [],
+      "time": 1
+    },
+    {
+      "name": "PermisoService (CU03) / listarRoles() realiza petición GET /api/usuarios/roles",
+      "success": true,
+      "skipped": false,
+      "errors": [],
+      "time": 1
+    },
+    {
+      "name": "PermisoService (CU03) / traduce un error 403 al mensaje legible correspondiente",
+      "success": true,
+      "skipped": false,
+      "errors": [],
+      "time": 1
+    },
+    {
+      "name": "ProveedorService (CU12) / listar() envía GET /api/proveedores/ con parámetros de búsqueda",
+      "success": true,
+      "skipped": false,
+      "errors": [],
+      "time": 1
+    },
+    {
+      "name": "ProveedorService (CU12) / crear() envía POST /api/proveedores/ y retorna el proveedor registrado",
+      "success": true,
+      "skipped": false,
+      "errors": [],
+      "time": 1
+    },
+    {
+      "name": "ProveedorService (CU12) / eliminar() propaga error 409 cuando existen compras asociadas",
+      "success": true,
+      "skipped": false,
+      "errors": [],
+      "time": 0
+    },
+    {
+      "name": "RecuperarPassword (CU04) / inicia con el formulario vacío e inválido",
+      "success": true,
+      "skipped": false,
+      "errors": [],
+      "time": 9
+    },
+    {
+      "name": "RecuperarPassword (CU04) / valida el formato del correo electrónico",
+      "success": true,
+      "skipped": false,
+      "errors": [],
+      "time": 2
+    },
+    {
+      "name": "RecuperarPassword (CU04) / no ejecuta la petición si el formulario es inválido",
+      "success": true,
+      "skipped": false,
+      "errors": [],
+      "time": 2
+    },
+    {
+      "name": "RecuperarPassword (CU04) / muestra estado de carga durante el envío de la solicitud",
+      "success": true,
+      "skipped": false,
+      "errors": [],
+      "time": 2
+    },
+    {
+      "name": "RecuperarPassword (CU04) / muestra la tarjeta de confirmación tras un envío exitoso",
+      "success": true,
+      "skipped": false,
+      "errors": [],
+      "time": 2
+    },
+    {
+      "name": "RecuperarPassword (CU04) / muestra el mensaje de error si el backend rechaza la solicitud",
+      "success": true,
+      "skipped": false,
+      "errors": [],
+      "time": 2
+    },
+    {
+      "name": "RecuperarPassword (CU04) / permite reintentar y restablece el formulario",
+      "success": true,
+      "skipped": false,
+      "errors": [],
+      "time": 2
+    },
+    {
+      "name": "RestablecerPassword (CU04) / detecta ausencia de token y muestra estado de error inmediatamente",
+      "success": true,
+      "skipped": false,
+      "errors": [],
+      "time": 12
+    },
+    {
+      "name": "RestablecerPassword (CU04) / verifica token y muestra error si el backend indica que expiró o es inválido",
+      "success": true,
+      "skipped": false,
+      "errors": [],
+      "time": 2
+    },
+    {
+      "name": "RestablecerPassword (CU04) / habilita el formulario cuando el token es válido",
+      "success": true,
+      "skipped": false,
+      "errors": [],
+      "time": 2
+    },
+    {
+      "name": "RestablecerPassword (CU04) / calcula la fortaleza de la contraseña reactivamente",
+      "success": true,
+      "skipped": false,
+      "errors": [],
+      "time": 15
+    },
+    {
+      "name": "RestablecerPassword (CU04) / valida que las contraseñas coincidan",
+      "success": true,
+      "skipped": false,
+      "errors": [],
+      "time": 3
+    },
+    {
+      "name": "RestablecerPassword (CU04) / restablece la contraseña exitosamente al enviar el formulario válido",
+      "success": true,
+      "skipped": false,
+      "errors": [],
+      "time": 3
+    },
+    {
+      "name": "RestablecerPassword (CU04) / muestra mensaje de error si falla el guardado de la nueva contraseña",
+      "success": true,
+      "skipped": false,
+      "errors": [],
+      "time": 3
+    },
+    {
+      "name": "TemporadaService (CU09) / listar() envía GET /api/temporadas/ con parámetros de búsqueda",
+      "success": true,
+      "skipped": false,
+      "errors": [],
+      "time": 1
+    },
+    {
+      "name": "TemporadaService (CU09) / crear() envía POST /api/temporadas/ y retorna la temporada creada",
+      "success": true,
+      "skipped": false,
+      "errors": [],
+      "time": 0
+    },
+    {
+      "name": "TemporadaService (CU09) / eliminar() propaga error 400 o 409 cuando tiene prendas asociadas",
+      "success": true,
+      "skipped": false,
+      "errors": [],
+      "time": 1
+    }
+  ],
+  "observations": [
+    "'A5_REPRO:{\"client\":\"Angular native IndexedDB\",\"queue\":1,\"rounds\":1,\"other_branch_prefix\":false,\"requested_unique\":1,\"HTTP_requests\":1,\"tail_state\":\"CONFIRMADA\",\"tail_accounted\":true,\"available\":999,\"expected\":999}'",
+    "'A5_REPRO:{\"client\":\"Angular native IndexedDB\",\"queue\":49,\"rounds\":1,\"other_branch_prefix\":false,\"requested_unique\":49,\"HTTP_requests\":1,\"tail_state\":\"CONFIRMADA\",\"tail_accounted\":true,\"available\":975,\"expected\":975}'",
+    "'A5_REPRO:{\"client\":\"Angular native IndexedDB\",\"queue\":50,\"rounds\":1,\"other_branch_prefix\":false,\"requested_unique\":50,\"HTTP_requests\":1,\"tail_state\":\"CONFIRMADA\",\"tail_accounted\":true,\"available\":975,\"expected\":975}'",
+    "'A5_REPRO:{\"client\":\"Angular native IndexedDB\",\"queue\":51,\"rounds\":1,\"other_branch_prefix\":false,\"requested_unique\":51,\"HTTP_requests\":2,\"tail_state\":\"CONFIRMADA\",\"tail_accounted\":true,\"available\":974,\"expected\":974}'",
+    "'A5_REPRO:{\"client\":\"Angular native IndexedDB\",\"queue\":125,\"rounds\":1,\"other_branch_prefix\":false,\"requested_unique\":125,\"HTTP_requests\":3,\"tail_state\":\"CONFIRMADA\",\"tail_accounted\":true,\"available\":937,\"expected\":937}'",
+    "'A5_REPRO:{\"client\":\"Angular native IndexedDB\",\"queue\":51,\"rounds\":3,\"other_branch_prefix\":false,\"requested_unique\":51,\"HTTP_requests\":4,\"tail_state\":\"CONFIRMADA\",\"tail_accounted\":true,\"available\":974,\"expected\":974}'",
+    "'A5_REPRO:{\"client\":\"Angular native IndexedDB\",\"queue\":51,\"rounds\":1,\"other_branch_prefix\":true,\"requested_unique\":1,\"HTTP_requests\":1,\"tail_state\":\"CONFIRMADA\",\"tail_accounted\":true,\"available\":999,\"expected\":999}'"
+  ]
+}

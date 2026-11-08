@@ -1,0 +1,92 @@
+{
+  "database": "fashionstore_p2_test",
+  "tmpfs": true,
+  "companies": [
+    {
+      "tenant": 6,
+      "sales": 2,
+      "reservations": 3,
+      "sync_count": 5,
+      "movements": 2,
+      "stock": [
+        {
+          "branch": 5,
+          "variant": 5,
+          "stock": 4
+        },
+        {
+          "branch": 7,
+          "variant": 5,
+          "stock": 7
+        }
+      ],
+      "retentions": [
+        {
+          "branch": 5,
+          "quantity": 1
+        },
+        {
+          "branch": 7,
+          "quantity": 1
+        },
+        {
+          "branch": 7,
+          "quantity": 1
+        }
+      ],
+      "sync": [
+        {
+          "id": "b5e8f311-32b6-42b4-a9fd-a0802aaa57f3",
+          "author": 5,
+          "branch": 7,
+          "kind": "reserva",
+          "state": "CONFIRMADA"
+        },
+        {
+          "id": "a7fb8032-69db-47a3-a301-db562bb37421",
+          "author": 5,
+          "branch": 7,
+          "kind": "venta",
+          "state": "CONFIRMADA"
+        },
+        {
+          "id": "a6702207-387b-4fdc-8633-836a959f7f16",
+          "author": 5,
+          "branch": 5,
+          "kind": "venta",
+          "state": "CONFIRMADA"
+        },
+        {
+          "id": "a593e671-b2d6-4223-a41b-6b805415bc94",
+          "author": 5,
+          "branch": 7,
+          "kind": "reserva",
+          "state": "CONFIRMADA"
+        },
+        {
+          "id": "7a012961-26b1-4725-93c0-ea2ca2ce8c9f",
+          "author": 5,
+          "branch": 5,
+          "kind": "reserva",
+          "state": "CONFIRMADA"
+        }
+      ]
+    },
+    {
+      "tenant": 7,
+      "sales": 0,
+      "reservations": 0,
+      "sync_count": 0,
+      "movements": 0,
+      "stock": [
+        {
+          "branch": 6,
+          "variant": 6,
+          "stock": 5
+        }
+      ],
+      "retentions": null,
+      "sync": null
+    }
+  ]
+}

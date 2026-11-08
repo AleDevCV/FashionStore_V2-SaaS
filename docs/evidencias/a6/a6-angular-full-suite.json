@@ -1,0 +1,28 @@
+{
+  "command": "ng test --watch=false --browsers=ChromeHeadless",
+  "browser": "ChromeHeadless 156.0.0.0",
+  "total_spec_files": 16,
+  "total_executed": 116,
+  "passed": 116,
+  "failed": 0,
+  "skipped": 0,
+  "coverage_breakdown": {
+    "app.spec.ts": 1,
+    "auth.service.spec.ts": 7,
+    "compra.service.spec.ts": 4,
+    "ia.service.spec.ts": 11,
+    "inventario.service.spec.ts": 7,
+    "movimiento-inventario.service.spec.ts": 6,
+    "offline.service.spec.ts": 22,
+    "permiso.service.spec.ts": 4,
+    "proveedor.service.spec.ts": 5,
+    "temporada.service.spec.ts": 4,
+    "roles-permisos.spec.ts": 12,
+    "login.spec.ts": 12,
+    "recuperar-password.spec.ts": 4,
+    "restablecer-password.spec.ts": 4,
+    "probador-ia.spec.ts": 9,
+    "movimiento-modal.spec.ts": 4
+  },
+  "state": "APROBADO_TOTAL"
+}

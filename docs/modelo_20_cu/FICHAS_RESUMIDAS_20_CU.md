@@ -182,6 +182,8 @@ Estas fichas delimitan los grupos y subflujos. Su especificación detallada debe
 4. Registrar el movimiento y su efecto único sobre stock.
 5. Confirmar trazabilidad; revertir todo ante un fallo.
 
+**Implementación A3, validada en entorno aislado:** origen/destino y UUID obligatorios para Traspaso; ambas sucursales activas y autorizadas. Salida + Entrada vinculadas, sin doble mecanismo de descuento; disponibilidad resta retenciones. Reintento idéntico no vuelve a mutar; UUID con otro contenido se rechaza; cualquier fallo revierte el conjunto y no emite 201. Exclusivamente online; Entrada/Salida mantienen contrato. A3 no está activado en la demostración persistente. [Evidencias y límites](../CORRECCION_AUTORIZACION_A3.md).
+
 ## CU-11. Realizar compra y pago en línea
 
 **Cobertura del plan P2 anterior:** CU-18, CU-22.
@@ -300,7 +302,7 @@ Estas fichas delimitan los grupos y subflujos. Su especificación detallada debe
 2. Identificar cuenta, empresa, sucursal y vigencia offline.
 3. Consultar catálogo o preparar reserva/venta local según permisos.
 4. Guardar UUID, cabecera, detalles y pendiente atómicamente.
-5. Consultar operaciones y resultados después de cerrar y volver a abrir.
+5. Consultar operaciones y resultados después de cerrar y volver a abrir. La recuperación central conserva el acceso del autor dentro de su empresa; las consultas no eliminan pendientes.
 
 ## CU-17. Sincronizar operaciones y resolver conflictos
 
@@ -316,9 +318,11 @@ Estas fichas delimitan los grupos y subflujos. Su especificación detallada debe
 
 1. Detectar conexión o recibir solicitud manual.
 2. Enviar operaciones preservando UUID y contenido.
-3. Validar identidad, suscripción y reglas por operación.
+3. Validar identidad, empresa, autor, permisos y sucursal antes de revelar resultados ajenos; aplicar suscripción y reglas por operación.
 4. Guardar confirmación, rechazo o conflicto; conservar pendientes ante error temporal.
-5. Resolver conflictos autorizados con nueva operación enlazada o compensación explícita.
+5. Resolver conflictos autorizados con nueva operación enlazada o compensación explícita. El permiso no concede acceso a sucursales ajenas; los rechazos sin sucursal siguen la política A2 aprobada.
+
+**Alternativas de autorización A2:** el autor conserva consulta/reintentos; un supervisor sin asignación no obtiene datos por UUID ni por lote. Sin permiso no lista ni compensa. La consulta histórica admite sucursales inactivas autorizadas; compensar exige sucursal activa cuando existe. No se descartan registros. [Política, evidencias y límites](../CORRECCION_AUTORIZACION_A2.md).
 
 ## CU-18. Obtener reportes comerciales
 

@@ -1,0 +1,23 @@
+{
+  "case_id": "A5-AND01",
+  "name": "Actualizaci\u00f3n APK sin p\u00e9rdida de datos ni operaciones previas",
+  "device": "Xiaomi 13T Pro (23078PND5G)",
+  "package": "com.fashionstore.fashionstore_mobile.p2",
+  "version": "0.1.0 (1)",
+  "apk_sha256": "61ff29b1128f13820827a88fb9e9a8fc7aac928d64465a4570161477ab5307af",
+  "install_method": "adb install -r",
+  "install_result": "Success",
+  "backup_verified": {
+    "file": "C:\\Users\\Klara\\Documents\\Codex\\2026-11-06\\https-github-com-aledevcv-fashionstore-v2\\outputs\\backup_a4_sqlite\\backup_a4_databases.tar",
+    "bytes": 434688,
+    "sha256": "09b6213edf8061f100ea7166ec8c5e00b904579030170b90f24bed5c4f9f4830"
+  },
+  "a4_historical_preservation": {
+    "database": "databases/fashionstore_p2_stable_ZmFzaGlvbnN0b3JlLW1haW4_6_5.db",
+    "operations": 5,
+    "details": 5,
+    "integrity": "ok",
+    "fk_errors": 0
+  },
+  "state": "APROBADO"
+}

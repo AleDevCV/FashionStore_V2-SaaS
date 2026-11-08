@@ -1,0 +1,11 @@
+{
+  "package": "com.fashionstore.fashionstore_mobile.p2",
+  "apk_sha256": "721eb810e8742a842c0af9882d253b53a3a7707960c970eba8901b947b0a9326",
+  "install_flags": [
+    "-r"
+  ],
+  "success": true,
+  "mode": "fresh; no installed FashionStore existed",
+  "previous_application_uninstalled": false,
+  "data_clear_executed": false
+}

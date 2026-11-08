@@ -1,0 +1,18 @@
+<?xml version='1.0' encoding='utf-8'?>
+<testsuite name="flutter-before-corrected-fixture" tests="13" failures="6" skipped="0"><testcase name="A5 cola 1: confirmada posterior no queda bloqueada" /><testcase name="A5 cola 49: confirmada posterior no queda bloqueada" /><testcase name="A5 cola 50: confirmada posterior no queda bloqueada" /><testcase name="A5 cola 51: confirmada posterior no queda bloqueada"><failure>Expected: &lt;1&gt;
+  Actual: &lt;0&gt;
+Every requested-branch confirmed result must become accounted despite terminal prefixes
+</failure></testcase><testcase name="A5 cola 125: confirmada posterior no queda bloqueada"><failure>Expected: &lt;1&gt;
+  Actual: &lt;0&gt;
+Every requested-branch confirmed result must become accounted despite terminal prefixes
+</failure></testcase><testcase name="A5 tres descargas no repiten eternamente el prefijo 50"><failure>Expected: &lt;1&gt;
+  Actual: &lt;0&gt;
+Every requested-branch confirmed result must become accounted despite terminal prefixes
+</failure></testcase><testcase name="A5 sucursal 2 no bloquea reconciliación de sucursal 1"><failure>Expected: &lt;1&gt;
+  Actual: &lt;0&gt;
+Every requested-branch confirmed result must become accounted despite terminal prefixes
+</failure></testcase><testcase name="A5 sin resultado definitivo conserva PENDIENTE y ENVIANDO" /><testcase name="A5 respuesta de otra empresa no cambia catálogo ni operación" /><testcase name="A5 reinicio de SQLite no perpetúa bloqueo posterior a 50"><failure>Expected: &lt;1&gt;
+  Actual: &lt;0&gt;
+</failure></testcase><testcase name="A5 respuesta duplicada y descargas repetidas no duplican descuento" /><testcase name="A5 conexión interrumpida conserva cola y al reconectar progresa 125"><failure>Expected: &lt;1&gt;
+  Actual: &lt;0&gt;
+</failure></testcase><testcase name="A5 pendiente solo cambia a confirmada con respuesta explícita" /></testsuite>

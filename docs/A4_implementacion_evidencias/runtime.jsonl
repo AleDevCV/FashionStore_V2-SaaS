@@ -1,0 +1,11 @@
+{"protocolVersion":"0.1.1","runnerVersion":null,"pid":24680,"type":"start","time":0}
+{"suite":{"id":0,"platform":"vm","path":"C:/Users/Klara/Documents/Codex/2026-11-06/https-github-com-aledevcv-fashionstore-v2/work/implementation-a4/mobile-checks/integration/offline_recovery_http_test.dart"},"type":"suite","time":0}
+{"test":{"id":1,"name":"loading C:/Users/Klara/Documents/Codex/2026-11-06/https-github-com-aledevcv-fashionstore-v2/work/implementation-a4/mobile-checks/integration/offline_recovery_http_test.dart","suiteID":0,"groupIDs":[],"metadata":{"skip":false,"skipReason":null},"line":null,"column":null,"url":null},"type":"testStart","time":0}
+{"count":1,"time":3,"type":"allSuites"}
+{"testID":1,"result":"success","skipped":false,"hidden":true,"type":"testDone","time":1827}
+{"group":{"id":2,"suiteID":0,"parentID":null,"name":"","metadata":{"skip":false,"skipReason":null},"testCount":2,"line":null,"column":null,"url":null},"type":"group","time":1828}
+{"test":{"id":3,"name":"A4 HTTP: recupera SQLite real, reenvía respuesta perdida y conserva UUID sin duplicar","suiteID":0,"groupIDs":[2],"metadata":{"skip":false,"skipReason":null},"line":36,"column":3,"url":"file:///C:/Users/Klara/Documents/Codex/2026-11-06/https-github-com-aledevcv-fashionstore-v2/work/implementation-a4/mobile-checks/integration/offline_recovery_http_test.dart"},"type":"testStart","time":1828}
+{"testID":3,"result":"success","skipped":false,"hidden":false,"type":"testDone","time":2171}
+{"test":{"id":4,"name":"A4 HTTP: sesión de la segunda empresa abre otra base sin historial ajeno","suiteID":0,"groupIDs":[2],"metadata":{"skip":false,"skipReason":null},"line":128,"column":3,"url":"file:///C:/Users/Klara/Documents/Codex/2026-11-06/https-github-com-aledevcv-fashionstore-v2/work/implementation-a4/mobile-checks/integration/offline_recovery_http_test.dart"},"type":"testStart","time":2171}
+{"testID":4,"result":"success","skipped":false,"hidden":false,"type":"testDone","time":2224}
+{"success":true,"type":"done","time":2245}

@@ -19,7 +19,7 @@ Los comprobantes e imágenes quedan en `shared/files`, fuera del código y del d
 - Suscripción: empresa, plan, inicio y vencimiento con zona horaria.
 - Cuenta global: correo único, identidad, hash y versión de sesión. El cliente opera en varias tiendas con la misma cuenta.
 - Usuario y rol: perfil operativo perteneciente a una empresa, vinculado a la cuenta global y con sus IDs comerciales conservados.
-- Usuario sucursal: relación explícita para futuras operaciones restringidas por sucursal.
+- Usuario sucursal: relación explícita que restringe operaciones y supervisión de sincronización por sucursal.
 
 ## Contratos iniciales implementados
 
@@ -40,8 +40,30 @@ Los comprobantes e imágenes quedan en `shared/files`, fuera del código y del d
 
 ## Contratos pendientes
 
-Los contratos de sincronización, cambios, reportes ampliados y analítica se especifican en el plan y fichas. Este documento no los declara implementados anticipadamente. Los diagramas técnicos finales se elaborarán después de estabilizar los componentes correspondientes.
+Los contratos backend de sincronización de la tabla siguiente están implementados y verificados para A2. Los demás contratos de cambios, reportes ampliados y analítica se consultan en sus fichas y evidencias; esta revisión no certifica esos módulos. Los diagramas técnicos finales se elaborarán después de estabilizar los componentes correspondientes.
 
 ## Fechas y cantidades
 
-El backend utiliza UTC en los contratos de vigencia. La interfaz presenta fechas locales. Los importes comerciales se representan con Decimal y columnas NUMERIC; los UUID offline futuros se generarán una sola vez por operación. Los límites y las políticas no se toman de datos enviados por el cliente sin validación.
+El backend utiliza UTC en los contratos de vigencia. La interfaz presenta fechas locales. Los importes comerciales se representan con Decimal y columnas NUMERIC; los UUID offline se generan una sola vez por operación. Los límites y las políticas no se toman de datos enviados por el cliente sin validación.
+
+## Contratos de sincronización verificados para A2
+
+| Método y ruta real | Autorización adicional al aislamiento de empresa |
+|---|---|
+| GET /api/offline/catalogo | Descarga con sucursal autorizada; resultados conocidos solo del autor. Sin cambios en A2. |
+| GET /api/conflictos | `conflictos.resolver`; autor, sucursal asignada o Administrador. Filtro SQL anterior a LIMIT 100. |
+| GET /api/sincronizacion/operaciones/{operation_id} | Autor; o supervisor con permiso y sucursal asignada; o Administrador de esa empresa. |
+| POST /api/sincronizacion/lote | Recuperar un UUID existente aplica el mismo control; una revisión comprueba acceso al original antes de mostrar su estado. Las nuevas operaciones conservan sus validaciones comerciales. |
+| POST /api/conflictos/{operation_id}/compensar | Permiso, acceso al registro y sucursal activa autorizada si existe; control previo a estado e importes. |
+
+Las rutas se declaran en `app/routers/offline.py`, incluido con prefijo `/api` en `app/main.py`. No se cambiaron firmas, DTO ni OpenAPI (118 rutas, 126 esquemas). Política aprobada para ausencia de sucursal e inactividad: [CORRECCION_AUTORIZACION_A2.md](CORRECCION_AUTORIZACION_A2.md). El control común es una función de módulo de `synchronization.py`, no una clase UML ni un nuevo servicio desplegable.
+
+## Contrato A3 — preparado y verificado, sin activación persistente
+
+Se conservan POST `/api/movimientos-inventario[/]` y `/api/inventario/movimientos[/]`. Para Entrada/Salida el payload y la respuesta de movimiento se mantienen. Para Traspaso, `id_sucursal` es origen y se requieren además `id_sucursal_destino` y `operation_id` UUID. Un Traspaso incompleto se rechaza con 422, sin registro ni stock ficticio.
+
+La respuesta `TraspasoRespuesta` contiene la operación lógica y `movimiento_salida` / `movimiento_entrada`, cada uno un `MovimientoRespuesta` real con su tipo físico y stock al confirmar. El resultado se conserva en JSONB para reintentos idénticos. El historial mantiene las patas Salida/Entrada y añade metadatos `MovimientoVinculadoRespuesta` solo si el vínculo es visible en ambas sucursales; el filtro Traspaso incluye estas patas y conserva los eventos históricos.
+
+GET stock admite `disponible=true` para restar retenciones vigentes; por defecto sigue devolviendo stock físico con el mismo esquema. OpenAPI: 118 rutas antes/después, 126 → 128 esquemas; solo cambian los contratos de movimientos/stock y `MovimientoCrear`, con dos respuestas nuevas. Las demás rutas/esquemas permanecen iguales.
+
+La dependencia de escritura usa `get_db(scope='function')`: confirma antes de emitir HTTP 201. `usuario_movimiento` reutiliza `get_current_user` y la fábrica de roles C1 con el mismo cursor, sin duplicar slots del pool. No se cambia `database.py`, el trigger de stock ni las reglas offline. Requiere 018 antes de ejecutar esta versión contra una base. [Detalle](CORRECCION_AUTORIZACION_A3.md).

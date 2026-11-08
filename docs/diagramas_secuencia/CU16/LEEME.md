@@ -12,3 +12,7 @@ La numeración se asigna de nuevo al incluir alternativas; el archivo de trazabi
 - Las ventas requieren rol autorizado, efectivo suficiente y permiso offline vigente. Las reservas requieren cliente descargado. Son operaciones provisionales, no ventas confirmadas por el servidor.
 
 No se modificó el programa, el Word ni los diagramas anteriores.
+
+## Revisión de alcance por A2
+
+Se revisaron el modelo de robustez y la secuencia de CU16: representan descarga y persistencia local, y excluyen expresamente la sincronización central de CU17. `snapshot` conserva su validación de sucursal y consulta de resultados propios; A2 no cambia ese flujo ni sus participantes. Por ello no se modifican draw.io, SVG o PNG ni se renueva su validación como si se hubieran generado de nuevo. No se encontró una robustez o secuencia detallada de CU17 en las carpetas revisadas; queda pendiente su elaboración, sin inventar clases ni diagramas. Reglas centrales y evidencia: [A2](../../CORRECCION_AUTORIZACION_A2.md).

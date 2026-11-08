@@ -1,0 +1,14 @@
+{
+  "old": {
+    "bytes": 69632,
+    "before_sha256": "0102dafedafaaf60deaf52a52150a9b90e2e9c01ed43dbbd335688cc835520d0",
+    "after_sha256": "0102dafedafaaf60deaf52a52150a9b90e2e9c01ed43dbbd335688cc835520d0",
+    "unchanged": true
+  },
+  "new": {
+    "bytes": 69632,
+    "before_sha256": "9ad5164f1b13663c585a46eadd96b932234a051a3dc9b4660518abdd68eace4b",
+    "after_sha256": "9ad5164f1b13663c585a46eadd96b932234a051a3dc9b4660518abdd68eace4b",
+    "unchanged": true
+  }
+}

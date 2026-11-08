@@ -1,0 +1,22 @@
+{
+  "passed": 2,
+  "failed": 0,
+  "skipped": 0,
+  "cases": [
+    {
+      "name": "A5 HTTP real: Angular IndexedDB FastAPI PostgreSQL tmpfs / 125 UUID reales en 3 lotes contabilizan 75 sin afectar los 2 de otra sucursal",
+      "success": true,
+      "skipped": false,
+      "errors": [],
+      "time": 225
+    },
+    {
+      "name": "A5 HTTP real: Angular IndexedDB FastAPI PostgreSQL tmpfs / otra sucursal, reapertura y reintento conservan 127 cabeceras y 127 detalles",
+      "success": true,
+      "skipped": false,
+      "errors": [],
+      "time": 104
+    }
+  ],
+  "observations": []
+}

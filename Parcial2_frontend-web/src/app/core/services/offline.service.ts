@@ -38,20 +38,38 @@ export class OfflineService {
  }
  async download(branchId:number){
   if(this.busy())return;this.busy.set(true);this.message.set('Descargando catálogo autorizado…');
-  try{await this.locked(async()=>{
-   const db=this.current();const pending=(await db.operations.toArray()).filter(o=>!o.accounted).slice(0,50);
-   let params=new HttpParams().set('branch_id',branchId);for(const op of pending)params=params.append('operation_ids',op.operation_id);
-   const snapshot=await firstValueFrom(this.http.get<any>(this.base+'/offline/catalogo',{params}).pipe(timeout(20000)));
-   if(snapshot.tenant_id+':'+snapshot.author_id!==this.namespace)throw new Error('El catálogo no corresponde a la sesión local.');
-   await db.transaction('rw',[db.products,db.variants,db.stocks,db.branches,db.customers,db.meta,db.operations],async()=>{
+  let completed=0,total=0;
+  try{
+   const db=this.current(),profile=this.namespace;
+   // Lista finita: rechazos y conflictos no necesitan cambiar accounted para avanzar.
+   const ids=(await db.operations.toArray()).filter(o=>!o.accounted && o.branch_id===branchId).map(o=>o.operation_id);
+   const batches:string[][]=[];for(let offset=0;offset<ids.length;offset+=50)batches.push(ids.slice(offset,offset+50));
+   if(!batches.length)batches.push([]);total=batches.length;
+   for(const batch of batches){
+    let applied=false;
+    if(this.current()!==db || this.namespace!==profile)throw new Error('La sesión cambió durante la reconciliación.');
+    // El bloqueo existente protege una petición y su transacción, no toda la cola.
+    await this.locked(async()=>{
+     if(this.current()!==db || this.namespace!==profile)throw new Error('La sesión cambió durante la reconciliación.');
+     let params=new HttpParams().set('branch_id',branchId);for(const id of batch)params=params.append('operation_ids',id);
+     const snapshot=await firstValueFrom(this.http.get<any>(this.base+'/offline/catalogo',{params}).pipe(timeout(20000)));
+     if(this.current()!==db || this.namespace!==profile || snapshot.tenant_id+':'+snapshot.author_id!==profile || snapshot.branch?.id_sucursal!==branchId)throw new Error('El catálogo no corresponde a la cuenta y sucursal solicitadas.');
+     await db.transaction('rw',[db.products,db.variants,db.stocks,db.branches,db.customers,db.meta,db.operations],async()=>{
     await db.stocks.where('branch_id').equals(branchId).delete();
     // Se conservan variantes antiguas para mantener referencias de operaciones pendientes.
     for(const row of snapshot.products){const {id_variante_prenda,id_prenda,sku_variante,talla,color,precio_adicional,stock,...product}=row;await db.products.put({id_prenda,...product});await db.variants.put({id_variante_prenda,id_prenda,sku_variante,talla,color,precio_adicional});await db.stocks.put({branch_id:branchId,id_variante_prenda,stock});}
     await db.branches.put(snapshot.branch);await db.customers.bulkPut(snapshot.customers);
     for(const result of snapshot.operation_results||[]){const op=await db.operations.get(result.operation_id);if(op)await db.operations.update(op.operation_id,{state:result.state,result,reason:result.reason||'',accounted:op.accounted||(result.state==='CONFIRMADA' && op.branch_id===branchId)});}
     await db.meta.put({key:'snapshot',value:snapshot});if(!await db.meta.get('device'))await db.meta.put({key:'device',value:crypto.randomUUID()});
-   });this.snapshot.set(snapshot);await this.refresh();this.message.set('Catálogo guardado. Puedes consultar este subconjunto y registrar operaciones sin red.');
-  });}catch(e:any){this.message.set(this.error(e));}finally{this.busy.set(false);}
+     });
+     completed++;applied=true;
+     if(this.current()!==db || this.namespace!==profile)throw new Error('La sesión cambió durante la reconciliación.');
+     this.snapshot.set(snapshot);await this.refresh();
+    });
+    if(!applied)throw new Error('Otra operación está usando la cola. Reintenta la descarga.');
+   }
+   this.message.set(`Catálogo guardado. Reconciliación completada (${completed}/${total} lotes). Las operaciones se conservan.`);
+  }catch(e:any){this.message.set((completed?`Reconciliación parcial (${completed}/${total} lotes guardados). `:'')+this.error(e));}finally{this.busy.set(false);}
  }
  async capture(kind:'venta'|'reserva',customerId:number|null,entries:{variantId:number;quantity:number}[],cash:any,original:string|null=null){
   const db=this.current(),snapshot=this.snapshot();if(!this.validLease)throw new Error('La autorización offline venció; conecta para renovarla.');

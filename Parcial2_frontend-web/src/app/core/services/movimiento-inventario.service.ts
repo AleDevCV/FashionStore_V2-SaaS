@@ -11,7 +11,7 @@
 
 import { Injectable, inject } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
-import { Observable, catchError } from 'rxjs';
+import { Observable, catchError, map } from 'rxjs';
 
 import { environment } from '../../../environments/environment';
 import { traducirErrorApi } from '../utils/api-error';
@@ -19,6 +19,7 @@ import {
   FiltrosMovimientos,
   MovimientoInventario,
   MovimientoInventarioCrear,
+  TraspasoInventario,
   StockRespuesta,
 } from '../models/movimiento.model';
 
@@ -64,16 +65,21 @@ export class MovimientoInventarioService {
 
   /**
    * Registra un movimiento físico manual en el inventario.
-   * El trigger PL/pgSQL actualiza automáticamente el stock o lanza excepción
-   * si el stock para Salida/Traspaso es insuficiente.
+   * Entrada/Salida conservan su respuesta de movimiento. Traspaso requiere
+   * destino/UUID y devuelve ambas patas confirmadas por el servidor.
    *
    * @param datos Sucursal, variante, tipo de movimiento, cantidad y motivo.
    * @returns Observable con el movimiento creado (HTTP 201).
    */
-  crear(datos: MovimientoInventarioCrear): Observable<MovimientoInventario> {
+  crear(datos: MovimientoInventarioCrear): Observable<MovimientoInventario | TraspasoInventario> {
     return this.http
-      .post<MovimientoInventario>(`${this.baseUrl}/`, datos)
-      .pipe(catchError(traducirErrorApi));
+      .post<MovimientoInventario | TraspasoInventario>(`${this.baseUrl}/`, datos)
+      .pipe(catchError(traducirErrorApi), map(respuesta => {
+        if (datos.tipo === 'Traspaso' && (!respuesta || !('movimiento_salida' in respuesta) || !('movimiento_entrada' in respuesta))) {
+          throw new Error('El servidor no confirmó los dos movimientos del traspaso. Revisa el historial antes de iniciar otro.');
+        }
+        return respuesta;
+      }));
   }
 
   /**
@@ -83,10 +89,11 @@ export class MovimientoInventarioService {
    * @param id_variante_prenda Identificador de la variante.
    * @returns Observable con `{ id_sucursal, id_variante_prenda, stock }`.
    */
-  consultarStock(id_sucursal: number, id_variante_prenda: number): Observable<StockRespuesta> {
-    const params = new HttpParams()
+  consultarStock(id_sucursal: number, id_variante_prenda: number, disponible = false): Observable<StockRespuesta> {
+    let params = new HttpParams()
       .set('id_sucursal', id_sucursal.toString())
       .set('id_variante_prenda', id_variante_prenda.toString());
+    if (disponible) params = params.set('disponible', 'true');
 
     return this.http
       .get<StockRespuesta>(`${this.baseUrl}/stock`, { params })

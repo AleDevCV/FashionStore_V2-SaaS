@@ -1,0 +1,21 @@
+{
+  "device": {
+    "manufacturer": "Xiaomi",
+    "model": "23078PND5G",
+    "android": "16",
+    "api": "36",
+    "abi": "arm64-v8a",
+    "serial_sha256": "ea1ce5fd800de40cf5848799a1d76912a47c47d3e0329680fab2549d657e6fac"
+  },
+  "package": "com.fashionstore.fashionstore_mobile.p2",
+  "installed": true,
+  "signature_compatible": true,
+  "install_executed": false,
+  "fashionstore_package_names": [
+    "package:com.fashionstore.fashionstore_mobile.p2"
+  ],
+  "installed_certificate_sha256": "35930069a1ca21a3b4643f3d5f44d221a48ddb3e4f20bd0d6ab12b2de561e1ea",
+  "installed_version_code": 1,
+  "installed_apk_sha256": "721eb810e8742a842c0af9882d253b53a3a7707960c970eba8901b947b0a9326",
+  "installed_debuggable": true
+}

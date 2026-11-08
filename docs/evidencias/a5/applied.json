@@ -1,0 +1,27 @@
+[
+  {
+    "file": "C:\\Examen si2 FASHIONSTORE\\Parcial2_frontend-web\\src\\app\\core\\services\\offline.service.ts",
+    "change": "modified",
+    "sha256": "d75e89fe7cad44818833424cabedf10f31e8f915698938ac1825f692623b7d56"
+  },
+  {
+    "file": "C:\\Examen si2 FASHIONSTORE\\Parcial2_mobile\\lib\\features\\offline\\offline_controller.dart",
+    "change": "modified",
+    "sha256": "b57d38f1961f44cae7fb101bc6fbb2a34e9d58cc3bfcf1234764a47a418ed35d"
+  },
+  {
+    "file": "C:\\Examen si2 FASHIONSTORE\\Parcial2_frontend-web\\src\\app\\core\\services\\offline.service.spec.ts",
+    "change": "added",
+    "sha256": "bac50c2367873c9646b2b7e9ea89f4e871480c5f37cf4e06809f1b167129d832"
+  },
+  {
+    "file": "C:\\Examen si2 FASHIONSTORE\\Parcial2_mobile\\test\\offline_reconciliation_test.dart",
+    "change": "added",
+    "sha256": "4b872f54a94399aeef007c394ff4962774fe513e913cb6d8f4ddf68bf63f1128"
+  },
+  {
+    "file": "C:\\Examen si2 FASHIONSTORE\\Parcial2_mobile\\integration\\offline_reconciliation_http_test.dart",
+    "change": "added",
+    "sha256": "a526af2c19a81a63b8162e70fac5f41e3fd6bf306c07bf4917b4c68f56b48c24"
+  }
+]

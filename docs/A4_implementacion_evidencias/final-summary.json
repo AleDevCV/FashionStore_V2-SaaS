@@ -1,0 +1,248 @@
+{
+  "exit_code": 0,
+  "cases": [
+    {
+      "name": "A4: solo los dos alias aprobados comparten identidad; otros orígenes quedan separados",
+      "result": "success",
+      "skipped": false
+    },
+    {
+      "name": "login solo envia correo y password y resuelve empresa desde token",
+      "result": "success",
+      "skipped": false
+    },
+    {
+      "name": "cliente global elige tiendas y conserva una sola identidad",
+      "result": "success",
+      "skipped": false
+    },
+    {
+      "name": "recuperacion no transmite empresa ni una sesion anterior",
+      "result": "success",
+      "skipped": false
+    },
+    {
+      "name": "cambiar al hostname definitivo conserva la referencia de la sesion anterior",
+      "result": "success",
+      "skipped": false
+    },
+    {
+      "name": "A4: base canónica nueva se comparte en ambas direcciones entre alias",
+      "result": "success",
+      "skipped": false
+    },
+    {
+      "name": "un traspaso incompleto no se serializa como operación válida",
+      "result": "success",
+      "skipped": false
+    },
+    {
+      "name": "el contrato envía destino y conserva UUID al reintentar",
+      "result": "success",
+      "skipped": false
+    },
+    {
+      "name": "no interpreta el antiguo falso éxito como traspaso confirmado",
+      "result": "success",
+      "skipped": false
+    },
+    {
+      "name": "Entrada conserva su payload y respuesta de movimiento",
+      "result": "success",
+      "skipped": false
+    },
+    {
+      "name": "consulta disponible únicamente cuando el formulario lo solicita",
+      "result": "success",
+      "skipped": false
+    },
+    {
+      "name": "A4: recupera v1, mantiene sucursales UUID device y detalles; fuente idéntica",
+      "result": "success",
+      "skipped": false
+    },
+    {
+      "name": "A4: une cuatro UUID antiguos y uno nuevo sin sumar stocks",
+      "result": "success",
+      "skipped": false
+    },
+    {
+      "name": "venta, detalles y UUID sobreviven a cerrar SQLite y reabrir",
+      "result": "success",
+      "skipped": false
+    },
+    {
+      "name": "A4: solo el archivo del hostname actual también se recupera",
+      "result": "success",
+      "skipped": false
+    },
+    {
+      "name": "una FK inválida revierte cabecera y detalles completos",
+      "result": "success",
+      "skipped": false
+    },
+    {
+      "name": "descargas de otra sucursal conservan su propio stock y pendientes",
+      "result": "success",
+      "skipped": false
+    },
+    {
+      "name": "A4: UUID idénticos en las dos fuentes no duplican cabecera ni detalles",
+      "result": "success",
+      "skipped": false
+    },
+    {
+      "name": "confirmación reconciliada no descuenta dos veces la venta local",
+      "result": "success",
+      "skipped": false
+    },
+    {
+      "name": "A4 controlador: recuperación fallida no abre cola ni programa envíos",
+      "result": "success",
+      "skipped": false
+    },
+    {
+      "name": "cuentas diferentes no comparten operaciones ni catálogo",
+      "result": "success",
+      "skipped": false
+    },
+    {
+      "name": "A4: UUID con envelope divergente revierte toda la importación",
+      "result": "success",
+      "skipped": false
+    },
+    {
+      "name": "dinero local conserva centavos y rechaza fracciones excesivas",
+      "result": "success",
+      "skipped": false
+    },
+    {
+      "name": "A4: UUID con detail divergente revierte toda la importación",
+      "result": "success",
+      "skipped": false
+    },
+    {
+      "name": "A4 controlador: refresh conserva historial y desactiva captura hasta renovar catálogo",
+      "result": "success",
+      "skipped": false
+    },
+    {
+      "name": "A4: UUID con state divergente revierte toda la importación",
+      "result": "success",
+      "skipped": false
+    },
+    {
+      "name": "formulario compartido solo solicita correo y contraseña",
+      "result": "success",
+      "skipped": false
+    },
+    {
+      "name": "A4: rechaza envelope con tenant_id ajeno sin exponer operaciones",
+      "result": "success",
+      "skipped": false
+    },
+    {
+      "name": "A4: rechaza envelope con author_id ajeno sin exponer operaciones",
+      "result": "success",
+      "skipped": false
+    },
+    {
+      "name": "A4: rechaza envelope con branch_id ajeno sin exponer operaciones",
+      "result": "success",
+      "skipped": false
+    },
+    {
+      "name": "A4: snapshot de otra cuenta se rechaza aunque el envelope sea propio",
+      "result": "success",
+      "skipped": false
+    },
+    {
+      "name": "A4: no recupera bases de otra empresa ni de otro usuario",
+      "result": "success",
+      "skipped": false
+    },
+    {
+      "name": "A4: namespace inválido no abre base",
+      "result": "success",
+      "skipped": false
+    },
+    {
+      "name": "A4: host local mantiene su archivo existente sin importar cola HTTPS",
+      "result": "success",
+      "skipped": false
+    },
+    {
+      "name": "A4: no migra mientras la fuente tenga un bloqueo vigente",
+      "result": "success",
+      "skipped": false
+    },
+    {
+      "name": "A4: ENVIANDO se recupera después de expirar lock sin alterar wire ni intentos",
+      "result": "success",
+      "skipped": false
+    },
+    {
+      "name": "A4: reabrir no duplica ni degrada CONFIRMADA a PENDIENTE antigua",
+      "result": "success",
+      "skipped": false
+    },
+    {
+      "name": "A4: cambio tardío de estado en fuente importada no reemplaza resultado canónico",
+      "result": "success",
+      "skipped": false
+    },
+    {
+      "name": "A4: referencias y enlace de revisión se conservan",
+      "result": "success",
+      "skipped": false
+    },
+    {
+      "name": "A4: exige catálogo fresco para capturas y mantiene wire de pendientes",
+      "result": "success",
+      "skipped": false
+    },
+    {
+      "name": "A4: error SQL real revierte fuentes completas y conserva base canónica previa",
+      "result": "success",
+      "skipped": false
+    },
+    {
+      "name": "A4: fuente corrupta provoca rollback de la otra fuente válida",
+      "result": "success",
+      "skipped": false
+    },
+    {
+      "name": "A4: FK huérfana en fuente se conserva y bloquea recuperación",
+      "result": "success",
+      "skipped": false
+    },
+    {
+      "name": "A4: identidad canónica ajena se rechaza",
+      "result": "success",
+      "skipped": false
+    },
+    {
+      "name": "A4: variante con producto incompatible entre fuentes revierte importación",
+      "result": "success",
+      "skipped": false
+    },
+    {
+      "name": "A4: versión de fuente desconocida no se migra silenciosamente",
+      "result": "success",
+      "skipped": false
+    },
+    {
+      "name": "A4: falta real de páginas SQLite revierte importación y conserva fuentes",
+      "result": "success",
+      "skipped": false
+    },
+    {
+      "name": "A4: aperturas concurrentes de ambos alias importan cada UUID una sola vez",
+      "result": "success",
+      "skipped": false
+    }
+  ],
+  "passed": 48,
+  "failed": 0,
+  "errors": []
+}

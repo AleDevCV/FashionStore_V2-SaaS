@@ -1,0 +1,17 @@
+{"protocolVersion":"0.1.1","runnerVersion":null,"pid":12396,"type":"start","time":0}
+{"suite":{"id":0,"platform":"vm","path":"C:/Users/Klara/Documents/Codex/2026-11-06/https-github-com-aledevcv-fashionstore-v2/work/implementation-a5/mobile-checks/integration/a4_regression_http_test.dart"},"type":"suite","time":0}
+{"test":{"id":1,"name":"loading C:/Users/Klara/Documents/Codex/2026-11-06/https-github-com-aledevcv-fashionstore-v2/work/implementation-a5/mobile-checks/integration/a4_regression_http_test.dart","suiteID":0,"groupIDs":[],"metadata":{"skip":false,"skipReason":null},"line":null,"column":null,"url":null},"type":"testStart","time":0}
+{"suite":{"id":2,"platform":"vm","path":"C:/Users/Klara/Documents/Codex/2026-11-06/https-github-com-aledevcv-fashionstore-v2/work/implementation-a5/mobile-checks/integration/a4_regression_legacy_test.dart"},"type":"suite","time":3}
+{"test":{"id":3,"name":"loading C:/Users/Klara/Documents/Codex/2026-11-06/https-github-com-aledevcv-fashionstore-v2/work/implementation-a5/mobile-checks/integration/a4_regression_legacy_test.dart","suiteID":2,"groupIDs":[],"metadata":{"skip":false,"skipReason":null},"line":null,"column":null,"url":null},"type":"testStart","time":3}
+{"count":2,"time":3,"type":"allSuites"}
+{"testID":3,"result":"success","skipped":false,"hidden":true,"type":"testDone","time":5759}
+{"group":{"id":4,"suiteID":2,"parentID":null,"name":"","metadata":{"skip":false,"skipReason":null},"testCount":1,"line":null,"column":null,"url":null},"type":"group","time":5760}
+{"test":{"id":5,"name":"A4 aceptación posterior: recupera los cinco UUID de los archivos del diagnóstico sin alterar originales","suiteID":2,"groupIDs":[4],"metadata":{"skip":false,"skipReason":null},"line":9,"column":2,"url":"file:///C:/Users/Klara/Documents/Codex/2026-11-06/https-github-com-aledevcv-fashionstore-v2/work/implementation-a5/mobile-checks/integration/a4_regression_legacy_test.dart"},"type":"testStart","time":5761}
+{"testID":1,"result":"success","skipped":false,"hidden":true,"type":"testDone","time":5762}
+{"group":{"id":6,"suiteID":0,"parentID":null,"name":"","metadata":{"skip":false,"skipReason":null},"testCount":2,"line":null,"column":null,"url":null},"type":"group","time":5762}
+{"test":{"id":7,"name":"A4 HTTP: recupera SQLite real, reenvía respuesta perdida y conserva UUID sin duplicar","suiteID":0,"groupIDs":[6],"metadata":{"skip":false,"skipReason":null},"line":35,"column":3,"url":"file:///C:/Users/Klara/Documents/Codex/2026-11-06/https-github-com-aledevcv-fashionstore-v2/work/implementation-a5/mobile-checks/integration/a4_regression_http_test.dart"},"type":"testStart","time":5762}
+{"testID":5,"result":"success","skipped":false,"hidden":false,"type":"testDone","time":5943}
+{"testID":7,"result":"success","skipped":false,"hidden":false,"type":"testDone","time":6132}
+{"test":{"id":8,"name":"A4 HTTP: sesión de la segunda empresa abre otra base sin historial ajeno","suiteID":0,"groupIDs":[6],"metadata":{"skip":false,"skipReason":null},"line":127,"column":3,"url":"file:///C:/Users/Klara/Documents/Codex/2026-11-06/https-github-com-aledevcv-fashionstore-v2/work/implementation-a5/mobile-checks/integration/a4_regression_http_test.dart"},"type":"testStart","time":6132}
+{"testID":8,"result":"success","skipped":false,"hidden":false,"type":"testDone","time":6187}
+{"success":true,"type":"done","time":6206}

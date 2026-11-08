@@ -1,0 +1,58 @@
+@startuml
+title CU10 / A3 — Traspaso online: transacción e idempotencia
+actor "Personal autorizado" as U
+boundary "Formulario Angular / Flutter" as UI
+participant "«module» movimientos.py\nregistrar_movimiento" as API
+participant "«module» movimiento_service.py\nregistrar_traspaso" as S
+participant "«module» database.py\nget_db / get_connection" as TX
+database PostgreSQL as DB
+U -> UI : Confirmar origen, destino, variante y cantidad
+UI -> API : POST /api/movimientos-inventario (destino + UUID)
+API -> TX : cursor de negocio, scope=function
+TX -> DB : transacción con contexto de empresa
+API -> S : registrar_movimiento(datos, cursor)
+S -> S : registrar_traspaso
+S -> DB : authorized_branch(ambas), activas, FOR SHARE
+S -> DB : pg_advisory_xact_lock(tenant + UUID)
+S -> DB : SELECT payload_hash, result por tenant/UUID
+alt UUID existente y mismo contenido
+  DB --> S : resultado almacenado; no nuevas patas
+else UUID existente y contenido diferente
+  break UUID reutilizado
+    S --> API : HTTPException 409
+    API -> TX : finalizar con excepción
+    TX -> DB : ROLLBACK
+    API --> UI : 409, sin cambios
+  end
+else UUID nuevo
+  S -> DB : variante FOR UPDATE
+  S -> DB : inventarios FOR UPDATE, orden estable
+  S -> DB : disponibilidad = físico - retenciones vigentes
+  break autorización, disponibilidad o SQL inválido
+    S --> API : excepción; nunca éxito parcial
+    API -> TX : finalizar con excepción
+    TX -> DB : ROLLBACK completo
+    API --> UI : rechazo; conservar UUID para reintento
+  end
+  S -> DB : INSERT movimiento Salida
+  DB -> DB : actualizar_stock_por_movimiento: restar
+  S -> DB : INSERT movimiento Entrada
+  DB -> DB : actualizar_stock_por_movimiento: sumar
+  S -> DB : INSERT traspaso_inventario + resultado
+  DB -> DB : validar patas, FK/RLS y unicidad
+  S -> DB : auditoría con UUID y ambas patas
+end
+S --> API : TraspasoRespuesta validada
+API -> TX : cerrar dependencia de función
+TX -> DB : COMMIT único
+alt finalización correcta
+  API --> UI : 201 con ambas patas
+else fallo al finalizar
+  TX -> DB : ROLLBACK si corresponde
+  API --> UI : error; no emitir 201
+end
+note over API, DB
+No hay ORM ni clases ficticias: los participantes son módulos/funciones.
+La migración 018 no recalcula Traspasos históricos.
+end note
+@enduml

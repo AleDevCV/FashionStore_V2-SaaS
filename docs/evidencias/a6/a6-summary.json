@@ -1,0 +1,27 @@
+{
+  "hallazgo": "A6",
+  "name": "Recuperaci\u00f3n de la suite general de pruebas Angular y componente ProbadorIa",
+  "target_file": "Parcial2_frontend-web/src/app/features/catalogo/probador-ia/probador-ia.spec.ts",
+  "modified_files": [
+    "Parcial2_frontend-web/src/app/features/catalogo/probador-ia/probador-ia.spec.ts"
+  ],
+  "preexisting_diagnostics": 30,
+  "resolved_diagnostics": 30,
+  "remaining_diagnostics": 0,
+  "typescript_check": "0 errors (exit code 0)",
+  "angular_full_suite": {
+    "total": 116,
+    "passed": 116,
+    "failed": 0,
+    "skipped": 0,
+    "blocked": 0
+  },
+  "production_build": "APROBADO (319.65 kB initial)",
+  "regressions_verified": {
+    "A3_traspasos": "4/4 APROBADAS",
+    "A5_offline_reconciliation": "22/22 APROBADAS"
+  },
+  "docker_persistent_touched": false,
+  "production_touched": false,
+  "state": "APROBADO_COMPLETO"
+}

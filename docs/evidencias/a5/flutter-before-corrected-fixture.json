@@ -1,0 +1,183 @@
+{
+  "cases": [
+    {
+      "name": "A5 cola 1: confirmada posterior no queda bloqueada",
+      "success": true,
+      "skipped": false,
+      "errors": []
+    },
+    {
+      "name": "A5 cola 49: confirmada posterior no queda bloqueada",
+      "success": true,
+      "skipped": false,
+      "errors": []
+    },
+    {
+      "name": "A5 cola 50: confirmada posterior no queda bloqueada",
+      "success": true,
+      "skipped": false,
+      "errors": []
+    },
+    {
+      "name": "A5 cola 51: confirmada posterior no queda bloqueada",
+      "success": false,
+      "skipped": false,
+      "errors": [
+        "Expected: <1>\n  Actual: <0>\nEvery requested-branch confirmed result must become accounted despite terminal prefixes\n"
+      ]
+    },
+    {
+      "name": "A5 cola 125: confirmada posterior no queda bloqueada",
+      "success": false,
+      "skipped": false,
+      "errors": [
+        "Expected: <1>\n  Actual: <0>\nEvery requested-branch confirmed result must become accounted despite terminal prefixes\n"
+      ]
+    },
+    {
+      "name": "A5 tres descargas no repiten eternamente el prefijo 50",
+      "success": false,
+      "skipped": false,
+      "errors": [
+        "Expected: <1>\n  Actual: <0>\nEvery requested-branch confirmed result must become accounted despite terminal prefixes\n"
+      ]
+    },
+    {
+      "name": "A5 sucursal 2 no bloquea reconciliación de sucursal 1",
+      "success": false,
+      "skipped": false,
+      "errors": [
+        "Expected: <1>\n  Actual: <0>\nEvery requested-branch confirmed result must become accounted despite terminal prefixes\n"
+      ]
+    },
+    {
+      "name": "A5 sin resultado definitivo conserva PENDIENTE y ENVIANDO",
+      "success": true,
+      "skipped": false,
+      "errors": []
+    },
+    {
+      "name": "A5 respuesta de otra empresa no cambia catálogo ni operación",
+      "success": true,
+      "skipped": false,
+      "errors": []
+    },
+    {
+      "name": "A5 reinicio de SQLite no perpetúa bloqueo posterior a 50",
+      "success": false,
+      "skipped": false,
+      "errors": [
+        "Expected: <1>\n  Actual: <0>\n"
+      ]
+    },
+    {
+      "name": "A5 respuesta duplicada y descargas repetidas no duplican descuento",
+      "success": true,
+      "skipped": false,
+      "errors": []
+    },
+    {
+      "name": "A5 conexión interrumpida conserva cola y al reconectar progresa 125",
+      "success": false,
+      "skipped": false,
+      "errors": [
+        "Expected: <1>\n  Actual: <0>\n"
+      ]
+    },
+    {
+      "name": "A5 pendiente solo cambia a confirmada con respuesta explícita",
+      "success": true,
+      "skipped": false,
+      "errors": []
+    }
+  ],
+  "passed": 7,
+  "failed": 6,
+  "skipped": 0,
+  "observations": [
+    {
+      "client": "Flutter SQLite FFI",
+      "queue": 1,
+      "rounds": 1,
+      "other_branch_prefix": false,
+      "requested_unique": 1,
+      "HTTP_requests": 1,
+      "tail_state": "CONFIRMADA",
+      "tail_accounted": 1,
+      "available": 999,
+      "expected": 999
+    },
+    {
+      "client": "Flutter SQLite FFI",
+      "queue": 49,
+      "rounds": 1,
+      "other_branch_prefix": false,
+      "requested_unique": 49,
+      "HTTP_requests": 1,
+      "tail_state": "CONFIRMADA",
+      "tail_accounted": 1,
+      "available": 975,
+      "expected": 975
+    },
+    {
+      "client": "Flutter SQLite FFI",
+      "queue": 50,
+      "rounds": 1,
+      "other_branch_prefix": false,
+      "requested_unique": 50,
+      "HTTP_requests": 1,
+      "tail_state": "CONFIRMADA",
+      "tail_accounted": 1,
+      "available": 975,
+      "expected": 975
+    },
+    {
+      "client": "Flutter SQLite FFI",
+      "queue": 51,
+      "rounds": 1,
+      "other_branch_prefix": false,
+      "requested_unique": 50,
+      "HTTP_requests": 1,
+      "tail_state": "CONFIRMADA",
+      "tail_accounted": 0,
+      "available": 973,
+      "expected": 974
+    },
+    {
+      "client": "Flutter SQLite FFI",
+      "queue": 125,
+      "rounds": 1,
+      "other_branch_prefix": false,
+      "requested_unique": 50,
+      "HTTP_requests": 1,
+      "tail_state": "CONFIRMADA",
+      "tail_accounted": 0,
+      "available": 936,
+      "expected": 937
+    },
+    {
+      "client": "Flutter SQLite FFI",
+      "queue": 51,
+      "rounds": 3,
+      "other_branch_prefix": false,
+      "requested_unique": 50,
+      "HTTP_requests": 3,
+      "tail_state": "CONFIRMADA",
+      "tail_accounted": 0,
+      "available": 973,
+      "expected": 974
+    },
+    {
+      "client": "Flutter SQLite FFI",
+      "queue": 51,
+      "rounds": 1,
+      "other_branch_prefix": true,
+      "requested_unique": 50,
+      "HTTP_requests": 1,
+      "tail_state": "CONFIRMADA",
+      "tail_accounted": 0,
+      "available": 998,
+      "expected": 999
+    }
+  ]
+}

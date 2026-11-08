@@ -1,0 +1,240 @@
+{
+  "recorded_at": "2026-11-07T17:37:29.606241-04:00",
+  "source_hash_checks": [
+    {
+      "file": "C:\\Examen si2 FASHIONSTORE\\Parcial2_mobile\\lib\\core\\config.dart",
+      "matches": true
+    },
+    {
+      "file": "C:\\Examen si2 FASHIONSTORE\\Parcial2_mobile\\lib\\features\\offline\\local_database.dart",
+      "matches": true
+    },
+    {
+      "file": "C:\\Examen si2 FASHIONSTORE\\Parcial2_mobile\\lib\\features\\offline\\offline_controller.dart",
+      "matches": true
+    },
+    {
+      "file": "C:\\Examen si2 FASHIONSTORE\\Parcial2_mobile\\lib\\features\\offline\\database_recovery.dart",
+      "matches": true
+    },
+    {
+      "file": "C:\\Examen si2 FASHIONSTORE\\Parcial2_mobile\\test\\database_recovery_test.dart",
+      "matches": true
+    },
+    {
+      "file": "C:\\Examen si2 FASHIONSTORE\\Parcial2_mobile\\test\\offline_recovery_controller_test.dart",
+      "matches": true
+    },
+    {
+      "file": "C:\\Examen si2 FASHIONSTORE\\Parcial2_mobile\\test\\fixtures\\offline_v1.dart",
+      "matches": true
+    },
+    {
+      "file": "C:\\Examen si2 FASHIONSTORE\\Parcial2_mobile\\integration\\offline_recovery_http_test.dart",
+      "matches": true
+    },
+    {
+      "file": "C:\\Examen si2 FASHIONSTORE\\Parcial2_mobile\\integration\\offline_legacy_acceptance_test.dart",
+      "matches": true
+    },
+    {
+      "file": "C:\\Examen si2 FASHIONSTORE\\Parcial2_mobile\\android\\gradle.properties",
+      "matches": true
+    },
+    {
+      "file": "C:\\Examen si2 FASHIONSTORE\\Parcial2_mobile\\pubspec.yaml",
+      "matches": true
+    },
+    {
+      "file": "C:\\Examen si2 FASHIONSTORE\\Parcial2_mobile\\pubspec.lock",
+      "matches": true
+    },
+    {
+      "file": "C:\\Examen si2 FASHIONSTORE\\Parcial2_backend\\app\\routers\\movimientos.py",
+      "matches": true
+    },
+    {
+      "file": "C:\\Examen si2 FASHIONSTORE\\Parcial2_backend\\app\\schemas\\movimiento.py",
+      "matches": true
+    },
+    {
+      "file": "C:\\Examen si2 FASHIONSTORE\\Parcial2_backend\\app\\services\\movimiento_service.py",
+      "matches": true
+    },
+    {
+      "file": "C:\\Examen si2 FASHIONSTORE\\Parcial2_backend\\database\\migrations\\018_inventory_transfers.sql",
+      "matches": true
+    },
+    {
+      "file": "C:\\Examen si2 FASHIONSTORE\\Parcial2_frontend-web\\src\\app\\core\\models\\movimiento.model.ts",
+      "matches": true
+    },
+    {
+      "file": "C:\\Examen si2 FASHIONSTORE\\Parcial2_frontend-web\\src\\app\\core\\services\\movimiento-inventario.service.spec.ts",
+      "matches": true
+    },
+    {
+      "file": "C:\\Examen si2 FASHIONSTORE\\Parcial2_frontend-web\\src\\app\\core\\services\\movimiento-inventario.service.ts",
+      "matches": true
+    },
+    {
+      "file": "C:\\Examen si2 FASHIONSTORE\\Parcial2_frontend-web\\src\\app\\features\\inventario-movimientos\\movimientos.html",
+      "matches": true
+    },
+    {
+      "file": "C:\\Examen si2 FASHIONSTORE\\Parcial2_frontend-web\\src\\app\\features\\inventario-movimientos\\movimiento-modal\\movimiento-modal.html",
+      "matches": true
+    },
+    {
+      "file": "C:\\Examen si2 FASHIONSTORE\\Parcial2_frontend-web\\src\\app\\features\\inventario-movimientos\\movimiento-modal\\movimiento-modal.ts",
+      "matches": true
+    },
+    {
+      "file": "C:\\Examen si2 FASHIONSTORE\\Parcial2_mobile\\lib\\services\\movimiento_service.dart",
+      "matches": true
+    },
+    {
+      "file": "C:\\Examen si2 FASHIONSTORE\\Parcial2_mobile\\lib\\features\\movimientos\\movimientos_screen.dart",
+      "matches": true
+    },
+    {
+      "file": "C:\\Examen si2 FASHIONSTORE\\Parcial2_mobile\\lib\\features\\movimientos\\registrar_movimiento_screen.dart",
+      "matches": true
+    },
+    {
+      "file": "C:\\Examen si2 FASHIONSTORE\\Parcial2_mobile\\lib\\features\\movimientos\\models\\movimiento_models.dart",
+      "matches": true
+    },
+    {
+      "file": "C:\\Examen si2 FASHIONSTORE\\Parcial2_backend\\tests\\test_inventory_transfers.py",
+      "matches": true
+    },
+    {
+      "file": "C:\\Examen si2 FASHIONSTORE\\Parcial2_frontend-web\\src\\app\\features\\inventario-movimientos\\movimiento-modal\\movimiento-modal.spec.ts",
+      "matches": true
+    },
+    {
+      "file": "C:\\Examen si2 FASHIONSTORE\\Parcial2_mobile\\test\\inventory_transfer_test.dart",
+      "matches": true
+    },
+    {
+      "file": "C:\\Examen si2 FASHIONSTORE\\Parcial2_backend\\app\\routers\\proveedores.py",
+      "matches": true
+    },
+    {
+      "file": "C:\\Examen si2 FASHIONSTORE\\Parcial2_backend\\app\\routers\\temporadas.py",
+      "matches": true
+    },
+    {
+      "file": "C:\\Examen si2 FASHIONSTORE\\Parcial2_backend\\app\\routers\\compras.py",
+      "matches": true
+    },
+    {
+      "file": "C:\\Examen si2 FASHIONSTORE\\Parcial2_backend\\app\\routers\\pos.py",
+      "matches": true
+    },
+    {
+      "file": "C:\\Examen si2 FASHIONSTORE\\Parcial2_backend\\app\\routers\\offline.py",
+      "matches": true
+    },
+    {
+      "file": "C:\\Examen si2 FASHIONSTORE\\Parcial2_backend\\app\\services\\synchronization.py",
+      "matches": true
+    }
+  ],
+  "all_source_hashes_match": true,
+  "legacy_sources": [
+    {
+      "source": "old",
+      "bytes": 69632,
+      "sha256": "0102dafedafaaf60deaf52a52150a9b90e2e9c01ed43dbbd335688cc835520d0",
+      "unchanged_after_recovery_and_sync": true
+    },
+    {
+      "source": "new",
+      "bytes": 69632,
+      "sha256": "9ad5164f1b13663c585a46eadd96b932234a051a3dc9b4660518abdd68eace4b",
+      "unchanged_after_recovery_and_sync": true
+    }
+  ],
+  "native_SQLite_databases_checked": 6,
+  "integrity_ok": true,
+  "FK_errors": 0,
+  "canonical_confirmed": 5,
+  "local_loopback_confirmed": 5,
+  "UUID_and_envelope_hashes_match": true,
+  "demonstration_services": {
+    "api": {
+      "id": "8d607b7b4cafa0071a7d4382066d91d4e31865b7d550f3a80f13fc5b6d8a05c9",
+      "image": "sha256:cf76bebff7a472c34b83872845380d3c933fc36d8793259775e244280e81eea0",
+      "started": "2026-11-07T16:17:24.026443576Z",
+      "mounts": [
+        {
+          "Type": "volume",
+          "Name": "fashionstore_examen_si2_p2_catalog_images",
+          "Source": "/var/lib/docker/volumes/fashionstore_examen_si2_p2_catalog_images/_data",
+          "Destination": "/app/static/catalog-images",
+          "Driver": "local",
+          "Mode": "rw",
+          "RW": true,
+          "Propagation": ""
+        },
+        {
+          "Type": "volume",
+          "Name": "fashionstore_examen_si2_p2_documents",
+          "Source": "/var/lib/docker/volumes/fashionstore_examen_si2_p2_documents/_data",
+          "Destination": "/app/static/comprobantes",
+          "Driver": "local",
+          "Mode": "rw",
+          "RW": true,
+          "Propagation": ""
+        }
+      ],
+      "status": "running",
+      "health": "healthy",
+      "unchanged": true
+    },
+    "web": {
+      "id": "f0635973fa3207883414495aa3274c8506e1f6451b661c4c3af7cefb0b370b0d",
+      "image": "sha256:00e5826ce995aa25c9cfc6eb7fb1c302cfc7ffe62d52931ea2d10b2235de3c0f",
+      "started": "2026-11-07T16:17:29.758241639Z",
+      "mounts": [],
+      "status": "running",
+      "health": "healthy",
+      "unchanged": true
+    },
+    "db": {
+      "id": "931d39a156084ffdf497c51d618dd144f228abcd8ab714fbb43e042019c9544e",
+      "image": "sha256:cf78e76683b9ca8c5733cbbdce6c9262b45b6767934dd0a95e671f9a0fc20685",
+      "started": "2026-11-07T14:27:45.881082767Z",
+      "mounts": [
+        {
+          "Type": "volume",
+          "Name": "fashionstore_examen_si2_p2_database",
+          "Source": "/var/lib/docker/volumes/fashionstore_examen_si2_p2_database/_data",
+          "Destination": "/var/lib/postgresql/data",
+          "Driver": "local",
+          "Mode": "rw",
+          "RW": true,
+          "Propagation": ""
+        }
+      ],
+      "status": "running",
+      "health": "healthy",
+      "unchanged": true
+    },
+    "mailpit": {
+      "id": "b62b88893ed331ef13f1241498278fee895e3f90eeb464a7bad7b54fa1c013b6",
+      "image": "sha256:9b3a463be15354c0f0eba91697d80e3e0d8a5623ef0e627cacc836bc17fd5231",
+      "started": "2026-11-07T14:27:45.876151749Z",
+      "mounts": [],
+      "status": "running",
+      "health": "healthy",
+      "unchanged": true
+    }
+  },
+  "persistent_SQL_statements_executed_by_manual_task": false,
+  "full_persistent_row_fingerprint_repeated": false,
+  "production_contacted_by_test_harness": false,
+  "application_source_modified_by_manual_task": false
+}

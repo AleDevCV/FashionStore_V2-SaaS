@@ -26,6 +26,11 @@ export interface MovimientoInventario {
   usuario_nombre?: string | null;
   fecha: string;
   stock_actual?: number | null;
+  operation_id?: string;
+  id_sucursal_origen?: number;
+  id_sucursal_destino?: number;
+  id_movimiento_salida?: number;
+  id_movimiento_entrada?: number;
 }
 
 export interface MovimientoInventarioCrear {
@@ -34,6 +39,23 @@ export interface MovimientoInventarioCrear {
   tipo: TipoMovimiento;
   cantidad: number;
   motivo: string;
+  id_sucursal_destino?: number;
+  operation_id?: string;
+}
+
+/** Una operación online, con dos patas físicas reales. */
+export interface TraspasoInventario {
+  tipo: 'Traspaso';
+  operation_id: string;
+  id_sucursal_origen: number;
+  id_sucursal_destino: number;
+  id_variante_prenda: number;
+  cantidad: number;
+  motivo: string;
+  id_usuario: number;
+  fecha: string;
+  movimiento_salida: MovimientoInventario;
+  movimiento_entrada: MovimientoInventario;
 }
 
 export interface FiltrosMovimientos {

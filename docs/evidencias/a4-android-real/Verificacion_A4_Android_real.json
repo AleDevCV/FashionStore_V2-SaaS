@@ -1,0 +1,45 @@
+{
+  "date": "2026-11-07",
+  "task": "A4 physical Android validation only",
+  "device": "Xiaomi 13T Pro / Android 16 / API 36",
+  "manual_cases": {
+    "documented": 12,
+    "passed": 8,
+    "functional_failed": 0,
+    "partially_verified": 4,
+    "full_acceptance_pending": [
+      "M01",
+      "M03",
+      "M06",
+      "M12"
+    ],
+    "not_fully_executed_cases_not_marked_passed": true
+  },
+  "methods": [
+    "ADB user interface",
+    "native Dart/SQLite diagnostic invocation inside installed local debug APK",
+    "real HTTP to verified tmpfs backend",
+    "read-only SQLite snapshots and integrity/hash checks"
+  ],
+  "recovered_unique_UUIDs": 5,
+  "recovered_details": 5,
+  "confirmed": 5,
+  "central_sales": 2,
+  "central_reservations": 3,
+  "source_files_byte_identical": 2,
+  "SQLite_files_integrity_ok": 6,
+  "FK_errors": 0,
+  "source_hashes_verified": 35,
+  "new_Flutter_suite_executions": 0,
+  "historical_suite_results_not_added": {
+    "A4": 51,
+    "APK_fix": 48
+  },
+  "application_code_changed_this_task": false,
+  "persistent_database_written_by_task": false,
+  "production_modified": false,
+  "A5_A6_started": false,
+  "final_acceptance": "PARTIAL; see per-case limits",
+  "evidence_folder": "evidencias/a4-android-real",
+  "report": "CAPITULO_V_A4_ANDROID_REAL.md"
+}

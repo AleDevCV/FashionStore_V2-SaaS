@@ -1,0 +1,111 @@
+{
+  "device_validation": {
+    "device": "Xiaomi 13T Pro",
+    "model": "23078PND5G",
+    "android": "16",
+    "api": "36",
+    "apk": "FashionStore-P2-A5-local-debug.apk",
+    "package": "com.fashionstore.fashionstore_mobile.p2",
+    "version": "0.1.0",
+    "versionCode": 1,
+    "date": "2026-11-07"
+  },
+  "cases": [
+    {
+      "case_id": "A5-AND01",
+      "name": "Actualizaci\u00f3n APK sin p\u00e9rdida de datos ni operaciones previas",
+      "device": "Xiaomi 13T Pro (23078PND5G)",
+      "package": "com.fashionstore.fashionstore_mobile.p2",
+      "version": "0.1.0 (1)",
+      "apk_sha256": "61ff29b1128f13820827a88fb9e9a8fc7aac928d64465a4570161477ab5307af",
+      "install_method": "adb install -r",
+      "install_result": "Success",
+      "backup_verified": {
+        "file": "C:\\Users\\Klara\\Documents\\Codex\\2026-11-06\\https-github-com-aledevcv-fashionstore-v2\\outputs\\backup_a4_sqlite\\backup_a4_databases.tar",
+        "bytes": 434688,
+        "sha256": "09b6213edf8061f100ea7166ec8c5e00b904579030170b90f24bed5c4f9f4830"
+      },
+      "a4_historical_preservation": {
+        "database": "databases/fashionstore_p2_stable_ZmFzaGlvbnN0b3JlLW1haW4_6_5.db",
+        "operations": 5,
+        "details": 5,
+        "integrity": "ok",
+        "fk_errors": 0
+      },
+      "state": "APROBADO"
+    },
+    {
+      "case_id": "A5-AND02",
+      "name": "Reconciliaci\u00f3n de cola mayor de 100 operaciones en lotes 50/50/25",
+      "device": "Xiaomi 13T Pro",
+      "namespace": "2:1",
+      "input_operations": 125,
+      "batches_executed": [
+        50,
+        50,
+        25
+      ],
+      "total_batches": 3,
+      "completed_batches": 3,
+      "accounted_confirmed_sales": 75,
+      "retained_rejected": 25,
+      "retained_conflicts": 25,
+      "central_stock": 925,
+      "local_conflicts_held": 25,
+      "local_available_stock": 900,
+      "branch_3_isolation_preserved": true,
+      "state": "APROBADO"
+    },
+    {
+      "case_id": "A5-AND03",
+      "name": "Interrupci\u00f3n controlada en segundo lote y conservaci\u00f3n de avance parcial",
+      "batch_1_saved": 50,
+      "batch_2_interrupted": true,
+      "partial_progress_message": "Reconciliaci\u00f3n parcial (1/3 lotes guardados). Connection interrupted.",
+      "first_batch_preserved_after_interruption": true,
+      "retry_candidates_count": 75,
+      "final_accounted_sales": 125,
+      "duplicate_records": 0,
+      "state": "APROBADO"
+    },
+    {
+      "case_id": "A5-AND04",
+      "name": "Cierre forzado y reapertura f\u00edsica en Android con persistencia SQLite",
+      "app_stopped_pid": true,
+      "app_reopened_pid": "31790",
+      "screenshot": "02-a5-reopened.png",
+      "databases_preserved": 7,
+      "database_inspected": "fashionstore_p2_aHR0cDovLzEyNy4wLjAuMTo4MDAy_2_1.db",
+      "integrity": "ok",
+      "fk_errors": 0,
+      "total_operations_retained": 127,
+      "accounted_sales_retained": 75,
+      "state": "APROBADO"
+    },
+    {
+      "case_id": "A5-AND05",
+      "name": "Aislamiento multi-tenant entre empresas, usuarios y sucursales",
+      "company_A_namespace": "2:1",
+      "company_B_namespace": "7:6",
+      "company_B_isolated_operations": 0,
+      "cross_tenant_http_status": 404,
+      "cross_tenant_access_blocked": true,
+      "branch_isolation_verified": true,
+      "state": "APROBADO"
+    }
+  ],
+  "total_executed": 5,
+  "passed": 5,
+  "failed": 0,
+  "pending": 0,
+  "backend_isolation": {
+    "backend": "fashionstore-a5-runtime (port 18085, tmpfs)",
+    "demonstration_db_written": false,
+    "reverse_tunnel": "tcp:8002 -> tcp:18085"
+  },
+  "a4_preservation": {
+    "all_6_databases_intact": true,
+    "a4_operations_retained": 5,
+    "sqlite_integrity": "ok"
+  }
+}

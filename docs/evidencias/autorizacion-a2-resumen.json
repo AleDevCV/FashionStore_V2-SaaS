@@ -1,0 +1,103 @@
+{
+  "scope": "A2 only; local source + isolated verification, no persistent Docker activation",
+  "baseline": {
+    "tests": 27,
+    "failures": 19,
+    "errors": 0,
+    "skipped": 0
+  },
+  "specific_after": {
+    "tests": 27,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "regression_clean": {
+    "tests": 254,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "openapi": {
+    "equal": true,
+    "paths": 118,
+    "schemas": 126
+  },
+  "source_sha256": {
+    "Parcial2_backend/app/routers/offline.py": "35906f80061942dd7a9b33524f8cda0e7109ebaffc1dfbb07db6346f8a14064d",
+    "Parcial2_backend/app/services/synchronization.py": "c35e51896745de69a4ab30ce381f76015fbe57860bb41474d05e2a6c7a8c931d",
+    "Parcial2_backend/tests/test_authorization_a2.py": "970e4e5abd2e40de66a845b02b2d3f7f383311d81a4e493ac72e8725f10d0d68"
+  },
+  "policy_approved": true,
+  "new_roles_permissions": false,
+  "migrations_changed": false,
+  "test_environment": {
+    "project": "fashionstore_a2_test",
+    "database": "fashionstore_p2_test",
+    "PostgreSQL": "17-alpine tmpfs",
+    "runner": "fashionstore-c1-a1-tests:local",
+    "API": "real FastAPI TestClient; real SQL; non-owner DB role; no authorization mocks"
+  },
+  "setup_notes": [
+    "Initial initializer used Windows encoding; UTF-8 was enforced, and the partial test DB was archived without dropping it.",
+    "The external test path initially could not discover conftest; the runner now loads existing fixtures.",
+    "Full regression initially stopped at collection because scripts/migrate.py was not mounted; a read-only scripts mount fixed the harness.",
+    "Ephemeral JWT representations were hidden; delivered XML is defensively redacted."
+  ],
+  "pending_scope": "PENDIENTE is device-local; SQL only admits CONFIRMADA/RECHAZADA/EN_CONFLICTO. The unsent-envelope test does not certify device persistence.",
+  "limits": [
+    "A2 source has not been rebuilt into the persistent local API; that image retains C1/A1.",
+    "No production, frontend/mobile build, device/offline acceptance or EA execution was performed.",
+    "No detailed CU17 robustness/sequence artifact was found; documented as pending.",
+    "RLS remains required with the non-owner app role; no branch RLS migration was added.",
+    "The list retains the existing limit of 100 authorized rows, including resolved rows as previously implemented.",
+    "A3, A4 and A5 were not addressed."
+  ],
+  "persistent_local_containers": [
+    {
+      "id": "782a2b44cec149aff321936e631f19254a415366d79e35e47b1cd3633abcbee7",
+      "image": "sha256:05528d6691b882b7b81bdeecc878fa810e452a5a5eb70ca8bb8a9352f3e1deff",
+      "started": "2026-11-07T03:43:53.852789859Z",
+      "health": "healthy",
+      "unchanged": true
+    },
+    {
+      "id": "90e60965a0826528f0be6fe4fd8cea6dc69d92de5db11c430be05c0d5cedb73a",
+      "image": "sha256:e5e1894c2db77af1adc76c2b97b8dd9708cc66b65395a83e00592f0d25683ced",
+      "started": "2026-11-07T01:51:46.068491293Z",
+      "health": "healthy",
+      "unchanged": true
+    },
+    {
+      "id": "931d39a156084ffdf497c51d618dd144f228abcd8ab714fbb43e042019c9544e",
+      "image": "sha256:cf78e76683b9ca8c5733cbbdce6c9262b45b6767934dd0a95e671f9a0fc20685",
+      "started": "2026-11-07T01:32:47.942853192Z",
+      "health": "healthy",
+      "unchanged": true
+    },
+    {
+      "id": "b62b88893ed331ef13f1241498278fee895e3f90eeb464a7bad7b54fa1c013b6",
+      "image": "sha256:9b3a463be15354c0f0eba91697d80e3e0d8a5623ef0e627cacc836bc17fd5231",
+      "started": "2026-11-07T01:32:48.257613545Z",
+      "health": "healthy",
+      "unchanged": true
+    }
+  ],
+  "files_changed_in_a2": [
+    "Parcial2_backend/app/routers/offline.py",
+    "Parcial2_backend/app/services/synchronization.py",
+    "Parcial2_backend/tests/test_authorization_a2.py",
+    "docs/evidencias/autorizacion-a2-antes.xml",
+    "docs/evidencias/autorizacion-a2-especificas.xml",
+    "docs/evidencias/autorizacion-a2-regresion.xml",
+    "docs/TRAZABILIDAD.md",
+    "docs/02_requisitos_y_reglas.md",
+    "docs/modelo_20_cu/CAPITULO_II_20_CU.md",
+    "docs/modelo_20_cu/FICHAS_RESUMIDAS_20_CU.md",
+    "docs/04_arquitectura_y_contratos.md",
+    "docs/diagramas_secuencia/CU16/LEEME.md",
+    "docs/diagramas_robustez/CU16_Simplificado/LEEME.md",
+    "docs/evidencias/autorizacion-a2-resumen.json",
+    "docs/CORRECCION_AUTORIZACION_A2.md"
+  ]
+}

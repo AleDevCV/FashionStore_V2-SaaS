@@ -1,0 +1,104 @@
+{
+  "original_files_fingerprinted": 403,
+  "original_changed_only_approved": [
+    "Parcial2_frontend-web\\src\\app\\core\\services\\offline.service.ts",
+    "Parcial2_mobile\\lib\\features\\offline\\offline_controller.dart"
+  ],
+  "new_code_test_files": 3,
+  "backend_files_unchanged": true,
+  "A4_recovery_schema_session_aliases_unchanged": true,
+  "A4_controller_intentionally_updated_only_for_A5": true,
+  "APK_build_fix_3_files_unchanged": true,
+  "containers": {
+    "api": {
+      "id": "8d607b7b4cafa0071a7d4382066d91d4e31865b7d550f3a80f13fc5b6d8a05c9",
+      "image": "sha256:cf76bebff7a472c34b83872845380d3c933fc36d8793259775e244280e81eea0",
+      "started": "2026-11-07T16:17:24.026443576Z",
+      "mounts": [
+        {
+          "Type": "volume",
+          "Name": "fashionstore_examen_si2_p2_catalog_images",
+          "Source": "/var/lib/docker/volumes/fashionstore_examen_si2_p2_catalog_images/_data",
+          "Destination": "/app/static/catalog-images",
+          "Driver": "local",
+          "Mode": "rw",
+          "RW": true,
+          "Propagation": ""
+        },
+        {
+          "Type": "volume",
+          "Name": "fashionstore_examen_si2_p2_documents",
+          "Source": "/var/lib/docker/volumes/fashionstore_examen_si2_p2_documents/_data",
+          "Destination": "/app/static/comprobantes",
+          "Driver": "local",
+          "Mode": "rw",
+          "RW": true,
+          "Propagation": ""
+        }
+      ],
+      "status": "running",
+      "health": "healthy",
+      "unchanged": true
+    },
+    "web": {
+      "id": "f0635973fa3207883414495aa3274c8506e1f6451b661c4c3af7cefb0b370b0d",
+      "image": "sha256:00e5826ce995aa25c9cfc6eb7fb1c302cfc7ffe62d52931ea2d10b2235de3c0f",
+      "started": "2026-11-07T16:17:29.758241639Z",
+      "mounts": [],
+      "status": "running",
+      "health": "healthy",
+      "unchanged": true
+    },
+    "db": {
+      "id": "931d39a156084ffdf497c51d618dd144f228abcd8ab714fbb43e042019c9544e",
+      "image": "sha256:cf78e76683b9ca8c5733cbbdce6c9262b45b6767934dd0a95e671f9a0fc20685",
+      "started": "2026-11-07T14:27:45.881082767Z",
+      "mounts": [
+        {
+          "Type": "volume",
+          "Name": "fashionstore_examen_si2_p2_database",
+          "Source": "/var/lib/docker/volumes/fashionstore_examen_si2_p2_database/_data",
+          "Destination": "/var/lib/postgresql/data",
+          "Driver": "local",
+          "Mode": "rw",
+          "RW": true,
+          "Propagation": ""
+        }
+      ],
+      "status": "running",
+      "health": "healthy",
+      "unchanged": true
+    },
+    "mailpit": {
+      "id": "b62b88893ed331ef13f1241498278fee895e3f90eeb464a7bad7b54fa1c013b6",
+      "image": "sha256:9b3a463be15354c0f0eba91697d80e3e0d8a5623ef0e627cacc836bc17fd5231",
+      "started": "2026-11-07T14:27:45.876151749Z",
+      "mounts": [],
+      "status": "running",
+      "health": "healthy",
+      "unchanged": true
+    }
+  },
+  "persistent_database_SQL_executed": false,
+  "persistent_row_fingerprint_repeated": false,
+  "production_contacted": false,
+  "A6_started": false,
+  "ephemeral_DB_tmpfs": true,
+  "OpenAPI_equal": true,
+  "OpenAPI_paths": 118,
+  "OpenAPI_schemas": 128,
+  "APK": {
+    "file": "C:\\Users\\Klara\\Documents\\Codex\\2026-11-06\\https-github-com-aledevcv-fashionstore-v2\\outputs\\APK_FashionStore_A5\\FashionStore-P2-A5-local-debug.apk",
+    "sha256": "61ff29b1128f13820827a88fb9e9a8fc7aac928d64465a4570161477ab5307af",
+    "bytes": 171732852,
+    "package": "com.fashionstore.fashionstore_mobile.p2",
+    "version": "0.1.0 (1)",
+    "signature_verified": true,
+    "certificate_SHA256": "35930069a1ca21a3b4643f3d5f44d221a48ddb3e4f20bd0d6ab12b2de561e1ea",
+    "ZIP_verified": true,
+    "debug": true,
+    "API_BASE_URL": "http://127.0.0.1:8002",
+    "WEB_BASE_URL": "http://127.0.0.1:8082",
+    "installed": false
+  }
+}

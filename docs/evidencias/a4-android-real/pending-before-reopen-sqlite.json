@@ -1,0 +1,50 @@
+{
+  "app_force_stopped": true,
+  "data_deleted": false,
+  "backup_bytes": 72704,
+  "backup_sha256": "6da1de1794bd685ac9a9cb5e6cc239fdc46c19789483b3d23a93c7c3d3be4785",
+  "databases": [
+    {
+      "file": "fashionstore_p2_aHR0cDovLzEyNy4wLjAuMTo4MDAy_6_5.db",
+      "sha256": "46421e8af33f88698b9bc092a7c1c97161ed623890fa573de784066a1ab3da9c",
+      "counts": {
+        "operation": 1,
+        "detail": 1,
+        "customer": 1,
+        "branch": 1,
+        "stock": 1
+      },
+      "operations": [
+        {
+          "id": "a6702207-387b-4fdc-8633-836a959f7f16",
+          "kind": "venta",
+          "branch": 5,
+          "state": "PENDIENTE",
+          "attempts": 4,
+          "tenant": 6,
+          "author": 5,
+          "envelope_sha256": "48fe5bccf78cb0c8437671130c9c0750e80cf0591f4f386fc7506eee3d770e51",
+          "details": [
+            {
+              "operation_id": "a6702207-387b-4fdc-8633-836a959f7f16",
+              "variant_id": 5,
+              "quantity": 1,
+              "price": 5000
+            }
+          ],
+          "result": null
+        }
+      ],
+      "integrity": [
+        "ok"
+      ],
+      "FK_errors": [],
+      "snapshot_identity": {
+        "tenant": 6,
+        "author": 5,
+        "branch": 5,
+        "customers": 1
+      }
+    }
+  ]
+}

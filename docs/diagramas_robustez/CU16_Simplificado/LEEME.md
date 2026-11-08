@@ -10,3 +10,7 @@ Vista simplificada de una página con 35 mensajes numerados. La cantidad de inte
 El archivo .drawio es editable; el PNG sirve para Word y el SVG conserva calidad vectorial. El JScript crea un paquete nuevo en Enterprise Architect al ejecutarlo con un paquete seleccionado. Su sintaxis y generación se validan en simulación, no en una sesión real de EA.
 
 Los archivos Modelo.json y MENSAJES.csv conservan las referencias de los métodos al código. Los controles y las interfaces agrupadas son abstracciones de análisis, no clases ni pantallas nuevas. No se modificó el código funcional ni el documento Word.
+
+## Revisión de alcance por A2
+
+Se revisaron el modelo de robustez y la secuencia de CU16: representan descarga y persistencia local, y excluyen expresamente la sincronización central de CU17. `snapshot` conserva su validación de sucursal y consulta de resultados propios; A2 no cambia ese flujo ni sus participantes. Por ello no se modifican draw.io, SVG o PNG ni se renueva su validación como si se hubieran generado de nuevo. No se encontró una robustez o secuencia detallada de CU17 en las carpetas revisadas; queda pendiente su elaboración, sin inventar clases ni diagramas. Reglas centrales y evidencia: [A2](../../CORRECCION_AUTORIZACION_A2.md).

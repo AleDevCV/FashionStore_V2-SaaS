@@ -1,0 +1,217 @@
+{
+  "verified_at": "2026-11-07T16:28:00.221422-04:00",
+  "scope": "APK build fix only; A4 source unchanged; native device acceptance pending",
+  "versions": {
+    "Flutter": "3.47.2",
+    "Dart": "3.13.2",
+    "AGP": "9.1.0",
+    "Gradle": "9.3.1",
+    "Kotlin": "2.4.0",
+    "Java": "25.0.2",
+    "compileSdk": 36,
+    "targetSdk": 36,
+    "minSdk": 24
+  },
+  "causes": [
+    {
+      "plugin": "flutter_inappwebview_android",
+      "version": "1.1.3",
+      "cause": "AGP rejects its legacy proguard-android.txt while evaluating build.gradle line 44",
+      "fix": "android.r8.proguardAndroidTxt.disallowed=false"
+    },
+    {
+      "plugin": "permission_handler_android",
+      "version": "14.1.0",
+      "cause": "Requests android-37, while the SDK package is android-37.0; incompatible with this toolchain",
+      "fix": "Pin permission_handler 12.0.3; resolves Android implementation 13.0.1 compiled against API 35"
+    }
+  ],
+  "dependency_changes": {
+    "permission_handler": {
+      "before": "13.0.2",
+      "after": "12.0.3"
+    },
+    "permission_handler_android": {
+      "before": "14.1.0",
+      "after": "13.0.1"
+    }
+  },
+  "all_other_locked_packages_unchanged": true,
+  "application_files_unchanged": 81,
+  "A4_files_hashes_unchanged": 9,
+  "global_webview_plugin_cache_unchanged": true,
+  "file_changes": [
+    {
+      "file": "C:\\Examen si2 FASHIONSTORE\\Parcial2_mobile\\android\\gradle.properties",
+      "sha256": "13c973a41fae69a8f0941a29806e179b5e031e666ef53b8409d27dffd712ab05"
+    },
+    {
+      "file": "C:\\Examen si2 FASHIONSTORE\\Parcial2_mobile\\pubspec.yaml",
+      "sha256": "4b92a0324e2515e05ef5d1b3313da1a495b0a1adc30241a940a2015eefd6a7c7"
+    },
+    {
+      "file": "C:\\Examen si2 FASHIONSTORE\\Parcial2_mobile\\pubspec.lock",
+      "sha256": "a45a2494fc6f1bf7079d7a7666485266987f7d486440e14aefbe534438888882"
+    }
+  ],
+  "tests": {
+    "executed_this_task": 48,
+    "passed": 48,
+    "failed": 0,
+    "skipped": 0,
+    "A4_prior_51_tests_not_all_rerun": true
+  },
+  "analysis": "No issues found",
+  "build_attempts": {
+    "failed_before_fix": 2,
+    "successful_final_variants": 2
+  },
+  "artifacts": [
+    {
+      "kind": "normal",
+      "file": "C:\\Users\\Klara\\Documents\\Codex\\2026-11-06\\https-github-com-aledevcv-fashionstore-v2\\outputs\\APK_FashionStore_A4\\FashionStore-P2-A4-normal-debug.apk",
+      "bytes": 171734751,
+      "sha256": "dd4cc8cc26f8ef32a95bcf1fe8b6287d1e70cf26d9a9d9c3b6111c1ecf6e1ff9",
+      "signature_verified": true,
+      "zip_verified": true,
+      "application_id": "com.fashionstore.fashionstore_mobile.p2",
+      "version_code": 1,
+      "version_name": "0.1.0",
+      "minSdk": 24,
+      "targetSdk": 36,
+      "debuggable": true,
+      "ABIs": [
+        "arm64-v8a",
+        "armeabi-v7a",
+        "x86_64"
+      ],
+      "API_BASE_URL": "https://fashionstore.aledevcv.me",
+      "WEB_BASE_URL": "https://fashionstore.aledevcv.me"
+    },
+    {
+      "kind": "local",
+      "file": "C:\\Users\\Klara\\Documents\\Codex\\2026-11-06\\https-github-com-aledevcv-fashionstore-v2\\outputs\\APK_FashionStore_A4\\FashionStore-P2-A4-local-debug.apk",
+      "bytes": 197649091,
+      "sha256": "721eb810e8742a842c0af9882d253b53a3a7707960c970eba8901b947b0a9326",
+      "signature_verified": true,
+      "zip_verified": true,
+      "application_id": "com.fashionstore.fashionstore_mobile.p2",
+      "version_code": 1,
+      "version_name": "0.1.0",
+      "minSdk": 24,
+      "targetSdk": 36,
+      "debuggable": true,
+      "ABIs": [
+        "arm64-v8a",
+        "armeabi-v7a",
+        "x86_64"
+      ],
+      "API_BASE_URL": "http://127.0.0.1:8002",
+      "WEB_BASE_URL": "http://127.0.0.1:8082"
+    }
+  ],
+  "shared_signing_certificate_sha256": "35930069a1ca21a3b4643f3d5f44d221a48ddb3e4f20bd0d6ab12b2de561e1ea",
+  "connected_android_devices": 0,
+  "APKs_installed_or_executed": false,
+  "manual_cases_pending": 12,
+  "manual_cases": [
+    [
+      "M01",
+      "Instalación en sitio",
+      "Mismo applicationId y certificado que la versión instalada",
+      "adb install -r conserva datos; app abre",
+      "No hay dispositivo conectado"
+    ],
+    [
+      "M02",
+      "Conexión al backend efímero",
+      "APK local; USB reverse a un backend de prueba identificado; cuenta autorizada",
+      "Login/contexto/catálogo de su empresa y sucursal",
+      "No ejecutado"
+    ],
+    [
+      "M03",
+      "Venta y reserva offline",
+      "Catálogo de prueba descargado; modo avión; cantidades/efectivo válidos",
+      "UUID únicos y PENDIENTE; detalles y sucursal correctos",
+      "No ejecutado"
+    ],
+    [
+      "M04",
+      "Cierre forzado y reapertura",
+      "Pendientes anotados antes; am force-stop y reabrir",
+      "Mismos UUID, detalles, cantidades e importes",
+      "No ejecutado"
+    ],
+    [
+      "M05",
+      "Reinicio de Android",
+      "Datos de prueba persistidos; reiniciar teléfono",
+      "Perfil/SQLite íntegros; cola recuperable",
+      "No ejecutado"
+    ],
+    [
+      "M06",
+      "Recuperación nativa entre alias",
+      "Dispositivo de prueba con archivos v1 de ambos alias y perfil correcto; APK habitual totalmente sin red",
+      "Se recuperan todos los UUID y se conservan fuentes; catálogo requiere renovación",
+      "No ejecutado"
+    ],
+    [
+      "M07",
+      "Separación entre cuentas",
+      "Cambiar empresa/usuario con datos de prueba",
+      "No mostrar catálogo ni operaciones ajenas",
+      "No ejecutado"
+    ],
+    [
+      "M08",
+      "Dos sucursales y retenciones locales",
+      "Pendientes de dos sucursales autorizadas",
+      "Sucursal original y detalles conservados; disponibilidad no sumada entre cachés",
+      "No ejecutado"
+    ],
+    [
+      "M09",
+      "Sincronización controlada",
+      "Solo APK local y backend efímero correspondiente; restablecer conexión",
+      "Un resultado por UUID, estados persistidos; sin escritura en demostración/producción",
+      "No ejecutado"
+    ],
+    [
+      "M10",
+      "Respuesta perdida y reintento",
+      "Reenviar mismos UUID y contenido en el backend efímero",
+      "Una venta/reserva central; UUID con otro contenido rechazado",
+      "No ejecutado"
+    ],
+    [
+      "M11",
+      "Cámara y WebView",
+      "Aceptar/denegar permiso, abrir y cerrar vestidor/checkout sin pagos",
+      "Diálogo y WebView operativos; denegación manejada sin cierre inesperado",
+      "No ejecutado"
+    ],
+    [
+      "M12",
+      "Actualización completa A4",
+      "Banco Android autorizado con datos legacy y backend aislado equivalente",
+      "Recuperación + renovación + sincronización en una misma instalación sin pérdida ni duplicación",
+      "No ejecutado"
+    ]
+  ],
+  "Docker_commands_executed": false,
+  "PostgreSQL_modified": false,
+  "production_modified": false,
+  "environment_changes": [
+    "Gradle downloaded Android SDK platform 37.0 while diagnosing; not used by the final build.",
+    "Gradle installed CMake 3.22.1 required by existing native dependencies; accepted licenses were already present."
+  ],
+  "limits": [
+    "Debug APKs, not production release signing.",
+    "AGP compatibility property is temporary and needs review with future plugin/toolchain updates.",
+    "Existing Firebase KGP and deprecated-API/native-access warnings remain; builds succeeded.",
+    "No Android device was connected; native SQLite, camera/WebView and A4 acceptance are pending.",
+    "Local endpoint remains isolated from habitual HTTPS SQLite namespaces by approved A4 policy."
+  ]
+}

@@ -1,0 +1,228 @@
+[
+  {
+    "name": "databases/fashionstore_p2_aHR0cDovLzEyNy4wLjAuMTo4MDAy_6_5.db",
+    "size": 69632,
+    "sha256": "7b629f746dbb948cea878d09da602751c95b30b44ef692b6c49a536c7d0cc052",
+    "integrity": [
+      "ok"
+    ],
+    "fk_errors": 0,
+    "counts": {
+      "operation": 5,
+      "detail": 5,
+      "customer": 1,
+      "branch": 2,
+      "stock": 2
+    },
+    "operations_count": 5,
+    "operations_summary": [
+      {
+        "id": "a6702207-387b-4fdc-8633-836a959f7f16",
+        "kind": "venta",
+        "state": "CONFIRMADA",
+        "accounted": 0
+      },
+      {
+        "id": "7a012961-26b1-4725-93c0-ea2ca2ce8c9f",
+        "kind": "reserva",
+        "state": "CONFIRMADA",
+        "accounted": 0
+      },
+      {
+        "id": "a7fb8032-69db-47a3-a301-db562bb37421",
+        "kind": "venta",
+        "state": "CONFIRMADA",
+        "accounted": 0
+      },
+      {
+        "id": "b5e8f311-32b6-42b4-a9fd-a0802aaa57f3",
+        "kind": "reserva",
+        "state": "CONFIRMADA",
+        "accounted": 0
+      },
+      {
+        "id": "a593e671-b2d6-4223-a41b-6b805415bc94",
+        "kind": "reserva",
+        "state": "CONFIRMADA",
+        "accounted": 0
+      }
+    ]
+  },
+  {
+    "name": "databases/fashionstore_p2_aHR0cDovLzEyNy4wLjAuMTo4MDAy_6_999.db",
+    "size": 69632,
+    "sha256": "d7c3d5bcc64ccba698c9eb8d4b9a574b9076c122d4397ddc240527f593f10688",
+    "integrity": [
+      "ok"
+    ],
+    "fk_errors": 0,
+    "counts": {
+      "operation": 0,
+      "detail": 0,
+      "customer": 0,
+      "branch": 0,
+      "stock": 0
+    },
+    "operations_count": 0,
+    "operations_summary": []
+  },
+  {
+    "name": "databases/fashionstore_p2_aHR0cDovLzEyNy4wLjAuMTo4MDAy_7_6.db",
+    "size": 69632,
+    "sha256": "5a5436cce5fe989592b6fe5628858cfd8af27ad60ff18f1fd91719d8689b5318",
+    "integrity": [
+      "ok"
+    ],
+    "fk_errors": 0,
+    "counts": {
+      "operation": 0,
+      "detail": 0,
+      "customer": 0,
+      "branch": 0,
+      "stock": 0
+    },
+    "operations_count": 0,
+    "operations_summary": []
+  },
+  {
+    "name": "databases/fashionstore_p2_aHR0cHM6Ly9mYXNoaW9uc3RvcmUtdjIuYWxlZGV2Y3YubWU_6_5.db",
+    "size": 69632,
+    "sha256": "0102dafedafaaf60deaf52a52150a9b90e2e9c01ed43dbbd335688cc835520d0",
+    "integrity": [
+      "ok"
+    ],
+    "fk_errors": 0,
+    "counts": {
+      "operation": 4,
+      "detail": 4,
+      "customer": 1,
+      "branch": 2,
+      "stock": 2
+    },
+    "operations_count": 4,
+    "operations_summary": [
+      {
+        "id": "a6702207-387b-4fdc-8633-836a959f7f16",
+        "kind": "venta",
+        "state": "PENDIENTE",
+        "accounted": 0
+      },
+      {
+        "id": "7a012961-26b1-4725-93c0-ea2ca2ce8c9f",
+        "kind": "reserva",
+        "state": "PENDIENTE",
+        "accounted": 0
+      },
+      {
+        "id": "a7fb8032-69db-47a3-a301-db562bb37421",
+        "kind": "venta",
+        "state": "PENDIENTE",
+        "accounted": 0
+      },
+      {
+        "id": "b5e8f311-32b6-42b4-a9fd-a0802aaa57f3",
+        "kind": "reserva",
+        "state": "PENDIENTE",
+        "accounted": 0
+      }
+    ]
+  },
+  {
+    "name": "databases/fashionstore_p2_aHR0cHM6Ly9mYXNoaW9uc3RvcmUuYWxlZGV2Y3YubWU_6_5.db",
+    "size": 69632,
+    "sha256": "9ad5164f1b13663c585a46eadd96b932234a051a3dc9b4660518abdd68eace4b",
+    "integrity": [
+      "ok"
+    ],
+    "fk_errors": 0,
+    "counts": {
+      "operation": 5,
+      "detail": 5,
+      "customer": 1,
+      "branch": 2,
+      "stock": 2
+    },
+    "operations_count": 5,
+    "operations_summary": [
+      {
+        "id": "a6702207-387b-4fdc-8633-836a959f7f16",
+        "kind": "venta",
+        "state": "PENDIENTE",
+        "accounted": 0
+      },
+      {
+        "id": "7a012961-26b1-4725-93c0-ea2ca2ce8c9f",
+        "kind": "reserva",
+        "state": "PENDIENTE",
+        "accounted": 0
+      },
+      {
+        "id": "a7fb8032-69db-47a3-a301-db562bb37421",
+        "kind": "venta",
+        "state": "PENDIENTE",
+        "accounted": 0
+      },
+      {
+        "id": "b5e8f311-32b6-42b4-a9fd-a0802aaa57f3",
+        "kind": "reserva",
+        "state": "PENDIENTE",
+        "accounted": 0
+      },
+      {
+        "id": "a593e671-b2d6-4223-a41b-6b805415bc94",
+        "kind": "reserva",
+        "state": "PENDIENTE",
+        "accounted": 0
+      }
+    ]
+  },
+  {
+    "name": "databases/fashionstore_p2_stable_ZmFzaGlvbnN0b3JlLW1haW4_6_5.db",
+    "size": 77824,
+    "sha256": "d1417270328b7c562bb110521c2fdd91c64fcc731ae895952b5b3ebfca1f4fb9",
+    "integrity": [
+      "ok"
+    ],
+    "fk_errors": 0,
+    "counts": {
+      "operation": 5,
+      "detail": 5,
+      "customer": 1,
+      "branch": 2,
+      "stock": 2
+    },
+    "operations_count": 5,
+    "operations_summary": [
+      {
+        "id": "a6702207-387b-4fdc-8633-836a959f7f16",
+        "kind": "venta",
+        "state": "CONFIRMADA",
+        "accounted": 0
+      },
+      {
+        "id": "7a012961-26b1-4725-93c0-ea2ca2ce8c9f",
+        "kind": "reserva",
+        "state": "CONFIRMADA",
+        "accounted": 0
+      },
+      {
+        "id": "a7fb8032-69db-47a3-a301-db562bb37421",
+        "kind": "venta",
+        "state": "CONFIRMADA",
+        "accounted": 1
+      },
+      {
+        "id": "b5e8f311-32b6-42b4-a9fd-a0802aaa57f3",
+        "kind": "reserva",
+        "state": "CONFIRMADA",
+        "accounted": 1
+      },
+      {
+        "id": "a593e671-b2d6-4223-a41b-6b805415bc94",
+        "kind": "reserva",
+        "state": "CONFIRMADA",
+        "accounted": 1
+      }
+    ]
+  }
+]

@@ -1,0 +1,114 @@
+{
+  "scope": "C1 and A1 only: write authorization",
+  "base_commit": "d98884c6f882b86d217d91025b974c987e62f4aa",
+  "environment": {
+    "postgres": "17, ephemeral compose.test.yaml database",
+    "database": "fashionstore_p2_test",
+    "python": "3.12",
+    "pytest": "8.4.2",
+    "api": "in-process TestClient with real services and PostgreSQL"
+  },
+  "baseline": {
+    "tests": 40,
+    "failures": 38,
+    "errors": 0,
+    "skipped": 0
+  },
+  "specific_after": {
+    "tests": 131,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "backend_regression_clean_database": {
+    "tests": 227,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "inherited_backend_tests_passed": 96,
+  "confirmed_before": {
+    "C1_unauthorized_successful_writes": 36,
+    "A1_sales_without_permission": 2
+  },
+  "openapi": {
+    "openapi_equal": true,
+    "paths_before": 118,
+    "paths_after": 118,
+    "schemas_before": 126,
+    "schemas_after": 126
+  },
+  "static_contract": [
+    {
+      "file": "Parcial2_backend/app/routers/proveedores.py",
+      "routes_signatures_and_bodies_unchanged": true
+    },
+    {
+      "file": "Parcial2_backend/app/routers/temporadas.py",
+      "routes_signatures_and_bodies_unchanged": true
+    },
+    {
+      "file": "Parcial2_backend/app/routers/compras.py",
+      "routes_signatures_and_bodies_unchanged": true
+    },
+    {
+      "file": "Parcial2_backend/app/routers/movimientos.py",
+      "routes_signatures_and_bodies_unchanged": true
+    },
+    {
+      "file": "Parcial2_backend/app/routers/pos.py",
+      "routes_signatures_and_bodies_unchanged": true
+    }
+  ],
+  "sources": [
+    {
+      "file": "Parcial2_backend/app/routers/proveedores.py",
+      "before_sha256": "5ee07dd5fdbffa27cea583a202aaf3109afbbcaa7a1de7be3410949a79ff7380",
+      "after_sha256": "f1a22fd79f72a1098ef0764ffac24169a9227b2d74545bbe9580effd45ec6fed"
+    },
+    {
+      "file": "Parcial2_backend/app/routers/temporadas.py",
+      "before_sha256": "76c3cedc34c1b95189fc15a843f86a3cac3bd979b07ca8f952769b981be42333",
+      "after_sha256": "5b9647cccb992fcd35db24f1ea0cc768e3aa6ab6a542c8aafa4fb60b9f5f2e88"
+    },
+    {
+      "file": "Parcial2_backend/app/routers/compras.py",
+      "before_sha256": "ae8b66d98c2a34df2374eccc476ae819514f9d8a879edfb4ace062ee55a6c9e2",
+      "after_sha256": "7b8e2f304eb673da1131384f4023704b658826d55ab08539954968f59d891832"
+    },
+    {
+      "file": "Parcial2_backend/app/routers/movimientos.py",
+      "before_sha256": "89ef35ff41f6074135b9d63bc043e1c3d9dacc8d0928b722ac5fff3e47e1b22c",
+      "after_sha256": "cdb06b4e5c08437b147ec974bcd90a2e08e5102035edb16da72f3f54bf008e20"
+    },
+    {
+      "file": "Parcial2_backend/app/routers/pos.py",
+      "before_sha256": "d45af5e3854ac752f41455a200ce2be5ffc724e75bb3ea5652a5339d696b7518",
+      "after_sha256": "5e5c6078e97f5154e5bbe9077865cf24d564476d79ef71aaed944853206b61c5"
+    }
+  ],
+  "preserved": [
+    "GET routes",
+    "request/response schemas",
+    "service bodies",
+    "database migrations and policies",
+    "offline implementation and pending operations",
+    "production and existing local API containers"
+  ],
+  "test_setup_notes": [
+    "A new fixture initially selected roles without an explicit tenant predicate; corrected before the accepted baseline.",
+    "The first full run used an accumulated test DB with 1024 companies: 226 passed and one history assertion failed. The same assertion failed with original routers. The history query limits its scan to 500 companies. The test DB alone was reset and the full suite then passed from a clean schema."
+  ],
+  "limits": [
+    "Read authorization remains unchanged; this iteration addresses C1 write operations and A1 POS writes.",
+    "No new role or permission was defined; the inventory-responsible business actor was not introduced as a database role.",
+    "Angular and Flutter builds were not run; their sources were not changed.",
+    "The existing local API still runs its earlier image; no deployment or restart was performed.",
+    "Other audit findings, including transfers and offline reconciliation, were not modified."
+  ],
+  "evidence": [
+    "docs/evidencias/autorizacion-c1-a1-antes.xml",
+    "docs/evidencias/autorizacion-c1-a1-especificas.xml",
+    "docs/evidencias/autorizacion-c1-a1-regresion.xml"
+  ]
+}

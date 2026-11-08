@@ -86,6 +86,7 @@ describe('MovimientoInventarioService (CU11)', () => {
     };
 
     servicio.crear(nuevo).subscribe((res) => {
+      if (!('id_movimiento' in res)) { fail('Salida debe conservar su respuesta de movimiento'); return; }
       expect(res.id_movimiento).toBe(11);
       expect(res.cantidad).toBe(2);
     });
@@ -109,5 +110,17 @@ describe('MovimientoInventarioService (CU11)', () => {
     );
     expect(req.request.method).toBe('GET');
     req.flush({ id_sucursal: 1, id_variante_prenda: 5, stock: 15 });
+  });
+
+  it('solicita disponibilidad descontando reservas sin cambiar la consulta por defecto', () => {
+    servicio.consultarStock(1,5,true).subscribe(res=>expect(res.stock).toBe(1));
+    const req=httpMock.expectOne(r=>r.params.get('disponible')==='true');
+    req.flush({id_sucursal:1,id_variante_prenda:5,stock:1});
+  });
+
+  it('no presenta como confirmado un Traspaso antiguo sin ambos movimientos', () => {
+    servicio.crear({id_sucursal:1,id_sucursal_destino:2,id_variante_prenda:5,tipo:'Traspaso',cantidad:2,motivo:'Reponer',operation_id:'00000000-0000-4000-8000-000000000003'})
+      .subscribe({next:()=>fail('No debe aceptar el falso éxito'),error:e=>expect(e.message).toContain('no confirmó los dos movimientos')});
+    httpMock.expectOne(`${environment.apiUrl}/api/movimientos-inventario/`).flush({id_movimiento:1,tipo:'Traspaso',cantidad:2});
   });
 });

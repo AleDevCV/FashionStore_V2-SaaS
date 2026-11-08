@@ -60,7 +60,7 @@ Los requisitos se expresan como capacidades observables. Su agrupación en 20 ca
 | RF-14 | El sistema deberá emitir o recuperar la representación del comprobante de una venta confirmada, consultarla y descargarla con autorización. La consulta/descarga es opcional respecto al cierre de compra. | CU-14 |
 | RF-15 | El sistema deberá solicitar, consultar y atender cambios: elegibilidad, recepción física, reemplazo, diferencias de precio, devolución de importes, notificaciones y entrega. | CU-15 |
 | RF-16 | El sistema deberá ofrecer una PWA instalable en navegadores compatibles y almacenamiento persistente en web y móvil para descargar catálogo, consultar datos conocidos, registrar reservas o ventas de contado según rol y recuperar los pendientes después de reiniciar. | CU-16 |
-| RF-17 | El sistema deberá enviar pendientes manual o automáticamente, recuperar resultados y tratar conflictos. El autor consulta sus operaciones; una resolución comercial requiere el permiso correspondiente. | CU-17 |
+| RF-17 | El sistema deberá enviar pendientes manual o automáticamente, recuperar resultados y tratar conflictos. El autor consulta sus operaciones; una resolución comercial requiere el permiso correspondiente. Supervisar operaciones ajenas exige además autorización en la sucursal; véase la política A2 aprobada. | CU-17 |
 | RF-18 | El sistema deberá consultar reportes convencionales o solicitarlos por texto/voz mediante IA, con filtros variables y datos reales autorizados; representar y exportar resultados a PDF/XLSX. | CU-18 |
 | RF-19 | El sistema deberá permitir preparar datos sintéticos y variables, entrenar y evaluar modelos supervisados y no supervisados, versionar los artefactos y consultar indicadores, predicciones y segmentos del tenant autorizado, diferenciando los subflujos técnico y empresarial. | CU-19 |
 | RF-20 | El sistema deberá consultar eventos autorizados de acceso y operaciones, pagos, cambios y sincronización. La plataforma consulta su ámbito técnico y SaaS sin acceso comercial irrestricto a empresas. | CU-20 |
@@ -188,3 +188,24 @@ La reducción no garantiza por sí sola una disminución proporcional del trabaj
 - Decisiones del equipo: cuenta global de cliente, políticas comerciales y despliegue nativo.
 - OMG UML 2.5.1: https://www.omg.org/spec/UML/2.5.1
 - Formato draw.io: https://www.drawio.com/docs/reference/diagram-generation/
+
+## Precisión de seguridad A2 para RF-16/RF-17 y RN-18–RN-21
+
+La consulta y el reintento del autor se conservan dentro de su empresa, aun si perdió permiso de resolución o asignación. Para supervisar operaciones ajenas se requieren `conflictos.resolver` y asignación vigente en `usuario_sucursal`; el Administrador comercial accede a su empresa. El listado exige ese permiso y filtra por autor, sucursales asignadas o Administrador antes de LIMIT 100. Una sucursal inactiva conserva el acceso de consulta del autor y de los supervisores asignados. Compensar exige el permiso y, si existe sucursal, `authorized_branch` con sucursal activa, incluso para el autor. Sin sucursal válida, solo el autor o el Administrador de esa empresa acceden; listar o compensar sigue exigiendo el permiso. No se infiere autorización del `branch_id` contenido en el envelope. Los UUID inaccesibles y desconocidos reciben 404 sin revelar estado ni efectivo.
+
+No cambia el UUID, los estados centrales ni el registro provisional local. La matriz y las pruebas reales se encuentran en [CORRECCION_AUTORIZACION_A2.md](../CORRECCION_AUTORIZACION_A2.md).
+
+## A3 — Precisión de RF-10 / CU10 consolidado y CU16 histórico
+
+El traspaso es inmediato y exclusivamente online, con origen/destino distintos, activos y de la misma empresa. Mantiene roles Administrador/Encargado y comprueba autorización actual sobre ambas sucursales, también al reintentar. Cantidad positiva entera; disponible del origen = físico menos retenciones vigentes. Una Salida y una Entrada se confirman con el vínculo y la auditoría en una única transacción. UUID por empresa: mismo contenido recupera el resultado estable; contenido distinto se rechaza. No agrega traspasos al protocolo offline ni recalcula movimientos históricos.
+
+Política aprobada para A3. Se conservó la validación de variante existente, sin añadir veto nuevo por estado de prenda. El historial de cada pata respeta su sucursal; el vínculo completo requiere acceso a ambas. Los rechazos no deben dejar medias operaciones. Validación aislada y activación pendiente: [CORRECCION_AUTORIZACION_A3.md](../CORRECCION_AUTORIZACION_A3.md).
+
+
+## A4 — Recuperación SQLite por instalación y cuenta (2026-11-07)
+
+Política aprobada: únicamente los dos alias HTTPS `fashionstore-v2.aledevcv.me` y `fashionstore.aledevcv.me` comparten identidad local `fashionstore-main`; los demás orígenes permanecen separados. Base canónica por instalación/empresa/usuario, con lectura exclusiva del perfil activo. La recuperación abre fuentes v1 en solo lectura y copia cabeceras, detalles, UUID, device_id históricos, referencias y resultados de forma aditiva y atómica, sin borrar ni renombrar originales. No suma stocks de cachés.
+
+Un UUID duplicado con contenido, detalle o estado divergente entre fuentes nuevas detiene la recuperación. Los marcadores no permiten que fuentes ya importadas e intactas degraden resultados posteriores del servidor. Historial y reintentos se conservan; las nuevas ventas/reservas requieren renovar el catálogo después de recuperar. Integridad, bloqueo, versión desconocida y falta de espacio producen fallo explícito con rollback.
+
+Trazabilidad: RF-16/CU16, RF-17/CU17, RN-16, RN-18 y RN-19. Evidencia final: 51 pruebas Flutter aprobadas (48 suite, 2 HTTP real, 1 aceptación con datos anteriores), 0 fallidas/omitidas; análisis estático sin incidencias. Distribución y aceptación en dispositivo pendientes. Docker/PG persistentes y C1/A1/A2/A3 permanecen intactos. [Capítulo V A4 y casos](../CAPITULO_V_A4_PRUEBAS_Y_RESULTADOS.md).

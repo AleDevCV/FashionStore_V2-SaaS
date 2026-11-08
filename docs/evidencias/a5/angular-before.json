@@ -1,0 +1,123 @@
+{
+  "passed": 7,
+  "failed": 6,
+  "skipped": 0,
+  "cases": [
+    {
+      "name": "A5 reconciliación IndexedDB real / cola 1: resultado confirmado posterior",
+      "success": true,
+      "skipped": false,
+      "errors": [],
+      "time": 59
+    },
+    {
+      "name": "A5 reconciliación IndexedDB real / cola 49: resultado confirmado posterior",
+      "success": true,
+      "skipped": false,
+      "errors": [],
+      "time": 88
+    },
+    {
+      "name": "A5 reconciliación IndexedDB real / cola 50: resultado confirmado posterior",
+      "success": true,
+      "skipped": false,
+      "errors": [],
+      "time": 64
+    },
+    {
+      "name": "A5 reconciliación IndexedDB real / cola 51: resultado confirmado posterior",
+      "success": false,
+      "skipped": false,
+      "errors": [
+        "Confirmed operation after terminal prefix must be reconciled: Expected false to be true.\n    at <Jasmine>\n    at http://localhost:9876/base/src/app/core/services/offline.service.spec.ts:54:102\n    at next (<anonymous>)\n    at fulfilled (http://localhost:9876/base/chunk-W3XWTTQK.js:75:24)\n    at _ZoneDelegate.invoke (http://localhost:9876/implementation-a3/web-checks/node_modules/zone.js/fesm2015/zone.js:398:28)",
+        "Expected 973 to be 974.\n    at <Jasmine>\n    at http://localhost:9876/base/src/app/core/services/offline.service.spec.ts:54:131\n    at next (<anonymous>)\n    at fulfilled (http://localhost:9876/base/chunk-W3XWTTQK.js:75:24)\n    at _ZoneDelegate.invoke (http://localhost:9876/implementation-a3/web-checks/node_modules/zone.js/fesm2015/zone.js:398:28)"
+      ],
+      "time": 72
+    },
+    {
+      "name": "A5 reconciliación IndexedDB real / cola 125: resultado confirmado posterior",
+      "success": false,
+      "skipped": false,
+      "errors": [
+        "Confirmed operation after terminal prefix must be reconciled: Expected false to be true.\n    at <Jasmine>\n    at http://localhost:9876/base/src/app/core/services/offline.service.spec.ts:54:102\n    at next (<anonymous>)\n    at fulfilled (http://localhost:9876/base/chunk-W3XWTTQK.js:75:24)\n    at _ZoneDelegate.invoke (http://localhost:9876/implementation-a3/web-checks/node_modules/zone.js/fesm2015/zone.js:398:28)",
+        "Expected 936 to be 937.\n    at <Jasmine>\n    at http://localhost:9876/base/src/app/core/services/offline.service.spec.ts:54:131\n    at next (<anonymous>)\n    at fulfilled (http://localhost:9876/base/chunk-W3XWTTQK.js:75:24)\n    at _ZoneDelegate.invoke (http://localhost:9876/implementation-a3/web-checks/node_modules/zone.js/fesm2015/zone.js:398:28)"
+      ],
+      "time": 76
+    },
+    {
+      "name": "A5 reconciliación IndexedDB real / tres descargas no quedan en el mismo prefijo de 50",
+      "success": false,
+      "skipped": false,
+      "errors": [
+        "Confirmed operation after terminal prefix must be reconciled: Expected false to be true.\n    at <Jasmine>\n    at http://localhost:9876/base/src/app/core/services/offline.service.spec.ts:54:102\n    at next (<anonymous>)\n    at fulfilled (http://localhost:9876/base/chunk-W3XWTTQK.js:75:24)\n    at _ZoneDelegate.invoke (http://localhost:9876/implementation-a3/web-checks/node_modules/zone.js/fesm2015/zone.js:398:28)",
+        "Expected 973 to be 974.\n    at <Jasmine>\n    at http://localhost:9876/base/src/app/core/services/offline.service.spec.ts:54:131\n    at next (<anonymous>)\n    at fulfilled (http://localhost:9876/base/chunk-W3XWTTQK.js:75:24)\n    at _ZoneDelegate.invoke (http://localhost:9876/implementation-a3/web-checks/node_modules/zone.js/fesm2015/zone.js:398:28)"
+      ],
+      "time": 151
+    },
+    {
+      "name": "A5 reconciliación IndexedDB real / otra sucursal no bloquea el lote de la sucursal solicitada",
+      "success": false,
+      "skipped": false,
+      "errors": [
+        "Confirmed operation after terminal prefix must be reconciled: Expected false to be true.\n    at <Jasmine>\n    at http://localhost:9876/base/src/app/core/services/offline.service.spec.ts:54:102\n    at next (<anonymous>)\n    at fulfilled (http://localhost:9876/base/chunk-W3XWTTQK.js:75:24)\n    at _ZoneDelegate.invoke (http://localhost:9876/implementation-a3/web-checks/node_modules/zone.js/fesm2015/zone.js:398:28)",
+        "Expected 998 to be 999.\n    at <Jasmine>\n    at http://localhost:9876/base/src/app/core/services/offline.service.spec.ts:54:131\n    at next (<anonymous>)\n    at fulfilled (http://localhost:9876/base/chunk-W3XWTTQK.js:75:24)\n    at _ZoneDelegate.invoke (http://localhost:9876/implementation-a3/web-checks/node_modules/zone.js/fesm2015/zone.js:398:28)"
+      ],
+      "time": 57
+    },
+    {
+      "name": "A5 reconciliación IndexedDB real / sin resultado conserva PENDIENTE y ENVIANDO",
+      "success": true,
+      "skipped": false,
+      "errors": [],
+      "time": 36
+    },
+    {
+      "name": "A5 reconciliación IndexedDB real / otra empresa en la respuesta no cambia catálogo ni operación",
+      "success": true,
+      "skipped": false,
+      "errors": [],
+      "time": 32
+    },
+    {
+      "name": "A5 reconciliación IndexedDB real / reapertura de IndexedDB no perpetúa bloqueo posterior a 50",
+      "success": false,
+      "skipped": false,
+      "errors": [
+        "Expected false to be true.\n    at <Jasmine>\n    at http://localhost:9876/base/src/app/core/services/offline.service.spec.ts:71:118\n    at Generator.next (<anonymous>)\n    at fulfilled (http://localhost:9876/base/chunk-W3XWTTQK.js:75:24)\n    at _ZoneDelegate.invoke (http://localhost:9876/implementation-a3/web-checks/node_modules/zone.js/fesm2015/zone.js:398:28)"
+      ],
+      "time": 128
+    },
+    {
+      "name": "A5 reconciliación IndexedDB real / respuesta duplicada y descargas repetidas no duplican descuento",
+      "success": true,
+      "skipped": false,
+      "errors": [],
+      "time": 53
+    },
+    {
+      "name": "A5 reconciliación IndexedDB real / conexión interrumpida conserva cola y al reconectar progresa 125",
+      "success": false,
+      "skipped": false,
+      "errors": [
+        "Expected false to be true.\n    at <Jasmine>\n    at http://localhost:9876/base/src/app/core/services/offline.service.spec.ts:80:120\n    at Generator.next (<anonymous>)\n    at fulfilled (http://localhost:9876/base/chunk-W3XWTTQK.js:75:24)\n    at _ZoneDelegate.invoke (http://localhost:9876/implementation-a3/web-checks/node_modules/zone.js/fesm2015/zone.js:398:28)"
+      ],
+      "time": 100
+    },
+    {
+      "name": "A5 reconciliación IndexedDB real / pendiente solo cambia a confirmada con respuesta explícita",
+      "success": true,
+      "skipped": false,
+      "errors": [],
+      "time": 30
+    }
+  ],
+  "observations": [
+    "'A5_REPRO:{\"client\":\"Angular native IndexedDB\",\"queue\":1,\"rounds\":1,\"other_branch_prefix\":false,\"requested_unique\":1,\"HTTP_requests\":1,\"tail_state\":\"CONFIRMADA\",\"tail_accounted\":true,\"available\":999,\"expected\":999}'",
+    "'A5_REPRO:{\"client\":\"Angular native IndexedDB\",\"queue\":49,\"rounds\":1,\"other_branch_prefix\":false,\"requested_unique\":49,\"HTTP_requests\":1,\"tail_state\":\"CONFIRMADA\",\"tail_accounted\":true,\"available\":975,\"expected\":975}'",
+    "'A5_REPRO:{\"client\":\"Angular native IndexedDB\",\"queue\":50,\"rounds\":1,\"other_branch_prefix\":false,\"requested_unique\":50,\"HTTP_requests\":1,\"tail_state\":\"CONFIRMADA\",\"tail_accounted\":true,\"available\":975,\"expected\":975}'",
+    "'A5_REPRO:{\"client\":\"Angular native IndexedDB\",\"queue\":51,\"rounds\":1,\"other_branch_prefix\":false,\"requested_unique\":50,\"HTTP_requests\":1,\"tail_state\":\"CONFIRMADA\",\"tail_accounted\":false,\"available\":973,\"expected\":974}'",
+    "'A5_REPRO:{\"client\":\"Angular native IndexedDB\",\"queue\":125,\"rounds\":1,\"other_branch_prefix\":false,\"requested_unique\":50,\"HTTP_requests\":1,\"tail_state\":\"CONFIRMADA\",\"tail_accounted\":false,\"available\":936,\"expected\":937}'",
+    "'A5_REPRO:{\"client\":\"Angular native IndexedDB\",\"queue\":51,\"rounds\":3,\"other_branch_prefix\":false,\"requested_unique\":50,\"HTTP_requests\":3,\"tail_state\":\"CONFIRMADA\",\"tail_accounted\":false,\"available\":973,\"expected\":974}'",
+    "'A5_REPRO:{\"client\":\"Angular native IndexedDB\",\"queue\":51,\"rounds\":1,\"other_branch_prefix\":true,\"requested_unique\":50,\"HTTP_requests\":1,\"tail_state\":\"CONFIRMADA\",\"tail_accounted\":false,\"available\":998,\"expected\":999}'"
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "command": "tsc -p tsconfig.spec.json --noEmit",
+  "project": "Parcial2_frontend-web",
+  "exit_code": 0,
+  "diagnostics_count": 0,
+  "preexisting_blocker_resolved": true,
+  "preexisting_errors_cleared": 30,
+  "date": "2026-11-07"
+}

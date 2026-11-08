@@ -1,0 +1,400 @@
+{
+  "verified_at_utc": "2026-11-07T16:25:33.637868+00:00",
+  "scope": "A3 local activation only; production untouched",
+  "docker_context": "desktop-linux",
+  "project": "fashionstore_examen_si2",
+  "before": {
+    "api": {
+      "id": "6b78e92af812b1929193bde07f7046a4246bda34b2a8da48b4c1cf3031353f84",
+      "image": "sha256:0c594ae3e8ccdf5f796a94b8c609d19a209803b72fe2e2f5bab8fdc9722b1db5",
+      "started": "2026-11-07T14:27:45.879565217Z",
+      "mounts": [
+        {
+          "Type": "volume",
+          "Name": "fashionstore_examen_si2_p2_catalog_images",
+          "Source": "/var/lib/docker/volumes/fashionstore_examen_si2_p2_catalog_images/_data",
+          "Destination": "/app/static/catalog-images",
+          "Driver": "local",
+          "Mode": "rw",
+          "RW": true,
+          "Propagation": ""
+        },
+        {
+          "Type": "volume",
+          "Name": "fashionstore_examen_si2_p2_documents",
+          "Source": "/var/lib/docker/volumes/fashionstore_examen_si2_p2_documents/_data",
+          "Destination": "/app/static/comprobantes",
+          "Driver": "local",
+          "Mode": "rw",
+          "RW": true,
+          "Propagation": ""
+        }
+      ],
+      "status": "running",
+      "health": "healthy",
+      "restarts": 0,
+      "ports": {
+        "8000/tcp": [
+          {
+            "HostIp": "127.0.0.1",
+            "HostPort": "8002"
+          }
+        ]
+      }
+    },
+    "web": {
+      "id": "90e60965a0826528f0be6fe4fd8cea6dc69d92de5db11c430be05c0d5cedb73a",
+      "image": "sha256:e5e1894c2db77af1adc76c2b97b8dd9708cc66b65395a83e00592f0d25683ced",
+      "started": "2026-11-07T14:27:45.877285878Z",
+      "mounts": [],
+      "status": "running",
+      "health": "healthy",
+      "restarts": 0,
+      "ports": {
+        "80/tcp": [
+          {
+            "HostIp": "127.0.0.1",
+            "HostPort": "8082"
+          }
+        ]
+      }
+    },
+    "db": {
+      "id": "931d39a156084ffdf497c51d618dd144f228abcd8ab714fbb43e042019c9544e",
+      "image": "sha256:cf78e76683b9ca8c5733cbbdce6c9262b45b6767934dd0a95e671f9a0fc20685",
+      "started": "2026-11-07T14:27:45.881082767Z",
+      "mounts": [
+        {
+          "Type": "volume",
+          "Name": "fashionstore_examen_si2_p2_database",
+          "Source": "/var/lib/docker/volumes/fashionstore_examen_si2_p2_database/_data",
+          "Destination": "/var/lib/postgresql/data",
+          "Driver": "local",
+          "Mode": "rw",
+          "RW": true,
+          "Propagation": ""
+        }
+      ],
+      "status": "running",
+      "health": "healthy",
+      "restarts": 0,
+      "ports": {
+        "5432/tcp": [
+          {
+            "HostIp": "127.0.0.1",
+            "HostPort": "55433"
+          }
+        ]
+      }
+    },
+    "mailpit": {
+      "id": "b62b88893ed331ef13f1241498278fee895e3f90eeb464a7bad7b54fa1c013b6",
+      "image": "sha256:9b3a463be15354c0f0eba91697d80e3e0d8a5623ef0e627cacc836bc17fd5231",
+      "started": "2026-11-07T14:27:45.876151749Z",
+      "mounts": [],
+      "status": "running",
+      "health": "healthy",
+      "restarts": 0,
+      "ports": {
+        "8025/tcp": [
+          {
+            "HostIp": "127.0.0.1",
+            "HostPort": "8025"
+          }
+        ]
+      }
+    }
+  },
+  "after": {
+    "api": {
+      "id": "8d607b7b4cafa0071a7d4382066d91d4e31865b7d550f3a80f13fc5b6d8a05c9",
+      "image": "sha256:cf76bebff7a472c34b83872845380d3c933fc36d8793259775e244280e81eea0",
+      "started": "2026-11-07T16:17:24.026443576Z",
+      "mounts": [
+        {
+          "Type": "volume",
+          "Name": "fashionstore_examen_si2_p2_catalog_images",
+          "Source": "/var/lib/docker/volumes/fashionstore_examen_si2_p2_catalog_images/_data",
+          "Destination": "/app/static/catalog-images",
+          "Driver": "local",
+          "Mode": "rw",
+          "RW": true,
+          "Propagation": ""
+        },
+        {
+          "Type": "volume",
+          "Name": "fashionstore_examen_si2_p2_documents",
+          "Source": "/var/lib/docker/volumes/fashionstore_examen_si2_p2_documents/_data",
+          "Destination": "/app/static/comprobantes",
+          "Driver": "local",
+          "Mode": "rw",
+          "RW": true,
+          "Propagation": ""
+        }
+      ],
+      "status": "running",
+      "health": "healthy",
+      "restarts": 0,
+      "ports": {
+        "8000/tcp": [
+          {
+            "HostIp": "127.0.0.1",
+            "HostPort": "8002"
+          }
+        ]
+      }
+    },
+    "web": {
+      "id": "f0635973fa3207883414495aa3274c8506e1f6451b661c4c3af7cefb0b370b0d",
+      "image": "sha256:00e5826ce995aa25c9cfc6eb7fb1c302cfc7ffe62d52931ea2d10b2235de3c0f",
+      "started": "2026-11-07T16:17:29.758241639Z",
+      "mounts": [],
+      "status": "running",
+      "health": "healthy",
+      "restarts": 0,
+      "ports": {
+        "80/tcp": [
+          {
+            "HostIp": "127.0.0.1",
+            "HostPort": "8082"
+          }
+        ]
+      }
+    },
+    "db": {
+      "id": "931d39a156084ffdf497c51d618dd144f228abcd8ab714fbb43e042019c9544e",
+      "image": "sha256:cf78e76683b9ca8c5733cbbdce6c9262b45b6767934dd0a95e671f9a0fc20685",
+      "started": "2026-11-07T14:27:45.881082767Z",
+      "mounts": [
+        {
+          "Type": "volume",
+          "Name": "fashionstore_examen_si2_p2_database",
+          "Source": "/var/lib/docker/volumes/fashionstore_examen_si2_p2_database/_data",
+          "Destination": "/var/lib/postgresql/data",
+          "Driver": "local",
+          "Mode": "rw",
+          "RW": true,
+          "Propagation": ""
+        }
+      ],
+      "status": "running",
+      "health": "healthy",
+      "restarts": 0,
+      "ports": {
+        "5432/tcp": [
+          {
+            "HostIp": "127.0.0.1",
+            "HostPort": "55433"
+          }
+        ]
+      }
+    },
+    "mailpit": {
+      "id": "b62b88893ed331ef13f1241498278fee895e3f90eeb464a7bad7b54fa1c013b6",
+      "image": "sha256:9b3a463be15354c0f0eba91697d80e3e0d8a5623ef0e627cacc836bc17fd5231",
+      "started": "2026-11-07T14:27:45.876151749Z",
+      "mounts": [],
+      "status": "running",
+      "health": "healthy",
+      "restarts": 0,
+      "ports": {
+        "8025/tcp": [
+          {
+            "HostIp": "127.0.0.1",
+            "HostPort": "8025"
+          }
+        ]
+      }
+    }
+  },
+  "migration": {
+    "applied_only": "018_inventory_transfers.sql",
+    "runner": "unmodified scripts/migrate.py",
+    "transactional": true,
+    "lock_timeout_ms": 5000,
+    "statement_timeout_ms": 60000,
+    "checksum": "de2b8c77e8cc05319f35328667e78dc8ac302f0788dff441d04c4492d9c041e3",
+    "previous_rows_unchanged": true,
+    "new_table_rows": 0,
+    "schema_matches_rehearsal": true,
+    "historical_migrations_unchanged": true
+  },
+  "schema_delta": {
+    "columns": 12,
+    "constraints": 14,
+    "indexes": 4,
+    "functions": 2,
+    "triggers": 3,
+    "policies": 2,
+    "rls": 1,
+    "sequences": 0,
+    "enums": 0
+  },
+  "backup": {
+    "format": "pg_dump custom",
+    "bytes": 270268,
+    "sha256": "70847143af6ba88c005ff17e6fe34b21196e3c73cab1807e742f40b432bd6b45",
+    "path": "C:\\Users\\Klara\\Documents\\Codex\\2026-11-06\\https-github-com-aledevcv-fashionstore-v2\\work\\activation-a3\\private\\fashionstore_before_018.dump",
+    "private_acl": true,
+    "archive_listing_valid": true,
+    "restore_success": true,
+    "recovery_container": "fashionstore-a3-recovery",
+    "postgres_image": "sha256:cf78e76683b9ca8c5733cbbdce6c9262b45b6767934dd0a95e671f9a0fc20685",
+    "tmpfs": true,
+    "network": "none",
+    "published_ports": false,
+    "tables_restored": 45,
+    "rows_restored": 488,
+    "all_row_fingerprints_match": true,
+    "schema_semantically_matches": true,
+    "history_versions": 17,
+    "persistent_database_modified": false,
+    "restore_cast_representation": {
+      "equivalent_checks": [
+        "categoria.categoria_estado_check",
+        "cliente.cliente_estado_check",
+        "movimiento_inventario.movimiento_inventario_tipo_check",
+        "prenda.prenda_estado_check",
+        "prenda.prenda_genero_check",
+        "reserva.reserva_estado_check",
+        "usuario.usuario_estado_check",
+        "venta.venta_metodo_pago_check",
+        "venta.venta_tipo_venta_check"
+      ],
+      "samples_per_check": 23,
+      "reason": "pg_restore distributes varchar-array cast to text onto individual literals"
+    }
+  },
+  "recovery_rehearsal": {
+    "original_runner": true,
+    "backup_copy": true,
+    "lock_timeout_ms": 3000,
+    "forced_timeout_observed": true,
+    "rollback_schema_and_data_verified": true,
+    "retry_success": true,
+    "only_migration_applied": "018_inventory_transfers.sql",
+    "previous_business_rows_unchanged": true,
+    "recovery_plan": "On migration error the runner rolls back its entire transaction. Verify schema/history and remain on old images. Full custom-format backup has been restored on isolated PostgreSQL; never restore over persistent data automatically."
+  },
+  "integrity": {
+    "prior_tables": 45,
+    "prior_rows": 488,
+    "previous_rows_unchanged": true,
+    "new_transfer_rows": 0,
+    "new_schema_history_rows": 1,
+    "sequences_unchanged": true,
+    "historical_migration_records_unchanged": 17,
+    "documents_images_unchanged": true,
+    "volumes_unchanged": true,
+    "db_mailpit_not_restarted": true,
+    "active_source_hashes_verified": 9,
+    "openapi_matches_tested_A3": true
+  },
+  "openapi": {
+    "paths_before": 118,
+    "paths_after": 118,
+    "schemas_before": 126,
+    "schemas_after": 128,
+    "routes_added": [],
+    "routes_removed": [],
+    "changed_paths": [
+      "/api/movimientos-inventario/stock",
+      "/api/movimientos-inventario/"
+    ],
+    "matches_tested_A3_exactly": true
+  },
+  "isolated_http": {
+    "tests": 196,
+    "passed": 196,
+    "failures": 0,
+    "skipped": 0,
+    "by_scope": {
+      "test_http_a3": 38,
+      "test_http_c1_a1": 131,
+      "test_http_a2": 27
+    },
+    "http_requests": 365,
+    "response_status_counts": {
+      "201": 91,
+      "422": 14,
+      "404": 92,
+      "403": 54,
+      "200": 81,
+      "409": 12,
+      "400": 1,
+      "401": 20
+    },
+    "exact_active_images": {
+      "api_image": "sha256:cf76bebff7a472c34b83872845380d3c933fc36d8793259775e244280e81eea0",
+      "web_image": "sha256:00e5826ce995aa25c9cfc6eb7fb1c302cfc7ffe62d52931ea2d10b2235de3c0f",
+      "same_images_as_active": true,
+      "test_project": "fashionstore_a3_activation",
+      "database": "fashionstore_p2_test",
+      "database_tmpfs": true,
+      "published_ports": false,
+      "persistent_volumes": false,
+      "transport": "real HTTP through exact web Nginx image to exact API image"
+    }
+  },
+  "persistent_http": {
+    "total": 128,
+    "passed": 128,
+    "business_writes": false
+  },
+  "frontend": {
+    "browser": {
+      "exit_code": 0,
+      "url": "http://127.0.0.1:8082/tiendas",
+      "browser": "existing Chrome headless; separate profile; anonymous",
+      "angular_rendered": true,
+      "atelier_andino_rendered": true,
+      "casa_textil_rendered": true
+    },
+    "assets": {
+      "javascript_assets_verified": 65,
+      "manifest_hashes_match": true,
+      "A3_markers_present": {
+        "id_sucursal_destino": [
+          "/chunk-AWQSIV2I.js"
+        ],
+        "operation_id": [
+          "/chunk-AWQSIV2I.js",
+          "/chunk-PFG32OOY.js"
+        ],
+        "disponible": [
+          "/chunk-237M2BXG.js",
+          "/chunk-7ORLERTG.js",
+          "/chunk-AWQSIV2I.js",
+          "/chunk-BQRN7EYI.js",
+          "/chunk-FOTKRXB2.js",
+          "/chunk-HJBY2CDV.js",
+          "/chunk-O3URCKQA.js",
+          "/chunk-P2H5HXJI.js",
+          "/chunk-PFG32OOY.js",
+          "/chunk-V6PTZS6Q.js",
+          "/chunk-VK6UMVAU.js",
+          "/chunk-XTYH22J5.js",
+          "/chunk-Z6XL6F37.js"
+        ]
+      },
+      "profile_cache": "Browser check uses fresh isolated profile; existing user PWA caches may require normal update/reload."
+    }
+  },
+  "limitations": [
+    "APK pending due to previously reproduced flutter_inappwebview_android/Gradle failure; Flutter untouched in activation.",
+    "No manual authenticated UI transfer or physical mobile-device acceptance in this activation; transfers verified over real HTTP against exact active API/web images with isolated data.",
+    "Previously approved 298-test full backend regression was not rerun in this activation; 196 real-HTTP scenarios were run now.",
+    "Existing user PWA profiles may need normal update/reload to load the new Angular assets.",
+    "No persistent commercial transfer was executed; the new transfer table is empty.",
+    "Recovery/test instances remain isolated and temporary; the custom backup has a private local ACL."
+  ],
+  "out_of_scope_untouched": [
+    "A4",
+    "A5",
+    "A6",
+    "Flutter",
+    "production",
+    "secrets",
+    "historical migrations"
+  ]
+}

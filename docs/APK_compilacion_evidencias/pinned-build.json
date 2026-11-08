@@ -1,0 +1,7 @@
+{
+  "command": "flutter build apk --debug --no-pub",
+  "exit_code": 0,
+  "stage": "pinned-build",
+  "log": "pinned-build.log",
+  "finished_utc": "2026-11-07T17:34:28.732930+00:00"
+}

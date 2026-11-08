@@ -1,0 +1,2 @@
+<?xml version='1.0' encoding='utf-8'?>
+<testsuite name="flutter-http" tests="1" failures="0" skipped="0"><testcase name="A5 HTTP SQLite: 125 resultados, otra sucursal, reapertura y repetición sin pérdida" /></testsuite>

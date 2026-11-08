@@ -1,0 +1,7 @@
+{
+  "command": "flutter test --no-pub --reporter=json",
+  "exit_code": 0,
+  "stage": "tests",
+  "log": "tests.log",
+  "finished_utc": "2026-11-07T17:32:15.448630+00:00"
+}

@@ -1,0 +1,11 @@
+{
+  "case_id": "A5-AND05",
+  "name": "Aislamiento multi-tenant entre empresas, usuarios y sucursales",
+  "company_A_namespace": "2:1",
+  "company_B_namespace": "7:6",
+  "company_B_isolated_operations": 0,
+  "cross_tenant_http_status": 404,
+  "cross_tenant_access_blocked": true,
+  "branch_isolation_verified": true,
+  "state": "APROBADO"
+}

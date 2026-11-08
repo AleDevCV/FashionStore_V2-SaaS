@@ -1,0 +1,22 @@
+{
+  "case_id": "A5-AND02",
+  "name": "Reconciliaci\u00f3n de cola mayor de 100 operaciones en lotes 50/50/25",
+  "device": "Xiaomi 13T Pro",
+  "namespace": "2:1",
+  "input_operations": 125,
+  "batches_executed": [
+    50,
+    50,
+    25
+  ],
+  "total_batches": 3,
+  "completed_batches": 3,
+  "accounted_confirmed_sales": 75,
+  "retained_rejected": 25,
+  "retained_conflicts": 25,
+  "central_stock": 925,
+  "local_conflicts_held": 25,
+  "local_available_stock": 900,
+  "branch_3_isolation_preserved": true,
+  "state": "APROBADO"
+}

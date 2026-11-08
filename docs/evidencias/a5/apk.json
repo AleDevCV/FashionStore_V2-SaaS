@@ -1,0 +1,14 @@
+{
+  "file": "C:\\Users\\Klara\\Documents\\Codex\\2026-11-06\\https-github-com-aledevcv-fashionstore-v2\\outputs\\APK_FashionStore_A5\\FashionStore-P2-A5-local-debug.apk",
+  "sha256": "61ff29b1128f13820827a88fb9e9a8fc7aac928d64465a4570161477ab5307af",
+  "bytes": 171732852,
+  "package": "com.fashionstore.fashionstore_mobile.p2",
+  "version": "0.1.0 (1)",
+  "signature_verified": true,
+  "certificate_SHA256": "35930069a1ca21a3b4643f3d5f44d221a48ddb3e4f20bd0d6ab12b2de561e1ea",
+  "ZIP_verified": true,
+  "debug": true,
+  "API_BASE_URL": "http://127.0.0.1:8002",
+  "WEB_BASE_URL": "http://127.0.0.1:8082",
+  "installed": false
+}

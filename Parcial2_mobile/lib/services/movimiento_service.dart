@@ -48,20 +48,21 @@ class MovimientoService {
 
   /// Registra una operación de almacén (Entrada, Salida o Traspaso).
   ///
-  /// Si el stock es insuficiente para una Salida o Traspaso, el backend
-  /// (mediante el trigger PL/pgSQL) aborta la transacción y lanza HTTP 400.
-  Future<MovimientoInventario> registrar(MovimientoCrear movimiento) async {
+  /// Entrada/Salida conservan su movimiento. Traspaso requiere destino/UUID
+  /// y solo se presenta como confirmado si el servidor devuelve ambas patas.
+  Future<RegistroMovimientoRespuesta> registrar(MovimientoCrear movimiento) async {
     final data = await _api.post(
       '/api/movimientos-inventario/',
       body: movimiento.toJson(),
     );
-    return MovimientoInventario.fromJson(data as Map<String, dynamic>);
+    return RegistroMovimientoRespuesta.fromJson(data as Map<String, dynamic>);
   }
 
   /// Consulta el stock físico disponible en tiempo real para una variante en sucursal.
   Future<int> consultarStock({
     required int idSucursal,
     required int idVariantePrenda,
+    bool disponible = false,
   }) async {
     try {
       final data = await _api.get(
@@ -69,6 +70,7 @@ class MovimientoService {
         query: {
           'id_sucursal': '$idSucursal',
           'id_variante_prenda': '$idVariantePrenda',
+          if (disponible) 'disponible': 'true',
         },
       );
       if (data is Map<String, dynamic>) {

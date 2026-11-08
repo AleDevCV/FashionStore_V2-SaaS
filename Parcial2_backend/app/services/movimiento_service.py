@@ -4,20 +4,26 @@ FASHIONSTORE - SERVICIO DE MOVIMIENTOS DE INVENTARIO (CU11)
 Sistemas de Información II - UAGRM
 -----------------------------------------------------------------------------
 Lógica de negocio para el registro y consulta de movimientos de inventario:
-Entrada, Salida y Traspaso. Delega la sincronización de existencias al
-disparador PL/pgSQL trg_movimiento_inventario y captura excepciones de stock
-insuficiente traduciéndolas a respuestas HTTP 400.
+Entrada y Salida delegan existencias al disparador trg_movimiento_inventario.
+Traspaso valida disponibilidad y agrupa ambas patas, auditoría y resultado
+idempotente en una transacción; conflictos de disponibilidad retornan 409.
 Audita inmutablemente en la tabla bitacora (CU25).
 =============================================================================
 """
 
 from datetime import datetime
+import hashlib
+import json
 from typing import Any
 from fastapi import HTTPException, status
+from fastapi.encoders import jsonable_encoder
 import psycopg2
 from psycopg2 import errors as pg_errors
+from psycopg2.extras import Json
 
-from app.schemas.movimiento import MovimientoCrear
+from app.schemas.movimiento import MovimientoCrear, TraspasoRespuesta
+from app.services.commerce import authorized_branch
+from app.tenant import require_context
 from app.services.bitacora_service import (
     ACCION_INSERT,
     registrar_bitacora,
@@ -28,6 +34,7 @@ def obtener_stock_actual(
     cursor: Any,
     id_sucursal: int,
     id_variante_prenda: int,
+    disponible: bool = False,
 ) -> dict:
     """Consulta el stock físico registrado en inventario para una variante en una sucursal.
 
@@ -49,6 +56,10 @@ def obtener_stock_actual(
     )
     row = cursor.fetchone()
     stock = row["stock"] if row else 0
+    if disponible:
+        cursor.execute('SELECT coalesce(sum(cantidad),0) AS held FROM retencion WHERE id_sucursal=%s AND id_variante_prenda=%s AND vence>now()',
+                       (id_sucursal,id_variante_prenda))
+        stock = max(stock-int(cursor.fetchone()['held']),0)
     return {
         "id_sucursal": id_sucursal,
         "id_variante_prenda": id_variante_prenda,
@@ -107,9 +118,8 @@ def registrar_movimiento(
 ) -> dict:
     """Registra un movimiento en inventario delegando al trigger de PostgreSQL.
 
-    Si el tipo es 'Salida' o 'Traspaso' y no hay stock disponible, el trigger
-    actualizar_stock_por_movimiento() emite una excepción que aquí se traduce
-    en HTTP 400.
+    Entrada/Salida conservan su trigger. Traspaso ejecuta ambas patas con el
+    mismo cursor y la misma transacción, sin confirmar por separado.
 
     Parámetros:
         cursor: cursor activo de PostgreSQL.
@@ -124,6 +134,9 @@ def registrar_movimiento(
         HTTP 400: stock insuficiente o datos no válidos.
         HTTP 404: sucursal o variante inexistente.
     """
+    if datos.tipo == 'Traspaso':
+        return registrar_traspaso(cursor, datos, id_usuario, ip_address)
+
     # 1. Validar existencia de la sucursal
     cursor.execute(
         "SELECT 1 FROM sucursal WHERE id_sucursal = %s;",
@@ -198,6 +211,73 @@ def registrar_movimiento(
     return enriquecido if enriquecido else mov
 
 
+def registrar_traspaso(cursor, datos: MovimientoCrear, id_usuario: int | None, ip_address: str) -> dict:
+    """Una operación lógica online, dos movimientos y un resultado idempotente."""
+    ctx = require_context()
+    if ctx.platform or ctx.role not in {'Administrador', 'Encargado de Sucursal'} or id_usuario != ctx.user_id:
+        raise HTTPException(403, 'No tiene autorización para registrar este traspaso.')
+    # Defensa también para llamadas internas: nunca aceptar el contrato antiguo.
+    if datos.operation_id is None or datos.id_sucursal_destino is None or datos.id_sucursal == datos.id_sucursal_destino:
+        raise HTTPException(422, 'Traspaso requiere origen, destino distinto y UUID.')
+    origin, destination = datos.id_sucursal, datos.id_sucursal_destino
+    payload = datos.model_dump(mode='json')
+    payload['motivo'] = datos.motivo.strip()
+    digest = hashlib.sha256(json.dumps(payload, sort_keys=True, separators=(',', ':'), ensure_ascii=False).encode()).hexdigest()
+    oid = str(datos.operation_id)
+    try:
+        # Autorización actual, incluso en reintentos; no confiar en el UUID.
+        for branch in sorted([origin, destination]):
+            authorized_branch(cursor, branch)
+        cursor.execute('SELECT id_sucursal FROM sucursal WHERE id_sucursal=ANY(%s) AND activa ORDER BY id_sucursal FOR SHARE', ([origin, destination],))
+        if len(cursor.fetchall()) != 2:
+            raise HTTPException(404, 'Sucursal no disponible.')
+        cursor.execute('SELECT pg_advisory_xact_lock(hashtextextended(%s,0))', (f'transfer:{ctx.tenant_id}:{oid}',))
+        cursor.execute('SELECT payload_hash,result FROM traspaso_inventario WHERE tenant_id=%s AND operation_id=%s', (ctx.tenant_id, oid))
+        existing = cursor.fetchone()
+        if existing:
+            if existing['payload_hash'] != digest:
+                raise HTTPException(409, 'UUID de traspaso reutilizado con datos diferentes.')
+            return existing['result']
+
+        # Mismo orden que POS/reservas: variante, luego existencias.
+        cursor.execute('SELECT id_variante_prenda FROM variante_prenda WHERE id_variante_prenda=%s FOR UPDATE', (datos.id_variante_prenda,))
+        if not cursor.fetchone():
+            raise HTTPException(404, 'La variante de prenda especificada no existe')
+        cursor.execute('SELECT id_sucursal,stock FROM inventario WHERE id_sucursal=ANY(%s) AND id_variante_prenda=%s ORDER BY id_sucursal FOR UPDATE',
+                       ([origin, destination], datos.id_variante_prenda))
+        stocks = {row['id_sucursal']:row['stock'] for row in cursor.fetchall()}
+        cursor.execute('SELECT coalesce(sum(cantidad),0) AS held FROM retencion WHERE id_sucursal=%s AND id_variante_prenda=%s AND vence>now()',
+                       (origin, datos.id_variante_prenda))
+        held = int(cursor.fetchone()['held'])
+        if stocks.get(origin, 0) - held < datos.cantidad:
+            raise HTTPException(409, 'Stock disponible insuficiente para el traspaso completo.')
+        if stocks.get(destination, 0) + datos.cantidad > 2147483647:
+            raise HTTPException(409, 'El stock de destino excedería el rango permitido.')
+        legs = []
+        for branch, kind in [(origin, 'Salida'), (destination, 'Entrada')]:
+            leg = MovimientoCrear(id_sucursal=branch, id_variante_prenda=datos.id_variante_prenda,
+                                  tipo=kind, cantidad=datos.cantidad, motivo=datos.motivo.strip())
+            legs.append(registrar_movimiento(cursor, leg, id_usuario, ip_address))
+        result = jsonable_encoder(TraspasoRespuesta(operation_id=datos.operation_id,
+            id_sucursal_origen=origin, id_sucursal_destino=destination,
+            id_variante_prenda=datos.id_variante_prenda, cantidad=datos.cantidad,
+            motivo=datos.motivo.strip(), id_usuario=id_usuario, fecha=legs[0]['fecha'],
+            movimiento_salida=legs[0], movimiento_entrada=legs[1]))
+        cursor.execute('''INSERT INTO traspaso_inventario(operation_id,id_sucursal_origen,id_sucursal_destino,
+            id_variante_prenda,cantidad,id_usuario,id_movimiento_salida,id_movimiento_entrada,payload_hash,result)
+            VALUES(%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)''',
+            (oid, origin, destination, datos.id_variante_prenda, datos.cantidad, id_usuario,
+             legs[0]['id_movimiento'], legs[1]['id_movimiento'], digest, Json(result)))
+        registrar_bitacora(cursor=cursor, accion=ACCION_INSERT, tabla_afectada='traspaso_inventario',
+            registro_id=legs[0]['id_movimiento'], id_usuario=id_usuario, ip_address=ip_address,
+            detalle=json.dumps({'operation_id':oid, 'origen':origin, 'destino':destination,
+                'salida':legs[0]['id_movimiento'], 'entrada':legs[1]['id_movimiento']}, sort_keys=True))
+        return result
+    except psycopg2.Error as exc:
+        # get_db hará rollback completo; no convertir un error SQL en éxito.
+        raise HTTPException(409, 'No se confirmó el traspaso. Reintente con el mismo UUID.') from exc
+
+
 def listar_movimientos(
     cursor: Any,
     id_sucursal: int | None = None,
@@ -235,7 +315,7 @@ def listar_movimientos(
         parametros.append(id_variante_prenda)
 
     if tipo is not None and tipo.strip():
-        condiciones.append("m.tipo = %s")
+        condiciones.append("(m.tipo = %s OR tr.operation_id IS NOT NULL)" if tipo.strip() == 'Traspaso' else "m.tipo = %s")
         parametros.append(tipo.strip())
 
     if fecha_inicio is not None:
@@ -266,6 +346,8 @@ def listar_movimientos(
             CONCAT(u.nombre, ' ', u.apellido) AS usuario_nombre,
             m.fecha,
             COALESCE(inv.stock, 0) AS stock_actual
+            ,tr.operation_id,tr.id_sucursal_origen,tr.id_sucursal_destino,
+            tr.id_movimiento_salida,tr.id_movimiento_entrada
         FROM movimiento_inventario m
         JOIN sucursal s ON m.id_sucursal = s.id_sucursal
         JOIN variante_prenda v ON m.id_variante_prenda = v.id_variante_prenda
@@ -274,6 +356,8 @@ def listar_movimientos(
         JOIN color c ON v.id_color = c.id_color
         LEFT JOIN usuario u ON m.id_usuario = u.id_usuario
         LEFT JOIN inventario inv ON inv.id_sucursal = m.id_sucursal AND inv.id_variante_prenda = m.id_variante_prenda
+        LEFT JOIN traspaso_inventario tr ON tr.tenant_id=m.tenant_id
+            AND m.id_movimiento IN (tr.id_movimiento_salida,tr.id_movimiento_entrada)
         WHERE {" AND ".join(condiciones)}
         ORDER BY m.fecha DESC, m.id_movimiento DESC
         LIMIT %s OFFSET %s;

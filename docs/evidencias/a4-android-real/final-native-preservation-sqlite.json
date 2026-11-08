@@ -1,0 +1,557 @@
+{
+  "app_force_stopped": true,
+  "data_deleted": false,
+  "backup_bytes": 434688,
+  "backup_sha256": "1431efa1a9178aff31043094577ab8ae12413e121e115a838b49b67384229b0d",
+  "databases": [
+    {
+      "file": "fashionstore_p2_aHR0cDovLzEyNy4wLjAuMTo4MDAy_6_5.db",
+      "sha256": "cea79c49e9793e58a22d704ace80c1c8e56c1aff10df5c16e2d6b74b5af2e888",
+      "counts": {
+        "operation": 5,
+        "detail": 5,
+        "customer": 1,
+        "branch": 2,
+        "stock": 2
+      },
+      "operations": [
+        {
+          "id": "7a012961-26b1-4725-93c0-ea2ca2ce8c9f",
+          "kind": "reserva",
+          "branch": 5,
+          "state": "CONFIRMADA",
+          "attempts": 3,
+          "tenant": 6,
+          "author": 5,
+          "envelope_sha256": "da2906cf761bbff5144cbccdf940d5b7b452bdc7659202ff169d7bb09d4da3ad",
+          "details": [
+            {
+              "operation_id": "7a012961-26b1-4725-93c0-ea2ca2ce8c9f",
+              "variant_id": 5,
+              "quantity": 1,
+              "price": 5000
+            }
+          ],
+          "result": {
+            "kind": "reserva",
+            "state": "CONFIRMADA",
+            "server_id": 3,
+            "operation_id": "7a012961-26b1-4725-93c0-ea2ca2ce8c9f"
+          }
+        },
+        {
+          "id": "a593e671-b2d6-4223-a41b-6b805415bc94",
+          "kind": "reserva",
+          "branch": 7,
+          "state": "CONFIRMADA",
+          "attempts": 1,
+          "tenant": 6,
+          "author": 5,
+          "envelope_sha256": "97d190d92d72ad9c7dbb8c21d6149dab72b9719a1293a174ab216d4f3ec424eb",
+          "details": [
+            {
+              "operation_id": "a593e671-b2d6-4223-a41b-6b805415bc94",
+              "variant_id": 5,
+              "quantity": 1,
+              "price": 5000
+            }
+          ],
+          "result": {
+            "kind": "reserva",
+            "state": "CONFIRMADA",
+            "server_id": 4,
+            "operation_id": "a593e671-b2d6-4223-a41b-6b805415bc94"
+          }
+        },
+        {
+          "id": "a6702207-387b-4fdc-8633-836a959f7f16",
+          "kind": "venta",
+          "branch": 5,
+          "state": "CONFIRMADA",
+          "attempts": 11,
+          "tenant": 6,
+          "author": 5,
+          "envelope_sha256": "48fe5bccf78cb0c8437671130c9c0750e80cf0591f4f386fc7506eee3d770e51",
+          "details": [
+            {
+              "operation_id": "a6702207-387b-4fdc-8633-836a959f7f16",
+              "variant_id": 5,
+              "quantity": 1,
+              "price": 5000
+            }
+          ],
+          "result": {
+            "kind": "venta",
+            "state": "CONFIRMADA",
+            "total": "50.00",
+            "vuelto": "0.00",
+            "server_id": 3,
+            "receipt_url": "/api/comprobantes/FS-2026-00000003/pdf",
+            "operation_id": "a6702207-387b-4fdc-8633-836a959f7f16"
+          }
+        },
+        {
+          "id": "a7fb8032-69db-47a3-a301-db562bb37421",
+          "kind": "venta",
+          "branch": 7,
+          "state": "CONFIRMADA",
+          "attempts": 1,
+          "tenant": 6,
+          "author": 5,
+          "envelope_sha256": "daa1ad0a38a702d8231f4108c3bae26a27d13b6e47f2602ddc4faa2f4b27f2b5",
+          "details": [
+            {
+              "operation_id": "a7fb8032-69db-47a3-a301-db562bb37421",
+              "variant_id": 5,
+              "quantity": 1,
+              "price": 5000
+            }
+          ],
+          "result": {
+            "kind": "venta",
+            "state": "CONFIRMADA",
+            "total": "50.00",
+            "vuelto": "0.00",
+            "server_id": 4,
+            "receipt_url": "/api/comprobantes/FS-2026-00000004/pdf",
+            "operation_id": "a7fb8032-69db-47a3-a301-db562bb37421"
+          }
+        },
+        {
+          "id": "b5e8f311-32b6-42b4-a9fd-a0802aaa57f3",
+          "kind": "reserva",
+          "branch": 7,
+          "state": "CONFIRMADA",
+          "attempts": 1,
+          "tenant": 6,
+          "author": 5,
+          "envelope_sha256": "5990b6dd893c1040f49a807bb5dd362d6ecf907b334a3f5eb242c93ae964bb5c",
+          "details": [
+            {
+              "operation_id": "b5e8f311-32b6-42b4-a9fd-a0802aaa57f3",
+              "variant_id": 5,
+              "quantity": 1,
+              "price": 5000
+            }
+          ],
+          "result": {
+            "kind": "reserva",
+            "state": "CONFIRMADA",
+            "server_id": 5,
+            "operation_id": "b5e8f311-32b6-42b4-a9fd-a0802aaa57f3"
+          }
+        }
+      ],
+      "integrity": [
+        "ok"
+      ],
+      "FK_errors": [],
+      "snapshot_identity": {
+        "tenant": 6,
+        "author": 5,
+        "branch": 7,
+        "customers": 1
+      }
+    },
+    {
+      "file": "fashionstore_p2_aHR0cDovLzEyNy4wLjAuMTo4MDAy_6_999.db",
+      "sha256": "d7c3d5bcc64ccba698c9eb8d4b9a574b9076c122d4397ddc240527f593f10688",
+      "counts": {
+        "operation": 0,
+        "detail": 0,
+        "customer": 0,
+        "branch": 0,
+        "stock": 0
+      },
+      "operations": [],
+      "integrity": [
+        "ok"
+      ],
+      "FK_errors": [],
+      "snapshot_identity": null
+    },
+    {
+      "file": "fashionstore_p2_aHR0cDovLzEyNy4wLjAuMTo4MDAy_7_6.db",
+      "sha256": "5a5436cce5fe989592b6fe5628858cfd8af27ad60ff18f1fd91719d8689b5318",
+      "counts": {
+        "operation": 0,
+        "detail": 0,
+        "customer": 0,
+        "branch": 0,
+        "stock": 0
+      },
+      "operations": [],
+      "integrity": [
+        "ok"
+      ],
+      "FK_errors": [],
+      "snapshot_identity": null
+    },
+    {
+      "file": "fashionstore_p2_aHR0cHM6Ly9mYXNoaW9uc3RvcmUtdjIuYWxlZGV2Y3YubWU_6_5.db",
+      "sha256": "0102dafedafaaf60deaf52a52150a9b90e2e9c01ed43dbbd335688cc835520d0",
+      "counts": {
+        "operation": 4,
+        "detail": 4,
+        "customer": 1,
+        "branch": 2,
+        "stock": 2
+      },
+      "operations": [
+        {
+          "id": "7a012961-26b1-4725-93c0-ea2ca2ce8c9f",
+          "kind": "reserva",
+          "branch": 5,
+          "state": "PENDIENTE",
+          "attempts": 2,
+          "tenant": 6,
+          "author": 5,
+          "envelope_sha256": "da2906cf761bbff5144cbccdf940d5b7b452bdc7659202ff169d7bb09d4da3ad",
+          "details": [
+            {
+              "operation_id": "7a012961-26b1-4725-93c0-ea2ca2ce8c9f",
+              "variant_id": 5,
+              "quantity": 1,
+              "price": 5000
+            }
+          ],
+          "result": null
+        },
+        {
+          "id": "a6702207-387b-4fdc-8633-836a959f7f16",
+          "kind": "venta",
+          "branch": 5,
+          "state": "PENDIENTE",
+          "attempts": 10,
+          "tenant": 6,
+          "author": 5,
+          "envelope_sha256": "48fe5bccf78cb0c8437671130c9c0750e80cf0591f4f386fc7506eee3d770e51",
+          "details": [
+            {
+              "operation_id": "a6702207-387b-4fdc-8633-836a959f7f16",
+              "variant_id": 5,
+              "quantity": 1,
+              "price": 5000
+            }
+          ],
+          "result": null
+        },
+        {
+          "id": "a7fb8032-69db-47a3-a301-db562bb37421",
+          "kind": "venta",
+          "branch": 7,
+          "state": "PENDIENTE",
+          "attempts": 0,
+          "tenant": 6,
+          "author": 5,
+          "envelope_sha256": "daa1ad0a38a702d8231f4108c3bae26a27d13b6e47f2602ddc4faa2f4b27f2b5",
+          "details": [
+            {
+              "operation_id": "a7fb8032-69db-47a3-a301-db562bb37421",
+              "variant_id": 5,
+              "quantity": 1,
+              "price": 5000
+            }
+          ],
+          "result": null
+        },
+        {
+          "id": "b5e8f311-32b6-42b4-a9fd-a0802aaa57f3",
+          "kind": "reserva",
+          "branch": 7,
+          "state": "PENDIENTE",
+          "attempts": 0,
+          "tenant": 6,
+          "author": 5,
+          "envelope_sha256": "5990b6dd893c1040f49a807bb5dd362d6ecf907b334a3f5eb242c93ae964bb5c",
+          "details": [
+            {
+              "operation_id": "b5e8f311-32b6-42b4-a9fd-a0802aaa57f3",
+              "variant_id": 5,
+              "quantity": 1,
+              "price": 5000
+            }
+          ],
+          "result": null
+        }
+      ],
+      "integrity": [
+        "ok"
+      ],
+      "FK_errors": [],
+      "snapshot_identity": {
+        "tenant": 6,
+        "author": 5,
+        "branch": 7,
+        "customers": 1
+      }
+    },
+    {
+      "file": "fashionstore_p2_aHR0cHM6Ly9mYXNoaW9uc3RvcmUuYWxlZGV2Y3YubWU_6_5.db",
+      "sha256": "9ad5164f1b13663c585a46eadd96b932234a051a3dc9b4660518abdd68eace4b",
+      "counts": {
+        "operation": 5,
+        "detail": 5,
+        "customer": 1,
+        "branch": 2,
+        "stock": 2
+      },
+      "operations": [
+        {
+          "id": "7a012961-26b1-4725-93c0-ea2ca2ce8c9f",
+          "kind": "reserva",
+          "branch": 5,
+          "state": "PENDIENTE",
+          "attempts": 2,
+          "tenant": 6,
+          "author": 5,
+          "envelope_sha256": "da2906cf761bbff5144cbccdf940d5b7b452bdc7659202ff169d7bb09d4da3ad",
+          "details": [
+            {
+              "operation_id": "7a012961-26b1-4725-93c0-ea2ca2ce8c9f",
+              "variant_id": 5,
+              "quantity": 1,
+              "price": 5000
+            }
+          ],
+          "result": null
+        },
+        {
+          "id": "a593e671-b2d6-4223-a41b-6b805415bc94",
+          "kind": "reserva",
+          "branch": 7,
+          "state": "PENDIENTE",
+          "attempts": 0,
+          "tenant": 6,
+          "author": 5,
+          "envelope_sha256": "97d190d92d72ad9c7dbb8c21d6149dab72b9719a1293a174ab216d4f3ec424eb",
+          "details": [
+            {
+              "operation_id": "a593e671-b2d6-4223-a41b-6b805415bc94",
+              "variant_id": 5,
+              "quantity": 1,
+              "price": 5000
+            }
+          ],
+          "result": null
+        },
+        {
+          "id": "a6702207-387b-4fdc-8633-836a959f7f16",
+          "kind": "venta",
+          "branch": 5,
+          "state": "PENDIENTE",
+          "attempts": 10,
+          "tenant": 6,
+          "author": 5,
+          "envelope_sha256": "48fe5bccf78cb0c8437671130c9c0750e80cf0591f4f386fc7506eee3d770e51",
+          "details": [
+            {
+              "operation_id": "a6702207-387b-4fdc-8633-836a959f7f16",
+              "variant_id": 5,
+              "quantity": 1,
+              "price": 5000
+            }
+          ],
+          "result": null
+        },
+        {
+          "id": "a7fb8032-69db-47a3-a301-db562bb37421",
+          "kind": "venta",
+          "branch": 7,
+          "state": "PENDIENTE",
+          "attempts": 0,
+          "tenant": 6,
+          "author": 5,
+          "envelope_sha256": "daa1ad0a38a702d8231f4108c3bae26a27d13b6e47f2602ddc4faa2f4b27f2b5",
+          "details": [
+            {
+              "operation_id": "a7fb8032-69db-47a3-a301-db562bb37421",
+              "variant_id": 5,
+              "quantity": 1,
+              "price": 5000
+            }
+          ],
+          "result": null
+        },
+        {
+          "id": "b5e8f311-32b6-42b4-a9fd-a0802aaa57f3",
+          "kind": "reserva",
+          "branch": 7,
+          "state": "PENDIENTE",
+          "attempts": 0,
+          "tenant": 6,
+          "author": 5,
+          "envelope_sha256": "5990b6dd893c1040f49a807bb5dd362d6ecf907b334a3f5eb242c93ae964bb5c",
+          "details": [
+            {
+              "operation_id": "b5e8f311-32b6-42b4-a9fd-a0802aaa57f3",
+              "variant_id": 5,
+              "quantity": 1,
+              "price": 5000
+            }
+          ],
+          "result": null
+        }
+      ],
+      "integrity": [
+        "ok"
+      ],
+      "FK_errors": [],
+      "snapshot_identity": {
+        "tenant": 6,
+        "author": 5,
+        "branch": 7,
+        "customers": 1
+      }
+    },
+    {
+      "file": "fashionstore_p2_stable_ZmFzaGlvbnN0b3JlLW1haW4_6_5.db",
+      "sha256": "d1417270328b7c562bb110521c2fdd91c64fcc731ae895952b5b3ebfca1f4fb9",
+      "counts": {
+        "operation": 5,
+        "detail": 5,
+        "customer": 1,
+        "branch": 2,
+        "stock": 2
+      },
+      "operations": [
+        {
+          "id": "7a012961-26b1-4725-93c0-ea2ca2ce8c9f",
+          "kind": "reserva",
+          "branch": 5,
+          "state": "CONFIRMADA",
+          "attempts": 3,
+          "tenant": 6,
+          "author": 5,
+          "envelope_sha256": "da2906cf761bbff5144cbccdf940d5b7b452bdc7659202ff169d7bb09d4da3ad",
+          "details": [
+            {
+              "operation_id": "7a012961-26b1-4725-93c0-ea2ca2ce8c9f",
+              "variant_id": 5,
+              "quantity": 1,
+              "price": 5000
+            }
+          ],
+          "result": {
+            "kind": "reserva",
+            "state": "CONFIRMADA",
+            "server_id": 3,
+            "operation_id": "7a012961-26b1-4725-93c0-ea2ca2ce8c9f"
+          }
+        },
+        {
+          "id": "a593e671-b2d6-4223-a41b-6b805415bc94",
+          "kind": "reserva",
+          "branch": 7,
+          "state": "CONFIRMADA",
+          "attempts": 1,
+          "tenant": 6,
+          "author": 5,
+          "envelope_sha256": "97d190d92d72ad9c7dbb8c21d6149dab72b9719a1293a174ab216d4f3ec424eb",
+          "details": [
+            {
+              "operation_id": "a593e671-b2d6-4223-a41b-6b805415bc94",
+              "variant_id": 5,
+              "quantity": 1,
+              "price": 5000
+            }
+          ],
+          "result": {
+            "kind": "reserva",
+            "state": "CONFIRMADA",
+            "server_id": 4,
+            "operation_id": "a593e671-b2d6-4223-a41b-6b805415bc94"
+          }
+        },
+        {
+          "id": "a6702207-387b-4fdc-8633-836a959f7f16",
+          "kind": "venta",
+          "branch": 5,
+          "state": "CONFIRMADA",
+          "attempts": 11,
+          "tenant": 6,
+          "author": 5,
+          "envelope_sha256": "48fe5bccf78cb0c8437671130c9c0750e80cf0591f4f386fc7506eee3d770e51",
+          "details": [
+            {
+              "operation_id": "a6702207-387b-4fdc-8633-836a959f7f16",
+              "variant_id": 5,
+              "quantity": 1,
+              "price": 5000
+            }
+          ],
+          "result": {
+            "kind": "venta",
+            "state": "CONFIRMADA",
+            "total": "50.00",
+            "vuelto": "0.00",
+            "server_id": 3,
+            "receipt_url": "/api/comprobantes/FS-2026-00000003/pdf",
+            "operation_id": "a6702207-387b-4fdc-8633-836a959f7f16"
+          }
+        },
+        {
+          "id": "a7fb8032-69db-47a3-a301-db562bb37421",
+          "kind": "venta",
+          "branch": 7,
+          "state": "CONFIRMADA",
+          "attempts": 1,
+          "tenant": 6,
+          "author": 5,
+          "envelope_sha256": "daa1ad0a38a702d8231f4108c3bae26a27d13b6e47f2602ddc4faa2f4b27f2b5",
+          "details": [
+            {
+              "operation_id": "a7fb8032-69db-47a3-a301-db562bb37421",
+              "variant_id": 5,
+              "quantity": 1,
+              "price": 5000
+            }
+          ],
+          "result": {
+            "kind": "venta",
+            "state": "CONFIRMADA",
+            "total": "50.00",
+            "vuelto": "0.00",
+            "server_id": 4,
+            "receipt_url": "/api/comprobantes/FS-2026-00000004/pdf",
+            "operation_id": "a7fb8032-69db-47a3-a301-db562bb37421"
+          }
+        },
+        {
+          "id": "b5e8f311-32b6-42b4-a9fd-a0802aaa57f3",
+          "kind": "reserva",
+          "branch": 7,
+          "state": "CONFIRMADA",
+          "attempts": 1,
+          "tenant": 6,
+          "author": 5,
+          "envelope_sha256": "5990b6dd893c1040f49a807bb5dd362d6ecf907b334a3f5eb242c93ae964bb5c",
+          "details": [
+            {
+              "operation_id": "b5e8f311-32b6-42b4-a9fd-a0802aaa57f3",
+              "variant_id": 5,
+              "quantity": 1,
+              "price": 5000
+            }
+          ],
+          "result": {
+            "kind": "reserva",
+            "state": "CONFIRMADA",
+            "server_id": 5,
+            "operation_id": "b5e8f311-32b6-42b4-a9fd-a0802aaa57f3"
+          }
+        }
+      ],
+      "integrity": [
+        "ok"
+      ],
+      "FK_errors": [],
+      "snapshot_identity": {
+        "tenant": 6,
+        "author": 5,
+        "branch": 7,
+        "customers": 1
+      }
+    }
+  ]
+}

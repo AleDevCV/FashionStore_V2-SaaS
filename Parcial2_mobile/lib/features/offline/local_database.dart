@@ -3,6 +3,7 @@ import 'package:path/path.dart' as path;
 import 'package:sqflite/sqflite.dart';
 import 'package:uuid/uuid.dart';
 import '../../core/config.dart';
+import 'database_recovery.dart';
 
 int cents(dynamic value) {
   final text = (value ?? 0).toString();
@@ -32,11 +33,17 @@ int priceCents(Map<String,dynamic> row, int quantity) {
 /// Archivo por empresa y usuario; cabeceras y detalles se guardan en una transacción.
 class LocalDatabase {
   final Database db;
-  LocalDatabase(this.db);
-  static Future<LocalDatabase> open(String namespace, {String? directory, DatabaseFactory? factory}) async {
+  final String? namespace;
+  LocalDatabase(this.db, {this.namespace});
+  static Future<LocalDatabase> open(String namespace, {String? directory, DatabaseFactory? factory, String backendUrl=apiBaseUrl}) async {
     if (!RegExp(r'^\d+:\d+$').hasMatch(namespace)) throw StateError('Identidad local inválida.');
-    final origin=base64Url.encode(utf8.encode(apiBaseUrl)).replaceAll('=','');
-    final database = await (factory ?? databaseFactory).openDatabase(path.join(directory ?? await getDatabasesPath(), 'fashionstore_p2_${origin}_${namespace.replaceAll(':','_')}.db'), options: OpenDatabaseOptions(version:1,
+    final selectedFactory=factory ?? databaseFactory;
+    final location=directory ?? await getDatabasesPath();
+    final knownAlias=offlineBackendAliases.contains(backendUrl);
+    final identity=offlineStorageIdentity(backendUrl);
+    final origin=base64Url.encode(utf8.encode(identity)).replaceAll('=','');
+    final prefix=knownAlias?'fashionstore_p2_stable':'fashionstore_p2';
+    final database = await selectedFactory.openDatabase(path.join(location, '${prefix}_${origin}_${namespace.replaceAll(':','_')}.db'), options: OpenDatabaseOptions(version:1,
       onConfigure:(db) async => db.execute('PRAGMA foreign_keys=ON'),
       onCreate:(db,version) async {
         for (final sql in [
@@ -54,7 +61,10 @@ class LocalDatabase {
         ]) { await db.execute(sql); }
         await db.insert('meta',{'key':'device','value':const Uuid().v4()});
       }));
-    final local = LocalDatabase(database);
+    try {
+      if(knownAlias)await recoverOfflineDatabases(target:database,factory:selectedFactory,directory:location,namespace:namespace,deployment:identity,legacyOrigins:offlineBackendAliases);
+    } catch (_) {await database.close();rethrow;}
+    final local = LocalDatabase(database,namespace:namespace);
     final lock = await local.meta('sync_lock');
     if (lock == null || (jsonDecode(lock)['expires'] as int) < DateTime.now().millisecondsSinceEpoch) {
       await database.update('operation',{'state':'PENDIENTE'},where:"state='ENVIANDO'");
@@ -62,6 +72,10 @@ class LocalDatabase {
     return local;
   }
   Future<String?> meta(String key) async {final rows=await db.query('meta',where:'key=?',whereArgs:[key]);return rows.isEmpty?null:rows.first['value'] as String;}
+  Future<bool> catalogNeedsRefresh() async => await meta('catalog_refresh_required')=='1';
+  void _checkIdentity(Map<String,dynamic> snapshot) {
+    if(namespace!=null && '${snapshot['tenant_id']}:${snapshot['author_id']}'!=namespace)throw StateError('El catálogo no pertenece a la cuenta activa.');
+  }
   Future<Map<String,dynamic>?> snapshot() async {final value=await meta('snapshot');return value==null?null:Map<String,dynamic>.from(jsonDecode(value));}
   Future<List<Map<String,dynamic>>> operations() => db.query('operation',orderBy:'occurred_at DESC');
   Future<List<Map<String,dynamic>>> customers() async => (await db.query('customer')).map((r)=>Map<String,dynamic>.from(jsonDecode(r['data'] as String))).toList();
@@ -70,6 +84,7 @@ class LocalDatabase {
     return rows.map((r)=> <String,dynamic>{...jsonDecode(r['product'] as String),...jsonDecode(r['variant'] as String),'available':(r['available'] as int)<0?0:r['available']}).toList();
   }
   Future<void> saveSnapshot(Map<String,dynamic> snapshot) async {
+    _checkIdentity(snapshot);
     final branch=Map<String,dynamic>.from(snapshot['branch']);final branchId=branch['id_sucursal'];
     await db.transaction((tx) async {
       await tx.insert('branch',{'id':branchId,'name':branch['nombre']},conflictAlgorithm:ConflictAlgorithm.ignore);
@@ -94,9 +109,12 @@ class LocalDatabase {
         await tx.rawUpdate('UPDATE operation SET state=?,result=?,reason=?,accounted=CASE WHEN branch_id=? AND ?=\'CONFIRMADA\' THEN 1 ELSE accounted END WHERE id=?',[result['state'],jsonEncode(result),result['reason']??'',branchId,result['state'],result['operation_id']]);
       }
       await tx.insert('meta',{'key':'snapshot','value':jsonEncode(snapshot)},conflictAlgorithm:ConflictAlgorithm.replace);
+      await tx.delete('meta',where:'key=?',whereArgs:['catalog_refresh_required']);
     });
   }
   Future<String> capture({required Map<String,dynamic> snapshot,required String kind,int? customerId,required Map<int,int> quantities,String? cash,String? original}) async {
+    _checkIdentity(snapshot);
+    if(await catalogNeedsRefresh())throw StateError('Se recuperó el historial. Actualiza el catálogo online antes de registrar nuevas operaciones.');
     if ((snapshot['lease_expires'] as int)*1000<=DateTime.now().millisecondsSinceEpoch) throw StateError('El permiso offline venció. Conecta para renovarlo.');
     if (kind=='venta' && snapshot['can_sell']!=true) throw StateError('Esta cuenta no puede vender.');
     if (kind=='reserva' && customerId==null) throw StateError('Selecciona un cliente descargado.');

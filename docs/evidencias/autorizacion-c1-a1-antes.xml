@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="38" skipped="0" tests="40" time="29.196" timestamp="2026-11-07T03:25:23.793288+00:00" hostname="5fed43993c68"><testcase classname="tests.test_authorization_c1_a1" name="test_customer_cannot_write_administration_or_pos[provider-create-slash]" time="3.354"><failure message="AssertionError: provider-create-slash: HTTP 201&#10;assert 201 == 403&#10; +  where 201 = &lt;Response [201 Created]&gt;.status_code">tests/test_authorization_c1_a1.py:134: in test_customer_cannot_write_administration_or_pos
+    assert response.status_code == 403, f'{action.name}: HTTP {response.status_code}'
+E   AssertionError: provider-create-slash: HTTP 201
+E   assert 201 == 403
+E    +  where 201 = &lt;Response [201 Created]&gt;.status_code</failure></testcase><testcase classname="tests.test_authorization_c1_a1" name="test_customer_cannot_write_administration_or_pos[provider-create]" time="0.685"><failure message="AssertionError: provider-create: HTTP 201&#10;assert 201 == 403&#10; +  where 201 = &lt;Response [201 Created]&gt;.status_code">tests/test_authorization_c1_a1.py:134: in test_customer_cannot_write_administration_or_pos
+    assert response.status_code == 403, f'{action.name}: HTTP {response.status_code}'
+E   AssertionError: provider-create: HTTP 201
+E   assert 201 == 403
+E    +  where 201 = &lt;Response [201 Created]&gt;.status_code</failure></testcase><testcase classname="tests.test_authorization_c1_a1" name="test_customer_cannot_write_administration_or_pos[provider-update]" time="0.686"><failure message="AssertionError: provider-update: HTTP 200&#10;assert 200 == 403&#10; +  where 200 = &lt;Response [200 OK]&gt;.status_code">tests/test_authorization_c1_a1.py:134: in test_customer_cannot_write_administration_or_pos
+    assert response.status_code == 403, f'{action.name}: HTTP {response.status_code}'
+E   AssertionError: provider-update: HTTP 200
+E   assert 200 == 403
+E    +  where 200 = &lt;Response [200 OK]&gt;.status_code</failure></testcase><testcase classname="tests.test_authorization_c1_a1" name="test_customer_cannot_write_administration_or_pos[provider-delete]" time="0.682"><failure message="AssertionError: provider-delete: HTTP 200&#10;assert 200 == 403&#10; +  where 200 = &lt;Response [200 OK]&gt;.status_code">tests/test_authorization_c1_a1.py:134: in test_customer_cannot_write_administration_or_pos
+    assert response.status_code == 403, f'{action.name}: HTTP {response.status_code}'
+E   AssertionError: provider-delete: HTTP 200
+E   assert 200 == 403
+E    +  where 200 = &lt;Response [200 OK]&gt;.status_code</failure></testcase><testcase classname="tests.test_authorization_c1_a1" name="test_customer_cannot_write_administration_or_pos[season-create-slash]" time="0.705"><failure message="AssertionError: season-create-slash: HTTP 201&#10;assert 201 == 403&#10; +  where 201 = &lt;Response [201 Created]&gt;.status_code">tests/test_authorization_c1_a1.py:134: in test_customer_cannot_write_administration_or_pos
+    assert response.status_code == 403, f'{action.name}: HTTP {response.status_code}'
+E   AssertionError: season-create-slash: HTTP 201
+E   assert 201 == 403
+E    +  where 201 = &lt;Response [201 Created]&gt;.status_code</failure></testcase><testcase classname="tests.test_authorization_c1_a1" name="test_customer_cannot_write_administration_or_pos[season-create]" time="0.686"><failure message="AssertionError: season-create: HTTP 201&#10;assert 201 == 403&#10; +  where 201 = &lt;Response [201 Created]&gt;.status_code">tests/test_authorization_c1_a1.py:134: in test_customer_cannot_write_administration_or_pos
+    assert response.status_code == 403, f'{action.name}: HTTP {response.status_code}'
+E   AssertionError: season-create: HTTP 201
+E   assert 201 == 403
+E    +  where 201 = &lt;Response [201 Created]&gt;.status_code</failure></testcase><testcase classname="tests.test_authorization_c1_a1" name="test_customer_cannot_write_administration_or_pos[season-update]" time="0.688"><failure message="AssertionError: season-update: HTTP 200&#10;assert 200 == 403&#10; +  where 200 = &lt;Response [200 OK]&gt;.status_code">tests/test_authorization_c1_a1.py:134: in test_customer_cannot_write_administration_or_pos
+    assert response.status_code == 403, f'{action.name}: HTTP {response.status_code}'
+E   AssertionError: season-update: HTTP 200
+E   assert 200 == 403
+E    +  where 200 = &lt;Response [200 OK]&gt;.status_code</failure></testcase><testcase classname="tests.test_authorization_c1_a1" name="test_customer_cannot_write_administration_or_pos[season-delete]" time="0.734"><failure message="AssertionError: season-delete: HTTP 200&#10;assert 200 == 403&#10; +  where 200 = &lt;Response [200 OK]&gt;.status_code">tests/test_authorization_c1_a1.py:134: in test_customer_cannot_write_administration_or_pos
+    assert response.status_code == 403, f'{action.name}: HTTP {response.status_code}'
+E   AssertionError: season-delete: HTTP 200
+E   assert 200 == 403
+E    +  where 200 = &lt;Response [200 OK]&gt;.status_code</failure></testcase><testcase classname="tests.test_authorization_c1_a1" name="test_customer_cannot_write_administration_or_pos[purchase-create-slash]" time="0.706"><failure message="AssertionError: purchase-create-slash: HTTP 201&#10;assert 201 == 403&#10; +  where 201 = &lt;Response [201 Created]&gt;.status_code">tests/test_authorization_c1_a1.py:134: in test_customer_cannot_write_administration_or_pos
+    assert response.status_code == 403, f'{action.name}: HTTP {response.status_code}'
+E   AssertionError: purchase-create-slash: HTTP 201
+E   assert 201 == 403
+E    +  where 201 = &lt;Response [201 Created]&gt;.status_code</failure></testcase><testcase classname="tests.test_authorization_c1_a1" name="test_customer_cannot_write_administration_or_pos[purchase-create]" time="0.702"><failure message="AssertionError: purchase-create: HTTP 201&#10;assert 201 == 403&#10; +  where 201 = &lt;Response [201 Created]&gt;.status_code">tests/test_authorization_c1_a1.py:134: in test_customer_cannot_write_administration_or_pos
+    assert response.status_code == 403, f'{action.name}: HTTP {response.status_code}'
+E   AssertionError: purchase-create: HTTP 201
+E   assert 201 == 403
+E    +  where 201 = &lt;Response [201 Created]&gt;.status_code</failure></testcase><testcase classname="tests.test_authorization_c1_a1" name="test_customer_cannot_write_administration_or_pos[movement-Entrada-0]" time="0.706"><failure message="AssertionError: movement-Entrada-0: HTTP 201&#10;assert 201 == 403&#10; +  where 201 = &lt;Response [201 Created]&gt;.status_code">tests/test_authorization_c1_a1.py:134: in test_customer_cannot_write_administration_or_pos
+    assert response.status_code == 403, f'{action.name}: HTTP {response.status_code}'
+E   AssertionError: movement-Entrada-0: HTTP 201
+E   assert 201 == 403
+E    +  where 201 = &lt;Response [201 Created]&gt;.status_code</failure></testcase><testcase classname="tests.test_authorization_c1_a1" name="test_customer_cannot_write_administration_or_pos[movement-Salida-0]" time="0.713"><failure message="AssertionError: movement-Salida-0: HTTP 201&#10;assert 201 == 403&#10; +  where 201 = &lt;Response [201 Created]&gt;.status_code">tests/test_authorization_c1_a1.py:134: in test_customer_cannot_write_administration_or_pos
+    assert response.status_code == 403, f'{action.name}: HTTP {response.status_code}'
+E   AssertionError: movement-Salida-0: HTTP 201
+E   assert 201 == 403
+E    +  where 201 = &lt;Response [201 Created]&gt;.status_code</failure></testcase><testcase classname="tests.test_authorization_c1_a1" name="test_customer_cannot_write_administration_or_pos[movement-Entrada-1]" time="0.710"><failure message="AssertionError: movement-Entrada-1: HTTP 201&#10;assert 201 == 403&#10; +  where 201 = &lt;Response [201 Created]&gt;.status_code">tests/test_authorization_c1_a1.py:134: in test_customer_cannot_write_administration_or_pos
+    assert response.status_code == 403, f'{action.name}: HTTP {response.status_code}'
+E   AssertionError: movement-Entrada-1: HTTP 201
+E   assert 201 == 403
+E    +  where 201 = &lt;Response [201 Created]&gt;.status_code</failure></testcase><testcase classname="tests.test_authorization_c1_a1" name="test_customer_cannot_write_administration_or_pos[movement-Salida-1]" time="0.702"><failure message="AssertionError: movement-Salida-1: HTTP 201&#10;assert 201 == 403&#10; +  where 201 = &lt;Response [201 Created]&gt;.status_code">tests/test_authorization_c1_a1.py:134: in test_customer_cannot_write_administration_or_pos
+    assert response.status_code == 403, f'{action.name}: HTTP {response.status_code}'
+E   AssertionError: movement-Salida-1: HTTP 201
+E   assert 201 == 403
+E    +  where 201 = &lt;Response [201 Created]&gt;.status_code</failure></testcase><testcase classname="tests.test_authorization_c1_a1" name="test_customer_cannot_write_administration_or_pos[movement-Entrada-2]" time="0.702"><failure message="AssertionError: movement-Entrada-2: HTTP 201&#10;assert 201 == 403&#10; +  where 201 = &lt;Response [201 Created]&gt;.status_code">tests/test_authorization_c1_a1.py:134: in test_customer_cannot_write_administration_or_pos
+    assert response.status_code == 403, f'{action.name}: HTTP {response.status_code}'
+E   AssertionError: movement-Entrada-2: HTTP 201
+E   assert 201 == 403
+E    +  where 201 = &lt;Response [201 Created]&gt;.status_code</failure></testcase><testcase classname="tests.test_authorization_c1_a1" name="test_customer_cannot_write_administration_or_pos[movement-Salida-2]" time="0.691"><failure message="AssertionError: movement-Salida-2: HTTP 201&#10;assert 201 == 403&#10; +  where 201 = &lt;Response [201 Created]&gt;.status_code">tests/test_authorization_c1_a1.py:134: in test_customer_cannot_write_administration_or_pos
+    assert response.status_code == 403, f'{action.name}: HTTP {response.status_code}'
+E   AssertionError: movement-Salida-2: HTTP 201
+E   assert 201 == 403
+E    +  where 201 = &lt;Response [201 Created]&gt;.status_code</failure></testcase><testcase classname="tests.test_authorization_c1_a1" name="test_customer_cannot_write_administration_or_pos[movement-Entrada-3]" time="0.697"><failure message="AssertionError: movement-Entrada-3: HTTP 201&#10;assert 201 == 403&#10; +  where 201 = &lt;Response [201 Created]&gt;.status_code">tests/test_authorization_c1_a1.py:134: in test_customer_cannot_write_administration_or_pos
+    assert response.status_code == 403, f'{action.name}: HTTP {response.status_code}'
+E   AssertionError: movement-Entrada-3: HTTP 201
+E   assert 201 == 403
+E    +  where 201 = &lt;Response [201 Created]&gt;.status_code</failure></testcase><testcase classname="tests.test_authorization_c1_a1" name="test_customer_cannot_write_administration_or_pos[movement-Salida-3]" time="0.714"><failure message="AssertionError: movement-Salida-3: HTTP 201&#10;assert 201 == 403&#10; +  where 201 = &lt;Response [201 Created]&gt;.status_code">tests/test_authorization_c1_a1.py:134: in test_customer_cannot_write_administration_or_pos
+    assert response.status_code == 403, f'{action.name}: HTTP {response.status_code}'
+E   AssertionError: movement-Salida-3: HTTP 201
+E   assert 201 == 403
+E    +  where 201 = &lt;Response [201 Created]&gt;.status_code</failure></testcase><testcase classname="tests.test_authorization_c1_a1" name="test_customer_cannot_write_administration_or_pos[pos-sale]" time="0.790" /><testcase classname="tests.test_authorization_c1_a1" name="test_customer_cannot_write_administration_or_pos[pos-sale-slash]" time="0.717" /><testcase classname="tests.test_authorization_c1_a1" name="test_cashier_without_permission_cannot_write_administration_or_pos[provider-create-slash]" time="0.491"><failure message="AssertionError: provider-create-slash: HTTP 201&#10;assert 201 == 403&#10; +  where 201 = &lt;Response [201 Created]&gt;.status_code">tests/test_authorization_c1_a1.py:143: in test_cashier_without_permission_cannot_write_administration_or_pos
+    assert response.status_code == 403, f'{action.name}: HTTP {response.status_code}'
+E   AssertionError: provider-create-slash: HTTP 201
+E   assert 201 == 403
+E    +  where 201 = &lt;Response [201 Created]&gt;.status_code</failure></testcase><testcase classname="tests.test_authorization_c1_a1" name="test_cashier_without_permission_cannot_write_administration_or_pos[provider-create]" time="0.489"><failure message="AssertionError: provider-create: HTTP 201&#10;assert 201 == 403&#10; +  where 201 = &lt;Response [201 Created]&gt;.status_code">tests/test_authorization_c1_a1.py:143: in test_cashier_without_permission_cannot_write_administration_or_pos
+    assert response.status_code == 403, f'{action.name}: HTTP {response.status_code}'
+E   AssertionError: provider-create: HTTP 201
+E   assert 201 == 403
+E    +  where 201 = &lt;Response [201 Created]&gt;.status_code</failure></testcase><testcase classname="tests.test_authorization_c1_a1" name="test_cashier_without_permission_cannot_write_administration_or_pos[provider-update]" time="0.490"><failure message="AssertionError: provider-update: HTTP 200&#10;assert 200 == 403&#10; +  where 200 = &lt;Response [200 OK]&gt;.status_code">tests/test_authorization_c1_a1.py:143: in test_cashier_without_permission_cannot_write_administration_or_pos
+    assert response.status_code == 403, f'{action.name}: HTTP {response.status_code}'
+E   AssertionError: provider-update: HTTP 200
+E   assert 200 == 403
+E    +  where 200 = &lt;Response [200 OK]&gt;.status_code</failure></testcase><testcase classname="tests.test_authorization_c1_a1" name="test_cashier_without_permission_cannot_write_administration_or_pos[provider-delete]" time="0.511"><failure message="AssertionError: provider-delete: HTTP 200&#10;assert 200 == 403&#10; +  where 200 = &lt;Response [200 OK]&gt;.status_code">tests/test_authorization_c1_a1.py:143: in test_cashier_without_permission_cannot_write_administration_or_pos
+    assert response.status_code == 403, f'{action.name}: HTTP {response.status_code}'
+E   AssertionError: provider-delete: HTTP 200
+E   assert 200 == 403
+E    +  where 200 = &lt;Response [200 OK]&gt;.status_code</failure></testcase><testcase classname="tests.test_authorization_c1_a1" name="test_cashier_without_permission_cannot_write_administration_or_pos[season-create-slash]" time="0.483"><failure message="AssertionError: season-create-slash: HTTP 201&#10;assert 201 == 403&#10; +  where 201 = &lt;Response [201 Created]&gt;.status_code">tests/test_authorization_c1_a1.py:143: in test_cashier_without_permission_cannot_write_administration_or_pos
+    assert response.status_code == 403, f'{action.name}: HTTP {response.status_code}'
+E   AssertionError: season-create-slash: HTTP 201
+E   assert 201 == 403
+E    +  where 201 = &lt;Response [201 Created]&gt;.status_code</failure></testcase><testcase classname="tests.test_authorization_c1_a1" name="test_cashier_without_permission_cannot_write_administration_or_pos[season-create]" time="0.490"><failure message="AssertionError: season-create: HTTP 201&#10;assert 201 == 403&#10; +  where 201 = &lt;Response [201 Created]&gt;.status_code">tests/test_authorization_c1_a1.py:143: in test_cashier_without_permission_cannot_write_administration_or_pos
+    assert response.status_code == 403, f'{action.name}: HTTP {response.status_code}'
+E   AssertionError: season-create: HTTP 201
+E   assert 201 == 403
+E    +  where 201 = &lt;Response [201 Created]&gt;.status_code</failure></testcase><testcase classname="tests.test_authorization_c1_a1" name="test_cashier_without_permission_cannot_write_administration_or_pos[season-update]" time="0.487"><failure message="AssertionError: season-update: HTTP 200&#10;assert 200 == 403&#10; +  where 200 = &lt;Response [200 OK]&gt;.status_code">tests/test_authorization_c1_a1.py:143: in test_cashier_without_permission_cannot_write_administration_or_pos
+    assert response.status_code == 403, f'{action.name}: HTTP {response.status_code}'
+E   AssertionError: season-update: HTTP 200
+E   assert 200 == 403
+E    +  where 200 = &lt;Response [200 OK]&gt;.status_code</failure></testcase><testcase classname="tests.test_authorization_c1_a1" name="test_cashier_without_permission_cannot_write_administration_or_pos[season-delete]" time="0.491"><failure message="AssertionError: season-delete: HTTP 200&#10;assert 200 == 403&#10; +  where 200 = &lt;Response [200 OK]&gt;.status_code">tests/test_authorization_c1_a1.py:143: in test_cashier_without_permission_cannot_write_administration_or_pos
+    assert response.status_code == 403, f'{action.name}: HTTP {response.status_code}'
+E   AssertionError: season-delete: HTTP 200
+E   assert 200 == 403
+E    +  where 200 = &lt;Response [200 OK]&gt;.status_code</failure></testcase><testcase classname="tests.test_authorization_c1_a1" name="test_cashier_without_permission_cannot_write_administration_or_pos[purchase-create-slash]" time="0.513"><failure message="AssertionError: purchase-create-slash: HTTP 201&#10;assert 201 == 403&#10; +  where 201 = &lt;Response [201 Created]&gt;.status_code">tests/test_authorization_c1_a1.py:143: in test_cashier_without_permission_cannot_write_administration_or_pos
+    assert response.status_code == 403, f'{action.name}: HTTP {response.status_code}'
+E   AssertionError: purchase-create-slash: HTTP 201
+E   assert 201 == 403
+E    +  where 201 = &lt;Response [201 Created]&gt;.status_code</failure></testcase><testcase classname="tests.test_authorization_c1_a1" name="test_cashier_without_permission_cannot_write_administration_or_pos[purchase-create]" time="0.508"><failure message="AssertionError: purchase-create: HTTP 201&#10;assert 201 == 403&#10; +  where 201 = &lt;Response [201 Created]&gt;.status_code">tests/test_authorization_c1_a1.py:143: in test_cashier_without_permission_cannot_write_administration_or_pos
+    assert response.status_code == 403, f'{action.name}: HTTP {response.status_code}'
+E   AssertionError: purchase-create: HTTP 201
+E   assert 201 == 403
+E    +  where 201 = &lt;Response [201 Created]&gt;.status_code</failure></testcase><testcase classname="tests.test_authorization_c1_a1" name="test_cashier_without_permission_cannot_write_administration_or_pos[movement-Entrada-0]" time="0.514"><failure message="AssertionError: movement-Entrada-0: HTTP 201&#10;assert 201 == 403&#10; +  where 201 = &lt;Response [201 Created]&gt;.status_code">tests/test_authorization_c1_a1.py:143: in test_cashier_without_permission_cannot_write_administration_or_pos
+    assert response.status_code == 403, f'{action.name}: HTTP {response.status_code}'
+E   AssertionError: movement-Entrada-0: HTTP 201
+E   assert 201 == 403
+E    +  where 201 = &lt;Response [201 Created]&gt;.status_code</failure></testcase><testcase classname="tests.test_authorization_c1_a1" name="test_cashier_without_permission_cannot_write_administration_or_pos[movement-Salida-0]" time="0.506"><failure message="AssertionError: movement-Salida-0: HTTP 201&#10;assert 201 == 403&#10; +  where 201 = &lt;Response [201 Created]&gt;.status_code">tests/test_authorization_c1_a1.py:143: in test_cashier_without_permission_cannot_write_administration_or_pos
+    assert response.status_code == 403, f'{action.name}: HTTP {response.status_code}'
+E   AssertionError: movement-Salida-0: HTTP 201
+E   assert 201 == 403
+E    +  where 201 = &lt;Response [201 Created]&gt;.status_code</failure></testcase><testcase classname="tests.test_authorization_c1_a1" name="test_cashier_without_permission_cannot_write_administration_or_pos[movement-Entrada-1]" time="0.508"><failure message="AssertionError: movement-Entrada-1: HTTP 201&#10;assert 201 == 403&#10; +  where 201 = &lt;Response [201 Created]&gt;.status_code">tests/test_authorization_c1_a1.py:143: in test_cashier_without_permission_cannot_write_administration_or_pos
+    assert response.status_code == 403, f'{action.name}: HTTP {response.status_code}'
+E   AssertionError: movement-Entrada-1: HTTP 201
+E   assert 201 == 403
+E    +  where 201 = &lt;Response [201 Created]&gt;.status_code</failure></testcase><testcase classname="tests.test_authorization_c1_a1" name="test_cashier_without_permission_cannot_write_administration_or_pos[movement-Salida-1]" time="0.503"><failure message="AssertionError: movement-Salida-1: HTTP 201&#10;assert 201 == 403&#10; +  where 201 = &lt;Response [201 Created]&gt;.status_code">tests/test_authorization_c1_a1.py:143: in test_cashier_without_permission_cannot_write_administration_or_pos
+    assert response.status_code == 403, f'{action.name}: HTTP {response.status_code}'
+E   AssertionError: movement-Salida-1: HTTP 201
+E   assert 201 == 403
+E    +  where 201 = &lt;Response [201 Created]&gt;.status_code</failure></testcase><testcase classname="tests.test_authorization_c1_a1" name="test_cashier_without_permission_cannot_write_administration_or_pos[movement-Entrada-2]" time="0.511"><failure message="AssertionError: movement-Entrada-2: HTTP 201&#10;assert 201 == 403&#10; +  where 201 = &lt;Response [201 Created]&gt;.status_code">tests/test_authorization_c1_a1.py:143: in test_cashier_without_permission_cannot_write_administration_or_pos
+    assert response.status_code == 403, f'{action.name}: HTTP {response.status_code}'
+E   AssertionError: movement-Entrada-2: HTTP 201
+E   assert 201 == 403
+E    +  where 201 = &lt;Response [201 Created]&gt;.status_code</failure></testcase><testcase classname="tests.test_authorization_c1_a1" name="test_cashier_without_permission_cannot_write_administration_or_pos[movement-Salida-2]" time="0.506"><failure message="AssertionError: movement-Salida-2: HTTP 201&#10;assert 201 == 403&#10; +  where 201 = &lt;Response [201 Created]&gt;.status_code">tests/test_authorization_c1_a1.py:143: in test_cashier_without_permission_cannot_write_administration_or_pos
+    assert response.status_code == 403, f'{action.name}: HTTP {response.status_code}'
+E   AssertionError: movement-Salida-2: HTTP 201
+E   assert 201 == 403
+E    +  where 201 = &lt;Response [201 Created]&gt;.status_code</failure></testcase><testcase classname="tests.test_authorization_c1_a1" name="test_cashier_without_permission_cannot_write_administration_or_pos[movement-Entrada-3]" time="0.503"><failure message="AssertionError: movement-Entrada-3: HTTP 201&#10;assert 201 == 403&#10; +  where 201 = &lt;Response [201 Created]&gt;.status_code">tests/test_authorization_c1_a1.py:143: in test_cashier_without_permission_cannot_write_administration_or_pos
+    assert response.status_code == 403, f'{action.name}: HTTP {response.status_code}'
+E   AssertionError: movement-Entrada-3: HTTP 201
+E   assert 201 == 403
+E    +  where 201 = &lt;Response [201 Created]&gt;.status_code</failure></testcase><testcase classname="tests.test_authorization_c1_a1" name="test_cashier_without_permission_cannot_write_administration_or_pos[movement-Salida-3]" time="0.506"><failure message="AssertionError: movement-Salida-3: HTTP 201&#10;assert 201 == 403&#10; +  where 201 = &lt;Response [201 Created]&gt;.status_code">tests/test_authorization_c1_a1.py:143: in test_cashier_without_permission_cannot_write_administration_or_pos
+    assert response.status_code == 403, f'{action.name}: HTTP {response.status_code}'
+E   AssertionError: movement-Salida-3: HTTP 201
+E   assert 201 == 403
+E    +  where 201 = &lt;Response [201 Created]&gt;.status_code</failure></testcase><testcase classname="tests.test_authorization_c1_a1" name="test_cashier_without_permission_cannot_write_administration_or_pos[pos-sale]" time="0.552"><failure message="AssertionError: pos-sale: HTTP 201&#10;assert 201 == 403&#10; +  where 201 = &lt;Response [201 Created]&gt;.status_code">tests/test_authorization_c1_a1.py:143: in test_cashier_without_permission_cannot_write_administration_or_pos
+    assert response.status_code == 403, f'{action.name}: HTTP {response.status_code}'
+E   AssertionError: pos-sale: HTTP 201
+E   assert 201 == 403
+E    +  where 201 = &lt;Response [201 Created]&gt;.status_code</failure></testcase><testcase classname="tests.test_authorization_c1_a1" name="test_cashier_without_permission_cannot_write_administration_or_pos[pos-sale-slash]" time="0.529"><failure message="AssertionError: pos-sale-slash: HTTP 201&#10;assert 201 == 403&#10; +  where 201 = &lt;Response [201 Created]&gt;.status_code">tests/test_authorization_c1_a1.py:143: in test_cashier_without_permission_cannot_write_administration_or_pos
+    assert response.status_code == 403, f'{action.name}: HTTP {response.status_code}'
+E   AssertionError: pos-sale-slash: HTTP 201
+E   assert 201 == 403
+E    +  where 201 = &lt;Response [201 Created]&gt;.status_code</failure></testcase></testsuite></testsuites>

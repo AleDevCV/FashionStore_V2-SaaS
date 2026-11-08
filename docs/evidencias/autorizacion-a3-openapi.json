@@ -1,0 +1,19 @@
+{
+  "paths_before": 118,
+  "paths_after": 118,
+  "paths_added": [],
+  "paths_removed": [],
+  "changed_paths": [
+    "/api/movimientos-inventario/",
+    "/api/movimientos-inventario/stock"
+  ],
+  "schemas_before": 126,
+  "schemas_after": 128,
+  "schemas_added": [
+    "MovimientoVinculadoRespuesta",
+    "TraspasoRespuesta"
+  ],
+  "schemas_changed": [
+    "MovimientoCrear"
+  ]
+}

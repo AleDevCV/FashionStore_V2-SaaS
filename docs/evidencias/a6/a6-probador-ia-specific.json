@@ -1,0 +1,21 @@
+{
+  "suite": "ProbadorIa Component (A6 Decart AI Realtime)",
+  "file": "src/app/features/catalogo/probador-ia/probador-ia.spec.ts",
+  "browser": "ChromeHeadless 156.0.0.0",
+  "total_tests": 9,
+  "passed": 9,
+  "failed": 0,
+  "skipped": 0,
+  "cases": [
+    "se inicializa en estado desconectado con se\u00f1ales limpias e input de prenda asignado",
+    "cerrar() detiene los tracks de MediaStream, desconecta la sesi\u00f3n y emite evento cerrado",
+    "ngOnDestroy() invoca la limpieza y desconexi\u00f3n completa de recursos",
+    "iniciarExperiencia() gestiona error cuando getUserMedia falla (permiso de c\u00e1mara denegado)",
+    "iniciarExperiencia() gestiona error cuando la conexi\u00f3n falla",
+    "iniciarExperiencia() conecta exitosamente la sesi\u00f3n WebRTC y actualiza se\u00f1ales",
+    "activa respaldo autom\u00e1ticamente cuando iniciarExperiencia detecta error de cr\u00e9ditos (402/insufficient_credits)",
+    "sesi\u00f3n activa activa respaldo al recibir evento sessionEnded con reason insufficient_credits",
+    "sesi\u00f3n activa gestiona desconexi\u00f3n inesperada informando indisponibilidad temporal"
+  ],
+  "state": "APROBADO"
+}

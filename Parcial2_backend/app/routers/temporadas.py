@@ -20,10 +20,12 @@ from app.schemas.temporada import (
 )
 from app.schemas.usuario import MensajeRespuesta
 from app.services import temporada_service as svc
-from app.services.auth_service import get_current_user
+from app.services.auth_service import get_current_user, requiere_rol
 from app.services.bitacora_service import obtener_ip_cliente
 
 router = APIRouter(prefix="/temporadas", tags=["Temporadas y Colecciones (CU09)"])
+
+puede_gestionar = requiere_rol(["Administrador", "Encargado de Sucursal"])
 
 
 @router.get(
@@ -101,7 +103,7 @@ def crear_temporada(
     datos: TemporadaCrear,
     request: Request,
     cursor=Depends(get_db),
-    usuario=Depends(get_current_user),
+    usuario=Depends(puede_gestionar),
 ):
     """Da de alta una nueva temporada asegurando unicidad de nombre y rango válido de fechas."""
     ip_cliente = obtener_ip_cliente(request)
@@ -124,7 +126,7 @@ def actualizar_temporada(
     datos: TemporadaActualizar,
     request: Request,
     cursor=Depends(get_db),
-    usuario=Depends(get_current_user),
+    usuario=Depends(puede_gestionar),
 ):
     """Actualiza los datos de una temporada validando que no colisionen fechas ni nombre."""
     ip_cliente = obtener_ip_cliente(request)
@@ -147,7 +149,7 @@ def eliminar_temporada(
     id_temporada: int,
     request: Request,
     cursor=Depends(get_db),
-    usuario=Depends(get_current_user),
+    usuario=Depends(puede_gestionar),
 ):
     """Elimina físicamente una temporada desasociando automáticamente las prendas vinculadas."""
     ip_cliente = obtener_ip_cliente(request)

@@ -7,6 +7,12 @@ Los alt y opt comienzan en Interfaz. Los loop comienzan en Control y cubren úni
 La numeración se asigna de nuevo al incluir alternativas; el archivo de trazabilidad conserva la correspondencia con robustez. No se añaden participantes para validaciones o almacenamiento auxiliares. Cada acción se presenta como escenario independiente.
 
 - Las sucursales y variantes se validan dentro del control, sin desplegar todos los catálogos auxiliares. El stock se actualiza por trigger al insertar el movimiento.
-- El esquema actual recibe una sucursal y no una sucursal de destino: no se inventa un traslado completo de dos sucursales ni una API de idempotencia inexistente para este endpoint.
+- El archivo original representa el esquema anterior a A3, de una sucursal y sin idempotencia; se conserva como evidencia de esa versión. El suplemento A3 documenta el contrato y la implementación nuevos.
 
 No se modificó el programa, el Word ni los diagramas anteriores.
+
+## Suplemento A3 vigente en el código local
+
+`CU10_A3_Traspaso.drawio` y `.svg` añaden la vista de traspaso; se conserva el gráfico anterior sin fingir que sus mensajes históricos ya cubrían dos sucursales. El modelo de robustez identifica módulos/funciones reales y entidades SQL, no clases Python ficticias. La secuencia SVG muestra el escenario válido de UUID nuevo; el `.puml` de la carpeta de secuencia incluye alternativas de caché, contenido distinto y rollback.
+
+Los SVG se renderizaron localmente y se revisaron visualmente; los XML draw.io se analizaron y sus referencias se comprobaron. El PlantUML es fuente revisada, no se afirma ejecución con PlantUML ni Enterprise Architect. Migración 018 aplicada solo en DBs efímeras; representación de diseño físico no implica que exista ya en la demostración persistente. [Reglas, pruebas y límites](../../CORRECCION_AUTORIZACION_A3.md).

@@ -1,0 +1,18 @@
+{
+  "exit_code": 0,
+  "cases": [
+    {
+      "name": "A4 HTTP: recupera SQLite real, reenvía respuesta perdida y conserva UUID sin duplicar",
+      "result": "success",
+      "skipped": false
+    },
+    {
+      "name": "A4 HTTP: sesión de la segunda empresa abre otra base sin historial ajeno",
+      "result": "success",
+      "skipped": false
+    }
+  ],
+  "passed": 2,
+  "failed": 0,
+  "errors": []
+}

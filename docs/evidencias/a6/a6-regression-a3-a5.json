@@ -1,0 +1,16 @@
+{
+  "A3_traspasos_modal": {
+    "file": "src/app/features/inventario-movimientos/movimiento-modal/movimiento-modal.spec.ts",
+    "total": 4,
+    "passed": 4,
+    "failed": 0,
+    "state": "APROBADO"
+  },
+  "A5_offline_reconciliation_50_batches": {
+    "file": "src/app/core/services/offline.service.spec.ts",
+    "total": 22,
+    "passed": 22,
+    "failed": 0,
+    "state": "APROBADO"
+  }
+}

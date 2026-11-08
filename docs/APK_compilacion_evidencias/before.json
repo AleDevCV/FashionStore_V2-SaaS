@@ -1,0 +1,7 @@
+{
+  "command": "flutter build apk --debug --no-pub",
+  "exit_code": 1,
+  "stage": "before",
+  "log": "before.log",
+  "finished_utc": "2026-11-07T17:27:37.682744+00:00"
+}

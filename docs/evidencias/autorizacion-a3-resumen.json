@@ -1,0 +1,453 @@
+{
+  "scope": "A3 implemented and verified in isolated environments only; persistent activation requires approval",
+  "specific_postgres17": {
+    "tests": 44,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "backend_regression_postgres17": {
+    "tests": 298,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "specific_postgres16": {
+    "tests": 44,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "angular": {
+    "production_build": "passed",
+    "tests": 9,
+    "result": "passed",
+    "browser": "ChromeHeadless"
+  },
+  "flutter": {
+    "analysis_affected_files": "No issues found",
+    "tests_all": 16,
+    "new_contract_tests": 5,
+    "result": "passed",
+    "android_apk": "failed",
+    "pre_A3_android_apk": "same failure",
+    "reason": "Existing flutter_inappwebview_android 1.1.3 calls unsupported getDefaultProguardFile('proguard-android.txt') in the installed Gradle/Android toolchain. No dependency change applied."
+  },
+  "openapi": {
+    "paths_before": 118,
+    "paths_after": 118,
+    "paths_added": [],
+    "paths_removed": [],
+    "changed_paths": [
+      "/api/movimientos-inventario/",
+      "/api/movimientos-inventario/stock"
+    ],
+    "schemas_before": 126,
+    "schemas_after": 128,
+    "schemas_added": [
+      "MovimientoVinculadoRespuesta",
+      "TraspasoRespuesta"
+    ],
+    "schemas_changed": [
+      "MovimientoCrear"
+    ]
+  },
+  "persistent_migration_applied": false,
+  "persistent_api_rebuilt": false,
+  "historical_migrations_unchanged": true,
+  "offline_contracts_unchanged": true,
+  "test_setup_notes": [
+    "Two initial test fixtures were corrected: injected function needed keyword arguments, and pre-migration variant needed its canonical color.",
+    "Flutter offline restore lacked an existing package; versions were restored from the existing lockfile, without project dependency updates.",
+    "The Android failure was reproduced with pre-A3 mobile source and identical lock/toolchain."
+  ],
+  "limits": [
+    "No persistent deployment, physical device acceptance or new live API image test was performed.",
+    "UUID remains stable while retrying the same open form; after closing a form with uncertain response, review history before starting a new transfer. No offline transfer outbox was introduced.",
+    "SVG/XML supplements were reviewed; PlantUML source and EA were not executed.",
+    "No A4, A5 or A6 work was done."
+  ],
+  "integrity": {
+    "transfer_table_exists": false,
+    "migration_history_exists": true,
+    "history": [
+      {
+        "version": "001_baseline.sql",
+        "checksum": "9dab97e8087956ba5f8cd8204485eac47b271aa46fdb87be5514d9b42153436d"
+      },
+      {
+        "version": "002_saas.sql",
+        "checksum": "9ba63e3801b47d5a9c5b699d87f93a08c418f274e7a43746d22e9db7478d9dc2"
+      },
+      {
+        "version": "003_customer_ownership.sql",
+        "checksum": "247712698ba21bd379b2c0be4e3f09a5c1f06d19b42913628bf0463ada8edc7e"
+      },
+      {
+        "version": "004_commercial_constraints.sql",
+        "checksum": "791c4cabe21494be425a96c69116d2273f8e8c833275af99d96e50d6ab74b7e5"
+      },
+      {
+        "version": "005_reservation_holds.sql",
+        "checksum": "1b51d89107d4c58357edd18a5a57650f250d0b882280a17d3d76d483827533a1"
+      },
+      {
+        "version": "006_changes_and_notifications.sql",
+        "checksum": "8385a94b75b987b23ca820e0982fac3515f8cf4e1f4451593481a4e4b9771995"
+      },
+      {
+        "version": "007_transactional_audit.sql",
+        "checksum": "daa89127f20759edbf9ea715bb06508161c309eea12383b3642ad254920db7e4"
+      },
+      {
+        "version": "008_permissions.sql",
+        "checksum": "4a6cfbc9e8bf88fbe0f5b5d02e59f6f7b47d5dca81fa04c2791d9d4498eef060"
+      },
+      {
+        "version": "009_offline_operations.sql",
+        "checksum": "b6625f9498fe0caae46603a593f332f4d6419c920b5c9e134fd4ccbd54343ed7"
+      },
+      {
+        "version": "010_report_results.sql",
+        "checksum": "5744346aec047f90bfa5fa25ba2b1ce2fa591203e520a802706062c96d0fb9d2"
+      },
+      {
+        "version": "011_demo_origin.sql",
+        "checksum": "bed703d93526d3b52ac77517e57643d0cb6ece5558fcdd5c90170eddc984fd8e"
+      },
+      {
+        "version": "012_push_delivery.sql",
+        "checksum": "6322bbd44e7bc921c28298e1500c1d02be939bab21e5c2c77dba582ecbf2f27c"
+      },
+      {
+        "version": "013_push_binding.sql",
+        "checksum": "854c01d699f6246c48b07b329234b6943ea72fb49fe7b7f3abd6305c2562f7f8"
+      },
+      {
+        "version": "014_branch_scope.sql",
+        "checksum": "d9bf9985ab4c6f11927c750d2fc99672f371da72025b9b5da3f4cb9a8f037842"
+      },
+      {
+        "version": "015_payment_lifecycle.sql",
+        "checksum": "b2ad8ae6e3b6b5bdf28d033f5d15492daf8afbe0f16d8cec6997d434fb5017e3"
+      },
+      {
+        "version": "016_multicolor_variants.sql",
+        "checksum": "ec303be00bbf9e4481071c04f8afbc235f6bf1461546b5b0286e20d9d3d3f977"
+      },
+      {
+        "version": "017_global_identity.sql",
+        "checksum": "f5f05429ed8902e4a3bd9385f7c07a8df87ca03294cf1162eca876a09bd142a0"
+      }
+    ],
+    "migration_runner_checksum_mismatches": [],
+    "historical_migrations_unchanged": 17,
+    "persistent_tables_unchanged": 26,
+    "persistent_rows_unchanged": 230,
+    "persistent_containers_unchanged": 4,
+    "active_image": "sha256:0c594ae3e8ccdf5f796a94b8c609d19a209803b72fe2e2f5bab8fdc9722b1db5"
+  },
+  "commercial_data_before_equals_after": true,
+  "commercial_data_fingerprints": [
+    {
+      "table": "empresa",
+      "rows": 3,
+      "fingerprint": "142222115cd5fc4872b3f8b593ce32a3"
+    },
+    {
+      "table": "plan",
+      "rows": 2,
+      "fingerprint": "f6c1e8e4df32594ac2479c0161cbb22e"
+    },
+    {
+      "table": "suscripcion",
+      "rows": 2,
+      "fingerprint": "5c9b99bdd7eb616df0b53bc1e99953b3"
+    },
+    {
+      "table": "rol",
+      "rows": 9,
+      "fingerprint": "9beaf824de939c9f64ccc2510156921b"
+    },
+    {
+      "table": "rol_permiso",
+      "rows": 94,
+      "fingerprint": "ce1a820ad8e3e4d509047210595547ad"
+    },
+    {
+      "table": "usuario_sucursal",
+      "rows": 6,
+      "fingerprint": "f2d064f7dcc5b83f717f5934bcdd1088"
+    },
+    {
+      "table": "cliente",
+      "rows": 4,
+      "fingerprint": "64f53184512ecd98df6c32a62622a185"
+    },
+    {
+      "table": "proveedor",
+      "rows": 2,
+      "fingerprint": "a78b1bbbfe2da4822c262611aaae750c"
+    },
+    {
+      "table": "temporada",
+      "rows": 2,
+      "fingerprint": "11e8305249e2d2de4f70482a7f6e0dba"
+    },
+    {
+      "table": "categoria",
+      "rows": 2,
+      "fingerprint": "e0010b80e6bcec22c15c04760334323a"
+    },
+    {
+      "table": "prenda",
+      "rows": 8,
+      "fingerprint": "c01fa7e9a6b79d1c6b4d28c667ca9e03"
+    },
+    {
+      "table": "variante_prenda",
+      "rows": 24,
+      "fingerprint": "664fd1ca792fbf5b6e7a7f6239d7637b"
+    },
+    {
+      "table": "variante_color",
+      "rows": 24,
+      "fingerprint": "4e3848c1dd001fb596dece78f7f682f3"
+    },
+    {
+      "table": "imagen_prenda",
+      "rows": 0,
+      "fingerprint": "d41d8cd98f00b204e9800998ecf8427e"
+    },
+    {
+      "table": "inventario",
+      "rows": 24,
+      "fingerprint": "52b573d7c4d9335d20a2f0a906d9a528"
+    },
+    {
+      "table": "movimiento_inventario",
+      "rows": 24,
+      "fingerprint": "a3802bfd3bf68cb1ccc554c1cee4fabd"
+    },
+    {
+      "table": "compra",
+      "rows": 0,
+      "fingerprint": "d41d8cd98f00b204e9800998ecf8427e"
+    },
+    {
+      "table": "detalle_compra",
+      "rows": 0,
+      "fingerprint": "d41d8cd98f00b204e9800998ecf8427e"
+    },
+    {
+      "table": "reserva",
+      "rows": 0,
+      "fingerprint": "d41d8cd98f00b204e9800998ecf8427e"
+    },
+    {
+      "table": "detalle_reserva",
+      "rows": 0,
+      "fingerprint": "d41d8cd98f00b204e9800998ecf8427e"
+    },
+    {
+      "table": "retencion",
+      "rows": 0,
+      "fingerprint": "d41d8cd98f00b204e9800998ecf8427e"
+    },
+    {
+      "table": "venta",
+      "rows": 0,
+      "fingerprint": "d41d8cd98f00b204e9800998ecf8427e"
+    },
+    {
+      "table": "detalle_venta",
+      "rows": 0,
+      "fingerprint": "d41d8cd98f00b204e9800998ecf8427e"
+    },
+    {
+      "table": "pago_transaccion",
+      "rows": 0,
+      "fingerprint": "d41d8cd98f00b204e9800998ecf8427e"
+    },
+    {
+      "table": "comprobante",
+      "rows": 0,
+      "fingerprint": "d41d8cd98f00b204e9800998ecf8427e"
+    },
+    {
+      "table": "operacion_sync",
+      "rows": 0,
+      "fingerprint": "d41d8cd98f00b204e9800998ecf8427e"
+    }
+  ],
+  "unrelated_tracked_files_unchanged": 1266,
+  "source_sha256": {
+    "Parcial2_backend/app/routers/movimientos.py": "16caa1f2d719cf5804ccdf8a90b8223f44fd2b36c8648332f7ac57eb5e2afd30",
+    "Parcial2_backend/app/schemas/movimiento.py": "73f06d73f56d0528bc9e9203d7d3ef94b6b91cfd700cc56260025826f9101a8d",
+    "Parcial2_backend/app/services/movimiento_service.py": "35539493511b9982d9116560f98a29f1899f610aa3e4fb493b3c09f48ce150c4",
+    "Parcial2_backend/database/migrations/018_inventory_transfers.sql": "de2b8c77e8cc05319f35328667e78dc8ac302f0788dff441d04c4492d9c041e3",
+    "Parcial2_frontend-web/src/app/core/models/movimiento.model.ts": "9bba56e2f4889caae3a991a61b3ecc7f52cc4b82f14b62cf51ae50b938d5785f",
+    "Parcial2_frontend-web/src/app/core/services/movimiento-inventario.service.spec.ts": "eced9315b6c38204932dd6500d7b20b4a19fec7f352cafe133b186b88aecf9b3",
+    "Parcial2_frontend-web/src/app/core/services/movimiento-inventario.service.ts": "3f3b4019fccf1802f970c3850c17f1eb9e7e6ce10ef91efb784b0225dbf654cb",
+    "Parcial2_frontend-web/src/app/features/inventario-movimientos/movimientos.html": "cc73c86c1a0a674000a4e48161defca879c3bd6f600100cf7da5ec23a7625ece",
+    "Parcial2_frontend-web/src/app/features/inventario-movimientos/movimiento-modal/movimiento-modal.html": "1b1b931ee94cde69e72505a3fb7cd25cabb818eee53a829bd98e2984b1a9f612",
+    "Parcial2_frontend-web/src/app/features/inventario-movimientos/movimiento-modal/movimiento-modal.ts": "d7c48af0457c7f48b21943e97957c91b480a14cc5e722417f0ed068c9fb59c54",
+    "Parcial2_mobile/lib/services/movimiento_service.dart": "435b50e1f6830315294a83aba189a1e3e5ecb2c3621b4283454733ce0487baca",
+    "Parcial2_mobile/lib/features/movimientos/movimientos_screen.dart": "b8d4a2b9f0ef50e1a660cb918a3087a84c75b7bf94191f2883250f04a92d7c0d",
+    "Parcial2_mobile/lib/features/movimientos/registrar_movimiento_screen.dart": "b8f63de7d847da9ed9a90fcf0c62b3f49ca27ef652444db11b0801dc0a4093a6",
+    "Parcial2_mobile/lib/features/movimientos/models/movimiento_models.dart": "71923992c87155b60fcb7fb8bbe7c00aa159a468747e7d1d7c1fe0c564d6f514",
+    "Parcial2_backend/tests/test_inventory_transfers.py": "a9eccc87b5dea8445e3de65f458e1770641882594780a7f7ba8a2663c2bff381",
+    "Parcial2_frontend-web/src/app/features/inventario-movimientos/movimiento-modal/movimiento-modal.spec.ts": "69904ce093018198290b739cd6d96ed00a0099ef1842e28706ca7b1b4a42c37e",
+    "Parcial2_mobile/test/inventory_transfer_test.dart": "10ad8877e9b213109f3a91dbe296136799914baa9bf183374e725df5d4a58332"
+  },
+  "files_changed": [
+    {
+      "file": "C:\\Examen si2 FASHIONSTORE\\Parcial2_backend\\app\\routers\\movimientos.py",
+      "change": "modified"
+    },
+    {
+      "file": "C:\\Examen si2 FASHIONSTORE\\Parcial2_backend\\app\\schemas\\movimiento.py",
+      "change": "modified"
+    },
+    {
+      "file": "C:\\Examen si2 FASHIONSTORE\\Parcial2_backend\\app\\services\\movimiento_service.py",
+      "change": "modified"
+    },
+    {
+      "file": "C:\\Examen si2 FASHIONSTORE\\Parcial2_backend\\database\\migrations\\018_inventory_transfers.sql",
+      "change": "added"
+    },
+    {
+      "file": "C:\\Examen si2 FASHIONSTORE\\Parcial2_backend\\tests\\test_inventory_transfers.py",
+      "change": "added"
+    },
+    {
+      "file": "C:\\Examen si2 FASHIONSTORE\\Parcial2_frontend-web\\src\\app\\core\\models\\movimiento.model.ts",
+      "change": "modified"
+    },
+    {
+      "file": "C:\\Examen si2 FASHIONSTORE\\Parcial2_frontend-web\\src\\app\\core\\services\\movimiento-inventario.service.spec.ts",
+      "change": "modified"
+    },
+    {
+      "file": "C:\\Examen si2 FASHIONSTORE\\Parcial2_frontend-web\\src\\app\\core\\services\\movimiento-inventario.service.ts",
+      "change": "modified"
+    },
+    {
+      "file": "C:\\Examen si2 FASHIONSTORE\\Parcial2_frontend-web\\src\\app\\features\\inventario-movimientos\\movimiento-modal\\movimiento-modal.html",
+      "change": "modified"
+    },
+    {
+      "file": "C:\\Examen si2 FASHIONSTORE\\Parcial2_frontend-web\\src\\app\\features\\inventario-movimientos\\movimiento-modal\\movimiento-modal.spec.ts",
+      "change": "added"
+    },
+    {
+      "file": "C:\\Examen si2 FASHIONSTORE\\Parcial2_frontend-web\\src\\app\\features\\inventario-movimientos\\movimiento-modal\\movimiento-modal.ts",
+      "change": "modified"
+    },
+    {
+      "file": "C:\\Examen si2 FASHIONSTORE\\Parcial2_frontend-web\\src\\app\\features\\inventario-movimientos\\movimientos.html",
+      "change": "modified"
+    },
+    {
+      "file": "C:\\Examen si2 FASHIONSTORE\\Parcial2_mobile\\lib\\features\\movimientos\\models\\movimiento_models.dart",
+      "change": "modified"
+    },
+    {
+      "file": "C:\\Examen si2 FASHIONSTORE\\Parcial2_mobile\\lib\\features\\movimientos\\movimientos_screen.dart",
+      "change": "modified"
+    },
+    {
+      "file": "C:\\Examen si2 FASHIONSTORE\\Parcial2_mobile\\lib\\features\\movimientos\\registrar_movimiento_screen.dart",
+      "change": "modified"
+    },
+    {
+      "file": "C:\\Examen si2 FASHIONSTORE\\Parcial2_mobile\\lib\\services\\movimiento_service.dart",
+      "change": "modified"
+    },
+    {
+      "file": "C:\\Examen si2 FASHIONSTORE\\Parcial2_mobile\\test\\inventory_transfer_test.dart",
+      "change": "added"
+    },
+    {
+      "file": "C:\\Examen si2 FASHIONSTORE\\docs\\02_requisitos_y_reglas.md",
+      "change": "modified"
+    },
+    {
+      "file": "C:\\Examen si2 FASHIONSTORE\\docs\\04_arquitectura_y_contratos.md",
+      "change": "modified"
+    },
+    {
+      "file": "C:\\Examen si2 FASHIONSTORE\\docs\\CORRECCION_AUTORIZACION_A3.md",
+      "change": "added"
+    },
+    {
+      "file": "C:\\Examen si2 FASHIONSTORE\\docs\\TRAZABILIDAD.md",
+      "change": "modified"
+    },
+    {
+      "file": "C:\\Examen si2 FASHIONSTORE\\docs\\diagramas_robustez\\CU10_Simplificado\\CU10_A3_Traspaso.drawio",
+      "change": "added"
+    },
+    {
+      "file": "C:\\Examen si2 FASHIONSTORE\\docs\\diagramas_robustez\\CU10_Simplificado\\CU10_A3_Traspaso.json",
+      "change": "added"
+    },
+    {
+      "file": "C:\\Examen si2 FASHIONSTORE\\docs\\diagramas_robustez\\CU10_Simplificado\\CU10_A3_Traspaso.svg",
+      "change": "added"
+    },
+    {
+      "file": "C:\\Examen si2 FASHIONSTORE\\docs\\diagramas_robustez\\CU10_Simplificado\\LEEME.md",
+      "change": "modified"
+    },
+    {
+      "file": "C:\\Examen si2 FASHIONSTORE\\docs\\diagramas_secuencia\\CU10\\CU10_A3_Traspaso.drawio",
+      "change": "added"
+    },
+    {
+      "file": "C:\\Examen si2 FASHIONSTORE\\docs\\diagramas_secuencia\\CU10\\CU10_A3_Traspaso.puml",
+      "change": "added"
+    },
+    {
+      "file": "C:\\Examen si2 FASHIONSTORE\\docs\\diagramas_secuencia\\CU10\\CU10_A3_Traspaso.svg",
+      "change": "added"
+    },
+    {
+      "file": "C:\\Examen si2 FASHIONSTORE\\docs\\diagramas_secuencia\\CU10\\LEEME.md",
+      "change": "modified"
+    },
+    {
+      "file": "C:\\Examen si2 FASHIONSTORE\\docs\\diseno_fisico_base_datos\\A3_018_TRASPASOS.md",
+      "change": "added"
+    },
+    {
+      "file": "C:\\Examen si2 FASHIONSTORE\\docs\\evidencias\\autorizacion-a3-especificas.xml",
+      "change": "added"
+    },
+    {
+      "file": "C:\\Examen si2 FASHIONSTORE\\docs\\evidencias\\autorizacion-a3-openapi.json",
+      "change": "added"
+    },
+    {
+      "file": "C:\\Examen si2 FASHIONSTORE\\docs\\evidencias\\autorizacion-a3-postgres16.xml",
+      "change": "added"
+    },
+    {
+      "file": "C:\\Examen si2 FASHIONSTORE\\docs\\evidencias\\autorizacion-a3-regresion.xml",
+      "change": "added"
+    },
+    {
+      "file": "C:\\Examen si2 FASHIONSTORE\\docs\\evidencias\\autorizacion-a3-resumen.json",
+      "change": "added"
+    },
+    {
+      "file": "C:\\Examen si2 FASHIONSTORE\\docs\\modelo_20_cu\\CAPITULO_II_20_CU.md",
+      "change": "modified"
+    },
+    {
+      "file": "C:\\Examen si2 FASHIONSTORE\\docs\\modelo_20_cu\\FICHAS_RESUMIDAS_20_CU.md",
+      "change": "modified"
+    }
+  ]
+}

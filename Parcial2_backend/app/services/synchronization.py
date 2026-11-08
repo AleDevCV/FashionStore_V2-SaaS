@@ -11,6 +11,25 @@ from app.tenant import require_context
 from app.permissions import allowed
 from app.services.commerce import authorized_branch,reserve,money
 
+def require_operation_access(cur,operation):
+    """El autor conserva su historial; supervisar exige permiso y sucursal.
+
+    Se usan las referencias persistidas, nunca las declaradas por el reenvío.
+    Sin sucursal solo acceden el autor y el administrador de la empresa.
+    Consultar historial no requiere que la sucursal siga activa.
+    """
+    ctx=require_context()
+    if operation and not ctx.platform and operation['tenant_id']==ctx.tenant_id:
+        if operation['author_id']==ctx.user_id:return
+        if allowed(cur,'conflictos.resolver'):
+            if ctx.role=='Administrador':return
+            if operation['branch_id'] is not None:
+                cur.execute('SELECT 1 FROM usuario_sucursal WHERE tenant_id=%s AND id_usuario=%s AND id_sucursal=%s',
+                            (ctx.tenant_id,ctx.user_id,operation['branch_id']))
+                if cur.fetchone():return
+    raise HTTPException(404,'Operación no encontrada.')
+
+
 def process_raw(raw,supervision_reason=''):
     from app.schemas.offline import Operation
     from uuid import UUID
@@ -21,9 +40,9 @@ def process_raw(raw,supervision_reason=''):
         ctx=require_context();digest=hashlib.sha256(('invalid:'+json.dumps(raw,sort_keys=True,separators=(',',':'),ensure_ascii=False)).encode()).hexdigest()
         with get_connection() as conn,conn.cursor(cursor_factory=RealDictCursor) as cur:
             cur.execute('SELECT pg_advisory_xact_lock(hashtextextended(%s,0))',(f'{ctx.tenant_id}:{oid}',))
-            cur.execute('SELECT author_id,payload_hash,result FROM operacion_sync WHERE operation_id=%s',(oid,));existing=cur.fetchone()
+            cur.execute('SELECT tenant_id,author_id,branch_id,payload_hash,result FROM operacion_sync WHERE operation_id=%s',(oid,));existing=cur.fetchone()
             if existing:
-                if existing['author_id']!=ctx.user_id and not allowed(cur,'conflictos.resolver'):raise HTTPException(404,'Operación no encontrada.')
+                require_operation_access(cur,existing)
                 if existing['payload_hash']==digest:return existing['result']
                 return {'operation_id':oid,'state':'RECHAZADA','reason':'UUID reutilizado con contenido diferente. Consulte el resultado original.'}
             result={'operation_id':oid,'state':'RECHAZADA','reason':'Contrato inválido: revise versión, fecha con zona horaria, importes y detalles.'}
@@ -65,7 +84,7 @@ def process(op,supervision_reason=''):
         cur.execute('SELECT pg_advisory_xact_lock(hashtextextended(%s,0))',(f'{ctx.tenant_id}:{oid}',))
         cur.execute('SELECT * FROM operacion_sync WHERE operation_id=%s',(oid,));existing=cur.fetchone()
         if existing:
-            if existing['author_id']!=ctx.user_id and not allowed(cur,'conflictos.resolver'):raise HTTPException(404,'Operación no encontrada.')
+            require_operation_access(cur,existing)
             if existing['payload_hash']!=digest:return {'operation_id':oid,'state':'RECHAZADA','reason':'UUID reutilizado con contenido diferente. Consulte el resultado original.'}
             return existing['result']
         author=ctx.user_id;branch=None;revision=False
@@ -82,8 +101,8 @@ def process(op,supervision_reason=''):
             subscription(cur)
             if op.original_operation:
                 cur.execute('SELECT * FROM operacion_sync WHERE operation_id=%s FOR UPDATE',(str(op.original_operation),));original=cur.fetchone()
-                if not original or original['state']=='CONFIRMADA' or original['resolved_at'] is not None:raise HTTPException(409,'La operación original no admite una nueva revisión.')
-                if original['author_id']!=ctx.user_id and not allowed(cur,'conflictos.resolver'):raise HTTPException(403,'No puede revisar una operación ajena.')
+                require_operation_access(cur,original)
+                if original['state']=='CONFIRMADA' or original['resolved_at'] is not None:raise HTTPException(409,'La operación original no admite una nueva revisión.')
                 if original['kind']!=op.kind or original['branch_id']!=op.branch_id:raise HTTPException(409,'La revisión debe conservar el tipo y la sucursal originales.')
                 if op.kind=='venta' and Decimal(original['envelope']['cash_received'])!=op.cash_received:raise HTTPException(409,'Conserve el efectivo realmente recibido; registre por separado su compensación.')
                 revision=True

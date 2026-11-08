@@ -1,0 +1,90 @@
+{
+  "case": "CU10 / A3",
+  "kind": "ICONIX robustness, analysis objects",
+  "nodes": [
+    {
+      "id": "u",
+      "label": "«actor»\nPersonal autorizado"
+    },
+    {
+      "id": "ui",
+      "label": "«boundary»\nFormulario Angular / Flutter"
+    },
+    {
+      "id": "api",
+      "label": "«control de análisis»\nmovimientos.py\nregistrar_movimiento"
+    },
+    {
+      "id": "svc",
+      "label": "«control de análisis»\nmovimiento_service.py\nregistrar_traspaso"
+    },
+    {
+      "id": "inv",
+      "label": "«entity SQL»\ninventario"
+    },
+    {
+      "id": "hold",
+      "label": "«entity SQL»\nretencion"
+    },
+    {
+      "id": "mov",
+      "label": "«entity SQL»\nmovimiento_inventario"
+    },
+    {
+      "id": "transfer",
+      "label": "«entity SQL, migración 018»\ntraspaso_inventario"
+    },
+    {
+      "id": "audit",
+      "label": "«entity SQL»\nbitacora"
+    }
+  ],
+  "relations": [
+    {
+      "source": "u",
+      "target": "ui",
+      "label": "1. Registrar traspaso"
+    },
+    {
+      "source": "ui",
+      "target": "api",
+      "label": "2. Origen / destino / UUID"
+    },
+    {
+      "source": "api",
+      "target": "svc",
+      "label": "3. Delegar con cursor"
+    },
+    {
+      "source": "svc",
+      "target": "inv",
+      "label": "4. Bloquear y validar saldo"
+    },
+    {
+      "source": "svc",
+      "target": "hold",
+      "label": "5. Restar retenciones vigentes"
+    },
+    {
+      "source": "svc",
+      "target": "mov",
+      "label": "6. Salida + Entrada"
+    },
+    {
+      "source": "svc",
+      "target": "transfer",
+      "label": "7. Vincular + guardar resultado"
+    },
+    {
+      "source": "svc",
+      "target": "audit",
+      "label": "8. Auditar en la transacción"
+    }
+  ],
+  "implementation": [
+    "app/routers/movimientos.py:registrar_movimiento",
+    "app/services/movimiento_service.py:registrar_traspaso",
+    "database/migrations/018_inventory_transfers.sql"
+  ],
+  "note": "Analysis controls are backed by modules/functions, not invented Python classes."
+}

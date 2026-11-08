@@ -1,0 +1,6 @@
+{
+  "Android_reboot_preserves_SQLite": true,
+  "operations": 2,
+  "details": 2,
+  "UUID_envelopes_states_and_DB_bytes_unchanged": true
+}

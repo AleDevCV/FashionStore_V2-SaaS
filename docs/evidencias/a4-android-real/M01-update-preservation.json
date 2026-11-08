@@ -1,0 +1,7 @@
+{
+  "M01_controlled_update_preserves_SQLite": true,
+  "operations": 2,
+  "details": 2,
+  "UUIDs_envelopes_states_unchanged": true,
+  "same_DB_SHA256": true
+}

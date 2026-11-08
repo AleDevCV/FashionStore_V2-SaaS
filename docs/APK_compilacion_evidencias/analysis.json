@@ -1,0 +1,7 @@
+{
+  "command": "flutter analyze --no-pub",
+  "exit_code": 0,
+  "stage": "analysis",
+  "log": "analysis.log",
+  "finished_utc": "2026-11-07T17:32:09.083335+00:00"
+}

@@ -1,0 +1,13 @@
+{
+  "exit_code": 0,
+  "cases": [
+    {
+      "name": "A4 aceptación posterior: recupera los cinco UUID de los archivos del diagnóstico sin alterar originales",
+      "result": "success",
+      "skipped": false
+    }
+  ],
+  "passed": 1,
+  "failed": 0,
+  "errors": []
+}

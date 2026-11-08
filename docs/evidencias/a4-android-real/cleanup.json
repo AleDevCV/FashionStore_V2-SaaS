@@ -1,0 +1,19 @@
+{
+  "removed_owned_debug_connections": [
+    "tcp:18589",
+    "reverse tcp:8082 -> tcp:18087"
+  ],
+  "stopped_owned_web_helpers": [
+    {
+      "port": 18087,
+      "owned_process_stopped": true
+    }
+  ],
+  "API_reverse_retained": "phone 127.0.0.1:8002 -> PC 127.0.0.1:18084 (ephemeral only)",
+  "app_running": true,
+  "camera_permission_final_denied": true,
+  "app_uninstalled": false,
+  "data_cleared": false,
+  "phone_network_settings_changed": false,
+  "ephemeral_backend_retained": true
+}

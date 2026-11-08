@@ -219,7 +219,7 @@ class _MovimientosScreenState extends State<MovimientosScreen> {
       separatorBuilder: (_, __) => const SizedBox(height: 12),
       itemBuilder: (ctx, i) {
         final m = _movimientos[i];
-        final signo = m.tipo == 'Entrada' ? '+' : '-';
+        final signo = m.tipo == 'Entrada' ? '+' : m.tipo == 'Salida' ? '-' : '';
         final color = _colorTipo(m.tipo);
         final fondo = _fondoTipo(m.tipo);
 
@@ -246,7 +246,7 @@ class _MovimientosScreenState extends State<MovimientosScreen> {
                         border: Border.all(color: color.withValues(alpha: 0.4)),
                       ),
                       child: Text(
-                        m.tipo.toUpperCase(),
+                        '${m.tipo == 'Traspaso' ? 'TRASPASO HISTÓRICO' : m.tipo.toUpperCase()}${m.operationId != null ? ' · TRASPASO' : ''}',
                         style: TextStyle(
                           fontSize: 11,
                           fontWeight: FontWeight.w700,

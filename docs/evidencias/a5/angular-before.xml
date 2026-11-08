@@ -1,0 +1,55 @@
+<testsuite name="A5 Angular before" tests="13" failures="6" skipped="0"><testcase name="A5 reconciliación IndexedDB real / cola 1: resultado confirmado posterior"></testcase><testcase name="A5 reconciliación IndexedDB real / cola 49: resultado confirmado posterior"></testcase><testcase name="A5 reconciliación IndexedDB real / cola 50: resultado confirmado posterior"></testcase><testcase name="A5 reconciliación IndexedDB real / cola 51: resultado confirmado posterior"><failure>Confirmed operation after terminal prefix must be reconciled: Expected false to be true.
+    at &lt;Jasmine>
+    at http://localhost:9876/base/src/app/core/services/offline.service.spec.ts:54:102
+    at next (&lt;anonymous>)
+    at fulfilled (http://localhost:9876/base/chunk-W3XWTTQK.js:75:24)
+    at _ZoneDelegate.invoke (http://localhost:9876/implementation-a3/web-checks/node_modules/zone.js/fesm2015/zone.js:398:28)
+Expected 973 to be 974.
+    at &lt;Jasmine>
+    at http://localhost:9876/base/src/app/core/services/offline.service.spec.ts:54:131
+    at next (&lt;anonymous>)
+    at fulfilled (http://localhost:9876/base/chunk-W3XWTTQK.js:75:24)
+    at _ZoneDelegate.invoke (http://localhost:9876/implementation-a3/web-checks/node_modules/zone.js/fesm2015/zone.js:398:28)</failure></testcase><testcase name="A5 reconciliación IndexedDB real / cola 125: resultado confirmado posterior"><failure>Confirmed operation after terminal prefix must be reconciled: Expected false to be true.
+    at &lt;Jasmine>
+    at http://localhost:9876/base/src/app/core/services/offline.service.spec.ts:54:102
+    at next (&lt;anonymous>)
+    at fulfilled (http://localhost:9876/base/chunk-W3XWTTQK.js:75:24)
+    at _ZoneDelegate.invoke (http://localhost:9876/implementation-a3/web-checks/node_modules/zone.js/fesm2015/zone.js:398:28)
+Expected 936 to be 937.
+    at &lt;Jasmine>
+    at http://localhost:9876/base/src/app/core/services/offline.service.spec.ts:54:131
+    at next (&lt;anonymous>)
+    at fulfilled (http://localhost:9876/base/chunk-W3XWTTQK.js:75:24)
+    at _ZoneDelegate.invoke (http://localhost:9876/implementation-a3/web-checks/node_modules/zone.js/fesm2015/zone.js:398:28)</failure></testcase><testcase name="A5 reconciliación IndexedDB real / tres descargas no quedan en el mismo prefijo de 50"><failure>Confirmed operation after terminal prefix must be reconciled: Expected false to be true.
+    at &lt;Jasmine>
+    at http://localhost:9876/base/src/app/core/services/offline.service.spec.ts:54:102
+    at next (&lt;anonymous>)
+    at fulfilled (http://localhost:9876/base/chunk-W3XWTTQK.js:75:24)
+    at _ZoneDelegate.invoke (http://localhost:9876/implementation-a3/web-checks/node_modules/zone.js/fesm2015/zone.js:398:28)
+Expected 973 to be 974.
+    at &lt;Jasmine>
+    at http://localhost:9876/base/src/app/core/services/offline.service.spec.ts:54:131
+    at next (&lt;anonymous>)
+    at fulfilled (http://localhost:9876/base/chunk-W3XWTTQK.js:75:24)
+    at _ZoneDelegate.invoke (http://localhost:9876/implementation-a3/web-checks/node_modules/zone.js/fesm2015/zone.js:398:28)</failure></testcase><testcase name="A5 reconciliación IndexedDB real / otra sucursal no bloquea el lote de la sucursal solicitada"><failure>Confirmed operation after terminal prefix must be reconciled: Expected false to be true.
+    at &lt;Jasmine>
+    at http://localhost:9876/base/src/app/core/services/offline.service.spec.ts:54:102
+    at next (&lt;anonymous>)
+    at fulfilled (http://localhost:9876/base/chunk-W3XWTTQK.js:75:24)
+    at _ZoneDelegate.invoke (http://localhost:9876/implementation-a3/web-checks/node_modules/zone.js/fesm2015/zone.js:398:28)
+Expected 998 to be 999.
+    at &lt;Jasmine>
+    at http://localhost:9876/base/src/app/core/services/offline.service.spec.ts:54:131
+    at next (&lt;anonymous>)
+    at fulfilled (http://localhost:9876/base/chunk-W3XWTTQK.js:75:24)
+    at _ZoneDelegate.invoke (http://localhost:9876/implementation-a3/web-checks/node_modules/zone.js/fesm2015/zone.js:398:28)</failure></testcase><testcase name="A5 reconciliación IndexedDB real / sin resultado conserva PENDIENTE y ENVIANDO"></testcase><testcase name="A5 reconciliación IndexedDB real / otra empresa en la respuesta no cambia catálogo ni operación"></testcase><testcase name="A5 reconciliación IndexedDB real / reapertura de IndexedDB no perpetúa bloqueo posterior a 50"><failure>Expected false to be true.
+    at &lt;Jasmine>
+    at http://localhost:9876/base/src/app/core/services/offline.service.spec.ts:71:118
+    at Generator.next (&lt;anonymous>)
+    at fulfilled (http://localhost:9876/base/chunk-W3XWTTQK.js:75:24)
+    at _ZoneDelegate.invoke (http://localhost:9876/implementation-a3/web-checks/node_modules/zone.js/fesm2015/zone.js:398:28)</failure></testcase><testcase name="A5 reconciliación IndexedDB real / respuesta duplicada y descargas repetidas no duplican descuento"></testcase><testcase name="A5 reconciliación IndexedDB real / conexión interrumpida conserva cola y al reconectar progresa 125"><failure>Expected false to be true.
+    at &lt;Jasmine>
+    at http://localhost:9876/base/src/app/core/services/offline.service.spec.ts:80:120
+    at Generator.next (&lt;anonymous>)
+    at fulfilled (http://localhost:9876/base/chunk-W3XWTTQK.js:75:24)
+    at _ZoneDelegate.invoke (http://localhost:9876/implementation-a3/web-checks/node_modules/zone.js/fesm2015/zone.js:398:28)</failure></testcase><testcase name="A5 reconciliación IndexedDB real / pendiente solo cambia a confirmada con respuesta explícita"></testcase></testsuite>

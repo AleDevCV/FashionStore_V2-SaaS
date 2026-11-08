@@ -1,0 +1,7 @@
+{
+  "source": "Observed first runtime tool output; not a raw test log",
+  "passed": 1,
+  "failed": 1,
+  "cause": "Flutter Test installed default HTTP override returning 400; no requests reached the ephemeral API",
+  "resolution": "Reset HttpOverrides.global inside loopback-only integration test; next actual HTTP run passed 2/2"
+}

@@ -1,0 +1,9 @@
+{"protocolVersion":"0.1.1","runnerVersion":null,"pid":19176,"type":"start","time":0}
+{"suite":{"id":0,"platform":"vm","path":"C:/Users/Klara/Documents/Codex/2026-11-06/https-github-com-aledevcv-fashionstore-v2/work/implementation-a5/mobile-checks/integration/offline_reconciliation_http_test.dart"},"type":"suite","time":0}
+{"test":{"id":1,"name":"loading C:/Users/Klara/Documents/Codex/2026-11-06/https-github-com-aledevcv-fashionstore-v2/work/implementation-a5/mobile-checks/integration/offline_reconciliation_http_test.dart","suiteID":0,"groupIDs":[],"metadata":{"skip":false,"skipReason":null},"line":null,"column":null,"url":null},"type":"testStart","time":0}
+{"count":1,"time":3,"type":"allSuites"}
+{"testID":1,"result":"success","skipped":false,"hidden":true,"type":"testDone","time":5772}
+{"group":{"id":2,"suiteID":0,"parentID":null,"name":"","metadata":{"skip":false,"skipReason":null},"testCount":1,"line":null,"column":null,"url":null},"type":"group","time":5773}
+{"test":{"id":3,"name":"A5 HTTP SQLite: 125 resultados, otra sucursal, reapertura y repetición sin pérdida","suiteID":0,"groupIDs":[2],"metadata":{"skip":false,"skipReason":null},"line":13,"column":2,"url":"file:///C:/Users/Klara/Documents/Codex/2026-11-06/https-github-com-aledevcv-fashionstore-v2/work/implementation-a5/mobile-checks/integration/offline_reconciliation_http_test.dart"},"type":"testStart","time":5774}
+{"testID":3,"result":"success","skipped":false,"hidden":false,"type":"testDone","time":6228}
+{"success":true,"type":"done","time":6246}

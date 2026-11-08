@@ -1,0 +1,7 @@
+{
+  "command": "flutter pub get",
+  "exit_code": 0,
+  "stage": "permission-pin",
+  "log": "permission-pin.log",
+  "finished_utc": "2026-11-07T17:31:04.664425+00:00"
+}

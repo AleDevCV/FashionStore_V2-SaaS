@@ -1,0 +1,29 @@
+{
+  "ephemeral_database_only": true,
+  "results": [
+    {
+      "tenant": 4,
+      "sales": 1,
+      "reservations": 1,
+      "sync_operations": 2,
+      "movements": 1,
+      "physical_stock": 4,
+      "held": 1,
+      "UUIDs": [
+        "ad7bda2a-7324-4446-aab5-180c9754a514",
+        "fd698bb3-b528-4353-bca0-418e38b17025"
+      ]
+    },
+    {
+      "tenant": 5,
+      "sales": 0,
+      "reservations": 0,
+      "sync_operations": 0,
+      "movements": 0,
+      "physical_stock": 5,
+      "held": 0,
+      "UUIDs": []
+    }
+  ],
+  "no_duplicates_after_three_submissions": true
+}

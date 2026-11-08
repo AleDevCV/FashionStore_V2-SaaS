@@ -1,0 +1,82 @@
+{
+  "timestamp": "2026-11-07T16:42:39.382187-04:00",
+  "ADB_detected": 0,
+  "devices": [],
+  "APK_hash_verified": true,
+  "package_expected": "com.fashionstore.fashionstore_mobile.p2",
+  "APK_version": 1,
+  "signing_certificate_expected": "35930069a1ca21a3b4643f3d5f44d221a48ddb3e4f20bd0d6ab12b2de561e1ea",
+  "installed_package_verified": false,
+  "signature_compatibility_verified": false,
+  "install_executed": false,
+  "ephemeral_backend": {
+    "name": "fashionstore-a4-runtime",
+    "id": "b3d2feed7bd2e8bb8a15a02ef9c22b7441a3f8d9c2ca72b7e52d6489e3ef8207",
+    "image": "sha256:cf76bebff7a472c34b83872845380d3c933fc36d8793259775e244280e81eea0",
+    "url": "http://127.0.0.1:18084",
+    "health": 200,
+    "network": "fashionstore_a4_test_default",
+    "database": "fashionstore_p2_test",
+    "storage": "tmpfs",
+    "persistent_volumes": false
+  },
+  "demonstration_before": {
+    "api": {
+      "id": "8d607b7b4cafa0071a7d4382066d91d4e31865b7d550f3a80f13fc5b6d8a05c9",
+      "image": "sha256:cf76bebff7a472c34b83872845380d3c933fc36d8793259775e244280e81eea0",
+      "started": "2026-11-07T16:17:24.026443576Z",
+      "mounts": [
+        {
+          "Type": "volume",
+          "Name": "fashionstore_examen_si2_p2_catalog_images",
+          "Source": "/var/lib/docker/volumes/fashionstore_examen_si2_p2_catalog_images/_data",
+          "Destination": "/app/static/catalog-images",
+          "Driver": "local",
+          "Mode": "rw",
+          "RW": true,
+          "Propagation": ""
+        },
+        {
+          "Type": "volume",
+          "Name": "fashionstore_examen_si2_p2_documents",
+          "Source": "/var/lib/docker/volumes/fashionstore_examen_si2_p2_documents/_data",
+          "Destination": "/app/static/comprobantes",
+          "Driver": "local",
+          "Mode": "rw",
+          "RW": true,
+          "Propagation": ""
+        }
+      ]
+    },
+    "web": {
+      "id": "f0635973fa3207883414495aa3274c8506e1f6451b661c4c3af7cefb0b370b0d",
+      "image": "sha256:00e5826ce995aa25c9cfc6eb7fb1c302cfc7ffe62d52931ea2d10b2235de3c0f",
+      "started": "2026-11-07T16:17:29.758241639Z",
+      "mounts": []
+    },
+    "db": {
+      "id": "931d39a156084ffdf497c51d618dd144f228abcd8ab714fbb43e042019c9544e",
+      "image": "sha256:cf78e76683b9ca8c5733cbbdce6c9262b45b6767934dd0a95e671f9a0fc20685",
+      "started": "2026-11-07T14:27:45.881082767Z",
+      "mounts": [
+        {
+          "Type": "volume",
+          "Name": "fashionstore_examen_si2_p2_database",
+          "Source": "/var/lib/docker/volumes/fashionstore_examen_si2_p2_database/_data",
+          "Destination": "/var/lib/postgresql/data",
+          "Driver": "local",
+          "Mode": "rw",
+          "RW": true,
+          "Propagation": ""
+        }
+      ]
+    },
+    "mailpit": {
+      "id": "b62b88893ed331ef13f1241498278fee895e3f90eeb464a7bad7b54fa1c013b6",
+      "image": "sha256:9b3a463be15354c0f0eba91697d80e3e0d8a5623ef0e627cacc836bc17fd5231",
+      "started": "2026-11-07T14:27:45.876151749Z",
+      "mounts": []
+    }
+  },
+  "manual_cases_executed": 0
+}

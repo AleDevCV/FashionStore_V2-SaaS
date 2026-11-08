@@ -1,0 +1,11 @@
+{
+  "project": "fashionstore_a5_test",
+  "database": "fashionstore_p2_test",
+  "tmpfs": true,
+  "no_persistent_volumes": true,
+  "runtime": "fashionstore-a5-runtime",
+  "API": "http://127.0.0.1:18085",
+  "image": "sha256:cf76bebff7a472c34b83872845380d3c933fc36d8793259775e244280e81eea0",
+  "same_as_A3_active": true,
+  "production_used": false
+}

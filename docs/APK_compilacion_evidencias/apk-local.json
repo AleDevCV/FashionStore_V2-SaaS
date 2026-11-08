@@ -1,0 +1,21 @@
+{
+  "kind": "local",
+  "file": "C:\\Users\\Klara\\Documents\\Codex\\2026-11-06\\https-github-com-aledevcv-fashionstore-v2\\outputs\\APK_FashionStore_A4\\FashionStore-P2-A4-local-debug.apk",
+  "bytes": 197649091,
+  "sha256": "721eb810e8742a842c0af9882d253b53a3a7707960c970eba8901b947b0a9326",
+  "signature_verified": true,
+  "zip_verified": true,
+  "application_id": "com.fashionstore.fashionstore_mobile.p2",
+  "version_code": 1,
+  "version_name": "0.1.0",
+  "minSdk": 24,
+  "targetSdk": 36,
+  "debuggable": true,
+  "ABIs": [
+    "arm64-v8a",
+    "armeabi-v7a",
+    "x86_64"
+  ],
+  "API_BASE_URL": "http://127.0.0.1:8002",
+  "WEB_BASE_URL": "http://127.0.0.1:8082"
+}

@@ -1,0 +1,1 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="0" skipped="0" tests="1" time="1.001" timestamp="2026-11-07T22:31:52.817837+00:00" hostname="908e1133ab77"><testcase classname="test_prepare_a4_regression" name="test_prepare_a4_regression" time="0.854" /></testsuite></testsuites>

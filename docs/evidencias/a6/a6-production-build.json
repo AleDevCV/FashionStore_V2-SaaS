@@ -1,0 +1,13 @@
+{
+  "command": "ng build --configuration production",
+  "exit_code": 0,
+  "status": "Application bundle generation complete",
+  "build_time_seconds": 9.239,
+  "initial_total_raw_kb": 319.65,
+  "initial_total_transfer_kb": 89.41,
+  "warnings": [
+    "Module 'retry' used by p-retry is not ESM (preexisting CommonJS warning)"
+  ],
+  "output_dir": "dist/fashionstore-web",
+  "state": "APROBADO"
+}

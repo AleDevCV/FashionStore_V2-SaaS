@@ -1,0 +1,14 @@
+{
+  "case_id": "A5-AND04",
+  "name": "Cierre forzado y reapertura f\u00edsica en Android con persistencia SQLite",
+  "app_stopped_pid": true,
+  "app_reopened_pid": "31790",
+  "screenshot": "02-a5-reopened.png",
+  "databases_preserved": 7,
+  "database_inspected": "fashionstore_p2_aHR0cDovLzEyNy4wLjAuMTo4MDAy_2_1.db",
+  "integrity": "ok",
+  "fk_errors": 0,
+  "total_operations_retained": 127,
+  "accounted_sales_retained": 75,
+  "state": "APROBADO"
+}

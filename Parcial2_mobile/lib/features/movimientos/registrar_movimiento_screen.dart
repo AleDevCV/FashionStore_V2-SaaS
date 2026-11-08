@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:uuid/uuid.dart';
 
 import '../../core/api_client.dart';
 import '../../core/theme.dart';
@@ -31,6 +32,8 @@ class _RegistrarMovimientoScreenState extends State<RegistrarMovimientoScreen> {
   List<VarianteOpcion> _variantes = [];
 
   int? _idSucursalSeleccionada;
+  int? _idSucursalDestino;
+  String? _operationId;
   int? _idVarianteSeleccionada;
   String _tipoSeleccionado = 'Entrada';
 
@@ -105,6 +108,7 @@ class _RegistrarMovimientoScreenState extends State<RegistrarMovimientoScreen> {
       final stock = await _servicio.consultarStock(
         idSucursal: suc,
         idVariantePrenda: varP,
+        disponible: _tipoSeleccionado == 'Traspaso',
       );
       if (!mounted) return;
       setState(() {
@@ -136,6 +140,7 @@ class _RegistrarMovimientoScreenState extends State<RegistrarMovimientoScreen> {
   }
 
   Future<void> _enviar() async {
+    if (_enviando) return;
     if (!(_formKey.currentState?.validate() ?? false)) return;
 
     if (_idSucursalSeleccionada == null || _idVarianteSeleccionada == null) {
@@ -158,15 +163,18 @@ class _RegistrarMovimientoScreenState extends State<RegistrarMovimientoScreen> {
         tipo: _tipoSeleccionado,
         cantidad: int.parse(_cantidadCtrl.text.trim()),
         motivo: _motivoCtrl.text.trim(),
+        idSucursalDestino: _tipoSeleccionado == 'Traspaso' ? _idSucursalDestino : null,
+        operationId: _tipoSeleccionado == 'Traspaso' ? (_operationId ??= const Uuid().v4()) : null,
       );
 
-      await _servicio.registrar(payload);
+      final resultado = await _servicio.registrar(payload);
 
       if (!mounted) return;
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
-          content: Text(
-              'Movimiento de $_tipoSeleccionado registrado exitosamente.'),
+          content: Text(resultado.traspaso != null
+              ? 'Traspaso confirmado: ${resultado.traspaso!.salida.sucursalNombre ?? 'Origen'} → ${resultado.traspaso!.entrada.sucursalNombre ?? 'Destino'}.'
+              : 'Movimiento de $_tipoSeleccionado registrado exitosamente.'),
           backgroundColor: fsEmerald,
         ),
       );
@@ -174,11 +182,12 @@ class _RegistrarMovimientoScreenState extends State<RegistrarMovimientoScreen> {
     } on ApiException catch (e) {
       if (!mounted) return;
       // Captura y traducción de la excepción PL/pgSQL
-      setState(() => _errorServidor = e.message);
+      setState(() => _errorServidor = e.message + (_tipoSeleccionado == 'Traspaso'
+          ? ' Reintenta sin cambiar los datos; antes de iniciar otro traspaso revisa el historial.' : ''));
     } catch (_) {
       if (!mounted) return;
       setState(() => _errorServidor =
-          'Error al contactar con el servidor. Verifique la conexión.');
+          'No se pudo confirmar la operación. Reintenta sin cambiar los datos y revisa el historial antes de iniciar otra.');
     } finally {
       if (mounted) setState(() => _enviando = false);
     }
@@ -289,7 +298,10 @@ class _RegistrarMovimientoScreenState extends State<RegistrarMovimientoScreen> {
                         );
                       }).toList(),
                       onChanged: (val) {
-                        setState(() => _idSucursalSeleccionada = val);
+                        setState(() {
+                          _idSucursalSeleccionada = val;
+                          if (_idSucursalDestino == val) _idSucursalDestino = null;
+                        });
                         _actualizarStockActual();
                       },
                       validator: (v) =>
@@ -298,6 +310,21 @@ class _RegistrarMovimientoScreenState extends State<RegistrarMovimientoScreen> {
                     const SizedBox(height: 16),
 
                     // Selector de Variante de Prenda
+                    if (_tipoSeleccionado == 'Traspaso') ...[
+                      DropdownButtonFormField<int>(
+                        key: ValueKey('destino-$_idSucursalSeleccionada'),
+                        initialValue: _idSucursalDestino,
+                        decoration: const InputDecoration(labelText:'Sucursal de destino'),
+                        items:_sucursales.where((s)=>s.idSucursal!=_idSucursalSeleccionada)
+                          .map((s)=>DropdownMenuItem<int>(value:s.idSucursal,child:Text(s.nombre))).toList(),
+                        onChanged:(value)=>setState(()=>_idSucursalDestino=value),
+                        validator:(value)=>value==null || value==_idSucursalSeleccionada
+                          ? 'Seleccione un destino distinto del origen.' : null,
+                      ),
+                      const SizedBox(height:8),
+                      const Text('Traspaso inmediato con conexión. Requiere autorización en ambas sucursales.'),
+                      const SizedBox(height:16),
+                    ],
                     DropdownButtonFormField<int>(
                       initialValue: _idVarianteSeleccionada,
                       decoration: const InputDecoration(
@@ -340,7 +367,7 @@ class _RegistrarMovimientoScreenState extends State<RegistrarMovimientoScreen> {
                             child: Text(
                               _consultandoStock
                                   ? 'Consultando stock disponible…'
-                                  : 'Stock disponible en sucursal: ${_stockActual ?? 0} uds.',
+                                  : '${_tipoSeleccionado == 'Traspaso' ? 'Disponible descontando reservas' : 'Existencias físicas'}: ${_stockActual ?? 0} uds.',
                               style: const TextStyle(
                                 fontSize: 13,
                                 fontWeight: FontWeight.w500,
@@ -375,7 +402,7 @@ class _RegistrarMovimientoScreenState extends State<RegistrarMovimientoScreen> {
                       onChanged: (val) {
                         if (val != null) {
                           setState(() => _tipoSeleccionado = val);
-                          _validarStockInteractivo();
+                          _actualizarStockActual();
                         }
                       },
                     ),

@@ -7,7 +7,7 @@ from app.services.auth_service import get_current_user
 from app.services import synchronization as sync
 from app.services.commerce import authorized_branch
 from app.tenant import require_context,authenticated_context
-from app.permissions import allowed,require_permission
+from app.permissions import require_permission
 
 router=APIRouter(tags=['Offline y sincronización'])
 
@@ -37,8 +37,8 @@ def synchronize(data:Batch,_=Depends(authenticated_context)):
 
 @router.get('/sincronizacion/operaciones/{operation_id}')
 def operation_result(operation_id:UUID,_=Depends(get_current_user),cur=Depends(get_db)):
-    cur.execute('SELECT author_id,result,resolved_at,resolution,compensation FROM operacion_sync WHERE operation_id=%s',(str(operation_id),));row=cur.fetchone()
-    if not row or (row['author_id']!=require_context().user_id and not allowed(cur,'conflictos.resolver')):raise HTTPException(404,'Operación no encontrada.')
+    cur.execute('SELECT tenant_id,author_id,branch_id,result,resolved_at,resolution,compensation FROM operacion_sync WHERE operation_id=%s',(str(operation_id),));row=cur.fetchone()
+    sync.require_operation_access(cur,row)
     return resolved_result(row)
 
 def resolved_result(row):
@@ -49,19 +49,25 @@ def resolved_result(row):
 @router.get('/conflictos')
 def conflicts(_=Depends(get_current_user),cur=Depends(get_db)):
     require_permission(cur,'conflictos.resolver')
-    cur.execute("SELECT operation_id,author_id,branch_id,kind,state,result,created_at,resolution,resolved_at FROM operacion_sync WHERE state IN ('EN_CONFLICTO','RECHAZADA') ORDER BY created_at DESC LIMIT 100");return cur.fetchall()
+    ctx=require_context()
+    cur.execute("""SELECT operation_id,author_id,branch_id,kind,state,result,created_at,resolution,resolved_at
+    FROM operacion_sync o WHERE state IN ('EN_CONFLICTO','RECHAZADA')
+    AND tenant_id=%s AND (author_id=%s OR %s OR EXISTS(
+        SELECT 1 FROM usuario_sucursal us WHERE us.tenant_id=o.tenant_id
+        AND us.id_usuario=%s AND us.id_sucursal=o.branch_id))
+    ORDER BY created_at DESC LIMIT 100""",(ctx.tenant_id,ctx.user_id,ctx.role=='Administrador' and not ctx.platform,ctx.user_id));return cur.fetchall()
 
 @router.post('/conflictos/{operation_id}/compensar')
 def compensate(operation_id:UUID,data:Resolution,_=Depends(get_current_user),cur=Depends(get_db)):
     require_permission(cur,'conflictos.resolver')
     cur.execute('SELECT * FROM operacion_sync WHERE operation_id=%s FOR UPDATE',(str(operation_id),));row=cur.fetchone()
-    if not row:raise HTTPException(404,'Operación no encontrada.')
+    sync.require_operation_access(cur,row)
+    if row['branch_id'] is not None:authorized_branch(cur,row['branch_id'])
     if row['state']=='CONFIRMADA':raise HTTPException(409,'Una operación confirmada se corrige mediante cambio o devolución.')
     if row['resolved_at'] is not None:raise HTTPException(409,'El conflicto ya fue resuelto.')
     from decimal import Decimal
     required=Decimal(str(row['envelope'].get('cash_received') or 0)) if row['kind']=='venta' else Decimal(0)
     if data.compensacion!=required:raise HTTPException(422,'La compensación debe restituir íntegramente el efectivo registrado; una reserva no tiene efectivo recibido.')
-    if row['branch_id'] is not None:authorized_branch(cur,row['branch_id'])
     cur.execute('UPDATE operacion_sync SET resolved_by=%s,resolution=%s,compensation=%s,resolved_at=now() WHERE operation_id=%s',(require_context().user_id,data.motivo,data.compensacion,str(operation_id)))
     cur.execute("INSERT INTO bitacora(id_usuario,accion,tabla_afectada,detalle) VALUES(%s,'COMPENSAR','operacion_sync',%s)",(require_context().user_id,str(operation_id)))
     return {'operation_id':operation_id,'resuelto':True,'compensacion':data.compensacion}

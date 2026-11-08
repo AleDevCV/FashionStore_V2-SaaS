@@ -1,0 +1,454 @@
+{
+  "phase": "A4 implemented and verified; mobile distribution pending",
+  "verified_at_utc": "2026-11-07T17:18:27.540316+00:00",
+  "approved_policy": {
+    "aliases": [
+      "https://fashionstore-v2.aledevcv.me",
+      "https://fashionstore.aledevcv.me"
+    ],
+    "deployment_id": "fashionstore-main",
+    "read_only_sources": true,
+    "atomic_additive_recovery": true,
+    "stop_on_new_UUID_divergence": true,
+    "renew_catalog_before_new_captures": true
+  },
+  "Flutter_final": {
+    "standard_suite": 48,
+    "real_HTTP_integration": 2,
+    "legacy_acceptance": 1,
+    "passed": 51,
+    "failed": 0,
+    "skipped": 0
+  },
+  "before_fix": {
+    "executed": 28,
+    "passed": 27,
+    "failed_acceptance": 1
+  },
+  "pending_manual_cases": 1,
+  "static_analysis": "No issues found",
+  "file_changes": [
+    {
+      "file": "C:\\Examen si2 FASHIONSTORE\\Parcial2_mobile\\lib\\core\\config.dart",
+      "change": "modified",
+      "sha256": "edb0db0013525ed6e5a4de11713d81817840068168d8b2a21835bb326d8afdb7"
+    },
+    {
+      "file": "C:\\Examen si2 FASHIONSTORE\\Parcial2_mobile\\lib\\features\\offline\\local_database.dart",
+      "change": "modified",
+      "sha256": "5e1165d3b50128156af31488ae82ad07d66183bbc7eaad8989da062b4e96cf42"
+    },
+    {
+      "file": "C:\\Examen si2 FASHIONSTORE\\Parcial2_mobile\\lib\\features\\offline\\offline_controller.dart",
+      "change": "modified",
+      "sha256": "82c58aa09e663d1930b71949b4cacdb3e759f39f3c78a0bce59ad55227240181"
+    },
+    {
+      "file": "C:\\Examen si2 FASHIONSTORE\\Parcial2_mobile\\lib\\features\\offline\\database_recovery.dart",
+      "change": "added",
+      "sha256": "e71083db1a043626174f5e66a0c673322790a43803c71cd53267117adb2af59c"
+    },
+    {
+      "file": "C:\\Examen si2 FASHIONSTORE\\Parcial2_mobile\\test\\database_recovery_test.dart",
+      "change": "added",
+      "sha256": "687813ac4d5d61f4eae0fc2db334a6a69689b9d4c12b7d8e7544d6cd6e5f563f"
+    },
+    {
+      "file": "C:\\Examen si2 FASHIONSTORE\\Parcial2_mobile\\test\\offline_recovery_controller_test.dart",
+      "change": "added",
+      "sha256": "492230c35754c7fdb4994dde275995c27bcdb6d442d769ce8db9b65e2aef7b11"
+    },
+    {
+      "file": "C:\\Examen si2 FASHIONSTORE\\Parcial2_mobile\\test\\fixtures\\offline_v1.dart",
+      "change": "added",
+      "sha256": "2bc4a0f6b1f22945a93c65288da7c61c8a40775dfd385035deb69baa9d67b12b"
+    },
+    {
+      "file": "C:\\Examen si2 FASHIONSTORE\\Parcial2_mobile\\integration\\offline_recovery_http_test.dart",
+      "change": "added",
+      "sha256": "8bef42816c6a0df698ed06acb418122fbb04a2d777bf4e815b58255194df8c6b"
+    },
+    {
+      "file": "C:\\Examen si2 FASHIONSTORE\\Parcial2_mobile\\integration\\offline_legacy_acceptance_test.dart",
+      "change": "added",
+      "sha256": "638181f1a471e2be616d708f43af080626b5058637a95b160d957ba97f259f15"
+    }
+  ],
+  "integrity": {
+    "A4_mobile_files": 9,
+    "modified": 3,
+    "added": 6,
+    "other_original_mobile_files_unchanged": 75,
+    "matches_isolated_tested_copy": true,
+    "dependency_manifests_unchanged": true,
+    "critical_backend_source_hashes_unchanged": 9,
+    "Docker_services_same_as_A3": 4,
+    "persistent_all_table_fingerprints_match_A3_closure": true,
+    "persistent_rows": 489,
+    "persistent_tables": 46,
+    "SQLite_devices_accessed": false,
+    "production_modified": false,
+    "APK_attempted": false,
+    "API_rebuilt": false,
+    "PostgreSQL_migrations_added_or_applied": false
+  },
+  "runtime_no_duplicates": {
+    "ephemeral_database_only": true,
+    "results": [
+      {
+        "tenant": 4,
+        "sales": 1,
+        "reservations": 1,
+        "sync_operations": 2,
+        "movements": 1,
+        "physical_stock": 4,
+        "held": 1,
+        "UUIDs": [
+          "ad7bda2a-7324-4446-aab5-180c9754a514",
+          "fd698bb3-b528-4353-bca0-418e38b17025"
+        ]
+      },
+      {
+        "tenant": 5,
+        "sales": 0,
+        "reservations": 0,
+        "sync_operations": 0,
+        "movements": 0,
+        "physical_stock": 5,
+        "held": 0,
+        "UUIDs": []
+      }
+    ],
+    "no_duplicates_after_three_submissions": true
+  },
+  "cases": [
+    {
+      "id": "CP-A4-001",
+      "scenario": "A4: solo los dos alias aprobados comparten identidad; otros orígenes quedan separados",
+      "input": "Dos HTTPS aprobados y cuatro orígenes diferentes",
+      "expected": "Compartir identidad exclusivamente entre los dos alias",
+      "obtained": "Solo el par aprobado comparte identidad",
+      "status": "APROBADO",
+      "evidence": "final.jsonl"
+    },
+    {
+      "id": "CP-A4-002",
+      "scenario": "A4: base canónica nueva se comparte en ambas direcciones entre alias",
+      "input": "Mismo perfil; abrir alias anterior, actual y anterior",
+      "expected": "Mismo archivo y UUID en ambas direcciones",
+      "obtained": "Contenido conservado en las tres aperturas",
+      "status": "APROBADO",
+      "evidence": "final.jsonl"
+    },
+    {
+      "id": "CP-A4-003",
+      "scenario": "A4: recupera v1, mantiene sucursales UUID device y detalles; fuente idéntica",
+      "input": "Cuatro operaciones v1 de dos sucursales",
+      "expected": "Copiar cabeceras/detalles/UUID/device sin tocar fuente",
+      "obtained": "4 operaciones y 4 detalles; bytes originales iguales",
+      "status": "APROBADO",
+      "evidence": "final.jsonl"
+    },
+    {
+      "id": "CP-A4-004",
+      "scenario": "A4: une cuatro UUID antiguos y uno nuevo sin sumar stocks",
+      "input": "Base anterior con 4 UUID y actual con 1 distinto",
+      "expected": "Conservar los cinco; no sumar stock",
+      "obtained": "5 operaciones/5 detalles; stock de referencia 10",
+      "status": "APROBADO",
+      "evidence": "final.jsonl"
+    },
+    {
+      "id": "CP-A4-005",
+      "scenario": "A4: solo el archivo del hostname actual también se recupera",
+      "input": "Dos operaciones solo en el hostname actual",
+      "expected": "Recuperarlas también al abrir el alias anterior",
+      "obtained": "Dos wire idénticos recuperados",
+      "status": "APROBADO",
+      "evidence": "final.jsonl"
+    },
+    {
+      "id": "CP-A4-006",
+      "scenario": "A4: UUID idénticos en las dos fuentes no duplican cabecera ni detalles",
+      "input": "Dos bases copias con dos UUID idénticos",
+      "expected": "Una cabecera y detalle por UUID",
+      "obtained": "2 operaciones y 2 detalles",
+      "status": "APROBADO",
+      "evidence": "final.jsonl"
+    },
+    {
+      "id": "CP-A4-007",
+      "scenario": "A4 controlador: recuperación fallida no abre cola ni programa envíos",
+      "input": "Opener lanza error; cliente HTTP registra llamadas",
+      "expected": "No habilitar cola ni enviar",
+      "obtained": "local nulo y 0 solicitudes",
+      "status": "APROBADO",
+      "evidence": "final.jsonl"
+    },
+    {
+      "id": "CP-A4-008",
+      "scenario": "A4: UUID con envelope divergente revierte toda la importación",
+      "input": "Mismo UUID, efectivo del envelope modificado",
+      "expected": "Rechazar y revertir toda la recuperación",
+      "obtained": "Error explícito; destino sin operaciones ni marcador",
+      "status": "APROBADO",
+      "evidence": "final.jsonl"
+    },
+    {
+      "id": "CP-A4-009",
+      "scenario": "A4: UUID con detail divergente revierte toda la importación",
+      "input": "Mismo UUID, cantidad de detalle diferente",
+      "expected": "Rechazar sin escoger un contenido",
+      "obtained": "Rollback completo del destino",
+      "status": "APROBADO",
+      "evidence": "final.jsonl"
+    },
+    {
+      "id": "CP-A4-010",
+      "scenario": "A4 controlador: refresh conserva historial y desactiva captura hasta renovar catálogo",
+      "input": "Una operación recuperada y catálogo con permiso vigente",
+      "expected": "Mostrar historial; bloquear captura hasta renovar",
+      "obtained": "Historial 1; validLease false, después true",
+      "status": "APROBADO",
+      "evidence": "final.jsonl"
+    },
+    {
+      "id": "CP-A4-011",
+      "scenario": "A4: UUID con state divergente revierte toda la importación",
+      "input": "Mismo UUID, PENDIENTE frente a CONFIRMADA",
+      "expected": "Detener sin escoger estado",
+      "obtained": "Rollback completo del destino",
+      "status": "APROBADO",
+      "evidence": "final.jsonl"
+    },
+    {
+      "id": "CP-A4-012",
+      "scenario": "A4: rechaza envelope con tenant_id ajeno sin exponer operaciones",
+      "input": "Envelope con tenant_id=999",
+      "expected": "No importar ni exponer otra empresa",
+      "obtained": "StateError y recuperación detenida",
+      "status": "APROBADO",
+      "evidence": "final.jsonl"
+    },
+    {
+      "id": "CP-A4-013",
+      "scenario": "A4: rechaza envelope con author_id ajeno sin exponer operaciones",
+      "input": "Envelope con author_id=999",
+      "expected": "No importar otro autor",
+      "obtained": "StateError y recuperación detenida",
+      "status": "APROBADO",
+      "evidence": "final.jsonl"
+    },
+    {
+      "id": "CP-A4-014",
+      "scenario": "A4: rechaza envelope con branch_id ajeno sin exponer operaciones",
+      "input": "Envelope con branch_id=999 distinto de cabecera",
+      "expected": "Rechazar identidad/referencias incompatibles",
+      "obtained": "StateError y recuperación detenida",
+      "status": "APROBADO",
+      "evidence": "final.jsonl"
+    },
+    {
+      "id": "CP-A4-015",
+      "scenario": "A4: snapshot de otra cuenta se rechaza aunque el envelope sea propio",
+      "input": "Snapshot de usuario 12 en archivo 7:11",
+      "expected": "Bloquear datos de perfil distinto",
+      "obtained": "Recuperación rechazada",
+      "status": "APROBADO",
+      "evidence": "final.jsonl"
+    },
+    {
+      "id": "CP-A4-016",
+      "scenario": "A4: no recupera bases de otra empresa ni de otro usuario",
+      "input": "Abrir perfiles 8:11 y 7:12 con datos previos de 7:11",
+      "expected": "No abrir/exponer la cola ajena",
+      "obtained": "Ambos historiales y snapshots vacíos",
+      "status": "APROBADO",
+      "evidence": "final.jsonl"
+    },
+    {
+      "id": "CP-A4-017",
+      "scenario": "A4: namespace inválido no abre base",
+      "input": "Namespace ../7:11",
+      "expected": "Rechazar antes de crear archivos",
+      "obtained": "StateError; directorio sin archivos",
+      "status": "APROBADO",
+      "evidence": "final.jsonl"
+    },
+    {
+      "id": "CP-A4-018",
+      "scenario": "A4: host local mantiene su archivo existente sin importar cola HTTPS",
+      "input": "Colas separadas localhost y HTTPS",
+      "expected": "Conservar archivo local y no importar HTTPS",
+      "obtained": "Solo los dos UUID locales; sin flag de recuperación",
+      "status": "APROBADO",
+      "evidence": "final.jsonl"
+    },
+    {
+      "id": "CP-A4-019",
+      "scenario": "A4: no migra mientras la fuente tenga un bloqueo vigente",
+      "input": "sync_lock futuro; luego se simula vencimiento",
+      "expected": "Detener mientras esté activo; importar al vencer",
+      "obtained": "Primero error; después 2 operaciones",
+      "status": "APROBADO",
+      "evidence": "final.jsonl"
+    },
+    {
+      "id": "CP-A4-020",
+      "scenario": "A4: ENVIANDO se recupera después de expirar lock sin alterar wire ni intentos",
+      "input": "Dos ENVIANDO, attempts=3 y sin lock vigente",
+      "expected": "PENDIENTE en destino sin cambiar fuente/wire",
+      "obtained": "Intentos 3; fuente sigue ENVIANDO; UUID iguales",
+      "status": "APROBADO",
+      "evidence": "final.jsonl"
+    },
+    {
+      "id": "CP-A4-021",
+      "scenario": "A4: reabrir no duplica ni degrada CONFIRMADA a PENDIENTE antigua",
+      "input": "Resultado canónico confirmado y fuentes PENDIENTE sin cambios",
+      "expected": "Conservar resultado tras tres reaperturas",
+      "obtained": "Filas y wire iguales; no degradación de estado",
+      "status": "APROBADO",
+      "evidence": "final.jsonl"
+    },
+    {
+      "id": "CP-A4-022",
+      "scenario": "A4: cambio tardío de estado en fuente importada no reemplaza resultado canónico",
+      "input": "Fuente ya importada cambia su estado a RECHAZADA",
+      "expected": "Bloquear la nueva divergencia",
+      "obtained": "Error; no sustituye resultado canónico",
+      "status": "APROBADO",
+      "evidence": "final.jsonl"
+    },
+    {
+      "id": "CP-A4-023",
+      "scenario": "A4: referencias y enlace de revisión se conservan",
+      "input": "Operación original en conflicto y revisión enlazada",
+      "expected": "Conservar original, resolved, detalle y vínculo",
+      "obtained": "3 cabeceras y sus detalles iguales; FK válidas",
+      "status": "APROBADO",
+      "evidence": "final.jsonl"
+    },
+    {
+      "id": "CP-A4-024",
+      "scenario": "A4: exige catálogo fresco para capturas y mantiene wire de pendientes",
+      "input": "Captura antes de renovar; snapshot ajeno; renovación propia",
+      "expected": "Bloquear primeras dos acciones y permitir captura con catálogo nuevo",
+      "obtained": "Flag conserva hasta descarga válida; luego 3 operaciones",
+      "status": "APROBADO",
+      "evidence": "final.jsonl"
+    },
+    {
+      "id": "CP-A4-025",
+      "scenario": "A4: error SQL real revierte fuentes completas y conserva base canónica previa",
+      "input": "Trigger de fallo durante segundo origen; destino previo con una operación",
+      "expected": "Rollback de ambas fuentes y marcadores; reintento posterior único",
+      "obtained": "Destino previo idéntico; después 4 operaciones",
+      "status": "APROBADO",
+      "evidence": "final.jsonl"
+    },
+    {
+      "id": "CP-A4-026",
+      "scenario": "A4: fuente corrupta provoca rollback de la otra fuente válida",
+      "input": "Un origen válido y otro archivo no SQLite",
+      "expected": "Revertir también el primer origen",
+      "obtained": "Destino sin operaciones",
+      "status": "APROBADO",
+      "evidence": "final.jsonl"
+    },
+    {
+      "id": "CP-A4-027",
+      "scenario": "A4: FK huérfana en fuente se conserva y bloquea recuperación",
+      "input": "Detalle sin cabecera en origen",
+      "expected": "Rechazar sin eliminar ni reparar silenciosamente",
+      "obtained": "Recuperación detenida",
+      "status": "APROBADO",
+      "evidence": "final.jsonl"
+    },
+    {
+      "id": "CP-A4-028",
+      "scenario": "A4: identidad canónica ajena se rechaza",
+      "input": "Meta de destino con namespace distinto",
+      "expected": "Bloquear acceso al archivo incompatible",
+      "obtained": "Recuperación detenida",
+      "status": "APROBADO",
+      "evidence": "final.jsonl"
+    },
+    {
+      "id": "CP-A4-029",
+      "scenario": "A4: variante con producto incompatible entre fuentes revierte importación",
+      "input": "Mismo ID de variante, producto diferente en la otra fuente",
+      "expected": "Rechazar referencias incompatibles",
+      "obtained": "Rollback completo",
+      "status": "APROBADO",
+      "evidence": "final.jsonl"
+    },
+    {
+      "id": "CP-A4-030",
+      "scenario": "A4: versión de fuente desconocida no se migra silenciosamente",
+      "input": "PRAGMA user_version=2 en fuente v1",
+      "expected": "No migrar una versión desconocida",
+      "obtained": "Error explícito; archivo conservado",
+      "status": "APROBADO",
+      "evidence": "final.jsonl"
+    },
+    {
+      "id": "CP-A4-031",
+      "scenario": "A4: falta real de páginas SQLite revierte importación y conserva fuentes",
+      "input": "max_page_count limitado y producto de 500000 caracteres",
+      "expected": "Fallar y revertir sin cambiar destino ni fuente",
+      "obtained": "Snapshots destino y bytes fuente idénticos",
+      "status": "APROBADO",
+      "evidence": "final.jsonl"
+    },
+    {
+      "id": "CP-A4-032",
+      "scenario": "A4: aperturas concurrentes de ambos alias importan cada UUID una sola vez",
+      "input": "Abrir ambos alias simultáneamente sobre el mismo destino",
+      "expected": "Serializar importación y no duplicar UUID",
+      "obtained": "Ambas aperturas muestran 2 operaciones/2 detalles",
+      "status": "APROBADO",
+      "evidence": "final.jsonl"
+    },
+    {
+      "id": "CP-A4-033",
+      "scenario": "A4 HTTP: recupera SQLite real, reenvía respuesta perdida y conserva UUID sin duplicar",
+      "input": "SQLite v1 con venta/reserva; respuesta perdida y tres envíos reales",
+      "expected": "Una venta y una reserva centrales, mismos UUID",
+      "obtained": "2 sync; 1 venta; 1 reserva; 1 movimiento; stock 4; retención 1",
+      "status": "APROBADO",
+      "evidence": "runtime.jsonl"
+    },
+    {
+      "id": "CP-A4-034",
+      "scenario": "A4 HTTP: sesión de la segunda empresa abre otra base sin historial ajeno",
+      "input": "Sesión real de prueba de la segunda empresa",
+      "expected": "No exponer la SQLite de la primera empresa",
+      "obtained": "Historial vacío; snapshot nulo; sin escrituras comerciales ajenas",
+      "status": "APROBADO",
+      "evidence": "runtime.jsonl"
+    },
+    {
+      "id": "CP-A4-035",
+      "scenario": "A4 aceptación posterior: recupera los cinco UUID de los archivos del diagnóstico sin alterar originales",
+      "input": "Copias de ambos archivos del diagnóstico, con 4+1 UUID",
+      "expected": "Recuperar cinco y abrir desde ambos alias",
+      "obtained": "5 wire y 5 detalles; archivos originales idénticos",
+      "status": "APROBADO",
+      "evidence": "acceptance.jsonl"
+    }
+  ],
+  "activation": {
+    "mobile_client_distribution": "pending",
+    "device_acceptance": "pending",
+    "Docker_rebuild_required": false,
+    "PostgreSQL_migration_required": false,
+    "APK_attempted": false
+  },
+  "limitations": [
+    "Real Android/iOS upgrade, native Secure Storage and native SQLite plugin were not executed; desktop SQLite FFI and mocked Secure Storage were used.",
+    "Sources with divergent UUID data/states, incompatible identity, corruption or active lock are preserved and blocked for review.",
+    "Only the approved two HTTPS hostnames share storage; other URLs intentionally remain separate.",
+    "No backend full regression was rerun for this mobile-only change; hashes, live local images, previous data and real affected HTTP flow were verified."
+  ]
+}

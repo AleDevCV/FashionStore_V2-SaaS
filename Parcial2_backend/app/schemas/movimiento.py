@@ -9,7 +9,9 @@ Entrada, Salida y Traspaso.
 """
 
 from datetime import datetime
-from pydantic import BaseModel, ConfigDict, Field
+from typing import Literal
+from uuid import UUID
+from pydantic import BaseModel, ConfigDict, Field, field_validator, model_validator
 
 
 class MovimientoCrear(BaseModel):
@@ -41,6 +43,29 @@ class MovimientoCrear(BaseModel):
         max_length=255,
         description="Motivo o justificación del movimiento en kardex",
     )
+    id_sucursal_destino: int | None = Field(default=None, gt=0, description='Destino obligatorio y distinto para Traspaso.')
+    operation_id: UUID | None = Field(default=None, description='UUID obligatorio para Traspaso; reutilizarlo en reintentos idénticos.')
+
+    @field_validator('cantidad', mode='before')
+    @classmethod
+    def cantidad_entera_traspaso(cls, value, info):
+        if info.data.get('tipo') == 'Traspaso' and (isinstance(value, bool) or not isinstance(value, int)):
+            raise ValueError('La cantidad de traspaso debe ser un entero positivo.')
+        return value
+
+    @model_validator(mode='after')
+    def validar_traspaso(self):
+        if self.tipo == 'Traspaso':
+            if self.id_sucursal_destino is None or self.operation_id is None:
+                raise ValueError('Traspaso requiere sucursal de destino y UUID operation_id.')
+            if self.id_sucursal_destino == self.id_sucursal:
+                raise ValueError('Origen y destino deben ser sucursales distintas.')
+            if self.cantidad > 2147483647:
+                raise ValueError('La cantidad excede el rango de inventario.')
+            self.motivo = self.motivo.strip()
+            if len(self.motivo) < 3:
+                raise ValueError('Indique un motivo válido para el traspaso.')
+        return self
 
 
 MovimientoInventarioCrear = MovimientoCrear
@@ -69,6 +94,30 @@ class MovimientoRespuesta(BaseModel):
 
 
 MovimientoInventarioRespuesta = MovimientoRespuesta
+
+
+class MovimientoVinculadoRespuesta(MovimientoRespuesta):
+    """Pata física de un traspaso visible en ambas sucursales autorizadas."""
+    operation_id: UUID
+    id_sucursal_origen: int
+    id_sucursal_destino: int
+    id_movimiento_salida: int
+    id_movimiento_entrada: int
+
+
+class TraspasoRespuesta(BaseModel):
+    """Operación lógica online; las patas conservan sus tipos Salida/Entrada."""
+    tipo: Literal['Traspaso'] = 'Traspaso'
+    operation_id: UUID
+    id_sucursal_origen: int
+    id_sucursal_destino: int
+    id_variante_prenda: int
+    cantidad: int
+    motivo: str
+    id_usuario: int
+    fecha: datetime
+    movimiento_salida: MovimientoRespuesta
+    movimiento_entrada: MovimientoRespuesta
 
 
 class MovimientoFiltro(BaseModel):

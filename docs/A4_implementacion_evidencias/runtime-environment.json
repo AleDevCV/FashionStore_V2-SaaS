@@ -1,0 +1,1 @@
+{"image": "sha256:cf76bebff7a472c34b83872845380d3c933fc36d8793259775e244280e81eea0", "same_as_A3": true, "project": "fashionstore_a4_test", "database": "fashionstore_p2_test", "tmpfs": true, "port": "127.0.0.1:18084", "persistent_volumes": false}

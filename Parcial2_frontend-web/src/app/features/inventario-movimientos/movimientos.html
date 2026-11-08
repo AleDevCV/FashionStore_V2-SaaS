@@ -44,7 +44,7 @@
         <option value="">Todos los tipos</option>
         <option value="Entrada">Entrada (+)</option>
         <option value="Salida">Salida (-)</option>
-        <option value="Traspaso">Traspaso (-)</option>
+        <option value="Traspaso">Traspasos vinculados e históricos</option>
       </select>
     </div>
   </div>
@@ -97,16 +97,16 @@
                   [class.fs-badge--inactivo]="mov.tipo === 'Salida'"
                   [class.fs-badge--oro]="mov.tipo === 'Traspaso'"
                 >
-                  {{ mov.tipo }}
+                  {{ mov.tipo === 'Traspaso' ? 'Traspaso histórico' : mov.tipo }}{{ mov.operation_id ? ' · Traspaso' : '' }}
                 </span>
               </td>
               <td class="movimientos__col-cant">
                 <span
                   class="movimientos__cant"
                   [class.movimientos__cant--pos]="mov.tipo === 'Entrada'"
-                  [class.movimientos__cant--neg]="mov.tipo === 'Salida' || mov.tipo === 'Traspaso'"
+                  [class.movimientos__cant--neg]="mov.tipo === 'Salida'"
                 >
-                  {{ mov.tipo === 'Entrada' ? '+' : '-' }}{{ mov.cantidad }}
+                  {{ mov.tipo === 'Entrada' ? '+' : mov.tipo === 'Salida' ? '-' : '' }}{{ mov.cantidad }}
                 </span>
               </td>
               <td class="movimientos__motivo">{{ mov.motivo }}</td>

@@ -1,0 +1,18 @@
+{
+  "A4_mobile_files": 9,
+  "modified": 3,
+  "added": 6,
+  "other_original_mobile_files_unchanged": 75,
+  "matches_isolated_tested_copy": true,
+  "dependency_manifests_unchanged": true,
+  "critical_backend_source_hashes_unchanged": 9,
+  "Docker_services_same_as_A3": 4,
+  "persistent_all_table_fingerprints_match_A3_closure": true,
+  "persistent_rows": 489,
+  "persistent_tables": 46,
+  "SQLite_devices_accessed": false,
+  "production_modified": false,
+  "APK_attempted": false,
+  "API_rebuilt": false,
+  "PostgreSQL_migrations_added_or_applied": false
+}

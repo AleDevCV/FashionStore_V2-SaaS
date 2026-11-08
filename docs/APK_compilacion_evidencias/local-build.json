@@ -1,0 +1,7 @@
+{
+  "command": "flutter build apk --debug --no-pub --dart-define=API_BASE_URL=http://127.0.0.1:8002 --dart-define=WEB_BASE_URL=http://127.0.0.1:8082",
+  "exit_code": 0,
+  "stage": "local-build",
+  "log": "local-build.log",
+  "finished_utc": "2026-11-07T20:22:42.917249+00:00"
+}

@@ -16,13 +16,22 @@ from app.database import get_db
 from app.schemas.movimiento import (
     MovimientoCrear,
     MovimientoRespuesta,
+    MovimientoVinculadoRespuesta,
+    TraspasoRespuesta,
     StockRespuesta,
 )
 from app.services import movimiento_service as svc
-from app.services.auth_service import get_current_user
+from app.services.auth_service import get_current_user, requiere_rol, esquema_bearer
 from app.services.bitacora_service import obtener_ip_cliente
 
 router = APIRouter(tags=["Movimientos de Inventario (CU11)"])
+
+puede_gestionar = requiere_rol(["Administrador", "Encargado de Sucursal"])
+
+
+def usuario_movimiento(credenciales=Depends(esquema_bearer), cursor=Depends(get_db, scope='function')):
+    """Reutiliza C1 y autenticación con el mismo cursor que confirma el negocio."""
+    return puede_gestionar(get_current_user(credenciales, cursor))
 
 
 # -----------------------------------------------------------------------------
@@ -43,6 +52,7 @@ router = APIRouter(tags=["Movimientos de Inventario (CU11)"])
 def consultar_stock(
     id_sucursal: int = Query(..., gt=0, description="ID de la sucursal"),
     id_variante_prenda: int = Query(..., gt=0, description="ID de la variante de prenda"),
+    disponible: bool = Query(default=False, description='Si true, resta retenciones vigentes; por defecto conserva stock físico.'),
     cursor=Depends(get_db),
     usuario=Depends(get_current_user),
 ):
@@ -51,6 +61,7 @@ def consultar_stock(
         cursor=cursor,
         id_sucursal=id_sucursal,
         id_variante_prenda=id_variante_prenda,
+        disponible=disponible,
     )
 
 
@@ -60,38 +71,38 @@ def consultar_stock(
 
 @router.post(
     "/movimientos-inventario/",
-    response_model=MovimientoRespuesta,
+    response_model=TraspasoRespuesta | MovimientoRespuesta,
     status_code=status.HTTP_201_CREATED,
     summary="Registrar un movimiento de inventario",
 )
 @router.post(
     "/movimientos-inventario",
-    response_model=MovimientoRespuesta,
+    response_model=TraspasoRespuesta | MovimientoRespuesta,
     status_code=status.HTTP_201_CREATED,
     include_in_schema=False,
 )
 @router.post(
     "/inventario/movimientos/",
-    response_model=MovimientoRespuesta,
+    response_model=TraspasoRespuesta | MovimientoRespuesta,
     status_code=status.HTTP_201_CREATED,
     include_in_schema=False,
 )
 @router.post(
     "/inventario/movimientos",
-    response_model=MovimientoRespuesta,
+    response_model=TraspasoRespuesta | MovimientoRespuesta,
     status_code=status.HTTP_201_CREATED,
     include_in_schema=False,
 )
 def registrar_movimiento(
     datos: MovimientoCrear,
     request: Request,
-    cursor=Depends(get_db),
-    usuario=Depends(get_current_user),
+    cursor=Depends(get_db, scope='function'),
+    usuario=Depends(usuario_movimiento),
 ):
     """Registra una operación en almacén (Entrada, Salida o Traspaso).
 
-    El disparador de PostgreSQL actualiza el stock automáticamente. Si se trata
-    de una Salida o Traspaso con existencias insuficientes, se retorna HTTP 400.
+    Entrada/Salida mantienen su contrato. Traspaso requiere destino y UUID,
+    valida disponibilidad y registra ambas patas en una única transacción.
     """
     ip_cliente = obtener_ip_cliente(request)
     id_usuario = usuario.get("id_usuario")
@@ -109,22 +120,22 @@ def registrar_movimiento(
 
 @router.get(
     "/movimientos-inventario/",
-    response_model=list[MovimientoRespuesta],
+    response_model=list[MovimientoVinculadoRespuesta | MovimientoRespuesta],
     summary="Listar historial de movimientos de inventario",
 )
 @router.get(
     "/movimientos-inventario",
-    response_model=list[MovimientoRespuesta],
+    response_model=list[MovimientoVinculadoRespuesta | MovimientoRespuesta],
     include_in_schema=False,
 )
 @router.get(
     "/inventario/movimientos/",
-    response_model=list[MovimientoRespuesta],
+    response_model=list[MovimientoVinculadoRespuesta | MovimientoRespuesta],
     include_in_schema=False,
 )
 @router.get(
     "/inventario/movimientos",
-    response_model=list[MovimientoRespuesta],
+    response_model=list[MovimientoVinculadoRespuesta | MovimientoRespuesta],
     include_in_schema=False,
 )
 def listar_movimientos(

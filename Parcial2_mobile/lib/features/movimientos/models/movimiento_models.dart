@@ -30,6 +30,7 @@ class MovimientoInventario {
   final String? usuarioNombre;
   final DateTime fecha;
   final int? stockActual;
+  final String? operationId;
 
   const MovimientoInventario({
     required this.idMovimiento,
@@ -47,6 +48,7 @@ class MovimientoInventario {
     this.usuarioNombre,
     required this.fecha,
     this.stockActual,
+    this.operationId,
   });
 
   factory MovimientoInventario.fromJson(Map<String, dynamic> json) =>
@@ -68,6 +70,7 @@ class MovimientoInventario {
         stockActual: json['stock_actual'] != null
             ? _toInt(json['stock_actual'])
             : null,
+        operationId: json['operation_id'] as String?,
       );
 
   Map<String, dynamic> toJson() => {
@@ -86,6 +89,7 @@ class MovimientoInventario {
         if (usuarioNombre != null) 'usuario_nombre': usuarioNombre,
         'fecha': fecha.toIso8601String(),
         if (stockActual != null) 'stock_actual': stockActual,
+        if (operationId != null) 'operation_id': operationId,
       };
 }
 
@@ -96,6 +100,8 @@ class MovimientoCrear {
   final String tipo; // 'Entrada', 'Salida', 'Traspaso'
   final int cantidad;
   final String motivo;
+  final int? idSucursalDestino;
+  final String? operationId;
 
   const MovimientoCrear({
     required this.idSucursal,
@@ -103,15 +109,49 @@ class MovimientoCrear {
     required this.tipo,
     required this.cantidad,
     required this.motivo,
+    this.idSucursalDestino,
+    this.operationId,
   });
 
-  Map<String, dynamic> toJson() => {
+  Map<String, dynamic> toJson() {
+    if (tipo == 'Traspaso' && (idSucursalDestino == null || idSucursalDestino == idSucursal || operationId == null)) {
+      throw ArgumentError('Traspaso requiere destino distinto y referencia de reintento.');
+    }
+    return {
         'id_sucursal': idSucursal,
         'id_variante_prenda': idVariantePrenda,
         'tipo': tipo,
         'cantidad': cantidad,
         'motivo': motivo,
+        if (tipo == 'Traspaso') 'id_sucursal_destino': idSucursalDestino,
+        if (tipo == 'Traspaso') 'operation_id': operationId,
       };
+  }
+}
+
+/// Resultado lógico del traspaso; las dos patas mantienen su tipo físico.
+class TraspasoInventario {
+  final String operationId;
+  final MovimientoInventario salida;
+  final MovimientoInventario entrada;
+  const TraspasoInventario({required this.operationId, required this.salida, required this.entrada});
+  factory TraspasoInventario.fromJson(Map<String,dynamic> json) {
+    if (json['movimiento_salida'] is! Map || json['movimiento_entrada'] is! Map || json['operation_id'] is! String) {
+      throw const FormatException('El servidor no confirmó los dos movimientos del traspaso.');
+    }
+    return TraspasoInventario(operationId:json['operation_id'] as String,
+      salida:MovimientoInventario.fromJson(Map<String,dynamic>.from(json['movimiento_salida'] as Map)),
+      entrada:MovimientoInventario.fromJson(Map<String,dynamic>.from(json['movimiento_entrada'] as Map)));
+  }
+}
+
+class RegistroMovimientoRespuesta {
+  final MovimientoInventario? movimiento;
+  final TraspasoInventario? traspaso;
+  const RegistroMovimientoRespuesta({this.movimiento, this.traspaso});
+  factory RegistroMovimientoRespuesta.fromJson(Map<String,dynamic> json) => json['tipo']=='Traspaso'
+    ? RegistroMovimientoRespuesta(traspaso:TraspasoInventario.fromJson(json))
+    : RegistroMovimientoRespuesta(movimiento:MovimientoInventario.fromJson(json));
 }
 
 /// Consulta de existencias físicas devuelta por GET /api/movimientos-inventario/stock

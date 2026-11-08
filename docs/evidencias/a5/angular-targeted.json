@@ -1,0 +1,170 @@
+{
+  "passed": 22,
+  "failed": 0,
+  "skipped": 0,
+  "cases": [
+    {
+      "name": "A5 reconciliación IndexedDB real / cola 1: resultado confirmado posterior",
+      "success": true,
+      "skipped": false,
+      "errors": [],
+      "time": 77
+    },
+    {
+      "name": "A5 reconciliación IndexedDB real / cola 49: resultado confirmado posterior",
+      "success": true,
+      "skipped": false,
+      "errors": [],
+      "time": 89
+    },
+    {
+      "name": "A5 reconciliación IndexedDB real / cola 50: resultado confirmado posterior",
+      "success": true,
+      "skipped": false,
+      "errors": [],
+      "time": 94
+    },
+    {
+      "name": "A5 reconciliación IndexedDB real / cola 51: resultado confirmado posterior",
+      "success": true,
+      "skipped": false,
+      "errors": [],
+      "time": 111
+    },
+    {
+      "name": "A5 reconciliación IndexedDB real / cola 125: resultado confirmado posterior",
+      "success": true,
+      "skipped": false,
+      "errors": [],
+      "time": 184
+    },
+    {
+      "name": "A5 reconciliación IndexedDB real / tres descargas no quedan en el mismo prefijo de 50",
+      "success": true,
+      "skipped": false,
+      "errors": [],
+      "time": 256
+    },
+    {
+      "name": "A5 reconciliación IndexedDB real / otra sucursal no bloquea el lote de la sucursal solicitada",
+      "success": true,
+      "skipped": false,
+      "errors": [],
+      "time": 42
+    },
+    {
+      "name": "A5 reconciliación IndexedDB real / sin resultado conserva PENDIENTE y ENVIANDO",
+      "success": true,
+      "skipped": false,
+      "errors": [],
+      "time": 37
+    },
+    {
+      "name": "A5 reconciliación IndexedDB real / otra empresa en la respuesta no cambia catálogo ni operación",
+      "success": true,
+      "skipped": false,
+      "errors": [],
+      "time": 38
+    },
+    {
+      "name": "A5 reconciliación IndexedDB real / reapertura de IndexedDB no perpetúa bloqueo posterior a 50",
+      "success": true,
+      "skipped": false,
+      "errors": [],
+      "time": 195
+    },
+    {
+      "name": "A5 reconciliación IndexedDB real / respuesta duplicada y descargas repetidas no duplican descuento",
+      "success": true,
+      "skipped": false,
+      "errors": [],
+      "time": 57
+    },
+    {
+      "name": "A5 reconciliación IndexedDB real / conexión interrumpida conserva cola y al reconectar progresa 125",
+      "success": true,
+      "skipped": false,
+      "errors": [],
+      "time": 260
+    },
+    {
+      "name": "A5 reconciliación IndexedDB real / pendiente solo cambia a confirmada con respuesta explícita",
+      "success": true,
+      "skipped": false,
+      "errors": [],
+      "time": 34
+    },
+    {
+      "name": "A5 reconciliación IndexedDB real / sin candidatos renueva catálogo con una petición vacía",
+      "success": true,
+      "skipped": false,
+      "errors": [],
+      "time": 34
+    },
+    {
+      "name": "A5 reconciliación IndexedDB real / 125 UUID se recorren una vez en lotes 50 50 25",
+      "success": true,
+      "skipped": false,
+      "errors": [],
+      "time": 200
+    },
+    {
+      "name": "A5 reconciliación IndexedDB real / fallo del segundo lote conserva 50 y reintenta 75",
+      "success": true,
+      "skipped": false,
+      "errors": [],
+      "time": 251
+    },
+    {
+      "name": "A5 reconciliación IndexedDB real / fallo del tercer lote conserva 100 y reintenta 25",
+      "success": true,
+      "skipped": false,
+      "errors": [],
+      "time": 254
+    },
+    {
+      "name": "A5 reconciliación IndexedDB real / rollback IndexedDB del segundo lote no deja medias confirmaciones",
+      "success": true,
+      "skipped": false,
+      "errors": [],
+      "time": 188
+    },
+    {
+      "name": "A5 reconciliación IndexedDB real / UUID ausente al final de 125 conserva PENDIENTE",
+      "success": true,
+      "skipped": false,
+      "errors": [],
+      "time": 163
+    },
+    {
+      "name": "A5 reconciliación IndexedDB real / sucursal distinta en respuesta no modifica datos",
+      "success": true,
+      "skipped": false,
+      "errors": [],
+      "time": 31
+    },
+    {
+      "name": "A5 reconciliación IndexedDB real / cambio de sesión durante respuesta no mezcla datos ni retiene bloqueo",
+      "success": true,
+      "skipped": false,
+      "errors": [],
+      "time": 33
+    },
+    {
+      "name": "A5 reconciliación IndexedDB real / bloqueo ajeno impide HTTP sin borrar la cola",
+      "success": true,
+      "skipped": false,
+      "errors": [],
+      "time": 21
+    }
+  ],
+  "observations": [
+    "'A5_REPRO:{\"client\":\"Angular native IndexedDB\",\"queue\":1,\"rounds\":1,\"other_branch_prefix\":false,\"requested_unique\":1,\"HTTP_requests\":1,\"tail_state\":\"CONFIRMADA\",\"tail_accounted\":true,\"available\":999,\"expected\":999}'",
+    "'A5_REPRO:{\"client\":\"Angular native IndexedDB\",\"queue\":49,\"rounds\":1,\"other_branch_prefix\":false,\"requested_unique\":49,\"HTTP_requests\":1,\"tail_state\":\"CONFIRMADA\",\"tail_accounted\":true,\"available\":975,\"expected\":975}'",
+    "'A5_REPRO:{\"client\":\"Angular native IndexedDB\",\"queue\":50,\"rounds\":1,\"other_branch_prefix\":false,\"requested_unique\":50,\"HTTP_requests\":1,\"tail_state\":\"CONFIRMADA\",\"tail_accounted\":true,\"available\":975,\"expected\":975}'",
+    "'A5_REPRO:{\"client\":\"Angular native IndexedDB\",\"queue\":51,\"rounds\":1,\"other_branch_prefix\":false,\"requested_unique\":51,\"HTTP_requests\":2,\"tail_state\":\"CONFIRMADA\",\"tail_accounted\":true,\"available\":974,\"expected\":974}'",
+    "'A5_REPRO:{\"client\":\"Angular native IndexedDB\",\"queue\":125,\"rounds\":1,\"other_branch_prefix\":false,\"requested_unique\":125,\"HTTP_requests\":3,\"tail_state\":\"CONFIRMADA\",\"tail_accounted\":true,\"available\":937,\"expected\":937}'",
+    "'A5_REPRO:{\"client\":\"Angular native IndexedDB\",\"queue\":51,\"rounds\":3,\"other_branch_prefix\":false,\"requested_unique\":51,\"HTTP_requests\":4,\"tail_state\":\"CONFIRMADA\",\"tail_accounted\":true,\"available\":974,\"expected\":974}'",
+    "'A5_REPRO:{\"client\":\"Angular native IndexedDB\",\"queue\":51,\"rounds\":1,\"other_branch_prefix\":true,\"requested_unique\":1,\"HTTP_requests\":1,\"tail_state\":\"CONFIRMADA\",\"tail_accounted\":true,\"available\":999,\"expected\":999}'"
+  ]
+}

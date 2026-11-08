@@ -1,0 +1,14 @@
+{
+  "cases": [
+    {
+      "name": "A5 HTTP SQLite: 125 resultados, otra sucursal, reapertura y repetición sin pérdida",
+      "success": true,
+      "skipped": false,
+      "errors": []
+    }
+  ],
+  "passed": 1,
+  "failed": 0,
+  "skipped": 0,
+  "observations": []
+}

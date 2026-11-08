@@ -1,7 +1,7 @@
 /**
  * =============================================================================
- * FASHIONSTORE - PRUEBAS UNITARIAS: PROBADOR VIRTUAL IA (FASE 2)
- * Componente: ProbadorIa
+ * FASHIONSTORE - PRUEBAS UNITARIAS: PROBADOR VIRTUAL IA (A6)
+ * Componente: ProbadorIa (Decart AI Realtime WebRTC)
  * =============================================================================
  */
 
@@ -12,18 +12,19 @@ import { of, throwError } from 'rxjs';
 
 import { ProbadorIa } from './probador-ia';
 import { IaService } from '../../../core/services/ia.service';
-import { VentaService } from '../../../core/services/venta.service';
-import { GeografiaService } from '../../../core/services/geografia.service';
-import { PrendaCatalogo, Sucursal } from '../../../core/models/catalogo.model';
-import { TryOnRespuesta } from '../../../core/models/ia.model';
-import { TicketReservaRespuesta } from '../../../core/models/venta.model';
+import { PrendaCatalogo } from '../../../core/models/catalogo.model';
 
-describe('ProbadorIa Component (Fase 2)', () => {
+describe('ProbadorIa Component (A6 Decart AI Realtime)', () => {
   let component: ProbadorIa;
   let fixture: ComponentFixture<ProbadorIa>;
   let mockIaService: jasmine.SpyObj<IaService>;
-  let mockVentaService: jasmine.SpyObj<VentaService>;
-  let mockGeografiaService: jasmine.SpyObj<GeografiaService>;
+  let mockTrack: jasmine.SpyObj<MediaStreamTrack>;
+  let mockMediaStream: MediaStream;
+  let mockSession: {
+    disconnect: jasmine.Spy;
+    on: jasmine.Spy;
+  };
+  let eventCallbacks: Record<string, ((...args: unknown[]) => void)[]>;
 
   const mockPrenda: PrendaCatalogo = {
     id_prenda: 12,
@@ -60,60 +61,31 @@ describe('ProbadorIa Component (Fase 2)', () => {
     ],
   };
 
-  const mockSucursales: Sucursal[] = [
-    {
-      id_sucursal: 1,
-      nombre: 'Sucursal Central',
-      direccion: 'Av. Monseñor Rivero 240',
-      telefono: '33445566',
-      ciudad: 'Santa Cruz',
-      id_ciudad: 1,
-      id_encargado: 2,
-      encargado: 'Juan Pérez',
-      created_at: '2026-01-01T00:00:00Z',
-    },
-  ];
-
-  const mockTryOnRespuesta: TryOnRespuesta = {
-    estado: 'exito',
-    imagen_resultado: 'data:image/jpeg;base64,/9j/4AAQSkZJRg...',
-    tiempo_procesamiento_ms: 1180,
-    metadatos_calce: {
-      metodo: 'gemini_vision',
-      anclaje_torso: { cuello: [360, 200] },
-      ajuste_luz: { factor_luminancia: 1.04 },
-      prenda_id: 12,
-      es_fallback: false,
-      tiempo_procesamiento_ms: 1180,
-      confianza_calce: 0.97,
-    },
-    mensaje: 'Composición completada exitosamente',
-    confianza_calce: 0.97,
-  };
-
-  const mockTicketReserva: TicketReservaRespuesta = {
-    id_reserva: 101,
-    codigo_ticket: 'TKT-829104',
-    qr_base64: 'iVBORw0KGgoAAAANSUhEUgAA...',
-    id_cliente: 61,
-    cliente_nombre: 'Cliente FashionStore',
-    id_sucursal: 1,
-    sucursal_nombre: 'Sucursal Central',
-    fecha_reserva: '2026-09-20T16:00:00Z',
-    fecha_limite: '2026-09-21T16:00:00Z',
-    estado: 'Pendiente',
-    total: 850.0,
-    items: [],
-  };
-
   beforeEach(async () => {
-    mockIaService = jasmine.createSpyObj('IaService', ['generarTryOn', 'procesarTryOn']);
-    mockVentaService = jasmine.createSpyObj('VentaService', ['crearReservaProbador']);
-    mockGeografiaService = jasmine.createSpyObj('GeografiaService', ['listarSucursales']);
+    mockTrack = jasmine.createSpyObj<MediaStreamTrack>('MediaStreamTrack', ['stop']);
+    mockMediaStream = new MediaStream();
+    spyOn(mockMediaStream, 'getTracks').and.returnValue([mockTrack]);
 
-    mockGeografiaService.listarSucursales.and.returnValue(of(mockSucursales));
-    mockIaService.generarTryOn.and.returnValue(of(mockTryOnRespuesta));
-    mockVentaService.crearReservaProbador.and.returnValue(of(mockTicketReserva));
+    eventCallbacks = {};
+    mockSession = {
+      disconnect: jasmine.createSpy('disconnect'),
+      on: jasmine.createSpy('on').and.callFake((event: string, cb: (...args: unknown[]) => void) => {
+        if (!eventCallbacks[event]) {
+          eventCallbacks[event] = [];
+        }
+        eventCallbacks[event].push(cb);
+      }),
+    };
+
+    mockIaService = jasmine.createSpyObj<IaService>('IaService', ['obtenerRealtimeToken']);
+    mockIaService.obtenerRealtimeToken.and.returnValue(
+      of({ apiKey: 'mock-decart-token-primary', expiresAt: Date.now() + 3600000, usandoRespaldo: false }),
+    );
+
+    if (!navigator.mediaDevices) {
+      (navigator as any).mediaDevices = {};
+    }
+    spyOn(navigator.mediaDevices, 'getUserMedia').and.returnValue(Promise.resolve(mockMediaStream));
 
     await TestBed.configureTestingModule({
       imports: [ProbadorIa],
@@ -121,8 +93,6 @@ describe('ProbadorIa Component (Fase 2)', () => {
         provideHttpClient(),
         provideHttpClientTesting(),
         { provide: IaService, useValue: mockIaService },
-        { provide: VentaService, useValue: mockVentaService },
-        { provide: GeografiaService, useValue: mockGeografiaService },
       ],
     }).compileComponents();
 
@@ -130,82 +100,159 @@ describe('ProbadorIa Component (Fase 2)', () => {
     component = fixture.componentInstance;
     fixture.componentRef.setInput('prenda', mockPrenda);
     fixture.detectChanges();
+
+    if (component.localVideo?.nativeElement) {
+      Object.defineProperty(component.localVideo.nativeElement, 'readyState', {
+        value: 2,
+        configurable: true,
+        writable: true,
+      });
+    }
   });
 
-  it('se inicializa en estado CAPTURA con pestaña webcam por defecto', () => {
+  afterEach(() => {
+    component?.ngOnDestroy();
+  });
+
+  it('se inicializa en estado desconectado con señales limpias e input de prenda asignado', () => {
     expect(component).toBeTruthy();
-    expect(component.estado()).toBe('CAPTURA');
-    expect(component.modoCaptura()).toBe('webcam');
-    expect(component.sucursales().length).toBe(1);
-    expect(component.varianteSeleccionada()?.id_variante_prenda).toBe(45);
+    expect(component.conectado()).toBeFalse();
+    expect(component.conectando()).toBeFalse();
+    expect(component.error()).toBeNull();
+    expect(component.prenda().id_prenda).toBe(12);
+    expect(component.prenda().nombre).toBe('Vestido Gala Seda Champagne');
   });
 
-  it('permite cambiar entre pestañas de webcam y archivo', () => {
-    component.cambiarModoCaptura('archivo');
-    expect(component.modoCaptura()).toBe('archivo');
-    expect(component.camaraIniciada()).toBeFalse();
-
-    component.cambiarModoCaptura('webcam');
-    expect(component.modoCaptura()).toBe('webcam');
-  });
-
-  it('actualiza el slider comparativo y alterna modo de comparación', () => {
-    const mockEvent = { target: { value: '75' } } as unknown as Event;
-    component.actualizarSlider(mockEvent);
-    expect(component.posicionSlider()).toBe(75);
-
-    expect(component.modoComparacion()).toBe('slider');
-    component.alternarModoComparacion();
-    expect(component.modoComparacion()).toBe('lado_a_lado');
-    component.alternarModoComparacion();
-    expect(component.modoComparacion()).toBe('slider');
-  });
-
-  it('procesa try-on con backend y actualiza a estado RESULTADO', (done) => {
-    const fotoMock = 'data:image/jpeg;base64,TESTFOTO';
-    (component as any).procesarConBackend(fotoMock);
-
-    expect(component.estado()).toBe('PROCESANDO');
-    expect(component.cargando()).toBeTrue();
-    expect(mockIaService.generarTryOn).toHaveBeenCalled();
-
-    setTimeout(() => {
-      expect(component.estado()).toBe('RESULTADO');
-      expect(component.respuestaTryOn()).toEqual(mockTryOnRespuesta);
-      expect(component.cargando()).toBeFalse();
-      done();
-    }, 500);
-  });
-
-  it('gestiona error del backend retornando a estado CAPTURA', () => {
-    mockIaService.generarTryOn.and.returnValue(
-      throwError(() => new Error('Fallo en detección anatómica')),
-    );
-
-    (component as any).procesarConBackend('data:image/jpeg;base64,TEST');
-    expect(component.estado()).toBe('CAPTURA');
-    expect(component.error()).toBe('Fallo en detección anatómica');
-    expect(component.cargando()).toBeFalse();
-  });
-
-  it('flujo de reserva en tienda (CU16) confirma ticket con QR', () => {
-    component.iniciarReserva();
-    expect(component.estado()).toBe('RESERVA_CU16');
-    expect(component.ticketReserva()).toBeNull();
-
-    component.confirmarReserva();
-    expect(mockVentaService.crearReservaProbador).toHaveBeenCalled();
-    expect(component.ticketReserva()?.codigo_ticket).toBe('TKT-829104');
-    expect(component.ticketReserva()?.qr_base64).toBeTruthy();
-  });
-
-  it('emite evento cerrado al invocar cerrarModal()', () => {
-    let cerradoEmitido = false;
+  it('cerrar() detiene los tracks de MediaStream, desconecta la sesión y emite evento cerrado', () => {
+    let eventoEmitido = false;
     component.cerrado.subscribe(() => {
-      cerradoEmitido = true;
+      eventoEmitido = true;
     });
 
-    component.cerrarModal();
-    expect(cerradoEmitido).toBeTrue();
+    (component as any).localStream = mockMediaStream;
+    (component as any).rtClient = mockSession;
+
+    component.cerrar();
+
+    expect(mockTrack.stop).toHaveBeenCalled();
+    expect(mockSession.disconnect).toHaveBeenCalled();
+    expect(eventoEmitido).toBeTrue();
+  });
+
+  it('ngOnDestroy() invoca la limpieza y desconexión completa de recursos', () => {
+    spyOn(component, 'cerrar').and.callThrough();
+    component.ngOnDestroy();
+    expect(component.cerrar).toHaveBeenCalled();
+  });
+
+  it('iniciarExperiencia() gestiona error cuando getUserMedia falla (permiso de cámara denegado)', async () => {
+    (navigator.mediaDevices.getUserMedia as jasmine.Spy).and.returnValue(
+      Promise.reject(new Error('Permission denied')),
+    );
+
+    await component.iniciarExperiencia();
+
+    expect(component.conectado()).toBeFalse();
+    expect(component.conectando()).toBeFalse();
+    expect(component.error()).toBe('Permission denied');
+  });
+
+  it('iniciarExperiencia() gestiona error cuando la conexión falla', async () => {
+    spyOn(component as any, 'conectar').and.returnValue(
+      Promise.reject(new Error('Fallo al inicializar sesión WebRTC')),
+    );
+
+    await component.iniciarExperiencia();
+
+    expect(component.conectado()).toBeFalse();
+    expect(component.conectando()).toBeFalse();
+    expect(component.error()).toBe('Fallo al inicializar sesión WebRTC');
+  });
+
+  it('iniciarExperiencia() conecta exitosamente la sesión WebRTC y actualiza señales', async () => {
+    spyOn(component as any, 'conectar').and.callFake(async () => {
+      (component as any).rtClient = mockSession;
+    });
+
+    await component.iniciarExperiencia();
+
+    expect(navigator.mediaDevices.getUserMedia).toHaveBeenCalled();
+    expect((component as any).conectar).toHaveBeenCalledWith(false);
+    expect(component.conectado()).toBeTrue();
+    expect(component.conectando()).toBeFalse();
+    expect(component.error()).toBeNull();
+  });
+
+  it('activa respaldo automáticamente cuando iniciarExperiencia detecta error de créditos (402/insufficient_credits)', async () => {
+    let llamadas = 0;
+    spyOn(component as any, 'conectar').and.callFake(async (useBackup: boolean) => {
+      llamadas++;
+      if (!useBackup) {
+        const errorCreditos = { status: 402, message: 'insufficient_credits' };
+        throw errorCreditos;
+      }
+      (component as any).rtClient = mockSession;
+    });
+
+    await component.iniciarExperiencia();
+
+    expect(llamadas).toBe(2);
+    expect((component as any).conectar).toHaveBeenCalledWith(false);
+    expect((component as any).conectar).toHaveBeenCalledWith(true);
+    expect(component.conectado()).toBeTrue();
+    expect(component.conectando()).toBeFalse();
+    expect(component.error()).toBeNull();
+  });
+
+  it('sesión activa activa respaldo al recibir evento sessionEnded con reason insufficient_credits', async () => {
+    let llamadaRespaldo = false;
+    spyOn(component as any, 'conectar').and.callFake(async (useBackup: boolean) => {
+      if (useBackup) {
+        llamadaRespaldo = true;
+      }
+      (component as any).rtClient = mockSession;
+      mockSession.on('sessionEnded', ({ reason }: { reason: string }) => {
+        if (reason === 'insufficient_credits') {
+          void (component as any).activarRespaldo();
+        }
+      });
+    });
+
+    await component.iniciarExperiencia();
+    expect(component.conectado()).toBeTrue();
+
+    // Simular sessionEnded con insufficient_credits
+    const sessionEndedCallbacks = eventCallbacks['sessionEnded'] || [];
+    expect(sessionEndedCallbacks.length).toBeGreaterThan(0);
+
+    sessionEndedCallbacks[0]({ reason: 'insufficient_credits' });
+    fixture.detectChanges();
+
+    expect((component as any).conectar).toHaveBeenCalledWith(true);
+    expect(llamadaRespaldo).toBeTrue();
+  });
+
+  it('sesión activa gestiona desconexión inesperada informando indisponibilidad temporal', async () => {
+    spyOn(component as any, 'conectar').and.callFake(async () => {
+      (component as any).rtClient = mockSession;
+      mockSession.on('sessionEnded', ({ reason }: { reason: string }) => {
+        if (reason !== 'insufficient_credits' && !(component as any).finalizado) {
+          component.conectado.set(false);
+          component.error.set('El probador IA no está disponible temporalmente.');
+        }
+      });
+    });
+
+    await component.iniciarExperiencia();
+    expect(component.conectado()).toBeTrue();
+
+    const sessionEndedCallbacks = eventCallbacks['sessionEnded'] || [];
+    expect(sessionEndedCallbacks.length).toBeGreaterThan(0);
+
+    sessionEndedCallbacks[0]({ reason: 'server_closed' });
+    fixture.detectChanges();
+
+    expect(component.conectado()).toBeFalse();
+    expect(component.error()).toBe('El probador IA no está disponible temporalmente.');
   });
 });

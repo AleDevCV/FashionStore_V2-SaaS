@@ -1,0 +1,79 @@
+{
+  "A5": "Implemented in local source, verified in isolation; activation pending",
+  "new_tests": {
+    "Angular_local": 22,
+    "Flutter_local": 22,
+    "Angular_real_HTTP": 2,
+    "Flutter_real_HTTP": 1,
+    "backend_real_HTTP_SQL": 6,
+    "total_new": 53
+  },
+  "regression_preexisting_rerun": {
+    "Angular_subset": 77,
+    "Flutter_standard": 48,
+    "Flutter_A4_HTTP_legacy": 3,
+    "backend_full": 298,
+    "total": 426
+  },
+  "post_fix_unique_executed": 479,
+  "post_fix_passed": 479,
+  "post_fix_failed_in_completed_suites": 0,
+  "post_fix_skipped_in_completed_suites": 0,
+  "counts_do_not_add_targeted_suites_again": true,
+  "fixture_preparation_separate": 2,
+  "before_fix": {
+    "tests": 26,
+    "passed": 14,
+    "failed": 12,
+    "skipped": 0
+  },
+  "angular_full_suite": {
+    "preexisting": true,
+    "before_and_after_errors_identical": true,
+    "compiler_diagnostics": 30,
+    "file": "src/app/features/catalogo/probador-ia/probador-ia.spec.ts",
+    "suite_fully_executed": false,
+    "uncollected_test_count": "unknown; not reported as passed or skipped"
+  },
+  "Flutter_analysis": "No issues found",
+  "Angular_production_build": "passed; preexisting CommonJS retry warning",
+  "Flutter_debug_APK": "passed; existing KGP/native-access warnings",
+  "A4_manual_unchanged": "8 passed; 4 partial; not rerun for A5",
+  "A5_Android_manual": "5 planned cases; 0 executed",
+  "activation": {
+    "source": true,
+    "persistent_web": true,
+    "phone_APK": false,
+    "backend_change_required": false,
+    "PostgreSQL_migration_required": false
+  },
+  "fixtures": {
+    "operations": 127,
+    "first_branch": 125,
+    "second_branch": 2,
+    "central_sales": 77,
+    "central_rejected": 25,
+    "central_conflicts": 25,
+    "stocks": [
+      925,
+      998
+    ],
+    "local_available": [
+      900,
+      998
+    ],
+    "UUIDs_and_details_preserved": true
+  },
+  "backend_contract": {
+    "unchanged": true,
+    "paths": 118,
+    "schemas": 128
+  },
+  "notes": [
+    "Initial SQLite reopen fixture lacked complete immutable envelope fields; fixture corrected and original/patched runs repeated without modifying A4.",
+    "Browser HTTP harness required private fixture module and fresh TestBed per case; failed harness attempts retained, not counted as passed executions.",
+    "A4 legacy integration required an absolute copied-fixture directory; original test logic and recovery code unchanged.",
+    "Original publication helper normalized Windows path separators; it stopped before writing on its first attempt.",
+    "A6 not started; persistent web rebuilt and recreated with --no-deps (image 34d9c6c489a4, container 5f04cb240eb9); api, db and mailpit undisturbed."
+  ]
+}

@@ -1,0 +1,8 @@
+{
+  "preexisting": true,
+  "before_and_after_errors_identical": true,
+  "compiler_diagnostics": 30,
+  "file": "src/app/features/catalogo/probador-ia/probador-ia.spec.ts",
+  "suite_fully_executed": false,
+  "uncollected_test_count": "unknown; not reported as passed or skipped"
+}
