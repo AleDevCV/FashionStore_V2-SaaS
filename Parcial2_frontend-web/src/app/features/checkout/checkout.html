@@ -1,5 +1,8 @@
 <!-- Checkout Wizard - FashionStore -->
 <div class="checkout-wrapper">
+  @if (ambitoPlataforma) {
+    <a routerLink="/panel/casos/{{ soloReserva ? 'CU12' : 'CU11' }}">Volver al caso de uso</a>
+  }
   <!-- Barra de progreso -->
   <nav class="checkout-steps">
     @for (paso of pasos; track paso.numero) {
@@ -29,7 +32,9 @@
        ================================================================ -->
   @if (pasoActual() === 1) {
     <section class="checkout-card">
-      <h2 class="checkout-card__titulo">Resumen del pedido</h2><label>Sucursal de entrega<select [(ngModel)]="ID_SUCURSAL">@for(b of branches();track b.id_sucursal){<option [ngValue]="b.id_sucursal">{{b.nombre}}</option>}</select></label>
+      <h2 class="checkout-card__titulo">{{ soloReserva ? 'Reservar prendas' : 'Resumen del pedido' }}</h2>
+      <label>Sucursal de entrega<select [(ngModel)]="ID_SUCURSAL">@for(b of branches();track b.id_sucursal){<option [ngValue]="b.id_sucursal">{{b.nombre}}</option>}</select></label>
+      @if (!carrito.items.length) { <p>Agrega prendas de esta tienda al carrito para continuar.</p> }
 
       <ul class="resumen-lista">
         @for (item of carrito.items; track item.id_variante_prenda) {
@@ -52,15 +57,15 @@
       </div>
 
       <div class="checkout-actions">
-        <button class="btn-secundario" routerLink="/catalogo">
+        <button class="btn-secundario" routerLink="/catalogo" [queryParams]="soloReserva ? {flujo: 'reserva'} : null">
           ← Seguir comprando
         </button>
         <button
           class="btn-primario"
           (click)="confirmarResumen()"
-          [disabled]="cargando()"
+          [disabled]="cargando() || !carrito.items.length || !ID_SUCURSAL"
         >
-          @if (cargando()) { Procesando... } @else { Continuar →  }
+          @if (cargando()) { Procesando... } @else { {{ soloReserva ? 'Confirmar reserva' : 'Continuar →' }} }
         </button>
       </div>
     </section>
@@ -205,7 +210,14 @@
   <!-- ================================================================
        PASO 4: CONFIRMACIÓN EXITOSA
        ================================================================ -->
-  @if (pasoActual() === 4) {
+  @if (pasoActual() === 4 && soloReserva && reserva(); as confirmada) {
+    <section class="checkout-card">
+      <h2 class="checkout-card__titulo">Reserva confirmada</h2>
+      <p>Reserva #{{ confirmada.id_reserva }} válida hasta {{ confirmada.fecha_limite | date:'dd/MM/yyyy HH:mm' }}.</p>
+      <a routerLink="/catalogo">Volver al catálogo</a>
+    </section>
+  }
+  @if (pasoActual() === 4 && !soloReserva) {
     <section class="checkout-card checkout-card--exito">
       <div class="exito-icono">🎉</div>
       <h2>¡Pago confirmado!</h2>

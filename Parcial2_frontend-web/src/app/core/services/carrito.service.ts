@@ -11,8 +11,9 @@
 import { Injectable, inject } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { CarritoItem } from '../models/venta.model';
+import { commerceSession } from './commerce-session';
 
-function storageKey(){return 'fashionstore_p2_cart_'+(localStorage.getItem('fashionstore_p2_active')||'public_'+(localStorage.getItem('fashionstore_p2_empresa')||'demo-a'));}
+function storageKey(){return 'fashionstore_p2_cart_'+(commerceSession()||'public_'+(localStorage.getItem('fashionstore_p2_empresa')||'demo-a'));}
 
 @Injectable({ providedIn: 'root' })
 export class CarritoService {

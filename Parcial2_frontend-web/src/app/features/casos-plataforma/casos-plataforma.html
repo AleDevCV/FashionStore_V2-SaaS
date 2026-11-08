@@ -1,0 +1,34 @@
+@if (caso(); as actual) {
+  <section class="case-workspace">
+    <header>
+      <p class="eyebrow">{{ paquete()?.id }} · {{ paquete()?.title }}</p>
+      <h1><span>{{ actual.id }}</span> {{ actual.title }}</h1>
+      <p>{{ resumen() }}</p>
+    </header>
+    <div class="company">
+      <label for="empresa-cu">Empresa de trabajo</label>
+      <select id="empresa-cu" [value]="empresa()" (change)="elegirEmpresa($any($event.target).value)">
+        <option value="">Selecciona una empresa</option>
+        @for (tienda of tiendas(); track tienda.id_empresa) {
+          <option [value]="tienda.slug" [selected]="empresa() === tienda.slug">{{ tienda.nombre }}</option>
+        }
+      </select>
+      <p>La selección se aplica al abrir una interfaz de tienda. Tu cuenta sigue siendo SuperAdministrador SaaS.</p>
+    </div>
+    @if (error()) { <p role="alert" class="error">{{ error() }}</p> }
+    <h2>Interfaces</h2>
+    <ul>
+      @for (accion of actual.links; track $index) {
+        <li>
+          <button type="button" [disabled]="ocupado()" (click)="abrir(accion)"
+            [class.seleccionada]="accion === accionElegida()">
+            <span>{{ accion.label }}</span>
+            <span aria-hidden="true">→</span>
+          </button>
+        </li>
+      }
+    </ul>
+  </section>
+} @else {
+  <p role="alert">Selecciona un caso de uso de P1 a P6 en el menú lateral.</p>
+}

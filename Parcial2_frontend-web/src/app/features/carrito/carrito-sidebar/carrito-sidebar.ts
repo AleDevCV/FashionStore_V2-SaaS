@@ -112,6 +112,8 @@ export class CarritoSidebar {
 
   irAlCheckout(): void {
     this.cerrar.emit();
-    this.router.navigate(['/checkout']);
+    this.router.navigate(['/checkout'], {
+      queryParams: new URLSearchParams(location.search).get('flujo') === 'reserva' ? { flujo: 'reserva' } : undefined,
+    });
   }
 }

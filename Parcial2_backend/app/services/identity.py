@@ -25,6 +25,10 @@ def validate_claims(claims):
     account = lookup(account_id=claims.get('account_id'))
     if not account or account['estado'] != 'Activo' or account['token_version'] != claims.get('account_version'):
         raise HTTPException(401, 'Sesión inválida o revocada.')
+    if claims.get('platform_workspace'):
+        if not is_platform_admin(account):
+            raise HTTPException(401, 'Sesión de plataforma revocada.')
+        return account
     if account['tipo'] != 'CLIENTE' and (not account.get('empresa_activa') or account.get('local_estado')!='Activo' or account.get('tenant_id') != claims.get('tenant_id') or account.get('id_usuario') != claims.get('id_usuario')):
         raise HTTPException(401, 'Empresa o sesión no disponible.')
     return account
@@ -36,14 +40,70 @@ def token(account, profile=None):
     profile = profile or account
     tenant_id = (profile.get('tenant_id') or 0) if not customer or profile is not account else 0
     user_id = profile.get('id_usuario') if tenant_id else account['id']
-    role = 'Cliente' if customer else account.get('rol')
+    role = 'Cliente' if customer else profile.get('rol', account.get('rol'))
     marker = context.set(TenantContext(tenant_id, user_id=user_id, role=role or '', email=account['correo'], account_id=account['id']))
     try:
         return crear_token_acceso({'account_id': account['id'], 'account_version': account['token_version'],
             'id_usuario': user_id, 'sub': str(account['id']), 'correo': account['correo'],
             'nombre': (account['nombre'] + ' ' + account['apellido']).strip(), 'rol': role,
             'tipo_cuenta': account['tipo'], 'empresa_slug': profile.get('slug') if tenant_id else None,
+            **({'platform_workspace': True} if profile.get('platform_workspace') else {}),
             'token_version': profile.get('local_version', 0) if tenant_id else 0})
+    finally:
+        context.reset(marker)
+
+
+def is_platform_admin(account):
+    return (account['tipo'] == 'PLATAFORMA' and account['estado'] == 'Activo'
+            and account.get('rol') == 'Administrador' and account.get('empresa_activa')
+            and account.get('local_estado') == 'Activo')
+
+
+def platform_workspace(account, slug, mode):
+    if not is_platform_admin(account):
+        raise HTTPException(403, 'Se requiere administración de plataforma.')
+    if slug is None:
+        return token(account)
+
+    with cursor() as cur:
+        cur.execute('SELECT id_empresa FROM empresa WHERE slug=%s AND activa AND NOT plataforma', (slug,))
+        company = cur.fetchone()
+    if company is None:
+        raise HTTPException(404, 'Empresa comercial activa no encontrada.')
+
+    tenant_id = company['id_empresa']
+    role = 'Cliente' if mode == 'cliente' else 'Administrador'
+    email = f'operador-saas-{account["id"]}-{mode}@fashionstore.invalid'
+    marker = context.set(TenantContext(tenant_id, account_id=account['id']))
+    try:
+        with cursor() as cur:
+            cur.execute('SELECT id_rol FROM rol WHERE nombre=%s', (role,))
+            row = cur.fetchone()
+            if not row:
+                raise HTTPException(409, 'La empresa no tiene el rol operativo requerido.')
+            cur.execute('''
+                INSERT INTO usuario(nombre,apellido,correo,password_hash,id_role,platform_account_id)
+                VALUES(%s,%s,%s,'!sin-acceso-directo',%s,%s)
+                ON CONFLICT (tenant_id,platform_account_id,id_role) WHERE platform_account_id IS NOT NULL
+                DO NOTHING RETURNING id_usuario,token_version,estado
+            ''', (account['nombre'], account['apellido'], email, row['id_rol'], account['id']))
+            operator = cur.fetchone()
+            if not operator:
+                cur.execute('''SELECT id_usuario,token_version,estado FROM usuario
+                               WHERE platform_account_id=%s AND id_role=%s''', (account['id'], row['id_rol']))
+                operator = cur.fetchone()
+            if operator['estado'] != 'Activo':
+                raise HTTPException(403, 'El operador de plataforma está inactivo.')
+            if mode == 'cliente':
+                cur.execute('''INSERT INTO cliente(ci,nombre_completo,correo)
+                               VALUES(%s,%s,%s) ON CONFLICT(tenant_id,ci) DO NOTHING''',
+                            (f'SAAS-{account["id"]}', f'{account["nombre"]} {account["apellido"]}', email))
+            cur.execute("""INSERT INTO bitacora(id_usuario,accion,tabla_afectada,registro_id,detalle)
+                           VALUES(%s,'ABRIR_AMBITO','empresa',%s,%s)""",
+                        (operator['id_usuario'], tenant_id, f'Cuenta SaaS {account["id"]}, modo {mode}'))
+        return token(account, {'tenant_id': tenant_id, 'slug': slug, 'id_usuario': operator['id_usuario'],
+                               'local_version': operator['token_version'], 'rol': role,
+                               'platform_workspace': True})
     finally:
         context.reset(marker)
 

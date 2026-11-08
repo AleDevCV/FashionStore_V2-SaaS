@@ -3,6 +3,7 @@ import { HttpClient,HttpParams } from '@angular/common/http';
 import { firstValueFrom,timeout } from 'rxjs';
 import { environment } from '../../../environments/environment';
 import { OfflineDatabase,LocalOperation,cents,priceCents } from './offline-store';
+import { commerceSession } from './commerce-session';
 
 @Injectable({providedIn:'root'})
 export class OfflineService {
@@ -11,7 +12,7 @@ export class OfflineService {
  private tab=crypto.randomUUID();private timer:ReturnType<typeof setTimeout>|null=null;private failures=0;
  constructor(){window.addEventListener('online',()=>this.schedule());window.addEventListener('fashionstore-session',()=>void this.open().catch(e=>this.message.set(this.error(e))));window.addEventListener('storage',e=>{if(e.key==='fashionstore_p2_active')void this.open().catch(e=>this.message.set(this.error(e)));});}
  async open(){
-  const active=localStorage.getItem('fashionstore_p2_active')||'';
+  const active=commerceSession()||'';
   if(!/^\d+:\d+$/.test(active)){this.db?.close();this.db=null;this.namespace='';this.snapshot.set(null);this.catalog.set([]);this.customers.set([]);this.operations.set([]);return;}
   if(this.namespace!==active){this.db?.close();this.snapshot.set(null);this.catalog.set([]);this.customers.set([]);this.operations.set([]);this.message.set('');this.db=new OfflineDatabase(active);this.namespace=active;}
   await this.db!.open();
@@ -19,7 +20,7 @@ export class OfflineService {
   if(!lock || lock.expiresAt<Date.now())await this.db!.operations.where('state').equals('ENVIANDO').modify({state:'PENDIENTE'});
   this.snapshot.set((await this.db!.meta.get('snapshot'))?.value||null);await this.refresh();this.schedule();
  }
- private current(){if(!this.db || this.namespace!==localStorage.getItem('fashionstore_p2_active'))throw new Error('Inicia sesión en la empresa correcta.');return this.db;}
+ private current(){if(!this.db || this.namespace!==commerceSession())throw new Error('Inicia sesión en la empresa correcta.');return this.db;}
  get validLease(){const value=this.snapshot();return !!value && value.lease_expires*1000>Date.now();}
  async refresh(){
   const db=this.current();const products=new Map((await db.products.toArray()).map(p=>[p.id_prenda,p]));const rows=await db.operations.toArray();

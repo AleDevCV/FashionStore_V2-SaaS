@@ -52,7 +52,10 @@ export const authInterceptor: HttpInterceptorFn = (solicitud, siguiente) => {
 
   const token = authService.obtenerToken();
   if (!esPeticionExcluida && solicitud.url.includes('/api/')) {
-    solicitud = solicitud.clone({setHeaders: {'X-Empresa': new URLSearchParams(location.search).get('empresa') || localStorage.getItem('fashionstore_p2_empresa') || 'demo-a'}});
+    const usuario = authService.usuarioActual();
+    const empresa = usuario?.platform_workspace ? usuario.empresa_slug :
+      new URLSearchParams(location.search).get('empresa') || localStorage.getItem('fashionstore_p2_empresa');
+    solicitud = solicitud.clone({setHeaders: {'X-Empresa': empresa || 'demo-a'}});
   }
 
   // 2. Solo se clona la petición si hay un token vigente que adjuntar y no es excluida.

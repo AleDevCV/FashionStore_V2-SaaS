@@ -20,10 +20,12 @@ def resolve(slug, claims):
         marker=context.set(tenant)
         try:
             with get_connection() as conn, conn.cursor(cursor_factory=RealDictCursor) as cur:
-                cur.execute('SELECT u.id_usuario,u.account_id,u.correo,u.estado,u.token_version,r.nombre AS rol FROM usuario u JOIN rol r ON r.id_rol=u.id_role WHERE u.id_usuario=%s',(claims['id_usuario'],))
+                cur.execute('SELECT u.id_usuario,u.account_id,u.platform_account_id,u.correo,u.estado,u.token_version,r.nombre AS rol FROM usuario u JOIN rol r ON r.id_rol=u.id_role WHERE u.id_usuario=%s',(claims['id_usuario'],))
                 user=cur.fetchone()
             if not user or user['estado']!='Activo' or user['token_version']!=claims.get('token_version',0):return None
-            if claims.get('account_id') and user['account_id']!=claims['account_id']:return None
+            if claims.get('platform_workspace'):
+                if tenant.platform or not claims.get('account_id') or user['platform_account_id']!=claims['account_id'] or user['rol']!=claims.get('rol'):return None
+            elif user['platform_account_id'] or (claims.get('account_id') and user['account_id']!=claims['account_id']):return None
             tenant=replace(tenant,user_id=user['id_usuario'],role=user['rol'],email=user['correo'],account_id=claims.get('account_id'))
         finally:context.reset(marker)
     return tenant
@@ -74,7 +76,7 @@ async def tenant_middleware(request, call_next):
         claims=decodificar_token_acceso(parts[1]) if len(parts)==2 and parts[0].lower()=='bearer' else None
         if not claims or (not claims.get('tenant_id') and not claims.get('account_id')) or not claims.get('id_usuario'):
             return JSONResponse({'detail':'Sesión inválida o expirada.'},status_code=401)
-    global_paths={'/api/auth/seleccionar-tienda','/api/cuenta/perfil','/api/cuenta/compras'}
+    global_paths={'/api/auth/seleccionar-tienda','/api/auth/ambito-plataforma','/api/cuenta/perfil','/api/cuenta/compras'}
     if claims and claims.get('account_id'):
         try:
             account=await asyncio.to_thread(identity.validate_claims,claims)

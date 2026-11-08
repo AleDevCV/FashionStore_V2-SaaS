@@ -20,6 +20,7 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Observable, catchError, tap, throwError } from 'rxjs';
 
 import { environment } from '../../../environments/environment';
+import { commerceSessionKey } from './commerce-session';
 import {
   PayloadJwt,
   RespuestaLogin,
@@ -96,6 +97,11 @@ export class AuthService {
       .pipe(tap(respuesta => this.guardarToken(respuesta.access_token)));
   }
 
+  abrirAmbitoPlataforma(empresa: string | null, modo: 'empresa' | 'cliente' = 'empresa'): Observable<RespuestaLogin> {
+    return this.http.post<RespuestaLogin>(`${environment.apiUrl}/api/auth/ambito-plataforma`, {empresa, modo})
+      .pipe(tap(respuesta => this.guardarToken(respuesta.access_token)));
+  }
+
   /**
    * Cierra la sesión del usuario.
    *
@@ -115,8 +121,10 @@ export class AuthService {
       this.temporizadorExpiracion = null;
     }
     try {
+      sessionStorage.removeItem(this.claveToken);
+      sessionStorage.removeItem(commerceSessionKey);
       localStorage.removeItem(this.claveToken);
-      if (cerrarOffline) localStorage.removeItem('fashionstore_p2_active');
+      if (cerrarOffline) localStorage.removeItem(commerceSessionKey);
     } catch {
       // El navegador puede bloquear el almacenamiento en modo privado.
       // No es un fallo crítico: la señal igualmente se limpia abajo.
@@ -225,11 +233,25 @@ export class AuthService {
     try {
       const key=`fashionstore_p2_cart_${usuario.tenant_id}:${usuario.id_usuario}`;
       const publicKey='fashionstore_p2_cart_public_'+(usuario.empresa_slug||localStorage.getItem('fashionstore_p2_empresa')||'demo-a');
-      if(usuario.tenant_id&&!localStorage.getItem('fashionstore_p2_active')&&!localStorage.getItem(key)&&localStorage.getItem(publicKey)){localStorage.setItem(key,localStorage.getItem(publicKey)!);localStorage.removeItem(publicKey);}
-      localStorage.setItem(this.claveToken, token);
-      if (usuario.empresa_slug) localStorage.setItem('fashionstore_p2_empresa', usuario.empresa_slug);
-      if (usuario.tenant_id) localStorage.setItem('fashionstore_p2_active', `${usuario.tenant_id}:${usuario.id_usuario}`);
-      else localStorage.removeItem('fashionstore_p2_active');
+      if (usuario.platform_workspace) {
+        sessionStorage.setItem(this.claveToken, token);
+        sessionStorage.setItem(commerceSessionKey, `${usuario.tenant_id}:${usuario.id_usuario}`);
+      } else {
+        sessionStorage.removeItem(this.claveToken);
+        sessionStorage.removeItem(commerceSessionKey);
+        if (usuario.tipo_cuenta !== 'PLATAFORMA' && usuario.tenant_id && !localStorage.getItem(commerceSessionKey)
+          && !localStorage.getItem(key) && localStorage.getItem(publicKey)) {
+          localStorage.setItem(key, localStorage.getItem(publicKey)!);
+          localStorage.removeItem(publicKey);
+        }
+        localStorage.setItem(this.claveToken, token);
+        if (usuario.empresa_slug) localStorage.setItem('fashionstore_p2_empresa', usuario.empresa_slug);
+        if (usuario.tenant_id && usuario.tipo_cuenta !== 'PLATAFORMA') {
+          localStorage.setItem(commerceSessionKey, `${usuario.tenant_id}:${usuario.id_usuario}`);
+        } else {
+          localStorage.removeItem(commerceSessionKey);
+        }
+      }
     } catch {
       // Si el almacenamiento no está disponible, la sesión vivirá solo en
       // memoria hasta que se recargue la página.
@@ -246,7 +268,12 @@ export class AuthService {
    */
   obtenerToken(): string | null {
     try {
-      return localStorage.getItem(this.claveToken);
+      const scoped = sessionStorage.getItem(this.claveToken);
+      const primary = localStorage.getItem(this.claveToken);
+      if (scoped && primary && this.decodificarToken(primary)?.account_id === this.decodificarToken(scoped)?.account_id) {
+        return scoped;
+      }
+      return primary;
     } catch {
       return null;
     }
@@ -340,6 +367,8 @@ export class AuthService {
     // Un token caducado se descarta de inmediato para no dejar basura.
     if (this.tokenExpirado(token)) {
       try {
+        sessionStorage.removeItem(this.claveToken);
+        sessionStorage.removeItem(commerceSessionKey);
         localStorage.removeItem(this.claveToken);
       } catch {
         /* almacenamiento no disponible */

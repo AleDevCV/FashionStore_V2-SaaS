@@ -40,7 +40,22 @@
               [style.--fs-package-left]="posicionPaquete().left + 'px'">
               @for (caso of paquete.cases; track caso.id) {
                 <li class="admin__case">
-                  @if (caso.id === 'CU01' || caso.actions.length > 1) {
+                  @if (esPlataforma()) {
+                    <details>
+                      <summary class="admin__case-row">
+                        <span class="admin__link-caso">{{ caso.id }}</span>
+                        <span>{{ caso.title }}</span>
+                        <span class="admin__chevron" aria-hidden="true"></span>
+                      </summary>
+                      <div class="admin__case-actions">
+                        <a class="admin__case-action" [routerLink]="['/panel/casos', caso.id]">Abrir {{ caso.id }}</a>
+                        @for (action of caso.actions; track $index) {
+                          <a class="admin__case-action" [routerLink]="['/panel/casos', caso.id]"
+                            [queryParams]="{accion: $index + 1}">{{ action.label }}</a>
+                        }
+                      </div>
+                    </details>
+                  } @else if (caso.id === 'CU01' || caso.actions.length > 1) {
                     <details>
                       <summary class="admin__case-row">
                         <span class="admin__link-caso">{{ caso.id }}</span>
@@ -51,16 +66,15 @@
                         @if (caso.id === 'CU01') {
                           <span class="admin__account">{{ usuario()?.correo }}</span>
                           <button type="button" class="admin__case-action" (click)="cerrarSesion()">Cerrar sesión</button>
-                        } @else {
-                          @for (action of caso.actions; track action.path) {
-                            <a class="admin__case-action" [routerLink]="action.path"
-                              routerLinkActive="admin__link--activo" ariaCurrentWhenActive="page">{{ action.label }}</a>
-                          }
+                        }
+                        @for (action of caso.actions; track $index) {
+                          <a class="admin__case-action" [routerLink]="action.path" [queryParams]="action.query"
+                            routerLinkActive="admin__link--activo" ariaCurrentWhenActive="page">{{ action.label }}</a>
                         }
                       </div>
                     </details>
                   } @else if (caso.actions[0]; as action) {
-                    <a class="admin__case-row" [routerLink]="action.path" [title]="action.label"
+                    <a class="admin__case-row" [routerLink]="action.path" [queryParams]="action.query" [title]="action.label"
                       routerLinkActive="admin__link--activo" ariaCurrentWhenActive="page">
                       <span class="admin__link-caso">{{ caso.id }}</span>
                       <span>{{ caso.title }}</span>

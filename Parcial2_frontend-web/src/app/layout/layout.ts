@@ -43,7 +43,7 @@ export class Layout {
 
   /** Identificador (slug) de la empresa activa cuando pertenece a una tienda comercial. */
   readonly empresaActivaSlug = computed(() => {
-    if (this.esPlataforma()) {
+    if (this.esPlataforma() && !this.usuario()?.platform_workspace) {
       return null;
     }
     return this.usuario()?.empresa_slug ?? null;
@@ -107,10 +107,10 @@ export class Layout {
       cases: paquete.cases.map(caso => ({
         ...caso,
         actions: (caso.links ?? []).filter(link => {
-          if (link.roles && !link.roles.includes(usuario.rol)) return false;
-          if (link.audience === 'staff') return !plataforma && !cliente;
+          if (plataforma) return true;
+          if (link.platformOnly || (link.roles && !link.roles.includes(usuario.rol))) return false;
+          if (link.audience === 'staff') return !cliente;
           if (link.audience === 'client') return cliente;
-          if (link.audience === 'store') return !plataforma;
           return true;
         }),
       })).filter(caso => plataforma || caso.id === 'CU01' || caso.actions.length > 0),

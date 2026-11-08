@@ -57,16 +57,25 @@ export const invitadoGuard: CanActivateFn = () => {
   return true;
 };
 
+export const plataformaGuard: CanActivateFn = () => {
+  const auth = inject(AuthService);
+  const router = inject(Router);
+  return auth.usuarioActual()?.tipo_cuenta === 'PLATAFORMA' ? true : router.parseUrl('/panel/inicio');
+};
+
 /** Vincula el cliente autenticado a la tienda de la navegación, nunca desde el login. */
 export const tiendaGuard: CanActivateFn = async (ruta) => {
   const auth=inject(AuthService); const router=inject(Router);
   const user=auth.usuarioActual();
   const empresa=ruta.queryParamMap.get('empresa') || (user?.tenant_id ? user.empresa_slug : null);
+  if (user?.tipo_cuenta === 'PLATAFORMA' && user.platform_workspace && empresa !== user.empresa_slug) {
+    return router.parseUrl('/tiendas');
+  }
   if (user?.tipo_cuenta==='CLIENTE' && empresa && empresa!==user.empresa_slug) {
     try { await firstValueFrom(auth.seleccionarTienda(empresa)); }
     catch { return router.parseUrl('/tiendas'); }
   }
   if (user?.tipo_cuenta==='CLIENTE' && !empresa) return router.parseUrl('/tiendas');
-  if (empresa) localStorage.setItem('fashionstore_p2_empresa',empresa);
+  if (empresa && user?.tipo_cuenta !== 'PLATAFORMA') localStorage.setItem('fashionstore_p2_empresa',empresa);
   return true;
 };

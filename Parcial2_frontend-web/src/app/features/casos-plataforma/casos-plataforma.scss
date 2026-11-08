@@ -1,0 +1,18 @@
+:host { display: block; color: #213b2f; }
+.case-workspace { max-width: 68rem; margin: auto; padding: clamp(1rem, 4vw, 3rem); }
+header { padding-bottom: 1.5rem; border-bottom: 1px solid #cbd3c8; }
+.eyebrow { color: #526953; text-transform: uppercase; letter-spacing: .13em; font-size: .76rem; }
+h1, h2 { font-family: Georgia, serif; font-weight: normal; }
+h1 { font-size: clamp(2rem, 5vw, 3.75rem); line-height: 1.05; margin: .75rem 0; }
+h1 span { color: #6a774c; white-space: nowrap; }
+.company { background: #e9eee3; border-left: .25rem solid #526953; margin: 1.75rem 0; padding: 1rem; }
+label, select { display: block; }
+label { font-weight: 700; margin-bottom: .5rem; }
+select { width: min(100%, 26rem); color: inherit; background: white; padding: .65rem; border: 1px solid #879985; font: inherit; }
+.company p { margin-bottom: 0; }
+ul { padding: 0; margin: 0; list-style: none; border-top: 1px solid #cbd3c8; }
+button { display: flex; justify-content: space-between; gap: 1rem; width: 100%; padding: 1rem; text-align: left; background: transparent; color: inherit; border: 0; border-bottom: 1px solid #cbd3c8; font: inherit; cursor: pointer; }
+button:hover, button.seleccionada { background: #e9eee3; }
+button:disabled { cursor: wait; opacity: .65; }
+button:focus-visible, select:focus-visible { outline: 2px solid #416348; outline-offset: 2px; }
+.error { color: #922f24; }

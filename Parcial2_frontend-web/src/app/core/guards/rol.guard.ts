@@ -56,7 +56,7 @@ export const rolGuard = (
 
     const usuario = authService.usuarioActual();
     const rol = authService.obtenerRol();
-    const esPlataforma = usuario?.tipo_cuenta === 'PLATAFORMA';
+    const esPlataforma = usuario?.tipo_cuenta === 'PLATAFORMA' && !usuario.platform_workspace;
 
     // Si la cuenta es de gobierno de plataforma SaaS y la ruta pertenece a la
     // operación interna de una empresa comercial, redirigir a /panel/saas.

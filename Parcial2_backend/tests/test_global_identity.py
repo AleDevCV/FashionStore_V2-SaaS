@@ -36,6 +36,66 @@ def test_login_uses_email_and_ignores_claimed_company(client,companies):
     assert client.post('/api/auth/seleccionar-tienda',headers=header,json={'empresa':b['slug']}).status_code==403
 
 
+def test_platform_workspace_is_scoped_audited_and_preserves_identity(client, customer_companies):
+    from app.services.auth_service import generar_hash_password
+    email = f'plataforma-{secrets.token_hex(5)}@example.com'
+    password = 'platform-test-password-123'
+    with owner_connection() as conn, conn.cursor() as cur:
+        cur.execute("SELECT id_empresa FROM empresa WHERE plataforma")
+        platform = cur.fetchone()['id_empresa']
+        cur.execute("SELECT set_config('app.tenant_id',%s,true)", (str(platform),))
+        cur.execute("INSERT INTO rol(nombre) VALUES('Administrador') ON CONFLICT DO NOTHING")
+        cur.execute("SELECT id_rol FROM rol WHERE tenant_id=%s AND nombre='Administrador'", (platform,))
+        role = cur.fetchone()['id_rol']
+        cur.execute("""INSERT INTO usuario(nombre,apellido,correo,password_hash,id_role)
+                       VALUES('Prueba','Plataforma',%s,%s,%s) RETURNING id_usuario""",
+                    (email, generar_hash_password(password), role))
+        cur.execute('SELECT identity_index_user(%s)', (cur.fetchone()['id_usuario'],))
+
+    login = client.post('/api/login', json={'correo': email, 'password': password})
+    assert login.status_code == 200, login.text
+    global_session = {'Authorization': 'Bearer ' + login.json()['access_token']}
+    a, b = customer_companies
+    path = '/api/auth/ambito-plataforma'
+    assert client.post(path, json={'empresa': a['slug']}).status_code == 401
+    personal_login = client.post('/api/login', json={'correo': a['email'], 'password': 'test-password-123'})
+    assert personal_login.status_code == 200
+    personal = {'Authorization': 'Bearer ' + personal_login.json()['access_token']}
+    assert client.post(path, headers=personal, json={'empresa': b['slug']}).status_code == 403
+    assert client.post(path, headers=global_session, json={'empresa': 'plataforma'}).status_code == 404
+
+    sessions = []
+    for company in (a, b):
+        workspace = client.post(path, headers=global_session, json={'empresa': company['slug']})
+        assert workspace.status_code == 200, workspace.text
+        session = {'Authorization': 'Bearer ' + workspace.json()['access_token']}
+        sessions.append(session)
+        ctx = client.get('/api/contexto', headers={**session, 'X-Empresa': b['slug']}).json()
+        assert ctx['empresa']['id_empresa'] == company['tenant']
+        assert ctx['usuario']['rol'] == 'Administrador'
+        assert client.get('/api/empresas', headers=session).status_code == 403
+        operators = client.get('/api/usuarios/', headers=session).json()
+        assert ctx['usuario']['id_usuario'] not in {operator['id_usuario'] for operator in operators}
+        assert client.get(f'/api/usuarios/{ctx["usuario"]["id_usuario"]}', headers=session).status_code == 404
+        assert client.put(f'/api/usuarios/{ctx["usuario"]["id_usuario"]}/sucursales', headers=session,
+                          json={'sucursales': [company['branch']]}).status_code == 404
+        audit = client.get('/api/bitacora', headers=session, params={'accion': 'ABRIR_AMBITO'})
+        assert audit.status_code == 200 and 'ABRIR_AMBITO' in audit.text
+        assert client.get('/api/comprobantes', headers=session).status_code == 200
+
+    buyer = client.post(path, headers=sessions[0], json={'empresa': a['slug'], 'modo': 'cliente'})
+    assert buyer.status_code == 200, buyer.text
+    buyer_session = {'Authorization': 'Bearer ' + buyer.json()['access_token']}
+    assert client.get('/api/contexto', headers=buyer_session).json()['usuario']['rol'] == 'Cliente'
+    assert client.get('/api/usuarios/', headers=buyer_session).status_code == 403
+    global_again = client.post(path, headers=buyer_session, json={})
+    assert global_again.status_code == 200
+    assert client.get('/api/empresas', headers={'Authorization': 'Bearer ' + global_again.json()['access_token']}).status_code == 200
+    assert client.post('/api/logout', headers=sessions[0]).status_code == 200
+    for session in [global_session, buyer_session, *sessions]:
+        assert client.get('/api/contexto', headers=session).status_code == 401
+
+
 def test_global_email_uniqueness_is_case_insensitive(client):
     _,email=register(client)
     result=client.post('/api/auth/registro',headers={'X-Empresa':'irrelevante'},json={'nombre':'Otra','apellido':'Persona','ci':'1234567','correo':email.upper(),'password':'another-password'})

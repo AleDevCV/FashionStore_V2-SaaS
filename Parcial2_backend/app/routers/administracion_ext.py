@@ -23,7 +23,7 @@ def create_role(data:RoleCreate,_=Depends(admin),cur=Depends(get_db)):
 @router.put('/usuarios/{user_id}/sucursales')
 def assign_branches(user_id:int,data:BranchAssignments,_=Depends(admin),cur=Depends(get_db)):
     if any(x<=0 for x in data.sucursales) or len(set(data.sucursales))!=len(data.sucursales):raise HTTPException(422,'Sucursales positivas y sin duplicados requeridas.')
-    cur.execute('SELECT id_usuario FROM usuario WHERE id_usuario=%s FOR UPDATE',(user_id,))
+    cur.execute('SELECT id_usuario FROM usuario WHERE id_usuario=%s AND platform_account_id IS NULL FOR UPDATE',(user_id,))
     if not cur.fetchone():raise HTTPException(404,'Usuario no encontrado.')
     cur.execute('SELECT id_sucursal FROM sucursal WHERE id_sucursal=ANY(%s) AND activa',(data.sucursales,))
     if len(cur.fetchall())!=len(data.sucursales):raise HTTPException(404,'Una sucursal no está disponible en esta empresa.')

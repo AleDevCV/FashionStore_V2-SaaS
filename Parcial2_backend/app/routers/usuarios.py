@@ -86,6 +86,7 @@ def listar_usuarios(
                 u.created_at
         FROM usuario u
         LEFT JOIN rol r ON u.id_role = r.id_rol
+        WHERE u.platform_account_id IS NULL
         ORDER BY u.id_usuario;
         """
     )
@@ -498,7 +499,7 @@ def _buscar_usuario(cursor, id_usuario: int) -> dict | None:
                 u.created_at
         FROM usuario u
         LEFT JOIN rol r ON u.id_role = r.id_rol
-        WHERE u.id_usuario = %s;
+        WHERE u.id_usuario = %s AND u.platform_account_id IS NULL;
         """,
         (id_usuario,),
     )

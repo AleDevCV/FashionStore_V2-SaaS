@@ -1,18 +1,57 @@
-import {Component,inject,signal,OnInit} from '@angular/core';
+import {Component,HostListener,inject,signal,OnInit} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {FormsModule} from '@angular/forms';
-import {RouterLink} from '@angular/router';
+import {ActivatedRoute,RouterLink} from '@angular/router';
 import {HttpClient} from '@angular/common/http';
 import {firstValueFrom} from 'rxjs';
 import {OfflineService} from '../../core/services/offline.service';
 import {LocalOperation,cents,priceCents} from '../../core/services/offline-store';
 import {environment} from '../../../environments/environment';
+import {AuthService} from '../../core/services/auth.service';
+
+interface Conflicto {
+  operation_id: string;
+  branch_id: number;
+  state: string;
+  resolved_at: string | null;
+  result: { reason?: string; mensaje?: string };
+}
 
 @Component({selector:'app-offline',standalone:true,imports:[CommonModule,FormsModule,RouterLink],templateUrl:'./offline.html',styleUrl:'./offline.scss'})
 export class Offline implements OnInit {
  readonly store=inject(OfflineService);private http=inject(HttpClient);
+ readonly vista=inject(ActivatedRoute).snapshot.data['offlineView'];
+ readonly puedeSupervisar=inject(AuthService).tieneRol('Administrador','Encargado de Sucursal');
+ readonly conflictos=signal<Conflicto[]>([]);
  branches=signal<any[]>([]);branchId=0;kind:'venta'|'reserva'='venta';customerId:number|null=null;cash='0';filter='';cart:Record<number,number>={};revision:string|null=null;error=signal('');online=signal(navigator.onLine);
- async ngOnInit(){window.addEventListener('online',()=>this.online.set(true));window.addEventListener('offline',()=>this.online.set(false));try{await this.store.open();this.branchId=this.store.snapshot()?.branch.id_sucursal||0;if(localStorage.getItem(environment.claveTokenJwt)){const ctx=await firstValueFrom(this.http.get<any>(environment.apiUrl+'/api/contexto'));this.branches.set(ctx.sucursales||[]);}}catch(e:any){this.error.set(e.message||'No se pudo abrir el almacenamiento.');}}
+ @HostListener('window:online') conectado(){this.online.set(true);}
+ @HostListener('window:offline') desconectado(){this.online.set(false);}
+ async ngOnInit(){try{await this.store.open();this.branchId=this.store.snapshot()?.branch.id_sucursal||0;if(localStorage.getItem(environment.claveTokenJwt)&&this.online()){const ctx=await firstValueFrom(this.http.get<any>(environment.apiUrl+'/api/contexto'));this.branches.set(ctx.sucursales||[]);if(this.vista==='sincronizacion'&&this.puedeSupervisar)await this.cargarConflictos();}}catch(e:any){this.error.set(e.message||'No se pudo abrir el almacenamiento.');}}
+ async cargarConflictos(): Promise<void> {
+   try {
+     this.conflictos.set(await firstValueFrom(this.http.get<Conflicto[]>(environment.apiUrl+'/api/conflictos')));
+   } catch (e: any) {
+     this.error.set(e.error?.detail || 'No se pudieron consultar los conflictos de la empresa.');
+   }
+ }
+ async compensarCentral(conflicto: Conflicto): Promise<void> {
+   const motivo = prompt('Describe la resolución y el efectivo devuelto, si corresponde.');
+   if (!motivo) return;
+   const importe = prompt('Importe devuelto de contado (0 si no corresponde):', '0');
+   if (importe === null) return;
+   try {
+     cents(importe);
+     await firstValueFrom(this.http.post(environment.apiUrl+'/api/conflictos/'+conflicto.operation_id+'/compensar',
+       { motivo, compensacion: importe }));
+     await this.cargarConflictos();
+   } catch (e: any) {
+     this.error.set(e.error?.detail || e.message || 'No se pudo registrar la compensación.');
+   }
+ }
+ async sincronizar(): Promise<void> {
+   await this.store.sync();
+   if (this.vista==='sincronizacion' && this.puedeSupervisar) await this.cargarConflictos();
+ }
  get visible(){const q=this.filter.toLocaleLowerCase();return this.store.catalog().filter(p=>(p.product.nombre+' '+p.sku_variante+' '+p.color+' '+p.talla).toLocaleLowerCase().includes(q));}
  get entries(){return Object.entries(this.cart).filter(([,qty])=>qty>0).map(([id,quantity])=>({variantId:Number(id),quantity}));}
  price(row:any){const qty=this.entries.filter(e=>this.store.catalog().find(v=>v.id_variante_prenda===e.variantId)?.id_prenda===row.id_prenda).reduce((sum,e)=>sum+e.quantity,0);return priceCents(row.product,row,qty)/100;}

@@ -72,7 +72,7 @@ describe('Layout y rolGuard — Alineación UI/UX y Submenús sin Duplicados (CU
       .filter((t) => t.length > 0);
   }
 
-  it('separa el menú del SuperAdministrador SaaS (PLATAFORMA) de la operación interna de tienda', () => {
+  it('ofrece al SuperAdministrador las veinte fichas y todas sus acciones', () => {
     usuarioSignal.set({
       id_usuario: 1,
       tenant_id: 1,
@@ -90,21 +90,16 @@ describe('Layout y rolGuard — Alineación UI/UX y Submenús sin Duplicados (CU
     expect(componente.etiquetaRolVisible()).toBe('SuperAdministrador SaaS');
     expect(componente.etiquetaEspacioTrabajo()).toContain('Plataforma SaaS');
 
-    const rutas = rutasMenu();
-    expect(rutas).toEqual(['/panel/inicio', '/panel/saas', '/panel/bitacora']);
-
     const codigosDom = obtenerCodigosCuVisiblesEnDom();
     expect(codigosDom.length).toBe(20);
     expect(new Set(codigosDom).size).toBe(codigosDom.length);
 
-    // Ningún módulo operativo de tienda debe aparecer en el sidebar de plataforma
-    expect(rutas).not.toContain('/panel/pagos-control');
-    expect(rutas).not.toContain('/panel/pos');
-    expect(rutas).not.toContain('/panel/compras');
-    expect(rutas).not.toContain('/panel/usuarios');
-    expect(rutas).not.toContain('/panel/analitica');
-    expect(rutas).not.toContain('/panel/reportes');
-    expect(rutas).not.toContain('/offline');
+    const casos = componente.paquetes().flatMap(paquete => paquete.cases);
+    for (const caso of casos) {
+      expect(caso.actions.length).toBeGreaterThan(0);
+      expect(fixture.nativeElement.querySelector(`a[href="/panel/casos/${caso.id}"]`)).not.toBeNull();
+    }
+    expect(fixture.nativeElement.querySelector('a[href="/panel/casos/CU03?accion=2"]')).not.toBeNull();
   });
 
   it('muestra al Administrador de Empresa (PERSONAL) los módulos agrupados en submenús con códigos CU01–CU20 únicos en el sidebar', () => {
@@ -166,7 +161,8 @@ describe('Layout y rolGuard — Alineación UI/UX y Submenús sin Duplicados (CU
     expect(enlaces).toContain(['/panel/reservas-atencion', 'CU12']);
     expect(enlaces).toContain(['/panel/pos', 'CU13']);
     expect(enlaces).toContain(['/panel/cambios', 'CU15']);
-    expect(enlaces).toContain(['/offline', 'CU16']);
+    expect(enlaces).toContain(['/panel/operacion-local', 'CU16']);
+    expect(enlaces).toContain(['/panel/sincronizacion', 'CU17']);
     expect(enlaces).toContain(['/panel/reportes', 'CU18']);
     expect(enlaces).toContain(['/panel/ia/analitica-voz', 'CU18']);
     expect(enlaces).toContain(['/panel/dashboard', 'CU19']);
@@ -227,7 +223,7 @@ describe('Layout y rolGuard — Alineación UI/UX y Submenús sin Duplicados (CU
     expect(rutas).toContain('/panel/clientes');
     expect(rutas).toContain('/panel/cambios');
     expect(rutas).toContain('/panel/inventario/monitoreo');
-    expect(rutas).toContain('/offline');
+    expect(rutas).toContain('/panel/operacion-local');
 
     expect(rutas).not.toContain('/panel/saas');
     expect(rutas).not.toContain('/panel/usuarios');
@@ -288,7 +284,7 @@ describe('Layout y rolGuard — Alineación UI/UX y Submenús sin Duplicados (CU
     expect(rutas).toContain('/panel/clientes');
     expect(rutas).toContain('/mi-cuenta/pedidos');
     expect(rutas).toContain('/panel/cambios');
-    expect(rutas).toContain('/offline');
+    expect(rutas).toContain('/panel/operacion-local');
     expect(rutas).toContain('/panel/ia/asistente-moda');
     expect(rutas).toContain('/catalogo');
     expect(rutas).toContain('/tiendas');

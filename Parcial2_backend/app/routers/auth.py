@@ -4,6 +4,7 @@ import hashlib
 import secrets
 import threading
 import time
+from typing import Literal
 from fastapi import APIRouter, HTTPException, Request
 from pydantic import BaseModel, Field
 from psycopg2 import errors
@@ -65,6 +66,17 @@ def stores():
 
 class StoreChoice(BaseModel):
     empresa: str = Field(pattern=r'^[a-z0-9][a-z0-9-]{1,60}$')
+
+class PlatformWorkspaceChoice(BaseModel):
+    empresa: str | None = Field(default=None, pattern=r'^[a-z0-9][a-z0-9-]{1,60}$')
+    modo: Literal['empresa', 'cliente'] = 'empresa'
+
+@router.post('/auth/ambito-plataforma', response_model=RespuestaToken)
+def choose_platform_workspace(data: PlatformWorkspaceChoice, request: Request):
+    return RespuestaToken(
+        access_token=identity.platform_workspace(session_account(request), data.empresa, data.modo),
+        token_type='bearer',
+    )
 
 @router.post('/auth/seleccionar-tienda', response_model=RespuestaToken)
 def choose_store(data: StoreChoice, request: Request):

@@ -1,11 +1,14 @@
 import { ROLES } from '../core/models/auth.model';
 
 type Audience = 'all' | 'staff' | 'store' | 'client';
-interface CaseLink {
+export interface CaseLink {
   label: string;
   path: string;
   audience?: Audience;
   roles?: readonly string[];
+  scope?: 'global' | 'empresa' | 'cliente' | 'actual';
+  query?: Record<string, string>;
+  platformOnly?: boolean;
 }
 
 interface UseCase {
@@ -27,9 +30,13 @@ const counter = [...managers, ROLES.CAJERO];
 
 export const USE_CASE_PACKAGES: readonly Package[] = [
   { id: 'P1', title: 'Administración SaaS y control de acceso', cases: [
-    { id: 'CU01', title: 'Gestionar acceso y cuenta' },
+    { id: 'CU01', title: 'Gestionar acceso y cuenta', links: [
+      { label: 'Datos de la sesión y cuenta', path: '/panel/inicio', scope: 'actual' },
+      { label: 'Recuperar acceso por correo', path: '/panel/recuperar-acceso', scope: 'actual', platformOnly: true },
+    ] },
     { id: 'CU02', title: 'Administrar empresas, planes y suscripciones', requires: 'Administración', links: [
       { label: 'Empresas, planes y suscripciones', path: '/panel/saas', roles: admin },
+      { label: 'Consultar contrato de una empresa', path: '/panel/saas', scope: 'empresa', platformOnly: true },
     ] },
     { id: 'CU03', title: 'Administrar personal, roles y permisos', requires: 'Administrador de empresa', links: [
       { label: 'Personal y roles asignados', path: '/panel/usuarios', audience: 'staff', roles: admin },
@@ -56,15 +63,16 @@ export const USE_CASE_PACKAGES: readonly Package[] = [
   { id: 'P3', title: 'Atención al cliente y reservas', cases: [
     { id: 'CU05', title: 'Gestionar fichas de clientes', requires: 'Cuenta de empresa o cliente', links: [
       { label: 'Fichas de clientes', path: '/panel/clientes', audience: 'store', roles: [...counter, ROLES.CLIENTE] },
+      { label: 'Consultar la ficha como comprador', path: '/panel/clientes', scope: 'cliente', platformOnly: true },
     ] },
     { id: 'CU09', title: 'Explorar catálogo y asistencia de compra', links: [
-      { label: 'Elegir tienda', path: '/tiendas', audience: 'store' },
-      { label: 'Vitrina del catálogo', path: '/catalogo', audience: 'store' },
+      { label: 'Elegir tienda', path: '/tiendas', audience: 'store', scope: 'actual' },
+      { label: 'Vitrina del catálogo', path: '/catalogo', audience: 'store', scope: 'cliente' },
       { label: 'Asistente de moda', path: '/panel/ia/asistente-moda', audience: 'store' },
     ] },
     { id: 'CU12', title: 'Gestionar reservas de prendas', requires: 'Cuenta de empresa o cliente', links: [
       { label: 'Atención de reservas', path: '/panel/reservas-atencion', audience: 'staff', roles: counter },
-      { label: 'Reservar desde el carrito', path: '/checkout', audience: 'client' },
+      { label: 'Reservar desde el carrito', path: '/checkout', audience: 'client', query: { flujo: 'reserva' } },
     ] },
   ] },
   { id: 'P4', title: 'Ventas, pagos y posventa', cases: [
@@ -76,11 +84,12 @@ export const USE_CASE_PACKAGES: readonly Package[] = [
       { label: 'Terminal de caja', path: '/panel/pos', audience: 'staff', roles: counter },
     ] },
     { id: 'CU14', title: 'Obtener comprobantes de compra', requires: 'Cuenta de empresa o cliente', links: [
-      { label: 'Comprobante al finalizar la venta en caja', path: '/panel/pos', audience: 'staff', roles: counter },
+      { label: 'Consultar y descargar comprobantes de la empresa', path: '/panel/comprobantes', audience: 'staff', roles: counter },
       { label: 'Descargar comprobantes de mis pedidos', path: '/mi-cuenta/pedidos', audience: 'client' },
     ] },
     { id: 'CU15', title: 'Gestionar cambios y reembolsos', requires: 'Cuenta de empresa o cliente', links: [
       { label: 'Cambios y devoluciones', path: '/panel/cambios', audience: 'store' },
+      { label: 'Solicitudes y seguimiento como comprador', path: '/panel/cambios', scope: 'cliente', platformOnly: true },
     ] },
   ] },
   { id: 'P5', title: 'Disponibilidad y continuidad operativa', cases: [
@@ -88,10 +97,10 @@ export const USE_CASE_PACKAGES: readonly Package[] = [
       { label: 'Monitoreo de inventario', path: '/panel/inventario/monitoreo', audience: 'staff', roles: counter },
     ] },
     { id: 'CU16', title: 'Registrar y consultar operaciones offline', requires: 'Cuenta de empresa o cliente', links: [
-      { label: 'Catálogo local y operaciones guardadas', path: '/offline', audience: 'store' },
+      { label: 'Catálogo local y operaciones guardadas', path: '/panel/operacion-local', audience: 'store' },
     ] },
     { id: 'CU17', title: 'Sincronizar operaciones y resolver conflictos', requires: 'Cuenta de empresa o cliente', links: [
-      { label: 'Sincronizar y revisar operaciones locales', path: '/offline', audience: 'store' },
+      { label: 'Sincronizar y revisar operaciones locales', path: '/panel/sincronizacion', audience: 'store' },
     ] },
   ] },
   { id: 'P6', title: 'Reportes, analítica y auditoría', cases: [
@@ -105,6 +114,7 @@ export const USE_CASE_PACKAGES: readonly Package[] = [
     ] },
     { id: 'CU20', title: 'Consultar auditoría y trazabilidad', requires: 'Administración', links: [
       { label: 'Bitácora de auditoría', path: '/panel/bitacora', roles: admin },
+      { label: 'Auditoría de una empresa', path: '/panel/bitacora', scope: 'empresa', platformOnly: true },
     ] },
   ] },
 ];

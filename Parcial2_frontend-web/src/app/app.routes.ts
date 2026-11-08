@@ -15,7 +15,7 @@
 
 import { Routes } from '@angular/router';
 
-import { authGuard, invitadoGuard, tiendaGuard } from './core/guards/auth.guard';
+import { authGuard, invitadoGuard, plataformaGuard, tiendaGuard } from './core/guards/auth.guard';
 import { rolGuard } from './core/guards/rol.guard';
 import { ROLES } from './core/models/auth.model';
 
@@ -93,6 +93,35 @@ export const routes: Routes = [
     canActivate: [authGuard],
     loadComponent: () => import('./layout/layout').then((m) => m.Layout),
     children: [
+      {
+        path: 'casos/:id',
+        canActivate: [plataformaGuard],
+        loadComponent: () => import('./features/casos-plataforma/casos-plataforma').then(m => m.CasosPlataforma),
+      },
+      {
+        path: 'recuperar-acceso',
+        canActivate: [plataformaGuard],
+        title: 'Recuperar acceso · FashionStore',
+        loadComponent: () => import('./features/auth/recuperar-password/recuperar-password').then(m => m.RecuperarPassword),
+      },
+      {
+        path: 'comprobantes',
+        canActivate: [rolGuard([ROLES.ADMINISTRADOR, ROLES.ENCARGADO, ROLES.CAJERO], 'Comprobantes')],
+        title: 'Comprobantes · FashionStore',
+        loadComponent: () => import('./features/comprobantes/comprobantes').then(m => m.Comprobantes),
+      },
+      {
+        path: 'operacion-local',
+        data: { offlineView: 'registro' },
+        title: 'Registro offline · FashionStore',
+        loadComponent: () => import('./features/offline/offline').then(m => m.Offline),
+      },
+      {
+        path: 'sincronizacion',
+        data: { offlineView: 'sincronizacion' },
+        title: 'Sincronización y conflictos · FashionStore',
+        loadComponent: () => import('./features/offline/offline').then(m => m.Offline),
+      },
       {
         // CU11 / CU12 / CU14 - Conciliación de pagos y entregas pendientes (exclusivo personal de tienda)
         path: 'pagos-control',

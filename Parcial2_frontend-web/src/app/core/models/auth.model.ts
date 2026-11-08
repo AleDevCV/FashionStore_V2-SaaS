@@ -40,6 +40,7 @@ export interface RespuestaLogin {
 export interface PayloadJwt {
   account_id?: number;
   tipo_cuenta?: 'CLIENTE'|'PERSONAL'|'PLATAFORMA';
+  platform_workspace?: boolean;
   empresa_slug?: string;
   tenant_id: number;
   /** Identificador del usuario en la tabla `usuario`. */

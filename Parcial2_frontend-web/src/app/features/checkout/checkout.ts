@@ -15,7 +15,7 @@ import {
   signal,
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { FormBuilder, ReactiveFormsModule, FormsModule, Validators } from '@angular/forms';
 import {HttpClient} from '@angular/common/http';
 import {environment} from '../../../environments/environment';
@@ -34,7 +34,7 @@ type MetodoPago = 'Stripe' | 'QR';
   selector: 'app-checkout',
   standalone: true,
   changeDetection: ChangeDetectionStrategy.Default,
-  imports: [CommonModule, ReactiveFormsModule,FormsModule],
+  imports: [CommonModule, ReactiveFormsModule, FormsModule, RouterLink],
   templateUrl: './checkout.html',
   styleUrls: ['./checkout.scss'],
 })
@@ -47,6 +47,8 @@ export class Checkout implements OnInit {
   private readonly auth = inject(AuthService);
   private readonly clienteService = inject(ClienteService);
   private readonly router = inject(Router);
+  readonly soloReserva = inject(ActivatedRoute).snapshot.queryParamMap.get('flujo') === 'reserva';
+  readonly ambitoPlataforma = this.auth.usuarioActual()?.platform_workspace === true;
   private readonly fb = inject(FormBuilder);
 
   // Estado del wizard
@@ -76,7 +78,7 @@ export class Checkout implements OnInit {
 
   ngOnInit(): void {
     this.http.get<any>(environment.apiUrl+'/api/contexto').subscribe({next:ctx=>{this.branches.set(ctx.sucursales);this.ID_SUCURSAL=ctx.sucursales[0]?.id_sucursal||0;},error:()=>this.error.set('Inicie sesión como cliente para elegir una sucursal.')});
-    if (this.carrito.items.length === 0) {
+    if (this.carrito.items.length === 0 && !this.ambitoPlataforma && !this.soloReserva) {
       this.router.navigate(['/catalogo']);
     }
     // Pre-rellenar con datos del cliente si están disponibles
@@ -91,6 +93,7 @@ export class Checkout implements OnInit {
   }
 
   get pasos(): { numero: number; label: string }[] {
+    if (this.soloReserva) return [{numero: 1, label: 'Reserva'}, {numero: 4, label: 'Confirmada'}];
     return [
       { numero: 1, label: 'Resumen' },
       { numero: 2, label: 'Datos' },
@@ -121,7 +124,12 @@ export class Checkout implements OnInit {
         })),
       }).toPromise();
       this.reserva.set(reserva!);
-      this.pasoActual.set(2);
+      if (this.soloReserva) {
+        this.carrito.vaciarCarrito();
+        this.pasoActual.set(4);
+      } else {
+        this.pasoActual.set(2);
+      }
     } catch (err: any) {
       this.error.set(err?.error?.detail || 'Error al crear la reserva. Intenta nuevamente.');
     } finally {

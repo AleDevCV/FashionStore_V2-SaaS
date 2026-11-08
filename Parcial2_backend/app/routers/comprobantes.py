@@ -10,7 +10,7 @@ Endpoints REST para la generación y consulta de comprobantes fiscales digitales
 =============================================================================
 """
 
-from fastapi import APIRouter, Depends, Request, status
+from fastapi import APIRouter, Depends, Query, Request, status
 from fastapi.responses import FileResponse
 
 from app.database import get_db
@@ -20,6 +20,21 @@ from app.services.auth_service import get_current_user
 from app.services.bitacora_service import obtener_ip_cliente
 
 router = APIRouter(prefix="/comprobantes", tags=["Comprobantes (CU21)"])
+
+@router.get("")
+def listar_comprobantes(
+    busqueda: str = Query(default="", max_length=50),
+    cursor=Depends(get_db),
+    usuario=Depends(get_current_user),
+):
+    cursor.execute("""
+        SELECT c.numero_comprobante,c.id_venta,c.fecha_emision,v.total
+        FROM comprobante c JOIN venta v USING (tenant_id,id_venta)
+        WHERE %s='' OR strpos(lower(c.numero_comprobante),lower(%s))>0
+              OR c.id_venta::text=%s
+        ORDER BY c.fecha_emision DESC,c.id_comprobante DESC LIMIT 100
+        """, (busqueda, busqueda, busqueda))
+    return cursor.fetchall()
 
 
 @router.post(
